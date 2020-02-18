@@ -27,45 +27,45 @@ import SmokeHTTPClient
 /**
  Mock Client for the SecurityToken service by default returns the `__default` property of its return type.
  */
-public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
-    let assumeRoleAsyncOverride: SecurityTokenClientProtocol.AssumeRoleAsyncType?
-    let assumeRoleSyncOverride: SecurityTokenClientProtocol.AssumeRoleSyncType?
-    let assumeRoleWithSAMLAsyncOverride: SecurityTokenClientProtocol.AssumeRoleWithSAMLAsyncType?
-    let assumeRoleWithSAMLSyncOverride: SecurityTokenClientProtocol.AssumeRoleWithSAMLSyncType?
-    let assumeRoleWithWebIdentityAsyncOverride: SecurityTokenClientProtocol.AssumeRoleWithWebIdentityAsyncType?
-    let assumeRoleWithWebIdentitySyncOverride: SecurityTokenClientProtocol.AssumeRoleWithWebIdentitySyncType?
-    let decodeAuthorizationMessageAsyncOverride: SecurityTokenClientProtocol.DecodeAuthorizationMessageAsyncType?
-    let decodeAuthorizationMessageSyncOverride: SecurityTokenClientProtocol.DecodeAuthorizationMessageSyncType?
-    let getAccessKeyInfoAsyncOverride: SecurityTokenClientProtocol.GetAccessKeyInfoAsyncType?
-    let getAccessKeyInfoSyncOverride: SecurityTokenClientProtocol.GetAccessKeyInfoSyncType?
-    let getCallerIdentityAsyncOverride: SecurityTokenClientProtocol.GetCallerIdentityAsyncType?
-    let getCallerIdentitySyncOverride: SecurityTokenClientProtocol.GetCallerIdentitySyncType?
-    let getFederationTokenAsyncOverride: SecurityTokenClientProtocol.GetFederationTokenAsyncType?
-    let getFederationTokenSyncOverride: SecurityTokenClientProtocol.GetFederationTokenSyncType?
-    let getSessionTokenAsyncOverride: SecurityTokenClientProtocol.GetSessionTokenAsyncType?
-    let getSessionTokenSyncOverride: SecurityTokenClientProtocol.GetSessionTokenSyncType?
+public struct MockSecurityTokenClient<ClientInvocationReportingType: SmokeAWSInvocationReporting>: SecurityTokenClientProtocol {
+    let assumeRoleAsyncOverride: AssumeRoleAsyncType<ClientInvocationReportingType>?
+    let assumeRoleSyncOverride: AssumeRoleSyncType<ClientInvocationReportingType>?
+    let assumeRoleWithSAMLAsyncOverride: AssumeRoleWithSAMLAsyncType<ClientInvocationReportingType>?
+    let assumeRoleWithSAMLSyncOverride: AssumeRoleWithSAMLSyncType<ClientInvocationReportingType>?
+    let assumeRoleWithWebIdentityAsyncOverride: AssumeRoleWithWebIdentityAsyncType<ClientInvocationReportingType>?
+    let assumeRoleWithWebIdentitySyncOverride: AssumeRoleWithWebIdentitySyncType<ClientInvocationReportingType>?
+    let decodeAuthorizationMessageAsyncOverride: DecodeAuthorizationMessageAsyncType<ClientInvocationReportingType>?
+    let decodeAuthorizationMessageSyncOverride: DecodeAuthorizationMessageSyncType<ClientInvocationReportingType>?
+    let getAccessKeyInfoAsyncOverride: GetAccessKeyInfoAsyncType<ClientInvocationReportingType>?
+    let getAccessKeyInfoSyncOverride: GetAccessKeyInfoSyncType<ClientInvocationReportingType>?
+    let getCallerIdentityAsyncOverride: GetCallerIdentityAsyncType<ClientInvocationReportingType>?
+    let getCallerIdentitySyncOverride: GetCallerIdentitySyncType<ClientInvocationReportingType>?
+    let getFederationTokenAsyncOverride: GetFederationTokenAsyncType<ClientInvocationReportingType>?
+    let getFederationTokenSyncOverride: GetFederationTokenSyncType<ClientInvocationReportingType>?
+    let getSessionTokenAsyncOverride: GetSessionTokenAsyncType<ClientInvocationReportingType>?
+    let getSessionTokenSyncOverride: GetSessionTokenSyncType<ClientInvocationReportingType>?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(
-            assumeRoleAsync: SecurityTokenClientProtocol.AssumeRoleAsyncType? = nil,
-            assumeRoleSync: SecurityTokenClientProtocol.AssumeRoleSyncType? = nil,
-            assumeRoleWithSAMLAsync: SecurityTokenClientProtocol.AssumeRoleWithSAMLAsyncType? = nil,
-            assumeRoleWithSAMLSync: SecurityTokenClientProtocol.AssumeRoleWithSAMLSyncType? = nil,
-            assumeRoleWithWebIdentityAsync: SecurityTokenClientProtocol.AssumeRoleWithWebIdentityAsyncType? = nil,
-            assumeRoleWithWebIdentitySync: SecurityTokenClientProtocol.AssumeRoleWithWebIdentitySyncType? = nil,
-            decodeAuthorizationMessageAsync: SecurityTokenClientProtocol.DecodeAuthorizationMessageAsyncType? = nil,
-            decodeAuthorizationMessageSync: SecurityTokenClientProtocol.DecodeAuthorizationMessageSyncType? = nil,
-            getAccessKeyInfoAsync: SecurityTokenClientProtocol.GetAccessKeyInfoAsyncType? = nil,
-            getAccessKeyInfoSync: SecurityTokenClientProtocol.GetAccessKeyInfoSyncType? = nil,
-            getCallerIdentityAsync: SecurityTokenClientProtocol.GetCallerIdentityAsyncType? = nil,
-            getCallerIdentitySync: SecurityTokenClientProtocol.GetCallerIdentitySyncType? = nil,
-            getFederationTokenAsync: SecurityTokenClientProtocol.GetFederationTokenAsyncType? = nil,
-            getFederationTokenSync: SecurityTokenClientProtocol.GetFederationTokenSyncType? = nil,
-            getSessionTokenAsync: SecurityTokenClientProtocol.GetSessionTokenAsyncType? = nil,
-            getSessionTokenSync: SecurityTokenClientProtocol.GetSessionTokenSyncType? = nil) {
+            assumeRoleAsync: AssumeRoleAsyncType<ClientInvocationReportingType>? = nil,
+            assumeRoleSync: AssumeRoleSyncType<ClientInvocationReportingType>? = nil,
+            assumeRoleWithSAMLAsync: AssumeRoleWithSAMLAsyncType<ClientInvocationReportingType>? = nil,
+            assumeRoleWithSAMLSync: AssumeRoleWithSAMLSyncType<ClientInvocationReportingType>? = nil,
+            assumeRoleWithWebIdentityAsync: AssumeRoleWithWebIdentityAsyncType<ClientInvocationReportingType>? = nil,
+            assumeRoleWithWebIdentitySync: AssumeRoleWithWebIdentitySyncType<ClientInvocationReportingType>? = nil,
+            decodeAuthorizationMessageAsync: DecodeAuthorizationMessageAsyncType<ClientInvocationReportingType>? = nil,
+            decodeAuthorizationMessageSync: DecodeAuthorizationMessageSyncType<ClientInvocationReportingType>? = nil,
+            getAccessKeyInfoAsync: GetAccessKeyInfoAsyncType<ClientInvocationReportingType>? = nil,
+            getAccessKeyInfoSync: GetAccessKeyInfoSyncType<ClientInvocationReportingType>? = nil,
+            getCallerIdentityAsync: GetCallerIdentityAsyncType<ClientInvocationReportingType>? = nil,
+            getCallerIdentitySync: GetCallerIdentitySyncType<ClientInvocationReportingType>? = nil,
+            getFederationTokenAsync: GetFederationTokenAsyncType<ClientInvocationReportingType>? = nil,
+            getFederationTokenSync: GetFederationTokenSyncType<ClientInvocationReportingType>? = nil,
+            getSessionTokenAsync: GetSessionTokenAsyncType<ClientInvocationReportingType>? = nil,
+            getSessionTokenSync: GetSessionTokenSyncType<ClientInvocationReportingType>? = nil) {
         self.assumeRoleAsyncOverride = assumeRoleAsync
         self.assumeRoleSyncOverride = assumeRoleSync
         self.assumeRoleWithSAMLAsyncOverride = assumeRoleWithSAMLAsync
@@ -94,12 +94,17 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func assumeRoleAsync(
+    public func assumeRoleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.AssumeRoleRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, HTTPClientError>) -> ()) throws {
-        if let assumeRoleAsyncOverride = assumeRoleAsyncOverride {
-            return try assumeRoleAsyncOverride(input, reporting, completion)
+        if let assumeRoleAsyncOverrideNonOptional = assumeRoleAsyncOverride {
+            if let assumeRoleAsyncOverrideTyped = assumeRoleAsyncOverrideNonOptional
+                    as? AssumeRoleAsyncType<InvocationReportingType> {
+                return try assumeRoleAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = AssumeRoleResponseForAssumeRole.__default
@@ -116,11 +121,16 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func assumeRoleSync(
+    public func assumeRoleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.AssumeRoleRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.AssumeRoleResponseForAssumeRole {
-        if let assumeRoleSyncOverride = assumeRoleSyncOverride {
-            return try assumeRoleSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.AssumeRoleResponseForAssumeRole {
+        if let assumeRoleSyncOverrideNonOptional = assumeRoleSyncOverride {
+            if let assumeRoleSyncOverrideTyped = assumeRoleSyncOverrideNonOptional
+                    as? AssumeRoleSyncType<InvocationReportingType> {
+                return try assumeRoleSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return AssumeRoleResponseForAssumeRole.__default
@@ -136,12 +146,17 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: expiredToken, iDPRejectedClaim, invalidIdentityToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func assumeRoleWithSAMLAsync(
+    public func assumeRoleWithSAMLAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.AssumeRoleWithSAMLRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, HTTPClientError>) -> ()) throws {
-        if let assumeRoleWithSAMLAsyncOverride = assumeRoleWithSAMLAsyncOverride {
-            return try assumeRoleWithSAMLAsyncOverride(input, reporting, completion)
+        if let assumeRoleWithSAMLAsyncOverrideNonOptional = assumeRoleWithSAMLAsyncOverride {
+            if let assumeRoleWithSAMLAsyncOverrideTyped = assumeRoleWithSAMLAsyncOverrideNonOptional
+                    as? AssumeRoleWithSAMLAsyncType<InvocationReportingType> {
+                return try assumeRoleWithSAMLAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = AssumeRoleWithSAMLResponseForAssumeRoleWithSAML.__default
@@ -158,11 +173,16 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: expiredToken, iDPRejectedClaim, invalidIdentityToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func assumeRoleWithSAMLSync(
+    public func assumeRoleWithSAMLSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.AssumeRoleWithSAMLRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML {
-        if let assumeRoleWithSAMLSyncOverride = assumeRoleWithSAMLSyncOverride {
-            return try assumeRoleWithSAMLSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML {
+        if let assumeRoleWithSAMLSyncOverrideNonOptional = assumeRoleWithSAMLSyncOverride {
+            if let assumeRoleWithSAMLSyncOverrideTyped = assumeRoleWithSAMLSyncOverrideNonOptional
+                    as? AssumeRoleWithSAMLSyncType<InvocationReportingType> {
+                return try assumeRoleWithSAMLSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return AssumeRoleWithSAMLResponseForAssumeRoleWithSAML.__default
@@ -178,12 +198,17 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: expiredToken, iDPCommunicationError, iDPRejectedClaim, invalidIdentityToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func assumeRoleWithWebIdentityAsync(
+    public func assumeRoleWithWebIdentityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, HTTPClientError>) -> ()) throws {
-        if let assumeRoleWithWebIdentityAsyncOverride = assumeRoleWithWebIdentityAsyncOverride {
-            return try assumeRoleWithWebIdentityAsyncOverride(input, reporting, completion)
+        if let assumeRoleWithWebIdentityAsyncOverrideNonOptional = assumeRoleWithWebIdentityAsyncOverride {
+            if let assumeRoleWithWebIdentityAsyncOverrideTyped = assumeRoleWithWebIdentityAsyncOverrideNonOptional
+                    as? AssumeRoleWithWebIdentityAsyncType<InvocationReportingType> {
+                return try assumeRoleWithWebIdentityAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity.__default
@@ -200,11 +225,16 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: expiredToken, iDPCommunicationError, iDPRejectedClaim, invalidIdentityToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func assumeRoleWithWebIdentitySync(
+    public func assumeRoleWithWebIdentitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity {
-        if let assumeRoleWithWebIdentitySyncOverride = assumeRoleWithWebIdentitySyncOverride {
-            return try assumeRoleWithWebIdentitySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity {
+        if let assumeRoleWithWebIdentitySyncOverrideNonOptional = assumeRoleWithWebIdentitySyncOverride {
+            if let assumeRoleWithWebIdentitySyncOverrideTyped = assumeRoleWithWebIdentitySyncOverrideNonOptional
+                    as? AssumeRoleWithWebIdentitySyncType<InvocationReportingType> {
+                return try assumeRoleWithWebIdentitySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity.__default
@@ -220,12 +250,17 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidAuthorizationMessage.
      */
-    public func decodeAuthorizationMessageAsync(
+    public func decodeAuthorizationMessageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.DecodeAuthorizationMessageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, HTTPClientError>) -> ()) throws {
-        if let decodeAuthorizationMessageAsyncOverride = decodeAuthorizationMessageAsyncOverride {
-            return try decodeAuthorizationMessageAsyncOverride(input, reporting, completion)
+        if let decodeAuthorizationMessageAsyncOverrideNonOptional = decodeAuthorizationMessageAsyncOverride {
+            if let decodeAuthorizationMessageAsyncOverrideTyped = decodeAuthorizationMessageAsyncOverrideNonOptional
+                    as? DecodeAuthorizationMessageAsyncType<InvocationReportingType> {
+                return try decodeAuthorizationMessageAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage.__default
@@ -242,11 +277,16 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidAuthorizationMessage.
      */
-    public func decodeAuthorizationMessageSync(
+    public func decodeAuthorizationMessageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.DecodeAuthorizationMessageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage {
-        if let decodeAuthorizationMessageSyncOverride = decodeAuthorizationMessageSyncOverride {
-            return try decodeAuthorizationMessageSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage {
+        if let decodeAuthorizationMessageSyncOverrideNonOptional = decodeAuthorizationMessageSyncOverride {
+            if let decodeAuthorizationMessageSyncOverrideTyped = decodeAuthorizationMessageSyncOverrideNonOptional
+                    as? DecodeAuthorizationMessageSyncType<InvocationReportingType> {
+                return try decodeAuthorizationMessageSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage.__default
@@ -261,12 +301,17 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
            callback when the operation is complete. The GetAccessKeyInfoResponseForGetAccessKeyInfo
            object will be validated before being returned to caller.
      */
-    public func getAccessKeyInfoAsync(
+    public func getAccessKeyInfoAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetAccessKeyInfoRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, HTTPClientError>) -> ()) throws {
-        if let getAccessKeyInfoAsyncOverride = getAccessKeyInfoAsyncOverride {
-            return try getAccessKeyInfoAsyncOverride(input, reporting, completion)
+        if let getAccessKeyInfoAsyncOverrideNonOptional = getAccessKeyInfoAsyncOverride {
+            if let getAccessKeyInfoAsyncOverrideTyped = getAccessKeyInfoAsyncOverrideNonOptional
+                    as? GetAccessKeyInfoAsyncType<InvocationReportingType> {
+                return try getAccessKeyInfoAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = GetAccessKeyInfoResponseForGetAccessKeyInfo.__default
@@ -282,11 +327,16 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
      - Returns: The GetAccessKeyInfoResponseForGetAccessKeyInfo object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getAccessKeyInfoSync(
+    public func getAccessKeyInfoSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetAccessKeyInfoRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo {
-        if let getAccessKeyInfoSyncOverride = getAccessKeyInfoSyncOverride {
-            return try getAccessKeyInfoSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo {
+        if let getAccessKeyInfoSyncOverrideNonOptional = getAccessKeyInfoSyncOverride {
+            if let getAccessKeyInfoSyncOverrideTyped = getAccessKeyInfoSyncOverrideNonOptional
+                    as? GetAccessKeyInfoSyncType<InvocationReportingType> {
+                return try getAccessKeyInfoSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return GetAccessKeyInfoResponseForGetAccessKeyInfo.__default
@@ -301,12 +351,17 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
            callback when the operation is complete. The GetCallerIdentityResponseForGetCallerIdentity
            object will be validated before being returned to caller.
      */
-    public func getCallerIdentityAsync(
+    public func getCallerIdentityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetCallerIdentityRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, HTTPClientError>) -> ()) throws {
-        if let getCallerIdentityAsyncOverride = getCallerIdentityAsyncOverride {
-            return try getCallerIdentityAsyncOverride(input, reporting, completion)
+        if let getCallerIdentityAsyncOverrideNonOptional = getCallerIdentityAsyncOverride {
+            if let getCallerIdentityAsyncOverrideTyped = getCallerIdentityAsyncOverrideNonOptional
+                    as? GetCallerIdentityAsyncType<InvocationReportingType> {
+                return try getCallerIdentityAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = GetCallerIdentityResponseForGetCallerIdentity.__default
@@ -322,11 +377,16 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
      - Returns: The GetCallerIdentityResponseForGetCallerIdentity object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getCallerIdentitySync(
+    public func getCallerIdentitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetCallerIdentityRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity {
-        if let getCallerIdentitySyncOverride = getCallerIdentitySyncOverride {
-            return try getCallerIdentitySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity {
+        if let getCallerIdentitySyncOverrideNonOptional = getCallerIdentitySyncOverride {
+            if let getCallerIdentitySyncOverrideTyped = getCallerIdentitySyncOverrideNonOptional
+                    as? GetCallerIdentitySyncType<InvocationReportingType> {
+                return try getCallerIdentitySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return GetCallerIdentityResponseForGetCallerIdentity.__default
@@ -342,12 +402,17 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func getFederationTokenAsync(
+    public func getFederationTokenAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetFederationTokenRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, HTTPClientError>) -> ()) throws {
-        if let getFederationTokenAsyncOverride = getFederationTokenAsyncOverride {
-            return try getFederationTokenAsyncOverride(input, reporting, completion)
+        if let getFederationTokenAsyncOverrideNonOptional = getFederationTokenAsyncOverride {
+            if let getFederationTokenAsyncOverrideTyped = getFederationTokenAsyncOverrideNonOptional
+                    as? GetFederationTokenAsyncType<InvocationReportingType> {
+                return try getFederationTokenAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = GetFederationTokenResponseForGetFederationToken.__default
@@ -364,11 +429,16 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    public func getFederationTokenSync(
+    public func getFederationTokenSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetFederationTokenRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetFederationTokenResponseForGetFederationToken {
-        if let getFederationTokenSyncOverride = getFederationTokenSyncOverride {
-            return try getFederationTokenSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.GetFederationTokenResponseForGetFederationToken {
+        if let getFederationTokenSyncOverrideNonOptional = getFederationTokenSyncOverride {
+            if let getFederationTokenSyncOverrideTyped = getFederationTokenSyncOverrideNonOptional
+                    as? GetFederationTokenSyncType<InvocationReportingType> {
+                return try getFederationTokenSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return GetFederationTokenResponseForGetFederationToken.__default
@@ -384,12 +454,17 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: regionDisabled.
      */
-    public func getSessionTokenAsync(
+    public func getSessionTokenAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetSessionTokenRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, HTTPClientError>) -> ()) throws {
-        if let getSessionTokenAsyncOverride = getSessionTokenAsyncOverride {
-            return try getSessionTokenAsyncOverride(input, reporting, completion)
+        if let getSessionTokenAsyncOverrideNonOptional = getSessionTokenAsyncOverride {
+            if let getSessionTokenAsyncOverrideTyped = getSessionTokenAsyncOverrideNonOptional
+                    as? GetSessionTokenAsyncType<InvocationReportingType> {
+                return try getSessionTokenAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = GetSessionTokenResponseForGetSessionToken.__default
@@ -406,11 +481,16 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: regionDisabled.
      */
-    public func getSessionTokenSync(
+    public func getSessionTokenSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetSessionTokenRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetSessionTokenResponseForGetSessionToken {
-        if let getSessionTokenSyncOverride = getSessionTokenSyncOverride {
-            return try getSessionTokenSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.GetSessionTokenResponseForGetSessionToken {
+        if let getSessionTokenSyncOverrideNonOptional = getSessionTokenSyncOverride {
+            if let getSessionTokenSyncOverrideTyped = getSessionTokenSyncOverrideNonOptional
+                    as? GetSessionTokenSyncType<InvocationReportingType> {
+                return try getSessionTokenSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return GetSessionTokenResponseForGetSessionToken.__default

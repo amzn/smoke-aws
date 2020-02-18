@@ -27,162 +27,162 @@ import SmokeHTTPClient
 /**
  Mock Client for the SimpleWorkflow service that by default always throws from its methods.
  */
-public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
+public struct ThrowingSimpleWorkflowClient<ClientInvocationReportingType: SmokeAWSInvocationReporting>: SimpleWorkflowClientProtocol {
     let error: HTTPClientError
-    let countClosedWorkflowExecutionsAsyncOverride: SimpleWorkflowClientProtocol.CountClosedWorkflowExecutionsAsyncType?
-    let countClosedWorkflowExecutionsSyncOverride: SimpleWorkflowClientProtocol.CountClosedWorkflowExecutionsSyncType?
-    let countOpenWorkflowExecutionsAsyncOverride: SimpleWorkflowClientProtocol.CountOpenWorkflowExecutionsAsyncType?
-    let countOpenWorkflowExecutionsSyncOverride: SimpleWorkflowClientProtocol.CountOpenWorkflowExecutionsSyncType?
-    let countPendingActivityTasksAsyncOverride: SimpleWorkflowClientProtocol.CountPendingActivityTasksAsyncType?
-    let countPendingActivityTasksSyncOverride: SimpleWorkflowClientProtocol.CountPendingActivityTasksSyncType?
-    let countPendingDecisionTasksAsyncOverride: SimpleWorkflowClientProtocol.CountPendingDecisionTasksAsyncType?
-    let countPendingDecisionTasksSyncOverride: SimpleWorkflowClientProtocol.CountPendingDecisionTasksSyncType?
-    let deprecateActivityTypeAsyncOverride: SimpleWorkflowClientProtocol.DeprecateActivityTypeAsyncType?
-    let deprecateActivityTypeSyncOverride: SimpleWorkflowClientProtocol.DeprecateActivityTypeSyncType?
-    let deprecateDomainAsyncOverride: SimpleWorkflowClientProtocol.DeprecateDomainAsyncType?
-    let deprecateDomainSyncOverride: SimpleWorkflowClientProtocol.DeprecateDomainSyncType?
-    let deprecateWorkflowTypeAsyncOverride: SimpleWorkflowClientProtocol.DeprecateWorkflowTypeAsyncType?
-    let deprecateWorkflowTypeSyncOverride: SimpleWorkflowClientProtocol.DeprecateWorkflowTypeSyncType?
-    let describeActivityTypeAsyncOverride: SimpleWorkflowClientProtocol.DescribeActivityTypeAsyncType?
-    let describeActivityTypeSyncOverride: SimpleWorkflowClientProtocol.DescribeActivityTypeSyncType?
-    let describeDomainAsyncOverride: SimpleWorkflowClientProtocol.DescribeDomainAsyncType?
-    let describeDomainSyncOverride: SimpleWorkflowClientProtocol.DescribeDomainSyncType?
-    let describeWorkflowExecutionAsyncOverride: SimpleWorkflowClientProtocol.DescribeWorkflowExecutionAsyncType?
-    let describeWorkflowExecutionSyncOverride: SimpleWorkflowClientProtocol.DescribeWorkflowExecutionSyncType?
-    let describeWorkflowTypeAsyncOverride: SimpleWorkflowClientProtocol.DescribeWorkflowTypeAsyncType?
-    let describeWorkflowTypeSyncOverride: SimpleWorkflowClientProtocol.DescribeWorkflowTypeSyncType?
-    let getWorkflowExecutionHistoryAsyncOverride: SimpleWorkflowClientProtocol.GetWorkflowExecutionHistoryAsyncType?
-    let getWorkflowExecutionHistorySyncOverride: SimpleWorkflowClientProtocol.GetWorkflowExecutionHistorySyncType?
-    let listActivityTypesAsyncOverride: SimpleWorkflowClientProtocol.ListActivityTypesAsyncType?
-    let listActivityTypesSyncOverride: SimpleWorkflowClientProtocol.ListActivityTypesSyncType?
-    let listClosedWorkflowExecutionsAsyncOverride: SimpleWorkflowClientProtocol.ListClosedWorkflowExecutionsAsyncType?
-    let listClosedWorkflowExecutionsSyncOverride: SimpleWorkflowClientProtocol.ListClosedWorkflowExecutionsSyncType?
-    let listDomainsAsyncOverride: SimpleWorkflowClientProtocol.ListDomainsAsyncType?
-    let listDomainsSyncOverride: SimpleWorkflowClientProtocol.ListDomainsSyncType?
-    let listOpenWorkflowExecutionsAsyncOverride: SimpleWorkflowClientProtocol.ListOpenWorkflowExecutionsAsyncType?
-    let listOpenWorkflowExecutionsSyncOverride: SimpleWorkflowClientProtocol.ListOpenWorkflowExecutionsSyncType?
-    let listTagsForResourceAsyncOverride: SimpleWorkflowClientProtocol.ListTagsForResourceAsyncType?
-    let listTagsForResourceSyncOverride: SimpleWorkflowClientProtocol.ListTagsForResourceSyncType?
-    let listWorkflowTypesAsyncOverride: SimpleWorkflowClientProtocol.ListWorkflowTypesAsyncType?
-    let listWorkflowTypesSyncOverride: SimpleWorkflowClientProtocol.ListWorkflowTypesSyncType?
-    let pollForActivityTaskAsyncOverride: SimpleWorkflowClientProtocol.PollForActivityTaskAsyncType?
-    let pollForActivityTaskSyncOverride: SimpleWorkflowClientProtocol.PollForActivityTaskSyncType?
-    let pollForDecisionTaskAsyncOverride: SimpleWorkflowClientProtocol.PollForDecisionTaskAsyncType?
-    let pollForDecisionTaskSyncOverride: SimpleWorkflowClientProtocol.PollForDecisionTaskSyncType?
-    let recordActivityTaskHeartbeatAsyncOverride: SimpleWorkflowClientProtocol.RecordActivityTaskHeartbeatAsyncType?
-    let recordActivityTaskHeartbeatSyncOverride: SimpleWorkflowClientProtocol.RecordActivityTaskHeartbeatSyncType?
-    let registerActivityTypeAsyncOverride: SimpleWorkflowClientProtocol.RegisterActivityTypeAsyncType?
-    let registerActivityTypeSyncOverride: SimpleWorkflowClientProtocol.RegisterActivityTypeSyncType?
-    let registerDomainAsyncOverride: SimpleWorkflowClientProtocol.RegisterDomainAsyncType?
-    let registerDomainSyncOverride: SimpleWorkflowClientProtocol.RegisterDomainSyncType?
-    let registerWorkflowTypeAsyncOverride: SimpleWorkflowClientProtocol.RegisterWorkflowTypeAsyncType?
-    let registerWorkflowTypeSyncOverride: SimpleWorkflowClientProtocol.RegisterWorkflowTypeSyncType?
-    let requestCancelWorkflowExecutionAsyncOverride: SimpleWorkflowClientProtocol.RequestCancelWorkflowExecutionAsyncType?
-    let requestCancelWorkflowExecutionSyncOverride: SimpleWorkflowClientProtocol.RequestCancelWorkflowExecutionSyncType?
-    let respondActivityTaskCanceledAsyncOverride: SimpleWorkflowClientProtocol.RespondActivityTaskCanceledAsyncType?
-    let respondActivityTaskCanceledSyncOverride: SimpleWorkflowClientProtocol.RespondActivityTaskCanceledSyncType?
-    let respondActivityTaskCompletedAsyncOverride: SimpleWorkflowClientProtocol.RespondActivityTaskCompletedAsyncType?
-    let respondActivityTaskCompletedSyncOverride: SimpleWorkflowClientProtocol.RespondActivityTaskCompletedSyncType?
-    let respondActivityTaskFailedAsyncOverride: SimpleWorkflowClientProtocol.RespondActivityTaskFailedAsyncType?
-    let respondActivityTaskFailedSyncOverride: SimpleWorkflowClientProtocol.RespondActivityTaskFailedSyncType?
-    let respondDecisionTaskCompletedAsyncOverride: SimpleWorkflowClientProtocol.RespondDecisionTaskCompletedAsyncType?
-    let respondDecisionTaskCompletedSyncOverride: SimpleWorkflowClientProtocol.RespondDecisionTaskCompletedSyncType?
-    let signalWorkflowExecutionAsyncOverride: SimpleWorkflowClientProtocol.SignalWorkflowExecutionAsyncType?
-    let signalWorkflowExecutionSyncOverride: SimpleWorkflowClientProtocol.SignalWorkflowExecutionSyncType?
-    let startWorkflowExecutionAsyncOverride: SimpleWorkflowClientProtocol.StartWorkflowExecutionAsyncType?
-    let startWorkflowExecutionSyncOverride: SimpleWorkflowClientProtocol.StartWorkflowExecutionSyncType?
-    let tagResourceAsyncOverride: SimpleWorkflowClientProtocol.TagResourceAsyncType?
-    let tagResourceSyncOverride: SimpleWorkflowClientProtocol.TagResourceSyncType?
-    let terminateWorkflowExecutionAsyncOverride: SimpleWorkflowClientProtocol.TerminateWorkflowExecutionAsyncType?
-    let terminateWorkflowExecutionSyncOverride: SimpleWorkflowClientProtocol.TerminateWorkflowExecutionSyncType?
-    let undeprecateActivityTypeAsyncOverride: SimpleWorkflowClientProtocol.UndeprecateActivityTypeAsyncType?
-    let undeprecateActivityTypeSyncOverride: SimpleWorkflowClientProtocol.UndeprecateActivityTypeSyncType?
-    let undeprecateDomainAsyncOverride: SimpleWorkflowClientProtocol.UndeprecateDomainAsyncType?
-    let undeprecateDomainSyncOverride: SimpleWorkflowClientProtocol.UndeprecateDomainSyncType?
-    let undeprecateWorkflowTypeAsyncOverride: SimpleWorkflowClientProtocol.UndeprecateWorkflowTypeAsyncType?
-    let undeprecateWorkflowTypeSyncOverride: SimpleWorkflowClientProtocol.UndeprecateWorkflowTypeSyncType?
-    let untagResourceAsyncOverride: SimpleWorkflowClientProtocol.UntagResourceAsyncType?
-    let untagResourceSyncOverride: SimpleWorkflowClientProtocol.UntagResourceSyncType?
+    let countClosedWorkflowExecutionsAsyncOverride: CountClosedWorkflowExecutionsAsyncType<ClientInvocationReportingType>?
+    let countClosedWorkflowExecutionsSyncOverride: CountClosedWorkflowExecutionsSyncType<ClientInvocationReportingType>?
+    let countOpenWorkflowExecutionsAsyncOverride: CountOpenWorkflowExecutionsAsyncType<ClientInvocationReportingType>?
+    let countOpenWorkflowExecutionsSyncOverride: CountOpenWorkflowExecutionsSyncType<ClientInvocationReportingType>?
+    let countPendingActivityTasksAsyncOverride: CountPendingActivityTasksAsyncType<ClientInvocationReportingType>?
+    let countPendingActivityTasksSyncOverride: CountPendingActivityTasksSyncType<ClientInvocationReportingType>?
+    let countPendingDecisionTasksAsyncOverride: CountPendingDecisionTasksAsyncType<ClientInvocationReportingType>?
+    let countPendingDecisionTasksSyncOverride: CountPendingDecisionTasksSyncType<ClientInvocationReportingType>?
+    let deprecateActivityTypeAsyncOverride: DeprecateActivityTypeAsyncType<ClientInvocationReportingType>?
+    let deprecateActivityTypeSyncOverride: DeprecateActivityTypeSyncType<ClientInvocationReportingType>?
+    let deprecateDomainAsyncOverride: DeprecateDomainAsyncType<ClientInvocationReportingType>?
+    let deprecateDomainSyncOverride: DeprecateDomainSyncType<ClientInvocationReportingType>?
+    let deprecateWorkflowTypeAsyncOverride: DeprecateWorkflowTypeAsyncType<ClientInvocationReportingType>?
+    let deprecateWorkflowTypeSyncOverride: DeprecateWorkflowTypeSyncType<ClientInvocationReportingType>?
+    let describeActivityTypeAsyncOverride: DescribeActivityTypeAsyncType<ClientInvocationReportingType>?
+    let describeActivityTypeSyncOverride: DescribeActivityTypeSyncType<ClientInvocationReportingType>?
+    let describeDomainAsyncOverride: DescribeDomainAsyncType<ClientInvocationReportingType>?
+    let describeDomainSyncOverride: DescribeDomainSyncType<ClientInvocationReportingType>?
+    let describeWorkflowExecutionAsyncOverride: DescribeWorkflowExecutionAsyncType<ClientInvocationReportingType>?
+    let describeWorkflowExecutionSyncOverride: DescribeWorkflowExecutionSyncType<ClientInvocationReportingType>?
+    let describeWorkflowTypeAsyncOverride: DescribeWorkflowTypeAsyncType<ClientInvocationReportingType>?
+    let describeWorkflowTypeSyncOverride: DescribeWorkflowTypeSyncType<ClientInvocationReportingType>?
+    let getWorkflowExecutionHistoryAsyncOverride: GetWorkflowExecutionHistoryAsyncType<ClientInvocationReportingType>?
+    let getWorkflowExecutionHistorySyncOverride: GetWorkflowExecutionHistorySyncType<ClientInvocationReportingType>?
+    let listActivityTypesAsyncOverride: ListActivityTypesAsyncType<ClientInvocationReportingType>?
+    let listActivityTypesSyncOverride: ListActivityTypesSyncType<ClientInvocationReportingType>?
+    let listClosedWorkflowExecutionsAsyncOverride: ListClosedWorkflowExecutionsAsyncType<ClientInvocationReportingType>?
+    let listClosedWorkflowExecutionsSyncOverride: ListClosedWorkflowExecutionsSyncType<ClientInvocationReportingType>?
+    let listDomainsAsyncOverride: ListDomainsAsyncType<ClientInvocationReportingType>?
+    let listDomainsSyncOverride: ListDomainsSyncType<ClientInvocationReportingType>?
+    let listOpenWorkflowExecutionsAsyncOverride: ListOpenWorkflowExecutionsAsyncType<ClientInvocationReportingType>?
+    let listOpenWorkflowExecutionsSyncOverride: ListOpenWorkflowExecutionsSyncType<ClientInvocationReportingType>?
+    let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType<ClientInvocationReportingType>?
+    let listTagsForResourceSyncOverride: ListTagsForResourceSyncType<ClientInvocationReportingType>?
+    let listWorkflowTypesAsyncOverride: ListWorkflowTypesAsyncType<ClientInvocationReportingType>?
+    let listWorkflowTypesSyncOverride: ListWorkflowTypesSyncType<ClientInvocationReportingType>?
+    let pollForActivityTaskAsyncOverride: PollForActivityTaskAsyncType<ClientInvocationReportingType>?
+    let pollForActivityTaskSyncOverride: PollForActivityTaskSyncType<ClientInvocationReportingType>?
+    let pollForDecisionTaskAsyncOverride: PollForDecisionTaskAsyncType<ClientInvocationReportingType>?
+    let pollForDecisionTaskSyncOverride: PollForDecisionTaskSyncType<ClientInvocationReportingType>?
+    let recordActivityTaskHeartbeatAsyncOverride: RecordActivityTaskHeartbeatAsyncType<ClientInvocationReportingType>?
+    let recordActivityTaskHeartbeatSyncOverride: RecordActivityTaskHeartbeatSyncType<ClientInvocationReportingType>?
+    let registerActivityTypeAsyncOverride: RegisterActivityTypeAsyncType<ClientInvocationReportingType>?
+    let registerActivityTypeSyncOverride: RegisterActivityTypeSyncType<ClientInvocationReportingType>?
+    let registerDomainAsyncOverride: RegisterDomainAsyncType<ClientInvocationReportingType>?
+    let registerDomainSyncOverride: RegisterDomainSyncType<ClientInvocationReportingType>?
+    let registerWorkflowTypeAsyncOverride: RegisterWorkflowTypeAsyncType<ClientInvocationReportingType>?
+    let registerWorkflowTypeSyncOverride: RegisterWorkflowTypeSyncType<ClientInvocationReportingType>?
+    let requestCancelWorkflowExecutionAsyncOverride: RequestCancelWorkflowExecutionAsyncType<ClientInvocationReportingType>?
+    let requestCancelWorkflowExecutionSyncOverride: RequestCancelWorkflowExecutionSyncType<ClientInvocationReportingType>?
+    let respondActivityTaskCanceledAsyncOverride: RespondActivityTaskCanceledAsyncType<ClientInvocationReportingType>?
+    let respondActivityTaskCanceledSyncOverride: RespondActivityTaskCanceledSyncType<ClientInvocationReportingType>?
+    let respondActivityTaskCompletedAsyncOverride: RespondActivityTaskCompletedAsyncType<ClientInvocationReportingType>?
+    let respondActivityTaskCompletedSyncOverride: RespondActivityTaskCompletedSyncType<ClientInvocationReportingType>?
+    let respondActivityTaskFailedAsyncOverride: RespondActivityTaskFailedAsyncType<ClientInvocationReportingType>?
+    let respondActivityTaskFailedSyncOverride: RespondActivityTaskFailedSyncType<ClientInvocationReportingType>?
+    let respondDecisionTaskCompletedAsyncOverride: RespondDecisionTaskCompletedAsyncType<ClientInvocationReportingType>?
+    let respondDecisionTaskCompletedSyncOverride: RespondDecisionTaskCompletedSyncType<ClientInvocationReportingType>?
+    let signalWorkflowExecutionAsyncOverride: SignalWorkflowExecutionAsyncType<ClientInvocationReportingType>?
+    let signalWorkflowExecutionSyncOverride: SignalWorkflowExecutionSyncType<ClientInvocationReportingType>?
+    let startWorkflowExecutionAsyncOverride: StartWorkflowExecutionAsyncType<ClientInvocationReportingType>?
+    let startWorkflowExecutionSyncOverride: StartWorkflowExecutionSyncType<ClientInvocationReportingType>?
+    let tagResourceAsyncOverride: TagResourceAsyncType<ClientInvocationReportingType>?
+    let tagResourceSyncOverride: TagResourceSyncType<ClientInvocationReportingType>?
+    let terminateWorkflowExecutionAsyncOverride: TerminateWorkflowExecutionAsyncType<ClientInvocationReportingType>?
+    let terminateWorkflowExecutionSyncOverride: TerminateWorkflowExecutionSyncType<ClientInvocationReportingType>?
+    let undeprecateActivityTypeAsyncOverride: UndeprecateActivityTypeAsyncType<ClientInvocationReportingType>?
+    let undeprecateActivityTypeSyncOverride: UndeprecateActivityTypeSyncType<ClientInvocationReportingType>?
+    let undeprecateDomainAsyncOverride: UndeprecateDomainAsyncType<ClientInvocationReportingType>?
+    let undeprecateDomainSyncOverride: UndeprecateDomainSyncType<ClientInvocationReportingType>?
+    let undeprecateWorkflowTypeAsyncOverride: UndeprecateWorkflowTypeAsyncType<ClientInvocationReportingType>?
+    let undeprecateWorkflowTypeSyncOverride: UndeprecateWorkflowTypeSyncType<ClientInvocationReportingType>?
+    let untagResourceAsyncOverride: UntagResourceAsyncType<ClientInvocationReportingType>?
+    let untagResourceSyncOverride: UntagResourceSyncType<ClientInvocationReportingType>?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(error: HTTPClientError,
-            countClosedWorkflowExecutionsAsync: SimpleWorkflowClientProtocol.CountClosedWorkflowExecutionsAsyncType? = nil,
-            countClosedWorkflowExecutionsSync: SimpleWorkflowClientProtocol.CountClosedWorkflowExecutionsSyncType? = nil,
-            countOpenWorkflowExecutionsAsync: SimpleWorkflowClientProtocol.CountOpenWorkflowExecutionsAsyncType? = nil,
-            countOpenWorkflowExecutionsSync: SimpleWorkflowClientProtocol.CountOpenWorkflowExecutionsSyncType? = nil,
-            countPendingActivityTasksAsync: SimpleWorkflowClientProtocol.CountPendingActivityTasksAsyncType? = nil,
-            countPendingActivityTasksSync: SimpleWorkflowClientProtocol.CountPendingActivityTasksSyncType? = nil,
-            countPendingDecisionTasksAsync: SimpleWorkflowClientProtocol.CountPendingDecisionTasksAsyncType? = nil,
-            countPendingDecisionTasksSync: SimpleWorkflowClientProtocol.CountPendingDecisionTasksSyncType? = nil,
-            deprecateActivityTypeAsync: SimpleWorkflowClientProtocol.DeprecateActivityTypeAsyncType? = nil,
-            deprecateActivityTypeSync: SimpleWorkflowClientProtocol.DeprecateActivityTypeSyncType? = nil,
-            deprecateDomainAsync: SimpleWorkflowClientProtocol.DeprecateDomainAsyncType? = nil,
-            deprecateDomainSync: SimpleWorkflowClientProtocol.DeprecateDomainSyncType? = nil,
-            deprecateWorkflowTypeAsync: SimpleWorkflowClientProtocol.DeprecateWorkflowTypeAsyncType? = nil,
-            deprecateWorkflowTypeSync: SimpleWorkflowClientProtocol.DeprecateWorkflowTypeSyncType? = nil,
-            describeActivityTypeAsync: SimpleWorkflowClientProtocol.DescribeActivityTypeAsyncType? = nil,
-            describeActivityTypeSync: SimpleWorkflowClientProtocol.DescribeActivityTypeSyncType? = nil,
-            describeDomainAsync: SimpleWorkflowClientProtocol.DescribeDomainAsyncType? = nil,
-            describeDomainSync: SimpleWorkflowClientProtocol.DescribeDomainSyncType? = nil,
-            describeWorkflowExecutionAsync: SimpleWorkflowClientProtocol.DescribeWorkflowExecutionAsyncType? = nil,
-            describeWorkflowExecutionSync: SimpleWorkflowClientProtocol.DescribeWorkflowExecutionSyncType? = nil,
-            describeWorkflowTypeAsync: SimpleWorkflowClientProtocol.DescribeWorkflowTypeAsyncType? = nil,
-            describeWorkflowTypeSync: SimpleWorkflowClientProtocol.DescribeWorkflowTypeSyncType? = nil,
-            getWorkflowExecutionHistoryAsync: SimpleWorkflowClientProtocol.GetWorkflowExecutionHistoryAsyncType? = nil,
-            getWorkflowExecutionHistorySync: SimpleWorkflowClientProtocol.GetWorkflowExecutionHistorySyncType? = nil,
-            listActivityTypesAsync: SimpleWorkflowClientProtocol.ListActivityTypesAsyncType? = nil,
-            listActivityTypesSync: SimpleWorkflowClientProtocol.ListActivityTypesSyncType? = nil,
-            listClosedWorkflowExecutionsAsync: SimpleWorkflowClientProtocol.ListClosedWorkflowExecutionsAsyncType? = nil,
-            listClosedWorkflowExecutionsSync: SimpleWorkflowClientProtocol.ListClosedWorkflowExecutionsSyncType? = nil,
-            listDomainsAsync: SimpleWorkflowClientProtocol.ListDomainsAsyncType? = nil,
-            listDomainsSync: SimpleWorkflowClientProtocol.ListDomainsSyncType? = nil,
-            listOpenWorkflowExecutionsAsync: SimpleWorkflowClientProtocol.ListOpenWorkflowExecutionsAsyncType? = nil,
-            listOpenWorkflowExecutionsSync: SimpleWorkflowClientProtocol.ListOpenWorkflowExecutionsSyncType? = nil,
-            listTagsForResourceAsync: SimpleWorkflowClientProtocol.ListTagsForResourceAsyncType? = nil,
-            listTagsForResourceSync: SimpleWorkflowClientProtocol.ListTagsForResourceSyncType? = nil,
-            listWorkflowTypesAsync: SimpleWorkflowClientProtocol.ListWorkflowTypesAsyncType? = nil,
-            listWorkflowTypesSync: SimpleWorkflowClientProtocol.ListWorkflowTypesSyncType? = nil,
-            pollForActivityTaskAsync: SimpleWorkflowClientProtocol.PollForActivityTaskAsyncType? = nil,
-            pollForActivityTaskSync: SimpleWorkflowClientProtocol.PollForActivityTaskSyncType? = nil,
-            pollForDecisionTaskAsync: SimpleWorkflowClientProtocol.PollForDecisionTaskAsyncType? = nil,
-            pollForDecisionTaskSync: SimpleWorkflowClientProtocol.PollForDecisionTaskSyncType? = nil,
-            recordActivityTaskHeartbeatAsync: SimpleWorkflowClientProtocol.RecordActivityTaskHeartbeatAsyncType? = nil,
-            recordActivityTaskHeartbeatSync: SimpleWorkflowClientProtocol.RecordActivityTaskHeartbeatSyncType? = nil,
-            registerActivityTypeAsync: SimpleWorkflowClientProtocol.RegisterActivityTypeAsyncType? = nil,
-            registerActivityTypeSync: SimpleWorkflowClientProtocol.RegisterActivityTypeSyncType? = nil,
-            registerDomainAsync: SimpleWorkflowClientProtocol.RegisterDomainAsyncType? = nil,
-            registerDomainSync: SimpleWorkflowClientProtocol.RegisterDomainSyncType? = nil,
-            registerWorkflowTypeAsync: SimpleWorkflowClientProtocol.RegisterWorkflowTypeAsyncType? = nil,
-            registerWorkflowTypeSync: SimpleWorkflowClientProtocol.RegisterWorkflowTypeSyncType? = nil,
-            requestCancelWorkflowExecutionAsync: SimpleWorkflowClientProtocol.RequestCancelWorkflowExecutionAsyncType? = nil,
-            requestCancelWorkflowExecutionSync: SimpleWorkflowClientProtocol.RequestCancelWorkflowExecutionSyncType? = nil,
-            respondActivityTaskCanceledAsync: SimpleWorkflowClientProtocol.RespondActivityTaskCanceledAsyncType? = nil,
-            respondActivityTaskCanceledSync: SimpleWorkflowClientProtocol.RespondActivityTaskCanceledSyncType? = nil,
-            respondActivityTaskCompletedAsync: SimpleWorkflowClientProtocol.RespondActivityTaskCompletedAsyncType? = nil,
-            respondActivityTaskCompletedSync: SimpleWorkflowClientProtocol.RespondActivityTaskCompletedSyncType? = nil,
-            respondActivityTaskFailedAsync: SimpleWorkflowClientProtocol.RespondActivityTaskFailedAsyncType? = nil,
-            respondActivityTaskFailedSync: SimpleWorkflowClientProtocol.RespondActivityTaskFailedSyncType? = nil,
-            respondDecisionTaskCompletedAsync: SimpleWorkflowClientProtocol.RespondDecisionTaskCompletedAsyncType? = nil,
-            respondDecisionTaskCompletedSync: SimpleWorkflowClientProtocol.RespondDecisionTaskCompletedSyncType? = nil,
-            signalWorkflowExecutionAsync: SimpleWorkflowClientProtocol.SignalWorkflowExecutionAsyncType? = nil,
-            signalWorkflowExecutionSync: SimpleWorkflowClientProtocol.SignalWorkflowExecutionSyncType? = nil,
-            startWorkflowExecutionAsync: SimpleWorkflowClientProtocol.StartWorkflowExecutionAsyncType? = nil,
-            startWorkflowExecutionSync: SimpleWorkflowClientProtocol.StartWorkflowExecutionSyncType? = nil,
-            tagResourceAsync: SimpleWorkflowClientProtocol.TagResourceAsyncType? = nil,
-            tagResourceSync: SimpleWorkflowClientProtocol.TagResourceSyncType? = nil,
-            terminateWorkflowExecutionAsync: SimpleWorkflowClientProtocol.TerminateWorkflowExecutionAsyncType? = nil,
-            terminateWorkflowExecutionSync: SimpleWorkflowClientProtocol.TerminateWorkflowExecutionSyncType? = nil,
-            undeprecateActivityTypeAsync: SimpleWorkflowClientProtocol.UndeprecateActivityTypeAsyncType? = nil,
-            undeprecateActivityTypeSync: SimpleWorkflowClientProtocol.UndeprecateActivityTypeSyncType? = nil,
-            undeprecateDomainAsync: SimpleWorkflowClientProtocol.UndeprecateDomainAsyncType? = nil,
-            undeprecateDomainSync: SimpleWorkflowClientProtocol.UndeprecateDomainSyncType? = nil,
-            undeprecateWorkflowTypeAsync: SimpleWorkflowClientProtocol.UndeprecateWorkflowTypeAsyncType? = nil,
-            undeprecateWorkflowTypeSync: SimpleWorkflowClientProtocol.UndeprecateWorkflowTypeSyncType? = nil,
-            untagResourceAsync: SimpleWorkflowClientProtocol.UntagResourceAsyncType? = nil,
-            untagResourceSync: SimpleWorkflowClientProtocol.UntagResourceSyncType? = nil) {
+            countClosedWorkflowExecutionsAsync: CountClosedWorkflowExecutionsAsyncType<ClientInvocationReportingType>? = nil,
+            countClosedWorkflowExecutionsSync: CountClosedWorkflowExecutionsSyncType<ClientInvocationReportingType>? = nil,
+            countOpenWorkflowExecutionsAsync: CountOpenWorkflowExecutionsAsyncType<ClientInvocationReportingType>? = nil,
+            countOpenWorkflowExecutionsSync: CountOpenWorkflowExecutionsSyncType<ClientInvocationReportingType>? = nil,
+            countPendingActivityTasksAsync: CountPendingActivityTasksAsyncType<ClientInvocationReportingType>? = nil,
+            countPendingActivityTasksSync: CountPendingActivityTasksSyncType<ClientInvocationReportingType>? = nil,
+            countPendingDecisionTasksAsync: CountPendingDecisionTasksAsyncType<ClientInvocationReportingType>? = nil,
+            countPendingDecisionTasksSync: CountPendingDecisionTasksSyncType<ClientInvocationReportingType>? = nil,
+            deprecateActivityTypeAsync: DeprecateActivityTypeAsyncType<ClientInvocationReportingType>? = nil,
+            deprecateActivityTypeSync: DeprecateActivityTypeSyncType<ClientInvocationReportingType>? = nil,
+            deprecateDomainAsync: DeprecateDomainAsyncType<ClientInvocationReportingType>? = nil,
+            deprecateDomainSync: DeprecateDomainSyncType<ClientInvocationReportingType>? = nil,
+            deprecateWorkflowTypeAsync: DeprecateWorkflowTypeAsyncType<ClientInvocationReportingType>? = nil,
+            deprecateWorkflowTypeSync: DeprecateWorkflowTypeSyncType<ClientInvocationReportingType>? = nil,
+            describeActivityTypeAsync: DescribeActivityTypeAsyncType<ClientInvocationReportingType>? = nil,
+            describeActivityTypeSync: DescribeActivityTypeSyncType<ClientInvocationReportingType>? = nil,
+            describeDomainAsync: DescribeDomainAsyncType<ClientInvocationReportingType>? = nil,
+            describeDomainSync: DescribeDomainSyncType<ClientInvocationReportingType>? = nil,
+            describeWorkflowExecutionAsync: DescribeWorkflowExecutionAsyncType<ClientInvocationReportingType>? = nil,
+            describeWorkflowExecutionSync: DescribeWorkflowExecutionSyncType<ClientInvocationReportingType>? = nil,
+            describeWorkflowTypeAsync: DescribeWorkflowTypeAsyncType<ClientInvocationReportingType>? = nil,
+            describeWorkflowTypeSync: DescribeWorkflowTypeSyncType<ClientInvocationReportingType>? = nil,
+            getWorkflowExecutionHistoryAsync: GetWorkflowExecutionHistoryAsyncType<ClientInvocationReportingType>? = nil,
+            getWorkflowExecutionHistorySync: GetWorkflowExecutionHistorySyncType<ClientInvocationReportingType>? = nil,
+            listActivityTypesAsync: ListActivityTypesAsyncType<ClientInvocationReportingType>? = nil,
+            listActivityTypesSync: ListActivityTypesSyncType<ClientInvocationReportingType>? = nil,
+            listClosedWorkflowExecutionsAsync: ListClosedWorkflowExecutionsAsyncType<ClientInvocationReportingType>? = nil,
+            listClosedWorkflowExecutionsSync: ListClosedWorkflowExecutionsSyncType<ClientInvocationReportingType>? = nil,
+            listDomainsAsync: ListDomainsAsyncType<ClientInvocationReportingType>? = nil,
+            listDomainsSync: ListDomainsSyncType<ClientInvocationReportingType>? = nil,
+            listOpenWorkflowExecutionsAsync: ListOpenWorkflowExecutionsAsyncType<ClientInvocationReportingType>? = nil,
+            listOpenWorkflowExecutionsSync: ListOpenWorkflowExecutionsSyncType<ClientInvocationReportingType>? = nil,
+            listTagsForResourceAsync: ListTagsForResourceAsyncType<ClientInvocationReportingType>? = nil,
+            listTagsForResourceSync: ListTagsForResourceSyncType<ClientInvocationReportingType>? = nil,
+            listWorkflowTypesAsync: ListWorkflowTypesAsyncType<ClientInvocationReportingType>? = nil,
+            listWorkflowTypesSync: ListWorkflowTypesSyncType<ClientInvocationReportingType>? = nil,
+            pollForActivityTaskAsync: PollForActivityTaskAsyncType<ClientInvocationReportingType>? = nil,
+            pollForActivityTaskSync: PollForActivityTaskSyncType<ClientInvocationReportingType>? = nil,
+            pollForDecisionTaskAsync: PollForDecisionTaskAsyncType<ClientInvocationReportingType>? = nil,
+            pollForDecisionTaskSync: PollForDecisionTaskSyncType<ClientInvocationReportingType>? = nil,
+            recordActivityTaskHeartbeatAsync: RecordActivityTaskHeartbeatAsyncType<ClientInvocationReportingType>? = nil,
+            recordActivityTaskHeartbeatSync: RecordActivityTaskHeartbeatSyncType<ClientInvocationReportingType>? = nil,
+            registerActivityTypeAsync: RegisterActivityTypeAsyncType<ClientInvocationReportingType>? = nil,
+            registerActivityTypeSync: RegisterActivityTypeSyncType<ClientInvocationReportingType>? = nil,
+            registerDomainAsync: RegisterDomainAsyncType<ClientInvocationReportingType>? = nil,
+            registerDomainSync: RegisterDomainSyncType<ClientInvocationReportingType>? = nil,
+            registerWorkflowTypeAsync: RegisterWorkflowTypeAsyncType<ClientInvocationReportingType>? = nil,
+            registerWorkflowTypeSync: RegisterWorkflowTypeSyncType<ClientInvocationReportingType>? = nil,
+            requestCancelWorkflowExecutionAsync: RequestCancelWorkflowExecutionAsyncType<ClientInvocationReportingType>? = nil,
+            requestCancelWorkflowExecutionSync: RequestCancelWorkflowExecutionSyncType<ClientInvocationReportingType>? = nil,
+            respondActivityTaskCanceledAsync: RespondActivityTaskCanceledAsyncType<ClientInvocationReportingType>? = nil,
+            respondActivityTaskCanceledSync: RespondActivityTaskCanceledSyncType<ClientInvocationReportingType>? = nil,
+            respondActivityTaskCompletedAsync: RespondActivityTaskCompletedAsyncType<ClientInvocationReportingType>? = nil,
+            respondActivityTaskCompletedSync: RespondActivityTaskCompletedSyncType<ClientInvocationReportingType>? = nil,
+            respondActivityTaskFailedAsync: RespondActivityTaskFailedAsyncType<ClientInvocationReportingType>? = nil,
+            respondActivityTaskFailedSync: RespondActivityTaskFailedSyncType<ClientInvocationReportingType>? = nil,
+            respondDecisionTaskCompletedAsync: RespondDecisionTaskCompletedAsyncType<ClientInvocationReportingType>? = nil,
+            respondDecisionTaskCompletedSync: RespondDecisionTaskCompletedSyncType<ClientInvocationReportingType>? = nil,
+            signalWorkflowExecutionAsync: SignalWorkflowExecutionAsyncType<ClientInvocationReportingType>? = nil,
+            signalWorkflowExecutionSync: SignalWorkflowExecutionSyncType<ClientInvocationReportingType>? = nil,
+            startWorkflowExecutionAsync: StartWorkflowExecutionAsyncType<ClientInvocationReportingType>? = nil,
+            startWorkflowExecutionSync: StartWorkflowExecutionSyncType<ClientInvocationReportingType>? = nil,
+            tagResourceAsync: TagResourceAsyncType<ClientInvocationReportingType>? = nil,
+            tagResourceSync: TagResourceSyncType<ClientInvocationReportingType>? = nil,
+            terminateWorkflowExecutionAsync: TerminateWorkflowExecutionAsyncType<ClientInvocationReportingType>? = nil,
+            terminateWorkflowExecutionSync: TerminateWorkflowExecutionSyncType<ClientInvocationReportingType>? = nil,
+            undeprecateActivityTypeAsync: UndeprecateActivityTypeAsyncType<ClientInvocationReportingType>? = nil,
+            undeprecateActivityTypeSync: UndeprecateActivityTypeSyncType<ClientInvocationReportingType>? = nil,
+            undeprecateDomainAsync: UndeprecateDomainAsyncType<ClientInvocationReportingType>? = nil,
+            undeprecateDomainSync: UndeprecateDomainSyncType<ClientInvocationReportingType>? = nil,
+            undeprecateWorkflowTypeAsync: UndeprecateWorkflowTypeAsyncType<ClientInvocationReportingType>? = nil,
+            undeprecateWorkflowTypeSync: UndeprecateWorkflowTypeSyncType<ClientInvocationReportingType>? = nil,
+            untagResourceAsync: UntagResourceAsyncType<ClientInvocationReportingType>? = nil,
+            untagResourceSync: UntagResourceSyncType<ClientInvocationReportingType>? = nil) {
         self.error = error
         self.countClosedWorkflowExecutionsAsyncOverride = countClosedWorkflowExecutionsAsync
         self.countClosedWorkflowExecutionsSyncOverride = countClosedWorkflowExecutionsSync
@@ -270,12 +270,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func countClosedWorkflowExecutionsAsync(
+    public func countClosedWorkflowExecutionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws {
-        if let countClosedWorkflowExecutionsAsyncOverride = countClosedWorkflowExecutionsAsyncOverride {
-            return try countClosedWorkflowExecutionsAsyncOverride(input, reporting, completion)
+        if let countClosedWorkflowExecutionsAsyncOverrideNonOptional = countClosedWorkflowExecutionsAsyncOverride {
+            if let countClosedWorkflowExecutionsAsyncOverrideTyped = countClosedWorkflowExecutionsAsyncOverrideNonOptional
+                    as? CountClosedWorkflowExecutionsAsyncType<InvocationReportingType> {
+                return try countClosedWorkflowExecutionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -290,11 +295,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func countClosedWorkflowExecutionsSync(
+    public func countClosedWorkflowExecutionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
-        if let countClosedWorkflowExecutionsSyncOverride = countClosedWorkflowExecutionsSyncOverride {
-            return try countClosedWorkflowExecutionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
+        if let countClosedWorkflowExecutionsSyncOverrideNonOptional = countClosedWorkflowExecutionsSyncOverride {
+            if let countClosedWorkflowExecutionsSyncOverrideTyped = countClosedWorkflowExecutionsSyncOverrideNonOptional
+                    as? CountClosedWorkflowExecutionsSyncType<InvocationReportingType> {
+                return try countClosedWorkflowExecutionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -310,12 +320,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func countOpenWorkflowExecutionsAsync(
+    public func countOpenWorkflowExecutionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws {
-        if let countOpenWorkflowExecutionsAsyncOverride = countOpenWorkflowExecutionsAsyncOverride {
-            return try countOpenWorkflowExecutionsAsyncOverride(input, reporting, completion)
+        if let countOpenWorkflowExecutionsAsyncOverrideNonOptional = countOpenWorkflowExecutionsAsyncOverride {
+            if let countOpenWorkflowExecutionsAsyncOverrideTyped = countOpenWorkflowExecutionsAsyncOverrideNonOptional
+                    as? CountOpenWorkflowExecutionsAsyncType<InvocationReportingType> {
+                return try countOpenWorkflowExecutionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -330,11 +345,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func countOpenWorkflowExecutionsSync(
+    public func countOpenWorkflowExecutionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
-        if let countOpenWorkflowExecutionsSyncOverride = countOpenWorkflowExecutionsSyncOverride {
-            return try countOpenWorkflowExecutionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
+        if let countOpenWorkflowExecutionsSyncOverrideNonOptional = countOpenWorkflowExecutionsSyncOverride {
+            if let countOpenWorkflowExecutionsSyncOverrideTyped = countOpenWorkflowExecutionsSyncOverrideNonOptional
+                    as? CountOpenWorkflowExecutionsSyncType<InvocationReportingType> {
+                return try countOpenWorkflowExecutionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -350,12 +370,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func countPendingActivityTasksAsync(
+    public func countPendingActivityTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.CountPendingActivityTasksInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws {
-        if let countPendingActivityTasksAsyncOverride = countPendingActivityTasksAsyncOverride {
-            return try countPendingActivityTasksAsyncOverride(input, reporting, completion)
+        if let countPendingActivityTasksAsyncOverrideNonOptional = countPendingActivityTasksAsyncOverride {
+            if let countPendingActivityTasksAsyncOverrideTyped = countPendingActivityTasksAsyncOverrideNonOptional
+                    as? CountPendingActivityTasksAsyncType<InvocationReportingType> {
+                return try countPendingActivityTasksAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -370,11 +395,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func countPendingActivityTasksSync(
+    public func countPendingActivityTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.CountPendingActivityTasksInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.PendingTaskCount {
-        if let countPendingActivityTasksSyncOverride = countPendingActivityTasksSyncOverride {
-            return try countPendingActivityTasksSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.PendingTaskCount {
+        if let countPendingActivityTasksSyncOverrideNonOptional = countPendingActivityTasksSyncOverride {
+            if let countPendingActivityTasksSyncOverrideTyped = countPendingActivityTasksSyncOverrideNonOptional
+                    as? CountPendingActivityTasksSyncType<InvocationReportingType> {
+                return try countPendingActivityTasksSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -390,12 +420,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func countPendingDecisionTasksAsync(
+    public func countPendingDecisionTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.CountPendingDecisionTasksInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws {
-        if let countPendingDecisionTasksAsyncOverride = countPendingDecisionTasksAsyncOverride {
-            return try countPendingDecisionTasksAsyncOverride(input, reporting, completion)
+        if let countPendingDecisionTasksAsyncOverrideNonOptional = countPendingDecisionTasksAsyncOverride {
+            if let countPendingDecisionTasksAsyncOverrideTyped = countPendingDecisionTasksAsyncOverrideNonOptional
+                    as? CountPendingDecisionTasksAsyncType<InvocationReportingType> {
+                return try countPendingDecisionTasksAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -410,11 +445,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func countPendingDecisionTasksSync(
+    public func countPendingDecisionTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.CountPendingDecisionTasksInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.PendingTaskCount {
-        if let countPendingDecisionTasksSyncOverride = countPendingDecisionTasksSyncOverride {
-            return try countPendingDecisionTasksSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.PendingTaskCount {
+        if let countPendingDecisionTasksSyncOverrideNonOptional = countPendingDecisionTasksSyncOverride {
+            if let countPendingDecisionTasksSyncOverrideTyped = countPendingDecisionTasksSyncOverrideNonOptional
+                    as? CountPendingDecisionTasksSyncType<InvocationReportingType> {
+                return try countPendingDecisionTasksSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -429,12 +469,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    public func deprecateActivityTypeAsync(
+    public func deprecateActivityTypeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DeprecateActivityTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deprecateActivityTypeAsyncOverride = deprecateActivityTypeAsyncOverride {
-            return try deprecateActivityTypeAsyncOverride(input, reporting, completion)
+        if let deprecateActivityTypeAsyncOverrideNonOptional = deprecateActivityTypeAsyncOverride {
+            if let deprecateActivityTypeAsyncOverrideTyped = deprecateActivityTypeAsyncOverrideNonOptional
+                    as? DeprecateActivityTypeAsyncType<InvocationReportingType> {
+                return try deprecateActivityTypeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -447,11 +492,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated DeprecateActivityTypeInput object being passed to this operation.
      - Throws: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    public func deprecateActivityTypeSync(
+    public func deprecateActivityTypeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DeprecateActivityTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deprecateActivityTypeSyncOverride = deprecateActivityTypeSyncOverride {
-            return try deprecateActivityTypeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deprecateActivityTypeSyncOverrideNonOptional = deprecateActivityTypeSyncOverride {
+            if let deprecateActivityTypeSyncOverrideTyped = deprecateActivityTypeSyncOverrideNonOptional
+                    as? DeprecateActivityTypeSyncType<InvocationReportingType> {
+                return try deprecateActivityTypeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -466,12 +516,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: domainDeprecated, operationNotPermitted, unknownResource.
      */
-    public func deprecateDomainAsync(
+    public func deprecateDomainAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DeprecateDomainInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deprecateDomainAsyncOverride = deprecateDomainAsyncOverride {
-            return try deprecateDomainAsyncOverride(input, reporting, completion)
+        if let deprecateDomainAsyncOverrideNonOptional = deprecateDomainAsyncOverride {
+            if let deprecateDomainAsyncOverrideTyped = deprecateDomainAsyncOverrideNonOptional
+                    as? DeprecateDomainAsyncType<InvocationReportingType> {
+                return try deprecateDomainAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -484,11 +539,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated DeprecateDomainInput object being passed to this operation.
      - Throws: domainDeprecated, operationNotPermitted, unknownResource.
      */
-    public func deprecateDomainSync(
+    public func deprecateDomainSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DeprecateDomainInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deprecateDomainSyncOverride = deprecateDomainSyncOverride {
-            return try deprecateDomainSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deprecateDomainSyncOverrideNonOptional = deprecateDomainSyncOverride {
+            if let deprecateDomainSyncOverrideTyped = deprecateDomainSyncOverrideNonOptional
+                    as? DeprecateDomainSyncType<InvocationReportingType> {
+                return try deprecateDomainSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -503,12 +563,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    public func deprecateWorkflowTypeAsync(
+    public func deprecateWorkflowTypeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deprecateWorkflowTypeAsyncOverride = deprecateWorkflowTypeAsyncOverride {
-            return try deprecateWorkflowTypeAsyncOverride(input, reporting, completion)
+        if let deprecateWorkflowTypeAsyncOverrideNonOptional = deprecateWorkflowTypeAsyncOverride {
+            if let deprecateWorkflowTypeAsyncOverrideTyped = deprecateWorkflowTypeAsyncOverrideNonOptional
+                    as? DeprecateWorkflowTypeAsyncType<InvocationReportingType> {
+                return try deprecateWorkflowTypeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -521,11 +586,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated DeprecateWorkflowTypeInput object being passed to this operation.
      - Throws: operationNotPermitted, typeDeprecated, unknownResource.
      */
-    public func deprecateWorkflowTypeSync(
+    public func deprecateWorkflowTypeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DeprecateWorkflowTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deprecateWorkflowTypeSyncOverride = deprecateWorkflowTypeSyncOverride {
-            return try deprecateWorkflowTypeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deprecateWorkflowTypeSyncOverrideNonOptional = deprecateWorkflowTypeSyncOverride {
+            if let deprecateWorkflowTypeSyncOverrideTyped = deprecateWorkflowTypeSyncOverrideNonOptional
+                    as? DeprecateWorkflowTypeSyncType<InvocationReportingType> {
+                return try deprecateWorkflowTypeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -541,12 +611,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func describeActivityTypeAsync(
+    public func describeActivityTypeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DescribeActivityTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, HTTPClientError>) -> ()) throws {
-        if let describeActivityTypeAsyncOverride = describeActivityTypeAsyncOverride {
-            return try describeActivityTypeAsyncOverride(input, reporting, completion)
+        if let describeActivityTypeAsyncOverrideNonOptional = describeActivityTypeAsyncOverride {
+            if let describeActivityTypeAsyncOverrideTyped = describeActivityTypeAsyncOverrideNonOptional
+                    as? DescribeActivityTypeAsyncType<InvocationReportingType> {
+                return try describeActivityTypeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -561,11 +636,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func describeActivityTypeSync(
+    public func describeActivityTypeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DescribeActivityTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTypeDetail {
-        if let describeActivityTypeSyncOverride = describeActivityTypeSyncOverride {
-            return try describeActivityTypeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.ActivityTypeDetail {
+        if let describeActivityTypeSyncOverrideNonOptional = describeActivityTypeSyncOverride {
+            if let describeActivityTypeSyncOverrideTyped = describeActivityTypeSyncOverrideNonOptional
+                    as? DescribeActivityTypeSyncType<InvocationReportingType> {
+                return try describeActivityTypeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -581,12 +661,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func describeDomainAsync(
+    public func describeDomainAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DescribeDomainInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, HTTPClientError>) -> ()) throws {
-        if let describeDomainAsyncOverride = describeDomainAsyncOverride {
-            return try describeDomainAsyncOverride(input, reporting, completion)
+        if let describeDomainAsyncOverrideNonOptional = describeDomainAsyncOverride {
+            if let describeDomainAsyncOverrideTyped = describeDomainAsyncOverrideNonOptional
+                    as? DescribeDomainAsyncType<InvocationReportingType> {
+                return try describeDomainAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -601,11 +686,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func describeDomainSync(
+    public func describeDomainSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DescribeDomainInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DomainDetail {
-        if let describeDomainSyncOverride = describeDomainSyncOverride {
-            return try describeDomainSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.DomainDetail {
+        if let describeDomainSyncOverrideNonOptional = describeDomainSyncOverride {
+            if let describeDomainSyncOverrideTyped = describeDomainSyncOverrideNonOptional
+                    as? DescribeDomainSyncType<InvocationReportingType> {
+                return try describeDomainSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -621,12 +711,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func describeWorkflowExecutionAsync(
+    public func describeWorkflowExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DescribeWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, HTTPClientError>) -> ()) throws {
-        if let describeWorkflowExecutionAsyncOverride = describeWorkflowExecutionAsyncOverride {
-            return try describeWorkflowExecutionAsyncOverride(input, reporting, completion)
+        if let describeWorkflowExecutionAsyncOverrideNonOptional = describeWorkflowExecutionAsyncOverride {
+            if let describeWorkflowExecutionAsyncOverrideTyped = describeWorkflowExecutionAsyncOverrideNonOptional
+                    as? DescribeWorkflowExecutionAsyncType<InvocationReportingType> {
+                return try describeWorkflowExecutionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -641,11 +736,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func describeWorkflowExecutionSync(
+    public func describeWorkflowExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DescribeWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionDetail {
-        if let describeWorkflowExecutionSyncOverride = describeWorkflowExecutionSyncOverride {
-            return try describeWorkflowExecutionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.WorkflowExecutionDetail {
+        if let describeWorkflowExecutionSyncOverrideNonOptional = describeWorkflowExecutionSyncOverride {
+            if let describeWorkflowExecutionSyncOverrideTyped = describeWorkflowExecutionSyncOverrideNonOptional
+                    as? DescribeWorkflowExecutionSyncType<InvocationReportingType> {
+                return try describeWorkflowExecutionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -661,12 +761,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func describeWorkflowTypeAsync(
+    public func describeWorkflowTypeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DescribeWorkflowTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, HTTPClientError>) -> ()) throws {
-        if let describeWorkflowTypeAsyncOverride = describeWorkflowTypeAsyncOverride {
-            return try describeWorkflowTypeAsyncOverride(input, reporting, completion)
+        if let describeWorkflowTypeAsyncOverrideNonOptional = describeWorkflowTypeAsyncOverride {
+            if let describeWorkflowTypeAsyncOverrideTyped = describeWorkflowTypeAsyncOverrideNonOptional
+                    as? DescribeWorkflowTypeAsyncType<InvocationReportingType> {
+                return try describeWorkflowTypeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -681,11 +786,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func describeWorkflowTypeSync(
+    public func describeWorkflowTypeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.DescribeWorkflowTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowTypeDetail {
-        if let describeWorkflowTypeSyncOverride = describeWorkflowTypeSyncOverride {
-            return try describeWorkflowTypeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.WorkflowTypeDetail {
+        if let describeWorkflowTypeSyncOverrideNonOptional = describeWorkflowTypeSyncOverride {
+            if let describeWorkflowTypeSyncOverrideTyped = describeWorkflowTypeSyncOverrideNonOptional
+                    as? DescribeWorkflowTypeSyncType<InvocationReportingType> {
+                return try describeWorkflowTypeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -701,12 +811,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func getWorkflowExecutionHistoryAsync(
+    public func getWorkflowExecutionHistoryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.History, HTTPClientError>) -> ()) throws {
-        if let getWorkflowExecutionHistoryAsyncOverride = getWorkflowExecutionHistoryAsyncOverride {
-            return try getWorkflowExecutionHistoryAsyncOverride(input, reporting, completion)
+        if let getWorkflowExecutionHistoryAsyncOverrideNonOptional = getWorkflowExecutionHistoryAsyncOverride {
+            if let getWorkflowExecutionHistoryAsyncOverrideTyped = getWorkflowExecutionHistoryAsyncOverrideNonOptional
+                    as? GetWorkflowExecutionHistoryAsyncType<InvocationReportingType> {
+                return try getWorkflowExecutionHistoryAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -721,11 +836,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func getWorkflowExecutionHistorySync(
+    public func getWorkflowExecutionHistorySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.History {
-        if let getWorkflowExecutionHistorySyncOverride = getWorkflowExecutionHistorySyncOverride {
-            return try getWorkflowExecutionHistorySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.History {
+        if let getWorkflowExecutionHistorySyncOverrideNonOptional = getWorkflowExecutionHistorySyncOverride {
+            if let getWorkflowExecutionHistorySyncOverrideTyped = getWorkflowExecutionHistorySyncOverrideNonOptional
+                    as? GetWorkflowExecutionHistorySyncType<InvocationReportingType> {
+                return try getWorkflowExecutionHistorySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -741,12 +861,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func listActivityTypesAsync(
+    public func listActivityTypesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.ListActivityTypesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, HTTPClientError>) -> ()) throws {
-        if let listActivityTypesAsyncOverride = listActivityTypesAsyncOverride {
-            return try listActivityTypesAsyncOverride(input, reporting, completion)
+        if let listActivityTypesAsyncOverrideNonOptional = listActivityTypesAsyncOverride {
+            if let listActivityTypesAsyncOverrideTyped = listActivityTypesAsyncOverrideNonOptional
+                    as? ListActivityTypesAsyncType<InvocationReportingType> {
+                return try listActivityTypesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -761,11 +886,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func listActivityTypesSync(
+    public func listActivityTypesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.ListActivityTypesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTypeInfos {
-        if let listActivityTypesSyncOverride = listActivityTypesSyncOverride {
-            return try listActivityTypesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.ActivityTypeInfos {
+        if let listActivityTypesSyncOverrideNonOptional = listActivityTypesSyncOverride {
+            if let listActivityTypesSyncOverrideTyped = listActivityTypesSyncOverrideNonOptional
+                    as? ListActivityTypesSyncType<InvocationReportingType> {
+                return try listActivityTypesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -781,12 +911,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func listClosedWorkflowExecutionsAsync(
+    public func listClosedWorkflowExecutionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws {
-        if let listClosedWorkflowExecutionsAsyncOverride = listClosedWorkflowExecutionsAsyncOverride {
-            return try listClosedWorkflowExecutionsAsyncOverride(input, reporting, completion)
+        if let listClosedWorkflowExecutionsAsyncOverrideNonOptional = listClosedWorkflowExecutionsAsyncOverride {
+            if let listClosedWorkflowExecutionsAsyncOverrideTyped = listClosedWorkflowExecutionsAsyncOverrideNonOptional
+                    as? ListClosedWorkflowExecutionsAsyncType<InvocationReportingType> {
+                return try listClosedWorkflowExecutionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -801,11 +936,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func listClosedWorkflowExecutionsSync(
+    public func listClosedWorkflowExecutionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
-        if let listClosedWorkflowExecutionsSyncOverride = listClosedWorkflowExecutionsSyncOverride {
-            return try listClosedWorkflowExecutionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
+        if let listClosedWorkflowExecutionsSyncOverrideNonOptional = listClosedWorkflowExecutionsSyncOverride {
+            if let listClosedWorkflowExecutionsSyncOverrideTyped = listClosedWorkflowExecutionsSyncOverrideNonOptional
+                    as? ListClosedWorkflowExecutionsSyncType<InvocationReportingType> {
+                return try listClosedWorkflowExecutionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -821,12 +961,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted.
      */
-    public func listDomainsAsync(
+    public func listDomainsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.ListDomainsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, HTTPClientError>) -> ()) throws {
-        if let listDomainsAsyncOverride = listDomainsAsyncOverride {
-            return try listDomainsAsyncOverride(input, reporting, completion)
+        if let listDomainsAsyncOverrideNonOptional = listDomainsAsyncOverride {
+            if let listDomainsAsyncOverrideTyped = listDomainsAsyncOverrideNonOptional
+                    as? ListDomainsAsyncType<InvocationReportingType> {
+                return try listDomainsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -841,11 +986,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted.
      */
-    public func listDomainsSync(
+    public func listDomainsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.ListDomainsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DomainInfos {
-        if let listDomainsSyncOverride = listDomainsSyncOverride {
-            return try listDomainsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.DomainInfos {
+        if let listDomainsSyncOverrideNonOptional = listDomainsSyncOverride {
+            if let listDomainsSyncOverrideTyped = listDomainsSyncOverrideNonOptional
+                    as? ListDomainsSyncType<InvocationReportingType> {
+                return try listDomainsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -861,12 +1011,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func listOpenWorkflowExecutionsAsync(
+    public func listOpenWorkflowExecutionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws {
-        if let listOpenWorkflowExecutionsAsyncOverride = listOpenWorkflowExecutionsAsyncOverride {
-            return try listOpenWorkflowExecutionsAsyncOverride(input, reporting, completion)
+        if let listOpenWorkflowExecutionsAsyncOverrideNonOptional = listOpenWorkflowExecutionsAsyncOverride {
+            if let listOpenWorkflowExecutionsAsyncOverrideTyped = listOpenWorkflowExecutionsAsyncOverrideNonOptional
+                    as? ListOpenWorkflowExecutionsAsyncType<InvocationReportingType> {
+                return try listOpenWorkflowExecutionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -881,11 +1036,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func listOpenWorkflowExecutionsSync(
+    public func listOpenWorkflowExecutionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
-        if let listOpenWorkflowExecutionsSyncOverride = listOpenWorkflowExecutionsSyncOverride {
-            return try listOpenWorkflowExecutionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
+        if let listOpenWorkflowExecutionsSyncOverrideNonOptional = listOpenWorkflowExecutionsSyncOverride {
+            if let listOpenWorkflowExecutionsSyncOverrideTyped = listOpenWorkflowExecutionsSyncOverrideNonOptional
+                    as? ListOpenWorkflowExecutionsSyncType<InvocationReportingType> {
+                return try listOpenWorkflowExecutionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -901,12 +1061,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
      */
-    public func listTagsForResourceAsync(
+    public func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.ListTagsForResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws {
-        if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
-            return try listTagsForResourceAsyncOverride(input, reporting, completion)
+        if let listTagsForResourceAsyncOverrideNonOptional = listTagsForResourceAsyncOverride {
+            if let listTagsForResourceAsyncOverrideTyped = listTagsForResourceAsyncOverrideNonOptional
+                    as? ListTagsForResourceAsyncType<InvocationReportingType> {
+                return try listTagsForResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -921,11 +1086,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
-    public func listTagsForResourceSync(
+    public func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.ListTagsForResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ListTagsForResourceOutput {
-        if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
-            return try listTagsForResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.ListTagsForResourceOutput {
+        if let listTagsForResourceSyncOverrideNonOptional = listTagsForResourceSyncOverride {
+            if let listTagsForResourceSyncOverrideTyped = listTagsForResourceSyncOverrideNonOptional
+                    as? ListTagsForResourceSyncType<InvocationReportingType> {
+                return try listTagsForResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -941,12 +1111,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func listWorkflowTypesAsync(
+    public func listWorkflowTypesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.ListWorkflowTypesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, HTTPClientError>) -> ()) throws {
-        if let listWorkflowTypesAsyncOverride = listWorkflowTypesAsyncOverride {
-            return try listWorkflowTypesAsyncOverride(input, reporting, completion)
+        if let listWorkflowTypesAsyncOverrideNonOptional = listWorkflowTypesAsyncOverride {
+            if let listWorkflowTypesAsyncOverrideTyped = listWorkflowTypesAsyncOverrideNonOptional
+                    as? ListWorkflowTypesAsyncType<InvocationReportingType> {
+                return try listWorkflowTypesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -961,11 +1136,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func listWorkflowTypesSync(
+    public func listWorkflowTypesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.ListWorkflowTypesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowTypeInfos {
-        if let listWorkflowTypesSyncOverride = listWorkflowTypesSyncOverride {
-            return try listWorkflowTypesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.WorkflowTypeInfos {
+        if let listWorkflowTypesSyncOverrideNonOptional = listWorkflowTypesSyncOverride {
+            if let listWorkflowTypesSyncOverrideTyped = listWorkflowTypesSyncOverrideNonOptional
+                    as? ListWorkflowTypesSyncType<InvocationReportingType> {
+                return try listWorkflowTypesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -981,12 +1161,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
      */
-    public func pollForActivityTaskAsync(
+    public func pollForActivityTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.PollForActivityTaskInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, HTTPClientError>) -> ()) throws {
-        if let pollForActivityTaskAsyncOverride = pollForActivityTaskAsyncOverride {
-            return try pollForActivityTaskAsyncOverride(input, reporting, completion)
+        if let pollForActivityTaskAsyncOverrideNonOptional = pollForActivityTaskAsyncOverride {
+            if let pollForActivityTaskAsyncOverrideTyped = pollForActivityTaskAsyncOverrideNonOptional
+                    as? PollForActivityTaskAsyncType<InvocationReportingType> {
+                return try pollForActivityTaskAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1001,11 +1186,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
-    public func pollForActivityTaskSync(
+    public func pollForActivityTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.PollForActivityTaskInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTask {
-        if let pollForActivityTaskSyncOverride = pollForActivityTaskSyncOverride {
-            return try pollForActivityTaskSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.ActivityTask {
+        if let pollForActivityTaskSyncOverrideNonOptional = pollForActivityTaskSyncOverride {
+            if let pollForActivityTaskSyncOverrideTyped = pollForActivityTaskSyncOverrideNonOptional
+                    as? PollForActivityTaskSyncType<InvocationReportingType> {
+                return try pollForActivityTaskSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1021,12 +1211,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
      */
-    public func pollForDecisionTaskAsync(
+    public func pollForDecisionTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.PollForDecisionTaskInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, HTTPClientError>) -> ()) throws {
-        if let pollForDecisionTaskAsyncOverride = pollForDecisionTaskAsyncOverride {
-            return try pollForDecisionTaskAsyncOverride(input, reporting, completion)
+        if let pollForDecisionTaskAsyncOverrideNonOptional = pollForDecisionTaskAsyncOverride {
+            if let pollForDecisionTaskAsyncOverrideTyped = pollForDecisionTaskAsyncOverrideNonOptional
+                    as? PollForDecisionTaskAsyncType<InvocationReportingType> {
+                return try pollForDecisionTaskAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1041,11 +1236,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
-    public func pollForDecisionTaskSync(
+    public func pollForDecisionTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.PollForDecisionTaskInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DecisionTask {
-        if let pollForDecisionTaskSyncOverride = pollForDecisionTaskSyncOverride {
-            return try pollForDecisionTaskSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.DecisionTask {
+        if let pollForDecisionTaskSyncOverrideNonOptional = pollForDecisionTaskSyncOverride {
+            if let pollForDecisionTaskSyncOverrideTyped = pollForDecisionTaskSyncOverrideNonOptional
+                    as? PollForDecisionTaskSyncType<InvocationReportingType> {
+                return try pollForDecisionTaskSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1061,12 +1261,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func recordActivityTaskHeartbeatAsync(
+    public func recordActivityTaskHeartbeatAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, HTTPClientError>) -> ()) throws {
-        if let recordActivityTaskHeartbeatAsyncOverride = recordActivityTaskHeartbeatAsyncOverride {
-            return try recordActivityTaskHeartbeatAsyncOverride(input, reporting, completion)
+        if let recordActivityTaskHeartbeatAsyncOverrideNonOptional = recordActivityTaskHeartbeatAsyncOverride {
+            if let recordActivityTaskHeartbeatAsyncOverrideTyped = recordActivityTaskHeartbeatAsyncOverrideNonOptional
+                    as? RecordActivityTaskHeartbeatAsyncType<InvocationReportingType> {
+                return try recordActivityTaskHeartbeatAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1081,11 +1286,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func recordActivityTaskHeartbeatSync(
+    public func recordActivityTaskHeartbeatSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTaskStatus {
-        if let recordActivityTaskHeartbeatSyncOverride = recordActivityTaskHeartbeatSyncOverride {
-            return try recordActivityTaskHeartbeatSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.ActivityTaskStatus {
+        if let recordActivityTaskHeartbeatSyncOverrideNonOptional = recordActivityTaskHeartbeatSyncOverride {
+            if let recordActivityTaskHeartbeatSyncOverrideTyped = recordActivityTaskHeartbeatSyncOverrideNonOptional
+                    as? RecordActivityTaskHeartbeatSyncType<InvocationReportingType> {
+                return try recordActivityTaskHeartbeatSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1100,12 +1310,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func registerActivityTypeAsync(
+    public func registerActivityTypeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RegisterActivityTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let registerActivityTypeAsyncOverride = registerActivityTypeAsyncOverride {
-            return try registerActivityTypeAsyncOverride(input, reporting, completion)
+        if let registerActivityTypeAsyncOverrideNonOptional = registerActivityTypeAsyncOverride {
+            if let registerActivityTypeAsyncOverrideTyped = registerActivityTypeAsyncOverrideNonOptional
+                    as? RegisterActivityTypeAsyncType<InvocationReportingType> {
+                return try registerActivityTypeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1118,11 +1333,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RegisterActivityTypeInput object being passed to this operation.
      - Throws: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func registerActivityTypeSync(
+    public func registerActivityTypeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RegisterActivityTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let registerActivityTypeSyncOverride = registerActivityTypeSyncOverride {
-            return try registerActivityTypeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let registerActivityTypeSyncOverrideNonOptional = registerActivityTypeSyncOverride {
+            if let registerActivityTypeSyncOverrideTyped = registerActivityTypeSyncOverrideNonOptional
+                    as? RegisterActivityTypeSyncType<InvocationReportingType> {
+                return try registerActivityTypeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1137,12 +1357,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: domainAlreadyExists, limitExceeded, operationNotPermitted, tooManyTags.
      */
-    public func registerDomainAsync(
+    public func registerDomainAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RegisterDomainInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let registerDomainAsyncOverride = registerDomainAsyncOverride {
-            return try registerDomainAsyncOverride(input, reporting, completion)
+        if let registerDomainAsyncOverrideNonOptional = registerDomainAsyncOverride {
+            if let registerDomainAsyncOverrideTyped = registerDomainAsyncOverrideNonOptional
+                    as? RegisterDomainAsyncType<InvocationReportingType> {
+                return try registerDomainAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1155,11 +1380,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RegisterDomainInput object being passed to this operation.
      - Throws: domainAlreadyExists, limitExceeded, operationNotPermitted, tooManyTags.
      */
-    public func registerDomainSync(
+    public func registerDomainSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RegisterDomainInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let registerDomainSyncOverride = registerDomainSyncOverride {
-            return try registerDomainSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let registerDomainSyncOverrideNonOptional = registerDomainSyncOverride {
+            if let registerDomainSyncOverrideTyped = registerDomainSyncOverrideNonOptional
+                    as? RegisterDomainSyncType<InvocationReportingType> {
+                return try registerDomainSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1174,12 +1404,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func registerWorkflowTypeAsync(
+    public func registerWorkflowTypeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RegisterWorkflowTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let registerWorkflowTypeAsyncOverride = registerWorkflowTypeAsyncOverride {
-            return try registerWorkflowTypeAsyncOverride(input, reporting, completion)
+        if let registerWorkflowTypeAsyncOverrideNonOptional = registerWorkflowTypeAsyncOverride {
+            if let registerWorkflowTypeAsyncOverrideTyped = registerWorkflowTypeAsyncOverrideNonOptional
+                    as? RegisterWorkflowTypeAsyncType<InvocationReportingType> {
+                return try registerWorkflowTypeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1192,11 +1427,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RegisterWorkflowTypeInput object being passed to this operation.
      - Throws: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func registerWorkflowTypeSync(
+    public func registerWorkflowTypeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RegisterWorkflowTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let registerWorkflowTypeSyncOverride = registerWorkflowTypeSyncOverride {
-            return try registerWorkflowTypeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let registerWorkflowTypeSyncOverrideNonOptional = registerWorkflowTypeSyncOverride {
+            if let registerWorkflowTypeSyncOverrideTyped = registerWorkflowTypeSyncOverrideNonOptional
+                    as? RegisterWorkflowTypeSyncType<InvocationReportingType> {
+                return try registerWorkflowTypeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1211,12 +1451,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func requestCancelWorkflowExecutionAsync(
+    public func requestCancelWorkflowExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let requestCancelWorkflowExecutionAsyncOverride = requestCancelWorkflowExecutionAsyncOverride {
-            return try requestCancelWorkflowExecutionAsyncOverride(input, reporting, completion)
+        if let requestCancelWorkflowExecutionAsyncOverrideNonOptional = requestCancelWorkflowExecutionAsyncOverride {
+            if let requestCancelWorkflowExecutionAsyncOverrideTyped = requestCancelWorkflowExecutionAsyncOverrideNonOptional
+                    as? RequestCancelWorkflowExecutionAsyncType<InvocationReportingType> {
+                return try requestCancelWorkflowExecutionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1229,11 +1474,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RequestCancelWorkflowExecutionInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func requestCancelWorkflowExecutionSync(
+    public func requestCancelWorkflowExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let requestCancelWorkflowExecutionSyncOverride = requestCancelWorkflowExecutionSyncOverride {
-            return try requestCancelWorkflowExecutionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let requestCancelWorkflowExecutionSyncOverrideNonOptional = requestCancelWorkflowExecutionSyncOverride {
+            if let requestCancelWorkflowExecutionSyncOverrideTyped = requestCancelWorkflowExecutionSyncOverrideNonOptional
+                    as? RequestCancelWorkflowExecutionSyncType<InvocationReportingType> {
+                return try requestCancelWorkflowExecutionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1248,12 +1498,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskCanceledAsync(
+    public func respondActivityTaskCanceledAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let respondActivityTaskCanceledAsyncOverride = respondActivityTaskCanceledAsyncOverride {
-            return try respondActivityTaskCanceledAsyncOverride(input, reporting, completion)
+        if let respondActivityTaskCanceledAsyncOverrideNonOptional = respondActivityTaskCanceledAsyncOverride {
+            if let respondActivityTaskCanceledAsyncOverrideTyped = respondActivityTaskCanceledAsyncOverrideNonOptional
+                    as? RespondActivityTaskCanceledAsyncType<InvocationReportingType> {
+                return try respondActivityTaskCanceledAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1266,11 +1521,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RespondActivityTaskCanceledInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskCanceledSync(
+    public func respondActivityTaskCanceledSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RespondActivityTaskCanceledInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let respondActivityTaskCanceledSyncOverride = respondActivityTaskCanceledSyncOverride {
-            return try respondActivityTaskCanceledSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let respondActivityTaskCanceledSyncOverrideNonOptional = respondActivityTaskCanceledSyncOverride {
+            if let respondActivityTaskCanceledSyncOverrideTyped = respondActivityTaskCanceledSyncOverrideNonOptional
+                    as? RespondActivityTaskCanceledSyncType<InvocationReportingType> {
+                return try respondActivityTaskCanceledSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1285,12 +1545,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskCompletedAsync(
+    public func respondActivityTaskCompletedAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let respondActivityTaskCompletedAsyncOverride = respondActivityTaskCompletedAsyncOverride {
-            return try respondActivityTaskCompletedAsyncOverride(input, reporting, completion)
+        if let respondActivityTaskCompletedAsyncOverrideNonOptional = respondActivityTaskCompletedAsyncOverride {
+            if let respondActivityTaskCompletedAsyncOverrideTyped = respondActivityTaskCompletedAsyncOverrideNonOptional
+                    as? RespondActivityTaskCompletedAsyncType<InvocationReportingType> {
+                return try respondActivityTaskCompletedAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1303,11 +1568,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RespondActivityTaskCompletedInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskCompletedSync(
+    public func respondActivityTaskCompletedSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RespondActivityTaskCompletedInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let respondActivityTaskCompletedSyncOverride = respondActivityTaskCompletedSyncOverride {
-            return try respondActivityTaskCompletedSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let respondActivityTaskCompletedSyncOverrideNonOptional = respondActivityTaskCompletedSyncOverride {
+            if let respondActivityTaskCompletedSyncOverrideTyped = respondActivityTaskCompletedSyncOverrideNonOptional
+                    as? RespondActivityTaskCompletedSyncType<InvocationReportingType> {
+                return try respondActivityTaskCompletedSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1322,12 +1592,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskFailedAsync(
+    public func respondActivityTaskFailedAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RespondActivityTaskFailedInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let respondActivityTaskFailedAsyncOverride = respondActivityTaskFailedAsyncOverride {
-            return try respondActivityTaskFailedAsyncOverride(input, reporting, completion)
+        if let respondActivityTaskFailedAsyncOverrideNonOptional = respondActivityTaskFailedAsyncOverride {
+            if let respondActivityTaskFailedAsyncOverrideTyped = respondActivityTaskFailedAsyncOverrideNonOptional
+                    as? RespondActivityTaskFailedAsyncType<InvocationReportingType> {
+                return try respondActivityTaskFailedAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1340,11 +1615,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RespondActivityTaskFailedInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func respondActivityTaskFailedSync(
+    public func respondActivityTaskFailedSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RespondActivityTaskFailedInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let respondActivityTaskFailedSyncOverride = respondActivityTaskFailedSyncOverride {
-            return try respondActivityTaskFailedSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let respondActivityTaskFailedSyncOverrideNonOptional = respondActivityTaskFailedSyncOverride {
+            if let respondActivityTaskFailedSyncOverrideTyped = respondActivityTaskFailedSyncOverrideNonOptional
+                    as? RespondActivityTaskFailedSyncType<InvocationReportingType> {
+                return try respondActivityTaskFailedSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1359,12 +1639,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func respondDecisionTaskCompletedAsync(
+    public func respondDecisionTaskCompletedAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let respondDecisionTaskCompletedAsyncOverride = respondDecisionTaskCompletedAsyncOverride {
-            return try respondDecisionTaskCompletedAsyncOverride(input, reporting, completion)
+        if let respondDecisionTaskCompletedAsyncOverrideNonOptional = respondDecisionTaskCompletedAsyncOverride {
+            if let respondDecisionTaskCompletedAsyncOverrideTyped = respondDecisionTaskCompletedAsyncOverrideNonOptional
+                    as? RespondDecisionTaskCompletedAsyncType<InvocationReportingType> {
+                return try respondDecisionTaskCompletedAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1377,11 +1662,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated RespondDecisionTaskCompletedInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func respondDecisionTaskCompletedSync(
+    public func respondDecisionTaskCompletedSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let respondDecisionTaskCompletedSyncOverride = respondDecisionTaskCompletedSyncOverride {
-            return try respondDecisionTaskCompletedSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let respondDecisionTaskCompletedSyncOverrideNonOptional = respondDecisionTaskCompletedSyncOverride {
+            if let respondDecisionTaskCompletedSyncOverrideTyped = respondDecisionTaskCompletedSyncOverrideNonOptional
+                    as? RespondDecisionTaskCompletedSyncType<InvocationReportingType> {
+                return try respondDecisionTaskCompletedSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1396,12 +1686,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func signalWorkflowExecutionAsync(
+    public func signalWorkflowExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.SignalWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let signalWorkflowExecutionAsyncOverride = signalWorkflowExecutionAsyncOverride {
-            return try signalWorkflowExecutionAsyncOverride(input, reporting, completion)
+        if let signalWorkflowExecutionAsyncOverrideNonOptional = signalWorkflowExecutionAsyncOverride {
+            if let signalWorkflowExecutionAsyncOverrideTyped = signalWorkflowExecutionAsyncOverrideNonOptional
+                    as? SignalWorkflowExecutionAsyncType<InvocationReportingType> {
+                return try signalWorkflowExecutionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1414,11 +1709,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated SignalWorkflowExecutionInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func signalWorkflowExecutionSync(
+    public func signalWorkflowExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.SignalWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let signalWorkflowExecutionSyncOverride = signalWorkflowExecutionSyncOverride {
-            return try signalWorkflowExecutionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let signalWorkflowExecutionSyncOverrideNonOptional = signalWorkflowExecutionSyncOverride {
+            if let signalWorkflowExecutionSyncOverrideTyped = signalWorkflowExecutionSyncOverrideNonOptional
+                    as? SignalWorkflowExecutionSyncType<InvocationReportingType> {
+                return try signalWorkflowExecutionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1434,12 +1734,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: defaultUndefined, limitExceeded, operationNotPermitted, typeDeprecated, unknownResource, workflowExecutionAlreadyStarted.
      */
-    public func startWorkflowExecutionAsync(
+    public func startWorkflowExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.StartWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleWorkflowModel.Run, HTTPClientError>) -> ()) throws {
-        if let startWorkflowExecutionAsyncOverride = startWorkflowExecutionAsyncOverride {
-            return try startWorkflowExecutionAsyncOverride(input, reporting, completion)
+        if let startWorkflowExecutionAsyncOverrideNonOptional = startWorkflowExecutionAsyncOverride {
+            if let startWorkflowExecutionAsyncOverrideTyped = startWorkflowExecutionAsyncOverrideNonOptional
+                    as? StartWorkflowExecutionAsyncType<InvocationReportingType> {
+                return try startWorkflowExecutionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1454,11 +1759,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          Will be validated before being returned to caller.
      - Throws: defaultUndefined, limitExceeded, operationNotPermitted, typeDeprecated, unknownResource, workflowExecutionAlreadyStarted.
      */
-    public func startWorkflowExecutionSync(
+    public func startWorkflowExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.StartWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.Run {
-        if let startWorkflowExecutionSyncOverride = startWorkflowExecutionSyncOverride {
-            return try startWorkflowExecutionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleWorkflowModel.Run {
+        if let startWorkflowExecutionSyncOverrideNonOptional = startWorkflowExecutionSyncOverride {
+            if let startWorkflowExecutionSyncOverrideTyped = startWorkflowExecutionSyncOverrideNonOptional
+                    as? StartWorkflowExecutionSyncType<InvocationReportingType> {
+                return try startWorkflowExecutionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1473,12 +1783,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: limitExceeded, operationNotPermitted, tooManyTags, unknownResource.
      */
-    public func tagResourceAsync(
+    public func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.TagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let tagResourceAsyncOverride = tagResourceAsyncOverride {
-            return try tagResourceAsyncOverride(input, reporting, completion)
+        if let tagResourceAsyncOverrideNonOptional = tagResourceAsyncOverride {
+            if let tagResourceAsyncOverrideTyped = tagResourceAsyncOverrideNonOptional
+                    as? TagResourceAsyncType<InvocationReportingType> {
+                return try tagResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1491,11 +1806,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated TagResourceInput object being passed to this operation.
      - Throws: limitExceeded, operationNotPermitted, tooManyTags, unknownResource.
      */
-    public func tagResourceSync(
+    public func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.TagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let tagResourceSyncOverride = tagResourceSyncOverride {
-            return try tagResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let tagResourceSyncOverrideNonOptional = tagResourceSyncOverride {
+            if let tagResourceSyncOverrideTyped = tagResourceSyncOverrideNonOptional
+                    as? TagResourceSyncType<InvocationReportingType> {
+                return try tagResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1510,12 +1830,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, unknownResource.
      */
-    public func terminateWorkflowExecutionAsync(
+    public func terminateWorkflowExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let terminateWorkflowExecutionAsyncOverride = terminateWorkflowExecutionAsyncOverride {
-            return try terminateWorkflowExecutionAsyncOverride(input, reporting, completion)
+        if let terminateWorkflowExecutionAsyncOverrideNonOptional = terminateWorkflowExecutionAsyncOverride {
+            if let terminateWorkflowExecutionAsyncOverrideTyped = terminateWorkflowExecutionAsyncOverrideNonOptional
+                    as? TerminateWorkflowExecutionAsyncType<InvocationReportingType> {
+                return try terminateWorkflowExecutionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1528,11 +1853,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated TerminateWorkflowExecutionInput object being passed to this operation.
      - Throws: operationNotPermitted, unknownResource.
      */
-    public func terminateWorkflowExecutionSync(
+    public func terminateWorkflowExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.TerminateWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let terminateWorkflowExecutionSyncOverride = terminateWorkflowExecutionSyncOverride {
-            return try terminateWorkflowExecutionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let terminateWorkflowExecutionSyncOverrideNonOptional = terminateWorkflowExecutionSyncOverride {
+            if let terminateWorkflowExecutionSyncOverrideTyped = terminateWorkflowExecutionSyncOverrideNonOptional
+                    as? TerminateWorkflowExecutionSyncType<InvocationReportingType> {
+                return try terminateWorkflowExecutionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1547,12 +1877,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func undeprecateActivityTypeAsync(
+    public func undeprecateActivityTypeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.UndeprecateActivityTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let undeprecateActivityTypeAsyncOverride = undeprecateActivityTypeAsyncOverride {
-            return try undeprecateActivityTypeAsyncOverride(input, reporting, completion)
+        if let undeprecateActivityTypeAsyncOverrideNonOptional = undeprecateActivityTypeAsyncOverride {
+            if let undeprecateActivityTypeAsyncOverrideTyped = undeprecateActivityTypeAsyncOverrideNonOptional
+                    as? UndeprecateActivityTypeAsyncType<InvocationReportingType> {
+                return try undeprecateActivityTypeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1565,11 +1900,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated UndeprecateActivityTypeInput object being passed to this operation.
      - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func undeprecateActivityTypeSync(
+    public func undeprecateActivityTypeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.UndeprecateActivityTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let undeprecateActivityTypeSyncOverride = undeprecateActivityTypeSyncOverride {
-            return try undeprecateActivityTypeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let undeprecateActivityTypeSyncOverrideNonOptional = undeprecateActivityTypeSyncOverride {
+            if let undeprecateActivityTypeSyncOverrideTyped = undeprecateActivityTypeSyncOverrideNonOptional
+                    as? UndeprecateActivityTypeSyncType<InvocationReportingType> {
+                return try undeprecateActivityTypeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1584,12 +1924,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: domainAlreadyExists, operationNotPermitted, unknownResource.
      */
-    public func undeprecateDomainAsync(
+    public func undeprecateDomainAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.UndeprecateDomainInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let undeprecateDomainAsyncOverride = undeprecateDomainAsyncOverride {
-            return try undeprecateDomainAsyncOverride(input, reporting, completion)
+        if let undeprecateDomainAsyncOverrideNonOptional = undeprecateDomainAsyncOverride {
+            if let undeprecateDomainAsyncOverrideTyped = undeprecateDomainAsyncOverrideNonOptional
+                    as? UndeprecateDomainAsyncType<InvocationReportingType> {
+                return try undeprecateDomainAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1602,11 +1947,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated UndeprecateDomainInput object being passed to this operation.
      - Throws: domainAlreadyExists, operationNotPermitted, unknownResource.
      */
-    public func undeprecateDomainSync(
+    public func undeprecateDomainSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.UndeprecateDomainInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let undeprecateDomainSyncOverride = undeprecateDomainSyncOverride {
-            return try undeprecateDomainSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let undeprecateDomainSyncOverrideNonOptional = undeprecateDomainSyncOverride {
+            if let undeprecateDomainSyncOverrideTyped = undeprecateDomainSyncOverrideNonOptional
+                    as? UndeprecateDomainSyncType<InvocationReportingType> {
+                return try undeprecateDomainSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1621,12 +1971,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func undeprecateWorkflowTypeAsync(
+    public func undeprecateWorkflowTypeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let undeprecateWorkflowTypeAsyncOverride = undeprecateWorkflowTypeAsyncOverride {
-            return try undeprecateWorkflowTypeAsyncOverride(input, reporting, completion)
+        if let undeprecateWorkflowTypeAsyncOverrideNonOptional = undeprecateWorkflowTypeAsyncOverride {
+            if let undeprecateWorkflowTypeAsyncOverrideTyped = undeprecateWorkflowTypeAsyncOverrideNonOptional
+                    as? UndeprecateWorkflowTypeAsyncType<InvocationReportingType> {
+                return try undeprecateWorkflowTypeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1639,11 +1994,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated UndeprecateWorkflowTypeInput object being passed to this operation.
      - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
      */
-    public func undeprecateWorkflowTypeSync(
+    public func undeprecateWorkflowTypeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let undeprecateWorkflowTypeSyncOverride = undeprecateWorkflowTypeSyncOverride {
-            return try undeprecateWorkflowTypeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let undeprecateWorkflowTypeSyncOverrideNonOptional = undeprecateWorkflowTypeSyncOverride {
+            if let undeprecateWorkflowTypeSyncOverrideTyped = undeprecateWorkflowTypeSyncOverrideNonOptional
+                    as? UndeprecateWorkflowTypeSyncType<InvocationReportingType> {
+                return try undeprecateWorkflowTypeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1658,12 +2018,17 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
            is complete.
            The possible errors are: limitExceeded, operationNotPermitted, unknownResource.
      */
-    public func untagResourceAsync(
+    public func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.UntagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let untagResourceAsyncOverride = untagResourceAsyncOverride {
-            return try untagResourceAsyncOverride(input, reporting, completion)
+        if let untagResourceAsyncOverrideNonOptional = untagResourceAsyncOverride {
+            if let untagResourceAsyncOverrideTyped = untagResourceAsyncOverrideNonOptional
+                    as? UntagResourceAsyncType<InvocationReportingType> {
+                return try untagResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1676,11 +2041,16 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
          - input: The validated UntagResourceInput object being passed to this operation.
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
-    public func untagResourceSync(
+    public func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleWorkflowModel.UntagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let untagResourceSyncOverride = untagResourceSyncOverride {
-            return try untagResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let untagResourceSyncOverrideNonOptional = untagResourceSyncOverride {
+            if let untagResourceSyncOverrideTyped = untagResourceSyncOverrideNonOptional
+                    as? UntagResourceSyncType<InvocationReportingType> {
+                return try untagResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error

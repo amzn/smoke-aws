@@ -27,93 +27,93 @@ import SmokeHTTPClient
 /**
  Mock Client for the SimpleQueue service by default returns the `__default` property of its return type.
  */
-public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
-    let addPermissionAsyncOverride: SimpleQueueClientProtocol.AddPermissionAsyncType?
-    let addPermissionSyncOverride: SimpleQueueClientProtocol.AddPermissionSyncType?
-    let changeMessageVisibilityAsyncOverride: SimpleQueueClientProtocol.ChangeMessageVisibilityAsyncType?
-    let changeMessageVisibilitySyncOverride: SimpleQueueClientProtocol.ChangeMessageVisibilitySyncType?
-    let changeMessageVisibilityBatchAsyncOverride: SimpleQueueClientProtocol.ChangeMessageVisibilityBatchAsyncType?
-    let changeMessageVisibilityBatchSyncOverride: SimpleQueueClientProtocol.ChangeMessageVisibilityBatchSyncType?
-    let createQueueAsyncOverride: SimpleQueueClientProtocol.CreateQueueAsyncType?
-    let createQueueSyncOverride: SimpleQueueClientProtocol.CreateQueueSyncType?
-    let deleteMessageAsyncOverride: SimpleQueueClientProtocol.DeleteMessageAsyncType?
-    let deleteMessageSyncOverride: SimpleQueueClientProtocol.DeleteMessageSyncType?
-    let deleteMessageBatchAsyncOverride: SimpleQueueClientProtocol.DeleteMessageBatchAsyncType?
-    let deleteMessageBatchSyncOverride: SimpleQueueClientProtocol.DeleteMessageBatchSyncType?
-    let deleteQueueAsyncOverride: SimpleQueueClientProtocol.DeleteQueueAsyncType?
-    let deleteQueueSyncOverride: SimpleQueueClientProtocol.DeleteQueueSyncType?
-    let getQueueAttributesAsyncOverride: SimpleQueueClientProtocol.GetQueueAttributesAsyncType?
-    let getQueueAttributesSyncOverride: SimpleQueueClientProtocol.GetQueueAttributesSyncType?
-    let getQueueUrlAsyncOverride: SimpleQueueClientProtocol.GetQueueUrlAsyncType?
-    let getQueueUrlSyncOverride: SimpleQueueClientProtocol.GetQueueUrlSyncType?
-    let listDeadLetterSourceQueuesAsyncOverride: SimpleQueueClientProtocol.ListDeadLetterSourceQueuesAsyncType?
-    let listDeadLetterSourceQueuesSyncOverride: SimpleQueueClientProtocol.ListDeadLetterSourceQueuesSyncType?
-    let listQueueTagsAsyncOverride: SimpleQueueClientProtocol.ListQueueTagsAsyncType?
-    let listQueueTagsSyncOverride: SimpleQueueClientProtocol.ListQueueTagsSyncType?
-    let listQueuesAsyncOverride: SimpleQueueClientProtocol.ListQueuesAsyncType?
-    let listQueuesSyncOverride: SimpleQueueClientProtocol.ListQueuesSyncType?
-    let purgeQueueAsyncOverride: SimpleQueueClientProtocol.PurgeQueueAsyncType?
-    let purgeQueueSyncOverride: SimpleQueueClientProtocol.PurgeQueueSyncType?
-    let receiveMessageAsyncOverride: SimpleQueueClientProtocol.ReceiveMessageAsyncType?
-    let receiveMessageSyncOverride: SimpleQueueClientProtocol.ReceiveMessageSyncType?
-    let removePermissionAsyncOverride: SimpleQueueClientProtocol.RemovePermissionAsyncType?
-    let removePermissionSyncOverride: SimpleQueueClientProtocol.RemovePermissionSyncType?
-    let sendMessageAsyncOverride: SimpleQueueClientProtocol.SendMessageAsyncType?
-    let sendMessageSyncOverride: SimpleQueueClientProtocol.SendMessageSyncType?
-    let sendMessageBatchAsyncOverride: SimpleQueueClientProtocol.SendMessageBatchAsyncType?
-    let sendMessageBatchSyncOverride: SimpleQueueClientProtocol.SendMessageBatchSyncType?
-    let setQueueAttributesAsyncOverride: SimpleQueueClientProtocol.SetQueueAttributesAsyncType?
-    let setQueueAttributesSyncOverride: SimpleQueueClientProtocol.SetQueueAttributesSyncType?
-    let tagQueueAsyncOverride: SimpleQueueClientProtocol.TagQueueAsyncType?
-    let tagQueueSyncOverride: SimpleQueueClientProtocol.TagQueueSyncType?
-    let untagQueueAsyncOverride: SimpleQueueClientProtocol.UntagQueueAsyncType?
-    let untagQueueSyncOverride: SimpleQueueClientProtocol.UntagQueueSyncType?
+public struct MockSimpleQueueClient<ClientInvocationReportingType: SmokeAWSInvocationReporting>: SimpleQueueClientProtocol {
+    let addPermissionAsyncOverride: AddPermissionAsyncType<ClientInvocationReportingType>?
+    let addPermissionSyncOverride: AddPermissionSyncType<ClientInvocationReportingType>?
+    let changeMessageVisibilityAsyncOverride: ChangeMessageVisibilityAsyncType<ClientInvocationReportingType>?
+    let changeMessageVisibilitySyncOverride: ChangeMessageVisibilitySyncType<ClientInvocationReportingType>?
+    let changeMessageVisibilityBatchAsyncOverride: ChangeMessageVisibilityBatchAsyncType<ClientInvocationReportingType>?
+    let changeMessageVisibilityBatchSyncOverride: ChangeMessageVisibilityBatchSyncType<ClientInvocationReportingType>?
+    let createQueueAsyncOverride: CreateQueueAsyncType<ClientInvocationReportingType>?
+    let createQueueSyncOverride: CreateQueueSyncType<ClientInvocationReportingType>?
+    let deleteMessageAsyncOverride: DeleteMessageAsyncType<ClientInvocationReportingType>?
+    let deleteMessageSyncOverride: DeleteMessageSyncType<ClientInvocationReportingType>?
+    let deleteMessageBatchAsyncOverride: DeleteMessageBatchAsyncType<ClientInvocationReportingType>?
+    let deleteMessageBatchSyncOverride: DeleteMessageBatchSyncType<ClientInvocationReportingType>?
+    let deleteQueueAsyncOverride: DeleteQueueAsyncType<ClientInvocationReportingType>?
+    let deleteQueueSyncOverride: DeleteQueueSyncType<ClientInvocationReportingType>?
+    let getQueueAttributesAsyncOverride: GetQueueAttributesAsyncType<ClientInvocationReportingType>?
+    let getQueueAttributesSyncOverride: GetQueueAttributesSyncType<ClientInvocationReportingType>?
+    let getQueueUrlAsyncOverride: GetQueueUrlAsyncType<ClientInvocationReportingType>?
+    let getQueueUrlSyncOverride: GetQueueUrlSyncType<ClientInvocationReportingType>?
+    let listDeadLetterSourceQueuesAsyncOverride: ListDeadLetterSourceQueuesAsyncType<ClientInvocationReportingType>?
+    let listDeadLetterSourceQueuesSyncOverride: ListDeadLetterSourceQueuesSyncType<ClientInvocationReportingType>?
+    let listQueueTagsAsyncOverride: ListQueueTagsAsyncType<ClientInvocationReportingType>?
+    let listQueueTagsSyncOverride: ListQueueTagsSyncType<ClientInvocationReportingType>?
+    let listQueuesAsyncOverride: ListQueuesAsyncType<ClientInvocationReportingType>?
+    let listQueuesSyncOverride: ListQueuesSyncType<ClientInvocationReportingType>?
+    let purgeQueueAsyncOverride: PurgeQueueAsyncType<ClientInvocationReportingType>?
+    let purgeQueueSyncOverride: PurgeQueueSyncType<ClientInvocationReportingType>?
+    let receiveMessageAsyncOverride: ReceiveMessageAsyncType<ClientInvocationReportingType>?
+    let receiveMessageSyncOverride: ReceiveMessageSyncType<ClientInvocationReportingType>?
+    let removePermissionAsyncOverride: RemovePermissionAsyncType<ClientInvocationReportingType>?
+    let removePermissionSyncOverride: RemovePermissionSyncType<ClientInvocationReportingType>?
+    let sendMessageAsyncOverride: SendMessageAsyncType<ClientInvocationReportingType>?
+    let sendMessageSyncOverride: SendMessageSyncType<ClientInvocationReportingType>?
+    let sendMessageBatchAsyncOverride: SendMessageBatchAsyncType<ClientInvocationReportingType>?
+    let sendMessageBatchSyncOverride: SendMessageBatchSyncType<ClientInvocationReportingType>?
+    let setQueueAttributesAsyncOverride: SetQueueAttributesAsyncType<ClientInvocationReportingType>?
+    let setQueueAttributesSyncOverride: SetQueueAttributesSyncType<ClientInvocationReportingType>?
+    let tagQueueAsyncOverride: TagQueueAsyncType<ClientInvocationReportingType>?
+    let tagQueueSyncOverride: TagQueueSyncType<ClientInvocationReportingType>?
+    let untagQueueAsyncOverride: UntagQueueAsyncType<ClientInvocationReportingType>?
+    let untagQueueSyncOverride: UntagQueueSyncType<ClientInvocationReportingType>?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(
-            addPermissionAsync: SimpleQueueClientProtocol.AddPermissionAsyncType? = nil,
-            addPermissionSync: SimpleQueueClientProtocol.AddPermissionSyncType? = nil,
-            changeMessageVisibilityAsync: SimpleQueueClientProtocol.ChangeMessageVisibilityAsyncType? = nil,
-            changeMessageVisibilitySync: SimpleQueueClientProtocol.ChangeMessageVisibilitySyncType? = nil,
-            changeMessageVisibilityBatchAsync: SimpleQueueClientProtocol.ChangeMessageVisibilityBatchAsyncType? = nil,
-            changeMessageVisibilityBatchSync: SimpleQueueClientProtocol.ChangeMessageVisibilityBatchSyncType? = nil,
-            createQueueAsync: SimpleQueueClientProtocol.CreateQueueAsyncType? = nil,
-            createQueueSync: SimpleQueueClientProtocol.CreateQueueSyncType? = nil,
-            deleteMessageAsync: SimpleQueueClientProtocol.DeleteMessageAsyncType? = nil,
-            deleteMessageSync: SimpleQueueClientProtocol.DeleteMessageSyncType? = nil,
-            deleteMessageBatchAsync: SimpleQueueClientProtocol.DeleteMessageBatchAsyncType? = nil,
-            deleteMessageBatchSync: SimpleQueueClientProtocol.DeleteMessageBatchSyncType? = nil,
-            deleteQueueAsync: SimpleQueueClientProtocol.DeleteQueueAsyncType? = nil,
-            deleteQueueSync: SimpleQueueClientProtocol.DeleteQueueSyncType? = nil,
-            getQueueAttributesAsync: SimpleQueueClientProtocol.GetQueueAttributesAsyncType? = nil,
-            getQueueAttributesSync: SimpleQueueClientProtocol.GetQueueAttributesSyncType? = nil,
-            getQueueUrlAsync: SimpleQueueClientProtocol.GetQueueUrlAsyncType? = nil,
-            getQueueUrlSync: SimpleQueueClientProtocol.GetQueueUrlSyncType? = nil,
-            listDeadLetterSourceQueuesAsync: SimpleQueueClientProtocol.ListDeadLetterSourceQueuesAsyncType? = nil,
-            listDeadLetterSourceQueuesSync: SimpleQueueClientProtocol.ListDeadLetterSourceQueuesSyncType? = nil,
-            listQueueTagsAsync: SimpleQueueClientProtocol.ListQueueTagsAsyncType? = nil,
-            listQueueTagsSync: SimpleQueueClientProtocol.ListQueueTagsSyncType? = nil,
-            listQueuesAsync: SimpleQueueClientProtocol.ListQueuesAsyncType? = nil,
-            listQueuesSync: SimpleQueueClientProtocol.ListQueuesSyncType? = nil,
-            purgeQueueAsync: SimpleQueueClientProtocol.PurgeQueueAsyncType? = nil,
-            purgeQueueSync: SimpleQueueClientProtocol.PurgeQueueSyncType? = nil,
-            receiveMessageAsync: SimpleQueueClientProtocol.ReceiveMessageAsyncType? = nil,
-            receiveMessageSync: SimpleQueueClientProtocol.ReceiveMessageSyncType? = nil,
-            removePermissionAsync: SimpleQueueClientProtocol.RemovePermissionAsyncType? = nil,
-            removePermissionSync: SimpleQueueClientProtocol.RemovePermissionSyncType? = nil,
-            sendMessageAsync: SimpleQueueClientProtocol.SendMessageAsyncType? = nil,
-            sendMessageSync: SimpleQueueClientProtocol.SendMessageSyncType? = nil,
-            sendMessageBatchAsync: SimpleQueueClientProtocol.SendMessageBatchAsyncType? = nil,
-            sendMessageBatchSync: SimpleQueueClientProtocol.SendMessageBatchSyncType? = nil,
-            setQueueAttributesAsync: SimpleQueueClientProtocol.SetQueueAttributesAsyncType? = nil,
-            setQueueAttributesSync: SimpleQueueClientProtocol.SetQueueAttributesSyncType? = nil,
-            tagQueueAsync: SimpleQueueClientProtocol.TagQueueAsyncType? = nil,
-            tagQueueSync: SimpleQueueClientProtocol.TagQueueSyncType? = nil,
-            untagQueueAsync: SimpleQueueClientProtocol.UntagQueueAsyncType? = nil,
-            untagQueueSync: SimpleQueueClientProtocol.UntagQueueSyncType? = nil) {
+            addPermissionAsync: AddPermissionAsyncType<ClientInvocationReportingType>? = nil,
+            addPermissionSync: AddPermissionSyncType<ClientInvocationReportingType>? = nil,
+            changeMessageVisibilityAsync: ChangeMessageVisibilityAsyncType<ClientInvocationReportingType>? = nil,
+            changeMessageVisibilitySync: ChangeMessageVisibilitySyncType<ClientInvocationReportingType>? = nil,
+            changeMessageVisibilityBatchAsync: ChangeMessageVisibilityBatchAsyncType<ClientInvocationReportingType>? = nil,
+            changeMessageVisibilityBatchSync: ChangeMessageVisibilityBatchSyncType<ClientInvocationReportingType>? = nil,
+            createQueueAsync: CreateQueueAsyncType<ClientInvocationReportingType>? = nil,
+            createQueueSync: CreateQueueSyncType<ClientInvocationReportingType>? = nil,
+            deleteMessageAsync: DeleteMessageAsyncType<ClientInvocationReportingType>? = nil,
+            deleteMessageSync: DeleteMessageSyncType<ClientInvocationReportingType>? = nil,
+            deleteMessageBatchAsync: DeleteMessageBatchAsyncType<ClientInvocationReportingType>? = nil,
+            deleteMessageBatchSync: DeleteMessageBatchSyncType<ClientInvocationReportingType>? = nil,
+            deleteQueueAsync: DeleteQueueAsyncType<ClientInvocationReportingType>? = nil,
+            deleteQueueSync: DeleteQueueSyncType<ClientInvocationReportingType>? = nil,
+            getQueueAttributesAsync: GetQueueAttributesAsyncType<ClientInvocationReportingType>? = nil,
+            getQueueAttributesSync: GetQueueAttributesSyncType<ClientInvocationReportingType>? = nil,
+            getQueueUrlAsync: GetQueueUrlAsyncType<ClientInvocationReportingType>? = nil,
+            getQueueUrlSync: GetQueueUrlSyncType<ClientInvocationReportingType>? = nil,
+            listDeadLetterSourceQueuesAsync: ListDeadLetterSourceQueuesAsyncType<ClientInvocationReportingType>? = nil,
+            listDeadLetterSourceQueuesSync: ListDeadLetterSourceQueuesSyncType<ClientInvocationReportingType>? = nil,
+            listQueueTagsAsync: ListQueueTagsAsyncType<ClientInvocationReportingType>? = nil,
+            listQueueTagsSync: ListQueueTagsSyncType<ClientInvocationReportingType>? = nil,
+            listQueuesAsync: ListQueuesAsyncType<ClientInvocationReportingType>? = nil,
+            listQueuesSync: ListQueuesSyncType<ClientInvocationReportingType>? = nil,
+            purgeQueueAsync: PurgeQueueAsyncType<ClientInvocationReportingType>? = nil,
+            purgeQueueSync: PurgeQueueSyncType<ClientInvocationReportingType>? = nil,
+            receiveMessageAsync: ReceiveMessageAsyncType<ClientInvocationReportingType>? = nil,
+            receiveMessageSync: ReceiveMessageSyncType<ClientInvocationReportingType>? = nil,
+            removePermissionAsync: RemovePermissionAsyncType<ClientInvocationReportingType>? = nil,
+            removePermissionSync: RemovePermissionSyncType<ClientInvocationReportingType>? = nil,
+            sendMessageAsync: SendMessageAsyncType<ClientInvocationReportingType>? = nil,
+            sendMessageSync: SendMessageSyncType<ClientInvocationReportingType>? = nil,
+            sendMessageBatchAsync: SendMessageBatchAsyncType<ClientInvocationReportingType>? = nil,
+            sendMessageBatchSync: SendMessageBatchSyncType<ClientInvocationReportingType>? = nil,
+            setQueueAttributesAsync: SetQueueAttributesAsyncType<ClientInvocationReportingType>? = nil,
+            setQueueAttributesSync: SetQueueAttributesSyncType<ClientInvocationReportingType>? = nil,
+            tagQueueAsync: TagQueueAsyncType<ClientInvocationReportingType>? = nil,
+            tagQueueSync: TagQueueSyncType<ClientInvocationReportingType>? = nil,
+            untagQueueAsync: UntagQueueAsyncType<ClientInvocationReportingType>? = nil,
+            untagQueueSync: UntagQueueSyncType<ClientInvocationReportingType>? = nil) {
         self.addPermissionAsyncOverride = addPermissionAsync
         self.addPermissionSyncOverride = addPermissionSync
         self.changeMessageVisibilityAsyncOverride = changeMessageVisibilityAsync
@@ -165,12 +165,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: overLimit.
      */
-    public func addPermissionAsync(
+    public func addPermissionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.AddPermissionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let addPermissionAsyncOverride = addPermissionAsyncOverride {
-            return try addPermissionAsyncOverride(input, reporting, completion)
+        if let addPermissionAsyncOverrideNonOptional = addPermissionAsyncOverride {
+            if let addPermissionAsyncOverrideTyped = addPermissionAsyncOverrideNonOptional
+                    as? AddPermissionAsyncType<InvocationReportingType> {
+                return try addPermissionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -183,11 +188,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated AddPermissionRequest object being passed to this operation.
      - Throws: overLimit.
      */
-    public func addPermissionSync(
+    public func addPermissionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.AddPermissionRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let addPermissionSyncOverride = addPermissionSyncOverride {
-            return try addPermissionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let addPermissionSyncOverrideNonOptional = addPermissionSyncOverride {
+            if let addPermissionSyncOverrideTyped = addPermissionSyncOverrideNonOptional
+                    as? AddPermissionSyncType<InvocationReportingType> {
+                return try addPermissionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -201,12 +211,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: messageNotInflight, receiptHandleIsInvalid.
      */
-    public func changeMessageVisibilityAsync(
+    public func changeMessageVisibilityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.ChangeMessageVisibilityRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let changeMessageVisibilityAsyncOverride = changeMessageVisibilityAsyncOverride {
-            return try changeMessageVisibilityAsyncOverride(input, reporting, completion)
+        if let changeMessageVisibilityAsyncOverrideNonOptional = changeMessageVisibilityAsyncOverride {
+            if let changeMessageVisibilityAsyncOverrideTyped = changeMessageVisibilityAsyncOverrideNonOptional
+                    as? ChangeMessageVisibilityAsyncType<InvocationReportingType> {
+                return try changeMessageVisibilityAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -219,11 +234,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated ChangeMessageVisibilityRequest object being passed to this operation.
      - Throws: messageNotInflight, receiptHandleIsInvalid.
      */
-    public func changeMessageVisibilitySync(
+    public func changeMessageVisibilitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.ChangeMessageVisibilityRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let changeMessageVisibilitySyncOverride = changeMessageVisibilitySyncOverride {
-            return try changeMessageVisibilitySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let changeMessageVisibilitySyncOverrideNonOptional = changeMessageVisibilitySyncOverride {
+            if let changeMessageVisibilitySyncOverrideTyped = changeMessageVisibilitySyncOverrideNonOptional
+                    as? ChangeMessageVisibilitySyncType<InvocationReportingType> {
+                return try changeMessageVisibilitySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -238,12 +258,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
-    public func changeMessageVisibilityBatchAsync(
+    public func changeMessageVisibilityBatchAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, HTTPClientError>) -> ()) throws {
-        if let changeMessageVisibilityBatchAsyncOverride = changeMessageVisibilityBatchAsyncOverride {
-            return try changeMessageVisibilityBatchAsyncOverride(input, reporting, completion)
+        if let changeMessageVisibilityBatchAsyncOverrideNonOptional = changeMessageVisibilityBatchAsyncOverride {
+            if let changeMessageVisibilityBatchAsyncOverrideTyped = changeMessageVisibilityBatchAsyncOverrideNonOptional
+                    as? ChangeMessageVisibilityBatchAsyncType<InvocationReportingType> {
+                return try changeMessageVisibilityBatchAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch.__default
@@ -260,11 +285,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
-    public func changeMessageVisibilityBatchSync(
+    public func changeMessageVisibilityBatchSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch {
-        if let changeMessageVisibilityBatchSyncOverride = changeMessageVisibilityBatchSyncOverride {
-            return try changeMessageVisibilityBatchSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch {
+        if let changeMessageVisibilityBatchSyncOverrideNonOptional = changeMessageVisibilityBatchSyncOverride {
+            if let changeMessageVisibilityBatchSyncOverrideTyped = changeMessageVisibilityBatchSyncOverrideNonOptional
+                    as? ChangeMessageVisibilityBatchSyncType<InvocationReportingType> {
+                return try changeMessageVisibilityBatchSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch.__default
@@ -280,12 +310,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: queueDeletedRecently, queueNameExists.
      */
-    public func createQueueAsync(
+    public func createQueueAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.CreateQueueRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, HTTPClientError>) -> ()) throws {
-        if let createQueueAsyncOverride = createQueueAsyncOverride {
-            return try createQueueAsyncOverride(input, reporting, completion)
+        if let createQueueAsyncOverrideNonOptional = createQueueAsyncOverride {
+            if let createQueueAsyncOverrideTyped = createQueueAsyncOverrideNonOptional
+                    as? CreateQueueAsyncType<InvocationReportingType> {
+                return try createQueueAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateQueueResultForCreateQueue.__default
@@ -302,11 +337,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: queueDeletedRecently, queueNameExists.
      */
-    public func createQueueSync(
+    public func createQueueSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.CreateQueueRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.CreateQueueResultForCreateQueue {
-        if let createQueueSyncOverride = createQueueSyncOverride {
-            return try createQueueSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleQueueModel.CreateQueueResultForCreateQueue {
+        if let createQueueSyncOverrideNonOptional = createQueueSyncOverride {
+            if let createQueueSyncOverrideTyped = createQueueSyncOverrideNonOptional
+                    as? CreateQueueSyncType<InvocationReportingType> {
+                return try createQueueSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateQueueResultForCreateQueue.__default
@@ -321,12 +361,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: invalidIdFormat, receiptHandleIsInvalid.
      */
-    public func deleteMessageAsync(
+    public func deleteMessageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.DeleteMessageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteMessageAsyncOverride = deleteMessageAsyncOverride {
-            return try deleteMessageAsyncOverride(input, reporting, completion)
+        if let deleteMessageAsyncOverrideNonOptional = deleteMessageAsyncOverride {
+            if let deleteMessageAsyncOverrideTyped = deleteMessageAsyncOverrideNonOptional
+                    as? DeleteMessageAsyncType<InvocationReportingType> {
+                return try deleteMessageAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -339,11 +384,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated DeleteMessageRequest object being passed to this operation.
      - Throws: invalidIdFormat, receiptHandleIsInvalid.
      */
-    public func deleteMessageSync(
+    public func deleteMessageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.DeleteMessageRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteMessageSyncOverride = deleteMessageSyncOverride {
-            return try deleteMessageSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteMessageSyncOverrideNonOptional = deleteMessageSyncOverride {
+            if let deleteMessageSyncOverrideTyped = deleteMessageSyncOverrideNonOptional
+                    as? DeleteMessageSyncType<InvocationReportingType> {
+                return try deleteMessageSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -358,12 +408,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
-    public func deleteMessageBatchAsync(
+    public func deleteMessageBatchAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.DeleteMessageBatchRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, HTTPClientError>) -> ()) throws {
-        if let deleteMessageBatchAsyncOverride = deleteMessageBatchAsyncOverride {
-            return try deleteMessageBatchAsyncOverride(input, reporting, completion)
+        if let deleteMessageBatchAsyncOverrideNonOptional = deleteMessageBatchAsyncOverride {
+            if let deleteMessageBatchAsyncOverrideTyped = deleteMessageBatchAsyncOverrideNonOptional
+                    as? DeleteMessageBatchAsyncType<InvocationReportingType> {
+                return try deleteMessageBatchAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteMessageBatchResultForDeleteMessageBatch.__default
@@ -380,11 +435,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
-    public func deleteMessageBatchSync(
+    public func deleteMessageBatchSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.DeleteMessageBatchRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch {
-        if let deleteMessageBatchSyncOverride = deleteMessageBatchSyncOverride {
-            return try deleteMessageBatchSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch {
+        if let deleteMessageBatchSyncOverrideNonOptional = deleteMessageBatchSyncOverride {
+            if let deleteMessageBatchSyncOverrideTyped = deleteMessageBatchSyncOverrideNonOptional
+                    as? DeleteMessageBatchSyncType<InvocationReportingType> {
+                return try deleteMessageBatchSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteMessageBatchResultForDeleteMessageBatch.__default
@@ -398,12 +458,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteQueueAsync(
+    public func deleteQueueAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.DeleteQueueRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteQueueAsyncOverride = deleteQueueAsyncOverride {
-            return try deleteQueueAsyncOverride(input, reporting, completion)
+        if let deleteQueueAsyncOverrideNonOptional = deleteQueueAsyncOverride {
+            if let deleteQueueAsyncOverrideTyped = deleteQueueAsyncOverrideNonOptional
+                    as? DeleteQueueAsyncType<InvocationReportingType> {
+                return try deleteQueueAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -415,11 +480,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
      - Parameters:
          - input: The validated DeleteQueueRequest object being passed to this operation.
      */
-    public func deleteQueueSync(
+    public func deleteQueueSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.DeleteQueueRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteQueueSyncOverride = deleteQueueSyncOverride {
-            return try deleteQueueSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteQueueSyncOverrideNonOptional = deleteQueueSyncOverride {
+            if let deleteQueueSyncOverrideTyped = deleteQueueSyncOverrideNonOptional
+                    as? DeleteQueueSyncType<InvocationReportingType> {
+                return try deleteQueueSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -434,12 +504,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidAttributeName.
      */
-    public func getQueueAttributesAsync(
+    public func getQueueAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.GetQueueAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, HTTPClientError>) -> ()) throws {
-        if let getQueueAttributesAsyncOverride = getQueueAttributesAsyncOverride {
-            return try getQueueAttributesAsyncOverride(input, reporting, completion)
+        if let getQueueAttributesAsyncOverrideNonOptional = getQueueAttributesAsyncOverride {
+            if let getQueueAttributesAsyncOverrideTyped = getQueueAttributesAsyncOverrideNonOptional
+                    as? GetQueueAttributesAsyncType<InvocationReportingType> {
+                return try getQueueAttributesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = GetQueueAttributesResultForGetQueueAttributes.__default
@@ -456,11 +531,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidAttributeName.
      */
-    public func getQueueAttributesSync(
+    public func getQueueAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.GetQueueAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes {
-        if let getQueueAttributesSyncOverride = getQueueAttributesSyncOverride {
-            return try getQueueAttributesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes {
+        if let getQueueAttributesSyncOverrideNonOptional = getQueueAttributesSyncOverride {
+            if let getQueueAttributesSyncOverrideTyped = getQueueAttributesSyncOverrideNonOptional
+                    as? GetQueueAttributesSyncType<InvocationReportingType> {
+                return try getQueueAttributesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return GetQueueAttributesResultForGetQueueAttributes.__default
@@ -476,12 +556,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: queueDoesNotExist.
      */
-    public func getQueueUrlAsync(
+    public func getQueueUrlAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.GetQueueUrlRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, HTTPClientError>) -> ()) throws {
-        if let getQueueUrlAsyncOverride = getQueueUrlAsyncOverride {
-            return try getQueueUrlAsyncOverride(input, reporting, completion)
+        if let getQueueUrlAsyncOverrideNonOptional = getQueueUrlAsyncOverride {
+            if let getQueueUrlAsyncOverrideTyped = getQueueUrlAsyncOverrideNonOptional
+                    as? GetQueueUrlAsyncType<InvocationReportingType> {
+                return try getQueueUrlAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = GetQueueUrlResultForGetQueueUrl.__default
@@ -498,11 +583,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: queueDoesNotExist.
      */
-    public func getQueueUrlSync(
+    public func getQueueUrlSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.GetQueueUrlRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl {
-        if let getQueueUrlSyncOverride = getQueueUrlSyncOverride {
-            return try getQueueUrlSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl {
+        if let getQueueUrlSyncOverrideNonOptional = getQueueUrlSyncOverride {
+            if let getQueueUrlSyncOverrideTyped = getQueueUrlSyncOverrideNonOptional
+                    as? GetQueueUrlSyncType<InvocationReportingType> {
+                return try getQueueUrlSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return GetQueueUrlResultForGetQueueUrl.__default
@@ -518,12 +608,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: queueDoesNotExist.
      */
-    public func listDeadLetterSourceQueuesAsync(
+    public func listDeadLetterSourceQueuesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, HTTPClientError>) -> ()) throws {
-        if let listDeadLetterSourceQueuesAsyncOverride = listDeadLetterSourceQueuesAsyncOverride {
-            return try listDeadLetterSourceQueuesAsyncOverride(input, reporting, completion)
+        if let listDeadLetterSourceQueuesAsyncOverrideNonOptional = listDeadLetterSourceQueuesAsyncOverride {
+            if let listDeadLetterSourceQueuesAsyncOverrideTyped = listDeadLetterSourceQueuesAsyncOverrideNonOptional
+                    as? ListDeadLetterSourceQueuesAsyncType<InvocationReportingType> {
+                return try listDeadLetterSourceQueuesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues.__default
@@ -540,11 +635,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: queueDoesNotExist.
      */
-    public func listDeadLetterSourceQueuesSync(
+    public func listDeadLetterSourceQueuesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues {
-        if let listDeadLetterSourceQueuesSyncOverride = listDeadLetterSourceQueuesSyncOverride {
-            return try listDeadLetterSourceQueuesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues {
+        if let listDeadLetterSourceQueuesSyncOverrideNonOptional = listDeadLetterSourceQueuesSyncOverride {
+            if let listDeadLetterSourceQueuesSyncOverrideTyped = listDeadLetterSourceQueuesSyncOverrideNonOptional
+                    as? ListDeadLetterSourceQueuesSyncType<InvocationReportingType> {
+                return try listDeadLetterSourceQueuesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues.__default
@@ -559,12 +659,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            callback when the operation is complete. The ListQueueTagsResultForListQueueTags
            object will be validated before being returned to caller.
      */
-    public func listQueueTagsAsync(
+    public func listQueueTagsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.ListQueueTagsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, HTTPClientError>) -> ()) throws {
-        if let listQueueTagsAsyncOverride = listQueueTagsAsyncOverride {
-            return try listQueueTagsAsyncOverride(input, reporting, completion)
+        if let listQueueTagsAsyncOverrideNonOptional = listQueueTagsAsyncOverride {
+            if let listQueueTagsAsyncOverrideTyped = listQueueTagsAsyncOverrideNonOptional
+                    as? ListQueueTagsAsyncType<InvocationReportingType> {
+                return try listQueueTagsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListQueueTagsResultForListQueueTags.__default
@@ -580,11 +685,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
      - Returns: The ListQueueTagsResultForListQueueTags object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listQueueTagsSync(
+    public func listQueueTagsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.ListQueueTagsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags {
-        if let listQueueTagsSyncOverride = listQueueTagsSyncOverride {
-            return try listQueueTagsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags {
+        if let listQueueTagsSyncOverrideNonOptional = listQueueTagsSyncOverride {
+            if let listQueueTagsSyncOverrideTyped = listQueueTagsSyncOverrideNonOptional
+                    as? ListQueueTagsSyncType<InvocationReportingType> {
+                return try listQueueTagsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListQueueTagsResultForListQueueTags.__default
@@ -599,12 +709,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            callback when the operation is complete. The ListQueuesResultForListQueues
            object will be validated before being returned to caller.
      */
-    public func listQueuesAsync(
+    public func listQueuesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.ListQueuesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, HTTPClientError>) -> ()) throws {
-        if let listQueuesAsyncOverride = listQueuesAsyncOverride {
-            return try listQueuesAsyncOverride(input, reporting, completion)
+        if let listQueuesAsyncOverrideNonOptional = listQueuesAsyncOverride {
+            if let listQueuesAsyncOverrideTyped = listQueuesAsyncOverrideNonOptional
+                    as? ListQueuesAsyncType<InvocationReportingType> {
+                return try listQueuesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListQueuesResultForListQueues.__default
@@ -620,11 +735,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
      - Returns: The ListQueuesResultForListQueues object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listQueuesSync(
+    public func listQueuesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.ListQueuesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ListQueuesResultForListQueues {
-        if let listQueuesSyncOverride = listQueuesSyncOverride {
-            return try listQueuesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleQueueModel.ListQueuesResultForListQueues {
+        if let listQueuesSyncOverrideNonOptional = listQueuesSyncOverride {
+            if let listQueuesSyncOverrideTyped = listQueuesSyncOverrideNonOptional
+                    as? ListQueuesSyncType<InvocationReportingType> {
+                return try listQueuesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListQueuesResultForListQueues.__default
@@ -639,12 +759,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: purgeQueueInProgress, queueDoesNotExist.
      */
-    public func purgeQueueAsync(
+    public func purgeQueueAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.PurgeQueueRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let purgeQueueAsyncOverride = purgeQueueAsyncOverride {
-            return try purgeQueueAsyncOverride(input, reporting, completion)
+        if let purgeQueueAsyncOverrideNonOptional = purgeQueueAsyncOverride {
+            if let purgeQueueAsyncOverrideTyped = purgeQueueAsyncOverrideNonOptional
+                    as? PurgeQueueAsyncType<InvocationReportingType> {
+                return try purgeQueueAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -657,11 +782,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated PurgeQueueRequest object being passed to this operation.
      - Throws: purgeQueueInProgress, queueDoesNotExist.
      */
-    public func purgeQueueSync(
+    public func purgeQueueSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.PurgeQueueRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let purgeQueueSyncOverride = purgeQueueSyncOverride {
-            return try purgeQueueSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let purgeQueueSyncOverrideNonOptional = purgeQueueSyncOverride {
+            if let purgeQueueSyncOverrideTyped = purgeQueueSyncOverrideNonOptional
+                    as? PurgeQueueSyncType<InvocationReportingType> {
+                return try purgeQueueSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -676,12 +806,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: overLimit.
      */
-    public func receiveMessageAsync(
+    public func receiveMessageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.ReceiveMessageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, HTTPClientError>) -> ()) throws {
-        if let receiveMessageAsyncOverride = receiveMessageAsyncOverride {
-            return try receiveMessageAsyncOverride(input, reporting, completion)
+        if let receiveMessageAsyncOverrideNonOptional = receiveMessageAsyncOverride {
+            if let receiveMessageAsyncOverrideTyped = receiveMessageAsyncOverrideNonOptional
+                    as? ReceiveMessageAsyncType<InvocationReportingType> {
+                return try receiveMessageAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ReceiveMessageResultForReceiveMessage.__default
@@ -698,11 +833,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: overLimit.
      */
-    public func receiveMessageSync(
+    public func receiveMessageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.ReceiveMessageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage {
-        if let receiveMessageSyncOverride = receiveMessageSyncOverride {
-            return try receiveMessageSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage {
+        if let receiveMessageSyncOverrideNonOptional = receiveMessageSyncOverride {
+            if let receiveMessageSyncOverrideTyped = receiveMessageSyncOverrideNonOptional
+                    as? ReceiveMessageSyncType<InvocationReportingType> {
+                return try receiveMessageSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ReceiveMessageResultForReceiveMessage.__default
@@ -716,12 +856,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func removePermissionAsync(
+    public func removePermissionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.RemovePermissionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let removePermissionAsyncOverride = removePermissionAsyncOverride {
-            return try removePermissionAsyncOverride(input, reporting, completion)
+        if let removePermissionAsyncOverrideNonOptional = removePermissionAsyncOverride {
+            if let removePermissionAsyncOverrideTyped = removePermissionAsyncOverrideNonOptional
+                    as? RemovePermissionAsyncType<InvocationReportingType> {
+                return try removePermissionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -733,11 +878,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
      - Parameters:
          - input: The validated RemovePermissionRequest object being passed to this operation.
      */
-    public func removePermissionSync(
+    public func removePermissionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.RemovePermissionRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let removePermissionSyncOverride = removePermissionSyncOverride {
-            return try removePermissionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let removePermissionSyncOverrideNonOptional = removePermissionSyncOverride {
+            if let removePermissionSyncOverrideTyped = removePermissionSyncOverrideNonOptional
+                    as? RemovePermissionSyncType<InvocationReportingType> {
+                return try removePermissionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -752,12 +902,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidMessageContents, unsupportedOperation.
      */
-    public func sendMessageAsync(
+    public func sendMessageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.SendMessageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, HTTPClientError>) -> ()) throws {
-        if let sendMessageAsyncOverride = sendMessageAsyncOverride {
-            return try sendMessageAsyncOverride(input, reporting, completion)
+        if let sendMessageAsyncOverrideNonOptional = sendMessageAsyncOverride {
+            if let sendMessageAsyncOverrideTyped = sendMessageAsyncOverrideNonOptional
+                    as? SendMessageAsyncType<InvocationReportingType> {
+                return try sendMessageAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = SendMessageResultForSendMessage.__default
@@ -774,11 +929,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidMessageContents, unsupportedOperation.
      */
-    public func sendMessageSync(
+    public func sendMessageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.SendMessageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.SendMessageResultForSendMessage {
-        if let sendMessageSyncOverride = sendMessageSyncOverride {
-            return try sendMessageSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleQueueModel.SendMessageResultForSendMessage {
+        if let sendMessageSyncOverrideNonOptional = sendMessageSyncOverride {
+            if let sendMessageSyncOverrideTyped = sendMessageSyncOverrideNonOptional
+                    as? SendMessageSyncType<InvocationReportingType> {
+                return try sendMessageSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return SendMessageResultForSendMessage.__default
@@ -794,12 +954,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest, unsupportedOperation.
      */
-    public func sendMessageBatchAsync(
+    public func sendMessageBatchAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.SendMessageBatchRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, HTTPClientError>) -> ()) throws {
-        if let sendMessageBatchAsyncOverride = sendMessageBatchAsyncOverride {
-            return try sendMessageBatchAsyncOverride(input, reporting, completion)
+        if let sendMessageBatchAsyncOverrideNonOptional = sendMessageBatchAsyncOverride {
+            if let sendMessageBatchAsyncOverrideTyped = sendMessageBatchAsyncOverrideNonOptional
+                    as? SendMessageBatchAsyncType<InvocationReportingType> {
+                return try sendMessageBatchAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = SendMessageBatchResultForSendMessageBatch.__default
@@ -816,11 +981,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest, unsupportedOperation.
      */
-    public func sendMessageBatchSync(
+    public func sendMessageBatchSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.SendMessageBatchRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch {
-        if let sendMessageBatchSyncOverride = sendMessageBatchSyncOverride {
-            return try sendMessageBatchSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch {
+        if let sendMessageBatchSyncOverrideNonOptional = sendMessageBatchSyncOverride {
+            if let sendMessageBatchSyncOverrideTyped = sendMessageBatchSyncOverrideNonOptional
+                    as? SendMessageBatchSyncType<InvocationReportingType> {
+                return try sendMessageBatchSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return SendMessageBatchResultForSendMessageBatch.__default
@@ -835,12 +1005,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
            is complete.
            The possible errors are: invalidAttributeName.
      */
-    public func setQueueAttributesAsync(
+    public func setQueueAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.SetQueueAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let setQueueAttributesAsyncOverride = setQueueAttributesAsyncOverride {
-            return try setQueueAttributesAsyncOverride(input, reporting, completion)
+        if let setQueueAttributesAsyncOverrideNonOptional = setQueueAttributesAsyncOverride {
+            if let setQueueAttributesAsyncOverrideTyped = setQueueAttributesAsyncOverrideNonOptional
+                    as? SetQueueAttributesAsyncType<InvocationReportingType> {
+                return try setQueueAttributesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -853,11 +1028,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated SetQueueAttributesRequest object being passed to this operation.
      - Throws: invalidAttributeName.
      */
-    public func setQueueAttributesSync(
+    public func setQueueAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.SetQueueAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let setQueueAttributesSyncOverride = setQueueAttributesSyncOverride {
-            return try setQueueAttributesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let setQueueAttributesSyncOverrideNonOptional = setQueueAttributesSyncOverride {
+            if let setQueueAttributesSyncOverrideTyped = setQueueAttributesSyncOverrideNonOptional
+                    as? SetQueueAttributesSyncType<InvocationReportingType> {
+                return try setQueueAttributesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -870,12 +1050,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func tagQueueAsync(
+    public func tagQueueAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.TagQueueRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let tagQueueAsyncOverride = tagQueueAsyncOverride {
-            return try tagQueueAsyncOverride(input, reporting, completion)
+        if let tagQueueAsyncOverrideNonOptional = tagQueueAsyncOverride {
+            if let tagQueueAsyncOverrideTyped = tagQueueAsyncOverrideNonOptional
+                    as? TagQueueAsyncType<InvocationReportingType> {
+                return try tagQueueAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -887,11 +1072,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
      - Parameters:
          - input: The validated TagQueueRequest object being passed to this operation.
      */
-    public func tagQueueSync(
+    public func tagQueueSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.TagQueueRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let tagQueueSyncOverride = tagQueueSyncOverride {
-            return try tagQueueSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let tagQueueSyncOverrideNonOptional = tagQueueSyncOverride {
+            if let tagQueueSyncOverrideTyped = tagQueueSyncOverrideNonOptional
+                    as? TagQueueSyncType<InvocationReportingType> {
+                return try tagQueueSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -904,12 +1094,17 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func untagQueueAsync(
+    public func untagQueueAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.UntagQueueRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let untagQueueAsyncOverride = untagQueueAsyncOverride {
-            return try untagQueueAsyncOverride(input, reporting, completion)
+        if let untagQueueAsyncOverrideNonOptional = untagQueueAsyncOverride {
+            if let untagQueueAsyncOverrideTyped = untagQueueAsyncOverrideNonOptional
+                    as? UntagQueueAsyncType<InvocationReportingType> {
+                return try untagQueueAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -921,11 +1116,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
      - Parameters:
          - input: The validated UntagQueueRequest object being passed to this operation.
      */
-    public func untagQueueSync(
+    public func untagQueueSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleQueueModel.UntagQueueRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let untagQueueSyncOverride = untagQueueSyncOverride {
-            return try untagQueueSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let untagQueueSyncOverrideNonOptional = untagQueueSyncOverride {
+            if let untagQueueSyncOverrideTyped = untagQueueSyncOverrideNonOptional
+                    as? UntagQueueSyncType<InvocationReportingType> {
+                return try untagQueueSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }

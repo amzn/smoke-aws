@@ -21,11 +21,11 @@ import SmokeAWSCore
 import Logging
 import Metrics
 
-public struct SmokeAWSHTTPClientInvocationReporting: HTTPClientInvocationReporting {
-    private let smokeAWSInvocationReporting: SmokeAWSInvocationReporting
+public struct SmokeAWSHTTPClientInvocationReporting<InvocationReportingType: SmokeAWSInvocationReporting>: HTTPClientInvocationReporting {
+    private let smokeAWSInvocationReporting: InvocationReportingType
     private let smokeAWSOperationReporting: SmokeAWSOperationReporting
     
-    public init(smokeAWSInvocationReporting: SmokeAWSInvocationReporting,
+    public init(smokeAWSInvocationReporting: InvocationReportingType,
                 smokeAWSOperationReporting: SmokeAWSOperationReporting) {
         self.smokeAWSInvocationReporting = smokeAWSInvocationReporting
         self.smokeAWSOperationReporting = smokeAWSOperationReporting

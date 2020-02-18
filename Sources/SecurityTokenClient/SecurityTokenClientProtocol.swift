@@ -28,61 +28,61 @@ import SmokeHTTPClient
  Client Protocol for the SecurityToken service.
  */
 public protocol SecurityTokenClientProtocol {
-    typealias AssumeRoleSyncType = (
+    typealias AssumeRoleSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.AssumeRoleRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.AssumeRoleResponseForAssumeRole
-    typealias AssumeRoleAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SecurityTokenModel.AssumeRoleResponseForAssumeRole
+    typealias AssumeRoleAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.AssumeRoleRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, HTTPClientError>) -> ()) throws -> ()
-    typealias AssumeRoleWithSAMLSyncType = (
+    typealias AssumeRoleWithSAMLSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.AssumeRoleWithSAMLRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML
-    typealias AssumeRoleWithSAMLAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML
+    typealias AssumeRoleWithSAMLAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.AssumeRoleWithSAMLRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, HTTPClientError>) -> ()) throws -> ()
-    typealias AssumeRoleWithWebIdentitySyncType = (
+    typealias AssumeRoleWithWebIdentitySyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity
-    typealias AssumeRoleWithWebIdentityAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity
+    typealias AssumeRoleWithWebIdentityAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, HTTPClientError>) -> ()) throws -> ()
-    typealias DecodeAuthorizationMessageSyncType = (
+    typealias DecodeAuthorizationMessageSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.DecodeAuthorizationMessageRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage
-    typealias DecodeAuthorizationMessageAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage
+    typealias DecodeAuthorizationMessageAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.DecodeAuthorizationMessageRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, HTTPClientError>) -> ()) throws -> ()
-    typealias GetAccessKeyInfoSyncType = (
+    typealias GetAccessKeyInfoSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.GetAccessKeyInfoRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo
-    typealias GetAccessKeyInfoAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo
+    typealias GetAccessKeyInfoAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.GetAccessKeyInfoRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, HTTPClientError>) -> ()) throws -> ()
-    typealias GetCallerIdentitySyncType = (
+    typealias GetCallerIdentitySyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.GetCallerIdentityRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity
-    typealias GetCallerIdentityAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity
+    typealias GetCallerIdentityAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.GetCallerIdentityRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, HTTPClientError>) -> ()) throws -> ()
-    typealias GetFederationTokenSyncType = (
+    typealias GetFederationTokenSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.GetFederationTokenRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetFederationTokenResponseForGetFederationToken
-    typealias GetFederationTokenAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SecurityTokenModel.GetFederationTokenResponseForGetFederationToken
+    typealias GetFederationTokenAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.GetFederationTokenRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, HTTPClientError>) -> ()) throws -> ()
-    typealias GetSessionTokenSyncType = (
+    typealias GetSessionTokenSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.GetSessionTokenRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetSessionTokenResponseForGetSessionToken
-    typealias GetSessionTokenAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SecurityTokenModel.GetSessionTokenResponseForGetSessionToken
+    typealias GetSessionTokenAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SecurityTokenModel.GetSessionTokenRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, HTTPClientError>) -> ()) throws -> ()
 
     /**
@@ -95,9 +95,9 @@ public protocol SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    func assumeRoleAsync(
+    func assumeRoleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.AssumeRoleRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, HTTPClientError>) -> ()) throws
 
     /**
@@ -109,9 +109,9 @@ public protocol SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    func assumeRoleSync(
+    func assumeRoleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.AssumeRoleRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.AssumeRoleResponseForAssumeRole
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.AssumeRoleResponseForAssumeRole
 
     /**
      Invokes the AssumeRoleWithSAML operation returning immediately and passing the response to a callback.
@@ -123,9 +123,9 @@ public protocol SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: expiredToken, iDPRejectedClaim, invalidIdentityToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    func assumeRoleWithSAMLAsync(
+    func assumeRoleWithSAMLAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.AssumeRoleWithSAMLRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, HTTPClientError>) -> ()) throws
 
     /**
@@ -137,9 +137,9 @@ public protocol SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: expiredToken, iDPRejectedClaim, invalidIdentityToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    func assumeRoleWithSAMLSync(
+    func assumeRoleWithSAMLSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.AssumeRoleWithSAMLRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML
 
     /**
      Invokes the AssumeRoleWithWebIdentity operation returning immediately and passing the response to a callback.
@@ -151,9 +151,9 @@ public protocol SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: expiredToken, iDPCommunicationError, iDPRejectedClaim, invalidIdentityToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    func assumeRoleWithWebIdentityAsync(
+    func assumeRoleWithWebIdentityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, HTTPClientError>) -> ()) throws
 
     /**
@@ -165,9 +165,9 @@ public protocol SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: expiredToken, iDPCommunicationError, iDPRejectedClaim, invalidIdentityToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    func assumeRoleWithWebIdentitySync(
+    func assumeRoleWithWebIdentitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity
 
     /**
      Invokes the DecodeAuthorizationMessage operation returning immediately and passing the response to a callback.
@@ -179,9 +179,9 @@ public protocol SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidAuthorizationMessage.
      */
-    func decodeAuthorizationMessageAsync(
+    func decodeAuthorizationMessageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.DecodeAuthorizationMessageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, HTTPClientError>) -> ()) throws
 
     /**
@@ -193,9 +193,9 @@ public protocol SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidAuthorizationMessage.
      */
-    func decodeAuthorizationMessageSync(
+    func decodeAuthorizationMessageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.DecodeAuthorizationMessageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage
 
     /**
      Invokes the GetAccessKeyInfo operation returning immediately and passing the response to a callback.
@@ -206,9 +206,9 @@ public protocol SecurityTokenClientProtocol {
            callback when the operation is complete. The GetAccessKeyInfoResponseForGetAccessKeyInfo
            object will be validated before being returned to caller.
      */
-    func getAccessKeyInfoAsync(
+    func getAccessKeyInfoAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetAccessKeyInfoRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, HTTPClientError>) -> ()) throws
 
     /**
@@ -219,9 +219,9 @@ public protocol SecurityTokenClientProtocol {
      - Returns: The GetAccessKeyInfoResponseForGetAccessKeyInfo object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getAccessKeyInfoSync(
+    func getAccessKeyInfoSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetAccessKeyInfoRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo
 
     /**
      Invokes the GetCallerIdentity operation returning immediately and passing the response to a callback.
@@ -232,9 +232,9 @@ public protocol SecurityTokenClientProtocol {
            callback when the operation is complete. The GetCallerIdentityResponseForGetCallerIdentity
            object will be validated before being returned to caller.
      */
-    func getCallerIdentityAsync(
+    func getCallerIdentityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetCallerIdentityRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, HTTPClientError>) -> ()) throws
 
     /**
@@ -245,9 +245,9 @@ public protocol SecurityTokenClientProtocol {
      - Returns: The GetCallerIdentityResponseForGetCallerIdentity object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getCallerIdentitySync(
+    func getCallerIdentitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetCallerIdentityRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity
 
     /**
      Invokes the GetFederationToken operation returning immediately and passing the response to a callback.
@@ -259,9 +259,9 @@ public protocol SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    func getFederationTokenAsync(
+    func getFederationTokenAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetFederationTokenRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, HTTPClientError>) -> ()) throws
 
     /**
@@ -273,9 +273,9 @@ public protocol SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
-    func getFederationTokenSync(
+    func getFederationTokenSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetFederationTokenRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetFederationTokenResponseForGetFederationToken
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.GetFederationTokenResponseForGetFederationToken
 
     /**
      Invokes the GetSessionToken operation returning immediately and passing the response to a callback.
@@ -287,9 +287,9 @@ public protocol SecurityTokenClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: regionDisabled.
      */
-    func getSessionTokenAsync(
+    func getSessionTokenAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetSessionTokenRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, HTTPClientError>) -> ()) throws
 
     /**
@@ -301,7 +301,7 @@ public protocol SecurityTokenClientProtocol {
          Will be validated before being returned to caller.
      - Throws: regionDisabled.
      */
-    func getSessionTokenSync(
+    func getSessionTokenSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SecurityTokenModel.GetSessionTokenRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SecurityTokenModel.GetSessionTokenResponseForGetSessionToken
+            reporting: InvocationReportingType) throws -> SecurityTokenModel.GetSessionTokenResponseForGetSessionToken
 }

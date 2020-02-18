@@ -187,9 +187,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: activityLimitExceeded, invalidName, tooManyTags.
      */
-    public func createActivityAsync(
+    public func createActivityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.CreateActivityInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -222,9 +222,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: activityLimitExceeded, invalidName, tooManyTags.
      */
-    public func createActivitySync(
+    public func createActivitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.CreateActivityInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.CreateActivityOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.CreateActivityOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -256,9 +256,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
      */
-    public func createStateMachineAsync(
+    public func createStateMachineAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.CreateStateMachineInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -291,9 +291,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
      */
-    public func createStateMachineSync(
+    public func createStateMachineSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.CreateStateMachineInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.CreateStateMachineOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.CreateStateMachineOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -325,9 +325,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn.
      */
-    public func deleteActivityAsync(
+    public func deleteActivityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.DeleteActivityInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -360,9 +360,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn.
      */
-    public func deleteActivitySync(
+    public func deleteActivitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.DeleteActivityInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DeleteActivityOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.DeleteActivityOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -394,9 +394,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn.
      */
-    public func deleteStateMachineAsync(
+    public func deleteStateMachineAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.DeleteStateMachineInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -429,9 +429,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn.
      */
-    public func deleteStateMachineSync(
+    public func deleteStateMachineSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.DeleteStateMachineInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DeleteStateMachineOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.DeleteStateMachineOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -463,9 +463,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: activityDoesNotExist, invalidArn.
      */
-    public func describeActivityAsync(
+    public func describeActivityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.DescribeActivityInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -498,9 +498,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: activityDoesNotExist, invalidArn.
      */
-    public func describeActivitySync(
+    public func describeActivitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.DescribeActivityInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeActivityOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.DescribeActivityOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -532,9 +532,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    public func describeExecutionAsync(
+    public func describeExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.DescribeExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -567,9 +567,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    public func describeExecutionSync(
+    public func describeExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.DescribeExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeExecutionOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.DescribeExecutionOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -601,9 +601,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, stateMachineDoesNotExist.
      */
-    public func describeStateMachineAsync(
+    public func describeStateMachineAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.DescribeStateMachineInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -636,9 +636,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, stateMachineDoesNotExist.
      */
-    public func describeStateMachineSync(
+    public func describeStateMachineSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.DescribeStateMachineInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeStateMachineOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.DescribeStateMachineOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -670,9 +670,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    public func describeStateMachineForExecutionAsync(
+    public func describeStateMachineForExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.DescribeStateMachineForExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -705,9 +705,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    public func describeStateMachineForExecutionSync(
+    public func describeStateMachineForExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.DescribeStateMachineForExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -739,9 +739,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: activityDoesNotExist, activityWorkerLimitExceeded, invalidArn.
      */
-    public func getActivityTaskAsync(
+    public func getActivityTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.GetActivityTaskInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -774,9 +774,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: activityDoesNotExist, activityWorkerLimitExceeded, invalidArn.
      */
-    public func getActivityTaskSync(
+    public func getActivityTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.GetActivityTaskInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.GetActivityTaskOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.GetActivityTaskOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -808,9 +808,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn, invalidToken.
      */
-    public func getExecutionHistoryAsync(
+    public func getExecutionHistoryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.GetExecutionHistoryInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -843,9 +843,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn, invalidToken.
      */
-    public func getExecutionHistorySync(
+    public func getExecutionHistorySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.GetExecutionHistoryInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.GetExecutionHistoryOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.GetExecutionHistoryOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -877,9 +877,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken.
      */
-    public func listActivitiesAsync(
+    public func listActivitiesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.ListActivitiesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -912,9 +912,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken.
      */
-    public func listActivitiesSync(
+    public func listActivitiesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.ListActivitiesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListActivitiesOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.ListActivitiesOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -946,9 +946,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
      */
-    public func listExecutionsAsync(
+    public func listExecutionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.ListExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -981,9 +981,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
      */
-    public func listExecutionsSync(
+    public func listExecutionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.ListExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListExecutionsOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.ListExecutionsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1015,9 +1015,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken.
      */
-    public func listStateMachinesAsync(
+    public func listStateMachinesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.ListStateMachinesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1050,9 +1050,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken.
      */
-    public func listStateMachinesSync(
+    public func listStateMachinesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.ListStateMachinesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListStateMachinesOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.ListStateMachinesOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1084,9 +1084,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound.
      */
-    public func listTagsForResourceAsync(
+    public func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.ListTagsForResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1119,9 +1119,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound.
      */
-    public func listTagsForResourceSync(
+    public func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.ListTagsForResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListTagsForResourceOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.ListTagsForResourceOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1153,9 +1153,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskFailureAsync(
+    public func sendTaskFailureAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.SendTaskFailureInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1188,9 +1188,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskFailureSync(
+    public func sendTaskFailureSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.SendTaskFailureInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskFailureOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.SendTaskFailureOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1222,9 +1222,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskHeartbeatAsync(
+    public func sendTaskHeartbeatAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.SendTaskHeartbeatInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1257,9 +1257,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskHeartbeatSync(
+    public func sendTaskHeartbeatSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.SendTaskHeartbeatInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1291,9 +1291,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidOutput, invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskSuccessAsync(
+    public func sendTaskSuccessAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.SendTaskSuccessInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1326,9 +1326,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidOutput, invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskSuccessSync(
+    public func sendTaskSuccessSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.SendTaskSuccessInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskSuccessOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.SendTaskSuccessOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1360,9 +1360,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func startExecutionAsync(
+    public func startExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.StartExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1395,9 +1395,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func startExecutionSync(
+    public func startExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.StartExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.StartExecutionOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.StartExecutionOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1429,9 +1429,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    public func stopExecutionAsync(
+    public func stopExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.StopExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1464,9 +1464,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    public func stopExecutionSync(
+    public func stopExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.StopExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.StopExecutionOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.StopExecutionOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1498,9 +1498,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound, tooManyTags.
      */
-    public func tagResourceAsync(
+    public func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.TagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1533,9 +1533,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound, tooManyTags.
      */
-    public func tagResourceSync(
+    public func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.TagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.TagResourceOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.TagResourceOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1567,9 +1567,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound.
      */
-    public func untagResourceAsync(
+    public func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.UntagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1602,9 +1602,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound.
      */
-    public func untagResourceSync(
+    public func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.UntagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.UntagResourceOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.UntagResourceOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1636,9 +1636,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func updateStateMachineAsync(
+    public func updateStateMachineAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.UpdateStateMachineInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1671,9 +1671,9 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func updateStateMachineSync(
+    public func updateStateMachineSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: StepFunctionsModel.UpdateStateMachineInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.UpdateStateMachineOutput {
+            reporting: InvocationReportingType) throws -> StepFunctionsModel.UpdateStateMachineOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,

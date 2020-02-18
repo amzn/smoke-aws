@@ -134,9 +134,9 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func batchExecuteStatementAsync(
+    public func batchExecuteStatementAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSDataModel.BatchExecuteStatementRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -169,9 +169,9 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func batchExecuteStatementSync(
+    public func batchExecuteStatementSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSDataModel.BatchExecuteStatementRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.BatchExecuteStatementResponse {
+            reporting: InvocationReportingType) throws -> RDSDataModel.BatchExecuteStatementResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -203,9 +203,9 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func beginTransactionAsync(
+    public func beginTransactionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSDataModel.BeginTransactionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -238,9 +238,9 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func beginTransactionSync(
+    public func beginTransactionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSDataModel.BeginTransactionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.BeginTransactionResponse {
+            reporting: InvocationReportingType) throws -> RDSDataModel.BeginTransactionResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -272,9 +272,9 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
-    public func commitTransactionAsync(
+    public func commitTransactionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSDataModel.CommitTransactionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -307,9 +307,9 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
-    public func commitTransactionSync(
+    public func commitTransactionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSDataModel.CommitTransactionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.CommitTransactionResponse {
+            reporting: InvocationReportingType) throws -> RDSDataModel.CommitTransactionResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -341,9 +341,9 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable.
      */
-    public func executeSqlAsync(
+    public func executeSqlAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSDataModel.ExecuteSqlRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -376,9 +376,9 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable.
      */
-    public func executeSqlSync(
+    public func executeSqlSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSDataModel.ExecuteSqlRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.ExecuteSqlResponse {
+            reporting: InvocationReportingType) throws -> RDSDataModel.ExecuteSqlResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -410,9 +410,9 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func executeStatementAsync(
+    public func executeStatementAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSDataModel.ExecuteStatementRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -445,9 +445,9 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func executeStatementSync(
+    public func executeStatementSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSDataModel.ExecuteStatementRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.ExecuteStatementResponse {
+            reporting: InvocationReportingType) throws -> RDSDataModel.ExecuteStatementResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -479,9 +479,9 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
-    public func rollbackTransactionAsync(
+    public func rollbackTransactionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSDataModel.RollbackTransactionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -514,9 +514,9 @@ public struct AWSRDSDataClient: RDSDataClientProtocol {
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
-    public func rollbackTransactionSync(
+    public func rollbackTransactionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSDataModel.RollbackTransactionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.RollbackTransactionResponse {
+            reporting: InvocationReportingType) throws -> RDSDataModel.RollbackTransactionResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,

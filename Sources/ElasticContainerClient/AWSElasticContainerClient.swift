@@ -265,9 +265,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, limitExceeded, server.
      */
-    public func createCapacityProviderAsync(
+    public func createCapacityProviderAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateCapacityProviderRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -300,9 +300,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, limitExceeded, server.
      */
-    public func createCapacityProviderSync(
+    public func createCapacityProviderSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateCapacityProviderRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateCapacityProviderResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateCapacityProviderResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -334,9 +334,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func createClusterAsync(
+    public func createClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateClusterRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.CreateClusterResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -369,9 +369,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func createClusterSync(
+    public func createClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateClusterRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateClusterResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateClusterResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -403,9 +403,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    public func createServiceAsync(
+    public func createServiceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateServiceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.CreateServiceResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -438,9 +438,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    public func createServiceSync(
+    public func createServiceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateServiceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateServiceResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateServiceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -472,9 +472,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    public func createTaskSetAsync(
+    public func createTaskSetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateTaskSetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.CreateTaskSetResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -507,9 +507,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    public func createTaskSetSync(
+    public func createTaskSetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateTaskSetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateTaskSetResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateTaskSetResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -541,9 +541,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func deleteAccountSettingAsync(
+    public func deleteAccountSettingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteAccountSettingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteAccountSettingResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -576,9 +576,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func deleteAccountSettingSync(
+    public func deleteAccountSettingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteAccountSettingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteAccountSettingResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteAccountSettingResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -610,9 +610,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: clusterNotFound, invalidParameter, targetNotFound.
      */
-    public func deleteAttributesAsync(
+    public func deleteAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -645,9 +645,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: clusterNotFound, invalidParameter, targetNotFound.
      */
-    public func deleteAttributesSync(
+    public func deleteAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteAttributesResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteAttributesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -679,9 +679,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
      */
-    public func deleteClusterAsync(
+    public func deleteClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteClusterRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteClusterResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -714,9 +714,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
      */
-    public func deleteClusterSync(
+    public func deleteClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteClusterRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteClusterResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteClusterResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -748,9 +748,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    public func deleteServiceAsync(
+    public func deleteServiceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteServiceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -783,9 +783,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    public func deleteServiceSync(
+    public func deleteServiceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteServiceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteServiceResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteServiceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -817,9 +817,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func deleteTaskSetAsync(
+    public func deleteTaskSetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteTaskSetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteTaskSetResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -852,9 +852,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func deleteTaskSetSync(
+    public func deleteTaskSetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteTaskSetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteTaskSetResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteTaskSetResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -886,9 +886,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func deregisterContainerInstanceAsync(
+    public func deregisterContainerInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeregisterContainerInstanceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeregisterContainerInstanceResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -921,9 +921,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func deregisterContainerInstanceSync(
+    public func deregisterContainerInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeregisterContainerInstanceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -955,9 +955,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func deregisterTaskDefinitionAsync(
+    public func deregisterTaskDefinitionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeregisterTaskDefinitionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -990,9 +990,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func deregisterTaskDefinitionSync(
+    public func deregisterTaskDefinitionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeregisterTaskDefinitionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1024,9 +1024,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func describeCapacityProvidersAsync(
+    public func describeCapacityProvidersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeCapacityProvidersRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1059,9 +1059,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func describeCapacityProvidersSync(
+    public func describeCapacityProvidersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeCapacityProvidersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1093,9 +1093,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func describeClustersAsync(
+    public func describeClustersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeClustersRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeClustersResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1128,9 +1128,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func describeClustersSync(
+    public func describeClustersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeClustersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeClustersResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeClustersResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1162,9 +1162,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeContainerInstancesAsync(
+    public func describeContainerInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeContainerInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeContainerInstancesResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1197,9 +1197,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeContainerInstancesSync(
+    public func describeContainerInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeContainerInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeContainerInstancesResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeContainerInstancesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1231,9 +1231,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeServicesAsync(
+    public func describeServicesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeServicesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeServicesResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1266,9 +1266,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeServicesSync(
+    public func describeServicesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeServicesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeServicesResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeServicesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1300,9 +1300,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func describeTaskDefinitionAsync(
+    public func describeTaskDefinitionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeTaskDefinitionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1335,9 +1335,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func describeTaskDefinitionSync(
+    public func describeTaskDefinitionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeTaskDefinitionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1369,9 +1369,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    public func describeTaskSetsAsync(
+    public func describeTaskSetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeTaskSetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeTaskSetsResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1404,9 +1404,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    public func describeTaskSetsSync(
+    public func describeTaskSetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeTaskSetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeTaskSetsResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeTaskSetsResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1438,9 +1438,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeTasksAsync(
+    public func describeTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeTasksRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeTasksResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1473,9 +1473,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeTasksSync(
+    public func describeTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeTasksRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeTasksResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeTasksResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1507,9 +1507,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, server.
      */
-    public func discoverPollEndpointAsync(
+    public func discoverPollEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DiscoverPollEndpointRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1542,9 +1542,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, server.
      */
-    public func discoverPollEndpointSync(
+    public func discoverPollEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DiscoverPollEndpointRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DiscoverPollEndpointResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DiscoverPollEndpointResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1576,9 +1576,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func listAccountSettingsAsync(
+    public func listAccountSettingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListAccountSettingsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListAccountSettingsResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1611,9 +1611,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func listAccountSettingsSync(
+    public func listAccountSettingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListAccountSettingsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListAccountSettingsResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListAccountSettingsResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1645,9 +1645,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: clusterNotFound, invalidParameter.
      */
-    public func listAttributesAsync(
+    public func listAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListAttributesResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1680,9 +1680,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: clusterNotFound, invalidParameter.
      */
-    public func listAttributesSync(
+    public func listAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListAttributesResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListAttributesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1714,9 +1714,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func listClustersAsync(
+    public func listClustersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListClustersRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListClustersResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1749,9 +1749,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func listClustersSync(
+    public func listClustersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListClustersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListClustersResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListClustersResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1783,9 +1783,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func listContainerInstancesAsync(
+    public func listContainerInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListContainerInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListContainerInstancesResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1818,9 +1818,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func listContainerInstancesSync(
+    public func listContainerInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListContainerInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListContainerInstancesResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListContainerInstancesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1852,9 +1852,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func listServicesAsync(
+    public func listServicesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListServicesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1887,9 +1887,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func listServicesSync(
+    public func listServicesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListServicesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListServicesResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListServicesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1921,9 +1921,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func listTagsForResourceAsync(
+    public func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTagsForResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListTagsForResourceResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1956,9 +1956,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func listTagsForResourceSync(
+    public func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTagsForResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTagsForResourceResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTagsForResourceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1990,9 +1990,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func listTaskDefinitionFamiliesAsync(
+    public func listTaskDefinitionFamiliesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2025,9 +2025,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func listTaskDefinitionFamiliesSync(
+    public func listTaskDefinitionFamiliesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2059,9 +2059,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func listTaskDefinitionsAsync(
+    public func listTaskDefinitionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTaskDefinitionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionsResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2094,9 +2094,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func listTaskDefinitionsSync(
+    public func listTaskDefinitionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTaskDefinitionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTaskDefinitionsResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTaskDefinitionsResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2128,9 +2128,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    public func listTasksAsync(
+    public func listTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTasksRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListTasksResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2163,9 +2163,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    public func listTasksSync(
+    public func listTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTasksRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTasksResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTasksResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2197,9 +2197,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func putAccountSettingAsync(
+    public func putAccountSettingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutAccountSettingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.PutAccountSettingResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2232,9 +2232,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func putAccountSettingSync(
+    public func putAccountSettingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutAccountSettingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutAccountSettingResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.PutAccountSettingResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2266,9 +2266,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func putAccountSettingDefaultAsync(
+    public func putAccountSettingDefaultAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutAccountSettingDefaultRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.PutAccountSettingDefaultResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2301,9 +2301,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func putAccountSettingDefaultSync(
+    public func putAccountSettingDefaultSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutAccountSettingDefaultRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2335,9 +2335,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: attributeLimitExceeded, clusterNotFound, invalidParameter, targetNotFound.
      */
-    public func putAttributesAsync(
+    public func putAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.PutAttributesResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2370,9 +2370,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: attributeLimitExceeded, clusterNotFound, invalidParameter, targetNotFound.
      */
-    public func putAttributesSync(
+    public func putAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutAttributesResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.PutAttributesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2404,9 +2404,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
      */
-    public func putClusterCapacityProvidersAsync(
+    public func putClusterCapacityProvidersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutClusterCapacityProvidersRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2439,9 +2439,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
      */
-    public func putClusterCapacityProvidersSync(
+    public func putClusterCapacityProvidersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutClusterCapacityProvidersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2473,9 +2473,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func registerContainerInstanceAsync(
+    public func registerContainerInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.RegisterContainerInstanceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.RegisterContainerInstanceResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2508,9 +2508,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func registerContainerInstanceSync(
+    public func registerContainerInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.RegisterContainerInstanceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.RegisterContainerInstanceResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.RegisterContainerInstanceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2542,9 +2542,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func registerTaskDefinitionAsync(
+    public func registerTaskDefinitionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.RegisterTaskDefinitionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.RegisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2577,9 +2577,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func registerTaskDefinitionSync(
+    public func registerTaskDefinitionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.RegisterTaskDefinitionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2611,9 +2611,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, blocked, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    public func runTaskAsync(
+    public func runTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.RunTaskRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.RunTaskResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2646,9 +2646,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, blocked, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    public func runTaskSync(
+    public func runTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.RunTaskRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.RunTaskResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.RunTaskResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2680,9 +2680,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func startTaskAsync(
+    public func startTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.StartTaskRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.StartTaskResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2715,9 +2715,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func startTaskSync(
+    public func startTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.StartTaskRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.StartTaskResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.StartTaskResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2749,9 +2749,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func stopTaskAsync(
+    public func stopTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.StopTaskRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.StopTaskResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2784,9 +2784,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func stopTaskSync(
+    public func stopTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.StopTaskRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.StopTaskResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.StopTaskResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2818,9 +2818,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, invalidParameter, server.
      */
-    public func submitAttachmentStateChangesAsync(
+    public func submitAttachmentStateChangesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2853,9 +2853,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, invalidParameter, server.
      */
-    public func submitAttachmentStateChangesSync(
+    public func submitAttachmentStateChangesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.SubmitAttachmentStateChangesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2887,9 +2887,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, server.
      */
-    public func submitContainerStateChangeAsync(
+    public func submitContainerStateChangeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.SubmitContainerStateChangeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.SubmitContainerStateChangeResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2922,9 +2922,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, server.
      */
-    public func submitContainerStateChangeSync(
+    public func submitContainerStateChangeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.SubmitContainerStateChangeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2956,9 +2956,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, invalidParameter, server.
      */
-    public func submitTaskStateChangeAsync(
+    public func submitTaskStateChangeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.SubmitTaskStateChangeResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2991,9 +2991,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, invalidParameter, server.
      */
-    public func submitTaskStateChangeSync(
+    public func submitTaskStateChangeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3025,9 +3025,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    public func tagResourceAsync(
+    public func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.TagResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.TagResourceResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3060,9 +3060,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    public func tagResourceSync(
+    public func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.TagResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.TagResourceResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.TagResourceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3094,9 +3094,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    public func untagResourceAsync(
+    public func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UntagResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3129,9 +3129,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    public func untagResourceSync(
+    public func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UntagResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UntagResourceResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UntagResourceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3163,9 +3163,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func updateClusterSettingsAsync(
+    public func updateClusterSettingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateClusterSettingsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3198,9 +3198,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func updateClusterSettingsSync(
+    public func updateClusterSettingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateClusterSettingsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateClusterSettingsResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateClusterSettingsResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3232,9 +3232,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, missingVersion, noUpdateAvailable, server, updateInProgress.
      */
-    public func updateContainerAgentAsync(
+    public func updateContainerAgentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateContainerAgentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateContainerAgentResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3267,9 +3267,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, missingVersion, noUpdateAvailable, server, updateInProgress.
      */
-    public func updateContainerAgentSync(
+    public func updateContainerAgentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateContainerAgentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateContainerAgentResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateContainerAgentResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3301,9 +3301,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func updateContainerInstancesStateAsync(
+    public func updateContainerInstancesStateAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateContainerInstancesStateRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3336,9 +3336,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func updateContainerInstancesStateSync(
+    public func updateContainerInstancesStateSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateContainerInstancesStateRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3370,9 +3370,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
      */
-    public func updateServiceAsync(
+    public func updateServiceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateServiceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateServiceResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3405,9 +3405,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
      */
-    public func updateServiceSync(
+    public func updateServiceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateServiceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateServiceResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateServiceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3439,9 +3439,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func updateServicePrimaryTaskSetAsync(
+    public func updateServicePrimaryTaskSetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3474,9 +3474,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func updateServicePrimaryTaskSetSync(
+    public func updateServicePrimaryTaskSetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3508,9 +3508,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func updateTaskSetAsync(
+    public func updateTaskSetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateTaskSetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateTaskSetResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3543,9 +3543,9 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func updateTaskSetSync(
+    public func updateTaskSetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateTaskSetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateTaskSetResponse {
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateTaskSetResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,

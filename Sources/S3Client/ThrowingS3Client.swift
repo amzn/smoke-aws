@@ -27,366 +27,366 @@ import SmokeHTTPClient
 /**
  Mock Client for the S3 service that by default always throws from its methods.
  */
-public struct ThrowingS3Client: S3ClientProtocol {
+public struct ThrowingS3Client<ClientInvocationReportingType: SmokeAWSInvocationReporting>: S3ClientProtocol {
     let error: HTTPClientError
-    let abortMultipartUploadAsyncOverride: S3ClientProtocol.AbortMultipartUploadAsyncType?
-    let abortMultipartUploadSyncOverride: S3ClientProtocol.AbortMultipartUploadSyncType?
-    let completeMultipartUploadAsyncOverride: S3ClientProtocol.CompleteMultipartUploadAsyncType?
-    let completeMultipartUploadSyncOverride: S3ClientProtocol.CompleteMultipartUploadSyncType?
-    let copyObjectAsyncOverride: S3ClientProtocol.CopyObjectAsyncType?
-    let copyObjectSyncOverride: S3ClientProtocol.CopyObjectSyncType?
-    let createBucketAsyncOverride: S3ClientProtocol.CreateBucketAsyncType?
-    let createBucketSyncOverride: S3ClientProtocol.CreateBucketSyncType?
-    let createMultipartUploadAsyncOverride: S3ClientProtocol.CreateMultipartUploadAsyncType?
-    let createMultipartUploadSyncOverride: S3ClientProtocol.CreateMultipartUploadSyncType?
-    let deleteBucketAsyncOverride: S3ClientProtocol.DeleteBucketAsyncType?
-    let deleteBucketSyncOverride: S3ClientProtocol.DeleteBucketSyncType?
-    let deleteBucketAnalyticsConfigurationAsyncOverride: S3ClientProtocol.DeleteBucketAnalyticsConfigurationAsyncType?
-    let deleteBucketAnalyticsConfigurationSyncOverride: S3ClientProtocol.DeleteBucketAnalyticsConfigurationSyncType?
-    let deleteBucketCorsAsyncOverride: S3ClientProtocol.DeleteBucketCorsAsyncType?
-    let deleteBucketCorsSyncOverride: S3ClientProtocol.DeleteBucketCorsSyncType?
-    let deleteBucketEncryptionAsyncOverride: S3ClientProtocol.DeleteBucketEncryptionAsyncType?
-    let deleteBucketEncryptionSyncOverride: S3ClientProtocol.DeleteBucketEncryptionSyncType?
-    let deleteBucketInventoryConfigurationAsyncOverride: S3ClientProtocol.DeleteBucketInventoryConfigurationAsyncType?
-    let deleteBucketInventoryConfigurationSyncOverride: S3ClientProtocol.DeleteBucketInventoryConfigurationSyncType?
-    let deleteBucketLifecycleAsyncOverride: S3ClientProtocol.DeleteBucketLifecycleAsyncType?
-    let deleteBucketLifecycleSyncOverride: S3ClientProtocol.DeleteBucketLifecycleSyncType?
-    let deleteBucketMetricsConfigurationAsyncOverride: S3ClientProtocol.DeleteBucketMetricsConfigurationAsyncType?
-    let deleteBucketMetricsConfigurationSyncOverride: S3ClientProtocol.DeleteBucketMetricsConfigurationSyncType?
-    let deleteBucketPolicyAsyncOverride: S3ClientProtocol.DeleteBucketPolicyAsyncType?
-    let deleteBucketPolicySyncOverride: S3ClientProtocol.DeleteBucketPolicySyncType?
-    let deleteBucketReplicationAsyncOverride: S3ClientProtocol.DeleteBucketReplicationAsyncType?
-    let deleteBucketReplicationSyncOverride: S3ClientProtocol.DeleteBucketReplicationSyncType?
-    let deleteBucketTaggingAsyncOverride: S3ClientProtocol.DeleteBucketTaggingAsyncType?
-    let deleteBucketTaggingSyncOverride: S3ClientProtocol.DeleteBucketTaggingSyncType?
-    let deleteBucketWebsiteAsyncOverride: S3ClientProtocol.DeleteBucketWebsiteAsyncType?
-    let deleteBucketWebsiteSyncOverride: S3ClientProtocol.DeleteBucketWebsiteSyncType?
-    let deleteObjectAsyncOverride: S3ClientProtocol.DeleteObjectAsyncType?
-    let deleteObjectSyncOverride: S3ClientProtocol.DeleteObjectSyncType?
-    let deleteObjectTaggingAsyncOverride: S3ClientProtocol.DeleteObjectTaggingAsyncType?
-    let deleteObjectTaggingSyncOverride: S3ClientProtocol.DeleteObjectTaggingSyncType?
-    let deleteObjectsAsyncOverride: S3ClientProtocol.DeleteObjectsAsyncType?
-    let deleteObjectsSyncOverride: S3ClientProtocol.DeleteObjectsSyncType?
-    let deletePublicAccessBlockAsyncOverride: S3ClientProtocol.DeletePublicAccessBlockAsyncType?
-    let deletePublicAccessBlockSyncOverride: S3ClientProtocol.DeletePublicAccessBlockSyncType?
-    let getBucketAccelerateConfigurationAsyncOverride: S3ClientProtocol.GetBucketAccelerateConfigurationAsyncType?
-    let getBucketAccelerateConfigurationSyncOverride: S3ClientProtocol.GetBucketAccelerateConfigurationSyncType?
-    let getBucketAclAsyncOverride: S3ClientProtocol.GetBucketAclAsyncType?
-    let getBucketAclSyncOverride: S3ClientProtocol.GetBucketAclSyncType?
-    let getBucketAnalyticsConfigurationAsyncOverride: S3ClientProtocol.GetBucketAnalyticsConfigurationAsyncType?
-    let getBucketAnalyticsConfigurationSyncOverride: S3ClientProtocol.GetBucketAnalyticsConfigurationSyncType?
-    let getBucketCorsAsyncOverride: S3ClientProtocol.GetBucketCorsAsyncType?
-    let getBucketCorsSyncOverride: S3ClientProtocol.GetBucketCorsSyncType?
-    let getBucketEncryptionAsyncOverride: S3ClientProtocol.GetBucketEncryptionAsyncType?
-    let getBucketEncryptionSyncOverride: S3ClientProtocol.GetBucketEncryptionSyncType?
-    let getBucketInventoryConfigurationAsyncOverride: S3ClientProtocol.GetBucketInventoryConfigurationAsyncType?
-    let getBucketInventoryConfigurationSyncOverride: S3ClientProtocol.GetBucketInventoryConfigurationSyncType?
-    let getBucketLifecycleAsyncOverride: S3ClientProtocol.GetBucketLifecycleAsyncType?
-    let getBucketLifecycleSyncOverride: S3ClientProtocol.GetBucketLifecycleSyncType?
-    let getBucketLifecycleConfigurationAsyncOverride: S3ClientProtocol.GetBucketLifecycleConfigurationAsyncType?
-    let getBucketLifecycleConfigurationSyncOverride: S3ClientProtocol.GetBucketLifecycleConfigurationSyncType?
-    let getBucketLocationAsyncOverride: S3ClientProtocol.GetBucketLocationAsyncType?
-    let getBucketLocationSyncOverride: S3ClientProtocol.GetBucketLocationSyncType?
-    let getBucketLoggingAsyncOverride: S3ClientProtocol.GetBucketLoggingAsyncType?
-    let getBucketLoggingSyncOverride: S3ClientProtocol.GetBucketLoggingSyncType?
-    let getBucketMetricsConfigurationAsyncOverride: S3ClientProtocol.GetBucketMetricsConfigurationAsyncType?
-    let getBucketMetricsConfigurationSyncOverride: S3ClientProtocol.GetBucketMetricsConfigurationSyncType?
-    let getBucketNotificationAsyncOverride: S3ClientProtocol.GetBucketNotificationAsyncType?
-    let getBucketNotificationSyncOverride: S3ClientProtocol.GetBucketNotificationSyncType?
-    let getBucketNotificationConfigurationAsyncOverride: S3ClientProtocol.GetBucketNotificationConfigurationAsyncType?
-    let getBucketNotificationConfigurationSyncOverride: S3ClientProtocol.GetBucketNotificationConfigurationSyncType?
-    let getBucketPolicyAsyncOverride: S3ClientProtocol.GetBucketPolicyAsyncType?
-    let getBucketPolicySyncOverride: S3ClientProtocol.GetBucketPolicySyncType?
-    let getBucketPolicyStatusAsyncOverride: S3ClientProtocol.GetBucketPolicyStatusAsyncType?
-    let getBucketPolicyStatusSyncOverride: S3ClientProtocol.GetBucketPolicyStatusSyncType?
-    let getBucketReplicationAsyncOverride: S3ClientProtocol.GetBucketReplicationAsyncType?
-    let getBucketReplicationSyncOverride: S3ClientProtocol.GetBucketReplicationSyncType?
-    let getBucketRequestPaymentAsyncOverride: S3ClientProtocol.GetBucketRequestPaymentAsyncType?
-    let getBucketRequestPaymentSyncOverride: S3ClientProtocol.GetBucketRequestPaymentSyncType?
-    let getBucketTaggingAsyncOverride: S3ClientProtocol.GetBucketTaggingAsyncType?
-    let getBucketTaggingSyncOverride: S3ClientProtocol.GetBucketTaggingSyncType?
-    let getBucketVersioningAsyncOverride: S3ClientProtocol.GetBucketVersioningAsyncType?
-    let getBucketVersioningSyncOverride: S3ClientProtocol.GetBucketVersioningSyncType?
-    let getBucketWebsiteAsyncOverride: S3ClientProtocol.GetBucketWebsiteAsyncType?
-    let getBucketWebsiteSyncOverride: S3ClientProtocol.GetBucketWebsiteSyncType?
-    let getObjectAsyncOverride: S3ClientProtocol.GetObjectAsyncType?
-    let getObjectSyncOverride: S3ClientProtocol.GetObjectSyncType?
-    let getObjectAclAsyncOverride: S3ClientProtocol.GetObjectAclAsyncType?
-    let getObjectAclSyncOverride: S3ClientProtocol.GetObjectAclSyncType?
-    let getObjectLegalHoldAsyncOverride: S3ClientProtocol.GetObjectLegalHoldAsyncType?
-    let getObjectLegalHoldSyncOverride: S3ClientProtocol.GetObjectLegalHoldSyncType?
-    let getObjectLockConfigurationAsyncOverride: S3ClientProtocol.GetObjectLockConfigurationAsyncType?
-    let getObjectLockConfigurationSyncOverride: S3ClientProtocol.GetObjectLockConfigurationSyncType?
-    let getObjectRetentionAsyncOverride: S3ClientProtocol.GetObjectRetentionAsyncType?
-    let getObjectRetentionSyncOverride: S3ClientProtocol.GetObjectRetentionSyncType?
-    let getObjectTaggingAsyncOverride: S3ClientProtocol.GetObjectTaggingAsyncType?
-    let getObjectTaggingSyncOverride: S3ClientProtocol.GetObjectTaggingSyncType?
-    let getObjectTorrentAsyncOverride: S3ClientProtocol.GetObjectTorrentAsyncType?
-    let getObjectTorrentSyncOverride: S3ClientProtocol.GetObjectTorrentSyncType?
-    let getPublicAccessBlockAsyncOverride: S3ClientProtocol.GetPublicAccessBlockAsyncType?
-    let getPublicAccessBlockSyncOverride: S3ClientProtocol.GetPublicAccessBlockSyncType?
-    let headBucketAsyncOverride: S3ClientProtocol.HeadBucketAsyncType?
-    let headBucketSyncOverride: S3ClientProtocol.HeadBucketSyncType?
-    let headObjectAsyncOverride: S3ClientProtocol.HeadObjectAsyncType?
-    let headObjectSyncOverride: S3ClientProtocol.HeadObjectSyncType?
-    let listBucketAnalyticsConfigurationsAsyncOverride: S3ClientProtocol.ListBucketAnalyticsConfigurationsAsyncType?
-    let listBucketAnalyticsConfigurationsSyncOverride: S3ClientProtocol.ListBucketAnalyticsConfigurationsSyncType?
-    let listBucketInventoryConfigurationsAsyncOverride: S3ClientProtocol.ListBucketInventoryConfigurationsAsyncType?
-    let listBucketInventoryConfigurationsSyncOverride: S3ClientProtocol.ListBucketInventoryConfigurationsSyncType?
-    let listBucketMetricsConfigurationsAsyncOverride: S3ClientProtocol.ListBucketMetricsConfigurationsAsyncType?
-    let listBucketMetricsConfigurationsSyncOverride: S3ClientProtocol.ListBucketMetricsConfigurationsSyncType?
-    let listBucketsAsyncOverride: S3ClientProtocol.ListBucketsAsyncType?
-    let listBucketsSyncOverride: S3ClientProtocol.ListBucketsSyncType?
-    let listMultipartUploadsAsyncOverride: S3ClientProtocol.ListMultipartUploadsAsyncType?
-    let listMultipartUploadsSyncOverride: S3ClientProtocol.ListMultipartUploadsSyncType?
-    let listObjectVersionsAsyncOverride: S3ClientProtocol.ListObjectVersionsAsyncType?
-    let listObjectVersionsSyncOverride: S3ClientProtocol.ListObjectVersionsSyncType?
-    let listObjectsAsyncOverride: S3ClientProtocol.ListObjectsAsyncType?
-    let listObjectsSyncOverride: S3ClientProtocol.ListObjectsSyncType?
-    let listObjectsV2AsyncOverride: S3ClientProtocol.ListObjectsV2AsyncType?
-    let listObjectsV2SyncOverride: S3ClientProtocol.ListObjectsV2SyncType?
-    let listPartsAsyncOverride: S3ClientProtocol.ListPartsAsyncType?
-    let listPartsSyncOverride: S3ClientProtocol.ListPartsSyncType?
-    let putBucketAccelerateConfigurationAsyncOverride: S3ClientProtocol.PutBucketAccelerateConfigurationAsyncType?
-    let putBucketAccelerateConfigurationSyncOverride: S3ClientProtocol.PutBucketAccelerateConfigurationSyncType?
-    let putBucketAclAsyncOverride: S3ClientProtocol.PutBucketAclAsyncType?
-    let putBucketAclSyncOverride: S3ClientProtocol.PutBucketAclSyncType?
-    let putBucketAnalyticsConfigurationAsyncOverride: S3ClientProtocol.PutBucketAnalyticsConfigurationAsyncType?
-    let putBucketAnalyticsConfigurationSyncOverride: S3ClientProtocol.PutBucketAnalyticsConfigurationSyncType?
-    let putBucketCorsAsyncOverride: S3ClientProtocol.PutBucketCorsAsyncType?
-    let putBucketCorsSyncOverride: S3ClientProtocol.PutBucketCorsSyncType?
-    let putBucketEncryptionAsyncOverride: S3ClientProtocol.PutBucketEncryptionAsyncType?
-    let putBucketEncryptionSyncOverride: S3ClientProtocol.PutBucketEncryptionSyncType?
-    let putBucketInventoryConfigurationAsyncOverride: S3ClientProtocol.PutBucketInventoryConfigurationAsyncType?
-    let putBucketInventoryConfigurationSyncOverride: S3ClientProtocol.PutBucketInventoryConfigurationSyncType?
-    let putBucketLifecycleAsyncOverride: S3ClientProtocol.PutBucketLifecycleAsyncType?
-    let putBucketLifecycleSyncOverride: S3ClientProtocol.PutBucketLifecycleSyncType?
-    let putBucketLifecycleConfigurationAsyncOverride: S3ClientProtocol.PutBucketLifecycleConfigurationAsyncType?
-    let putBucketLifecycleConfigurationSyncOverride: S3ClientProtocol.PutBucketLifecycleConfigurationSyncType?
-    let putBucketLoggingAsyncOverride: S3ClientProtocol.PutBucketLoggingAsyncType?
-    let putBucketLoggingSyncOverride: S3ClientProtocol.PutBucketLoggingSyncType?
-    let putBucketMetricsConfigurationAsyncOverride: S3ClientProtocol.PutBucketMetricsConfigurationAsyncType?
-    let putBucketMetricsConfigurationSyncOverride: S3ClientProtocol.PutBucketMetricsConfigurationSyncType?
-    let putBucketNotificationAsyncOverride: S3ClientProtocol.PutBucketNotificationAsyncType?
-    let putBucketNotificationSyncOverride: S3ClientProtocol.PutBucketNotificationSyncType?
-    let putBucketNotificationConfigurationAsyncOverride: S3ClientProtocol.PutBucketNotificationConfigurationAsyncType?
-    let putBucketNotificationConfigurationSyncOverride: S3ClientProtocol.PutBucketNotificationConfigurationSyncType?
-    let putBucketPolicyAsyncOverride: S3ClientProtocol.PutBucketPolicyAsyncType?
-    let putBucketPolicySyncOverride: S3ClientProtocol.PutBucketPolicySyncType?
-    let putBucketReplicationAsyncOverride: S3ClientProtocol.PutBucketReplicationAsyncType?
-    let putBucketReplicationSyncOverride: S3ClientProtocol.PutBucketReplicationSyncType?
-    let putBucketRequestPaymentAsyncOverride: S3ClientProtocol.PutBucketRequestPaymentAsyncType?
-    let putBucketRequestPaymentSyncOverride: S3ClientProtocol.PutBucketRequestPaymentSyncType?
-    let putBucketTaggingAsyncOverride: S3ClientProtocol.PutBucketTaggingAsyncType?
-    let putBucketTaggingSyncOverride: S3ClientProtocol.PutBucketTaggingSyncType?
-    let putBucketVersioningAsyncOverride: S3ClientProtocol.PutBucketVersioningAsyncType?
-    let putBucketVersioningSyncOverride: S3ClientProtocol.PutBucketVersioningSyncType?
-    let putBucketWebsiteAsyncOverride: S3ClientProtocol.PutBucketWebsiteAsyncType?
-    let putBucketWebsiteSyncOverride: S3ClientProtocol.PutBucketWebsiteSyncType?
-    let putObjectAsyncOverride: S3ClientProtocol.PutObjectAsyncType?
-    let putObjectSyncOverride: S3ClientProtocol.PutObjectSyncType?
-    let putObjectAclAsyncOverride: S3ClientProtocol.PutObjectAclAsyncType?
-    let putObjectAclSyncOverride: S3ClientProtocol.PutObjectAclSyncType?
-    let putObjectLegalHoldAsyncOverride: S3ClientProtocol.PutObjectLegalHoldAsyncType?
-    let putObjectLegalHoldSyncOverride: S3ClientProtocol.PutObjectLegalHoldSyncType?
-    let putObjectLockConfigurationAsyncOverride: S3ClientProtocol.PutObjectLockConfigurationAsyncType?
-    let putObjectLockConfigurationSyncOverride: S3ClientProtocol.PutObjectLockConfigurationSyncType?
-    let putObjectRetentionAsyncOverride: S3ClientProtocol.PutObjectRetentionAsyncType?
-    let putObjectRetentionSyncOverride: S3ClientProtocol.PutObjectRetentionSyncType?
-    let putObjectTaggingAsyncOverride: S3ClientProtocol.PutObjectTaggingAsyncType?
-    let putObjectTaggingSyncOverride: S3ClientProtocol.PutObjectTaggingSyncType?
-    let putPublicAccessBlockAsyncOverride: S3ClientProtocol.PutPublicAccessBlockAsyncType?
-    let putPublicAccessBlockSyncOverride: S3ClientProtocol.PutPublicAccessBlockSyncType?
-    let restoreObjectAsyncOverride: S3ClientProtocol.RestoreObjectAsyncType?
-    let restoreObjectSyncOverride: S3ClientProtocol.RestoreObjectSyncType?
-    let selectObjectContentAsyncOverride: S3ClientProtocol.SelectObjectContentAsyncType?
-    let selectObjectContentSyncOverride: S3ClientProtocol.SelectObjectContentSyncType?
-    let uploadPartAsyncOverride: S3ClientProtocol.UploadPartAsyncType?
-    let uploadPartSyncOverride: S3ClientProtocol.UploadPartSyncType?
-    let uploadPartCopyAsyncOverride: S3ClientProtocol.UploadPartCopyAsyncType?
-    let uploadPartCopySyncOverride: S3ClientProtocol.UploadPartCopySyncType?
+    let abortMultipartUploadAsyncOverride: AbortMultipartUploadAsyncType<ClientInvocationReportingType>?
+    let abortMultipartUploadSyncOverride: AbortMultipartUploadSyncType<ClientInvocationReportingType>?
+    let completeMultipartUploadAsyncOverride: CompleteMultipartUploadAsyncType<ClientInvocationReportingType>?
+    let completeMultipartUploadSyncOverride: CompleteMultipartUploadSyncType<ClientInvocationReportingType>?
+    let copyObjectAsyncOverride: CopyObjectAsyncType<ClientInvocationReportingType>?
+    let copyObjectSyncOverride: CopyObjectSyncType<ClientInvocationReportingType>?
+    let createBucketAsyncOverride: CreateBucketAsyncType<ClientInvocationReportingType>?
+    let createBucketSyncOverride: CreateBucketSyncType<ClientInvocationReportingType>?
+    let createMultipartUploadAsyncOverride: CreateMultipartUploadAsyncType<ClientInvocationReportingType>?
+    let createMultipartUploadSyncOverride: CreateMultipartUploadSyncType<ClientInvocationReportingType>?
+    let deleteBucketAsyncOverride: DeleteBucketAsyncType<ClientInvocationReportingType>?
+    let deleteBucketSyncOverride: DeleteBucketSyncType<ClientInvocationReportingType>?
+    let deleteBucketAnalyticsConfigurationAsyncOverride: DeleteBucketAnalyticsConfigurationAsyncType<ClientInvocationReportingType>?
+    let deleteBucketAnalyticsConfigurationSyncOverride: DeleteBucketAnalyticsConfigurationSyncType<ClientInvocationReportingType>?
+    let deleteBucketCorsAsyncOverride: DeleteBucketCorsAsyncType<ClientInvocationReportingType>?
+    let deleteBucketCorsSyncOverride: DeleteBucketCorsSyncType<ClientInvocationReportingType>?
+    let deleteBucketEncryptionAsyncOverride: DeleteBucketEncryptionAsyncType<ClientInvocationReportingType>?
+    let deleteBucketEncryptionSyncOverride: DeleteBucketEncryptionSyncType<ClientInvocationReportingType>?
+    let deleteBucketInventoryConfigurationAsyncOverride: DeleteBucketInventoryConfigurationAsyncType<ClientInvocationReportingType>?
+    let deleteBucketInventoryConfigurationSyncOverride: DeleteBucketInventoryConfigurationSyncType<ClientInvocationReportingType>?
+    let deleteBucketLifecycleAsyncOverride: DeleteBucketLifecycleAsyncType<ClientInvocationReportingType>?
+    let deleteBucketLifecycleSyncOverride: DeleteBucketLifecycleSyncType<ClientInvocationReportingType>?
+    let deleteBucketMetricsConfigurationAsyncOverride: DeleteBucketMetricsConfigurationAsyncType<ClientInvocationReportingType>?
+    let deleteBucketMetricsConfigurationSyncOverride: DeleteBucketMetricsConfigurationSyncType<ClientInvocationReportingType>?
+    let deleteBucketPolicyAsyncOverride: DeleteBucketPolicyAsyncType<ClientInvocationReportingType>?
+    let deleteBucketPolicySyncOverride: DeleteBucketPolicySyncType<ClientInvocationReportingType>?
+    let deleteBucketReplicationAsyncOverride: DeleteBucketReplicationAsyncType<ClientInvocationReportingType>?
+    let deleteBucketReplicationSyncOverride: DeleteBucketReplicationSyncType<ClientInvocationReportingType>?
+    let deleteBucketTaggingAsyncOverride: DeleteBucketTaggingAsyncType<ClientInvocationReportingType>?
+    let deleteBucketTaggingSyncOverride: DeleteBucketTaggingSyncType<ClientInvocationReportingType>?
+    let deleteBucketWebsiteAsyncOverride: DeleteBucketWebsiteAsyncType<ClientInvocationReportingType>?
+    let deleteBucketWebsiteSyncOverride: DeleteBucketWebsiteSyncType<ClientInvocationReportingType>?
+    let deleteObjectAsyncOverride: DeleteObjectAsyncType<ClientInvocationReportingType>?
+    let deleteObjectSyncOverride: DeleteObjectSyncType<ClientInvocationReportingType>?
+    let deleteObjectTaggingAsyncOverride: DeleteObjectTaggingAsyncType<ClientInvocationReportingType>?
+    let deleteObjectTaggingSyncOverride: DeleteObjectTaggingSyncType<ClientInvocationReportingType>?
+    let deleteObjectsAsyncOverride: DeleteObjectsAsyncType<ClientInvocationReportingType>?
+    let deleteObjectsSyncOverride: DeleteObjectsSyncType<ClientInvocationReportingType>?
+    let deletePublicAccessBlockAsyncOverride: DeletePublicAccessBlockAsyncType<ClientInvocationReportingType>?
+    let deletePublicAccessBlockSyncOverride: DeletePublicAccessBlockSyncType<ClientInvocationReportingType>?
+    let getBucketAccelerateConfigurationAsyncOverride: GetBucketAccelerateConfigurationAsyncType<ClientInvocationReportingType>?
+    let getBucketAccelerateConfigurationSyncOverride: GetBucketAccelerateConfigurationSyncType<ClientInvocationReportingType>?
+    let getBucketAclAsyncOverride: GetBucketAclAsyncType<ClientInvocationReportingType>?
+    let getBucketAclSyncOverride: GetBucketAclSyncType<ClientInvocationReportingType>?
+    let getBucketAnalyticsConfigurationAsyncOverride: GetBucketAnalyticsConfigurationAsyncType<ClientInvocationReportingType>?
+    let getBucketAnalyticsConfigurationSyncOverride: GetBucketAnalyticsConfigurationSyncType<ClientInvocationReportingType>?
+    let getBucketCorsAsyncOverride: GetBucketCorsAsyncType<ClientInvocationReportingType>?
+    let getBucketCorsSyncOverride: GetBucketCorsSyncType<ClientInvocationReportingType>?
+    let getBucketEncryptionAsyncOverride: GetBucketEncryptionAsyncType<ClientInvocationReportingType>?
+    let getBucketEncryptionSyncOverride: GetBucketEncryptionSyncType<ClientInvocationReportingType>?
+    let getBucketInventoryConfigurationAsyncOverride: GetBucketInventoryConfigurationAsyncType<ClientInvocationReportingType>?
+    let getBucketInventoryConfigurationSyncOverride: GetBucketInventoryConfigurationSyncType<ClientInvocationReportingType>?
+    let getBucketLifecycleAsyncOverride: GetBucketLifecycleAsyncType<ClientInvocationReportingType>?
+    let getBucketLifecycleSyncOverride: GetBucketLifecycleSyncType<ClientInvocationReportingType>?
+    let getBucketLifecycleConfigurationAsyncOverride: GetBucketLifecycleConfigurationAsyncType<ClientInvocationReportingType>?
+    let getBucketLifecycleConfigurationSyncOverride: GetBucketLifecycleConfigurationSyncType<ClientInvocationReportingType>?
+    let getBucketLocationAsyncOverride: GetBucketLocationAsyncType<ClientInvocationReportingType>?
+    let getBucketLocationSyncOverride: GetBucketLocationSyncType<ClientInvocationReportingType>?
+    let getBucketLoggingAsyncOverride: GetBucketLoggingAsyncType<ClientInvocationReportingType>?
+    let getBucketLoggingSyncOverride: GetBucketLoggingSyncType<ClientInvocationReportingType>?
+    let getBucketMetricsConfigurationAsyncOverride: GetBucketMetricsConfigurationAsyncType<ClientInvocationReportingType>?
+    let getBucketMetricsConfigurationSyncOverride: GetBucketMetricsConfigurationSyncType<ClientInvocationReportingType>?
+    let getBucketNotificationAsyncOverride: GetBucketNotificationAsyncType<ClientInvocationReportingType>?
+    let getBucketNotificationSyncOverride: GetBucketNotificationSyncType<ClientInvocationReportingType>?
+    let getBucketNotificationConfigurationAsyncOverride: GetBucketNotificationConfigurationAsyncType<ClientInvocationReportingType>?
+    let getBucketNotificationConfigurationSyncOverride: GetBucketNotificationConfigurationSyncType<ClientInvocationReportingType>?
+    let getBucketPolicyAsyncOverride: GetBucketPolicyAsyncType<ClientInvocationReportingType>?
+    let getBucketPolicySyncOverride: GetBucketPolicySyncType<ClientInvocationReportingType>?
+    let getBucketPolicyStatusAsyncOverride: GetBucketPolicyStatusAsyncType<ClientInvocationReportingType>?
+    let getBucketPolicyStatusSyncOverride: GetBucketPolicyStatusSyncType<ClientInvocationReportingType>?
+    let getBucketReplicationAsyncOverride: GetBucketReplicationAsyncType<ClientInvocationReportingType>?
+    let getBucketReplicationSyncOverride: GetBucketReplicationSyncType<ClientInvocationReportingType>?
+    let getBucketRequestPaymentAsyncOverride: GetBucketRequestPaymentAsyncType<ClientInvocationReportingType>?
+    let getBucketRequestPaymentSyncOverride: GetBucketRequestPaymentSyncType<ClientInvocationReportingType>?
+    let getBucketTaggingAsyncOverride: GetBucketTaggingAsyncType<ClientInvocationReportingType>?
+    let getBucketTaggingSyncOverride: GetBucketTaggingSyncType<ClientInvocationReportingType>?
+    let getBucketVersioningAsyncOverride: GetBucketVersioningAsyncType<ClientInvocationReportingType>?
+    let getBucketVersioningSyncOverride: GetBucketVersioningSyncType<ClientInvocationReportingType>?
+    let getBucketWebsiteAsyncOverride: GetBucketWebsiteAsyncType<ClientInvocationReportingType>?
+    let getBucketWebsiteSyncOverride: GetBucketWebsiteSyncType<ClientInvocationReportingType>?
+    let getObjectAsyncOverride: GetObjectAsyncType<ClientInvocationReportingType>?
+    let getObjectSyncOverride: GetObjectSyncType<ClientInvocationReportingType>?
+    let getObjectAclAsyncOverride: GetObjectAclAsyncType<ClientInvocationReportingType>?
+    let getObjectAclSyncOverride: GetObjectAclSyncType<ClientInvocationReportingType>?
+    let getObjectLegalHoldAsyncOverride: GetObjectLegalHoldAsyncType<ClientInvocationReportingType>?
+    let getObjectLegalHoldSyncOverride: GetObjectLegalHoldSyncType<ClientInvocationReportingType>?
+    let getObjectLockConfigurationAsyncOverride: GetObjectLockConfigurationAsyncType<ClientInvocationReportingType>?
+    let getObjectLockConfigurationSyncOverride: GetObjectLockConfigurationSyncType<ClientInvocationReportingType>?
+    let getObjectRetentionAsyncOverride: GetObjectRetentionAsyncType<ClientInvocationReportingType>?
+    let getObjectRetentionSyncOverride: GetObjectRetentionSyncType<ClientInvocationReportingType>?
+    let getObjectTaggingAsyncOverride: GetObjectTaggingAsyncType<ClientInvocationReportingType>?
+    let getObjectTaggingSyncOverride: GetObjectTaggingSyncType<ClientInvocationReportingType>?
+    let getObjectTorrentAsyncOverride: GetObjectTorrentAsyncType<ClientInvocationReportingType>?
+    let getObjectTorrentSyncOverride: GetObjectTorrentSyncType<ClientInvocationReportingType>?
+    let getPublicAccessBlockAsyncOverride: GetPublicAccessBlockAsyncType<ClientInvocationReportingType>?
+    let getPublicAccessBlockSyncOverride: GetPublicAccessBlockSyncType<ClientInvocationReportingType>?
+    let headBucketAsyncOverride: HeadBucketAsyncType<ClientInvocationReportingType>?
+    let headBucketSyncOverride: HeadBucketSyncType<ClientInvocationReportingType>?
+    let headObjectAsyncOverride: HeadObjectAsyncType<ClientInvocationReportingType>?
+    let headObjectSyncOverride: HeadObjectSyncType<ClientInvocationReportingType>?
+    let listBucketAnalyticsConfigurationsAsyncOverride: ListBucketAnalyticsConfigurationsAsyncType<ClientInvocationReportingType>?
+    let listBucketAnalyticsConfigurationsSyncOverride: ListBucketAnalyticsConfigurationsSyncType<ClientInvocationReportingType>?
+    let listBucketInventoryConfigurationsAsyncOverride: ListBucketInventoryConfigurationsAsyncType<ClientInvocationReportingType>?
+    let listBucketInventoryConfigurationsSyncOverride: ListBucketInventoryConfigurationsSyncType<ClientInvocationReportingType>?
+    let listBucketMetricsConfigurationsAsyncOverride: ListBucketMetricsConfigurationsAsyncType<ClientInvocationReportingType>?
+    let listBucketMetricsConfigurationsSyncOverride: ListBucketMetricsConfigurationsSyncType<ClientInvocationReportingType>?
+    let listBucketsAsyncOverride: ListBucketsAsyncType<ClientInvocationReportingType>?
+    let listBucketsSyncOverride: ListBucketsSyncType<ClientInvocationReportingType>?
+    let listMultipartUploadsAsyncOverride: ListMultipartUploadsAsyncType<ClientInvocationReportingType>?
+    let listMultipartUploadsSyncOverride: ListMultipartUploadsSyncType<ClientInvocationReportingType>?
+    let listObjectVersionsAsyncOverride: ListObjectVersionsAsyncType<ClientInvocationReportingType>?
+    let listObjectVersionsSyncOverride: ListObjectVersionsSyncType<ClientInvocationReportingType>?
+    let listObjectsAsyncOverride: ListObjectsAsyncType<ClientInvocationReportingType>?
+    let listObjectsSyncOverride: ListObjectsSyncType<ClientInvocationReportingType>?
+    let listObjectsV2AsyncOverride: ListObjectsV2AsyncType<ClientInvocationReportingType>?
+    let listObjectsV2SyncOverride: ListObjectsV2SyncType<ClientInvocationReportingType>?
+    let listPartsAsyncOverride: ListPartsAsyncType<ClientInvocationReportingType>?
+    let listPartsSyncOverride: ListPartsSyncType<ClientInvocationReportingType>?
+    let putBucketAccelerateConfigurationAsyncOverride: PutBucketAccelerateConfigurationAsyncType<ClientInvocationReportingType>?
+    let putBucketAccelerateConfigurationSyncOverride: PutBucketAccelerateConfigurationSyncType<ClientInvocationReportingType>?
+    let putBucketAclAsyncOverride: PutBucketAclAsyncType<ClientInvocationReportingType>?
+    let putBucketAclSyncOverride: PutBucketAclSyncType<ClientInvocationReportingType>?
+    let putBucketAnalyticsConfigurationAsyncOverride: PutBucketAnalyticsConfigurationAsyncType<ClientInvocationReportingType>?
+    let putBucketAnalyticsConfigurationSyncOverride: PutBucketAnalyticsConfigurationSyncType<ClientInvocationReportingType>?
+    let putBucketCorsAsyncOverride: PutBucketCorsAsyncType<ClientInvocationReportingType>?
+    let putBucketCorsSyncOverride: PutBucketCorsSyncType<ClientInvocationReportingType>?
+    let putBucketEncryptionAsyncOverride: PutBucketEncryptionAsyncType<ClientInvocationReportingType>?
+    let putBucketEncryptionSyncOverride: PutBucketEncryptionSyncType<ClientInvocationReportingType>?
+    let putBucketInventoryConfigurationAsyncOverride: PutBucketInventoryConfigurationAsyncType<ClientInvocationReportingType>?
+    let putBucketInventoryConfigurationSyncOverride: PutBucketInventoryConfigurationSyncType<ClientInvocationReportingType>?
+    let putBucketLifecycleAsyncOverride: PutBucketLifecycleAsyncType<ClientInvocationReportingType>?
+    let putBucketLifecycleSyncOverride: PutBucketLifecycleSyncType<ClientInvocationReportingType>?
+    let putBucketLifecycleConfigurationAsyncOverride: PutBucketLifecycleConfigurationAsyncType<ClientInvocationReportingType>?
+    let putBucketLifecycleConfigurationSyncOverride: PutBucketLifecycleConfigurationSyncType<ClientInvocationReportingType>?
+    let putBucketLoggingAsyncOverride: PutBucketLoggingAsyncType<ClientInvocationReportingType>?
+    let putBucketLoggingSyncOverride: PutBucketLoggingSyncType<ClientInvocationReportingType>?
+    let putBucketMetricsConfigurationAsyncOverride: PutBucketMetricsConfigurationAsyncType<ClientInvocationReportingType>?
+    let putBucketMetricsConfigurationSyncOverride: PutBucketMetricsConfigurationSyncType<ClientInvocationReportingType>?
+    let putBucketNotificationAsyncOverride: PutBucketNotificationAsyncType<ClientInvocationReportingType>?
+    let putBucketNotificationSyncOverride: PutBucketNotificationSyncType<ClientInvocationReportingType>?
+    let putBucketNotificationConfigurationAsyncOverride: PutBucketNotificationConfigurationAsyncType<ClientInvocationReportingType>?
+    let putBucketNotificationConfigurationSyncOverride: PutBucketNotificationConfigurationSyncType<ClientInvocationReportingType>?
+    let putBucketPolicyAsyncOverride: PutBucketPolicyAsyncType<ClientInvocationReportingType>?
+    let putBucketPolicySyncOverride: PutBucketPolicySyncType<ClientInvocationReportingType>?
+    let putBucketReplicationAsyncOverride: PutBucketReplicationAsyncType<ClientInvocationReportingType>?
+    let putBucketReplicationSyncOverride: PutBucketReplicationSyncType<ClientInvocationReportingType>?
+    let putBucketRequestPaymentAsyncOverride: PutBucketRequestPaymentAsyncType<ClientInvocationReportingType>?
+    let putBucketRequestPaymentSyncOverride: PutBucketRequestPaymentSyncType<ClientInvocationReportingType>?
+    let putBucketTaggingAsyncOverride: PutBucketTaggingAsyncType<ClientInvocationReportingType>?
+    let putBucketTaggingSyncOverride: PutBucketTaggingSyncType<ClientInvocationReportingType>?
+    let putBucketVersioningAsyncOverride: PutBucketVersioningAsyncType<ClientInvocationReportingType>?
+    let putBucketVersioningSyncOverride: PutBucketVersioningSyncType<ClientInvocationReportingType>?
+    let putBucketWebsiteAsyncOverride: PutBucketWebsiteAsyncType<ClientInvocationReportingType>?
+    let putBucketWebsiteSyncOverride: PutBucketWebsiteSyncType<ClientInvocationReportingType>?
+    let putObjectAsyncOverride: PutObjectAsyncType<ClientInvocationReportingType>?
+    let putObjectSyncOverride: PutObjectSyncType<ClientInvocationReportingType>?
+    let putObjectAclAsyncOverride: PutObjectAclAsyncType<ClientInvocationReportingType>?
+    let putObjectAclSyncOverride: PutObjectAclSyncType<ClientInvocationReportingType>?
+    let putObjectLegalHoldAsyncOverride: PutObjectLegalHoldAsyncType<ClientInvocationReportingType>?
+    let putObjectLegalHoldSyncOverride: PutObjectLegalHoldSyncType<ClientInvocationReportingType>?
+    let putObjectLockConfigurationAsyncOverride: PutObjectLockConfigurationAsyncType<ClientInvocationReportingType>?
+    let putObjectLockConfigurationSyncOverride: PutObjectLockConfigurationSyncType<ClientInvocationReportingType>?
+    let putObjectRetentionAsyncOverride: PutObjectRetentionAsyncType<ClientInvocationReportingType>?
+    let putObjectRetentionSyncOverride: PutObjectRetentionSyncType<ClientInvocationReportingType>?
+    let putObjectTaggingAsyncOverride: PutObjectTaggingAsyncType<ClientInvocationReportingType>?
+    let putObjectTaggingSyncOverride: PutObjectTaggingSyncType<ClientInvocationReportingType>?
+    let putPublicAccessBlockAsyncOverride: PutPublicAccessBlockAsyncType<ClientInvocationReportingType>?
+    let putPublicAccessBlockSyncOverride: PutPublicAccessBlockSyncType<ClientInvocationReportingType>?
+    let restoreObjectAsyncOverride: RestoreObjectAsyncType<ClientInvocationReportingType>?
+    let restoreObjectSyncOverride: RestoreObjectSyncType<ClientInvocationReportingType>?
+    let selectObjectContentAsyncOverride: SelectObjectContentAsyncType<ClientInvocationReportingType>?
+    let selectObjectContentSyncOverride: SelectObjectContentSyncType<ClientInvocationReportingType>?
+    let uploadPartAsyncOverride: UploadPartAsyncType<ClientInvocationReportingType>?
+    let uploadPartSyncOverride: UploadPartSyncType<ClientInvocationReportingType>?
+    let uploadPartCopyAsyncOverride: UploadPartCopyAsyncType<ClientInvocationReportingType>?
+    let uploadPartCopySyncOverride: UploadPartCopySyncType<ClientInvocationReportingType>?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(error: HTTPClientError,
-            abortMultipartUploadAsync: S3ClientProtocol.AbortMultipartUploadAsyncType? = nil,
-            abortMultipartUploadSync: S3ClientProtocol.AbortMultipartUploadSyncType? = nil,
-            completeMultipartUploadAsync: S3ClientProtocol.CompleteMultipartUploadAsyncType? = nil,
-            completeMultipartUploadSync: S3ClientProtocol.CompleteMultipartUploadSyncType? = nil,
-            copyObjectAsync: S3ClientProtocol.CopyObjectAsyncType? = nil,
-            copyObjectSync: S3ClientProtocol.CopyObjectSyncType? = nil,
-            createBucketAsync: S3ClientProtocol.CreateBucketAsyncType? = nil,
-            createBucketSync: S3ClientProtocol.CreateBucketSyncType? = nil,
-            createMultipartUploadAsync: S3ClientProtocol.CreateMultipartUploadAsyncType? = nil,
-            createMultipartUploadSync: S3ClientProtocol.CreateMultipartUploadSyncType? = nil,
-            deleteBucketAsync: S3ClientProtocol.DeleteBucketAsyncType? = nil,
-            deleteBucketSync: S3ClientProtocol.DeleteBucketSyncType? = nil,
-            deleteBucketAnalyticsConfigurationAsync: S3ClientProtocol.DeleteBucketAnalyticsConfigurationAsyncType? = nil,
-            deleteBucketAnalyticsConfigurationSync: S3ClientProtocol.DeleteBucketAnalyticsConfigurationSyncType? = nil,
-            deleteBucketCorsAsync: S3ClientProtocol.DeleteBucketCorsAsyncType? = nil,
-            deleteBucketCorsSync: S3ClientProtocol.DeleteBucketCorsSyncType? = nil,
-            deleteBucketEncryptionAsync: S3ClientProtocol.DeleteBucketEncryptionAsyncType? = nil,
-            deleteBucketEncryptionSync: S3ClientProtocol.DeleteBucketEncryptionSyncType? = nil,
-            deleteBucketInventoryConfigurationAsync: S3ClientProtocol.DeleteBucketInventoryConfigurationAsyncType? = nil,
-            deleteBucketInventoryConfigurationSync: S3ClientProtocol.DeleteBucketInventoryConfigurationSyncType? = nil,
-            deleteBucketLifecycleAsync: S3ClientProtocol.DeleteBucketLifecycleAsyncType? = nil,
-            deleteBucketLifecycleSync: S3ClientProtocol.DeleteBucketLifecycleSyncType? = nil,
-            deleteBucketMetricsConfigurationAsync: S3ClientProtocol.DeleteBucketMetricsConfigurationAsyncType? = nil,
-            deleteBucketMetricsConfigurationSync: S3ClientProtocol.DeleteBucketMetricsConfigurationSyncType? = nil,
-            deleteBucketPolicyAsync: S3ClientProtocol.DeleteBucketPolicyAsyncType? = nil,
-            deleteBucketPolicySync: S3ClientProtocol.DeleteBucketPolicySyncType? = nil,
-            deleteBucketReplicationAsync: S3ClientProtocol.DeleteBucketReplicationAsyncType? = nil,
-            deleteBucketReplicationSync: S3ClientProtocol.DeleteBucketReplicationSyncType? = nil,
-            deleteBucketTaggingAsync: S3ClientProtocol.DeleteBucketTaggingAsyncType? = nil,
-            deleteBucketTaggingSync: S3ClientProtocol.DeleteBucketTaggingSyncType? = nil,
-            deleteBucketWebsiteAsync: S3ClientProtocol.DeleteBucketWebsiteAsyncType? = nil,
-            deleteBucketWebsiteSync: S3ClientProtocol.DeleteBucketWebsiteSyncType? = nil,
-            deleteObjectAsync: S3ClientProtocol.DeleteObjectAsyncType? = nil,
-            deleteObjectSync: S3ClientProtocol.DeleteObjectSyncType? = nil,
-            deleteObjectTaggingAsync: S3ClientProtocol.DeleteObjectTaggingAsyncType? = nil,
-            deleteObjectTaggingSync: S3ClientProtocol.DeleteObjectTaggingSyncType? = nil,
-            deleteObjectsAsync: S3ClientProtocol.DeleteObjectsAsyncType? = nil,
-            deleteObjectsSync: S3ClientProtocol.DeleteObjectsSyncType? = nil,
-            deletePublicAccessBlockAsync: S3ClientProtocol.DeletePublicAccessBlockAsyncType? = nil,
-            deletePublicAccessBlockSync: S3ClientProtocol.DeletePublicAccessBlockSyncType? = nil,
-            getBucketAccelerateConfigurationAsync: S3ClientProtocol.GetBucketAccelerateConfigurationAsyncType? = nil,
-            getBucketAccelerateConfigurationSync: S3ClientProtocol.GetBucketAccelerateConfigurationSyncType? = nil,
-            getBucketAclAsync: S3ClientProtocol.GetBucketAclAsyncType? = nil,
-            getBucketAclSync: S3ClientProtocol.GetBucketAclSyncType? = nil,
-            getBucketAnalyticsConfigurationAsync: S3ClientProtocol.GetBucketAnalyticsConfigurationAsyncType? = nil,
-            getBucketAnalyticsConfigurationSync: S3ClientProtocol.GetBucketAnalyticsConfigurationSyncType? = nil,
-            getBucketCorsAsync: S3ClientProtocol.GetBucketCorsAsyncType? = nil,
-            getBucketCorsSync: S3ClientProtocol.GetBucketCorsSyncType? = nil,
-            getBucketEncryptionAsync: S3ClientProtocol.GetBucketEncryptionAsyncType? = nil,
-            getBucketEncryptionSync: S3ClientProtocol.GetBucketEncryptionSyncType? = nil,
-            getBucketInventoryConfigurationAsync: S3ClientProtocol.GetBucketInventoryConfigurationAsyncType? = nil,
-            getBucketInventoryConfigurationSync: S3ClientProtocol.GetBucketInventoryConfigurationSyncType? = nil,
-            getBucketLifecycleAsync: S3ClientProtocol.GetBucketLifecycleAsyncType? = nil,
-            getBucketLifecycleSync: S3ClientProtocol.GetBucketLifecycleSyncType? = nil,
-            getBucketLifecycleConfigurationAsync: S3ClientProtocol.GetBucketLifecycleConfigurationAsyncType? = nil,
-            getBucketLifecycleConfigurationSync: S3ClientProtocol.GetBucketLifecycleConfigurationSyncType? = nil,
-            getBucketLocationAsync: S3ClientProtocol.GetBucketLocationAsyncType? = nil,
-            getBucketLocationSync: S3ClientProtocol.GetBucketLocationSyncType? = nil,
-            getBucketLoggingAsync: S3ClientProtocol.GetBucketLoggingAsyncType? = nil,
-            getBucketLoggingSync: S3ClientProtocol.GetBucketLoggingSyncType? = nil,
-            getBucketMetricsConfigurationAsync: S3ClientProtocol.GetBucketMetricsConfigurationAsyncType? = nil,
-            getBucketMetricsConfigurationSync: S3ClientProtocol.GetBucketMetricsConfigurationSyncType? = nil,
-            getBucketNotificationAsync: S3ClientProtocol.GetBucketNotificationAsyncType? = nil,
-            getBucketNotificationSync: S3ClientProtocol.GetBucketNotificationSyncType? = nil,
-            getBucketNotificationConfigurationAsync: S3ClientProtocol.GetBucketNotificationConfigurationAsyncType? = nil,
-            getBucketNotificationConfigurationSync: S3ClientProtocol.GetBucketNotificationConfigurationSyncType? = nil,
-            getBucketPolicyAsync: S3ClientProtocol.GetBucketPolicyAsyncType? = nil,
-            getBucketPolicySync: S3ClientProtocol.GetBucketPolicySyncType? = nil,
-            getBucketPolicyStatusAsync: S3ClientProtocol.GetBucketPolicyStatusAsyncType? = nil,
-            getBucketPolicyStatusSync: S3ClientProtocol.GetBucketPolicyStatusSyncType? = nil,
-            getBucketReplicationAsync: S3ClientProtocol.GetBucketReplicationAsyncType? = nil,
-            getBucketReplicationSync: S3ClientProtocol.GetBucketReplicationSyncType? = nil,
-            getBucketRequestPaymentAsync: S3ClientProtocol.GetBucketRequestPaymentAsyncType? = nil,
-            getBucketRequestPaymentSync: S3ClientProtocol.GetBucketRequestPaymentSyncType? = nil,
-            getBucketTaggingAsync: S3ClientProtocol.GetBucketTaggingAsyncType? = nil,
-            getBucketTaggingSync: S3ClientProtocol.GetBucketTaggingSyncType? = nil,
-            getBucketVersioningAsync: S3ClientProtocol.GetBucketVersioningAsyncType? = nil,
-            getBucketVersioningSync: S3ClientProtocol.GetBucketVersioningSyncType? = nil,
-            getBucketWebsiteAsync: S3ClientProtocol.GetBucketWebsiteAsyncType? = nil,
-            getBucketWebsiteSync: S3ClientProtocol.GetBucketWebsiteSyncType? = nil,
-            getObjectAsync: S3ClientProtocol.GetObjectAsyncType? = nil,
-            getObjectSync: S3ClientProtocol.GetObjectSyncType? = nil,
-            getObjectAclAsync: S3ClientProtocol.GetObjectAclAsyncType? = nil,
-            getObjectAclSync: S3ClientProtocol.GetObjectAclSyncType? = nil,
-            getObjectLegalHoldAsync: S3ClientProtocol.GetObjectLegalHoldAsyncType? = nil,
-            getObjectLegalHoldSync: S3ClientProtocol.GetObjectLegalHoldSyncType? = nil,
-            getObjectLockConfigurationAsync: S3ClientProtocol.GetObjectLockConfigurationAsyncType? = nil,
-            getObjectLockConfigurationSync: S3ClientProtocol.GetObjectLockConfigurationSyncType? = nil,
-            getObjectRetentionAsync: S3ClientProtocol.GetObjectRetentionAsyncType? = nil,
-            getObjectRetentionSync: S3ClientProtocol.GetObjectRetentionSyncType? = nil,
-            getObjectTaggingAsync: S3ClientProtocol.GetObjectTaggingAsyncType? = nil,
-            getObjectTaggingSync: S3ClientProtocol.GetObjectTaggingSyncType? = nil,
-            getObjectTorrentAsync: S3ClientProtocol.GetObjectTorrentAsyncType? = nil,
-            getObjectTorrentSync: S3ClientProtocol.GetObjectTorrentSyncType? = nil,
-            getPublicAccessBlockAsync: S3ClientProtocol.GetPublicAccessBlockAsyncType? = nil,
-            getPublicAccessBlockSync: S3ClientProtocol.GetPublicAccessBlockSyncType? = nil,
-            headBucketAsync: S3ClientProtocol.HeadBucketAsyncType? = nil,
-            headBucketSync: S3ClientProtocol.HeadBucketSyncType? = nil,
-            headObjectAsync: S3ClientProtocol.HeadObjectAsyncType? = nil,
-            headObjectSync: S3ClientProtocol.HeadObjectSyncType? = nil,
-            listBucketAnalyticsConfigurationsAsync: S3ClientProtocol.ListBucketAnalyticsConfigurationsAsyncType? = nil,
-            listBucketAnalyticsConfigurationsSync: S3ClientProtocol.ListBucketAnalyticsConfigurationsSyncType? = nil,
-            listBucketInventoryConfigurationsAsync: S3ClientProtocol.ListBucketInventoryConfigurationsAsyncType? = nil,
-            listBucketInventoryConfigurationsSync: S3ClientProtocol.ListBucketInventoryConfigurationsSyncType? = nil,
-            listBucketMetricsConfigurationsAsync: S3ClientProtocol.ListBucketMetricsConfigurationsAsyncType? = nil,
-            listBucketMetricsConfigurationsSync: S3ClientProtocol.ListBucketMetricsConfigurationsSyncType? = nil,
-            listBucketsAsync: S3ClientProtocol.ListBucketsAsyncType? = nil,
-            listBucketsSync: S3ClientProtocol.ListBucketsSyncType? = nil,
-            listMultipartUploadsAsync: S3ClientProtocol.ListMultipartUploadsAsyncType? = nil,
-            listMultipartUploadsSync: S3ClientProtocol.ListMultipartUploadsSyncType? = nil,
-            listObjectVersionsAsync: S3ClientProtocol.ListObjectVersionsAsyncType? = nil,
-            listObjectVersionsSync: S3ClientProtocol.ListObjectVersionsSyncType? = nil,
-            listObjectsAsync: S3ClientProtocol.ListObjectsAsyncType? = nil,
-            listObjectsSync: S3ClientProtocol.ListObjectsSyncType? = nil,
-            listObjectsV2Async: S3ClientProtocol.ListObjectsV2AsyncType? = nil,
-            listObjectsV2Sync: S3ClientProtocol.ListObjectsV2SyncType? = nil,
-            listPartsAsync: S3ClientProtocol.ListPartsAsyncType? = nil,
-            listPartsSync: S3ClientProtocol.ListPartsSyncType? = nil,
-            putBucketAccelerateConfigurationAsync: S3ClientProtocol.PutBucketAccelerateConfigurationAsyncType? = nil,
-            putBucketAccelerateConfigurationSync: S3ClientProtocol.PutBucketAccelerateConfigurationSyncType? = nil,
-            putBucketAclAsync: S3ClientProtocol.PutBucketAclAsyncType? = nil,
-            putBucketAclSync: S3ClientProtocol.PutBucketAclSyncType? = nil,
-            putBucketAnalyticsConfigurationAsync: S3ClientProtocol.PutBucketAnalyticsConfigurationAsyncType? = nil,
-            putBucketAnalyticsConfigurationSync: S3ClientProtocol.PutBucketAnalyticsConfigurationSyncType? = nil,
-            putBucketCorsAsync: S3ClientProtocol.PutBucketCorsAsyncType? = nil,
-            putBucketCorsSync: S3ClientProtocol.PutBucketCorsSyncType? = nil,
-            putBucketEncryptionAsync: S3ClientProtocol.PutBucketEncryptionAsyncType? = nil,
-            putBucketEncryptionSync: S3ClientProtocol.PutBucketEncryptionSyncType? = nil,
-            putBucketInventoryConfigurationAsync: S3ClientProtocol.PutBucketInventoryConfigurationAsyncType? = nil,
-            putBucketInventoryConfigurationSync: S3ClientProtocol.PutBucketInventoryConfigurationSyncType? = nil,
-            putBucketLifecycleAsync: S3ClientProtocol.PutBucketLifecycleAsyncType? = nil,
-            putBucketLifecycleSync: S3ClientProtocol.PutBucketLifecycleSyncType? = nil,
-            putBucketLifecycleConfigurationAsync: S3ClientProtocol.PutBucketLifecycleConfigurationAsyncType? = nil,
-            putBucketLifecycleConfigurationSync: S3ClientProtocol.PutBucketLifecycleConfigurationSyncType? = nil,
-            putBucketLoggingAsync: S3ClientProtocol.PutBucketLoggingAsyncType? = nil,
-            putBucketLoggingSync: S3ClientProtocol.PutBucketLoggingSyncType? = nil,
-            putBucketMetricsConfigurationAsync: S3ClientProtocol.PutBucketMetricsConfigurationAsyncType? = nil,
-            putBucketMetricsConfigurationSync: S3ClientProtocol.PutBucketMetricsConfigurationSyncType? = nil,
-            putBucketNotificationAsync: S3ClientProtocol.PutBucketNotificationAsyncType? = nil,
-            putBucketNotificationSync: S3ClientProtocol.PutBucketNotificationSyncType? = nil,
-            putBucketNotificationConfigurationAsync: S3ClientProtocol.PutBucketNotificationConfigurationAsyncType? = nil,
-            putBucketNotificationConfigurationSync: S3ClientProtocol.PutBucketNotificationConfigurationSyncType? = nil,
-            putBucketPolicyAsync: S3ClientProtocol.PutBucketPolicyAsyncType? = nil,
-            putBucketPolicySync: S3ClientProtocol.PutBucketPolicySyncType? = nil,
-            putBucketReplicationAsync: S3ClientProtocol.PutBucketReplicationAsyncType? = nil,
-            putBucketReplicationSync: S3ClientProtocol.PutBucketReplicationSyncType? = nil,
-            putBucketRequestPaymentAsync: S3ClientProtocol.PutBucketRequestPaymentAsyncType? = nil,
-            putBucketRequestPaymentSync: S3ClientProtocol.PutBucketRequestPaymentSyncType? = nil,
-            putBucketTaggingAsync: S3ClientProtocol.PutBucketTaggingAsyncType? = nil,
-            putBucketTaggingSync: S3ClientProtocol.PutBucketTaggingSyncType? = nil,
-            putBucketVersioningAsync: S3ClientProtocol.PutBucketVersioningAsyncType? = nil,
-            putBucketVersioningSync: S3ClientProtocol.PutBucketVersioningSyncType? = nil,
-            putBucketWebsiteAsync: S3ClientProtocol.PutBucketWebsiteAsyncType? = nil,
-            putBucketWebsiteSync: S3ClientProtocol.PutBucketWebsiteSyncType? = nil,
-            putObjectAsync: S3ClientProtocol.PutObjectAsyncType? = nil,
-            putObjectSync: S3ClientProtocol.PutObjectSyncType? = nil,
-            putObjectAclAsync: S3ClientProtocol.PutObjectAclAsyncType? = nil,
-            putObjectAclSync: S3ClientProtocol.PutObjectAclSyncType? = nil,
-            putObjectLegalHoldAsync: S3ClientProtocol.PutObjectLegalHoldAsyncType? = nil,
-            putObjectLegalHoldSync: S3ClientProtocol.PutObjectLegalHoldSyncType? = nil,
-            putObjectLockConfigurationAsync: S3ClientProtocol.PutObjectLockConfigurationAsyncType? = nil,
-            putObjectLockConfigurationSync: S3ClientProtocol.PutObjectLockConfigurationSyncType? = nil,
-            putObjectRetentionAsync: S3ClientProtocol.PutObjectRetentionAsyncType? = nil,
-            putObjectRetentionSync: S3ClientProtocol.PutObjectRetentionSyncType? = nil,
-            putObjectTaggingAsync: S3ClientProtocol.PutObjectTaggingAsyncType? = nil,
-            putObjectTaggingSync: S3ClientProtocol.PutObjectTaggingSyncType? = nil,
-            putPublicAccessBlockAsync: S3ClientProtocol.PutPublicAccessBlockAsyncType? = nil,
-            putPublicAccessBlockSync: S3ClientProtocol.PutPublicAccessBlockSyncType? = nil,
-            restoreObjectAsync: S3ClientProtocol.RestoreObjectAsyncType? = nil,
-            restoreObjectSync: S3ClientProtocol.RestoreObjectSyncType? = nil,
-            selectObjectContentAsync: S3ClientProtocol.SelectObjectContentAsyncType? = nil,
-            selectObjectContentSync: S3ClientProtocol.SelectObjectContentSyncType? = nil,
-            uploadPartAsync: S3ClientProtocol.UploadPartAsyncType? = nil,
-            uploadPartSync: S3ClientProtocol.UploadPartSyncType? = nil,
-            uploadPartCopyAsync: S3ClientProtocol.UploadPartCopyAsyncType? = nil,
-            uploadPartCopySync: S3ClientProtocol.UploadPartCopySyncType? = nil) {
+            abortMultipartUploadAsync: AbortMultipartUploadAsyncType<ClientInvocationReportingType>? = nil,
+            abortMultipartUploadSync: AbortMultipartUploadSyncType<ClientInvocationReportingType>? = nil,
+            completeMultipartUploadAsync: CompleteMultipartUploadAsyncType<ClientInvocationReportingType>? = nil,
+            completeMultipartUploadSync: CompleteMultipartUploadSyncType<ClientInvocationReportingType>? = nil,
+            copyObjectAsync: CopyObjectAsyncType<ClientInvocationReportingType>? = nil,
+            copyObjectSync: CopyObjectSyncType<ClientInvocationReportingType>? = nil,
+            createBucketAsync: CreateBucketAsyncType<ClientInvocationReportingType>? = nil,
+            createBucketSync: CreateBucketSyncType<ClientInvocationReportingType>? = nil,
+            createMultipartUploadAsync: CreateMultipartUploadAsyncType<ClientInvocationReportingType>? = nil,
+            createMultipartUploadSync: CreateMultipartUploadSyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketAsync: DeleteBucketAsyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketSync: DeleteBucketSyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketAnalyticsConfigurationAsync: DeleteBucketAnalyticsConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketAnalyticsConfigurationSync: DeleteBucketAnalyticsConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketCorsAsync: DeleteBucketCorsAsyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketCorsSync: DeleteBucketCorsSyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketEncryptionAsync: DeleteBucketEncryptionAsyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketEncryptionSync: DeleteBucketEncryptionSyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketInventoryConfigurationAsync: DeleteBucketInventoryConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketInventoryConfigurationSync: DeleteBucketInventoryConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketLifecycleAsync: DeleteBucketLifecycleAsyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketLifecycleSync: DeleteBucketLifecycleSyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketMetricsConfigurationAsync: DeleteBucketMetricsConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketMetricsConfigurationSync: DeleteBucketMetricsConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketPolicyAsync: DeleteBucketPolicyAsyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketPolicySync: DeleteBucketPolicySyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketReplicationAsync: DeleteBucketReplicationAsyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketReplicationSync: DeleteBucketReplicationSyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketTaggingAsync: DeleteBucketTaggingAsyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketTaggingSync: DeleteBucketTaggingSyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketWebsiteAsync: DeleteBucketWebsiteAsyncType<ClientInvocationReportingType>? = nil,
+            deleteBucketWebsiteSync: DeleteBucketWebsiteSyncType<ClientInvocationReportingType>? = nil,
+            deleteObjectAsync: DeleteObjectAsyncType<ClientInvocationReportingType>? = nil,
+            deleteObjectSync: DeleteObjectSyncType<ClientInvocationReportingType>? = nil,
+            deleteObjectTaggingAsync: DeleteObjectTaggingAsyncType<ClientInvocationReportingType>? = nil,
+            deleteObjectTaggingSync: DeleteObjectTaggingSyncType<ClientInvocationReportingType>? = nil,
+            deleteObjectsAsync: DeleteObjectsAsyncType<ClientInvocationReportingType>? = nil,
+            deleteObjectsSync: DeleteObjectsSyncType<ClientInvocationReportingType>? = nil,
+            deletePublicAccessBlockAsync: DeletePublicAccessBlockAsyncType<ClientInvocationReportingType>? = nil,
+            deletePublicAccessBlockSync: DeletePublicAccessBlockSyncType<ClientInvocationReportingType>? = nil,
+            getBucketAccelerateConfigurationAsync: GetBucketAccelerateConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketAccelerateConfigurationSync: GetBucketAccelerateConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            getBucketAclAsync: GetBucketAclAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketAclSync: GetBucketAclSyncType<ClientInvocationReportingType>? = nil,
+            getBucketAnalyticsConfigurationAsync: GetBucketAnalyticsConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketAnalyticsConfigurationSync: GetBucketAnalyticsConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            getBucketCorsAsync: GetBucketCorsAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketCorsSync: GetBucketCorsSyncType<ClientInvocationReportingType>? = nil,
+            getBucketEncryptionAsync: GetBucketEncryptionAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketEncryptionSync: GetBucketEncryptionSyncType<ClientInvocationReportingType>? = nil,
+            getBucketInventoryConfigurationAsync: GetBucketInventoryConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketInventoryConfigurationSync: GetBucketInventoryConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            getBucketLifecycleAsync: GetBucketLifecycleAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketLifecycleSync: GetBucketLifecycleSyncType<ClientInvocationReportingType>? = nil,
+            getBucketLifecycleConfigurationAsync: GetBucketLifecycleConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketLifecycleConfigurationSync: GetBucketLifecycleConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            getBucketLocationAsync: GetBucketLocationAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketLocationSync: GetBucketLocationSyncType<ClientInvocationReportingType>? = nil,
+            getBucketLoggingAsync: GetBucketLoggingAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketLoggingSync: GetBucketLoggingSyncType<ClientInvocationReportingType>? = nil,
+            getBucketMetricsConfigurationAsync: GetBucketMetricsConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketMetricsConfigurationSync: GetBucketMetricsConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            getBucketNotificationAsync: GetBucketNotificationAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketNotificationSync: GetBucketNotificationSyncType<ClientInvocationReportingType>? = nil,
+            getBucketNotificationConfigurationAsync: GetBucketNotificationConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketNotificationConfigurationSync: GetBucketNotificationConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            getBucketPolicyAsync: GetBucketPolicyAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketPolicySync: GetBucketPolicySyncType<ClientInvocationReportingType>? = nil,
+            getBucketPolicyStatusAsync: GetBucketPolicyStatusAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketPolicyStatusSync: GetBucketPolicyStatusSyncType<ClientInvocationReportingType>? = nil,
+            getBucketReplicationAsync: GetBucketReplicationAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketReplicationSync: GetBucketReplicationSyncType<ClientInvocationReportingType>? = nil,
+            getBucketRequestPaymentAsync: GetBucketRequestPaymentAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketRequestPaymentSync: GetBucketRequestPaymentSyncType<ClientInvocationReportingType>? = nil,
+            getBucketTaggingAsync: GetBucketTaggingAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketTaggingSync: GetBucketTaggingSyncType<ClientInvocationReportingType>? = nil,
+            getBucketVersioningAsync: GetBucketVersioningAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketVersioningSync: GetBucketVersioningSyncType<ClientInvocationReportingType>? = nil,
+            getBucketWebsiteAsync: GetBucketWebsiteAsyncType<ClientInvocationReportingType>? = nil,
+            getBucketWebsiteSync: GetBucketWebsiteSyncType<ClientInvocationReportingType>? = nil,
+            getObjectAsync: GetObjectAsyncType<ClientInvocationReportingType>? = nil,
+            getObjectSync: GetObjectSyncType<ClientInvocationReportingType>? = nil,
+            getObjectAclAsync: GetObjectAclAsyncType<ClientInvocationReportingType>? = nil,
+            getObjectAclSync: GetObjectAclSyncType<ClientInvocationReportingType>? = nil,
+            getObjectLegalHoldAsync: GetObjectLegalHoldAsyncType<ClientInvocationReportingType>? = nil,
+            getObjectLegalHoldSync: GetObjectLegalHoldSyncType<ClientInvocationReportingType>? = nil,
+            getObjectLockConfigurationAsync: GetObjectLockConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            getObjectLockConfigurationSync: GetObjectLockConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            getObjectRetentionAsync: GetObjectRetentionAsyncType<ClientInvocationReportingType>? = nil,
+            getObjectRetentionSync: GetObjectRetentionSyncType<ClientInvocationReportingType>? = nil,
+            getObjectTaggingAsync: GetObjectTaggingAsyncType<ClientInvocationReportingType>? = nil,
+            getObjectTaggingSync: GetObjectTaggingSyncType<ClientInvocationReportingType>? = nil,
+            getObjectTorrentAsync: GetObjectTorrentAsyncType<ClientInvocationReportingType>? = nil,
+            getObjectTorrentSync: GetObjectTorrentSyncType<ClientInvocationReportingType>? = nil,
+            getPublicAccessBlockAsync: GetPublicAccessBlockAsyncType<ClientInvocationReportingType>? = nil,
+            getPublicAccessBlockSync: GetPublicAccessBlockSyncType<ClientInvocationReportingType>? = nil,
+            headBucketAsync: HeadBucketAsyncType<ClientInvocationReportingType>? = nil,
+            headBucketSync: HeadBucketSyncType<ClientInvocationReportingType>? = nil,
+            headObjectAsync: HeadObjectAsyncType<ClientInvocationReportingType>? = nil,
+            headObjectSync: HeadObjectSyncType<ClientInvocationReportingType>? = nil,
+            listBucketAnalyticsConfigurationsAsync: ListBucketAnalyticsConfigurationsAsyncType<ClientInvocationReportingType>? = nil,
+            listBucketAnalyticsConfigurationsSync: ListBucketAnalyticsConfigurationsSyncType<ClientInvocationReportingType>? = nil,
+            listBucketInventoryConfigurationsAsync: ListBucketInventoryConfigurationsAsyncType<ClientInvocationReportingType>? = nil,
+            listBucketInventoryConfigurationsSync: ListBucketInventoryConfigurationsSyncType<ClientInvocationReportingType>? = nil,
+            listBucketMetricsConfigurationsAsync: ListBucketMetricsConfigurationsAsyncType<ClientInvocationReportingType>? = nil,
+            listBucketMetricsConfigurationsSync: ListBucketMetricsConfigurationsSyncType<ClientInvocationReportingType>? = nil,
+            listBucketsAsync: ListBucketsAsyncType<ClientInvocationReportingType>? = nil,
+            listBucketsSync: ListBucketsSyncType<ClientInvocationReportingType>? = nil,
+            listMultipartUploadsAsync: ListMultipartUploadsAsyncType<ClientInvocationReportingType>? = nil,
+            listMultipartUploadsSync: ListMultipartUploadsSyncType<ClientInvocationReportingType>? = nil,
+            listObjectVersionsAsync: ListObjectVersionsAsyncType<ClientInvocationReportingType>? = nil,
+            listObjectVersionsSync: ListObjectVersionsSyncType<ClientInvocationReportingType>? = nil,
+            listObjectsAsync: ListObjectsAsyncType<ClientInvocationReportingType>? = nil,
+            listObjectsSync: ListObjectsSyncType<ClientInvocationReportingType>? = nil,
+            listObjectsV2Async: ListObjectsV2AsyncType<ClientInvocationReportingType>? = nil,
+            listObjectsV2Sync: ListObjectsV2SyncType<ClientInvocationReportingType>? = nil,
+            listPartsAsync: ListPartsAsyncType<ClientInvocationReportingType>? = nil,
+            listPartsSync: ListPartsSyncType<ClientInvocationReportingType>? = nil,
+            putBucketAccelerateConfigurationAsync: PutBucketAccelerateConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketAccelerateConfigurationSync: PutBucketAccelerateConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            putBucketAclAsync: PutBucketAclAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketAclSync: PutBucketAclSyncType<ClientInvocationReportingType>? = nil,
+            putBucketAnalyticsConfigurationAsync: PutBucketAnalyticsConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketAnalyticsConfigurationSync: PutBucketAnalyticsConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            putBucketCorsAsync: PutBucketCorsAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketCorsSync: PutBucketCorsSyncType<ClientInvocationReportingType>? = nil,
+            putBucketEncryptionAsync: PutBucketEncryptionAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketEncryptionSync: PutBucketEncryptionSyncType<ClientInvocationReportingType>? = nil,
+            putBucketInventoryConfigurationAsync: PutBucketInventoryConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketInventoryConfigurationSync: PutBucketInventoryConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            putBucketLifecycleAsync: PutBucketLifecycleAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketLifecycleSync: PutBucketLifecycleSyncType<ClientInvocationReportingType>? = nil,
+            putBucketLifecycleConfigurationAsync: PutBucketLifecycleConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketLifecycleConfigurationSync: PutBucketLifecycleConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            putBucketLoggingAsync: PutBucketLoggingAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketLoggingSync: PutBucketLoggingSyncType<ClientInvocationReportingType>? = nil,
+            putBucketMetricsConfigurationAsync: PutBucketMetricsConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketMetricsConfigurationSync: PutBucketMetricsConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            putBucketNotificationAsync: PutBucketNotificationAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketNotificationSync: PutBucketNotificationSyncType<ClientInvocationReportingType>? = nil,
+            putBucketNotificationConfigurationAsync: PutBucketNotificationConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketNotificationConfigurationSync: PutBucketNotificationConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            putBucketPolicyAsync: PutBucketPolicyAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketPolicySync: PutBucketPolicySyncType<ClientInvocationReportingType>? = nil,
+            putBucketReplicationAsync: PutBucketReplicationAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketReplicationSync: PutBucketReplicationSyncType<ClientInvocationReportingType>? = nil,
+            putBucketRequestPaymentAsync: PutBucketRequestPaymentAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketRequestPaymentSync: PutBucketRequestPaymentSyncType<ClientInvocationReportingType>? = nil,
+            putBucketTaggingAsync: PutBucketTaggingAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketTaggingSync: PutBucketTaggingSyncType<ClientInvocationReportingType>? = nil,
+            putBucketVersioningAsync: PutBucketVersioningAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketVersioningSync: PutBucketVersioningSyncType<ClientInvocationReportingType>? = nil,
+            putBucketWebsiteAsync: PutBucketWebsiteAsyncType<ClientInvocationReportingType>? = nil,
+            putBucketWebsiteSync: PutBucketWebsiteSyncType<ClientInvocationReportingType>? = nil,
+            putObjectAsync: PutObjectAsyncType<ClientInvocationReportingType>? = nil,
+            putObjectSync: PutObjectSyncType<ClientInvocationReportingType>? = nil,
+            putObjectAclAsync: PutObjectAclAsyncType<ClientInvocationReportingType>? = nil,
+            putObjectAclSync: PutObjectAclSyncType<ClientInvocationReportingType>? = nil,
+            putObjectLegalHoldAsync: PutObjectLegalHoldAsyncType<ClientInvocationReportingType>? = nil,
+            putObjectLegalHoldSync: PutObjectLegalHoldSyncType<ClientInvocationReportingType>? = nil,
+            putObjectLockConfigurationAsync: PutObjectLockConfigurationAsyncType<ClientInvocationReportingType>? = nil,
+            putObjectLockConfigurationSync: PutObjectLockConfigurationSyncType<ClientInvocationReportingType>? = nil,
+            putObjectRetentionAsync: PutObjectRetentionAsyncType<ClientInvocationReportingType>? = nil,
+            putObjectRetentionSync: PutObjectRetentionSyncType<ClientInvocationReportingType>? = nil,
+            putObjectTaggingAsync: PutObjectTaggingAsyncType<ClientInvocationReportingType>? = nil,
+            putObjectTaggingSync: PutObjectTaggingSyncType<ClientInvocationReportingType>? = nil,
+            putPublicAccessBlockAsync: PutPublicAccessBlockAsyncType<ClientInvocationReportingType>? = nil,
+            putPublicAccessBlockSync: PutPublicAccessBlockSyncType<ClientInvocationReportingType>? = nil,
+            restoreObjectAsync: RestoreObjectAsyncType<ClientInvocationReportingType>? = nil,
+            restoreObjectSync: RestoreObjectSyncType<ClientInvocationReportingType>? = nil,
+            selectObjectContentAsync: SelectObjectContentAsyncType<ClientInvocationReportingType>? = nil,
+            selectObjectContentSync: SelectObjectContentSyncType<ClientInvocationReportingType>? = nil,
+            uploadPartAsync: UploadPartAsyncType<ClientInvocationReportingType>? = nil,
+            uploadPartSync: UploadPartSyncType<ClientInvocationReportingType>? = nil,
+            uploadPartCopyAsync: UploadPartCopyAsyncType<ClientInvocationReportingType>? = nil,
+            uploadPartCopySync: UploadPartCopySyncType<ClientInvocationReportingType>? = nil) {
         self.error = error
         self.abortMultipartUploadAsyncOverride = abortMultipartUploadAsync
         self.abortMultipartUploadSyncOverride = abortMultipartUploadSync
@@ -576,12 +576,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchUpload.
      */
-    public func abortMultipartUploadAsync(
+    public func abortMultipartUploadAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.AbortMultipartUploadRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, HTTPClientError>) -> ()) throws {
-        if let abortMultipartUploadAsyncOverride = abortMultipartUploadAsyncOverride {
-            return try abortMultipartUploadAsyncOverride(input, reporting, completion)
+        if let abortMultipartUploadAsyncOverrideNonOptional = abortMultipartUploadAsyncOverride {
+            if let abortMultipartUploadAsyncOverrideTyped = abortMultipartUploadAsyncOverrideNonOptional
+                    as? AbortMultipartUploadAsyncType<InvocationReportingType> {
+                return try abortMultipartUploadAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -596,11 +601,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchUpload.
      */
-    public func abortMultipartUploadSync(
+    public func abortMultipartUploadSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.AbortMultipartUploadRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.AbortMultipartUploadOutput {
-        if let abortMultipartUploadSyncOverride = abortMultipartUploadSyncOverride {
-            return try abortMultipartUploadSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.AbortMultipartUploadOutput {
+        if let abortMultipartUploadSyncOverrideNonOptional = abortMultipartUploadSyncOverride {
+            if let abortMultipartUploadSyncOverrideTyped = abortMultipartUploadSyncOverrideNonOptional
+                    as? AbortMultipartUploadSyncType<InvocationReportingType> {
+                return try abortMultipartUploadSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -615,12 +625,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The CompleteMultipartUploadOutput
            object will be validated before being returned to caller.
      */
-    public func completeMultipartUploadAsync(
+    public func completeMultipartUploadAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.CompleteMultipartUploadRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, HTTPClientError>) -> ()) throws {
-        if let completeMultipartUploadAsyncOverride = completeMultipartUploadAsyncOverride {
-            return try completeMultipartUploadAsyncOverride(input, reporting, completion)
+        if let completeMultipartUploadAsyncOverrideNonOptional = completeMultipartUploadAsyncOverride {
+            if let completeMultipartUploadAsyncOverrideTyped = completeMultipartUploadAsyncOverrideNonOptional
+                    as? CompleteMultipartUploadAsyncType<InvocationReportingType> {
+                return try completeMultipartUploadAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -634,11 +649,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The CompleteMultipartUploadOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func completeMultipartUploadSync(
+    public func completeMultipartUploadSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.CompleteMultipartUploadRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.CompleteMultipartUploadOutput {
-        if let completeMultipartUploadSyncOverride = completeMultipartUploadSyncOverride {
-            return try completeMultipartUploadSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.CompleteMultipartUploadOutput {
+        if let completeMultipartUploadSyncOverrideNonOptional = completeMultipartUploadSyncOverride {
+            if let completeMultipartUploadSyncOverrideTyped = completeMultipartUploadSyncOverrideNonOptional
+                    as? CompleteMultipartUploadSyncType<InvocationReportingType> {
+                return try completeMultipartUploadSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -654,12 +674,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: objectNotInActiveTier.
      */
-    public func copyObjectAsync(
+    public func copyObjectAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.CopyObjectRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.CopyObjectOutput, HTTPClientError>) -> ()) throws {
-        if let copyObjectAsyncOverride = copyObjectAsyncOverride {
-            return try copyObjectAsyncOverride(input, reporting, completion)
+        if let copyObjectAsyncOverrideNonOptional = copyObjectAsyncOverride {
+            if let copyObjectAsyncOverrideTyped = copyObjectAsyncOverrideNonOptional
+                    as? CopyObjectAsyncType<InvocationReportingType> {
+                return try copyObjectAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -674,11 +699,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: objectNotInActiveTier.
      */
-    public func copyObjectSync(
+    public func copyObjectSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.CopyObjectRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.CopyObjectOutput {
-        if let copyObjectSyncOverride = copyObjectSyncOverride {
-            return try copyObjectSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.CopyObjectOutput {
+        if let copyObjectSyncOverrideNonOptional = copyObjectSyncOverride {
+            if let copyObjectSyncOverrideTyped = copyObjectSyncOverrideNonOptional
+                    as? CopyObjectSyncType<InvocationReportingType> {
+                return try copyObjectSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -694,12 +724,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: bucketAlreadyExists, bucketAlreadyOwnedByYou.
      */
-    public func createBucketAsync(
+    public func createBucketAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.CreateBucketRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.CreateBucketOutput, HTTPClientError>) -> ()) throws {
-        if let createBucketAsyncOverride = createBucketAsyncOverride {
-            return try createBucketAsyncOverride(input, reporting, completion)
+        if let createBucketAsyncOverrideNonOptional = createBucketAsyncOverride {
+            if let createBucketAsyncOverrideTyped = createBucketAsyncOverrideNonOptional
+                    as? CreateBucketAsyncType<InvocationReportingType> {
+                return try createBucketAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -714,11 +749,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: bucketAlreadyExists, bucketAlreadyOwnedByYou.
      */
-    public func createBucketSync(
+    public func createBucketSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.CreateBucketRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.CreateBucketOutput {
-        if let createBucketSyncOverride = createBucketSyncOverride {
-            return try createBucketSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.CreateBucketOutput {
+        if let createBucketSyncOverrideNonOptional = createBucketSyncOverride {
+            if let createBucketSyncOverrideTyped = createBucketSyncOverrideNonOptional
+                    as? CreateBucketSyncType<InvocationReportingType> {
+                return try createBucketSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -733,12 +773,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The CreateMultipartUploadOutput
            object will be validated before being returned to caller.
      */
-    public func createMultipartUploadAsync(
+    public func createMultipartUploadAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.CreateMultipartUploadRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, HTTPClientError>) -> ()) throws {
-        if let createMultipartUploadAsyncOverride = createMultipartUploadAsyncOverride {
-            return try createMultipartUploadAsyncOverride(input, reporting, completion)
+        if let createMultipartUploadAsyncOverrideNonOptional = createMultipartUploadAsyncOverride {
+            if let createMultipartUploadAsyncOverrideTyped = createMultipartUploadAsyncOverrideNonOptional
+                    as? CreateMultipartUploadAsyncType<InvocationReportingType> {
+                return try createMultipartUploadAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -752,11 +797,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The CreateMultipartUploadOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createMultipartUploadSync(
+    public func createMultipartUploadSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.CreateMultipartUploadRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.CreateMultipartUploadOutput {
-        if let createMultipartUploadSyncOverride = createMultipartUploadSyncOverride {
-            return try createMultipartUploadSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.CreateMultipartUploadOutput {
+        if let createMultipartUploadSyncOverrideNonOptional = createMultipartUploadSyncOverride {
+            if let createMultipartUploadSyncOverrideTyped = createMultipartUploadSyncOverrideNonOptional
+                    as? CreateMultipartUploadSyncType<InvocationReportingType> {
+                return try createMultipartUploadSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -770,12 +820,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketAsync(
+    public func deleteBucketAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteBucketAsyncOverride = deleteBucketAsyncOverride {
-            return try deleteBucketAsyncOverride(input, reporting, completion)
+        if let deleteBucketAsyncOverrideNonOptional = deleteBucketAsyncOverride {
+            if let deleteBucketAsyncOverrideTyped = deleteBucketAsyncOverrideNonOptional
+                    as? DeleteBucketAsyncType<InvocationReportingType> {
+                return try deleteBucketAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -787,11 +842,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketRequest object being passed to this operation.
      */
-    public func deleteBucketSync(
+    public func deleteBucketSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteBucketSyncOverride = deleteBucketSyncOverride {
-            return try deleteBucketSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteBucketSyncOverrideNonOptional = deleteBucketSyncOverride {
+            if let deleteBucketSyncOverrideTyped = deleteBucketSyncOverrideNonOptional
+                    as? DeleteBucketSyncType<InvocationReportingType> {
+                return try deleteBucketSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -805,12 +865,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketAnalyticsConfigurationAsync(
+    public func deleteBucketAnalyticsConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketAnalyticsConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteBucketAnalyticsConfigurationAsyncOverride = deleteBucketAnalyticsConfigurationAsyncOverride {
-            return try deleteBucketAnalyticsConfigurationAsyncOverride(input, reporting, completion)
+        if let deleteBucketAnalyticsConfigurationAsyncOverrideNonOptional = deleteBucketAnalyticsConfigurationAsyncOverride {
+            if let deleteBucketAnalyticsConfigurationAsyncOverrideTyped = deleteBucketAnalyticsConfigurationAsyncOverrideNonOptional
+                    as? DeleteBucketAnalyticsConfigurationAsyncType<InvocationReportingType> {
+                return try deleteBucketAnalyticsConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -822,11 +887,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketAnalyticsConfigurationRequest object being passed to this operation.
      */
-    public func deleteBucketAnalyticsConfigurationSync(
+    public func deleteBucketAnalyticsConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketAnalyticsConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteBucketAnalyticsConfigurationSyncOverride = deleteBucketAnalyticsConfigurationSyncOverride {
-            return try deleteBucketAnalyticsConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteBucketAnalyticsConfigurationSyncOverrideNonOptional = deleteBucketAnalyticsConfigurationSyncOverride {
+            if let deleteBucketAnalyticsConfigurationSyncOverrideTyped = deleteBucketAnalyticsConfigurationSyncOverrideNonOptional
+                    as? DeleteBucketAnalyticsConfigurationSyncType<InvocationReportingType> {
+                return try deleteBucketAnalyticsConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -840,12 +910,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketCorsAsync(
+    public func deleteBucketCorsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketCorsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteBucketCorsAsyncOverride = deleteBucketCorsAsyncOverride {
-            return try deleteBucketCorsAsyncOverride(input, reporting, completion)
+        if let deleteBucketCorsAsyncOverrideNonOptional = deleteBucketCorsAsyncOverride {
+            if let deleteBucketCorsAsyncOverrideTyped = deleteBucketCorsAsyncOverrideNonOptional
+                    as? DeleteBucketCorsAsyncType<InvocationReportingType> {
+                return try deleteBucketCorsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -857,11 +932,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketCorsRequest object being passed to this operation.
      */
-    public func deleteBucketCorsSync(
+    public func deleteBucketCorsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketCorsRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteBucketCorsSyncOverride = deleteBucketCorsSyncOverride {
-            return try deleteBucketCorsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteBucketCorsSyncOverrideNonOptional = deleteBucketCorsSyncOverride {
+            if let deleteBucketCorsSyncOverrideTyped = deleteBucketCorsSyncOverrideNonOptional
+                    as? DeleteBucketCorsSyncType<InvocationReportingType> {
+                return try deleteBucketCorsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -875,12 +955,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketEncryptionAsync(
+    public func deleteBucketEncryptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketEncryptionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteBucketEncryptionAsyncOverride = deleteBucketEncryptionAsyncOverride {
-            return try deleteBucketEncryptionAsyncOverride(input, reporting, completion)
+        if let deleteBucketEncryptionAsyncOverrideNonOptional = deleteBucketEncryptionAsyncOverride {
+            if let deleteBucketEncryptionAsyncOverrideTyped = deleteBucketEncryptionAsyncOverrideNonOptional
+                    as? DeleteBucketEncryptionAsyncType<InvocationReportingType> {
+                return try deleteBucketEncryptionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -892,11 +977,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketEncryptionRequest object being passed to this operation.
      */
-    public func deleteBucketEncryptionSync(
+    public func deleteBucketEncryptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketEncryptionRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteBucketEncryptionSyncOverride = deleteBucketEncryptionSyncOverride {
-            return try deleteBucketEncryptionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteBucketEncryptionSyncOverrideNonOptional = deleteBucketEncryptionSyncOverride {
+            if let deleteBucketEncryptionSyncOverrideTyped = deleteBucketEncryptionSyncOverrideNonOptional
+                    as? DeleteBucketEncryptionSyncType<InvocationReportingType> {
+                return try deleteBucketEncryptionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -910,12 +1000,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketInventoryConfigurationAsync(
+    public func deleteBucketInventoryConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketInventoryConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteBucketInventoryConfigurationAsyncOverride = deleteBucketInventoryConfigurationAsyncOverride {
-            return try deleteBucketInventoryConfigurationAsyncOverride(input, reporting, completion)
+        if let deleteBucketInventoryConfigurationAsyncOverrideNonOptional = deleteBucketInventoryConfigurationAsyncOverride {
+            if let deleteBucketInventoryConfigurationAsyncOverrideTyped = deleteBucketInventoryConfigurationAsyncOverrideNonOptional
+                    as? DeleteBucketInventoryConfigurationAsyncType<InvocationReportingType> {
+                return try deleteBucketInventoryConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -927,11 +1022,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketInventoryConfigurationRequest object being passed to this operation.
      */
-    public func deleteBucketInventoryConfigurationSync(
+    public func deleteBucketInventoryConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketInventoryConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteBucketInventoryConfigurationSyncOverride = deleteBucketInventoryConfigurationSyncOverride {
-            return try deleteBucketInventoryConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteBucketInventoryConfigurationSyncOverrideNonOptional = deleteBucketInventoryConfigurationSyncOverride {
+            if let deleteBucketInventoryConfigurationSyncOverrideTyped = deleteBucketInventoryConfigurationSyncOverrideNonOptional
+                    as? DeleteBucketInventoryConfigurationSyncType<InvocationReportingType> {
+                return try deleteBucketInventoryConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -945,12 +1045,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketLifecycleAsync(
+    public func deleteBucketLifecycleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketLifecycleRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteBucketLifecycleAsyncOverride = deleteBucketLifecycleAsyncOverride {
-            return try deleteBucketLifecycleAsyncOverride(input, reporting, completion)
+        if let deleteBucketLifecycleAsyncOverrideNonOptional = deleteBucketLifecycleAsyncOverride {
+            if let deleteBucketLifecycleAsyncOverrideTyped = deleteBucketLifecycleAsyncOverrideNonOptional
+                    as? DeleteBucketLifecycleAsyncType<InvocationReportingType> {
+                return try deleteBucketLifecycleAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -962,11 +1067,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketLifecycleRequest object being passed to this operation.
      */
-    public func deleteBucketLifecycleSync(
+    public func deleteBucketLifecycleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketLifecycleRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteBucketLifecycleSyncOverride = deleteBucketLifecycleSyncOverride {
-            return try deleteBucketLifecycleSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteBucketLifecycleSyncOverrideNonOptional = deleteBucketLifecycleSyncOverride {
+            if let deleteBucketLifecycleSyncOverrideTyped = deleteBucketLifecycleSyncOverrideNonOptional
+                    as? DeleteBucketLifecycleSyncType<InvocationReportingType> {
+                return try deleteBucketLifecycleSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -980,12 +1090,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketMetricsConfigurationAsync(
+    public func deleteBucketMetricsConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketMetricsConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteBucketMetricsConfigurationAsyncOverride = deleteBucketMetricsConfigurationAsyncOverride {
-            return try deleteBucketMetricsConfigurationAsyncOverride(input, reporting, completion)
+        if let deleteBucketMetricsConfigurationAsyncOverrideNonOptional = deleteBucketMetricsConfigurationAsyncOverride {
+            if let deleteBucketMetricsConfigurationAsyncOverrideTyped = deleteBucketMetricsConfigurationAsyncOverrideNonOptional
+                    as? DeleteBucketMetricsConfigurationAsyncType<InvocationReportingType> {
+                return try deleteBucketMetricsConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -997,11 +1112,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketMetricsConfigurationRequest object being passed to this operation.
      */
-    public func deleteBucketMetricsConfigurationSync(
+    public func deleteBucketMetricsConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketMetricsConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteBucketMetricsConfigurationSyncOverride = deleteBucketMetricsConfigurationSyncOverride {
-            return try deleteBucketMetricsConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteBucketMetricsConfigurationSyncOverrideNonOptional = deleteBucketMetricsConfigurationSyncOverride {
+            if let deleteBucketMetricsConfigurationSyncOverrideTyped = deleteBucketMetricsConfigurationSyncOverrideNonOptional
+                    as? DeleteBucketMetricsConfigurationSyncType<InvocationReportingType> {
+                return try deleteBucketMetricsConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1015,12 +1135,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketPolicyAsync(
+    public func deleteBucketPolicyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketPolicyRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteBucketPolicyAsyncOverride = deleteBucketPolicyAsyncOverride {
-            return try deleteBucketPolicyAsyncOverride(input, reporting, completion)
+        if let deleteBucketPolicyAsyncOverrideNonOptional = deleteBucketPolicyAsyncOverride {
+            if let deleteBucketPolicyAsyncOverrideTyped = deleteBucketPolicyAsyncOverrideNonOptional
+                    as? DeleteBucketPolicyAsyncType<InvocationReportingType> {
+                return try deleteBucketPolicyAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1032,11 +1157,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketPolicyRequest object being passed to this operation.
      */
-    public func deleteBucketPolicySync(
+    public func deleteBucketPolicySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketPolicyRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteBucketPolicySyncOverride = deleteBucketPolicySyncOverride {
-            return try deleteBucketPolicySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteBucketPolicySyncOverrideNonOptional = deleteBucketPolicySyncOverride {
+            if let deleteBucketPolicySyncOverrideTyped = deleteBucketPolicySyncOverrideNonOptional
+                    as? DeleteBucketPolicySyncType<InvocationReportingType> {
+                return try deleteBucketPolicySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1050,12 +1180,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketReplicationAsync(
+    public func deleteBucketReplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketReplicationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteBucketReplicationAsyncOverride = deleteBucketReplicationAsyncOverride {
-            return try deleteBucketReplicationAsyncOverride(input, reporting, completion)
+        if let deleteBucketReplicationAsyncOverrideNonOptional = deleteBucketReplicationAsyncOverride {
+            if let deleteBucketReplicationAsyncOverrideTyped = deleteBucketReplicationAsyncOverrideNonOptional
+                    as? DeleteBucketReplicationAsyncType<InvocationReportingType> {
+                return try deleteBucketReplicationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1067,11 +1202,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketReplicationRequest object being passed to this operation.
      */
-    public func deleteBucketReplicationSync(
+    public func deleteBucketReplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketReplicationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteBucketReplicationSyncOverride = deleteBucketReplicationSyncOverride {
-            return try deleteBucketReplicationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteBucketReplicationSyncOverrideNonOptional = deleteBucketReplicationSyncOverride {
+            if let deleteBucketReplicationSyncOverrideTyped = deleteBucketReplicationSyncOverrideNonOptional
+                    as? DeleteBucketReplicationSyncType<InvocationReportingType> {
+                return try deleteBucketReplicationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1085,12 +1225,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketTaggingAsync(
+    public func deleteBucketTaggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketTaggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteBucketTaggingAsyncOverride = deleteBucketTaggingAsyncOverride {
-            return try deleteBucketTaggingAsyncOverride(input, reporting, completion)
+        if let deleteBucketTaggingAsyncOverrideNonOptional = deleteBucketTaggingAsyncOverride {
+            if let deleteBucketTaggingAsyncOverrideTyped = deleteBucketTaggingAsyncOverrideNonOptional
+                    as? DeleteBucketTaggingAsyncType<InvocationReportingType> {
+                return try deleteBucketTaggingAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1102,11 +1247,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketTaggingRequest object being passed to this operation.
      */
-    public func deleteBucketTaggingSync(
+    public func deleteBucketTaggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketTaggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteBucketTaggingSyncOverride = deleteBucketTaggingSyncOverride {
-            return try deleteBucketTaggingSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteBucketTaggingSyncOverrideNonOptional = deleteBucketTaggingSyncOverride {
+            if let deleteBucketTaggingSyncOverrideTyped = deleteBucketTaggingSyncOverrideNonOptional
+                    as? DeleteBucketTaggingSyncType<InvocationReportingType> {
+                return try deleteBucketTaggingSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1120,12 +1270,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteBucketWebsiteAsync(
+    public func deleteBucketWebsiteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketWebsiteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteBucketWebsiteAsyncOverride = deleteBucketWebsiteAsyncOverride {
-            return try deleteBucketWebsiteAsyncOverride(input, reporting, completion)
+        if let deleteBucketWebsiteAsyncOverrideNonOptional = deleteBucketWebsiteAsyncOverride {
+            if let deleteBucketWebsiteAsyncOverrideTyped = deleteBucketWebsiteAsyncOverrideNonOptional
+                    as? DeleteBucketWebsiteAsyncType<InvocationReportingType> {
+                return try deleteBucketWebsiteAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1137,11 +1292,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketWebsiteRequest object being passed to this operation.
      */
-    public func deleteBucketWebsiteSync(
+    public func deleteBucketWebsiteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteBucketWebsiteRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteBucketWebsiteSyncOverride = deleteBucketWebsiteSyncOverride {
-            return try deleteBucketWebsiteSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteBucketWebsiteSyncOverrideNonOptional = deleteBucketWebsiteSyncOverride {
+            if let deleteBucketWebsiteSyncOverrideTyped = deleteBucketWebsiteSyncOverrideNonOptional
+                    as? DeleteBucketWebsiteSyncType<InvocationReportingType> {
+                return try deleteBucketWebsiteSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1156,12 +1316,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The DeleteObjectOutput
            object will be validated before being returned to caller.
      */
-    public func deleteObjectAsync(
+    public func deleteObjectAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteObjectRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.DeleteObjectOutput, HTTPClientError>) -> ()) throws {
-        if let deleteObjectAsyncOverride = deleteObjectAsyncOverride {
-            return try deleteObjectAsyncOverride(input, reporting, completion)
+        if let deleteObjectAsyncOverrideNonOptional = deleteObjectAsyncOverride {
+            if let deleteObjectAsyncOverrideTyped = deleteObjectAsyncOverrideNonOptional
+                    as? DeleteObjectAsyncType<InvocationReportingType> {
+                return try deleteObjectAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1175,11 +1340,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The DeleteObjectOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteObjectSync(
+    public func deleteObjectSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteObjectRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.DeleteObjectOutput {
-        if let deleteObjectSyncOverride = deleteObjectSyncOverride {
-            return try deleteObjectSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.DeleteObjectOutput {
+        if let deleteObjectSyncOverrideNonOptional = deleteObjectSyncOverride {
+            if let deleteObjectSyncOverrideTyped = deleteObjectSyncOverrideNonOptional
+                    as? DeleteObjectSyncType<InvocationReportingType> {
+                return try deleteObjectSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1194,12 +1364,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The DeleteObjectTaggingOutput
            object will be validated before being returned to caller.
      */
-    public func deleteObjectTaggingAsync(
+    public func deleteObjectTaggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteObjectTaggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, HTTPClientError>) -> ()) throws {
-        if let deleteObjectTaggingAsyncOverride = deleteObjectTaggingAsyncOverride {
-            return try deleteObjectTaggingAsyncOverride(input, reporting, completion)
+        if let deleteObjectTaggingAsyncOverrideNonOptional = deleteObjectTaggingAsyncOverride {
+            if let deleteObjectTaggingAsyncOverrideTyped = deleteObjectTaggingAsyncOverrideNonOptional
+                    as? DeleteObjectTaggingAsyncType<InvocationReportingType> {
+                return try deleteObjectTaggingAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1213,11 +1388,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The DeleteObjectTaggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteObjectTaggingSync(
+    public func deleteObjectTaggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteObjectTaggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.DeleteObjectTaggingOutput {
-        if let deleteObjectTaggingSyncOverride = deleteObjectTaggingSyncOverride {
-            return try deleteObjectTaggingSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.DeleteObjectTaggingOutput {
+        if let deleteObjectTaggingSyncOverrideNonOptional = deleteObjectTaggingSyncOverride {
+            if let deleteObjectTaggingSyncOverrideTyped = deleteObjectTaggingSyncOverrideNonOptional
+                    as? DeleteObjectTaggingSyncType<InvocationReportingType> {
+                return try deleteObjectTaggingSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1232,12 +1412,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The DeleteObjectsOutput
            object will be validated before being returned to caller.
      */
-    public func deleteObjectsAsync(
+    public func deleteObjectsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteObjectsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.DeleteObjectsOutput, HTTPClientError>) -> ()) throws {
-        if let deleteObjectsAsyncOverride = deleteObjectsAsyncOverride {
-            return try deleteObjectsAsyncOverride(input, reporting, completion)
+        if let deleteObjectsAsyncOverrideNonOptional = deleteObjectsAsyncOverride {
+            if let deleteObjectsAsyncOverrideTyped = deleteObjectsAsyncOverrideNonOptional
+                    as? DeleteObjectsAsyncType<InvocationReportingType> {
+                return try deleteObjectsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1251,11 +1436,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The DeleteObjectsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteObjectsSync(
+    public func deleteObjectsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeleteObjectsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.DeleteObjectsOutput {
-        if let deleteObjectsSyncOverride = deleteObjectsSyncOverride {
-            return try deleteObjectsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.DeleteObjectsOutput {
+        if let deleteObjectsSyncOverrideNonOptional = deleteObjectsSyncOverride {
+            if let deleteObjectsSyncOverrideTyped = deleteObjectsSyncOverrideNonOptional
+                    as? DeleteObjectsSyncType<InvocationReportingType> {
+                return try deleteObjectsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1269,12 +1459,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deletePublicAccessBlockAsync(
+    public func deletePublicAccessBlockAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeletePublicAccessBlockRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deletePublicAccessBlockAsyncOverride = deletePublicAccessBlockAsyncOverride {
-            return try deletePublicAccessBlockAsyncOverride(input, reporting, completion)
+        if let deletePublicAccessBlockAsyncOverrideNonOptional = deletePublicAccessBlockAsyncOverride {
+            if let deletePublicAccessBlockAsyncOverrideTyped = deletePublicAccessBlockAsyncOverrideNonOptional
+                    as? DeletePublicAccessBlockAsyncType<InvocationReportingType> {
+                return try deletePublicAccessBlockAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -1286,11 +1481,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated DeletePublicAccessBlockRequest object being passed to this operation.
      */
-    public func deletePublicAccessBlockSync(
+    public func deletePublicAccessBlockSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.DeletePublicAccessBlockRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deletePublicAccessBlockSyncOverride = deletePublicAccessBlockSyncOverride {
-            return try deletePublicAccessBlockSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deletePublicAccessBlockSyncOverrideNonOptional = deletePublicAccessBlockSyncOverride {
+            if let deletePublicAccessBlockSyncOverrideTyped = deletePublicAccessBlockSyncOverrideNonOptional
+                    as? DeletePublicAccessBlockSyncType<InvocationReportingType> {
+                return try deletePublicAccessBlockSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1305,12 +1505,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketAccelerateConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketAccelerateConfigurationAsync(
+    public func getBucketAccelerateConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketAccelerateConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketAccelerateConfigurationAsyncOverride = getBucketAccelerateConfigurationAsyncOverride {
-            return try getBucketAccelerateConfigurationAsyncOverride(input, reporting, completion)
+        if let getBucketAccelerateConfigurationAsyncOverrideNonOptional = getBucketAccelerateConfigurationAsyncOverride {
+            if let getBucketAccelerateConfigurationAsyncOverrideTyped = getBucketAccelerateConfigurationAsyncOverrideNonOptional
+                    as? GetBucketAccelerateConfigurationAsyncType<InvocationReportingType> {
+                return try getBucketAccelerateConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1324,11 +1529,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketAccelerateConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketAccelerateConfigurationSync(
+    public func getBucketAccelerateConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketAccelerateConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketAccelerateConfigurationOutput {
-        if let getBucketAccelerateConfigurationSyncOverride = getBucketAccelerateConfigurationSyncOverride {
-            return try getBucketAccelerateConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketAccelerateConfigurationOutput {
+        if let getBucketAccelerateConfigurationSyncOverrideNonOptional = getBucketAccelerateConfigurationSyncOverride {
+            if let getBucketAccelerateConfigurationSyncOverrideTyped = getBucketAccelerateConfigurationSyncOverrideNonOptional
+                    as? GetBucketAccelerateConfigurationSyncType<InvocationReportingType> {
+                return try getBucketAccelerateConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1343,12 +1553,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketAclOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketAclAsync(
+    public func getBucketAclAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketAclRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketAclOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketAclAsyncOverride = getBucketAclAsyncOverride {
-            return try getBucketAclAsyncOverride(input, reporting, completion)
+        if let getBucketAclAsyncOverrideNonOptional = getBucketAclAsyncOverride {
+            if let getBucketAclAsyncOverrideTyped = getBucketAclAsyncOverrideNonOptional
+                    as? GetBucketAclAsyncType<InvocationReportingType> {
+                return try getBucketAclAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1362,11 +1577,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketAclOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketAclSync(
+    public func getBucketAclSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketAclRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketAclOutput {
-        if let getBucketAclSyncOverride = getBucketAclSyncOverride {
-            return try getBucketAclSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketAclOutput {
+        if let getBucketAclSyncOverrideNonOptional = getBucketAclSyncOverride {
+            if let getBucketAclSyncOverrideTyped = getBucketAclSyncOverrideNonOptional
+                    as? GetBucketAclSyncType<InvocationReportingType> {
+                return try getBucketAclSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1381,12 +1601,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketAnalyticsConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketAnalyticsConfigurationAsync(
+    public func getBucketAnalyticsConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketAnalyticsConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketAnalyticsConfigurationAsyncOverride = getBucketAnalyticsConfigurationAsyncOverride {
-            return try getBucketAnalyticsConfigurationAsyncOverride(input, reporting, completion)
+        if let getBucketAnalyticsConfigurationAsyncOverrideNonOptional = getBucketAnalyticsConfigurationAsyncOverride {
+            if let getBucketAnalyticsConfigurationAsyncOverrideTyped = getBucketAnalyticsConfigurationAsyncOverrideNonOptional
+                    as? GetBucketAnalyticsConfigurationAsyncType<InvocationReportingType> {
+                return try getBucketAnalyticsConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1400,11 +1625,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketAnalyticsConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketAnalyticsConfigurationSync(
+    public func getBucketAnalyticsConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketAnalyticsConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketAnalyticsConfigurationOutput {
-        if let getBucketAnalyticsConfigurationSyncOverride = getBucketAnalyticsConfigurationSyncOverride {
-            return try getBucketAnalyticsConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketAnalyticsConfigurationOutput {
+        if let getBucketAnalyticsConfigurationSyncOverrideNonOptional = getBucketAnalyticsConfigurationSyncOverride {
+            if let getBucketAnalyticsConfigurationSyncOverrideTyped = getBucketAnalyticsConfigurationSyncOverrideNonOptional
+                    as? GetBucketAnalyticsConfigurationSyncType<InvocationReportingType> {
+                return try getBucketAnalyticsConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1419,12 +1649,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketCorsOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketCorsAsync(
+    public func getBucketCorsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketCorsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketCorsOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketCorsAsyncOverride = getBucketCorsAsyncOverride {
-            return try getBucketCorsAsyncOverride(input, reporting, completion)
+        if let getBucketCorsAsyncOverrideNonOptional = getBucketCorsAsyncOverride {
+            if let getBucketCorsAsyncOverrideTyped = getBucketCorsAsyncOverrideNonOptional
+                    as? GetBucketCorsAsyncType<InvocationReportingType> {
+                return try getBucketCorsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1438,11 +1673,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketCorsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketCorsSync(
+    public func getBucketCorsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketCorsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketCorsOutput {
-        if let getBucketCorsSyncOverride = getBucketCorsSyncOverride {
-            return try getBucketCorsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketCorsOutput {
+        if let getBucketCorsSyncOverrideNonOptional = getBucketCorsSyncOverride {
+            if let getBucketCorsSyncOverrideTyped = getBucketCorsSyncOverrideNonOptional
+                    as? GetBucketCorsSyncType<InvocationReportingType> {
+                return try getBucketCorsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1457,12 +1697,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketEncryptionOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketEncryptionAsync(
+    public func getBucketEncryptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketEncryptionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketEncryptionAsyncOverride = getBucketEncryptionAsyncOverride {
-            return try getBucketEncryptionAsyncOverride(input, reporting, completion)
+        if let getBucketEncryptionAsyncOverrideNonOptional = getBucketEncryptionAsyncOverride {
+            if let getBucketEncryptionAsyncOverrideTyped = getBucketEncryptionAsyncOverrideNonOptional
+                    as? GetBucketEncryptionAsyncType<InvocationReportingType> {
+                return try getBucketEncryptionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1476,11 +1721,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketEncryptionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketEncryptionSync(
+    public func getBucketEncryptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketEncryptionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketEncryptionOutput {
-        if let getBucketEncryptionSyncOverride = getBucketEncryptionSyncOverride {
-            return try getBucketEncryptionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketEncryptionOutput {
+        if let getBucketEncryptionSyncOverrideNonOptional = getBucketEncryptionSyncOverride {
+            if let getBucketEncryptionSyncOverrideTyped = getBucketEncryptionSyncOverrideNonOptional
+                    as? GetBucketEncryptionSyncType<InvocationReportingType> {
+                return try getBucketEncryptionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1495,12 +1745,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketInventoryConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketInventoryConfigurationAsync(
+    public func getBucketInventoryConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketInventoryConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketInventoryConfigurationAsyncOverride = getBucketInventoryConfigurationAsyncOverride {
-            return try getBucketInventoryConfigurationAsyncOverride(input, reporting, completion)
+        if let getBucketInventoryConfigurationAsyncOverrideNonOptional = getBucketInventoryConfigurationAsyncOverride {
+            if let getBucketInventoryConfigurationAsyncOverrideTyped = getBucketInventoryConfigurationAsyncOverrideNonOptional
+                    as? GetBucketInventoryConfigurationAsyncType<InvocationReportingType> {
+                return try getBucketInventoryConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1514,11 +1769,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketInventoryConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketInventoryConfigurationSync(
+    public func getBucketInventoryConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketInventoryConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketInventoryConfigurationOutput {
-        if let getBucketInventoryConfigurationSyncOverride = getBucketInventoryConfigurationSyncOverride {
-            return try getBucketInventoryConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketInventoryConfigurationOutput {
+        if let getBucketInventoryConfigurationSyncOverrideNonOptional = getBucketInventoryConfigurationSyncOverride {
+            if let getBucketInventoryConfigurationSyncOverrideTyped = getBucketInventoryConfigurationSyncOverrideNonOptional
+                    as? GetBucketInventoryConfigurationSyncType<InvocationReportingType> {
+                return try getBucketInventoryConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1533,12 +1793,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketLifecycleOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketLifecycleAsync(
+    public func getBucketLifecycleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketLifecycleRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketLifecycleAsyncOverride = getBucketLifecycleAsyncOverride {
-            return try getBucketLifecycleAsyncOverride(input, reporting, completion)
+        if let getBucketLifecycleAsyncOverrideNonOptional = getBucketLifecycleAsyncOverride {
+            if let getBucketLifecycleAsyncOverrideTyped = getBucketLifecycleAsyncOverrideNonOptional
+                    as? GetBucketLifecycleAsyncType<InvocationReportingType> {
+                return try getBucketLifecycleAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1552,11 +1817,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketLifecycleOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketLifecycleSync(
+    public func getBucketLifecycleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketLifecycleRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketLifecycleOutput {
-        if let getBucketLifecycleSyncOverride = getBucketLifecycleSyncOverride {
-            return try getBucketLifecycleSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketLifecycleOutput {
+        if let getBucketLifecycleSyncOverrideNonOptional = getBucketLifecycleSyncOverride {
+            if let getBucketLifecycleSyncOverrideTyped = getBucketLifecycleSyncOverrideNonOptional
+                    as? GetBucketLifecycleSyncType<InvocationReportingType> {
+                return try getBucketLifecycleSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1571,12 +1841,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketLifecycleConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketLifecycleConfigurationAsync(
+    public func getBucketLifecycleConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketLifecycleConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketLifecycleConfigurationAsyncOverride = getBucketLifecycleConfigurationAsyncOverride {
-            return try getBucketLifecycleConfigurationAsyncOverride(input, reporting, completion)
+        if let getBucketLifecycleConfigurationAsyncOverrideNonOptional = getBucketLifecycleConfigurationAsyncOverride {
+            if let getBucketLifecycleConfigurationAsyncOverrideTyped = getBucketLifecycleConfigurationAsyncOverrideNonOptional
+                    as? GetBucketLifecycleConfigurationAsyncType<InvocationReportingType> {
+                return try getBucketLifecycleConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1590,11 +1865,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketLifecycleConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketLifecycleConfigurationSync(
+    public func getBucketLifecycleConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketLifecycleConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketLifecycleConfigurationOutput {
-        if let getBucketLifecycleConfigurationSyncOverride = getBucketLifecycleConfigurationSyncOverride {
-            return try getBucketLifecycleConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketLifecycleConfigurationOutput {
+        if let getBucketLifecycleConfigurationSyncOverrideNonOptional = getBucketLifecycleConfigurationSyncOverride {
+            if let getBucketLifecycleConfigurationSyncOverrideTyped = getBucketLifecycleConfigurationSyncOverrideNonOptional
+                    as? GetBucketLifecycleConfigurationSyncType<InvocationReportingType> {
+                return try getBucketLifecycleConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1609,12 +1889,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketLocationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketLocationAsync(
+    public func getBucketLocationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketLocationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketLocationOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketLocationAsyncOverride = getBucketLocationAsyncOverride {
-            return try getBucketLocationAsyncOverride(input, reporting, completion)
+        if let getBucketLocationAsyncOverrideNonOptional = getBucketLocationAsyncOverride {
+            if let getBucketLocationAsyncOverrideTyped = getBucketLocationAsyncOverrideNonOptional
+                    as? GetBucketLocationAsyncType<InvocationReportingType> {
+                return try getBucketLocationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1628,11 +1913,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketLocationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketLocationSync(
+    public func getBucketLocationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketLocationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketLocationOutput {
-        if let getBucketLocationSyncOverride = getBucketLocationSyncOverride {
-            return try getBucketLocationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketLocationOutput {
+        if let getBucketLocationSyncOverrideNonOptional = getBucketLocationSyncOverride {
+            if let getBucketLocationSyncOverrideTyped = getBucketLocationSyncOverrideNonOptional
+                    as? GetBucketLocationSyncType<InvocationReportingType> {
+                return try getBucketLocationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1647,12 +1937,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketLoggingOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketLoggingAsync(
+    public func getBucketLoggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketLoggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketLoggingOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketLoggingAsyncOverride = getBucketLoggingAsyncOverride {
-            return try getBucketLoggingAsyncOverride(input, reporting, completion)
+        if let getBucketLoggingAsyncOverrideNonOptional = getBucketLoggingAsyncOverride {
+            if let getBucketLoggingAsyncOverrideTyped = getBucketLoggingAsyncOverrideNonOptional
+                    as? GetBucketLoggingAsyncType<InvocationReportingType> {
+                return try getBucketLoggingAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1666,11 +1961,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketLoggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketLoggingSync(
+    public func getBucketLoggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketLoggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketLoggingOutput {
-        if let getBucketLoggingSyncOverride = getBucketLoggingSyncOverride {
-            return try getBucketLoggingSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketLoggingOutput {
+        if let getBucketLoggingSyncOverrideNonOptional = getBucketLoggingSyncOverride {
+            if let getBucketLoggingSyncOverrideTyped = getBucketLoggingSyncOverrideNonOptional
+                    as? GetBucketLoggingSyncType<InvocationReportingType> {
+                return try getBucketLoggingSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1685,12 +1985,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketMetricsConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketMetricsConfigurationAsync(
+    public func getBucketMetricsConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketMetricsConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketMetricsConfigurationAsyncOverride = getBucketMetricsConfigurationAsyncOverride {
-            return try getBucketMetricsConfigurationAsyncOverride(input, reporting, completion)
+        if let getBucketMetricsConfigurationAsyncOverrideNonOptional = getBucketMetricsConfigurationAsyncOverride {
+            if let getBucketMetricsConfigurationAsyncOverrideTyped = getBucketMetricsConfigurationAsyncOverrideNonOptional
+                    as? GetBucketMetricsConfigurationAsyncType<InvocationReportingType> {
+                return try getBucketMetricsConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1704,11 +2009,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketMetricsConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketMetricsConfigurationSync(
+    public func getBucketMetricsConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketMetricsConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketMetricsConfigurationOutput {
-        if let getBucketMetricsConfigurationSyncOverride = getBucketMetricsConfigurationSyncOverride {
-            return try getBucketMetricsConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketMetricsConfigurationOutput {
+        if let getBucketMetricsConfigurationSyncOverrideNonOptional = getBucketMetricsConfigurationSyncOverride {
+            if let getBucketMetricsConfigurationSyncOverrideTyped = getBucketMetricsConfigurationSyncOverrideNonOptional
+                    as? GetBucketMetricsConfigurationSyncType<InvocationReportingType> {
+                return try getBucketMetricsConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1723,12 +2033,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The NotificationConfigurationDeprecated
            object will be validated before being returned to caller.
      */
-    public func getBucketNotificationAsync(
+    public func getBucketNotificationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, HTTPClientError>) -> ()) throws {
-        if let getBucketNotificationAsyncOverride = getBucketNotificationAsyncOverride {
-            return try getBucketNotificationAsyncOverride(input, reporting, completion)
+        if let getBucketNotificationAsyncOverrideNonOptional = getBucketNotificationAsyncOverride {
+            if let getBucketNotificationAsyncOverrideTyped = getBucketNotificationAsyncOverrideNonOptional
+                    as? GetBucketNotificationAsyncType<InvocationReportingType> {
+                return try getBucketNotificationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1742,11 +2057,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The NotificationConfigurationDeprecated object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketNotificationSync(
+    public func getBucketNotificationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketNotificationConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.NotificationConfigurationDeprecated {
-        if let getBucketNotificationSyncOverride = getBucketNotificationSyncOverride {
-            return try getBucketNotificationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.NotificationConfigurationDeprecated {
+        if let getBucketNotificationSyncOverrideNonOptional = getBucketNotificationSyncOverride {
+            if let getBucketNotificationSyncOverrideTyped = getBucketNotificationSyncOverrideNonOptional
+                    as? GetBucketNotificationSyncType<InvocationReportingType> {
+                return try getBucketNotificationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1761,12 +2081,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The NotificationConfiguration
            object will be validated before being returned to caller.
      */
-    public func getBucketNotificationConfigurationAsync(
+    public func getBucketNotificationConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.NotificationConfiguration, HTTPClientError>) -> ()) throws {
-        if let getBucketNotificationConfigurationAsyncOverride = getBucketNotificationConfigurationAsyncOverride {
-            return try getBucketNotificationConfigurationAsyncOverride(input, reporting, completion)
+        if let getBucketNotificationConfigurationAsyncOverrideNonOptional = getBucketNotificationConfigurationAsyncOverride {
+            if let getBucketNotificationConfigurationAsyncOverrideTyped = getBucketNotificationConfigurationAsyncOverrideNonOptional
+                    as? GetBucketNotificationConfigurationAsyncType<InvocationReportingType> {
+                return try getBucketNotificationConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1780,11 +2105,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The NotificationConfiguration object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketNotificationConfigurationSync(
+    public func getBucketNotificationConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketNotificationConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.NotificationConfiguration {
-        if let getBucketNotificationConfigurationSyncOverride = getBucketNotificationConfigurationSyncOverride {
-            return try getBucketNotificationConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.NotificationConfiguration {
+        if let getBucketNotificationConfigurationSyncOverrideNonOptional = getBucketNotificationConfigurationSyncOverride {
+            if let getBucketNotificationConfigurationSyncOverrideTyped = getBucketNotificationConfigurationSyncOverrideNonOptional
+                    as? GetBucketNotificationConfigurationSyncType<InvocationReportingType> {
+                return try getBucketNotificationConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1799,12 +2129,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketPolicyOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketPolicyAsync(
+    public func getBucketPolicyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketPolicyRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketPolicyOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketPolicyAsyncOverride = getBucketPolicyAsyncOverride {
-            return try getBucketPolicyAsyncOverride(input, reporting, completion)
+        if let getBucketPolicyAsyncOverrideNonOptional = getBucketPolicyAsyncOverride {
+            if let getBucketPolicyAsyncOverrideTyped = getBucketPolicyAsyncOverrideNonOptional
+                    as? GetBucketPolicyAsyncType<InvocationReportingType> {
+                return try getBucketPolicyAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1818,11 +2153,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketPolicyOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketPolicySync(
+    public func getBucketPolicySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketPolicyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketPolicyOutput {
-        if let getBucketPolicySyncOverride = getBucketPolicySyncOverride {
-            return try getBucketPolicySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketPolicyOutput {
+        if let getBucketPolicySyncOverrideNonOptional = getBucketPolicySyncOverride {
+            if let getBucketPolicySyncOverrideTyped = getBucketPolicySyncOverrideNonOptional
+                    as? GetBucketPolicySyncType<InvocationReportingType> {
+                return try getBucketPolicySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1837,12 +2177,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketPolicyStatusOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketPolicyStatusAsync(
+    public func getBucketPolicyStatusAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketPolicyStatusRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketPolicyStatusAsyncOverride = getBucketPolicyStatusAsyncOverride {
-            return try getBucketPolicyStatusAsyncOverride(input, reporting, completion)
+        if let getBucketPolicyStatusAsyncOverrideNonOptional = getBucketPolicyStatusAsyncOverride {
+            if let getBucketPolicyStatusAsyncOverrideTyped = getBucketPolicyStatusAsyncOverrideNonOptional
+                    as? GetBucketPolicyStatusAsyncType<InvocationReportingType> {
+                return try getBucketPolicyStatusAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1856,11 +2201,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketPolicyStatusOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketPolicyStatusSync(
+    public func getBucketPolicyStatusSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketPolicyStatusRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketPolicyStatusOutput {
-        if let getBucketPolicyStatusSyncOverride = getBucketPolicyStatusSyncOverride {
-            return try getBucketPolicyStatusSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketPolicyStatusOutput {
+        if let getBucketPolicyStatusSyncOverrideNonOptional = getBucketPolicyStatusSyncOverride {
+            if let getBucketPolicyStatusSyncOverrideTyped = getBucketPolicyStatusSyncOverrideNonOptional
+                    as? GetBucketPolicyStatusSyncType<InvocationReportingType> {
+                return try getBucketPolicyStatusSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1875,12 +2225,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketReplicationOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketReplicationAsync(
+    public func getBucketReplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketReplicationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketReplicationOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketReplicationAsyncOverride = getBucketReplicationAsyncOverride {
-            return try getBucketReplicationAsyncOverride(input, reporting, completion)
+        if let getBucketReplicationAsyncOverrideNonOptional = getBucketReplicationAsyncOverride {
+            if let getBucketReplicationAsyncOverrideTyped = getBucketReplicationAsyncOverrideNonOptional
+                    as? GetBucketReplicationAsyncType<InvocationReportingType> {
+                return try getBucketReplicationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1894,11 +2249,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketReplicationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketReplicationSync(
+    public func getBucketReplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketReplicationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketReplicationOutput {
-        if let getBucketReplicationSyncOverride = getBucketReplicationSyncOverride {
-            return try getBucketReplicationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketReplicationOutput {
+        if let getBucketReplicationSyncOverrideNonOptional = getBucketReplicationSyncOverride {
+            if let getBucketReplicationSyncOverrideTyped = getBucketReplicationSyncOverrideNonOptional
+                    as? GetBucketReplicationSyncType<InvocationReportingType> {
+                return try getBucketReplicationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1913,12 +2273,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketRequestPaymentOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketRequestPaymentAsync(
+    public func getBucketRequestPaymentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketRequestPaymentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketRequestPaymentAsyncOverride = getBucketRequestPaymentAsyncOverride {
-            return try getBucketRequestPaymentAsyncOverride(input, reporting, completion)
+        if let getBucketRequestPaymentAsyncOverrideNonOptional = getBucketRequestPaymentAsyncOverride {
+            if let getBucketRequestPaymentAsyncOverrideTyped = getBucketRequestPaymentAsyncOverrideNonOptional
+                    as? GetBucketRequestPaymentAsyncType<InvocationReportingType> {
+                return try getBucketRequestPaymentAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1932,11 +2297,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketRequestPaymentOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketRequestPaymentSync(
+    public func getBucketRequestPaymentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketRequestPaymentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketRequestPaymentOutput {
-        if let getBucketRequestPaymentSyncOverride = getBucketRequestPaymentSyncOverride {
-            return try getBucketRequestPaymentSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketRequestPaymentOutput {
+        if let getBucketRequestPaymentSyncOverrideNonOptional = getBucketRequestPaymentSyncOverride {
+            if let getBucketRequestPaymentSyncOverrideTyped = getBucketRequestPaymentSyncOverrideNonOptional
+                    as? GetBucketRequestPaymentSyncType<InvocationReportingType> {
+                return try getBucketRequestPaymentSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1951,12 +2321,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketTaggingOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketTaggingAsync(
+    public func getBucketTaggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketTaggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketTaggingOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketTaggingAsyncOverride = getBucketTaggingAsyncOverride {
-            return try getBucketTaggingAsyncOverride(input, reporting, completion)
+        if let getBucketTaggingAsyncOverrideNonOptional = getBucketTaggingAsyncOverride {
+            if let getBucketTaggingAsyncOverrideTyped = getBucketTaggingAsyncOverrideNonOptional
+                    as? GetBucketTaggingAsyncType<InvocationReportingType> {
+                return try getBucketTaggingAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -1970,11 +2345,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketTaggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketTaggingSync(
+    public func getBucketTaggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketTaggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketTaggingOutput {
-        if let getBucketTaggingSyncOverride = getBucketTaggingSyncOverride {
-            return try getBucketTaggingSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketTaggingOutput {
+        if let getBucketTaggingSyncOverrideNonOptional = getBucketTaggingSyncOverride {
+            if let getBucketTaggingSyncOverrideTyped = getBucketTaggingSyncOverrideNonOptional
+                    as? GetBucketTaggingSyncType<InvocationReportingType> {
+                return try getBucketTaggingSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -1989,12 +2369,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketVersioningOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketVersioningAsync(
+    public func getBucketVersioningAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketVersioningRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketVersioningOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketVersioningAsyncOverride = getBucketVersioningAsyncOverride {
-            return try getBucketVersioningAsyncOverride(input, reporting, completion)
+        if let getBucketVersioningAsyncOverrideNonOptional = getBucketVersioningAsyncOverride {
+            if let getBucketVersioningAsyncOverrideTyped = getBucketVersioningAsyncOverrideNonOptional
+                    as? GetBucketVersioningAsyncType<InvocationReportingType> {
+                return try getBucketVersioningAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2008,11 +2393,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketVersioningOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketVersioningSync(
+    public func getBucketVersioningSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketVersioningRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketVersioningOutput {
-        if let getBucketVersioningSyncOverride = getBucketVersioningSyncOverride {
-            return try getBucketVersioningSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketVersioningOutput {
+        if let getBucketVersioningSyncOverrideNonOptional = getBucketVersioningSyncOverride {
+            if let getBucketVersioningSyncOverrideTyped = getBucketVersioningSyncOverrideNonOptional
+                    as? GetBucketVersioningSyncType<InvocationReportingType> {
+                return try getBucketVersioningSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2027,12 +2417,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetBucketWebsiteOutput
            object will be validated before being returned to caller.
      */
-    public func getBucketWebsiteAsync(
+    public func getBucketWebsiteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketWebsiteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, HTTPClientError>) -> ()) throws {
-        if let getBucketWebsiteAsyncOverride = getBucketWebsiteAsyncOverride {
-            return try getBucketWebsiteAsyncOverride(input, reporting, completion)
+        if let getBucketWebsiteAsyncOverrideNonOptional = getBucketWebsiteAsyncOverride {
+            if let getBucketWebsiteAsyncOverrideTyped = getBucketWebsiteAsyncOverrideNonOptional
+                    as? GetBucketWebsiteAsyncType<InvocationReportingType> {
+                return try getBucketWebsiteAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2046,11 +2441,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetBucketWebsiteOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getBucketWebsiteSync(
+    public func getBucketWebsiteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetBucketWebsiteRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketWebsiteOutput {
-        if let getBucketWebsiteSyncOverride = getBucketWebsiteSyncOverride {
-            return try getBucketWebsiteSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetBucketWebsiteOutput {
+        if let getBucketWebsiteSyncOverrideNonOptional = getBucketWebsiteSyncOverride {
+            if let getBucketWebsiteSyncOverrideTyped = getBucketWebsiteSyncOverrideNonOptional
+                    as? GetBucketWebsiteSyncType<InvocationReportingType> {
+                return try getBucketWebsiteSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2066,12 +2466,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchKey.
      */
-    public func getObjectAsync(
+    public func getObjectAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectOutput, HTTPClientError>) -> ()) throws {
-        if let getObjectAsyncOverride = getObjectAsyncOverride {
-            return try getObjectAsyncOverride(input, reporting, completion)
+        if let getObjectAsyncOverrideNonOptional = getObjectAsyncOverride {
+            if let getObjectAsyncOverrideTyped = getObjectAsyncOverrideNonOptional
+                    as? GetObjectAsyncType<InvocationReportingType> {
+                return try getObjectAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2086,11 +2491,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchKey.
      */
-    public func getObjectSync(
+    public func getObjectSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectOutput {
-        if let getObjectSyncOverride = getObjectSyncOverride {
-            return try getObjectSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetObjectOutput {
+        if let getObjectSyncOverrideNonOptional = getObjectSyncOverride {
+            if let getObjectSyncOverrideTyped = getObjectSyncOverrideNonOptional
+                    as? GetObjectSyncType<InvocationReportingType> {
+                return try getObjectSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2106,12 +2516,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchKey.
      */
-    public func getObjectAclAsync(
+    public func getObjectAclAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectAclRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectAclOutput, HTTPClientError>) -> ()) throws {
-        if let getObjectAclAsyncOverride = getObjectAclAsyncOverride {
-            return try getObjectAclAsyncOverride(input, reporting, completion)
+        if let getObjectAclAsyncOverrideNonOptional = getObjectAclAsyncOverride {
+            if let getObjectAclAsyncOverrideTyped = getObjectAclAsyncOverrideNonOptional
+                    as? GetObjectAclAsyncType<InvocationReportingType> {
+                return try getObjectAclAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2126,11 +2541,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchKey.
      */
-    public func getObjectAclSync(
+    public func getObjectAclSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectAclRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectAclOutput {
-        if let getObjectAclSyncOverride = getObjectAclSyncOverride {
-            return try getObjectAclSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetObjectAclOutput {
+        if let getObjectAclSyncOverrideNonOptional = getObjectAclSyncOverride {
+            if let getObjectAclSyncOverrideTyped = getObjectAclSyncOverrideNonOptional
+                    as? GetObjectAclSyncType<InvocationReportingType> {
+                return try getObjectAclSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2145,12 +2565,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetObjectLegalHoldOutput
            object will be validated before being returned to caller.
      */
-    public func getObjectLegalHoldAsync(
+    public func getObjectLegalHoldAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectLegalHoldRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, HTTPClientError>) -> ()) throws {
-        if let getObjectLegalHoldAsyncOverride = getObjectLegalHoldAsyncOverride {
-            return try getObjectLegalHoldAsyncOverride(input, reporting, completion)
+        if let getObjectLegalHoldAsyncOverrideNonOptional = getObjectLegalHoldAsyncOverride {
+            if let getObjectLegalHoldAsyncOverrideTyped = getObjectLegalHoldAsyncOverrideNonOptional
+                    as? GetObjectLegalHoldAsyncType<InvocationReportingType> {
+                return try getObjectLegalHoldAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2164,11 +2589,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetObjectLegalHoldOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getObjectLegalHoldSync(
+    public func getObjectLegalHoldSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectLegalHoldRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectLegalHoldOutput {
-        if let getObjectLegalHoldSyncOverride = getObjectLegalHoldSyncOverride {
-            return try getObjectLegalHoldSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetObjectLegalHoldOutput {
+        if let getObjectLegalHoldSyncOverrideNonOptional = getObjectLegalHoldSyncOverride {
+            if let getObjectLegalHoldSyncOverrideTyped = getObjectLegalHoldSyncOverrideNonOptional
+                    as? GetObjectLegalHoldSyncType<InvocationReportingType> {
+                return try getObjectLegalHoldSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2183,12 +2613,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetObjectLockConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func getObjectLockConfigurationAsync(
+    public func getObjectLockConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectLockConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws {
-        if let getObjectLockConfigurationAsyncOverride = getObjectLockConfigurationAsyncOverride {
-            return try getObjectLockConfigurationAsyncOverride(input, reporting, completion)
+        if let getObjectLockConfigurationAsyncOverrideNonOptional = getObjectLockConfigurationAsyncOverride {
+            if let getObjectLockConfigurationAsyncOverrideTyped = getObjectLockConfigurationAsyncOverrideNonOptional
+                    as? GetObjectLockConfigurationAsyncType<InvocationReportingType> {
+                return try getObjectLockConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2202,11 +2637,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetObjectLockConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getObjectLockConfigurationSync(
+    public func getObjectLockConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectLockConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectLockConfigurationOutput {
-        if let getObjectLockConfigurationSyncOverride = getObjectLockConfigurationSyncOverride {
-            return try getObjectLockConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetObjectLockConfigurationOutput {
+        if let getObjectLockConfigurationSyncOverrideNonOptional = getObjectLockConfigurationSyncOverride {
+            if let getObjectLockConfigurationSyncOverrideTyped = getObjectLockConfigurationSyncOverrideNonOptional
+                    as? GetObjectLockConfigurationSyncType<InvocationReportingType> {
+                return try getObjectLockConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2221,12 +2661,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetObjectRetentionOutput
            object will be validated before being returned to caller.
      */
-    public func getObjectRetentionAsync(
+    public func getObjectRetentionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectRetentionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectRetentionOutput, HTTPClientError>) -> ()) throws {
-        if let getObjectRetentionAsyncOverride = getObjectRetentionAsyncOverride {
-            return try getObjectRetentionAsyncOverride(input, reporting, completion)
+        if let getObjectRetentionAsyncOverrideNonOptional = getObjectRetentionAsyncOverride {
+            if let getObjectRetentionAsyncOverrideTyped = getObjectRetentionAsyncOverrideNonOptional
+                    as? GetObjectRetentionAsyncType<InvocationReportingType> {
+                return try getObjectRetentionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2240,11 +2685,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetObjectRetentionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getObjectRetentionSync(
+    public func getObjectRetentionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectRetentionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectRetentionOutput {
-        if let getObjectRetentionSyncOverride = getObjectRetentionSyncOverride {
-            return try getObjectRetentionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetObjectRetentionOutput {
+        if let getObjectRetentionSyncOverrideNonOptional = getObjectRetentionSyncOverride {
+            if let getObjectRetentionSyncOverrideTyped = getObjectRetentionSyncOverrideNonOptional
+                    as? GetObjectRetentionSyncType<InvocationReportingType> {
+                return try getObjectRetentionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2259,12 +2709,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetObjectTaggingOutput
            object will be validated before being returned to caller.
      */
-    public func getObjectTaggingAsync(
+    public func getObjectTaggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectTaggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectTaggingOutput, HTTPClientError>) -> ()) throws {
-        if let getObjectTaggingAsyncOverride = getObjectTaggingAsyncOverride {
-            return try getObjectTaggingAsyncOverride(input, reporting, completion)
+        if let getObjectTaggingAsyncOverrideNonOptional = getObjectTaggingAsyncOverride {
+            if let getObjectTaggingAsyncOverrideTyped = getObjectTaggingAsyncOverrideNonOptional
+                    as? GetObjectTaggingAsyncType<InvocationReportingType> {
+                return try getObjectTaggingAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2278,11 +2733,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetObjectTaggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getObjectTaggingSync(
+    public func getObjectTaggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectTaggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectTaggingOutput {
-        if let getObjectTaggingSyncOverride = getObjectTaggingSyncOverride {
-            return try getObjectTaggingSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetObjectTaggingOutput {
+        if let getObjectTaggingSyncOverrideNonOptional = getObjectTaggingSyncOverride {
+            if let getObjectTaggingSyncOverrideTyped = getObjectTaggingSyncOverrideNonOptional
+                    as? GetObjectTaggingSyncType<InvocationReportingType> {
+                return try getObjectTaggingSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2297,12 +2757,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetObjectTorrentOutput
            object will be validated before being returned to caller.
      */
-    public func getObjectTorrentAsync(
+    public func getObjectTorrentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectTorrentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectTorrentOutput, HTTPClientError>) -> ()) throws {
-        if let getObjectTorrentAsyncOverride = getObjectTorrentAsyncOverride {
-            return try getObjectTorrentAsyncOverride(input, reporting, completion)
+        if let getObjectTorrentAsyncOverrideNonOptional = getObjectTorrentAsyncOverride {
+            if let getObjectTorrentAsyncOverrideTyped = getObjectTorrentAsyncOverrideNonOptional
+                    as? GetObjectTorrentAsyncType<InvocationReportingType> {
+                return try getObjectTorrentAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2316,11 +2781,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetObjectTorrentOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getObjectTorrentSync(
+    public func getObjectTorrentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetObjectTorrentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectTorrentOutput {
-        if let getObjectTorrentSyncOverride = getObjectTorrentSyncOverride {
-            return try getObjectTorrentSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetObjectTorrentOutput {
+        if let getObjectTorrentSyncOverrideNonOptional = getObjectTorrentSyncOverride {
+            if let getObjectTorrentSyncOverrideTyped = getObjectTorrentSyncOverrideNonOptional
+                    as? GetObjectTorrentSyncType<InvocationReportingType> {
+                return try getObjectTorrentSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2335,12 +2805,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The GetPublicAccessBlockOutput
            object will be validated before being returned to caller.
      */
-    public func getPublicAccessBlockAsync(
+    public func getPublicAccessBlockAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetPublicAccessBlockRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, HTTPClientError>) -> ()) throws {
-        if let getPublicAccessBlockAsyncOverride = getPublicAccessBlockAsyncOverride {
-            return try getPublicAccessBlockAsyncOverride(input, reporting, completion)
+        if let getPublicAccessBlockAsyncOverrideNonOptional = getPublicAccessBlockAsyncOverride {
+            if let getPublicAccessBlockAsyncOverrideTyped = getPublicAccessBlockAsyncOverrideNonOptional
+                    as? GetPublicAccessBlockAsyncType<InvocationReportingType> {
+                return try getPublicAccessBlockAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2354,11 +2829,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The GetPublicAccessBlockOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getPublicAccessBlockSync(
+    public func getPublicAccessBlockSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.GetPublicAccessBlockRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetPublicAccessBlockOutput {
-        if let getPublicAccessBlockSyncOverride = getPublicAccessBlockSyncOverride {
-            return try getPublicAccessBlockSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.GetPublicAccessBlockOutput {
+        if let getPublicAccessBlockSyncOverrideNonOptional = getPublicAccessBlockSyncOverride {
+            if let getPublicAccessBlockSyncOverrideTyped = getPublicAccessBlockSyncOverrideNonOptional
+                    as? GetPublicAccessBlockSyncType<InvocationReportingType> {
+                return try getPublicAccessBlockSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2373,12 +2853,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            is complete.
            The possible errors are: noSuchBucket.
      */
-    public func headBucketAsync(
+    public func headBucketAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.HeadBucketRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let headBucketAsyncOverride = headBucketAsyncOverride {
-            return try headBucketAsyncOverride(input, reporting, completion)
+        if let headBucketAsyncOverrideNonOptional = headBucketAsyncOverride {
+            if let headBucketAsyncOverrideTyped = headBucketAsyncOverrideNonOptional
+                    as? HeadBucketAsyncType<InvocationReportingType> {
+                return try headBucketAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -2391,11 +2876,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - input: The validated HeadBucketRequest object being passed to this operation.
      - Throws: noSuchBucket.
      */
-    public func headBucketSync(
+    public func headBucketSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.HeadBucketRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let headBucketSyncOverride = headBucketSyncOverride {
-            return try headBucketSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let headBucketSyncOverrideNonOptional = headBucketSyncOverride {
+            if let headBucketSyncOverrideTyped = headBucketSyncOverrideNonOptional
+                    as? HeadBucketSyncType<InvocationReportingType> {
+                return try headBucketSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2411,12 +2901,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchKey.
      */
-    public func headObjectAsync(
+    public func headObjectAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.HeadObjectRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.HeadObjectOutput, HTTPClientError>) -> ()) throws {
-        if let headObjectAsyncOverride = headObjectAsyncOverride {
-            return try headObjectAsyncOverride(input, reporting, completion)
+        if let headObjectAsyncOverrideNonOptional = headObjectAsyncOverride {
+            if let headObjectAsyncOverrideTyped = headObjectAsyncOverrideNonOptional
+                    as? HeadObjectAsyncType<InvocationReportingType> {
+                return try headObjectAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2431,11 +2926,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchKey.
      */
-    public func headObjectSync(
+    public func headObjectSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.HeadObjectRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.HeadObjectOutput {
-        if let headObjectSyncOverride = headObjectSyncOverride {
-            return try headObjectSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.HeadObjectOutput {
+        if let headObjectSyncOverrideNonOptional = headObjectSyncOverride {
+            if let headObjectSyncOverrideTyped = headObjectSyncOverrideNonOptional
+                    as? HeadObjectSyncType<InvocationReportingType> {
+                return try headObjectSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2450,12 +2950,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListBucketAnalyticsConfigurationsOutput
            object will be validated before being returned to caller.
      */
-    public func listBucketAnalyticsConfigurationsAsync(
+    public func listBucketAnalyticsConfigurationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListBucketAnalyticsConfigurationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, HTTPClientError>) -> ()) throws {
-        if let listBucketAnalyticsConfigurationsAsyncOverride = listBucketAnalyticsConfigurationsAsyncOverride {
-            return try listBucketAnalyticsConfigurationsAsyncOverride(input, reporting, completion)
+        if let listBucketAnalyticsConfigurationsAsyncOverrideNonOptional = listBucketAnalyticsConfigurationsAsyncOverride {
+            if let listBucketAnalyticsConfigurationsAsyncOverrideTyped = listBucketAnalyticsConfigurationsAsyncOverrideNonOptional
+                    as? ListBucketAnalyticsConfigurationsAsyncType<InvocationReportingType> {
+                return try listBucketAnalyticsConfigurationsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2469,11 +2974,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The ListBucketAnalyticsConfigurationsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listBucketAnalyticsConfigurationsSync(
+    public func listBucketAnalyticsConfigurationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListBucketAnalyticsConfigurationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput {
-        if let listBucketAnalyticsConfigurationsSyncOverride = listBucketAnalyticsConfigurationsSyncOverride {
-            return try listBucketAnalyticsConfigurationsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput {
+        if let listBucketAnalyticsConfigurationsSyncOverrideNonOptional = listBucketAnalyticsConfigurationsSyncOverride {
+            if let listBucketAnalyticsConfigurationsSyncOverrideTyped = listBucketAnalyticsConfigurationsSyncOverrideNonOptional
+                    as? ListBucketAnalyticsConfigurationsSyncType<InvocationReportingType> {
+                return try listBucketAnalyticsConfigurationsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2488,12 +2998,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListBucketInventoryConfigurationsOutput
            object will be validated before being returned to caller.
      */
-    public func listBucketInventoryConfigurationsAsync(
+    public func listBucketInventoryConfigurationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListBucketInventoryConfigurationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, HTTPClientError>) -> ()) throws {
-        if let listBucketInventoryConfigurationsAsyncOverride = listBucketInventoryConfigurationsAsyncOverride {
-            return try listBucketInventoryConfigurationsAsyncOverride(input, reporting, completion)
+        if let listBucketInventoryConfigurationsAsyncOverrideNonOptional = listBucketInventoryConfigurationsAsyncOverride {
+            if let listBucketInventoryConfigurationsAsyncOverrideTyped = listBucketInventoryConfigurationsAsyncOverrideNonOptional
+                    as? ListBucketInventoryConfigurationsAsyncType<InvocationReportingType> {
+                return try listBucketInventoryConfigurationsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2507,11 +3022,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The ListBucketInventoryConfigurationsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listBucketInventoryConfigurationsSync(
+    public func listBucketInventoryConfigurationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListBucketInventoryConfigurationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListBucketInventoryConfigurationsOutput {
-        if let listBucketInventoryConfigurationsSyncOverride = listBucketInventoryConfigurationsSyncOverride {
-            return try listBucketInventoryConfigurationsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.ListBucketInventoryConfigurationsOutput {
+        if let listBucketInventoryConfigurationsSyncOverrideNonOptional = listBucketInventoryConfigurationsSyncOverride {
+            if let listBucketInventoryConfigurationsSyncOverrideTyped = listBucketInventoryConfigurationsSyncOverrideNonOptional
+                    as? ListBucketInventoryConfigurationsSyncType<InvocationReportingType> {
+                return try listBucketInventoryConfigurationsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2526,12 +3046,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListBucketMetricsConfigurationsOutput
            object will be validated before being returned to caller.
      */
-    public func listBucketMetricsConfigurationsAsync(
+    public func listBucketMetricsConfigurationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListBucketMetricsConfigurationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, HTTPClientError>) -> ()) throws {
-        if let listBucketMetricsConfigurationsAsyncOverride = listBucketMetricsConfigurationsAsyncOverride {
-            return try listBucketMetricsConfigurationsAsyncOverride(input, reporting, completion)
+        if let listBucketMetricsConfigurationsAsyncOverrideNonOptional = listBucketMetricsConfigurationsAsyncOverride {
+            if let listBucketMetricsConfigurationsAsyncOverrideTyped = listBucketMetricsConfigurationsAsyncOverrideNonOptional
+                    as? ListBucketMetricsConfigurationsAsyncType<InvocationReportingType> {
+                return try listBucketMetricsConfigurationsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2545,11 +3070,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The ListBucketMetricsConfigurationsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listBucketMetricsConfigurationsSync(
+    public func listBucketMetricsConfigurationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListBucketMetricsConfigurationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListBucketMetricsConfigurationsOutput {
-        if let listBucketMetricsConfigurationsSyncOverride = listBucketMetricsConfigurationsSyncOverride {
-            return try listBucketMetricsConfigurationsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.ListBucketMetricsConfigurationsOutput {
+        if let listBucketMetricsConfigurationsSyncOverrideNonOptional = listBucketMetricsConfigurationsSyncOverride {
+            if let listBucketMetricsConfigurationsSyncOverrideTyped = listBucketMetricsConfigurationsSyncOverrideNonOptional
+                    as? ListBucketMetricsConfigurationsSyncType<InvocationReportingType> {
+                return try listBucketMetricsConfigurationsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2561,11 +3091,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListBucketsOutput
            object will be validated before being returned to caller.
      */
-    public func listBucketsAsync(
-            reporting: SmokeAWSInvocationReporting,
+    public func listBucketsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListBucketsOutput, HTTPClientError>) -> ()) throws {
-        if let listBucketsAsyncOverride = listBucketsAsyncOverride {
-            return try listBucketsAsyncOverride(reporting, completion)
+        if let listBucketsAsyncOverrideNonOptional = listBucketsAsyncOverride {
+            if let listBucketsAsyncOverrideTyped = listBucketsAsyncOverrideNonOptional
+                    as? ListBucketsAsyncType<InvocationReportingType> {
+                return try listBucketsAsyncOverrideTyped(reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2576,10 +3111,15 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The ListBucketsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listBucketsSync(
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListBucketsOutput {
-        if let listBucketsSyncOverride = listBucketsSyncOverride {
-            return try listBucketsSyncOverride(reporting)
+    public func listBucketsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
+            reporting: InvocationReportingType) throws -> S3Model.ListBucketsOutput {
+        if let listBucketsSyncOverrideNonOptional = listBucketsSyncOverride {
+            if let listBucketsSyncOverrideTyped = listBucketsSyncOverrideNonOptional
+                    as? ListBucketsSyncType<InvocationReportingType> {
+                return try listBucketsSyncOverrideTyped(reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2594,12 +3134,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListMultipartUploadsOutput
            object will be validated before being returned to caller.
      */
-    public func listMultipartUploadsAsync(
+    public func listMultipartUploadsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListMultipartUploadsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, HTTPClientError>) -> ()) throws {
-        if let listMultipartUploadsAsyncOverride = listMultipartUploadsAsyncOverride {
-            return try listMultipartUploadsAsyncOverride(input, reporting, completion)
+        if let listMultipartUploadsAsyncOverrideNonOptional = listMultipartUploadsAsyncOverride {
+            if let listMultipartUploadsAsyncOverrideTyped = listMultipartUploadsAsyncOverrideNonOptional
+                    as? ListMultipartUploadsAsyncType<InvocationReportingType> {
+                return try listMultipartUploadsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2613,11 +3158,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The ListMultipartUploadsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listMultipartUploadsSync(
+    public func listMultipartUploadsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListMultipartUploadsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListMultipartUploadsOutput {
-        if let listMultipartUploadsSyncOverride = listMultipartUploadsSyncOverride {
-            return try listMultipartUploadsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.ListMultipartUploadsOutput {
+        if let listMultipartUploadsSyncOverrideNonOptional = listMultipartUploadsSyncOverride {
+            if let listMultipartUploadsSyncOverrideTyped = listMultipartUploadsSyncOverrideNonOptional
+                    as? ListMultipartUploadsSyncType<InvocationReportingType> {
+                return try listMultipartUploadsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2632,12 +3182,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListObjectVersionsOutput
            object will be validated before being returned to caller.
      */
-    public func listObjectVersionsAsync(
+    public func listObjectVersionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListObjectVersionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListObjectVersionsOutput, HTTPClientError>) -> ()) throws {
-        if let listObjectVersionsAsyncOverride = listObjectVersionsAsyncOverride {
-            return try listObjectVersionsAsyncOverride(input, reporting, completion)
+        if let listObjectVersionsAsyncOverrideNonOptional = listObjectVersionsAsyncOverride {
+            if let listObjectVersionsAsyncOverrideTyped = listObjectVersionsAsyncOverrideNonOptional
+                    as? ListObjectVersionsAsyncType<InvocationReportingType> {
+                return try listObjectVersionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2651,11 +3206,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The ListObjectVersionsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listObjectVersionsSync(
+    public func listObjectVersionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListObjectVersionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListObjectVersionsOutput {
-        if let listObjectVersionsSyncOverride = listObjectVersionsSyncOverride {
-            return try listObjectVersionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.ListObjectVersionsOutput {
+        if let listObjectVersionsSyncOverrideNonOptional = listObjectVersionsSyncOverride {
+            if let listObjectVersionsSyncOverrideTyped = listObjectVersionsSyncOverrideNonOptional
+                    as? ListObjectVersionsSyncType<InvocationReportingType> {
+                return try listObjectVersionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2671,12 +3231,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchBucket.
      */
-    public func listObjectsAsync(
+    public func listObjectsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListObjectsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListObjectsOutput, HTTPClientError>) -> ()) throws {
-        if let listObjectsAsyncOverride = listObjectsAsyncOverride {
-            return try listObjectsAsyncOverride(input, reporting, completion)
+        if let listObjectsAsyncOverrideNonOptional = listObjectsAsyncOverride {
+            if let listObjectsAsyncOverrideTyped = listObjectsAsyncOverrideNonOptional
+                    as? ListObjectsAsyncType<InvocationReportingType> {
+                return try listObjectsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2691,11 +3256,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchBucket.
      */
-    public func listObjectsSync(
+    public func listObjectsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListObjectsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListObjectsOutput {
-        if let listObjectsSyncOverride = listObjectsSyncOverride {
-            return try listObjectsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.ListObjectsOutput {
+        if let listObjectsSyncOverrideNonOptional = listObjectsSyncOverride {
+            if let listObjectsSyncOverrideTyped = listObjectsSyncOverrideNonOptional
+                    as? ListObjectsSyncType<InvocationReportingType> {
+                return try listObjectsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2711,12 +3281,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchBucket.
      */
-    public func listObjectsV2Async(
+    public func listObjectsV2Async<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListObjectsV2Request, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListObjectsV2Output, HTTPClientError>) -> ()) throws {
-        if let listObjectsV2AsyncOverride = listObjectsV2AsyncOverride {
-            return try listObjectsV2AsyncOverride(input, reporting, completion)
+        if let listObjectsV2AsyncOverrideNonOptional = listObjectsV2AsyncOverride {
+            if let listObjectsV2AsyncOverrideTyped = listObjectsV2AsyncOverrideNonOptional
+                    as? ListObjectsV2AsyncType<InvocationReportingType> {
+                return try listObjectsV2AsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2731,11 +3306,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchBucket.
      */
-    public func listObjectsV2Sync(
+    public func listObjectsV2Sync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListObjectsV2Request,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListObjectsV2Output {
-        if let listObjectsV2SyncOverride = listObjectsV2SyncOverride {
-            return try listObjectsV2SyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.ListObjectsV2Output {
+        if let listObjectsV2SyncOverrideNonOptional = listObjectsV2SyncOverride {
+            if let listObjectsV2SyncOverrideTyped = listObjectsV2SyncOverrideNonOptional
+                    as? ListObjectsV2SyncType<InvocationReportingType> {
+                return try listObjectsV2SyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2750,12 +3330,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The ListPartsOutput
            object will be validated before being returned to caller.
      */
-    public func listPartsAsync(
+    public func listPartsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListPartsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListPartsOutput, HTTPClientError>) -> ()) throws {
-        if let listPartsAsyncOverride = listPartsAsyncOverride {
-            return try listPartsAsyncOverride(input, reporting, completion)
+        if let listPartsAsyncOverrideNonOptional = listPartsAsyncOverride {
+            if let listPartsAsyncOverrideTyped = listPartsAsyncOverrideNonOptional
+                    as? ListPartsAsyncType<InvocationReportingType> {
+                return try listPartsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -2769,11 +3354,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The ListPartsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listPartsSync(
+    public func listPartsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.ListPartsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListPartsOutput {
-        if let listPartsSyncOverride = listPartsSyncOverride {
-            return try listPartsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.ListPartsOutput {
+        if let listPartsSyncOverrideNonOptional = listPartsSyncOverride {
+            if let listPartsSyncOverrideTyped = listPartsSyncOverrideNonOptional
+                    as? ListPartsSyncType<InvocationReportingType> {
+                return try listPartsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2787,12 +3377,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketAccelerateConfigurationAsync(
+    public func putBucketAccelerateConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketAccelerateConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketAccelerateConfigurationAsyncOverride = putBucketAccelerateConfigurationAsyncOverride {
-            return try putBucketAccelerateConfigurationAsyncOverride(input, reporting, completion)
+        if let putBucketAccelerateConfigurationAsyncOverrideNonOptional = putBucketAccelerateConfigurationAsyncOverride {
+            if let putBucketAccelerateConfigurationAsyncOverrideTyped = putBucketAccelerateConfigurationAsyncOverrideNonOptional
+                    as? PutBucketAccelerateConfigurationAsyncType<InvocationReportingType> {
+                return try putBucketAccelerateConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -2804,11 +3399,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketAccelerateConfigurationRequest object being passed to this operation.
      */
-    public func putBucketAccelerateConfigurationSync(
+    public func putBucketAccelerateConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketAccelerateConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketAccelerateConfigurationSyncOverride = putBucketAccelerateConfigurationSyncOverride {
-            return try putBucketAccelerateConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketAccelerateConfigurationSyncOverrideNonOptional = putBucketAccelerateConfigurationSyncOverride {
+            if let putBucketAccelerateConfigurationSyncOverrideTyped = putBucketAccelerateConfigurationSyncOverrideNonOptional
+                    as? PutBucketAccelerateConfigurationSyncType<InvocationReportingType> {
+                return try putBucketAccelerateConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2822,12 +3422,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketAclAsync(
+    public func putBucketAclAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketAclRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketAclAsyncOverride = putBucketAclAsyncOverride {
-            return try putBucketAclAsyncOverride(input, reporting, completion)
+        if let putBucketAclAsyncOverrideNonOptional = putBucketAclAsyncOverride {
+            if let putBucketAclAsyncOverrideTyped = putBucketAclAsyncOverrideNonOptional
+                    as? PutBucketAclAsyncType<InvocationReportingType> {
+                return try putBucketAclAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -2839,11 +3444,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketAclRequest object being passed to this operation.
      */
-    public func putBucketAclSync(
+    public func putBucketAclSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketAclRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketAclSyncOverride = putBucketAclSyncOverride {
-            return try putBucketAclSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketAclSyncOverrideNonOptional = putBucketAclSyncOverride {
+            if let putBucketAclSyncOverrideTyped = putBucketAclSyncOverrideNonOptional
+                    as? PutBucketAclSyncType<InvocationReportingType> {
+                return try putBucketAclSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2857,12 +3467,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketAnalyticsConfigurationAsync(
+    public func putBucketAnalyticsConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketAnalyticsConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketAnalyticsConfigurationAsyncOverride = putBucketAnalyticsConfigurationAsyncOverride {
-            return try putBucketAnalyticsConfigurationAsyncOverride(input, reporting, completion)
+        if let putBucketAnalyticsConfigurationAsyncOverrideNonOptional = putBucketAnalyticsConfigurationAsyncOverride {
+            if let putBucketAnalyticsConfigurationAsyncOverrideTyped = putBucketAnalyticsConfigurationAsyncOverrideNonOptional
+                    as? PutBucketAnalyticsConfigurationAsyncType<InvocationReportingType> {
+                return try putBucketAnalyticsConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -2874,11 +3489,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketAnalyticsConfigurationRequest object being passed to this operation.
      */
-    public func putBucketAnalyticsConfigurationSync(
+    public func putBucketAnalyticsConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketAnalyticsConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketAnalyticsConfigurationSyncOverride = putBucketAnalyticsConfigurationSyncOverride {
-            return try putBucketAnalyticsConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketAnalyticsConfigurationSyncOverrideNonOptional = putBucketAnalyticsConfigurationSyncOverride {
+            if let putBucketAnalyticsConfigurationSyncOverrideTyped = putBucketAnalyticsConfigurationSyncOverrideNonOptional
+                    as? PutBucketAnalyticsConfigurationSyncType<InvocationReportingType> {
+                return try putBucketAnalyticsConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2892,12 +3512,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketCorsAsync(
+    public func putBucketCorsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketCorsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketCorsAsyncOverride = putBucketCorsAsyncOverride {
-            return try putBucketCorsAsyncOverride(input, reporting, completion)
+        if let putBucketCorsAsyncOverrideNonOptional = putBucketCorsAsyncOverride {
+            if let putBucketCorsAsyncOverrideTyped = putBucketCorsAsyncOverrideNonOptional
+                    as? PutBucketCorsAsyncType<InvocationReportingType> {
+                return try putBucketCorsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -2909,11 +3534,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketCorsRequest object being passed to this operation.
      */
-    public func putBucketCorsSync(
+    public func putBucketCorsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketCorsRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketCorsSyncOverride = putBucketCorsSyncOverride {
-            return try putBucketCorsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketCorsSyncOverrideNonOptional = putBucketCorsSyncOverride {
+            if let putBucketCorsSyncOverrideTyped = putBucketCorsSyncOverrideNonOptional
+                    as? PutBucketCorsSyncType<InvocationReportingType> {
+                return try putBucketCorsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2927,12 +3557,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketEncryptionAsync(
+    public func putBucketEncryptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketEncryptionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketEncryptionAsyncOverride = putBucketEncryptionAsyncOverride {
-            return try putBucketEncryptionAsyncOverride(input, reporting, completion)
+        if let putBucketEncryptionAsyncOverrideNonOptional = putBucketEncryptionAsyncOverride {
+            if let putBucketEncryptionAsyncOverrideTyped = putBucketEncryptionAsyncOverrideNonOptional
+                    as? PutBucketEncryptionAsyncType<InvocationReportingType> {
+                return try putBucketEncryptionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -2944,11 +3579,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketEncryptionRequest object being passed to this operation.
      */
-    public func putBucketEncryptionSync(
+    public func putBucketEncryptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketEncryptionRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketEncryptionSyncOverride = putBucketEncryptionSyncOverride {
-            return try putBucketEncryptionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketEncryptionSyncOverrideNonOptional = putBucketEncryptionSyncOverride {
+            if let putBucketEncryptionSyncOverrideTyped = putBucketEncryptionSyncOverrideNonOptional
+                    as? PutBucketEncryptionSyncType<InvocationReportingType> {
+                return try putBucketEncryptionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2962,12 +3602,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketInventoryConfigurationAsync(
+    public func putBucketInventoryConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketInventoryConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketInventoryConfigurationAsyncOverride = putBucketInventoryConfigurationAsyncOverride {
-            return try putBucketInventoryConfigurationAsyncOverride(input, reporting, completion)
+        if let putBucketInventoryConfigurationAsyncOverrideNonOptional = putBucketInventoryConfigurationAsyncOverride {
+            if let putBucketInventoryConfigurationAsyncOverrideTyped = putBucketInventoryConfigurationAsyncOverrideNonOptional
+                    as? PutBucketInventoryConfigurationAsyncType<InvocationReportingType> {
+                return try putBucketInventoryConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -2979,11 +3624,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketInventoryConfigurationRequest object being passed to this operation.
      */
-    public func putBucketInventoryConfigurationSync(
+    public func putBucketInventoryConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketInventoryConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketInventoryConfigurationSyncOverride = putBucketInventoryConfigurationSyncOverride {
-            return try putBucketInventoryConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketInventoryConfigurationSyncOverrideNonOptional = putBucketInventoryConfigurationSyncOverride {
+            if let putBucketInventoryConfigurationSyncOverrideTyped = putBucketInventoryConfigurationSyncOverrideNonOptional
+                    as? PutBucketInventoryConfigurationSyncType<InvocationReportingType> {
+                return try putBucketInventoryConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -2997,12 +3647,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketLifecycleAsync(
+    public func putBucketLifecycleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketLifecycleRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketLifecycleAsyncOverride = putBucketLifecycleAsyncOverride {
-            return try putBucketLifecycleAsyncOverride(input, reporting, completion)
+        if let putBucketLifecycleAsyncOverrideNonOptional = putBucketLifecycleAsyncOverride {
+            if let putBucketLifecycleAsyncOverrideTyped = putBucketLifecycleAsyncOverrideNonOptional
+                    as? PutBucketLifecycleAsyncType<InvocationReportingType> {
+                return try putBucketLifecycleAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -3014,11 +3669,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketLifecycleRequest object being passed to this operation.
      */
-    public func putBucketLifecycleSync(
+    public func putBucketLifecycleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketLifecycleRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketLifecycleSyncOverride = putBucketLifecycleSyncOverride {
-            return try putBucketLifecycleSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketLifecycleSyncOverrideNonOptional = putBucketLifecycleSyncOverride {
+            if let putBucketLifecycleSyncOverrideTyped = putBucketLifecycleSyncOverrideNonOptional
+                    as? PutBucketLifecycleSyncType<InvocationReportingType> {
+                return try putBucketLifecycleSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3032,12 +3692,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketLifecycleConfigurationAsync(
+    public func putBucketLifecycleConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketLifecycleConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketLifecycleConfigurationAsyncOverride = putBucketLifecycleConfigurationAsyncOverride {
-            return try putBucketLifecycleConfigurationAsyncOverride(input, reporting, completion)
+        if let putBucketLifecycleConfigurationAsyncOverrideNonOptional = putBucketLifecycleConfigurationAsyncOverride {
+            if let putBucketLifecycleConfigurationAsyncOverrideTyped = putBucketLifecycleConfigurationAsyncOverrideNonOptional
+                    as? PutBucketLifecycleConfigurationAsyncType<InvocationReportingType> {
+                return try putBucketLifecycleConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -3049,11 +3714,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketLifecycleConfigurationRequest object being passed to this operation.
      */
-    public func putBucketLifecycleConfigurationSync(
+    public func putBucketLifecycleConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketLifecycleConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketLifecycleConfigurationSyncOverride = putBucketLifecycleConfigurationSyncOverride {
-            return try putBucketLifecycleConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketLifecycleConfigurationSyncOverrideNonOptional = putBucketLifecycleConfigurationSyncOverride {
+            if let putBucketLifecycleConfigurationSyncOverrideTyped = putBucketLifecycleConfigurationSyncOverrideNonOptional
+                    as? PutBucketLifecycleConfigurationSyncType<InvocationReportingType> {
+                return try putBucketLifecycleConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3067,12 +3737,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketLoggingAsync(
+    public func putBucketLoggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketLoggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketLoggingAsyncOverride = putBucketLoggingAsyncOverride {
-            return try putBucketLoggingAsyncOverride(input, reporting, completion)
+        if let putBucketLoggingAsyncOverrideNonOptional = putBucketLoggingAsyncOverride {
+            if let putBucketLoggingAsyncOverrideTyped = putBucketLoggingAsyncOverrideNonOptional
+                    as? PutBucketLoggingAsyncType<InvocationReportingType> {
+                return try putBucketLoggingAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -3084,11 +3759,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketLoggingRequest object being passed to this operation.
      */
-    public func putBucketLoggingSync(
+    public func putBucketLoggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketLoggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketLoggingSyncOverride = putBucketLoggingSyncOverride {
-            return try putBucketLoggingSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketLoggingSyncOverrideNonOptional = putBucketLoggingSyncOverride {
+            if let putBucketLoggingSyncOverrideTyped = putBucketLoggingSyncOverrideNonOptional
+                    as? PutBucketLoggingSyncType<InvocationReportingType> {
+                return try putBucketLoggingSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3102,12 +3782,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketMetricsConfigurationAsync(
+    public func putBucketMetricsConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketMetricsConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketMetricsConfigurationAsyncOverride = putBucketMetricsConfigurationAsyncOverride {
-            return try putBucketMetricsConfigurationAsyncOverride(input, reporting, completion)
+        if let putBucketMetricsConfigurationAsyncOverrideNonOptional = putBucketMetricsConfigurationAsyncOverride {
+            if let putBucketMetricsConfigurationAsyncOverrideTyped = putBucketMetricsConfigurationAsyncOverrideNonOptional
+                    as? PutBucketMetricsConfigurationAsyncType<InvocationReportingType> {
+                return try putBucketMetricsConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -3119,11 +3804,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketMetricsConfigurationRequest object being passed to this operation.
      */
-    public func putBucketMetricsConfigurationSync(
+    public func putBucketMetricsConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketMetricsConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketMetricsConfigurationSyncOverride = putBucketMetricsConfigurationSyncOverride {
-            return try putBucketMetricsConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketMetricsConfigurationSyncOverrideNonOptional = putBucketMetricsConfigurationSyncOverride {
+            if let putBucketMetricsConfigurationSyncOverrideTyped = putBucketMetricsConfigurationSyncOverrideNonOptional
+                    as? PutBucketMetricsConfigurationSyncType<InvocationReportingType> {
+                return try putBucketMetricsConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3137,12 +3827,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketNotificationAsync(
+    public func putBucketNotificationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketNotificationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketNotificationAsyncOverride = putBucketNotificationAsyncOverride {
-            return try putBucketNotificationAsyncOverride(input, reporting, completion)
+        if let putBucketNotificationAsyncOverrideNonOptional = putBucketNotificationAsyncOverride {
+            if let putBucketNotificationAsyncOverrideTyped = putBucketNotificationAsyncOverrideNonOptional
+                    as? PutBucketNotificationAsyncType<InvocationReportingType> {
+                return try putBucketNotificationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -3154,11 +3849,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketNotificationRequest object being passed to this operation.
      */
-    public func putBucketNotificationSync(
+    public func putBucketNotificationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketNotificationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketNotificationSyncOverride = putBucketNotificationSyncOverride {
-            return try putBucketNotificationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketNotificationSyncOverrideNonOptional = putBucketNotificationSyncOverride {
+            if let putBucketNotificationSyncOverrideTyped = putBucketNotificationSyncOverrideNonOptional
+                    as? PutBucketNotificationSyncType<InvocationReportingType> {
+                return try putBucketNotificationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3172,12 +3872,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketNotificationConfigurationAsync(
+    public func putBucketNotificationConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketNotificationConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketNotificationConfigurationAsyncOverride = putBucketNotificationConfigurationAsyncOverride {
-            return try putBucketNotificationConfigurationAsyncOverride(input, reporting, completion)
+        if let putBucketNotificationConfigurationAsyncOverrideNonOptional = putBucketNotificationConfigurationAsyncOverride {
+            if let putBucketNotificationConfigurationAsyncOverrideTyped = putBucketNotificationConfigurationAsyncOverrideNonOptional
+                    as? PutBucketNotificationConfigurationAsyncType<InvocationReportingType> {
+                return try putBucketNotificationConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -3189,11 +3894,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketNotificationConfigurationRequest object being passed to this operation.
      */
-    public func putBucketNotificationConfigurationSync(
+    public func putBucketNotificationConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketNotificationConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketNotificationConfigurationSyncOverride = putBucketNotificationConfigurationSyncOverride {
-            return try putBucketNotificationConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketNotificationConfigurationSyncOverrideNonOptional = putBucketNotificationConfigurationSyncOverride {
+            if let putBucketNotificationConfigurationSyncOverrideTyped = putBucketNotificationConfigurationSyncOverrideNonOptional
+                    as? PutBucketNotificationConfigurationSyncType<InvocationReportingType> {
+                return try putBucketNotificationConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3207,12 +3917,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketPolicyAsync(
+    public func putBucketPolicyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketPolicyRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketPolicyAsyncOverride = putBucketPolicyAsyncOverride {
-            return try putBucketPolicyAsyncOverride(input, reporting, completion)
+        if let putBucketPolicyAsyncOverrideNonOptional = putBucketPolicyAsyncOverride {
+            if let putBucketPolicyAsyncOverrideTyped = putBucketPolicyAsyncOverrideNonOptional
+                    as? PutBucketPolicyAsyncType<InvocationReportingType> {
+                return try putBucketPolicyAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -3224,11 +3939,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketPolicyRequest object being passed to this operation.
      */
-    public func putBucketPolicySync(
+    public func putBucketPolicySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketPolicyRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketPolicySyncOverride = putBucketPolicySyncOverride {
-            return try putBucketPolicySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketPolicySyncOverrideNonOptional = putBucketPolicySyncOverride {
+            if let putBucketPolicySyncOverrideTyped = putBucketPolicySyncOverrideNonOptional
+                    as? PutBucketPolicySyncType<InvocationReportingType> {
+                return try putBucketPolicySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3242,12 +3962,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketReplicationAsync(
+    public func putBucketReplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketReplicationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketReplicationAsyncOverride = putBucketReplicationAsyncOverride {
-            return try putBucketReplicationAsyncOverride(input, reporting, completion)
+        if let putBucketReplicationAsyncOverrideNonOptional = putBucketReplicationAsyncOverride {
+            if let putBucketReplicationAsyncOverrideTyped = putBucketReplicationAsyncOverrideNonOptional
+                    as? PutBucketReplicationAsyncType<InvocationReportingType> {
+                return try putBucketReplicationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -3259,11 +3984,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketReplicationRequest object being passed to this operation.
      */
-    public func putBucketReplicationSync(
+    public func putBucketReplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketReplicationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketReplicationSyncOverride = putBucketReplicationSyncOverride {
-            return try putBucketReplicationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketReplicationSyncOverrideNonOptional = putBucketReplicationSyncOverride {
+            if let putBucketReplicationSyncOverrideTyped = putBucketReplicationSyncOverrideNonOptional
+                    as? PutBucketReplicationSyncType<InvocationReportingType> {
+                return try putBucketReplicationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3277,12 +4007,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketRequestPaymentAsync(
+    public func putBucketRequestPaymentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketRequestPaymentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketRequestPaymentAsyncOverride = putBucketRequestPaymentAsyncOverride {
-            return try putBucketRequestPaymentAsyncOverride(input, reporting, completion)
+        if let putBucketRequestPaymentAsyncOverrideNonOptional = putBucketRequestPaymentAsyncOverride {
+            if let putBucketRequestPaymentAsyncOverrideTyped = putBucketRequestPaymentAsyncOverrideNonOptional
+                    as? PutBucketRequestPaymentAsyncType<InvocationReportingType> {
+                return try putBucketRequestPaymentAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -3294,11 +4029,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketRequestPaymentRequest object being passed to this operation.
      */
-    public func putBucketRequestPaymentSync(
+    public func putBucketRequestPaymentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketRequestPaymentRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketRequestPaymentSyncOverride = putBucketRequestPaymentSyncOverride {
-            return try putBucketRequestPaymentSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketRequestPaymentSyncOverrideNonOptional = putBucketRequestPaymentSyncOverride {
+            if let putBucketRequestPaymentSyncOverrideTyped = putBucketRequestPaymentSyncOverrideNonOptional
+                    as? PutBucketRequestPaymentSyncType<InvocationReportingType> {
+                return try putBucketRequestPaymentSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3312,12 +4052,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketTaggingAsync(
+    public func putBucketTaggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketTaggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketTaggingAsyncOverride = putBucketTaggingAsyncOverride {
-            return try putBucketTaggingAsyncOverride(input, reporting, completion)
+        if let putBucketTaggingAsyncOverrideNonOptional = putBucketTaggingAsyncOverride {
+            if let putBucketTaggingAsyncOverrideTyped = putBucketTaggingAsyncOverrideNonOptional
+                    as? PutBucketTaggingAsyncType<InvocationReportingType> {
+                return try putBucketTaggingAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -3329,11 +4074,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketTaggingRequest object being passed to this operation.
      */
-    public func putBucketTaggingSync(
+    public func putBucketTaggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketTaggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketTaggingSyncOverride = putBucketTaggingSyncOverride {
-            return try putBucketTaggingSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketTaggingSyncOverrideNonOptional = putBucketTaggingSyncOverride {
+            if let putBucketTaggingSyncOverrideTyped = putBucketTaggingSyncOverrideNonOptional
+                    as? PutBucketTaggingSyncType<InvocationReportingType> {
+                return try putBucketTaggingSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3347,12 +4097,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketVersioningAsync(
+    public func putBucketVersioningAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketVersioningRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketVersioningAsyncOverride = putBucketVersioningAsyncOverride {
-            return try putBucketVersioningAsyncOverride(input, reporting, completion)
+        if let putBucketVersioningAsyncOverrideNonOptional = putBucketVersioningAsyncOverride {
+            if let putBucketVersioningAsyncOverrideTyped = putBucketVersioningAsyncOverrideNonOptional
+                    as? PutBucketVersioningAsyncType<InvocationReportingType> {
+                return try putBucketVersioningAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -3364,11 +4119,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketVersioningRequest object being passed to this operation.
      */
-    public func putBucketVersioningSync(
+    public func putBucketVersioningSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketVersioningRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketVersioningSyncOverride = putBucketVersioningSyncOverride {
-            return try putBucketVersioningSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketVersioningSyncOverrideNonOptional = putBucketVersioningSyncOverride {
+            if let putBucketVersioningSyncOverrideTyped = putBucketVersioningSyncOverrideNonOptional
+                    as? PutBucketVersioningSyncType<InvocationReportingType> {
+                return try putBucketVersioningSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3382,12 +4142,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putBucketWebsiteAsync(
+    public func putBucketWebsiteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketWebsiteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putBucketWebsiteAsyncOverride = putBucketWebsiteAsyncOverride {
-            return try putBucketWebsiteAsyncOverride(input, reporting, completion)
+        if let putBucketWebsiteAsyncOverrideNonOptional = putBucketWebsiteAsyncOverride {
+            if let putBucketWebsiteAsyncOverrideTyped = putBucketWebsiteAsyncOverrideNonOptional
+                    as? PutBucketWebsiteAsyncType<InvocationReportingType> {
+                return try putBucketWebsiteAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -3399,11 +4164,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketWebsiteRequest object being passed to this operation.
      */
-    public func putBucketWebsiteSync(
+    public func putBucketWebsiteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutBucketWebsiteRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putBucketWebsiteSyncOverride = putBucketWebsiteSyncOverride {
-            return try putBucketWebsiteSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putBucketWebsiteSyncOverrideNonOptional = putBucketWebsiteSyncOverride {
+            if let putBucketWebsiteSyncOverrideTyped = putBucketWebsiteSyncOverrideNonOptional
+                    as? PutBucketWebsiteSyncType<InvocationReportingType> {
+                return try putBucketWebsiteSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3418,12 +4188,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The PutObjectOutput
            object will be validated before being returned to caller.
      */
-    public func putObjectAsync(
+    public func putObjectAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutObjectRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.PutObjectOutput, HTTPClientError>) -> ()) throws {
-        if let putObjectAsyncOverride = putObjectAsyncOverride {
-            return try putObjectAsyncOverride(input, reporting, completion)
+        if let putObjectAsyncOverrideNonOptional = putObjectAsyncOverride {
+            if let putObjectAsyncOverrideTyped = putObjectAsyncOverrideNonOptional
+                    as? PutObjectAsyncType<InvocationReportingType> {
+                return try putObjectAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -3437,11 +4212,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The PutObjectOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func putObjectSync(
+    public func putObjectSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutObjectRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectOutput {
-        if let putObjectSyncOverride = putObjectSyncOverride {
-            return try putObjectSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.PutObjectOutput {
+        if let putObjectSyncOverrideNonOptional = putObjectSyncOverride {
+            if let putObjectSyncOverrideTyped = putObjectSyncOverrideNonOptional
+                    as? PutObjectSyncType<InvocationReportingType> {
+                return try putObjectSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3457,12 +4237,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchKey.
      */
-    public func putObjectAclAsync(
+    public func putObjectAclAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutObjectAclRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.PutObjectAclOutput, HTTPClientError>) -> ()) throws {
-        if let putObjectAclAsyncOverride = putObjectAclAsyncOverride {
-            return try putObjectAclAsyncOverride(input, reporting, completion)
+        if let putObjectAclAsyncOverrideNonOptional = putObjectAclAsyncOverride {
+            if let putObjectAclAsyncOverrideTyped = putObjectAclAsyncOverrideNonOptional
+                    as? PutObjectAclAsyncType<InvocationReportingType> {
+                return try putObjectAclAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -3477,11 +4262,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchKey.
      */
-    public func putObjectAclSync(
+    public func putObjectAclSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutObjectAclRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectAclOutput {
-        if let putObjectAclSyncOverride = putObjectAclSyncOverride {
-            return try putObjectAclSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.PutObjectAclOutput {
+        if let putObjectAclSyncOverrideNonOptional = putObjectAclSyncOverride {
+            if let putObjectAclSyncOverrideTyped = putObjectAclSyncOverrideNonOptional
+                    as? PutObjectAclSyncType<InvocationReportingType> {
+                return try putObjectAclSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3496,12 +4286,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The PutObjectLegalHoldOutput
            object will be validated before being returned to caller.
      */
-    public func putObjectLegalHoldAsync(
+    public func putObjectLegalHoldAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutObjectLegalHoldRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, HTTPClientError>) -> ()) throws {
-        if let putObjectLegalHoldAsyncOverride = putObjectLegalHoldAsyncOverride {
-            return try putObjectLegalHoldAsyncOverride(input, reporting, completion)
+        if let putObjectLegalHoldAsyncOverrideNonOptional = putObjectLegalHoldAsyncOverride {
+            if let putObjectLegalHoldAsyncOverrideTyped = putObjectLegalHoldAsyncOverrideNonOptional
+                    as? PutObjectLegalHoldAsyncType<InvocationReportingType> {
+                return try putObjectLegalHoldAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -3515,11 +4310,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The PutObjectLegalHoldOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func putObjectLegalHoldSync(
+    public func putObjectLegalHoldSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutObjectLegalHoldRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectLegalHoldOutput {
-        if let putObjectLegalHoldSyncOverride = putObjectLegalHoldSyncOverride {
-            return try putObjectLegalHoldSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.PutObjectLegalHoldOutput {
+        if let putObjectLegalHoldSyncOverrideNonOptional = putObjectLegalHoldSyncOverride {
+            if let putObjectLegalHoldSyncOverrideTyped = putObjectLegalHoldSyncOverrideNonOptional
+                    as? PutObjectLegalHoldSyncType<InvocationReportingType> {
+                return try putObjectLegalHoldSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3534,12 +4334,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The PutObjectLockConfigurationOutput
            object will be validated before being returned to caller.
      */
-    public func putObjectLockConfigurationAsync(
+    public func putObjectLockConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutObjectLockConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws {
-        if let putObjectLockConfigurationAsyncOverride = putObjectLockConfigurationAsyncOverride {
-            return try putObjectLockConfigurationAsyncOverride(input, reporting, completion)
+        if let putObjectLockConfigurationAsyncOverrideNonOptional = putObjectLockConfigurationAsyncOverride {
+            if let putObjectLockConfigurationAsyncOverrideTyped = putObjectLockConfigurationAsyncOverrideNonOptional
+                    as? PutObjectLockConfigurationAsyncType<InvocationReportingType> {
+                return try putObjectLockConfigurationAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -3553,11 +4358,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The PutObjectLockConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func putObjectLockConfigurationSync(
+    public func putObjectLockConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutObjectLockConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectLockConfigurationOutput {
-        if let putObjectLockConfigurationSyncOverride = putObjectLockConfigurationSyncOverride {
-            return try putObjectLockConfigurationSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.PutObjectLockConfigurationOutput {
+        if let putObjectLockConfigurationSyncOverrideNonOptional = putObjectLockConfigurationSyncOverride {
+            if let putObjectLockConfigurationSyncOverrideTyped = putObjectLockConfigurationSyncOverrideNonOptional
+                    as? PutObjectLockConfigurationSyncType<InvocationReportingType> {
+                return try putObjectLockConfigurationSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3572,12 +4382,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The PutObjectRetentionOutput
            object will be validated before being returned to caller.
      */
-    public func putObjectRetentionAsync(
+    public func putObjectRetentionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutObjectRetentionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.PutObjectRetentionOutput, HTTPClientError>) -> ()) throws {
-        if let putObjectRetentionAsyncOverride = putObjectRetentionAsyncOverride {
-            return try putObjectRetentionAsyncOverride(input, reporting, completion)
+        if let putObjectRetentionAsyncOverrideNonOptional = putObjectRetentionAsyncOverride {
+            if let putObjectRetentionAsyncOverrideTyped = putObjectRetentionAsyncOverrideNonOptional
+                    as? PutObjectRetentionAsyncType<InvocationReportingType> {
+                return try putObjectRetentionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -3591,11 +4406,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The PutObjectRetentionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func putObjectRetentionSync(
+    public func putObjectRetentionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutObjectRetentionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectRetentionOutput {
-        if let putObjectRetentionSyncOverride = putObjectRetentionSyncOverride {
-            return try putObjectRetentionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.PutObjectRetentionOutput {
+        if let putObjectRetentionSyncOverrideNonOptional = putObjectRetentionSyncOverride {
+            if let putObjectRetentionSyncOverrideTyped = putObjectRetentionSyncOverrideNonOptional
+                    as? PutObjectRetentionSyncType<InvocationReportingType> {
+                return try putObjectRetentionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3610,12 +4430,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The PutObjectTaggingOutput
            object will be validated before being returned to caller.
      */
-    public func putObjectTaggingAsync(
+    public func putObjectTaggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutObjectTaggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.PutObjectTaggingOutput, HTTPClientError>) -> ()) throws {
-        if let putObjectTaggingAsyncOverride = putObjectTaggingAsyncOverride {
-            return try putObjectTaggingAsyncOverride(input, reporting, completion)
+        if let putObjectTaggingAsyncOverrideNonOptional = putObjectTaggingAsyncOverride {
+            if let putObjectTaggingAsyncOverrideTyped = putObjectTaggingAsyncOverrideNonOptional
+                    as? PutObjectTaggingAsyncType<InvocationReportingType> {
+                return try putObjectTaggingAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -3629,11 +4454,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The PutObjectTaggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func putObjectTaggingSync(
+    public func putObjectTaggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutObjectTaggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectTaggingOutput {
-        if let putObjectTaggingSyncOverride = putObjectTaggingSyncOverride {
-            return try putObjectTaggingSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.PutObjectTaggingOutput {
+        if let putObjectTaggingSyncOverrideNonOptional = putObjectTaggingSyncOverride {
+            if let putObjectTaggingSyncOverrideTyped = putObjectTaggingSyncOverrideNonOptional
+                    as? PutObjectTaggingSyncType<InvocationReportingType> {
+                return try putObjectTaggingSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3647,12 +4477,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func putPublicAccessBlockAsync(
+    public func putPublicAccessBlockAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutPublicAccessBlockRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putPublicAccessBlockAsyncOverride = putPublicAccessBlockAsyncOverride {
-            return try putPublicAccessBlockAsyncOverride(input, reporting, completion)
+        if let putPublicAccessBlockAsyncOverrideNonOptional = putPublicAccessBlockAsyncOverride {
+            if let putPublicAccessBlockAsyncOverrideTyped = putPublicAccessBlockAsyncOverrideNonOptional
+                    as? PutPublicAccessBlockAsyncType<InvocationReportingType> {
+                return try putPublicAccessBlockAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(error)
@@ -3664,11 +4499,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Parameters:
          - input: The validated PutPublicAccessBlockRequest object being passed to this operation.
      */
-    public func putPublicAccessBlockSync(
+    public func putPublicAccessBlockSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.PutPublicAccessBlockRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putPublicAccessBlockSyncOverride = putPublicAccessBlockSyncOverride {
-            return try putPublicAccessBlockSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putPublicAccessBlockSyncOverrideNonOptional = putPublicAccessBlockSyncOverride {
+            if let putPublicAccessBlockSyncOverrideTyped = putPublicAccessBlockSyncOverrideNonOptional
+                    as? PutPublicAccessBlockSyncType<InvocationReportingType> {
+                return try putPublicAccessBlockSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3684,12 +4524,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: objectAlreadyInActiveTier.
      */
-    public func restoreObjectAsync(
+    public func restoreObjectAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.RestoreObjectRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.RestoreObjectOutput, HTTPClientError>) -> ()) throws {
-        if let restoreObjectAsyncOverride = restoreObjectAsyncOverride {
-            return try restoreObjectAsyncOverride(input, reporting, completion)
+        if let restoreObjectAsyncOverrideNonOptional = restoreObjectAsyncOverride {
+            if let restoreObjectAsyncOverrideTyped = restoreObjectAsyncOverrideNonOptional
+                    as? RestoreObjectAsyncType<InvocationReportingType> {
+                return try restoreObjectAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -3704,11 +4549,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: objectAlreadyInActiveTier.
      */
-    public func restoreObjectSync(
+    public func restoreObjectSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.RestoreObjectRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.RestoreObjectOutput {
-        if let restoreObjectSyncOverride = restoreObjectSyncOverride {
-            return try restoreObjectSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.RestoreObjectOutput {
+        if let restoreObjectSyncOverrideNonOptional = restoreObjectSyncOverride {
+            if let restoreObjectSyncOverrideTyped = restoreObjectSyncOverrideNonOptional
+                    as? RestoreObjectSyncType<InvocationReportingType> {
+                return try restoreObjectSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3723,12 +4573,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The SelectObjectContentOutput
            object will be validated before being returned to caller.
      */
-    public func selectObjectContentAsync(
+    public func selectObjectContentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.SelectObjectContentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.SelectObjectContentOutput, HTTPClientError>) -> ()) throws {
-        if let selectObjectContentAsyncOverride = selectObjectContentAsyncOverride {
-            return try selectObjectContentAsyncOverride(input, reporting, completion)
+        if let selectObjectContentAsyncOverrideNonOptional = selectObjectContentAsyncOverride {
+            if let selectObjectContentAsyncOverrideTyped = selectObjectContentAsyncOverrideNonOptional
+                    as? SelectObjectContentAsyncType<InvocationReportingType> {
+                return try selectObjectContentAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -3742,11 +4597,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The SelectObjectContentOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func selectObjectContentSync(
+    public func selectObjectContentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.SelectObjectContentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.SelectObjectContentOutput {
-        if let selectObjectContentSyncOverride = selectObjectContentSyncOverride {
-            return try selectObjectContentSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.SelectObjectContentOutput {
+        if let selectObjectContentSyncOverrideNonOptional = selectObjectContentSyncOverride {
+            if let selectObjectContentSyncOverrideTyped = selectObjectContentSyncOverrideNonOptional
+                    as? SelectObjectContentSyncType<InvocationReportingType> {
+                return try selectObjectContentSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3761,12 +4621,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The UploadPartOutput
            object will be validated before being returned to caller.
      */
-    public func uploadPartAsync(
+    public func uploadPartAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.UploadPartRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.UploadPartOutput, HTTPClientError>) -> ()) throws {
-        if let uploadPartAsyncOverride = uploadPartAsyncOverride {
-            return try uploadPartAsyncOverride(input, reporting, completion)
+        if let uploadPartAsyncOverrideNonOptional = uploadPartAsyncOverride {
+            if let uploadPartAsyncOverrideTyped = uploadPartAsyncOverrideNonOptional
+                    as? UploadPartAsyncType<InvocationReportingType> {
+                return try uploadPartAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -3780,11 +4645,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The UploadPartOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func uploadPartSync(
+    public func uploadPartSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.UploadPartRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.UploadPartOutput {
-        if let uploadPartSyncOverride = uploadPartSyncOverride {
-            return try uploadPartSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.UploadPartOutput {
+        if let uploadPartSyncOverrideNonOptional = uploadPartSyncOverride {
+            if let uploadPartSyncOverrideTyped = uploadPartSyncOverrideNonOptional
+                    as? UploadPartSyncType<InvocationReportingType> {
+                return try uploadPartSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error
@@ -3799,12 +4669,17 @@ public struct ThrowingS3Client: S3ClientProtocol {
            callback when the operation is complete. The UploadPartCopyOutput
            object will be validated before being returned to caller.
      */
-    public func uploadPartCopyAsync(
+    public func uploadPartCopyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.UploadPartCopyRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.UploadPartCopyOutput, HTTPClientError>) -> ()) throws {
-        if let uploadPartCopyAsyncOverride = uploadPartCopyAsyncOverride {
-            return try uploadPartCopyAsyncOverride(input, reporting, completion)
+        if let uploadPartCopyAsyncOverrideNonOptional = uploadPartCopyAsyncOverride {
+            if let uploadPartCopyAsyncOverrideTyped = uploadPartCopyAsyncOverrideNonOptional
+                    as? UploadPartCopyAsyncType<InvocationReportingType> {
+                return try uploadPartCopyAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(.failure(error))
@@ -3818,11 +4693,16 @@ public struct ThrowingS3Client: S3ClientProtocol {
      - Returns: The UploadPartCopyOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func uploadPartCopySync(
+    public func uploadPartCopySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: S3Model.UploadPartCopyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.UploadPartCopyOutput {
-        if let uploadPartCopySyncOverride = uploadPartCopySyncOverride {
-            return try uploadPartCopySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> S3Model.UploadPartCopyOutput {
+        if let uploadPartCopySyncOverrideNonOptional = uploadPartCopySyncOverride {
+            if let uploadPartCopySyncOverrideTyped = uploadPartCopySyncOverrideNonOptional
+                    as? UploadPartCopySyncType<InvocationReportingType> {
+                return try uploadPartCopySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         throw error

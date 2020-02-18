@@ -507,9 +507,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBClusterRoleAlreadyExists, dBClusterRoleQuotaExceeded, invalidDBClusterState.
      */
-    public func addRoleToDBClusterAsync(
+    public func addRoleToDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddRoleToDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -544,9 +544,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated AddRoleToDBClusterMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBClusterRoleAlreadyExists, dBClusterRoleQuotaExceeded, invalidDBClusterState.
      */
-    public func addRoleToDBClusterSync(
+    public func addRoleToDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddRoleToDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -581,9 +581,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBInstanceNotFound, dBInstanceRoleAlreadyExists, dBInstanceRoleQuotaExceeded, invalidDBInstanceState.
      */
-    public func addRoleToDBInstanceAsync(
+    public func addRoleToDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddRoleToDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -618,9 +618,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated AddRoleToDBInstanceMessage object being passed to this operation.
      - Throws: dBInstanceNotFound, dBInstanceRoleAlreadyExists, dBInstanceRoleQuotaExceeded, invalidDBInstanceState.
      */
-    public func addRoleToDBInstanceSync(
+    public func addRoleToDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddRoleToDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -656,9 +656,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: sourceNotFound, subscriptionNotFound.
      */
-    public func addSourceIdentifierToSubscriptionAsync(
+    public func addSourceIdentifierToSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddSourceIdentifierToSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -695,9 +695,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: sourceNotFound, subscriptionNotFound.
      */
-    public func addSourceIdentifierToSubscriptionSync(
+    public func addSourceIdentifierToSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddSourceIdentifierToSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription {
+            reporting: InvocationReportingType) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -732,9 +732,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func addTagsToResourceAsync(
+    public func addTagsToResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddTagsToResourceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -769,9 +769,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated AddTagsToResourceMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func addTagsToResourceSync(
+    public func addTagsToResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddTagsToResourceMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -807,9 +807,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func applyPendingMaintenanceActionAsync(
+    public func applyPendingMaintenanceActionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ApplyPendingMaintenanceActionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -846,9 +846,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func applyPendingMaintenanceActionSync(
+    public func applyPendingMaintenanceActionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ApplyPendingMaintenanceActionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction {
+            reporting: InvocationReportingType) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -884,9 +884,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationAlreadyExists, authorizationQuotaExceeded, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func authorizeDBSecurityGroupIngressAsync(
+    public func authorizeDBSecurityGroupIngressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AuthorizeDBSecurityGroupIngressMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -923,9 +923,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationAlreadyExists, authorizationQuotaExceeded, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func authorizeDBSecurityGroupIngressSync(
+    public func authorizeDBSecurityGroupIngressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AuthorizeDBSecurityGroupIngressMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress {
+            reporting: InvocationReportingType) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -961,9 +961,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState.
      */
-    public func backtrackDBClusterAsync(
+    public func backtrackDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.BacktrackDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1000,9 +1000,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState.
      */
-    public func backtrackDBClusterSync(
+    public func backtrackDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.BacktrackDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster {
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1038,9 +1038,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: exportTaskNotFound, invalidExportTaskState.
      */
-    public func cancelExportTaskAsync(
+    public func cancelExportTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CancelExportTaskMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1077,9 +1077,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: exportTaskNotFound, invalidExportTaskState.
      */
-    public func cancelExportTaskSync(
+    public func cancelExportTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CancelExportTaskMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForCancelExportTask {
+            reporting: InvocationReportingType) throws -> RDSModel.ExportTaskForCancelExportTask {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1115,9 +1115,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBClusterParameterGroupAsync(
+    public func copyDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1154,9 +1154,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBClusterParameterGroupSync(
+    public func copyDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1192,9 +1192,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotAlreadyExists, dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, invalidDBClusterState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBClusterSnapshotAsync(
+    public func copyDBClusterSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBClusterSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1231,9 +1231,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotAlreadyExists, dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, invalidDBClusterState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBClusterSnapshotSync(
+    public func copyDBClusterSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBClusterSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
+            reporting: InvocationReportingType) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1269,9 +1269,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBParameterGroupAsync(
+    public func copyDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1308,9 +1308,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBParameterGroupSync(
+    public func copyDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1346,9 +1346,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBSnapshotAsync(
+    public func copyDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1385,9 +1385,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBSnapshotSync(
+    public func copyDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot {
+            reporting: InvocationReportingType) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1423,9 +1423,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: optionGroupAlreadyExists, optionGroupNotFound, optionGroupQuotaExceeded.
      */
-    public func copyOptionGroupAsync(
+    public func copyOptionGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1462,9 +1462,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: optionGroupAlreadyExists, optionGroupNotFound, optionGroupQuotaExceeded.
      */
-    public func copyOptionGroupSync(
+    public func copyOptionGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1500,9 +1500,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
      */
-    public func createCustomAvailabilityZoneAsync(
+    public func createCustomAvailabilityZoneAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateCustomAvailabilityZoneMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1539,9 +1539,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
      */
-    public func createCustomAvailabilityZoneSync(
+    public func createCustomAvailabilityZoneSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateCustomAvailabilityZoneMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1577,9 +1577,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func createDBClusterAsync(
+    public func createDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1616,9 +1616,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func createDBClusterSync(
+    public func createDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1654,9 +1654,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterEndpointAlreadyExists, dBClusterEndpointQuotaExceeded, dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func createDBClusterEndpointAsync(
+    public func createDBClusterEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterEndpointMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1693,9 +1693,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterEndpointAlreadyExists, dBClusterEndpointQuotaExceeded, dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func createDBClusterEndpointSync(
+    public func createDBClusterEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterEndpointMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint {
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1731,9 +1731,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBClusterParameterGroupAsync(
+    public func createDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1770,9 +1770,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBClusterParameterGroupSync(
+    public func createDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1808,9 +1808,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func createDBClusterSnapshotAsync(
+    public func createDBClusterSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1847,9 +1847,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func createDBClusterSnapshotSync(
+    public func createDBClusterSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1885,9 +1885,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceAsync(
+    public func createDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1924,9 +1924,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceSync(
+    public func createDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1962,9 +1962,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceReadReplicaAsync(
+    public func createDBInstanceReadReplicaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBInstanceReadReplicaMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2001,9 +2001,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceReadReplicaSync(
+    public func createDBInstanceReadReplicaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBInstanceReadReplicaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2039,9 +2039,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBParameterGroupAsync(
+    public func createDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2078,9 +2078,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBParameterGroupSync(
+    public func createDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2116,9 +2116,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
      */
-    public func createDBProxyAsync(
+    public func createDBProxyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBProxyRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2155,9 +2155,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
      */
-    public func createDBProxySync(
+    public func createDBProxySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBProxyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2193,9 +2193,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSecurityGroupAlreadyExists, dBSecurityGroupNotSupported, dBSecurityGroupQuotaExceeded.
      */
-    public func createDBSecurityGroupAsync(
+    public func createDBSecurityGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBSecurityGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2232,9 +2232,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSecurityGroupAlreadyExists, dBSecurityGroupNotSupported, dBSecurityGroupQuotaExceeded.
      */
-    public func createDBSecurityGroupSync(
+    public func createDBSecurityGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBSecurityGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2270,9 +2270,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func createDBSnapshotAsync(
+    public func createDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2309,9 +2309,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func createDBSnapshotSync(
+    public func createDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2347,9 +2347,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSubnetGroupAlreadyExists, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupQuotaExceeded, dBSubnetQuotaExceeded, invalidSubnet.
      */
-    public func createDBSubnetGroupAsync(
+    public func createDBSubnetGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBSubnetGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2386,9 +2386,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSubnetGroupAlreadyExists, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupQuotaExceeded, dBSubnetQuotaExceeded, invalidSubnet.
      */
-    public func createDBSubnetGroupSync(
+    public func createDBSubnetGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBSubnetGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2424,9 +2424,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, sourceNotFound, subscriptionAlreadyExist, subscriptionCategoryNotFound.
      */
-    public func createEventSubscriptionAsync(
+    public func createEventSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateEventSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2463,9 +2463,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, sourceNotFound, subscriptionAlreadyExist, subscriptionCategoryNotFound.
      */
-    public func createEventSubscriptionSync(
+    public func createEventSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateEventSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2501,9 +2501,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, globalClusterAlreadyExists, globalClusterQuotaExceeded, invalidDBClusterState.
      */
-    public func createGlobalClusterAsync(
+    public func createGlobalClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2540,9 +2540,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, globalClusterAlreadyExists, globalClusterQuotaExceeded, invalidDBClusterState.
      */
-    public func createGlobalClusterSync(
+    public func createGlobalClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2578,9 +2578,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: optionGroupAlreadyExists, optionGroupQuotaExceeded.
      */
-    public func createOptionGroupAsync(
+    public func createOptionGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2617,9 +2617,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: optionGroupAlreadyExists, optionGroupQuotaExceeded.
      */
-    public func createOptionGroupSync(
+    public func createOptionGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2655,9 +2655,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
      */
-    public func deleteCustomAvailabilityZoneAsync(
+    public func deleteCustomAvailabilityZoneAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2694,9 +2694,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
      */
-    public func deleteCustomAvailabilityZoneSync(
+    public func deleteCustomAvailabilityZoneSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteCustomAvailabilityZoneMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2732,9 +2732,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func deleteDBClusterAsync(
+    public func deleteDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2771,9 +2771,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func deleteDBClusterSync(
+    public func deleteDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2809,9 +2809,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterEndpointNotFound, invalidDBClusterEndpointState, invalidDBClusterState.
      */
-    public func deleteDBClusterEndpointAsync(
+    public func deleteDBClusterEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterEndpointMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2848,9 +2848,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterEndpointNotFound, invalidDBClusterEndpointState, invalidDBClusterState.
      */
-    public func deleteDBClusterEndpointSync(
+    public func deleteDBClusterEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterEndpointMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint {
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2885,9 +2885,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBClusterParameterGroupAsync(
+    public func deleteDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2922,9 +2922,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBClusterParameterGroupMessage object being passed to this operation.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBClusterParameterGroupSync(
+    public func deleteDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2960,9 +2960,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState.
      */
-    public func deleteDBClusterSnapshotAsync(
+    public func deleteDBClusterSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2999,9 +2999,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState.
      */
-    public func deleteDBClusterSnapshotSync(
+    public func deleteDBClusterSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3037,9 +3037,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func deleteDBInstanceAsync(
+    public func deleteDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3076,9 +3076,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func deleteDBInstanceSync(
+    public func deleteDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance {
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3114,9 +3114,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAutomatedBackupNotFound, invalidDBInstanceAutomatedBackupState.
      */
-    public func deleteDBInstanceAutomatedBackupAsync(
+    public func deleteDBInstanceAutomatedBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBInstanceAutomatedBackupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3153,9 +3153,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAutomatedBackupNotFound, invalidDBInstanceAutomatedBackupState.
      */
-    public func deleteDBInstanceAutomatedBackupSync(
+    public func deleteDBInstanceAutomatedBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBInstanceAutomatedBackupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup {
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3190,9 +3190,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBParameterGroupAsync(
+    public func deleteDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3227,9 +3227,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBParameterGroupMessage object being passed to this operation.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBParameterGroupSync(
+    public func deleteDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3265,9 +3265,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound, invalidDBProxyState.
      */
-    public func deleteDBProxyAsync(
+    public func deleteDBProxyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBProxyRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3304,9 +3304,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound, invalidDBProxyState.
      */
-    public func deleteDBProxySync(
+    public func deleteDBProxySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBProxyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy {
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3341,9 +3341,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func deleteDBSecurityGroupAsync(
+    public func deleteDBSecurityGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBSecurityGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3378,9 +3378,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBSecurityGroupMessage object being passed to this operation.
      - Throws: dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func deleteDBSecurityGroupSync(
+    public func deleteDBSecurityGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBSecurityGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3416,9 +3416,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound, invalidDBSnapshotState.
      */
-    public func deleteDBSnapshotAsync(
+    public func deleteDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3455,9 +3455,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound, invalidDBSnapshotState.
      */
-    public func deleteDBSnapshotSync(
+    public func deleteDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot {
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3492,9 +3492,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBSubnetGroupNotFound, invalidDBSubnetGroupState, invalidDBSubnetState.
      */
-    public func deleteDBSubnetGroupAsync(
+    public func deleteDBSubnetGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBSubnetGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3529,9 +3529,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBSubnetGroupMessage object being passed to this operation.
      - Throws: dBSubnetGroupNotFound, invalidDBSubnetGroupState, invalidDBSubnetState.
      */
-    public func deleteDBSubnetGroupSync(
+    public func deleteDBSubnetGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBSubnetGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3567,9 +3567,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidEventSubscriptionState, subscriptionNotFound.
      */
-    public func deleteEventSubscriptionAsync(
+    public func deleteEventSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteEventSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3606,9 +3606,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidEventSubscriptionState, subscriptionNotFound.
      */
-    public func deleteEventSubscriptionSync(
+    public func deleteEventSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteEventSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription {
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3644,9 +3644,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func deleteGlobalClusterAsync(
+    public func deleteGlobalClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3683,9 +3683,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func deleteGlobalClusterSync(
+    public func deleteGlobalClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster {
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3721,9 +3721,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: installationMediaNotFound.
      */
-    public func deleteInstallationMediaAsync(
+    public func deleteInstallationMediaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteInstallationMediaMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3760,9 +3760,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: installationMediaNotFound.
      */
-    public func deleteInstallationMediaSync(
+    public func deleteInstallationMediaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteInstallationMediaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia {
+            reporting: InvocationReportingType) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3797,9 +3797,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func deleteOptionGroupAsync(
+    public func deleteOptionGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3834,9 +3834,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated DeleteOptionGroupMessage object being passed to this operation.
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func deleteOptionGroupSync(
+    public func deleteOptionGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3872,9 +3872,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
-    public func deregisterDBProxyTargetsAsync(
+    public func deregisterDBProxyTargetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeregisterDBProxyTargetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3911,9 +3911,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
-    public func deregisterDBProxyTargetsSync(
+    public func deregisterDBProxyTargetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeregisterDBProxyTargetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
+            reporting: InvocationReportingType) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3948,9 +3948,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The AccountAttributesMessageForDescribeAccountAttributes
            object will be validated before being returned to caller.
      */
-    public func describeAccountAttributesAsync(
+    public func describeAccountAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeAccountAttributesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3986,9 +3986,9 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The AccountAttributesMessageForDescribeAccountAttributes object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAccountAttributesSync(
+    public func describeAccountAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeAccountAttributesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
+            reporting: InvocationReportingType) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4024,9 +4024,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: certificateNotFound.
      */
-    public func describeCertificatesAsync(
+    public func describeCertificatesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeCertificatesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4063,9 +4063,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: certificateNotFound.
      */
-    public func describeCertificatesSync(
+    public func describeCertificatesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeCertificatesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CertificateMessageForDescribeCertificates {
+            reporting: InvocationReportingType) throws -> RDSModel.CertificateMessageForDescribeCertificates {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4101,9 +4101,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: customAvailabilityZoneNotFound.
      */
-    public func describeCustomAvailabilityZonesAsync(
+    public func describeCustomAvailabilityZonesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4140,9 +4140,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: customAvailabilityZoneNotFound.
      */
-    public func describeCustomAvailabilityZonesSync(
+    public func describeCustomAvailabilityZonesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeCustomAvailabilityZonesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
+            reporting: InvocationReportingType) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4178,9 +4178,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterBacktrackNotFound, dBClusterNotFound.
      */
-    public func describeDBClusterBacktracksAsync(
+    public func describeDBClusterBacktracksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterBacktracksMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4217,9 +4217,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterBacktrackNotFound, dBClusterNotFound.
      */
-    public func describeDBClusterBacktracksSync(
+    public func describeDBClusterBacktracksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterBacktracksMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4255,9 +4255,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound.
      */
-    public func describeDBClusterEndpointsAsync(
+    public func describeDBClusterEndpointsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterEndpointsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4294,9 +4294,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound.
      */
-    public func describeDBClusterEndpointsSync(
+    public func describeDBClusterEndpointsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterEndpointsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints {
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4332,9 +4332,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParameterGroupsAsync(
+    public func describeDBClusterParameterGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterParameterGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4371,9 +4371,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParameterGroupsSync(
+    public func describeDBClusterParameterGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterParameterGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups {
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4409,9 +4409,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParametersAsync(
+    public func describeDBClusterParametersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4448,9 +4448,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParametersSync(
+    public func describeDBClusterParametersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4486,9 +4486,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotAttributesAsync(
+    public func describeDBClusterSnapshotAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterSnapshotAttributesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4525,9 +4525,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotAttributesSync(
+    public func describeDBClusterSnapshotAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterSnapshotAttributesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes {
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4563,9 +4563,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotsAsync(
+    public func describeDBClusterSnapshotsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterSnapshotsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4602,9 +4602,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotsSync(
+    public func describeDBClusterSnapshotsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterSnapshotsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4640,9 +4640,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound.
      */
-    public func describeDBClustersAsync(
+    public func describeDBClustersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClustersMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4679,9 +4679,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound.
      */
-    public func describeDBClustersSync(
+    public func describeDBClustersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClustersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterMessageForDescribeDBClusters {
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterMessageForDescribeDBClusters {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4716,9 +4716,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The DBEngineVersionMessageForDescribeDBEngineVersions
            object will be validated before being returned to caller.
      */
-    public func describeDBEngineVersionsAsync(
+    public func describeDBEngineVersionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBEngineVersionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4754,9 +4754,9 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The DBEngineVersionMessageForDescribeDBEngineVersions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeDBEngineVersionsSync(
+    public func describeDBEngineVersionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBEngineVersionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions {
+            reporting: InvocationReportingType) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4792,9 +4792,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAutomatedBackupNotFound.
      */
-    public func describeDBInstanceAutomatedBackupsAsync(
+    public func describeDBInstanceAutomatedBackupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4831,9 +4831,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAutomatedBackupNotFound.
      */
-    public func describeDBInstanceAutomatedBackupsSync(
+    public func describeDBInstanceAutomatedBackupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups {
+            reporting: InvocationReportingType) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4869,9 +4869,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound.
      */
-    public func describeDBInstancesAsync(
+    public func describeDBInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBInstancesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4908,9 +4908,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound.
      */
-    public func describeDBInstancesSync(
+    public func describeDBInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBInstancesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances {
+            reporting: InvocationReportingType) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4946,9 +4946,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound.
      */
-    public func describeDBLogFilesAsync(
+    public func describeDBLogFilesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBLogFilesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4985,9 +4985,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound.
      */
-    public func describeDBLogFilesSync(
+    public func describeDBLogFilesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBLogFilesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles {
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5023,9 +5023,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBParameterGroupsAsync(
+    public func describeDBParameterGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBParameterGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5062,9 +5062,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBParameterGroupsSync(
+    public func describeDBParameterGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBParameterGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups {
+            reporting: InvocationReportingType) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5100,9 +5100,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBParametersAsync(
+    public func describeDBParametersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5139,9 +5139,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBParametersSync(
+    public func describeDBParametersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters {
+            reporting: InvocationReportingType) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5177,9 +5177,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound.
      */
-    public func describeDBProxiesAsync(
+    public func describeDBProxiesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBProxiesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5216,9 +5216,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound.
      */
-    public func describeDBProxiesSync(
+    public func describeDBProxiesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBProxiesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies {
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5254,9 +5254,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyTargetGroupNotFound.
      */
-    public func describeDBProxyTargetGroupsAsync(
+    public func describeDBProxyTargetGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBProxyTargetGroupsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5293,9 +5293,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyTargetGroupNotFound.
      */
-    public func describeDBProxyTargetGroupsSync(
+    public func describeDBProxyTargetGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBProxyTargetGroupsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5331,9 +5331,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
-    public func describeDBProxyTargetsAsync(
+    public func describeDBProxyTargetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBProxyTargetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5370,9 +5370,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
-    public func describeDBProxyTargetsSync(
+    public func describeDBProxyTargetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBProxyTargetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5408,9 +5408,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSecurityGroupNotFound.
      */
-    public func describeDBSecurityGroupsAsync(
+    public func describeDBSecurityGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSecurityGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5447,9 +5447,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSecurityGroupNotFound.
      */
-    public func describeDBSecurityGroupsSync(
+    public func describeDBSecurityGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSecurityGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups {
+            reporting: InvocationReportingType) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5485,9 +5485,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotAttributesAsync(
+    public func describeDBSnapshotAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSnapshotAttributesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5524,9 +5524,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotAttributesSync(
+    public func describeDBSnapshotAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSnapshotAttributesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes {
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5562,9 +5562,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotsAsync(
+    public func describeDBSnapshotsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSnapshotsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5601,9 +5601,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotsSync(
+    public func describeDBSnapshotsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSnapshotsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots {
+            reporting: InvocationReportingType) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5639,9 +5639,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSubnetGroupNotFound.
      */
-    public func describeDBSubnetGroupsAsync(
+    public func describeDBSubnetGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSubnetGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5678,9 +5678,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSubnetGroupNotFound.
      */
-    public func describeDBSubnetGroupsSync(
+    public func describeDBSubnetGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSubnetGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups {
+            reporting: InvocationReportingType) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5715,9 +5715,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters
            object will be validated before being returned to caller.
      */
-    public func describeEngineDefaultClusterParametersAsync(
+    public func describeEngineDefaultClusterParametersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEngineDefaultClusterParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5753,9 +5753,9 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEngineDefaultClusterParametersSync(
+    public func describeEngineDefaultClusterParametersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEngineDefaultClusterParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters {
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5790,9 +5790,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters
            object will be validated before being returned to caller.
      */
-    public func describeEngineDefaultParametersAsync(
+    public func describeEngineDefaultParametersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEngineDefaultParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5828,9 +5828,9 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEngineDefaultParametersSync(
+    public func describeEngineDefaultParametersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEngineDefaultParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters {
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5865,9 +5865,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The EventCategoriesMessageForDescribeEventCategories
            object will be validated before being returned to caller.
      */
-    public func describeEventCategoriesAsync(
+    public func describeEventCategoriesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEventCategoriesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5903,9 +5903,9 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The EventCategoriesMessageForDescribeEventCategories object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEventCategoriesSync(
+    public func describeEventCategoriesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEventCategoriesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories {
+            reporting: InvocationReportingType) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5941,9 +5941,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: subscriptionNotFound.
      */
-    public func describeEventSubscriptionsAsync(
+    public func describeEventSubscriptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEventSubscriptionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5980,9 +5980,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: subscriptionNotFound.
      */
-    public func describeEventSubscriptionsSync(
+    public func describeEventSubscriptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEventSubscriptionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions {
+            reporting: InvocationReportingType) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6017,9 +6017,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The EventsMessageForDescribeEvents
            object will be validated before being returned to caller.
      */
-    public func describeEventsAsync(
+    public func describeEventsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEventsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6055,9 +6055,9 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The EventsMessageForDescribeEvents object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEventsSync(
+    public func describeEventsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEventsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventsMessageForDescribeEvents {
+            reporting: InvocationReportingType) throws -> RDSModel.EventsMessageForDescribeEvents {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6093,9 +6093,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: exportTaskNotFound.
      */
-    public func describeExportTasksAsync(
+    public func describeExportTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeExportTasksMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6132,9 +6132,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: exportTaskNotFound.
      */
-    public func describeExportTasksSync(
+    public func describeExportTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeExportTasksMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks {
+            reporting: InvocationReportingType) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6170,9 +6170,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalClusterNotFound.
      */
-    public func describeGlobalClustersAsync(
+    public func describeGlobalClustersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeGlobalClustersMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6209,9 +6209,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalClusterNotFound.
      */
-    public func describeGlobalClustersSync(
+    public func describeGlobalClustersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeGlobalClustersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
+            reporting: InvocationReportingType) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6247,9 +6247,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: installationMediaNotFound.
      */
-    public func describeInstallationMediaAsync(
+    public func describeInstallationMediaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeInstallationMediaMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6286,9 +6286,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: installationMediaNotFound.
      */
-    public func describeInstallationMediaSync(
+    public func describeInstallationMediaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeInstallationMediaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
+            reporting: InvocationReportingType) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6323,9 +6323,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The OptionGroupOptionsMessageForDescribeOptionGroupOptions
            object will be validated before being returned to caller.
      */
-    public func describeOptionGroupOptionsAsync(
+    public func describeOptionGroupOptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeOptionGroupOptionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6361,9 +6361,9 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The OptionGroupOptionsMessageForDescribeOptionGroupOptions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeOptionGroupOptionsSync(
+    public func describeOptionGroupOptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeOptionGroupOptionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions {
+            reporting: InvocationReportingType) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6399,9 +6399,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: optionGroupNotFound.
      */
-    public func describeOptionGroupsAsync(
+    public func describeOptionGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeOptionGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6438,9 +6438,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: optionGroupNotFound.
      */
-    public func describeOptionGroupsSync(
+    public func describeOptionGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeOptionGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OptionGroupsForDescribeOptionGroups {
+            reporting: InvocationReportingType) throws -> RDSModel.OptionGroupsForDescribeOptionGroups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6475,9 +6475,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions
            object will be validated before being returned to caller.
      */
-    public func describeOrderableDBInstanceOptionsAsync(
+    public func describeOrderableDBInstanceOptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeOrderableDBInstanceOptionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6513,9 +6513,9 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeOrderableDBInstanceOptionsSync(
+    public func describeOrderableDBInstanceOptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeOrderableDBInstanceOptionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions {
+            reporting: InvocationReportingType) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6551,9 +6551,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: resourceNotFound.
      */
-    public func describePendingMaintenanceActionsAsync(
+    public func describePendingMaintenanceActionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribePendingMaintenanceActionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6590,9 +6590,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: resourceNotFound.
      */
-    public func describePendingMaintenanceActionsSync(
+    public func describePendingMaintenanceActionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribePendingMaintenanceActionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions {
+            reporting: InvocationReportingType) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6628,9 +6628,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: reservedDBInstanceNotFound.
      */
-    public func describeReservedDBInstancesAsync(
+    public func describeReservedDBInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeReservedDBInstancesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6667,9 +6667,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: reservedDBInstanceNotFound.
      */
-    public func describeReservedDBInstancesSync(
+    public func describeReservedDBInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeReservedDBInstancesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances {
+            reporting: InvocationReportingType) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6705,9 +6705,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: reservedDBInstancesOfferingNotFound.
      */
-    public func describeReservedDBInstancesOfferingsAsync(
+    public func describeReservedDBInstancesOfferingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeReservedDBInstancesOfferingsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6744,9 +6744,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: reservedDBInstancesOfferingNotFound.
      */
-    public func describeReservedDBInstancesOfferingsSync(
+    public func describeReservedDBInstancesOfferingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeReservedDBInstancesOfferingsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings {
+            reporting: InvocationReportingType) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6781,9 +6781,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The SourceRegionMessageForDescribeSourceRegions
            object will be validated before being returned to caller.
      */
-    public func describeSourceRegionsAsync(
+    public func describeSourceRegionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeSourceRegionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6819,9 +6819,9 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The SourceRegionMessageForDescribeSourceRegions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSourceRegionsSync(
+    public func describeSourceRegionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeSourceRegionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions {
+            reporting: InvocationReportingType) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6857,9 +6857,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func describeValidDBInstanceModificationsAsync(
+    public func describeValidDBInstanceModificationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeValidDBInstanceModificationsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6896,9 +6896,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func describeValidDBInstanceModificationsSync(
+    public func describeValidDBInstanceModificationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeValidDBInstanceModificationsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications {
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6934,9 +6934,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, dBLogFileNotFound.
      */
-    public func downloadDBLogFilePortionAsync(
+    public func downloadDBLogFilePortionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DownloadDBLogFilePortionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6973,9 +6973,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, dBLogFileNotFound.
      */
-    public func downloadDBLogFilePortionSync(
+    public func downloadDBLogFilePortionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DownloadDBLogFilePortionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
+            reporting: InvocationReportingType) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7011,9 +7011,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func failoverDBClusterAsync(
+    public func failoverDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.FailoverDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7050,9 +7050,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func failoverDBClusterSync(
+    public func failoverDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.FailoverDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
+            reporting: InvocationReportingType) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7088,9 +7088,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
      */
-    public func importInstallationMediaAsync(
+    public func importInstallationMediaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ImportInstallationMediaMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7127,9 +7127,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
      */
-    public func importInstallationMediaSync(
+    public func importInstallationMediaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ImportInstallationMediaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaForImportInstallationMedia {
+            reporting: InvocationReportingType) throws -> RDSModel.InstallationMediaForImportInstallationMedia {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7165,9 +7165,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func listTagsForResourceAsync(
+    public func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ListTagsForResourceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7204,9 +7204,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func listTagsForResourceSync(
+    public func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ListTagsForResourceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.TagListMessageForListTagsForResource {
+            reporting: InvocationReportingType) throws -> RDSModel.TagListMessageForListTagsForResource {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7242,9 +7242,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: certificateNotFound.
      */
-    public func modifyCertificatesAsync(
+    public func modifyCertificatesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyCertificatesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7281,9 +7281,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: certificateNotFound.
      */
-    public func modifyCertificatesSync(
+    public func modifyCertificatesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyCertificatesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates {
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7319,9 +7319,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterCapacity, invalidDBClusterState.
      */
-    public func modifyCurrentDBClusterCapacityAsync(
+    public func modifyCurrentDBClusterCapacityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyCurrentDBClusterCapacityMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7358,9 +7358,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterCapacity, invalidDBClusterState.
      */
-    public func modifyCurrentDBClusterCapacitySync(
+    public func modifyCurrentDBClusterCapacitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyCurrentDBClusterCapacityMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7396,9 +7396,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
      */
-    public func modifyDBClusterAsync(
+    public func modifyDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7435,9 +7435,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
      */
-    public func modifyDBClusterSync(
+    public func modifyDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster {
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7473,9 +7473,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterEndpointNotFound, dBInstanceNotFound, invalidDBClusterEndpointState, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func modifyDBClusterEndpointAsync(
+    public func modifyDBClusterEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterEndpointMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7512,9 +7512,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterEndpointNotFound, dBInstanceNotFound, invalidDBClusterEndpointState, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func modifyDBClusterEndpointSync(
+    public func modifyDBClusterEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterEndpointMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint {
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7550,9 +7550,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBClusterParameterGroupAsync(
+    public func modifyDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7589,9 +7589,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBClusterParameterGroupSync(
+    public func modifyDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7627,9 +7627,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBClusterSnapshotAttributeAsync(
+    public func modifyDBClusterSnapshotAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterSnapshotAttributeMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7666,9 +7666,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBClusterSnapshotAttributeSync(
+    public func modifyDBClusterSnapshotAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterSnapshotAttributeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute {
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7704,9 +7704,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func modifyDBInstanceAsync(
+    public func modifyDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7743,9 +7743,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func modifyDBInstanceSync(
+    public func modifyDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7781,9 +7781,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBParameterGroupAsync(
+    public func modifyDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7820,9 +7820,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBParameterGroupSync(
+    public func modifyDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7858,9 +7858,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
      */
-    public func modifyDBProxyAsync(
+    public func modifyDBProxyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBProxyRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7897,9 +7897,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
      */
-    public func modifyDBProxySync(
+    public func modifyDBProxySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBProxyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy {
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7935,9 +7935,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound.
      */
-    public func modifyDBProxyTargetGroupAsync(
+    public func modifyDBProxyTargetGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBProxyTargetGroupRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7974,9 +7974,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound.
      */
-    public func modifyDBProxyTargetGroupSync(
+    public func modifyDBProxyTargetGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBProxyTargetGroupRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8012,9 +8012,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound.
      */
-    public func modifyDBSnapshotAsync(
+    public func modifyDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8051,9 +8051,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound.
      */
-    public func modifyDBSnapshotSync(
+    public func modifyDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot {
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8089,9 +8089,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound, invalidDBSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBSnapshotAttributeAsync(
+    public func modifyDBSnapshotAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBSnapshotAttributeMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8128,9 +8128,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound, invalidDBSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBSnapshotAttributeSync(
+    public func modifyDBSnapshotAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBSnapshotAttributeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8166,9 +8166,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetQuotaExceeded, invalidSubnet, subnetAlreadyInUse.
      */
-    public func modifyDBSubnetGroupAsync(
+    public func modifyDBSubnetGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBSubnetGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8205,9 +8205,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetQuotaExceeded, invalidSubnet, subnetAlreadyInUse.
      */
-    public func modifyDBSubnetGroupSync(
+    public func modifyDBSubnetGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBSubnetGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8243,9 +8243,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, subscriptionCategoryNotFound, subscriptionNotFound.
      */
-    public func modifyEventSubscriptionAsync(
+    public func modifyEventSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyEventSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8282,9 +8282,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, subscriptionCategoryNotFound, subscriptionNotFound.
      */
-    public func modifyEventSubscriptionSync(
+    public func modifyEventSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyEventSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription {
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8320,9 +8320,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func modifyGlobalClusterAsync(
+    public func modifyGlobalClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8359,9 +8359,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func modifyGlobalClusterSync(
+    public func modifyGlobalClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8397,9 +8397,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func modifyOptionGroupAsync(
+    public func modifyOptionGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8436,9 +8436,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func modifyOptionGroupSync(
+    public func modifyOptionGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8474,9 +8474,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func promoteReadReplicaAsync(
+    public func promoteReadReplicaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.PromoteReadReplicaMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8513,9 +8513,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func promoteReadReplicaSync(
+    public func promoteReadReplicaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.PromoteReadReplicaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica {
+            reporting: InvocationReportingType) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8551,9 +8551,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState.
      */
-    public func promoteReadReplicaDBClusterAsync(
+    public func promoteReadReplicaDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.PromoteReadReplicaDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8590,9 +8590,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState.
      */
-    public func promoteReadReplicaDBClusterSync(
+    public func promoteReadReplicaDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.PromoteReadReplicaDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster {
+            reporting: InvocationReportingType) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8628,9 +8628,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: reservedDBInstanceAlreadyExists, reservedDBInstanceQuotaExceeded, reservedDBInstancesOfferingNotFound.
      */
-    public func purchaseReservedDBInstancesOfferingAsync(
+    public func purchaseReservedDBInstancesOfferingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8667,9 +8667,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: reservedDBInstanceAlreadyExists, reservedDBInstanceQuotaExceeded, reservedDBInstancesOfferingNotFound.
      */
-    public func purchaseReservedDBInstancesOfferingSync(
+    public func purchaseReservedDBInstancesOfferingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.PurchaseReservedDBInstancesOfferingMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering {
+            reporting: InvocationReportingType) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8705,9 +8705,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func rebootDBInstanceAsync(
+    public func rebootDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RebootDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8744,9 +8744,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func rebootDBInstanceSync(
+    public func rebootDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RebootDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
+            reporting: InvocationReportingType) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8782,9 +8782,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func registerDBProxyTargetsAsync(
+    public func registerDBProxyTargetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RegisterDBProxyTargetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8821,9 +8821,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func registerDBProxyTargetsSync(
+    public func registerDBProxyTargetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RegisterDBProxyTargetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
+            reporting: InvocationReportingType) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8859,9 +8859,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func removeFromGlobalClusterAsync(
+    public func removeFromGlobalClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveFromGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8898,9 +8898,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func removeFromGlobalClusterSync(
+    public func removeFromGlobalClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveFromGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
+            reporting: InvocationReportingType) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8935,9 +8935,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBClusterRoleNotFound, invalidDBClusterState.
      */
-    public func removeRoleFromDBClusterAsync(
+    public func removeRoleFromDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveRoleFromDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8972,9 +8972,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated RemoveRoleFromDBClusterMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBClusterRoleNotFound, invalidDBClusterState.
      */
-    public func removeRoleFromDBClusterSync(
+    public func removeRoleFromDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveRoleFromDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9009,9 +9009,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBInstanceNotFound, dBInstanceRoleNotFound, invalidDBInstanceState.
      */
-    public func removeRoleFromDBInstanceAsync(
+    public func removeRoleFromDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveRoleFromDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9046,9 +9046,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated RemoveRoleFromDBInstanceMessage object being passed to this operation.
      - Throws: dBInstanceNotFound, dBInstanceRoleNotFound, invalidDBInstanceState.
      */
-    public func removeRoleFromDBInstanceSync(
+    public func removeRoleFromDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveRoleFromDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9084,9 +9084,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: sourceNotFound, subscriptionNotFound.
      */
-    public func removeSourceIdentifierFromSubscriptionAsync(
+    public func removeSourceIdentifierFromSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9123,9 +9123,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: sourceNotFound, subscriptionNotFound.
      */
-    public func removeSourceIdentifierFromSubscriptionSync(
+    public func removeSourceIdentifierFromSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription {
+            reporting: InvocationReportingType) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9160,9 +9160,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func removeTagsFromResourceAsync(
+    public func removeTagsFromResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveTagsFromResourceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9197,9 +9197,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated RemoveTagsFromResourceMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func removeTagsFromResourceSync(
+    public func removeTagsFromResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveTagsFromResourceMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9235,9 +9235,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBClusterParameterGroupAsync(
+    public func resetDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ResetDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9274,9 +9274,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBClusterParameterGroupSync(
+    public func resetDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ResetDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9312,9 +9312,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBParameterGroupAsync(
+    public func resetDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ResetDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9351,9 +9351,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBParameterGroupSync(
+    public func resetDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ResetDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup {
+            reporting: InvocationReportingType) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9389,9 +9389,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromS3Async(
+    public func restoreDBClusterFromS3Async<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBClusterFromS3Message, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9428,9 +9428,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromS3Sync(
+    public func restoreDBClusterFromS3Sync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBClusterFromS3Message,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
+            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9466,9 +9466,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromSnapshotAsync(
+    public func restoreDBClusterFromSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9505,9 +9505,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromSnapshotSync(
+    public func restoreDBClusterFromSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
+            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9543,9 +9543,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
-    public func restoreDBClusterToPointInTimeAsync(
+    public func restoreDBClusterToPointInTimeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9582,9 +9582,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
-    public func restoreDBClusterToPointInTimeSync(
+    public func restoreDBClusterToPointInTimeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
+            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9620,9 +9620,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromDBSnapshotAsync(
+    public func restoreDBInstanceFromDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9659,9 +9659,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromDBSnapshotSync(
+    public func restoreDBInstanceFromDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
+            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9697,9 +9697,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromS3Async(
+    public func restoreDBInstanceFromS3Async<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBInstanceFromS3Message, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9736,9 +9736,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromS3Sync(
+    public func restoreDBInstanceFromS3Sync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBInstanceFromS3Message,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
+            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9774,9 +9774,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceToPointInTimeAsync(
+    public func restoreDBInstanceToPointInTimeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9813,9 +9813,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceToPointInTimeSync(
+    public func restoreDBInstanceToPointInTimeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {
+            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9851,9 +9851,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func revokeDBSecurityGroupIngressAsync(
+    public func revokeDBSecurityGroupIngressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RevokeDBSecurityGroupIngressMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9890,9 +9890,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func revokeDBSecurityGroupIngressSync(
+    public func revokeDBSecurityGroupIngressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RevokeDBSecurityGroupIngressMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress {
+            reporting: InvocationReportingType) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9928,9 +9928,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
      */
-    public func startActivityStreamAsync(
+    public func startActivityStreamAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartActivityStreamRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9967,9 +9967,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
      */
-    public func startActivityStreamSync(
+    public func startActivityStreamSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartActivityStreamRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
+            reporting: InvocationReportingType) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10005,9 +10005,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func startDBClusterAsync(
+    public func startDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10044,9 +10044,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func startDBClusterSync(
+    public func startDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartDBClusterResultForStartDBCluster {
+            reporting: InvocationReportingType) throws -> RDSModel.StartDBClusterResultForStartDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10082,9 +10082,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, dBClusterNotFound, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible.
      */
-    public func startDBInstanceAsync(
+    public func startDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10121,9 +10121,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, dBClusterNotFound, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible.
      */
-    public func startDBInstanceSync(
+    public func startDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
+            reporting: InvocationReportingType) throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10159,9 +10159,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
      */
-    public func startExportTaskAsync(
+    public func startExportTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartExportTaskMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10198,9 +10198,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
      */
-    public func startExportTaskSync(
+    public func startExportTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartExportTaskMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForStartExportTask {
+            reporting: InvocationReportingType) throws -> RDSModel.ExportTaskForStartExportTask {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10236,9 +10236,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func stopActivityStreamAsync(
+    public func stopActivityStreamAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StopActivityStreamRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10275,9 +10275,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func stopActivityStreamSync(
+    public func stopActivityStreamSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StopActivityStreamRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
+            reporting: InvocationReportingType) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10313,9 +10313,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func stopDBClusterAsync(
+    public func stopDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StopDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10352,9 +10352,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func stopDBClusterSync(
+    public func stopDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StopDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopDBClusterResultForStopDBCluster {
+            reporting: InvocationReportingType) throws -> RDSModel.StopDBClusterResultForStopDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10390,9 +10390,9 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func stopDBInstanceAsync(
+    public func stopDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StopDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10429,9 +10429,9 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func stopDBInstanceSync(
+    public func stopDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StopDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopDBInstanceResultForStopDBInstance {
+            reporting: InvocationReportingType) throws -> RDSModel.StopDBInstanceResultForStopDBInstance {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,

@@ -28,236 +28,236 @@ import SmokeHTTPClient
  Client Protocol for the SimpleNotification service.
  */
 public protocol SimpleNotificationClientProtocol {
-    typealias AddPermissionSyncType = (
+    typealias AddPermissionSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.AddPermissionInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
-    typealias AddPermissionAsyncType = (
+            _ reporting: InvocationReportingType) throws -> ()
+    typealias AddPermissionAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.AddPermissionInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias CheckIfPhoneNumberIsOptedOutSyncType = (
+    typealias CheckIfPhoneNumberIsOptedOutSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut
-    typealias CheckIfPhoneNumberIsOptedOutAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut
+    typealias CheckIfPhoneNumberIsOptedOutAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, HTTPClientError>) -> ()) throws -> ()
-    typealias ConfirmSubscriptionSyncType = (
+    typealias ConfirmSubscriptionSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ConfirmSubscriptionInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription
-    typealias ConfirmSubscriptionAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription
+    typealias ConfirmSubscriptionAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ConfirmSubscriptionInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, HTTPClientError>) -> ()) throws -> ()
-    typealias CreatePlatformApplicationSyncType = (
+    typealias CreatePlatformApplicationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.CreatePlatformApplicationInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication
-    typealias CreatePlatformApplicationAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication
+    typealias CreatePlatformApplicationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.CreatePlatformApplicationInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, HTTPClientError>) -> ()) throws -> ()
-    typealias CreatePlatformEndpointSyncType = (
+    typealias CreatePlatformEndpointSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.CreatePlatformEndpointInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint
-    typealias CreatePlatformEndpointAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint
+    typealias CreatePlatformEndpointAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.CreatePlatformEndpointInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, HTTPClientError>) -> ()) throws -> ()
-    typealias CreateTopicSyncType = (
+    typealias CreateTopicSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.CreateTopicInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic
-    typealias CreateTopicAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic
+    typealias CreateTopicAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.CreateTopicInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteEndpointSyncType = (
+    typealias DeleteEndpointSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.DeleteEndpointInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
-    typealias DeleteEndpointAsyncType = (
+            _ reporting: InvocationReportingType) throws -> ()
+    typealias DeleteEndpointAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.DeleteEndpointInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeletePlatformApplicationSyncType = (
+    typealias DeletePlatformApplicationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.DeletePlatformApplicationInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
-    typealias DeletePlatformApplicationAsyncType = (
+            _ reporting: InvocationReportingType) throws -> ()
+    typealias DeletePlatformApplicationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.DeletePlatformApplicationInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteTopicSyncType = (
+    typealias DeleteTopicSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.DeleteTopicInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
-    typealias DeleteTopicAsyncType = (
+            _ reporting: InvocationReportingType) throws -> ()
+    typealias DeleteTopicAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.DeleteTopicInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias GetEndpointAttributesSyncType = (
+    typealias GetEndpointAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.GetEndpointAttributesInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes
-    typealias GetEndpointAttributesAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes
+    typealias GetEndpointAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.GetEndpointAttributesInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, HTTPClientError>) -> ()) throws -> ()
-    typealias GetPlatformApplicationAttributesSyncType = (
+    typealias GetPlatformApplicationAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.GetPlatformApplicationAttributesInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes
-    typealias GetPlatformApplicationAttributesAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes
+    typealias GetPlatformApplicationAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.GetPlatformApplicationAttributesInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, HTTPClientError>) -> ()) throws -> ()
-    typealias GetSMSAttributesSyncType = (
+    typealias GetSMSAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.GetSMSAttributesInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes
-    typealias GetSMSAttributesAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes
+    typealias GetSMSAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.GetSMSAttributesInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, HTTPClientError>) -> ()) throws -> ()
-    typealias GetSubscriptionAttributesSyncType = (
+    typealias GetSubscriptionAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.GetSubscriptionAttributesInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes
-    typealias GetSubscriptionAttributesAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes
+    typealias GetSubscriptionAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.GetSubscriptionAttributesInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, HTTPClientError>) -> ()) throws -> ()
-    typealias GetTopicAttributesSyncType = (
+    typealias GetTopicAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.GetTopicAttributesInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes
-    typealias GetTopicAttributesAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes
+    typealias GetTopicAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.GetTopicAttributesInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, HTTPClientError>) -> ()) throws -> ()
-    typealias ListEndpointsByPlatformApplicationSyncType = (
+    typealias ListEndpointsByPlatformApplicationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication
-    typealias ListEndpointsByPlatformApplicationAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication
+    typealias ListEndpointsByPlatformApplicationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, HTTPClientError>) -> ()) throws -> ()
-    typealias ListPhoneNumbersOptedOutSyncType = (
+    typealias ListPhoneNumbersOptedOutSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut
-    typealias ListPhoneNumbersOptedOutAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut
+    typealias ListPhoneNumbersOptedOutAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, HTTPClientError>) -> ()) throws -> ()
-    typealias ListPlatformApplicationsSyncType = (
+    typealias ListPlatformApplicationsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListPlatformApplicationsInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications
-    typealias ListPlatformApplicationsAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications
+    typealias ListPlatformApplicationsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListPlatformApplicationsInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, HTTPClientError>) -> ()) throws -> ()
-    typealias ListSubscriptionsSyncType = (
+    typealias ListSubscriptionsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListSubscriptionsInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions
-    typealias ListSubscriptionsAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions
+    typealias ListSubscriptionsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListSubscriptionsInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, HTTPClientError>) -> ()) throws -> ()
-    typealias ListSubscriptionsByTopicSyncType = (
+    typealias ListSubscriptionsByTopicSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListSubscriptionsByTopicInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic
-    typealias ListSubscriptionsByTopicAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic
+    typealias ListSubscriptionsByTopicAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListSubscriptionsByTopicInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, HTTPClientError>) -> ()) throws -> ()
-    typealias ListTagsForResourceSyncType = (
+    typealias ListTagsForResourceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListTagsForResourceRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource
-    typealias ListTagsForResourceAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource
+    typealias ListTagsForResourceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListTagsForResourceRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, HTTPClientError>) -> ()) throws -> ()
-    typealias ListTopicsSyncType = (
+    typealias ListTopicsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListTopicsInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics
-    typealias ListTopicsAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics
+    typealias ListTopicsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.ListTopicsInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, HTTPClientError>) -> ()) throws -> ()
-    typealias OptInPhoneNumberSyncType = (
+    typealias OptInPhoneNumberSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.OptInPhoneNumberInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber
-    typealias OptInPhoneNumberAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber
+    typealias OptInPhoneNumberAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.OptInPhoneNumberInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, HTTPClientError>) -> ()) throws -> ()
-    typealias PublishSyncType = (
+    typealias PublishSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.PublishInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.PublishResponseForPublish
-    typealias PublishAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.PublishResponseForPublish
+    typealias PublishAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.PublishInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, HTTPClientError>) -> ()) throws -> ()
-    typealias RemovePermissionSyncType = (
+    typealias RemovePermissionSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.RemovePermissionInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
-    typealias RemovePermissionAsyncType = (
+            _ reporting: InvocationReportingType) throws -> ()
+    typealias RemovePermissionAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.RemovePermissionInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias SetEndpointAttributesSyncType = (
+    typealias SetEndpointAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.SetEndpointAttributesInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
-    typealias SetEndpointAttributesAsyncType = (
+            _ reporting: InvocationReportingType) throws -> ()
+    typealias SetEndpointAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.SetEndpointAttributesInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias SetPlatformApplicationAttributesSyncType = (
+    typealias SetPlatformApplicationAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.SetPlatformApplicationAttributesInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
-    typealias SetPlatformApplicationAttributesAsyncType = (
+            _ reporting: InvocationReportingType) throws -> ()
+    typealias SetPlatformApplicationAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias SetSMSAttributesSyncType = (
+    typealias SetSMSAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.SetSMSAttributesInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes
-    typealias SetSMSAttributesAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes
+    typealias SetSMSAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.SetSMSAttributesInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, HTTPClientError>) -> ()) throws -> ()
-    typealias SetSubscriptionAttributesSyncType = (
+    typealias SetSubscriptionAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.SetSubscriptionAttributesInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
-    typealias SetSubscriptionAttributesAsyncType = (
+            _ reporting: InvocationReportingType) throws -> ()
+    typealias SetSubscriptionAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.SetSubscriptionAttributesInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias SetTopicAttributesSyncType = (
+    typealias SetTopicAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.SetTopicAttributesInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
-    typealias SetTopicAttributesAsyncType = (
+            _ reporting: InvocationReportingType) throws -> ()
+    typealias SetTopicAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.SetTopicAttributesInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias SubscribeSyncType = (
+    typealias SubscribeSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.SubscribeInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe
-    typealias SubscribeAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe
+    typealias SubscribeAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.SubscribeInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, HTTPClientError>) -> ()) throws -> ()
-    typealias TagResourceSyncType = (
+    typealias TagResourceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.TagResourceRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.TagResourceResponseForTagResource
-    typealias TagResourceAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.TagResourceResponseForTagResource
+    typealias TagResourceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.TagResourceRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, HTTPClientError>) -> ()) throws -> ()
-    typealias UnsubscribeSyncType = (
+    typealias UnsubscribeSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.UnsubscribeInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
-    typealias UnsubscribeAsyncType = (
+            _ reporting: InvocationReportingType) throws -> ()
+    typealias UnsubscribeAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.UnsubscribeInput, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias UntagResourceSyncType = (
+    typealias UntagResourceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.UntagResourceRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource
-    typealias UntagResourceAsyncType = (
+            _ reporting: InvocationReportingType) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource
+    typealias UntagResourceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
             _ input: SimpleNotificationModel.UntagResourceRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
+            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, HTTPClientError>) -> ()) throws -> ()
 
     /**
@@ -269,9 +269,9 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func addPermissionAsync(
+    func addPermissionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.AddPermissionInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -281,9 +281,9 @@ public protocol SimpleNotificationClientProtocol {
          - input: The validated AddPermissionInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    func addPermissionSync(
+    func addPermissionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.AddPermissionInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            reporting: InvocationReportingType) throws
 
     /**
      Invokes the CheckIfPhoneNumberIsOptedOut operation returning immediately and passing the response to a callback.
@@ -295,9 +295,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    func checkIfPhoneNumberIsOptedOutAsync(
+    func checkIfPhoneNumberIsOptedOutAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, HTTPClientError>) -> ()) throws
 
     /**
@@ -309,9 +309,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    func checkIfPhoneNumberIsOptedOutSync(
+    func checkIfPhoneNumberIsOptedOutSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut
 
     /**
      Invokes the ConfirmSubscription operation returning immediately and passing the response to a callback.
@@ -323,9 +323,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
      */
-    func confirmSubscriptionAsync(
+    func confirmSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ConfirmSubscriptionInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, HTTPClientError>) -> ()) throws
 
     /**
@@ -337,9 +337,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
      */
-    func confirmSubscriptionSync(
+    func confirmSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ConfirmSubscriptionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription
 
     /**
      Invokes the CreatePlatformApplication operation returning immediately and passing the response to a callback.
@@ -351,9 +351,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    func createPlatformApplicationAsync(
+    func createPlatformApplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.CreatePlatformApplicationInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, HTTPClientError>) -> ()) throws
 
     /**
@@ -365,9 +365,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    func createPlatformApplicationSync(
+    func createPlatformApplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.CreatePlatformApplicationInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication
 
     /**
      Invokes the CreatePlatformEndpoint operation returning immediately and passing the response to a callback.
@@ -379,9 +379,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func createPlatformEndpointAsync(
+    func createPlatformEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.CreatePlatformEndpointInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, HTTPClientError>) -> ()) throws
 
     /**
@@ -393,9 +393,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    func createPlatformEndpointSync(
+    func createPlatformEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.CreatePlatformEndpointInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint
 
     /**
      Invokes the CreateTopic operation returning immediately and passing the response to a callback.
@@ -407,9 +407,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
      */
-    func createTopicAsync(
+    func createTopicAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.CreateTopicInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, HTTPClientError>) -> ()) throws
 
     /**
@@ -421,9 +421,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
      */
-    func createTopicSync(
+    func createTopicSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.CreateTopicInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic
 
     /**
      Invokes the DeleteEndpoint operation returning immediately and passing the response to a callback.
@@ -434,9 +434,9 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    func deleteEndpointAsync(
+    func deleteEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.DeleteEndpointInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -446,9 +446,9 @@ public protocol SimpleNotificationClientProtocol {
          - input: The validated DeleteEndpointInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    func deleteEndpointSync(
+    func deleteEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.DeleteEndpointInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            reporting: InvocationReportingType) throws
 
     /**
      Invokes the DeletePlatformApplication operation returning immediately and passing the response to a callback.
@@ -459,9 +459,9 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    func deletePlatformApplicationAsync(
+    func deletePlatformApplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.DeletePlatformApplicationInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -471,9 +471,9 @@ public protocol SimpleNotificationClientProtocol {
          - input: The validated DeletePlatformApplicationInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    func deletePlatformApplicationSync(
+    func deletePlatformApplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.DeletePlatformApplicationInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            reporting: InvocationReportingType) throws
 
     /**
      Invokes the DeleteTopic operation returning immediately and passing the response to a callback.
@@ -484,9 +484,9 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
-    func deleteTopicAsync(
+    func deleteTopicAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.DeleteTopicInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -496,9 +496,9 @@ public protocol SimpleNotificationClientProtocol {
          - input: The validated DeleteTopicInput object being passed to this operation.
      - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
-    func deleteTopicSync(
+    func deleteTopicSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.DeleteTopicInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            reporting: InvocationReportingType) throws
 
     /**
      Invokes the GetEndpointAttributes operation returning immediately and passing the response to a callback.
@@ -510,9 +510,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func getEndpointAttributesAsync(
+    func getEndpointAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.GetEndpointAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, HTTPClientError>) -> ()) throws
 
     /**
@@ -524,9 +524,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    func getEndpointAttributesSync(
+    func getEndpointAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.GetEndpointAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes
 
     /**
      Invokes the GetPlatformApplicationAttributes operation returning immediately and passing the response to a callback.
@@ -538,9 +538,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func getPlatformApplicationAttributesAsync(
+    func getPlatformApplicationAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.GetPlatformApplicationAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, HTTPClientError>) -> ()) throws
 
     /**
@@ -552,9 +552,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    func getPlatformApplicationAttributesSync(
+    func getPlatformApplicationAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.GetPlatformApplicationAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes
 
     /**
      Invokes the GetSMSAttributes operation returning immediately and passing the response to a callback.
@@ -566,9 +566,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    func getSMSAttributesAsync(
+    func getSMSAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.GetSMSAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, HTTPClientError>) -> ()) throws
 
     /**
@@ -580,9 +580,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    func getSMSAttributesSync(
+    func getSMSAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.GetSMSAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes
 
     /**
      Invokes the GetSubscriptionAttributes operation returning immediately and passing the response to a callback.
@@ -594,9 +594,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func getSubscriptionAttributesAsync(
+    func getSubscriptionAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.GetSubscriptionAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, HTTPClientError>) -> ()) throws
 
     /**
@@ -608,9 +608,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    func getSubscriptionAttributesSync(
+    func getSubscriptionAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.GetSubscriptionAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes
 
     /**
      Invokes the GetTopicAttributes operation returning immediately and passing the response to a callback.
@@ -622,9 +622,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    func getTopicAttributesAsync(
+    func getTopicAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.GetTopicAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, HTTPClientError>) -> ()) throws
 
     /**
@@ -636,9 +636,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    func getTopicAttributesSync(
+    func getTopicAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.GetTopicAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes
 
     /**
      Invokes the ListEndpointsByPlatformApplication operation returning immediately and passing the response to a callback.
@@ -650,9 +650,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func listEndpointsByPlatformApplicationAsync(
+    func listEndpointsByPlatformApplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, HTTPClientError>) -> ()) throws
 
     /**
@@ -664,9 +664,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    func listEndpointsByPlatformApplicationSync(
+    func listEndpointsByPlatformApplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication
 
     /**
      Invokes the ListPhoneNumbersOptedOut operation returning immediately and passing the response to a callback.
@@ -678,9 +678,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    func listPhoneNumbersOptedOutAsync(
+    func listPhoneNumbersOptedOutAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, HTTPClientError>) -> ()) throws
 
     /**
@@ -692,9 +692,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    func listPhoneNumbersOptedOutSync(
+    func listPhoneNumbersOptedOutSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut
 
     /**
      Invokes the ListPlatformApplications operation returning immediately and passing the response to a callback.
@@ -706,9 +706,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    func listPlatformApplicationsAsync(
+    func listPlatformApplicationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListPlatformApplicationsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, HTTPClientError>) -> ()) throws
 
     /**
@@ -720,9 +720,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    func listPlatformApplicationsSync(
+    func listPlatformApplicationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListPlatformApplicationsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications
 
     /**
      Invokes the ListSubscriptions operation returning immediately and passing the response to a callback.
@@ -734,9 +734,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    func listSubscriptionsAsync(
+    func listSubscriptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListSubscriptionsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, HTTPClientError>) -> ()) throws
 
     /**
@@ -748,9 +748,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    func listSubscriptionsSync(
+    func listSubscriptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListSubscriptionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions
 
     /**
      Invokes the ListSubscriptionsByTopic operation returning immediately and passing the response to a callback.
@@ -762,9 +762,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func listSubscriptionsByTopicAsync(
+    func listSubscriptionsByTopicAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListSubscriptionsByTopicInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, HTTPClientError>) -> ()) throws
 
     /**
@@ -776,9 +776,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    func listSubscriptionsByTopicSync(
+    func listSubscriptionsByTopicSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListSubscriptionsByTopicInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic
 
     /**
      Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
@@ -790,9 +790,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
      */
-    func listTagsForResourceAsync(
+    func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListTagsForResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, HTTPClientError>) -> ()) throws
 
     /**
@@ -804,9 +804,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
      */
-    func listTagsForResourceSync(
+    func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListTagsForResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource
 
     /**
      Invokes the ListTopics operation returning immediately and passing the response to a callback.
@@ -818,9 +818,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    func listTopicsAsync(
+    func listTopicsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListTopicsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, HTTPClientError>) -> ()) throws
 
     /**
@@ -832,9 +832,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    func listTopicsSync(
+    func listTopicsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.ListTopicsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics
 
     /**
      Invokes the OptInPhoneNumber operation returning immediately and passing the response to a callback.
@@ -846,9 +846,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    func optInPhoneNumberAsync(
+    func optInPhoneNumberAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.OptInPhoneNumberInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, HTTPClientError>) -> ()) throws
 
     /**
@@ -860,9 +860,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    func optInPhoneNumberSync(
+    func optInPhoneNumberSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.OptInPhoneNumberInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber
 
     /**
      Invokes the Publish operation returning immediately and passing the response to a callback.
@@ -874,9 +874,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
      */
-    func publishAsync(
+    func publishAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.PublishInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, HTTPClientError>) -> ()) throws
 
     /**
@@ -888,9 +888,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
      */
-    func publishSync(
+    func publishSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.PublishInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.PublishResponseForPublish
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.PublishResponseForPublish
 
     /**
      Invokes the RemovePermission operation returning immediately and passing the response to a callback.
@@ -901,9 +901,9 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func removePermissionAsync(
+    func removePermissionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.RemovePermissionInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -913,9 +913,9 @@ public protocol SimpleNotificationClientProtocol {
          - input: The validated RemovePermissionInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    func removePermissionSync(
+    func removePermissionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.RemovePermissionInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            reporting: InvocationReportingType) throws
 
     /**
      Invokes the SetEndpointAttributes operation returning immediately and passing the response to a callback.
@@ -926,9 +926,9 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func setEndpointAttributesAsync(
+    func setEndpointAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.SetEndpointAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -938,9 +938,9 @@ public protocol SimpleNotificationClientProtocol {
          - input: The validated SetEndpointAttributesInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    func setEndpointAttributesSync(
+    func setEndpointAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.SetEndpointAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            reporting: InvocationReportingType) throws
 
     /**
      Invokes the SetPlatformApplicationAttributes operation returning immediately and passing the response to a callback.
@@ -951,9 +951,9 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    func setPlatformApplicationAttributesAsync(
+    func setPlatformApplicationAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -963,9 +963,9 @@ public protocol SimpleNotificationClientProtocol {
          - input: The validated SetPlatformApplicationAttributesInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    func setPlatformApplicationAttributesSync(
+    func setPlatformApplicationAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.SetPlatformApplicationAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            reporting: InvocationReportingType) throws
 
     /**
      Invokes the SetSMSAttributes operation returning immediately and passing the response to a callback.
@@ -977,9 +977,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    func setSMSAttributesAsync(
+    func setSMSAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.SetSMSAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, HTTPClientError>) -> ()) throws
 
     /**
@@ -991,9 +991,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    func setSMSAttributesSync(
+    func setSMSAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.SetSMSAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes
 
     /**
      Invokes the SetSubscriptionAttributes operation returning immediately and passing the response to a callback.
@@ -1004,9 +1004,9 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
      */
-    func setSubscriptionAttributesAsync(
+    func setSubscriptionAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -1016,9 +1016,9 @@ public protocol SimpleNotificationClientProtocol {
          - input: The validated SetSubscriptionAttributesInput object being passed to this operation.
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
      */
-    func setSubscriptionAttributesSync(
+    func setSubscriptionAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            reporting: InvocationReportingType) throws
 
     /**
      Invokes the SetTopicAttributes operation returning immediately and passing the response to a callback.
@@ -1029,9 +1029,9 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    func setTopicAttributesAsync(
+    func setTopicAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.SetTopicAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -1041,9 +1041,9 @@ public protocol SimpleNotificationClientProtocol {
          - input: The validated SetTopicAttributesInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    func setTopicAttributesSync(
+    func setTopicAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.SetTopicAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            reporting: InvocationReportingType) throws
 
     /**
      Invokes the Subscribe operation returning immediately and passing the response to a callback.
@@ -1055,9 +1055,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
      */
-    func subscribeAsync(
+    func subscribeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.SubscribeInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, HTTPClientError>) -> ()) throws
 
     /**
@@ -1069,9 +1069,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
      */
-    func subscribeSync(
+    func subscribeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.SubscribeInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe
 
     /**
      Invokes the TagResource operation returning immediately and passing the response to a callback.
@@ -1083,9 +1083,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    func tagResourceAsync(
+    func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.TagResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, HTTPClientError>) -> ()) throws
 
     /**
@@ -1097,9 +1097,9 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    func tagResourceSync(
+    func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.TagResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.TagResourceResponseForTagResource
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.TagResourceResponseForTagResource
 
     /**
      Invokes the Unsubscribe operation returning immediately and passing the response to a callback.
@@ -1110,9 +1110,9 @@ public protocol SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    func unsubscribeAsync(
+    func unsubscribeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.UnsubscribeInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -1122,9 +1122,9 @@ public protocol SimpleNotificationClientProtocol {
          - input: The validated UnsubscribeInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    func unsubscribeSync(
+    func unsubscribeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.UnsubscribeInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            reporting: InvocationReportingType) throws
 
     /**
      Invokes the UntagResource operation returning immediately and passing the response to a callback.
@@ -1136,9 +1136,9 @@ public protocol SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    func untagResourceAsync(
+    func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.UntagResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, HTTPClientError>) -> ()) throws
 
     /**
@@ -1150,7 +1150,7 @@ public protocol SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    func untagResourceSync(
+    func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: SimpleNotificationModel.UntagResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource
+            reporting: InvocationReportingType) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource
 }

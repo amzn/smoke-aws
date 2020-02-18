@@ -27,129 +27,129 @@ import SmokeHTTPClient
 /**
  Mock Client for the CloudWatch service by default returns the `__default` property of its return type.
  */
-public struct MockCloudWatchClient: CloudWatchClientProtocol {
-    let deleteAlarmsAsyncOverride: CloudWatchClientProtocol.DeleteAlarmsAsyncType?
-    let deleteAlarmsSyncOverride: CloudWatchClientProtocol.DeleteAlarmsSyncType?
-    let deleteAnomalyDetectorAsyncOverride: CloudWatchClientProtocol.DeleteAnomalyDetectorAsyncType?
-    let deleteAnomalyDetectorSyncOverride: CloudWatchClientProtocol.DeleteAnomalyDetectorSyncType?
-    let deleteDashboardsAsyncOverride: CloudWatchClientProtocol.DeleteDashboardsAsyncType?
-    let deleteDashboardsSyncOverride: CloudWatchClientProtocol.DeleteDashboardsSyncType?
-    let deleteInsightRulesAsyncOverride: CloudWatchClientProtocol.DeleteInsightRulesAsyncType?
-    let deleteInsightRulesSyncOverride: CloudWatchClientProtocol.DeleteInsightRulesSyncType?
-    let describeAlarmHistoryAsyncOverride: CloudWatchClientProtocol.DescribeAlarmHistoryAsyncType?
-    let describeAlarmHistorySyncOverride: CloudWatchClientProtocol.DescribeAlarmHistorySyncType?
-    let describeAlarmsAsyncOverride: CloudWatchClientProtocol.DescribeAlarmsAsyncType?
-    let describeAlarmsSyncOverride: CloudWatchClientProtocol.DescribeAlarmsSyncType?
-    let describeAlarmsForMetricAsyncOverride: CloudWatchClientProtocol.DescribeAlarmsForMetricAsyncType?
-    let describeAlarmsForMetricSyncOverride: CloudWatchClientProtocol.DescribeAlarmsForMetricSyncType?
-    let describeAnomalyDetectorsAsyncOverride: CloudWatchClientProtocol.DescribeAnomalyDetectorsAsyncType?
-    let describeAnomalyDetectorsSyncOverride: CloudWatchClientProtocol.DescribeAnomalyDetectorsSyncType?
-    let describeInsightRulesAsyncOverride: CloudWatchClientProtocol.DescribeInsightRulesAsyncType?
-    let describeInsightRulesSyncOverride: CloudWatchClientProtocol.DescribeInsightRulesSyncType?
-    let disableAlarmActionsAsyncOverride: CloudWatchClientProtocol.DisableAlarmActionsAsyncType?
-    let disableAlarmActionsSyncOverride: CloudWatchClientProtocol.DisableAlarmActionsSyncType?
-    let disableInsightRulesAsyncOverride: CloudWatchClientProtocol.DisableInsightRulesAsyncType?
-    let disableInsightRulesSyncOverride: CloudWatchClientProtocol.DisableInsightRulesSyncType?
-    let enableAlarmActionsAsyncOverride: CloudWatchClientProtocol.EnableAlarmActionsAsyncType?
-    let enableAlarmActionsSyncOverride: CloudWatchClientProtocol.EnableAlarmActionsSyncType?
-    let enableInsightRulesAsyncOverride: CloudWatchClientProtocol.EnableInsightRulesAsyncType?
-    let enableInsightRulesSyncOverride: CloudWatchClientProtocol.EnableInsightRulesSyncType?
-    let getDashboardAsyncOverride: CloudWatchClientProtocol.GetDashboardAsyncType?
-    let getDashboardSyncOverride: CloudWatchClientProtocol.GetDashboardSyncType?
-    let getInsightRuleReportAsyncOverride: CloudWatchClientProtocol.GetInsightRuleReportAsyncType?
-    let getInsightRuleReportSyncOverride: CloudWatchClientProtocol.GetInsightRuleReportSyncType?
-    let getMetricDataAsyncOverride: CloudWatchClientProtocol.GetMetricDataAsyncType?
-    let getMetricDataSyncOverride: CloudWatchClientProtocol.GetMetricDataSyncType?
-    let getMetricStatisticsAsyncOverride: CloudWatchClientProtocol.GetMetricStatisticsAsyncType?
-    let getMetricStatisticsSyncOverride: CloudWatchClientProtocol.GetMetricStatisticsSyncType?
-    let getMetricWidgetImageAsyncOverride: CloudWatchClientProtocol.GetMetricWidgetImageAsyncType?
-    let getMetricWidgetImageSyncOverride: CloudWatchClientProtocol.GetMetricWidgetImageSyncType?
-    let listDashboardsAsyncOverride: CloudWatchClientProtocol.ListDashboardsAsyncType?
-    let listDashboardsSyncOverride: CloudWatchClientProtocol.ListDashboardsSyncType?
-    let listMetricsAsyncOverride: CloudWatchClientProtocol.ListMetricsAsyncType?
-    let listMetricsSyncOverride: CloudWatchClientProtocol.ListMetricsSyncType?
-    let listTagsForResourceAsyncOverride: CloudWatchClientProtocol.ListTagsForResourceAsyncType?
-    let listTagsForResourceSyncOverride: CloudWatchClientProtocol.ListTagsForResourceSyncType?
-    let putAnomalyDetectorAsyncOverride: CloudWatchClientProtocol.PutAnomalyDetectorAsyncType?
-    let putAnomalyDetectorSyncOverride: CloudWatchClientProtocol.PutAnomalyDetectorSyncType?
-    let putDashboardAsyncOverride: CloudWatchClientProtocol.PutDashboardAsyncType?
-    let putDashboardSyncOverride: CloudWatchClientProtocol.PutDashboardSyncType?
-    let putInsightRuleAsyncOverride: CloudWatchClientProtocol.PutInsightRuleAsyncType?
-    let putInsightRuleSyncOverride: CloudWatchClientProtocol.PutInsightRuleSyncType?
-    let putMetricAlarmAsyncOverride: CloudWatchClientProtocol.PutMetricAlarmAsyncType?
-    let putMetricAlarmSyncOverride: CloudWatchClientProtocol.PutMetricAlarmSyncType?
-    let putMetricDataAsyncOverride: CloudWatchClientProtocol.PutMetricDataAsyncType?
-    let putMetricDataSyncOverride: CloudWatchClientProtocol.PutMetricDataSyncType?
-    let setAlarmStateAsyncOverride: CloudWatchClientProtocol.SetAlarmStateAsyncType?
-    let setAlarmStateSyncOverride: CloudWatchClientProtocol.SetAlarmStateSyncType?
-    let tagResourceAsyncOverride: CloudWatchClientProtocol.TagResourceAsyncType?
-    let tagResourceSyncOverride: CloudWatchClientProtocol.TagResourceSyncType?
-    let untagResourceAsyncOverride: CloudWatchClientProtocol.UntagResourceAsyncType?
-    let untagResourceSyncOverride: CloudWatchClientProtocol.UntagResourceSyncType?
+public struct MockCloudWatchClient<ClientInvocationReportingType: SmokeAWSInvocationReporting>: CloudWatchClientProtocol {
+    let deleteAlarmsAsyncOverride: DeleteAlarmsAsyncType<ClientInvocationReportingType>?
+    let deleteAlarmsSyncOverride: DeleteAlarmsSyncType<ClientInvocationReportingType>?
+    let deleteAnomalyDetectorAsyncOverride: DeleteAnomalyDetectorAsyncType<ClientInvocationReportingType>?
+    let deleteAnomalyDetectorSyncOverride: DeleteAnomalyDetectorSyncType<ClientInvocationReportingType>?
+    let deleteDashboardsAsyncOverride: DeleteDashboardsAsyncType<ClientInvocationReportingType>?
+    let deleteDashboardsSyncOverride: DeleteDashboardsSyncType<ClientInvocationReportingType>?
+    let deleteInsightRulesAsyncOverride: DeleteInsightRulesAsyncType<ClientInvocationReportingType>?
+    let deleteInsightRulesSyncOverride: DeleteInsightRulesSyncType<ClientInvocationReportingType>?
+    let describeAlarmHistoryAsyncOverride: DescribeAlarmHistoryAsyncType<ClientInvocationReportingType>?
+    let describeAlarmHistorySyncOverride: DescribeAlarmHistorySyncType<ClientInvocationReportingType>?
+    let describeAlarmsAsyncOverride: DescribeAlarmsAsyncType<ClientInvocationReportingType>?
+    let describeAlarmsSyncOverride: DescribeAlarmsSyncType<ClientInvocationReportingType>?
+    let describeAlarmsForMetricAsyncOverride: DescribeAlarmsForMetricAsyncType<ClientInvocationReportingType>?
+    let describeAlarmsForMetricSyncOverride: DescribeAlarmsForMetricSyncType<ClientInvocationReportingType>?
+    let describeAnomalyDetectorsAsyncOverride: DescribeAnomalyDetectorsAsyncType<ClientInvocationReportingType>?
+    let describeAnomalyDetectorsSyncOverride: DescribeAnomalyDetectorsSyncType<ClientInvocationReportingType>?
+    let describeInsightRulesAsyncOverride: DescribeInsightRulesAsyncType<ClientInvocationReportingType>?
+    let describeInsightRulesSyncOverride: DescribeInsightRulesSyncType<ClientInvocationReportingType>?
+    let disableAlarmActionsAsyncOverride: DisableAlarmActionsAsyncType<ClientInvocationReportingType>?
+    let disableAlarmActionsSyncOverride: DisableAlarmActionsSyncType<ClientInvocationReportingType>?
+    let disableInsightRulesAsyncOverride: DisableInsightRulesAsyncType<ClientInvocationReportingType>?
+    let disableInsightRulesSyncOverride: DisableInsightRulesSyncType<ClientInvocationReportingType>?
+    let enableAlarmActionsAsyncOverride: EnableAlarmActionsAsyncType<ClientInvocationReportingType>?
+    let enableAlarmActionsSyncOverride: EnableAlarmActionsSyncType<ClientInvocationReportingType>?
+    let enableInsightRulesAsyncOverride: EnableInsightRulesAsyncType<ClientInvocationReportingType>?
+    let enableInsightRulesSyncOverride: EnableInsightRulesSyncType<ClientInvocationReportingType>?
+    let getDashboardAsyncOverride: GetDashboardAsyncType<ClientInvocationReportingType>?
+    let getDashboardSyncOverride: GetDashboardSyncType<ClientInvocationReportingType>?
+    let getInsightRuleReportAsyncOverride: GetInsightRuleReportAsyncType<ClientInvocationReportingType>?
+    let getInsightRuleReportSyncOverride: GetInsightRuleReportSyncType<ClientInvocationReportingType>?
+    let getMetricDataAsyncOverride: GetMetricDataAsyncType<ClientInvocationReportingType>?
+    let getMetricDataSyncOverride: GetMetricDataSyncType<ClientInvocationReportingType>?
+    let getMetricStatisticsAsyncOverride: GetMetricStatisticsAsyncType<ClientInvocationReportingType>?
+    let getMetricStatisticsSyncOverride: GetMetricStatisticsSyncType<ClientInvocationReportingType>?
+    let getMetricWidgetImageAsyncOverride: GetMetricWidgetImageAsyncType<ClientInvocationReportingType>?
+    let getMetricWidgetImageSyncOverride: GetMetricWidgetImageSyncType<ClientInvocationReportingType>?
+    let listDashboardsAsyncOverride: ListDashboardsAsyncType<ClientInvocationReportingType>?
+    let listDashboardsSyncOverride: ListDashboardsSyncType<ClientInvocationReportingType>?
+    let listMetricsAsyncOverride: ListMetricsAsyncType<ClientInvocationReportingType>?
+    let listMetricsSyncOverride: ListMetricsSyncType<ClientInvocationReportingType>?
+    let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType<ClientInvocationReportingType>?
+    let listTagsForResourceSyncOverride: ListTagsForResourceSyncType<ClientInvocationReportingType>?
+    let putAnomalyDetectorAsyncOverride: PutAnomalyDetectorAsyncType<ClientInvocationReportingType>?
+    let putAnomalyDetectorSyncOverride: PutAnomalyDetectorSyncType<ClientInvocationReportingType>?
+    let putDashboardAsyncOverride: PutDashboardAsyncType<ClientInvocationReportingType>?
+    let putDashboardSyncOverride: PutDashboardSyncType<ClientInvocationReportingType>?
+    let putInsightRuleAsyncOverride: PutInsightRuleAsyncType<ClientInvocationReportingType>?
+    let putInsightRuleSyncOverride: PutInsightRuleSyncType<ClientInvocationReportingType>?
+    let putMetricAlarmAsyncOverride: PutMetricAlarmAsyncType<ClientInvocationReportingType>?
+    let putMetricAlarmSyncOverride: PutMetricAlarmSyncType<ClientInvocationReportingType>?
+    let putMetricDataAsyncOverride: PutMetricDataAsyncType<ClientInvocationReportingType>?
+    let putMetricDataSyncOverride: PutMetricDataSyncType<ClientInvocationReportingType>?
+    let setAlarmStateAsyncOverride: SetAlarmStateAsyncType<ClientInvocationReportingType>?
+    let setAlarmStateSyncOverride: SetAlarmStateSyncType<ClientInvocationReportingType>?
+    let tagResourceAsyncOverride: TagResourceAsyncType<ClientInvocationReportingType>?
+    let tagResourceSyncOverride: TagResourceSyncType<ClientInvocationReportingType>?
+    let untagResourceAsyncOverride: UntagResourceAsyncType<ClientInvocationReportingType>?
+    let untagResourceSyncOverride: UntagResourceSyncType<ClientInvocationReportingType>?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(
-            deleteAlarmsAsync: CloudWatchClientProtocol.DeleteAlarmsAsyncType? = nil,
-            deleteAlarmsSync: CloudWatchClientProtocol.DeleteAlarmsSyncType? = nil,
-            deleteAnomalyDetectorAsync: CloudWatchClientProtocol.DeleteAnomalyDetectorAsyncType? = nil,
-            deleteAnomalyDetectorSync: CloudWatchClientProtocol.DeleteAnomalyDetectorSyncType? = nil,
-            deleteDashboardsAsync: CloudWatchClientProtocol.DeleteDashboardsAsyncType? = nil,
-            deleteDashboardsSync: CloudWatchClientProtocol.DeleteDashboardsSyncType? = nil,
-            deleteInsightRulesAsync: CloudWatchClientProtocol.DeleteInsightRulesAsyncType? = nil,
-            deleteInsightRulesSync: CloudWatchClientProtocol.DeleteInsightRulesSyncType? = nil,
-            describeAlarmHistoryAsync: CloudWatchClientProtocol.DescribeAlarmHistoryAsyncType? = nil,
-            describeAlarmHistorySync: CloudWatchClientProtocol.DescribeAlarmHistorySyncType? = nil,
-            describeAlarmsAsync: CloudWatchClientProtocol.DescribeAlarmsAsyncType? = nil,
-            describeAlarmsSync: CloudWatchClientProtocol.DescribeAlarmsSyncType? = nil,
-            describeAlarmsForMetricAsync: CloudWatchClientProtocol.DescribeAlarmsForMetricAsyncType? = nil,
-            describeAlarmsForMetricSync: CloudWatchClientProtocol.DescribeAlarmsForMetricSyncType? = nil,
-            describeAnomalyDetectorsAsync: CloudWatchClientProtocol.DescribeAnomalyDetectorsAsyncType? = nil,
-            describeAnomalyDetectorsSync: CloudWatchClientProtocol.DescribeAnomalyDetectorsSyncType? = nil,
-            describeInsightRulesAsync: CloudWatchClientProtocol.DescribeInsightRulesAsyncType? = nil,
-            describeInsightRulesSync: CloudWatchClientProtocol.DescribeInsightRulesSyncType? = nil,
-            disableAlarmActionsAsync: CloudWatchClientProtocol.DisableAlarmActionsAsyncType? = nil,
-            disableAlarmActionsSync: CloudWatchClientProtocol.DisableAlarmActionsSyncType? = nil,
-            disableInsightRulesAsync: CloudWatchClientProtocol.DisableInsightRulesAsyncType? = nil,
-            disableInsightRulesSync: CloudWatchClientProtocol.DisableInsightRulesSyncType? = nil,
-            enableAlarmActionsAsync: CloudWatchClientProtocol.EnableAlarmActionsAsyncType? = nil,
-            enableAlarmActionsSync: CloudWatchClientProtocol.EnableAlarmActionsSyncType? = nil,
-            enableInsightRulesAsync: CloudWatchClientProtocol.EnableInsightRulesAsyncType? = nil,
-            enableInsightRulesSync: CloudWatchClientProtocol.EnableInsightRulesSyncType? = nil,
-            getDashboardAsync: CloudWatchClientProtocol.GetDashboardAsyncType? = nil,
-            getDashboardSync: CloudWatchClientProtocol.GetDashboardSyncType? = nil,
-            getInsightRuleReportAsync: CloudWatchClientProtocol.GetInsightRuleReportAsyncType? = nil,
-            getInsightRuleReportSync: CloudWatchClientProtocol.GetInsightRuleReportSyncType? = nil,
-            getMetricDataAsync: CloudWatchClientProtocol.GetMetricDataAsyncType? = nil,
-            getMetricDataSync: CloudWatchClientProtocol.GetMetricDataSyncType? = nil,
-            getMetricStatisticsAsync: CloudWatchClientProtocol.GetMetricStatisticsAsyncType? = nil,
-            getMetricStatisticsSync: CloudWatchClientProtocol.GetMetricStatisticsSyncType? = nil,
-            getMetricWidgetImageAsync: CloudWatchClientProtocol.GetMetricWidgetImageAsyncType? = nil,
-            getMetricWidgetImageSync: CloudWatchClientProtocol.GetMetricWidgetImageSyncType? = nil,
-            listDashboardsAsync: CloudWatchClientProtocol.ListDashboardsAsyncType? = nil,
-            listDashboardsSync: CloudWatchClientProtocol.ListDashboardsSyncType? = nil,
-            listMetricsAsync: CloudWatchClientProtocol.ListMetricsAsyncType? = nil,
-            listMetricsSync: CloudWatchClientProtocol.ListMetricsSyncType? = nil,
-            listTagsForResourceAsync: CloudWatchClientProtocol.ListTagsForResourceAsyncType? = nil,
-            listTagsForResourceSync: CloudWatchClientProtocol.ListTagsForResourceSyncType? = nil,
-            putAnomalyDetectorAsync: CloudWatchClientProtocol.PutAnomalyDetectorAsyncType? = nil,
-            putAnomalyDetectorSync: CloudWatchClientProtocol.PutAnomalyDetectorSyncType? = nil,
-            putDashboardAsync: CloudWatchClientProtocol.PutDashboardAsyncType? = nil,
-            putDashboardSync: CloudWatchClientProtocol.PutDashboardSyncType? = nil,
-            putInsightRuleAsync: CloudWatchClientProtocol.PutInsightRuleAsyncType? = nil,
-            putInsightRuleSync: CloudWatchClientProtocol.PutInsightRuleSyncType? = nil,
-            putMetricAlarmAsync: CloudWatchClientProtocol.PutMetricAlarmAsyncType? = nil,
-            putMetricAlarmSync: CloudWatchClientProtocol.PutMetricAlarmSyncType? = nil,
-            putMetricDataAsync: CloudWatchClientProtocol.PutMetricDataAsyncType? = nil,
-            putMetricDataSync: CloudWatchClientProtocol.PutMetricDataSyncType? = nil,
-            setAlarmStateAsync: CloudWatchClientProtocol.SetAlarmStateAsyncType? = nil,
-            setAlarmStateSync: CloudWatchClientProtocol.SetAlarmStateSyncType? = nil,
-            tagResourceAsync: CloudWatchClientProtocol.TagResourceAsyncType? = nil,
-            tagResourceSync: CloudWatchClientProtocol.TagResourceSyncType? = nil,
-            untagResourceAsync: CloudWatchClientProtocol.UntagResourceAsyncType? = nil,
-            untagResourceSync: CloudWatchClientProtocol.UntagResourceSyncType? = nil) {
+            deleteAlarmsAsync: DeleteAlarmsAsyncType<ClientInvocationReportingType>? = nil,
+            deleteAlarmsSync: DeleteAlarmsSyncType<ClientInvocationReportingType>? = nil,
+            deleteAnomalyDetectorAsync: DeleteAnomalyDetectorAsyncType<ClientInvocationReportingType>? = nil,
+            deleteAnomalyDetectorSync: DeleteAnomalyDetectorSyncType<ClientInvocationReportingType>? = nil,
+            deleteDashboardsAsync: DeleteDashboardsAsyncType<ClientInvocationReportingType>? = nil,
+            deleteDashboardsSync: DeleteDashboardsSyncType<ClientInvocationReportingType>? = nil,
+            deleteInsightRulesAsync: DeleteInsightRulesAsyncType<ClientInvocationReportingType>? = nil,
+            deleteInsightRulesSync: DeleteInsightRulesSyncType<ClientInvocationReportingType>? = nil,
+            describeAlarmHistoryAsync: DescribeAlarmHistoryAsyncType<ClientInvocationReportingType>? = nil,
+            describeAlarmHistorySync: DescribeAlarmHistorySyncType<ClientInvocationReportingType>? = nil,
+            describeAlarmsAsync: DescribeAlarmsAsyncType<ClientInvocationReportingType>? = nil,
+            describeAlarmsSync: DescribeAlarmsSyncType<ClientInvocationReportingType>? = nil,
+            describeAlarmsForMetricAsync: DescribeAlarmsForMetricAsyncType<ClientInvocationReportingType>? = nil,
+            describeAlarmsForMetricSync: DescribeAlarmsForMetricSyncType<ClientInvocationReportingType>? = nil,
+            describeAnomalyDetectorsAsync: DescribeAnomalyDetectorsAsyncType<ClientInvocationReportingType>? = nil,
+            describeAnomalyDetectorsSync: DescribeAnomalyDetectorsSyncType<ClientInvocationReportingType>? = nil,
+            describeInsightRulesAsync: DescribeInsightRulesAsyncType<ClientInvocationReportingType>? = nil,
+            describeInsightRulesSync: DescribeInsightRulesSyncType<ClientInvocationReportingType>? = nil,
+            disableAlarmActionsAsync: DisableAlarmActionsAsyncType<ClientInvocationReportingType>? = nil,
+            disableAlarmActionsSync: DisableAlarmActionsSyncType<ClientInvocationReportingType>? = nil,
+            disableInsightRulesAsync: DisableInsightRulesAsyncType<ClientInvocationReportingType>? = nil,
+            disableInsightRulesSync: DisableInsightRulesSyncType<ClientInvocationReportingType>? = nil,
+            enableAlarmActionsAsync: EnableAlarmActionsAsyncType<ClientInvocationReportingType>? = nil,
+            enableAlarmActionsSync: EnableAlarmActionsSyncType<ClientInvocationReportingType>? = nil,
+            enableInsightRulesAsync: EnableInsightRulesAsyncType<ClientInvocationReportingType>? = nil,
+            enableInsightRulesSync: EnableInsightRulesSyncType<ClientInvocationReportingType>? = nil,
+            getDashboardAsync: GetDashboardAsyncType<ClientInvocationReportingType>? = nil,
+            getDashboardSync: GetDashboardSyncType<ClientInvocationReportingType>? = nil,
+            getInsightRuleReportAsync: GetInsightRuleReportAsyncType<ClientInvocationReportingType>? = nil,
+            getInsightRuleReportSync: GetInsightRuleReportSyncType<ClientInvocationReportingType>? = nil,
+            getMetricDataAsync: GetMetricDataAsyncType<ClientInvocationReportingType>? = nil,
+            getMetricDataSync: GetMetricDataSyncType<ClientInvocationReportingType>? = nil,
+            getMetricStatisticsAsync: GetMetricStatisticsAsyncType<ClientInvocationReportingType>? = nil,
+            getMetricStatisticsSync: GetMetricStatisticsSyncType<ClientInvocationReportingType>? = nil,
+            getMetricWidgetImageAsync: GetMetricWidgetImageAsyncType<ClientInvocationReportingType>? = nil,
+            getMetricWidgetImageSync: GetMetricWidgetImageSyncType<ClientInvocationReportingType>? = nil,
+            listDashboardsAsync: ListDashboardsAsyncType<ClientInvocationReportingType>? = nil,
+            listDashboardsSync: ListDashboardsSyncType<ClientInvocationReportingType>? = nil,
+            listMetricsAsync: ListMetricsAsyncType<ClientInvocationReportingType>? = nil,
+            listMetricsSync: ListMetricsSyncType<ClientInvocationReportingType>? = nil,
+            listTagsForResourceAsync: ListTagsForResourceAsyncType<ClientInvocationReportingType>? = nil,
+            listTagsForResourceSync: ListTagsForResourceSyncType<ClientInvocationReportingType>? = nil,
+            putAnomalyDetectorAsync: PutAnomalyDetectorAsyncType<ClientInvocationReportingType>? = nil,
+            putAnomalyDetectorSync: PutAnomalyDetectorSyncType<ClientInvocationReportingType>? = nil,
+            putDashboardAsync: PutDashboardAsyncType<ClientInvocationReportingType>? = nil,
+            putDashboardSync: PutDashboardSyncType<ClientInvocationReportingType>? = nil,
+            putInsightRuleAsync: PutInsightRuleAsyncType<ClientInvocationReportingType>? = nil,
+            putInsightRuleSync: PutInsightRuleSyncType<ClientInvocationReportingType>? = nil,
+            putMetricAlarmAsync: PutMetricAlarmAsyncType<ClientInvocationReportingType>? = nil,
+            putMetricAlarmSync: PutMetricAlarmSyncType<ClientInvocationReportingType>? = nil,
+            putMetricDataAsync: PutMetricDataAsyncType<ClientInvocationReportingType>? = nil,
+            putMetricDataSync: PutMetricDataSyncType<ClientInvocationReportingType>? = nil,
+            setAlarmStateAsync: SetAlarmStateAsyncType<ClientInvocationReportingType>? = nil,
+            setAlarmStateSync: SetAlarmStateSyncType<ClientInvocationReportingType>? = nil,
+            tagResourceAsync: TagResourceAsyncType<ClientInvocationReportingType>? = nil,
+            tagResourceSync: TagResourceSyncType<ClientInvocationReportingType>? = nil,
+            untagResourceAsync: UntagResourceAsyncType<ClientInvocationReportingType>? = nil,
+            untagResourceSync: UntagResourceSyncType<ClientInvocationReportingType>? = nil) {
         self.deleteAlarmsAsyncOverride = deleteAlarmsAsync
         self.deleteAlarmsSyncOverride = deleteAlarmsSync
         self.deleteAnomalyDetectorAsyncOverride = deleteAnomalyDetectorAsync
@@ -219,12 +219,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: resourceNotFound.
      */
-    public func deleteAlarmsAsync(
+    public func deleteAlarmsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteAlarmsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteAlarmsAsyncOverride = deleteAlarmsAsyncOverride {
-            return try deleteAlarmsAsyncOverride(input, reporting, completion)
+        if let deleteAlarmsAsyncOverrideNonOptional = deleteAlarmsAsyncOverride {
+            if let deleteAlarmsAsyncOverrideTyped = deleteAlarmsAsyncOverrideNonOptional
+                    as? DeleteAlarmsAsyncType<InvocationReportingType> {
+                return try deleteAlarmsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -237,11 +242,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated DeleteAlarmsInput object being passed to this operation.
      - Throws: resourceNotFound.
      */
-    public func deleteAlarmsSync(
+    public func deleteAlarmsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteAlarmsInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteAlarmsSyncOverride = deleteAlarmsSyncOverride {
-            return try deleteAlarmsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteAlarmsSyncOverrideNonOptional = deleteAlarmsSyncOverride {
+            if let deleteAlarmsSyncOverrideTyped = deleteAlarmsSyncOverrideNonOptional
+                    as? DeleteAlarmsSyncType<InvocationReportingType> {
+                return try deleteAlarmsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -256,12 +266,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
-    public func deleteAnomalyDetectorAsync(
+    public func deleteAnomalyDetectorAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteAnomalyDetectorInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector, HTTPClientError>) -> ()) throws {
-        if let deleteAnomalyDetectorAsyncOverride = deleteAnomalyDetectorAsyncOverride {
-            return try deleteAnomalyDetectorAsyncOverride(input, reporting, completion)
+        if let deleteAnomalyDetectorAsyncOverrideNonOptional = deleteAnomalyDetectorAsyncOverride {
+            if let deleteAnomalyDetectorAsyncOverrideTyped = deleteAnomalyDetectorAsyncOverrideNonOptional
+                    as? DeleteAnomalyDetectorAsyncType<InvocationReportingType> {
+                return try deleteAnomalyDetectorAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteAnomalyDetectorOutputForDeleteAnomalyDetector.__default
@@ -278,11 +293,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
-    public func deleteAnomalyDetectorSync(
+    public func deleteAnomalyDetectorSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteAnomalyDetectorInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector {
-        if let deleteAnomalyDetectorSyncOverride = deleteAnomalyDetectorSyncOverride {
-            return try deleteAnomalyDetectorSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector {
+        if let deleteAnomalyDetectorSyncOverrideNonOptional = deleteAnomalyDetectorSyncOverride {
+            if let deleteAnomalyDetectorSyncOverrideTyped = deleteAnomalyDetectorSyncOverrideNonOptional
+                    as? DeleteAnomalyDetectorSyncType<InvocationReportingType> {
+                return try deleteAnomalyDetectorSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteAnomalyDetectorOutputForDeleteAnomalyDetector.__default
@@ -298,12 +318,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func deleteDashboardsAsync(
+    public func deleteDashboardsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteDashboardsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, HTTPClientError>) -> ()) throws {
-        if let deleteDashboardsAsyncOverride = deleteDashboardsAsyncOverride {
-            return try deleteDashboardsAsyncOverride(input, reporting, completion)
+        if let deleteDashboardsAsyncOverrideNonOptional = deleteDashboardsAsyncOverride {
+            if let deleteDashboardsAsyncOverrideTyped = deleteDashboardsAsyncOverrideNonOptional
+                    as? DeleteDashboardsAsyncType<InvocationReportingType> {
+                return try deleteDashboardsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteDashboardsOutputForDeleteDashboards.__default
@@ -320,11 +345,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func deleteDashboardsSync(
+    public func deleteDashboardsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteDashboardsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards {
-        if let deleteDashboardsSyncOverride = deleteDashboardsSyncOverride {
-            return try deleteDashboardsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards {
+        if let deleteDashboardsSyncOverrideNonOptional = deleteDashboardsSyncOverride {
+            if let deleteDashboardsSyncOverrideTyped = deleteDashboardsSyncOverrideNonOptional
+                    as? DeleteDashboardsSyncType<InvocationReportingType> {
+                return try deleteDashboardsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteDashboardsOutputForDeleteDashboards.__default
@@ -340,12 +370,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, missingRequiredParameter.
      */
-    public func deleteInsightRulesAsync(
+    public func deleteInsightRulesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteInsightRulesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, HTTPClientError>) -> ()) throws {
-        if let deleteInsightRulesAsyncOverride = deleteInsightRulesAsyncOverride {
-            return try deleteInsightRulesAsyncOverride(input, reporting, completion)
+        if let deleteInsightRulesAsyncOverrideNonOptional = deleteInsightRulesAsyncOverride {
+            if let deleteInsightRulesAsyncOverrideTyped = deleteInsightRulesAsyncOverrideNonOptional
+                    as? DeleteInsightRulesAsyncType<InvocationReportingType> {
+                return try deleteInsightRulesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteInsightRulesOutputForDeleteInsightRules.__default
@@ -362,11 +397,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, missingRequiredParameter.
      */
-    public func deleteInsightRulesSync(
+    public func deleteInsightRulesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteInsightRulesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules {
-        if let deleteInsightRulesSyncOverride = deleteInsightRulesSyncOverride {
-            return try deleteInsightRulesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules {
+        if let deleteInsightRulesSyncOverrideNonOptional = deleteInsightRulesSyncOverride {
+            if let deleteInsightRulesSyncOverrideTyped = deleteInsightRulesSyncOverrideNonOptional
+                    as? DeleteInsightRulesSyncType<InvocationReportingType> {
+                return try deleteInsightRulesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteInsightRulesOutputForDeleteInsightRules.__default
@@ -382,12 +422,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func describeAlarmHistoryAsync(
+    public func describeAlarmHistoryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAlarmHistoryInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, HTTPClientError>) -> ()) throws {
-        if let describeAlarmHistoryAsyncOverride = describeAlarmHistoryAsyncOverride {
-            return try describeAlarmHistoryAsyncOverride(input, reporting, completion)
+        if let describeAlarmHistoryAsyncOverrideNonOptional = describeAlarmHistoryAsyncOverride {
+            if let describeAlarmHistoryAsyncOverrideTyped = describeAlarmHistoryAsyncOverrideNonOptional
+                    as? DescribeAlarmHistoryAsyncType<InvocationReportingType> {
+                return try describeAlarmHistoryAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeAlarmHistoryOutputForDescribeAlarmHistory.__default
@@ -404,11 +449,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func describeAlarmHistorySync(
+    public func describeAlarmHistorySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAlarmHistoryInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory {
-        if let describeAlarmHistorySyncOverride = describeAlarmHistorySyncOverride {
-            return try describeAlarmHistorySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory {
+        if let describeAlarmHistorySyncOverrideNonOptional = describeAlarmHistorySyncOverride {
+            if let describeAlarmHistorySyncOverrideTyped = describeAlarmHistorySyncOverrideNonOptional
+                    as? DescribeAlarmHistorySyncType<InvocationReportingType> {
+                return try describeAlarmHistorySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeAlarmHistoryOutputForDescribeAlarmHistory.__default
@@ -424,12 +474,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func describeAlarmsAsync(
+    public func describeAlarmsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAlarmsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, HTTPClientError>) -> ()) throws {
-        if let describeAlarmsAsyncOverride = describeAlarmsAsyncOverride {
-            return try describeAlarmsAsyncOverride(input, reporting, completion)
+        if let describeAlarmsAsyncOverrideNonOptional = describeAlarmsAsyncOverride {
+            if let describeAlarmsAsyncOverrideTyped = describeAlarmsAsyncOverrideNonOptional
+                    as? DescribeAlarmsAsyncType<InvocationReportingType> {
+                return try describeAlarmsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeAlarmsOutputForDescribeAlarms.__default
@@ -446,11 +501,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func describeAlarmsSync(
+    public func describeAlarmsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAlarmsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms {
-        if let describeAlarmsSyncOverride = describeAlarmsSyncOverride {
-            return try describeAlarmsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms {
+        if let describeAlarmsSyncOverrideNonOptional = describeAlarmsSyncOverride {
+            if let describeAlarmsSyncOverrideTyped = describeAlarmsSyncOverrideNonOptional
+                    as? DescribeAlarmsSyncType<InvocationReportingType> {
+                return try describeAlarmsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeAlarmsOutputForDescribeAlarms.__default
@@ -465,12 +525,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            callback when the operation is complete. The DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric
            object will be validated before being returned to caller.
      */
-    public func describeAlarmsForMetricAsync(
+    public func describeAlarmsForMetricAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAlarmsForMetricInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, HTTPClientError>) -> ()) throws {
-        if let describeAlarmsForMetricAsyncOverride = describeAlarmsForMetricAsyncOverride {
-            return try describeAlarmsForMetricAsyncOverride(input, reporting, completion)
+        if let describeAlarmsForMetricAsyncOverrideNonOptional = describeAlarmsForMetricAsyncOverride {
+            if let describeAlarmsForMetricAsyncOverrideTyped = describeAlarmsForMetricAsyncOverrideNonOptional
+                    as? DescribeAlarmsForMetricAsyncType<InvocationReportingType> {
+                return try describeAlarmsForMetricAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric.__default
@@ -486,11 +551,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
      - Returns: The DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAlarmsForMetricSync(
+    public func describeAlarmsForMetricSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAlarmsForMetricInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric {
-        if let describeAlarmsForMetricSyncOverride = describeAlarmsForMetricSyncOverride {
-            return try describeAlarmsForMetricSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric {
+        if let describeAlarmsForMetricSyncOverrideNonOptional = describeAlarmsForMetricSyncOverride {
+            if let describeAlarmsForMetricSyncOverrideTyped = describeAlarmsForMetricSyncOverrideNonOptional
+                    as? DescribeAlarmsForMetricSyncType<InvocationReportingType> {
+                return try describeAlarmsForMetricSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric.__default
@@ -506,12 +576,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidNextToken, invalidParameterValue.
      */
-    public func describeAnomalyDetectorsAsync(
+    public func describeAnomalyDetectorsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAnomalyDetectorsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors, HTTPClientError>) -> ()) throws {
-        if let describeAnomalyDetectorsAsyncOverride = describeAnomalyDetectorsAsyncOverride {
-            return try describeAnomalyDetectorsAsyncOverride(input, reporting, completion)
+        if let describeAnomalyDetectorsAsyncOverrideNonOptional = describeAnomalyDetectorsAsyncOverride {
+            if let describeAnomalyDetectorsAsyncOverrideTyped = describeAnomalyDetectorsAsyncOverrideNonOptional
+                    as? DescribeAnomalyDetectorsAsyncType<InvocationReportingType> {
+                return try describeAnomalyDetectorsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors.__default
@@ -528,11 +603,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidNextToken, invalidParameterValue.
      */
-    public func describeAnomalyDetectorsSync(
+    public func describeAnomalyDetectorsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAnomalyDetectorsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
-        if let describeAnomalyDetectorsSyncOverride = describeAnomalyDetectorsSyncOverride {
-            return try describeAnomalyDetectorsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
+        if let describeAnomalyDetectorsSyncOverrideNonOptional = describeAnomalyDetectorsSyncOverride {
+            if let describeAnomalyDetectorsSyncOverrideTyped = describeAnomalyDetectorsSyncOverrideNonOptional
+                    as? DescribeAnomalyDetectorsSyncType<InvocationReportingType> {
+                return try describeAnomalyDetectorsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors.__default
@@ -548,12 +628,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func describeInsightRulesAsync(
+    public func describeInsightRulesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeInsightRulesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules, HTTPClientError>) -> ()) throws {
-        if let describeInsightRulesAsyncOverride = describeInsightRulesAsyncOverride {
-            return try describeInsightRulesAsyncOverride(input, reporting, completion)
+        if let describeInsightRulesAsyncOverrideNonOptional = describeInsightRulesAsyncOverride {
+            if let describeInsightRulesAsyncOverrideTyped = describeInsightRulesAsyncOverrideNonOptional
+                    as? DescribeInsightRulesAsyncType<InvocationReportingType> {
+                return try describeInsightRulesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeInsightRulesOutputForDescribeInsightRules.__default
@@ -570,11 +655,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func describeInsightRulesSync(
+    public func describeInsightRulesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeInsightRulesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules {
-        if let describeInsightRulesSyncOverride = describeInsightRulesSyncOverride {
-            return try describeInsightRulesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules {
+        if let describeInsightRulesSyncOverrideNonOptional = describeInsightRulesSyncOverride {
+            if let describeInsightRulesSyncOverrideTyped = describeInsightRulesSyncOverrideNonOptional
+                    as? DescribeInsightRulesSyncType<InvocationReportingType> {
+                return try describeInsightRulesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeInsightRulesOutputForDescribeInsightRules.__default
@@ -588,12 +678,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disableAlarmActionsAsync(
+    public func disableAlarmActionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DisableAlarmActionsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let disableAlarmActionsAsyncOverride = disableAlarmActionsAsyncOverride {
-            return try disableAlarmActionsAsyncOverride(input, reporting, completion)
+        if let disableAlarmActionsAsyncOverrideNonOptional = disableAlarmActionsAsyncOverride {
+            if let disableAlarmActionsAsyncOverrideTyped = disableAlarmActionsAsyncOverrideNonOptional
+                    as? DisableAlarmActionsAsyncType<InvocationReportingType> {
+                return try disableAlarmActionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -605,11 +700,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
      - Parameters:
          - input: The validated DisableAlarmActionsInput object being passed to this operation.
      */
-    public func disableAlarmActionsSync(
+    public func disableAlarmActionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DisableAlarmActionsInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let disableAlarmActionsSyncOverride = disableAlarmActionsSyncOverride {
-            return try disableAlarmActionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let disableAlarmActionsSyncOverrideNonOptional = disableAlarmActionsSyncOverride {
+            if let disableAlarmActionsSyncOverrideTyped = disableAlarmActionsSyncOverrideNonOptional
+                    as? DisableAlarmActionsSyncType<InvocationReportingType> {
+                return try disableAlarmActionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -624,12 +724,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, missingRequiredParameter.
      */
-    public func disableInsightRulesAsync(
+    public func disableInsightRulesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DisableInsightRulesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules, HTTPClientError>) -> ()) throws {
-        if let disableInsightRulesAsyncOverride = disableInsightRulesAsyncOverride {
-            return try disableInsightRulesAsyncOverride(input, reporting, completion)
+        if let disableInsightRulesAsyncOverrideNonOptional = disableInsightRulesAsyncOverride {
+            if let disableInsightRulesAsyncOverrideTyped = disableInsightRulesAsyncOverrideNonOptional
+                    as? DisableInsightRulesAsyncType<InvocationReportingType> {
+                return try disableInsightRulesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DisableInsightRulesOutputForDisableInsightRules.__default
@@ -646,11 +751,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, missingRequiredParameter.
      */
-    public func disableInsightRulesSync(
+    public func disableInsightRulesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DisableInsightRulesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules {
-        if let disableInsightRulesSyncOverride = disableInsightRulesSyncOverride {
-            return try disableInsightRulesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules {
+        if let disableInsightRulesSyncOverrideNonOptional = disableInsightRulesSyncOverride {
+            if let disableInsightRulesSyncOverrideTyped = disableInsightRulesSyncOverrideNonOptional
+                    as? DisableInsightRulesSyncType<InvocationReportingType> {
+                return try disableInsightRulesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DisableInsightRulesOutputForDisableInsightRules.__default
@@ -664,12 +774,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableAlarmActionsAsync(
+    public func enableAlarmActionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.EnableAlarmActionsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let enableAlarmActionsAsyncOverride = enableAlarmActionsAsyncOverride {
-            return try enableAlarmActionsAsyncOverride(input, reporting, completion)
+        if let enableAlarmActionsAsyncOverrideNonOptional = enableAlarmActionsAsyncOverride {
+            if let enableAlarmActionsAsyncOverrideTyped = enableAlarmActionsAsyncOverrideNonOptional
+                    as? EnableAlarmActionsAsyncType<InvocationReportingType> {
+                return try enableAlarmActionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -681,11 +796,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
      - Parameters:
          - input: The validated EnableAlarmActionsInput object being passed to this operation.
      */
-    public func enableAlarmActionsSync(
+    public func enableAlarmActionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.EnableAlarmActionsInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let enableAlarmActionsSyncOverride = enableAlarmActionsSyncOverride {
-            return try enableAlarmActionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let enableAlarmActionsSyncOverrideNonOptional = enableAlarmActionsSyncOverride {
+            if let enableAlarmActionsSyncOverrideTyped = enableAlarmActionsSyncOverrideNonOptional
+                    as? EnableAlarmActionsSyncType<InvocationReportingType> {
+                return try enableAlarmActionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -700,12 +820,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    public func enableInsightRulesAsync(
+    public func enableInsightRulesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.EnableInsightRulesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules, HTTPClientError>) -> ()) throws {
-        if let enableInsightRulesAsyncOverride = enableInsightRulesAsyncOverride {
-            return try enableInsightRulesAsyncOverride(input, reporting, completion)
+        if let enableInsightRulesAsyncOverrideNonOptional = enableInsightRulesAsyncOverride {
+            if let enableInsightRulesAsyncOverrideTyped = enableInsightRulesAsyncOverrideNonOptional
+                    as? EnableInsightRulesAsyncType<InvocationReportingType> {
+                return try enableInsightRulesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = EnableInsightRulesOutputForEnableInsightRules.__default
@@ -722,11 +847,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    public func enableInsightRulesSync(
+    public func enableInsightRulesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.EnableInsightRulesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules {
-        if let enableInsightRulesSyncOverride = enableInsightRulesSyncOverride {
-            return try enableInsightRulesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules {
+        if let enableInsightRulesSyncOverrideNonOptional = enableInsightRulesSyncOverride {
+            if let enableInsightRulesSyncOverrideTyped = enableInsightRulesSyncOverrideNonOptional
+                    as? EnableInsightRulesSyncType<InvocationReportingType> {
+                return try enableInsightRulesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return EnableInsightRulesOutputForEnableInsightRules.__default
@@ -742,12 +872,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func getDashboardAsync(
+    public func getDashboardAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetDashboardInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetDashboardOutputForGetDashboard, HTTPClientError>) -> ()) throws {
-        if let getDashboardAsyncOverride = getDashboardAsyncOverride {
-            return try getDashboardAsyncOverride(input, reporting, completion)
+        if let getDashboardAsyncOverrideNonOptional = getDashboardAsyncOverride {
+            if let getDashboardAsyncOverrideTyped = getDashboardAsyncOverrideNonOptional
+                    as? GetDashboardAsyncType<InvocationReportingType> {
+                return try getDashboardAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = GetDashboardOutputForGetDashboard.__default
@@ -764,11 +899,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func getDashboardSync(
+    public func getDashboardSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetDashboardInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard {
-        if let getDashboardSyncOverride = getDashboardSyncOverride {
-            return try getDashboardSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard {
+        if let getDashboardSyncOverrideNonOptional = getDashboardSyncOverride {
+            if let getDashboardSyncOverrideTyped = getDashboardSyncOverrideNonOptional
+                    as? GetDashboardSyncType<InvocationReportingType> {
+                return try getDashboardSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return GetDashboardOutputForGetDashboard.__default
@@ -784,12 +924,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
-    public func getInsightRuleReportAsync(
+    public func getInsightRuleReportAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetInsightRuleReportInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport, HTTPClientError>) -> ()) throws {
-        if let getInsightRuleReportAsyncOverride = getInsightRuleReportAsyncOverride {
-            return try getInsightRuleReportAsyncOverride(input, reporting, completion)
+        if let getInsightRuleReportAsyncOverrideNonOptional = getInsightRuleReportAsyncOverride {
+            if let getInsightRuleReportAsyncOverrideTyped = getInsightRuleReportAsyncOverrideNonOptional
+                    as? GetInsightRuleReportAsyncType<InvocationReportingType> {
+                return try getInsightRuleReportAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = GetInsightRuleReportOutputForGetInsightRuleReport.__default
@@ -806,11 +951,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
-    public func getInsightRuleReportSync(
+    public func getInsightRuleReportSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetInsightRuleReportInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport {
-        if let getInsightRuleReportSyncOverride = getInsightRuleReportSyncOverride {
-            return try getInsightRuleReportSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport {
+        if let getInsightRuleReportSyncOverrideNonOptional = getInsightRuleReportSyncOverride {
+            if let getInsightRuleReportSyncOverrideTyped = getInsightRuleReportSyncOverrideNonOptional
+                    as? GetInsightRuleReportSyncType<InvocationReportingType> {
+                return try getInsightRuleReportSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return GetInsightRuleReportOutputForGetInsightRuleReport.__default
@@ -826,12 +976,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func getMetricDataAsync(
+    public func getMetricDataAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetMetricDataInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, HTTPClientError>) -> ()) throws {
-        if let getMetricDataAsyncOverride = getMetricDataAsyncOverride {
-            return try getMetricDataAsyncOverride(input, reporting, completion)
+        if let getMetricDataAsyncOverrideNonOptional = getMetricDataAsyncOverride {
+            if let getMetricDataAsyncOverrideTyped = getMetricDataAsyncOverrideNonOptional
+                    as? GetMetricDataAsyncType<InvocationReportingType> {
+                return try getMetricDataAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = GetMetricDataOutputForGetMetricData.__default
@@ -848,11 +1003,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func getMetricDataSync(
+    public func getMetricDataSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetMetricDataInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData {
-        if let getMetricDataSyncOverride = getMetricDataSyncOverride {
-            return try getMetricDataSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData {
+        if let getMetricDataSyncOverrideNonOptional = getMetricDataSyncOverride {
+            if let getMetricDataSyncOverrideTyped = getMetricDataSyncOverrideNonOptional
+                    as? GetMetricDataSyncType<InvocationReportingType> {
+                return try getMetricDataSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return GetMetricDataOutputForGetMetricData.__default
@@ -868,12 +1028,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func getMetricStatisticsAsync(
+    public func getMetricStatisticsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetMetricStatisticsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, HTTPClientError>) -> ()) throws {
-        if let getMetricStatisticsAsyncOverride = getMetricStatisticsAsyncOverride {
-            return try getMetricStatisticsAsyncOverride(input, reporting, completion)
+        if let getMetricStatisticsAsyncOverrideNonOptional = getMetricStatisticsAsyncOverride {
+            if let getMetricStatisticsAsyncOverrideTyped = getMetricStatisticsAsyncOverrideNonOptional
+                    as? GetMetricStatisticsAsyncType<InvocationReportingType> {
+                return try getMetricStatisticsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = GetMetricStatisticsOutputForGetMetricStatistics.__default
@@ -890,11 +1055,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func getMetricStatisticsSync(
+    public func getMetricStatisticsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetMetricStatisticsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics {
-        if let getMetricStatisticsSyncOverride = getMetricStatisticsSyncOverride {
-            return try getMetricStatisticsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics {
+        if let getMetricStatisticsSyncOverrideNonOptional = getMetricStatisticsSyncOverride {
+            if let getMetricStatisticsSyncOverrideTyped = getMetricStatisticsSyncOverrideNonOptional
+                    as? GetMetricStatisticsSyncType<InvocationReportingType> {
+                return try getMetricStatisticsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return GetMetricStatisticsOutputForGetMetricStatistics.__default
@@ -909,12 +1079,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            callback when the operation is complete. The GetMetricWidgetImageOutputForGetMetricWidgetImage
            object will be validated before being returned to caller.
      */
-    public func getMetricWidgetImageAsync(
+    public func getMetricWidgetImageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetMetricWidgetImageInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, HTTPClientError>) -> ()) throws {
-        if let getMetricWidgetImageAsyncOverride = getMetricWidgetImageAsyncOverride {
-            return try getMetricWidgetImageAsyncOverride(input, reporting, completion)
+        if let getMetricWidgetImageAsyncOverrideNonOptional = getMetricWidgetImageAsyncOverride {
+            if let getMetricWidgetImageAsyncOverrideTyped = getMetricWidgetImageAsyncOverrideNonOptional
+                    as? GetMetricWidgetImageAsyncType<InvocationReportingType> {
+                return try getMetricWidgetImageAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = GetMetricWidgetImageOutputForGetMetricWidgetImage.__default
@@ -930,11 +1105,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
      - Returns: The GetMetricWidgetImageOutputForGetMetricWidgetImage object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getMetricWidgetImageSync(
+    public func getMetricWidgetImageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetMetricWidgetImageInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage {
-        if let getMetricWidgetImageSyncOverride = getMetricWidgetImageSyncOverride {
-            return try getMetricWidgetImageSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage {
+        if let getMetricWidgetImageSyncOverrideNonOptional = getMetricWidgetImageSyncOverride {
+            if let getMetricWidgetImageSyncOverrideTyped = getMetricWidgetImageSyncOverrideNonOptional
+                    as? GetMetricWidgetImageSyncType<InvocationReportingType> {
+                return try getMetricWidgetImageSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return GetMetricWidgetImageOutputForGetMetricWidgetImage.__default
@@ -950,12 +1130,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue.
      */
-    public func listDashboardsAsync(
+    public func listDashboardsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.ListDashboardsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.ListDashboardsOutputForListDashboards, HTTPClientError>) -> ()) throws {
-        if let listDashboardsAsyncOverride = listDashboardsAsyncOverride {
-            return try listDashboardsAsyncOverride(input, reporting, completion)
+        if let listDashboardsAsyncOverrideNonOptional = listDashboardsAsyncOverride {
+            if let listDashboardsAsyncOverrideTyped = listDashboardsAsyncOverrideNonOptional
+                    as? ListDashboardsAsyncType<InvocationReportingType> {
+                return try listDashboardsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListDashboardsOutputForListDashboards.__default
@@ -972,11 +1157,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue.
      */
-    public func listDashboardsSync(
+    public func listDashboardsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.ListDashboardsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards {
-        if let listDashboardsSyncOverride = listDashboardsSyncOverride {
-            return try listDashboardsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards {
+        if let listDashboardsSyncOverrideNonOptional = listDashboardsSyncOverride {
+            if let listDashboardsSyncOverrideTyped = listDashboardsSyncOverrideNonOptional
+                    as? ListDashboardsSyncType<InvocationReportingType> {
+                return try listDashboardsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListDashboardsOutputForListDashboards.__default
@@ -992,12 +1182,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue.
      */
-    public func listMetricsAsync(
+    public func listMetricsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.ListMetricsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.ListMetricsOutputForListMetrics, HTTPClientError>) -> ()) throws {
-        if let listMetricsAsyncOverride = listMetricsAsyncOverride {
-            return try listMetricsAsyncOverride(input, reporting, completion)
+        if let listMetricsAsyncOverrideNonOptional = listMetricsAsyncOverride {
+            if let listMetricsAsyncOverrideTyped = listMetricsAsyncOverrideNonOptional
+                    as? ListMetricsAsyncType<InvocationReportingType> {
+                return try listMetricsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListMetricsOutputForListMetrics.__default
@@ -1014,11 +1209,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue.
      */
-    public func listMetricsSync(
+    public func listMetricsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.ListMetricsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.ListMetricsOutputForListMetrics {
-        if let listMetricsSyncOverride = listMetricsSyncOverride {
-            return try listMetricsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.ListMetricsOutputForListMetrics {
+        if let listMetricsSyncOverrideNonOptional = listMetricsSyncOverride {
+            if let listMetricsSyncOverrideTyped = listMetricsSyncOverrideNonOptional
+                    as? ListMetricsSyncType<InvocationReportingType> {
+                return try listMetricsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListMetricsOutputForListMetrics.__default
@@ -1034,12 +1234,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue, resourceNotFound.
      */
-    public func listTagsForResourceAsync(
+    public func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.ListTagsForResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, HTTPClientError>) -> ()) throws {
-        if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
-            return try listTagsForResourceAsyncOverride(input, reporting, completion)
+        if let listTagsForResourceAsyncOverrideNonOptional = listTagsForResourceAsyncOverride {
+            if let listTagsForResourceAsyncOverrideTyped = listTagsForResourceAsyncOverrideNonOptional
+                    as? ListTagsForResourceAsyncType<InvocationReportingType> {
+                return try listTagsForResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListTagsForResourceOutputForListTagsForResource.__default
@@ -1056,11 +1261,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue, resourceNotFound.
      */
-    public func listTagsForResourceSync(
+    public func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.ListTagsForResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource {
-        if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
-            return try listTagsForResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource {
+        if let listTagsForResourceSyncOverrideNonOptional = listTagsForResourceSyncOverride {
+            if let listTagsForResourceSyncOverrideTyped = listTagsForResourceSyncOverrideNonOptional
+                    as? ListTagsForResourceSyncType<InvocationReportingType> {
+                return try listTagsForResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListTagsForResourceOutputForListTagsForResource.__default
@@ -1076,12 +1286,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    public func putAnomalyDetectorAsync(
+    public func putAnomalyDetectorAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutAnomalyDetectorInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, HTTPClientError>) -> ()) throws {
-        if let putAnomalyDetectorAsyncOverride = putAnomalyDetectorAsyncOverride {
-            return try putAnomalyDetectorAsyncOverride(input, reporting, completion)
+        if let putAnomalyDetectorAsyncOverrideNonOptional = putAnomalyDetectorAsyncOverride {
+            if let putAnomalyDetectorAsyncOverrideTyped = putAnomalyDetectorAsyncOverrideNonOptional
+                    as? PutAnomalyDetectorAsyncType<InvocationReportingType> {
+                return try putAnomalyDetectorAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = PutAnomalyDetectorOutputForPutAnomalyDetector.__default
@@ -1098,11 +1313,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    public func putAnomalyDetectorSync(
+    public func putAnomalyDetectorSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutAnomalyDetectorInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector {
-        if let putAnomalyDetectorSyncOverride = putAnomalyDetectorSyncOverride {
-            return try putAnomalyDetectorSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector {
+        if let putAnomalyDetectorSyncOverrideNonOptional = putAnomalyDetectorSyncOverride {
+            if let putAnomalyDetectorSyncOverrideTyped = putAnomalyDetectorSyncOverrideNonOptional
+                    as? PutAnomalyDetectorSyncType<InvocationReportingType> {
+                return try putAnomalyDetectorSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return PutAnomalyDetectorOutputForPutAnomalyDetector.__default
@@ -1118,12 +1338,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardInvalidInput, internalService.
      */
-    public func putDashboardAsync(
+    public func putDashboardAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutDashboardInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.PutDashboardOutputForPutDashboard, HTTPClientError>) -> ()) throws {
-        if let putDashboardAsyncOverride = putDashboardAsyncOverride {
-            return try putDashboardAsyncOverride(input, reporting, completion)
+        if let putDashboardAsyncOverrideNonOptional = putDashboardAsyncOverride {
+            if let putDashboardAsyncOverrideTyped = putDashboardAsyncOverrideNonOptional
+                    as? PutDashboardAsyncType<InvocationReportingType> {
+                return try putDashboardAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = PutDashboardOutputForPutDashboard.__default
@@ -1140,11 +1365,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardInvalidInput, internalService.
      */
-    public func putDashboardSync(
+    public func putDashboardSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutDashboardInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard {
-        if let putDashboardSyncOverride = putDashboardSyncOverride {
-            return try putDashboardSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard {
+        if let putDashboardSyncOverrideNonOptional = putDashboardSyncOverride {
+            if let putDashboardSyncOverrideTyped = putDashboardSyncOverrideNonOptional
+                    as? PutDashboardSyncType<InvocationReportingType> {
+                return try putDashboardSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return PutDashboardOutputForPutDashboard.__default
@@ -1160,12 +1390,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    public func putInsightRuleAsync(
+    public func putInsightRuleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutInsightRuleInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, HTTPClientError>) -> ()) throws {
-        if let putInsightRuleAsyncOverride = putInsightRuleAsyncOverride {
-            return try putInsightRuleAsyncOverride(input, reporting, completion)
+        if let putInsightRuleAsyncOverrideNonOptional = putInsightRuleAsyncOverride {
+            if let putInsightRuleAsyncOverrideTyped = putInsightRuleAsyncOverrideNonOptional
+                    as? PutInsightRuleAsyncType<InvocationReportingType> {
+                return try putInsightRuleAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = PutInsightRuleOutputForPutInsightRule.__default
@@ -1182,11 +1417,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    public func putInsightRuleSync(
+    public func putInsightRuleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutInsightRuleInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule {
-        if let putInsightRuleSyncOverride = putInsightRuleSyncOverride {
-            return try putInsightRuleSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule {
+        if let putInsightRuleSyncOverrideNonOptional = putInsightRuleSyncOverride {
+            if let putInsightRuleSyncOverrideTyped = putInsightRuleSyncOverrideNonOptional
+                    as? PutInsightRuleSyncType<InvocationReportingType> {
+                return try putInsightRuleSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return PutInsightRuleOutputForPutInsightRule.__default
@@ -1201,12 +1441,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: limitExceeded.
      */
-    public func putMetricAlarmAsync(
+    public func putMetricAlarmAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutMetricAlarmInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putMetricAlarmAsyncOverride = putMetricAlarmAsyncOverride {
-            return try putMetricAlarmAsyncOverride(input, reporting, completion)
+        if let putMetricAlarmAsyncOverrideNonOptional = putMetricAlarmAsyncOverride {
+            if let putMetricAlarmAsyncOverrideTyped = putMetricAlarmAsyncOverrideNonOptional
+                    as? PutMetricAlarmAsyncType<InvocationReportingType> {
+                return try putMetricAlarmAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -1219,11 +1464,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated PutMetricAlarmInput object being passed to this operation.
      - Throws: limitExceeded.
      */
-    public func putMetricAlarmSync(
+    public func putMetricAlarmSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutMetricAlarmInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putMetricAlarmSyncOverride = putMetricAlarmSyncOverride {
-            return try putMetricAlarmSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putMetricAlarmSyncOverrideNonOptional = putMetricAlarmSyncOverride {
+            if let putMetricAlarmSyncOverrideTyped = putMetricAlarmSyncOverrideNonOptional
+                    as? PutMetricAlarmSyncType<InvocationReportingType> {
+                return try putMetricAlarmSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -1237,12 +1487,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func putMetricDataAsync(
+    public func putMetricDataAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutMetricDataInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let putMetricDataAsyncOverride = putMetricDataAsyncOverride {
-            return try putMetricDataAsyncOverride(input, reporting, completion)
+        if let putMetricDataAsyncOverrideNonOptional = putMetricDataAsyncOverride {
+            if let putMetricDataAsyncOverrideTyped = putMetricDataAsyncOverrideNonOptional
+                    as? PutMetricDataAsyncType<InvocationReportingType> {
+                return try putMetricDataAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -1255,11 +1510,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated PutMetricDataInput object being passed to this operation.
      - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func putMetricDataSync(
+    public func putMetricDataSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutMetricDataInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let putMetricDataSyncOverride = putMetricDataSyncOverride {
-            return try putMetricDataSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let putMetricDataSyncOverrideNonOptional = putMetricDataSyncOverride {
+            if let putMetricDataSyncOverrideTyped = putMetricDataSyncOverrideNonOptional
+                    as? PutMetricDataSyncType<InvocationReportingType> {
+                return try putMetricDataSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -1273,12 +1533,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: invalidFormat, resourceNotFound.
      */
-    public func setAlarmStateAsync(
+    public func setAlarmStateAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.SetAlarmStateInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let setAlarmStateAsyncOverride = setAlarmStateAsyncOverride {
-            return try setAlarmStateAsyncOverride(input, reporting, completion)
+        if let setAlarmStateAsyncOverrideNonOptional = setAlarmStateAsyncOverride {
+            if let setAlarmStateAsyncOverrideTyped = setAlarmStateAsyncOverrideNonOptional
+                    as? SetAlarmStateAsyncType<InvocationReportingType> {
+                return try setAlarmStateAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -1291,11 +1556,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated SetAlarmStateInput object being passed to this operation.
      - Throws: invalidFormat, resourceNotFound.
      */
-    public func setAlarmStateSync(
+    public func setAlarmStateSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.SetAlarmStateInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let setAlarmStateSyncOverride = setAlarmStateSyncOverride {
-            return try setAlarmStateSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let setAlarmStateSyncOverrideNonOptional = setAlarmStateSyncOverride {
+            if let setAlarmStateSyncOverrideTyped = setAlarmStateSyncOverrideNonOptional
+                    as? SetAlarmStateSyncType<InvocationReportingType> {
+                return try setAlarmStateSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -1310,12 +1580,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func tagResourceAsync(
+    public func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.TagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.TagResourceOutputForTagResource, HTTPClientError>) -> ()) throws {
-        if let tagResourceAsyncOverride = tagResourceAsyncOverride {
-            return try tagResourceAsyncOverride(input, reporting, completion)
+        if let tagResourceAsyncOverrideNonOptional = tagResourceAsyncOverride {
+            if let tagResourceAsyncOverrideTyped = tagResourceAsyncOverrideNonOptional
+                    as? TagResourceAsyncType<InvocationReportingType> {
+                return try tagResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = TagResourceOutputForTagResource.__default
@@ -1332,11 +1607,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func tagResourceSync(
+    public func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.TagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.TagResourceOutputForTagResource {
-        if let tagResourceSyncOverride = tagResourceSyncOverride {
-            return try tagResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.TagResourceOutputForTagResource {
+        if let tagResourceSyncOverrideNonOptional = tagResourceSyncOverride {
+            if let tagResourceSyncOverrideTyped = tagResourceSyncOverrideNonOptional
+                    as? TagResourceSyncType<InvocationReportingType> {
+                return try tagResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return TagResourceOutputForTagResource.__default
@@ -1352,12 +1632,17 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func untagResourceAsync(
+    public func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.UntagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.UntagResourceOutputForUntagResource, HTTPClientError>) -> ()) throws {
-        if let untagResourceAsyncOverride = untagResourceAsyncOverride {
-            return try untagResourceAsyncOverride(input, reporting, completion)
+        if let untagResourceAsyncOverrideNonOptional = untagResourceAsyncOverride {
+            if let untagResourceAsyncOverrideTyped = untagResourceAsyncOverrideNonOptional
+                    as? UntagResourceAsyncType<InvocationReportingType> {
+                return try untagResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UntagResourceOutputForUntagResource.__default
@@ -1374,11 +1659,16 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func untagResourceSync(
+    public func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.UntagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.UntagResourceOutputForUntagResource {
-        if let untagResourceSyncOverride = untagResourceSyncOverride {
-            return try untagResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> CloudWatchModel.UntagResourceOutputForUntagResource {
+        if let untagResourceSyncOverrideNonOptional = untagResourceSyncOverride {
+            if let untagResourceSyncOverrideTyped = untagResourceSyncOverrideNonOptional
+                    as? UntagResourceSyncType<InvocationReportingType> {
+                return try untagResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UntagResourceOutputForUntagResource.__default

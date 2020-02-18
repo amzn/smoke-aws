@@ -209,9 +209,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: resourceNotFound.
      */
-    public func deleteAlarmsAsync(
+    public func deleteAlarmsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteAlarmsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -246,9 +246,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated DeleteAlarmsInput object being passed to this operation.
      - Throws: resourceNotFound.
      */
-    public func deleteAlarmsSync(
+    public func deleteAlarmsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteAlarmsInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -284,9 +284,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
-    public func deleteAnomalyDetectorAsync(
+    public func deleteAnomalyDetectorAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteAnomalyDetectorInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -323,9 +323,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
-    public func deleteAnomalyDetectorSync(
+    public func deleteAnomalyDetectorSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteAnomalyDetectorInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -361,9 +361,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func deleteDashboardsAsync(
+    public func deleteDashboardsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteDashboardsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -400,9 +400,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func deleteDashboardsSync(
+    public func deleteDashboardsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteDashboardsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -438,9 +438,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, missingRequiredParameter.
      */
-    public func deleteInsightRulesAsync(
+    public func deleteInsightRulesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteInsightRulesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -477,9 +477,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, missingRequiredParameter.
      */
-    public func deleteInsightRulesSync(
+    public func deleteInsightRulesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DeleteInsightRulesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -515,9 +515,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func describeAlarmHistoryAsync(
+    public func describeAlarmHistoryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAlarmHistoryInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -554,9 +554,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func describeAlarmHistorySync(
+    public func describeAlarmHistorySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAlarmHistoryInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -592,9 +592,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func describeAlarmsAsync(
+    public func describeAlarmsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAlarmsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -631,9 +631,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func describeAlarmsSync(
+    public func describeAlarmsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAlarmsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -668,9 +668,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            callback when the operation is complete. The DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric
            object will be validated before being returned to caller.
      */
-    public func describeAlarmsForMetricAsync(
+    public func describeAlarmsForMetricAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAlarmsForMetricInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -706,9 +706,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
      - Returns: The DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAlarmsForMetricSync(
+    public func describeAlarmsForMetricSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAlarmsForMetricInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -744,9 +744,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidNextToken, invalidParameterValue.
      */
-    public func describeAnomalyDetectorsAsync(
+    public func describeAnomalyDetectorsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAnomalyDetectorsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -783,9 +783,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidNextToken, invalidParameterValue.
      */
-    public func describeAnomalyDetectorsSync(
+    public func describeAnomalyDetectorsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeAnomalyDetectorsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -821,9 +821,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func describeInsightRulesAsync(
+    public func describeInsightRulesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeInsightRulesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -860,9 +860,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func describeInsightRulesSync(
+    public func describeInsightRulesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DescribeInsightRulesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -896,9 +896,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disableAlarmActionsAsync(
+    public func disableAlarmActionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DisableAlarmActionsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -932,9 +932,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
      - Parameters:
          - input: The validated DisableAlarmActionsInput object being passed to this operation.
      */
-    public func disableAlarmActionsSync(
+    public func disableAlarmActionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DisableAlarmActionsInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -970,9 +970,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, missingRequiredParameter.
      */
-    public func disableInsightRulesAsync(
+    public func disableInsightRulesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DisableInsightRulesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1009,9 +1009,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, missingRequiredParameter.
      */
-    public func disableInsightRulesSync(
+    public func disableInsightRulesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.DisableInsightRulesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1045,9 +1045,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableAlarmActionsAsync(
+    public func enableAlarmActionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.EnableAlarmActionsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1081,9 +1081,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
      - Parameters:
          - input: The validated EnableAlarmActionsInput object being passed to this operation.
      */
-    public func enableAlarmActionsSync(
+    public func enableAlarmActionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.EnableAlarmActionsInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1119,9 +1119,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    public func enableInsightRulesAsync(
+    public func enableInsightRulesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.EnableInsightRulesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1158,9 +1158,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    public func enableInsightRulesSync(
+    public func enableInsightRulesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.EnableInsightRulesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1196,9 +1196,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func getDashboardAsync(
+    public func getDashboardAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetDashboardInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetDashboardOutputForGetDashboard, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1235,9 +1235,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardNotFound, internalService, invalidParameterValue.
      */
-    public func getDashboardSync(
+    public func getDashboardSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetDashboardInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1273,9 +1273,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
-    public func getInsightRuleReportAsync(
+    public func getInsightRuleReportAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetInsightRuleReportInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1312,9 +1312,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
-    public func getInsightRuleReportSync(
+    public func getInsightRuleReportSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetInsightRuleReportInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1350,9 +1350,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    public func getMetricDataAsync(
+    public func getMetricDataAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetMetricDataInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1389,9 +1389,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    public func getMetricDataSync(
+    public func getMetricDataSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetMetricDataInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1427,9 +1427,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func getMetricStatisticsAsync(
+    public func getMetricStatisticsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetMetricStatisticsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1466,9 +1466,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func getMetricStatisticsSync(
+    public func getMetricStatisticsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetMetricStatisticsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1503,9 +1503,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            callback when the operation is complete. The GetMetricWidgetImageOutputForGetMetricWidgetImage
            object will be validated before being returned to caller.
      */
-    public func getMetricWidgetImageAsync(
+    public func getMetricWidgetImageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetMetricWidgetImageInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1541,9 +1541,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
      - Returns: The GetMetricWidgetImageOutputForGetMetricWidgetImage object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getMetricWidgetImageSync(
+    public func getMetricWidgetImageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.GetMetricWidgetImageInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1579,9 +1579,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue.
      */
-    public func listDashboardsAsync(
+    public func listDashboardsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.ListDashboardsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.ListDashboardsOutputForListDashboards, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1618,9 +1618,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue.
      */
-    public func listDashboardsSync(
+    public func listDashboardsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.ListDashboardsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1656,9 +1656,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue.
      */
-    public func listMetricsAsync(
+    public func listMetricsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.ListMetricsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.ListMetricsOutputForListMetrics, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1695,9 +1695,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue.
      */
-    public func listMetricsSync(
+    public func listMetricsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.ListMetricsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.ListMetricsOutputForListMetrics {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.ListMetricsOutputForListMetrics {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1733,9 +1733,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue, resourceNotFound.
      */
-    public func listTagsForResourceAsync(
+    public func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.ListTagsForResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1772,9 +1772,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue, resourceNotFound.
      */
-    public func listTagsForResourceSync(
+    public func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.ListTagsForResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1810,9 +1810,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    public func putAnomalyDetectorAsync(
+    public func putAnomalyDetectorAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutAnomalyDetectorInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1849,9 +1849,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    public func putAnomalyDetectorSync(
+    public func putAnomalyDetectorSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutAnomalyDetectorInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1887,9 +1887,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardInvalidInput, internalService.
      */
-    public func putDashboardAsync(
+    public func putDashboardAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutDashboardInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.PutDashboardOutputForPutDashboard, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1926,9 +1926,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardInvalidInput, internalService.
      */
-    public func putDashboardSync(
+    public func putDashboardSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutDashboardInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1964,9 +1964,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    public func putInsightRuleAsync(
+    public func putInsightRuleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutInsightRuleInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2003,9 +2003,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    public func putInsightRuleSync(
+    public func putInsightRuleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutInsightRuleInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2040,9 +2040,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: limitExceeded.
      */
-    public func putMetricAlarmAsync(
+    public func putMetricAlarmAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutMetricAlarmInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2077,9 +2077,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated PutMetricAlarmInput object being passed to this operation.
      - Throws: limitExceeded.
      */
-    public func putMetricAlarmSync(
+    public func putMetricAlarmSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutMetricAlarmInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2114,9 +2114,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func putMetricDataAsync(
+    public func putMetricDataAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutMetricDataInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2151,9 +2151,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated PutMetricDataInput object being passed to this operation.
      - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    public func putMetricDataSync(
+    public func putMetricDataSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.PutMetricDataInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2188,9 +2188,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            is complete.
            The possible errors are: invalidFormat, resourceNotFound.
      */
-    public func setAlarmStateAsync(
+    public func setAlarmStateAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.SetAlarmStateInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2225,9 +2225,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated SetAlarmStateInput object being passed to this operation.
      - Throws: invalidFormat, resourceNotFound.
      */
-    public func setAlarmStateSync(
+    public func setAlarmStateSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.SetAlarmStateInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2263,9 +2263,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func tagResourceAsync(
+    public func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.TagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.TagResourceOutputForTagResource, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2302,9 +2302,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func tagResourceSync(
+    public func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.TagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.TagResourceOutputForTagResource {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.TagResourceOutputForTagResource {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2340,9 +2340,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func untagResourceAsync(
+    public func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.UntagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.UntagResourceOutputForUntagResource, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2379,9 +2379,9 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    public func untagResourceSync(
+    public func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: CloudWatchModel.UntagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> CloudWatchModel.UntagResourceOutputForUntagResource {
+            reporting: InvocationReportingType) throws -> CloudWatchModel.UntagResourceOutputForUntagResource {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,

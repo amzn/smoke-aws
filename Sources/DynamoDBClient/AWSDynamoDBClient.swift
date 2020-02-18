@@ -244,9 +244,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func batchGetItemAsync(
+    public func batchGetItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.BatchGetItemInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -279,9 +279,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func batchGetItemSync(
+    public func batchGetItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.BatchGetItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.BatchGetItemOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.BatchGetItemOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -313,9 +313,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func batchWriteItemAsync(
+    public func batchWriteItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.BatchWriteItemInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -348,9 +348,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func batchWriteItemSync(
+    public func batchWriteItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.BatchWriteItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.BatchWriteItemOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.BatchWriteItemOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -382,9 +382,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupInUse, continuousBackupsUnavailable, internalServer, limitExceeded, tableInUse, tableNotFound.
      */
-    public func createBackupAsync(
+    public func createBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.CreateBackupInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -417,9 +417,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupInUse, continuousBackupsUnavailable, internalServer, limitExceeded, tableInUse, tableNotFound.
      */
-    public func createBackupSync(
+    public func createBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.CreateBackupInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.CreateBackupOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.CreateBackupOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -451,9 +451,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableAlreadyExists, internalServer, limitExceeded, tableNotFound.
      */
-    public func createGlobalTableAsync(
+    public func createGlobalTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.CreateGlobalTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -486,9 +486,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableAlreadyExists, internalServer, limitExceeded, tableNotFound.
      */
-    public func createGlobalTableSync(
+    public func createGlobalTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.CreateGlobalTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.CreateGlobalTableOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.CreateGlobalTableOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -520,9 +520,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse.
      */
-    public func createTableAsync(
+    public func createTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.CreateTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.CreateTableOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -555,9 +555,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse.
      */
-    public func createTableSync(
+    public func createTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.CreateTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.CreateTableOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.CreateTableOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -589,9 +589,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupInUse, backupNotFound, internalServer, limitExceeded.
      */
-    public func deleteBackupAsync(
+    public func deleteBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DeleteBackupInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -624,9 +624,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupInUse, backupNotFound, internalServer, limitExceeded.
      */
-    public func deleteBackupSync(
+    public func deleteBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DeleteBackupInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DeleteBackupOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DeleteBackupOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -658,9 +658,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func deleteItemAsync(
+    public func deleteItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DeleteItemInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -693,9 +693,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func deleteItemSync(
+    public func deleteItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DeleteItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DeleteItemOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DeleteItemOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -727,9 +727,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func deleteTableAsync(
+    public func deleteTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DeleteTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -762,9 +762,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func deleteTableSync(
+    public func deleteTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DeleteTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DeleteTableOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DeleteTableOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -796,9 +796,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupNotFound, internalServer.
      */
-    public func describeBackupAsync(
+    public func describeBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeBackupInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -831,9 +831,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupNotFound, internalServer.
      */
-    public func describeBackupSync(
+    public func describeBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeBackupInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeBackupOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeBackupOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -865,9 +865,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, tableNotFound.
      */
-    public func describeContinuousBackupsAsync(
+    public func describeContinuousBackupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeContinuousBackupsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -900,9 +900,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, tableNotFound.
      */
-    public func describeContinuousBackupsSync(
+    public func describeContinuousBackupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeContinuousBackupsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeContinuousBackupsOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeContinuousBackupsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -934,9 +934,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func describeContributorInsightsAsync(
+    public func describeContributorInsightsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeContributorInsightsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -969,9 +969,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func describeContributorInsightsSync(
+    public func describeContributorInsightsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeContributorInsightsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeContributorInsightsOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeContributorInsightsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1002,9 +1002,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            callback when the operation is complete. The DescribeEndpointsResponse
            object will be validated before being returned to caller.
      */
-    public func describeEndpointsAsync(
+    public func describeEndpointsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeEndpointsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1036,9 +1036,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
      - Returns: The DescribeEndpointsResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEndpointsSync(
+    public func describeEndpointsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeEndpointsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeEndpointsResponse {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeEndpointsResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1070,9 +1070,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, internalServer.
      */
-    public func describeGlobalTableAsync(
+    public func describeGlobalTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeGlobalTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1105,9 +1105,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, internalServer.
      */
-    public func describeGlobalTableSync(
+    public func describeGlobalTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeGlobalTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeGlobalTableOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeGlobalTableOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1139,9 +1139,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, internalServer.
      */
-    public func describeGlobalTableSettingsAsync(
+    public func describeGlobalTableSettingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeGlobalTableSettingsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1174,9 +1174,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, internalServer.
      */
-    public func describeGlobalTableSettingsSync(
+    public func describeGlobalTableSettingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeGlobalTableSettingsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1208,9 +1208,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    public func describeLimitsAsync(
+    public func describeLimitsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeLimitsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1243,9 +1243,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    public func describeLimitsSync(
+    public func describeLimitsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeLimitsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeLimitsOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeLimitsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1277,9 +1277,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func describeTableAsync(
+    public func describeTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1312,9 +1312,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func describeTableSync(
+    public func describeTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTableOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeTableOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1346,9 +1346,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func describeTableReplicaAutoScalingAsync(
+    public func describeTableReplicaAutoScalingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1381,9 +1381,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func describeTableReplicaAutoScalingSync(
+    public func describeTableReplicaAutoScalingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeTableReplicaAutoScalingInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1415,9 +1415,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func describeTimeToLiveAsync(
+    public func describeTimeToLiveAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeTimeToLiveInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1450,9 +1450,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func describeTimeToLiveSync(
+    public func describeTimeToLiveSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeTimeToLiveInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTimeToLiveOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeTimeToLiveOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1484,9 +1484,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func getItemAsync(
+    public func getItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.GetItemInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.GetItemOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1519,9 +1519,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func getItemSync(
+    public func getItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.GetItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.GetItemOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.GetItemOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1553,9 +1553,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    public func listBackupsAsync(
+    public func listBackupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListBackupsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1588,9 +1588,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    public func listBackupsSync(
+    public func listBackupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListBackupsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListBackupsOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.ListBackupsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1622,9 +1622,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func listContributorInsightsAsync(
+    public func listContributorInsightsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListContributorInsightsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1657,9 +1657,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func listContributorInsightsSync(
+    public func listContributorInsightsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListContributorInsightsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListContributorInsightsOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.ListContributorInsightsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1691,9 +1691,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    public func listGlobalTablesAsync(
+    public func listGlobalTablesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListGlobalTablesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1726,9 +1726,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    public func listGlobalTablesSync(
+    public func listGlobalTablesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListGlobalTablesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListGlobalTablesOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.ListGlobalTablesOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1760,9 +1760,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    public func listTablesAsync(
+    public func listTablesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListTablesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListTablesOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1795,9 +1795,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    public func listTablesSync(
+    public func listTablesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListTablesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListTablesOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.ListTablesOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1829,9 +1829,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func listTagsOfResourceAsync(
+    public func listTagsOfResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListTagsOfResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1864,9 +1864,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func listTagsOfResourceSync(
+    public func listTagsOfResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListTagsOfResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListTagsOfResourceOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.ListTagsOfResourceOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1898,9 +1898,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func putItemAsync(
+    public func putItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.PutItemInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.PutItemOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1933,9 +1933,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func putItemSync(
+    public func putItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.PutItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.PutItemOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.PutItemOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1967,9 +1967,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func queryAsync(
+    public func queryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.QueryInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.QueryOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2002,9 +2002,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func querySync(
+    public func querySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.QueryInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.QueryOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.QueryOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2036,9 +2036,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupInUse, backupNotFound, internalServer, limitExceeded, tableAlreadyExists, tableInUse.
      */
-    public func restoreTableFromBackupAsync(
+    public func restoreTableFromBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.RestoreTableFromBackupInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2071,9 +2071,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupInUse, backupNotFound, internalServer, limitExceeded, tableAlreadyExists, tableInUse.
      */
-    public func restoreTableFromBackupSync(
+    public func restoreTableFromBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.RestoreTableFromBackupInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.RestoreTableFromBackupOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.RestoreTableFromBackupOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2105,9 +2105,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, invalidRestoreTime, limitExceeded, pointInTimeRecoveryUnavailable, tableAlreadyExists, tableInUse, tableNotFound.
      */
-    public func restoreTableToPointInTimeAsync(
+    public func restoreTableToPointInTimeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.RestoreTableToPointInTimeInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2140,9 +2140,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, invalidRestoreTime, limitExceeded, pointInTimeRecoveryUnavailable, tableAlreadyExists, tableInUse, tableNotFound.
      */
-    public func restoreTableToPointInTimeSync(
+    public func restoreTableToPointInTimeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.RestoreTableToPointInTimeInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2174,9 +2174,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func scanAsync(
+    public func scanAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ScanInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ScanOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2209,9 +2209,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func scanSync(
+    public func scanSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ScanInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ScanOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.ScanOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2242,9 +2242,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func tagResourceAsync(
+    public func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.TagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2275,9 +2275,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated TagResourceInput object being passed to this operation.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func tagResourceSync(
+    public func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.TagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2309,9 +2309,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
      */
-    public func transactGetItemsAsync(
+    public func transactGetItemsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.TransactGetItemsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2344,9 +2344,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
      */
-    public func transactGetItemsSync(
+    public func transactGetItemsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.TransactGetItemsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.TransactGetItemsOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.TransactGetItemsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2378,9 +2378,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
-    public func transactWriteItemsAsync(
+    public func transactWriteItemsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.TransactWriteItemsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2413,9 +2413,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
-    public func transactWriteItemsSync(
+    public func transactWriteItemsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.TransactWriteItemsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.TransactWriteItemsOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.TransactWriteItemsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2446,9 +2446,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func untagResourceAsync(
+    public func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UntagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2479,9 +2479,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated UntagResourceInput object being passed to this operation.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func untagResourceSync(
+    public func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UntagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2513,9 +2513,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: continuousBackupsUnavailable, internalServer, tableNotFound.
      */
-    public func updateContinuousBackupsAsync(
+    public func updateContinuousBackupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateContinuousBackupsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2548,9 +2548,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: continuousBackupsUnavailable, internalServer, tableNotFound.
      */
-    public func updateContinuousBackupsSync(
+    public func updateContinuousBackupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateContinuousBackupsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateContinuousBackupsOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateContinuousBackupsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2582,9 +2582,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func updateContributorInsightsAsync(
+    public func updateContributorInsightsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateContributorInsightsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2617,9 +2617,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func updateContributorInsightsSync(
+    public func updateContributorInsightsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateContributorInsightsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateContributorInsightsOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateContributorInsightsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2651,9 +2651,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, internalServer, replicaAlreadyExists, replicaNotFound, tableNotFound.
      */
-    public func updateGlobalTableAsync(
+    public func updateGlobalTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateGlobalTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2686,9 +2686,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, internalServer, replicaAlreadyExists, replicaNotFound, tableNotFound.
      */
-    public func updateGlobalTableSync(
+    public func updateGlobalTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateGlobalTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateGlobalTableOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateGlobalTableOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2720,9 +2720,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, indexNotFound, internalServer, limitExceeded, replicaNotFound, resourceInUse.
      */
-    public func updateGlobalTableSettingsAsync(
+    public func updateGlobalTableSettingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateGlobalTableSettingsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2755,9 +2755,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, indexNotFound, internalServer, limitExceeded, replicaNotFound, resourceInUse.
      */
-    public func updateGlobalTableSettingsSync(
+    public func updateGlobalTableSettingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateGlobalTableSettingsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2789,9 +2789,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func updateItemAsync(
+    public func updateItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateItemInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2824,9 +2824,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func updateItemSync(
+    public func updateItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateItemOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateItemOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2858,9 +2858,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTableAsync(
+    public func updateTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2893,9 +2893,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTableSync(
+    public func updateTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTableOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateTableOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2927,9 +2927,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTableReplicaAutoScalingAsync(
+    public func updateTableReplicaAutoScalingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2962,9 +2962,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTableReplicaAutoScalingSync(
+    public func updateTableReplicaAutoScalingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateTableReplicaAutoScalingInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2996,9 +2996,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTimeToLiveAsync(
+    public func updateTimeToLiveAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateTimeToLiveInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3031,9 +3031,9 @@ public struct AWSDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTimeToLiveSync(
+    public func updateTimeToLiveSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateTimeToLiveInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTimeToLiveOutput {
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateTimeToLiveOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,

@@ -27,533 +27,533 @@ import SmokeHTTPClient
 /**
  Mock Client for the RDS service by default returns the `__default` property of its return type.
  */
-public struct MockRDSClient: RDSClientProtocol {
-    let addRoleToDBClusterAsyncOverride: RDSClientProtocol.AddRoleToDBClusterAsyncType?
-    let addRoleToDBClusterSyncOverride: RDSClientProtocol.AddRoleToDBClusterSyncType?
-    let addRoleToDBInstanceAsyncOverride: RDSClientProtocol.AddRoleToDBInstanceAsyncType?
-    let addRoleToDBInstanceSyncOverride: RDSClientProtocol.AddRoleToDBInstanceSyncType?
-    let addSourceIdentifierToSubscriptionAsyncOverride: RDSClientProtocol.AddSourceIdentifierToSubscriptionAsyncType?
-    let addSourceIdentifierToSubscriptionSyncOverride: RDSClientProtocol.AddSourceIdentifierToSubscriptionSyncType?
-    let addTagsToResourceAsyncOverride: RDSClientProtocol.AddTagsToResourceAsyncType?
-    let addTagsToResourceSyncOverride: RDSClientProtocol.AddTagsToResourceSyncType?
-    let applyPendingMaintenanceActionAsyncOverride: RDSClientProtocol.ApplyPendingMaintenanceActionAsyncType?
-    let applyPendingMaintenanceActionSyncOverride: RDSClientProtocol.ApplyPendingMaintenanceActionSyncType?
-    let authorizeDBSecurityGroupIngressAsyncOverride: RDSClientProtocol.AuthorizeDBSecurityGroupIngressAsyncType?
-    let authorizeDBSecurityGroupIngressSyncOverride: RDSClientProtocol.AuthorizeDBSecurityGroupIngressSyncType?
-    let backtrackDBClusterAsyncOverride: RDSClientProtocol.BacktrackDBClusterAsyncType?
-    let backtrackDBClusterSyncOverride: RDSClientProtocol.BacktrackDBClusterSyncType?
-    let cancelExportTaskAsyncOverride: RDSClientProtocol.CancelExportTaskAsyncType?
-    let cancelExportTaskSyncOverride: RDSClientProtocol.CancelExportTaskSyncType?
-    let copyDBClusterParameterGroupAsyncOverride: RDSClientProtocol.CopyDBClusterParameterGroupAsyncType?
-    let copyDBClusterParameterGroupSyncOverride: RDSClientProtocol.CopyDBClusterParameterGroupSyncType?
-    let copyDBClusterSnapshotAsyncOverride: RDSClientProtocol.CopyDBClusterSnapshotAsyncType?
-    let copyDBClusterSnapshotSyncOverride: RDSClientProtocol.CopyDBClusterSnapshotSyncType?
-    let copyDBParameterGroupAsyncOverride: RDSClientProtocol.CopyDBParameterGroupAsyncType?
-    let copyDBParameterGroupSyncOverride: RDSClientProtocol.CopyDBParameterGroupSyncType?
-    let copyDBSnapshotAsyncOverride: RDSClientProtocol.CopyDBSnapshotAsyncType?
-    let copyDBSnapshotSyncOverride: RDSClientProtocol.CopyDBSnapshotSyncType?
-    let copyOptionGroupAsyncOverride: RDSClientProtocol.CopyOptionGroupAsyncType?
-    let copyOptionGroupSyncOverride: RDSClientProtocol.CopyOptionGroupSyncType?
-    let createCustomAvailabilityZoneAsyncOverride: RDSClientProtocol.CreateCustomAvailabilityZoneAsyncType?
-    let createCustomAvailabilityZoneSyncOverride: RDSClientProtocol.CreateCustomAvailabilityZoneSyncType?
-    let createDBClusterAsyncOverride: RDSClientProtocol.CreateDBClusterAsyncType?
-    let createDBClusterSyncOverride: RDSClientProtocol.CreateDBClusterSyncType?
-    let createDBClusterEndpointAsyncOverride: RDSClientProtocol.CreateDBClusterEndpointAsyncType?
-    let createDBClusterEndpointSyncOverride: RDSClientProtocol.CreateDBClusterEndpointSyncType?
-    let createDBClusterParameterGroupAsyncOverride: RDSClientProtocol.CreateDBClusterParameterGroupAsyncType?
-    let createDBClusterParameterGroupSyncOverride: RDSClientProtocol.CreateDBClusterParameterGroupSyncType?
-    let createDBClusterSnapshotAsyncOverride: RDSClientProtocol.CreateDBClusterSnapshotAsyncType?
-    let createDBClusterSnapshotSyncOverride: RDSClientProtocol.CreateDBClusterSnapshotSyncType?
-    let createDBInstanceAsyncOverride: RDSClientProtocol.CreateDBInstanceAsyncType?
-    let createDBInstanceSyncOverride: RDSClientProtocol.CreateDBInstanceSyncType?
-    let createDBInstanceReadReplicaAsyncOverride: RDSClientProtocol.CreateDBInstanceReadReplicaAsyncType?
-    let createDBInstanceReadReplicaSyncOverride: RDSClientProtocol.CreateDBInstanceReadReplicaSyncType?
-    let createDBParameterGroupAsyncOverride: RDSClientProtocol.CreateDBParameterGroupAsyncType?
-    let createDBParameterGroupSyncOverride: RDSClientProtocol.CreateDBParameterGroupSyncType?
-    let createDBProxyAsyncOverride: RDSClientProtocol.CreateDBProxyAsyncType?
-    let createDBProxySyncOverride: RDSClientProtocol.CreateDBProxySyncType?
-    let createDBSecurityGroupAsyncOverride: RDSClientProtocol.CreateDBSecurityGroupAsyncType?
-    let createDBSecurityGroupSyncOverride: RDSClientProtocol.CreateDBSecurityGroupSyncType?
-    let createDBSnapshotAsyncOverride: RDSClientProtocol.CreateDBSnapshotAsyncType?
-    let createDBSnapshotSyncOverride: RDSClientProtocol.CreateDBSnapshotSyncType?
-    let createDBSubnetGroupAsyncOverride: RDSClientProtocol.CreateDBSubnetGroupAsyncType?
-    let createDBSubnetGroupSyncOverride: RDSClientProtocol.CreateDBSubnetGroupSyncType?
-    let createEventSubscriptionAsyncOverride: RDSClientProtocol.CreateEventSubscriptionAsyncType?
-    let createEventSubscriptionSyncOverride: RDSClientProtocol.CreateEventSubscriptionSyncType?
-    let createGlobalClusterAsyncOverride: RDSClientProtocol.CreateGlobalClusterAsyncType?
-    let createGlobalClusterSyncOverride: RDSClientProtocol.CreateGlobalClusterSyncType?
-    let createOptionGroupAsyncOverride: RDSClientProtocol.CreateOptionGroupAsyncType?
-    let createOptionGroupSyncOverride: RDSClientProtocol.CreateOptionGroupSyncType?
-    let deleteCustomAvailabilityZoneAsyncOverride: RDSClientProtocol.DeleteCustomAvailabilityZoneAsyncType?
-    let deleteCustomAvailabilityZoneSyncOverride: RDSClientProtocol.DeleteCustomAvailabilityZoneSyncType?
-    let deleteDBClusterAsyncOverride: RDSClientProtocol.DeleteDBClusterAsyncType?
-    let deleteDBClusterSyncOverride: RDSClientProtocol.DeleteDBClusterSyncType?
-    let deleteDBClusterEndpointAsyncOverride: RDSClientProtocol.DeleteDBClusterEndpointAsyncType?
-    let deleteDBClusterEndpointSyncOverride: RDSClientProtocol.DeleteDBClusterEndpointSyncType?
-    let deleteDBClusterParameterGroupAsyncOverride: RDSClientProtocol.DeleteDBClusterParameterGroupAsyncType?
-    let deleteDBClusterParameterGroupSyncOverride: RDSClientProtocol.DeleteDBClusterParameterGroupSyncType?
-    let deleteDBClusterSnapshotAsyncOverride: RDSClientProtocol.DeleteDBClusterSnapshotAsyncType?
-    let deleteDBClusterSnapshotSyncOverride: RDSClientProtocol.DeleteDBClusterSnapshotSyncType?
-    let deleteDBInstanceAsyncOverride: RDSClientProtocol.DeleteDBInstanceAsyncType?
-    let deleteDBInstanceSyncOverride: RDSClientProtocol.DeleteDBInstanceSyncType?
-    let deleteDBInstanceAutomatedBackupAsyncOverride: RDSClientProtocol.DeleteDBInstanceAutomatedBackupAsyncType?
-    let deleteDBInstanceAutomatedBackupSyncOverride: RDSClientProtocol.DeleteDBInstanceAutomatedBackupSyncType?
-    let deleteDBParameterGroupAsyncOverride: RDSClientProtocol.DeleteDBParameterGroupAsyncType?
-    let deleteDBParameterGroupSyncOverride: RDSClientProtocol.DeleteDBParameterGroupSyncType?
-    let deleteDBProxyAsyncOverride: RDSClientProtocol.DeleteDBProxyAsyncType?
-    let deleteDBProxySyncOverride: RDSClientProtocol.DeleteDBProxySyncType?
-    let deleteDBSecurityGroupAsyncOverride: RDSClientProtocol.DeleteDBSecurityGroupAsyncType?
-    let deleteDBSecurityGroupSyncOverride: RDSClientProtocol.DeleteDBSecurityGroupSyncType?
-    let deleteDBSnapshotAsyncOverride: RDSClientProtocol.DeleteDBSnapshotAsyncType?
-    let deleteDBSnapshotSyncOverride: RDSClientProtocol.DeleteDBSnapshotSyncType?
-    let deleteDBSubnetGroupAsyncOverride: RDSClientProtocol.DeleteDBSubnetGroupAsyncType?
-    let deleteDBSubnetGroupSyncOverride: RDSClientProtocol.DeleteDBSubnetGroupSyncType?
-    let deleteEventSubscriptionAsyncOverride: RDSClientProtocol.DeleteEventSubscriptionAsyncType?
-    let deleteEventSubscriptionSyncOverride: RDSClientProtocol.DeleteEventSubscriptionSyncType?
-    let deleteGlobalClusterAsyncOverride: RDSClientProtocol.DeleteGlobalClusterAsyncType?
-    let deleteGlobalClusterSyncOverride: RDSClientProtocol.DeleteGlobalClusterSyncType?
-    let deleteInstallationMediaAsyncOverride: RDSClientProtocol.DeleteInstallationMediaAsyncType?
-    let deleteInstallationMediaSyncOverride: RDSClientProtocol.DeleteInstallationMediaSyncType?
-    let deleteOptionGroupAsyncOverride: RDSClientProtocol.DeleteOptionGroupAsyncType?
-    let deleteOptionGroupSyncOverride: RDSClientProtocol.DeleteOptionGroupSyncType?
-    let deregisterDBProxyTargetsAsyncOverride: RDSClientProtocol.DeregisterDBProxyTargetsAsyncType?
-    let deregisterDBProxyTargetsSyncOverride: RDSClientProtocol.DeregisterDBProxyTargetsSyncType?
-    let describeAccountAttributesAsyncOverride: RDSClientProtocol.DescribeAccountAttributesAsyncType?
-    let describeAccountAttributesSyncOverride: RDSClientProtocol.DescribeAccountAttributesSyncType?
-    let describeCertificatesAsyncOverride: RDSClientProtocol.DescribeCertificatesAsyncType?
-    let describeCertificatesSyncOverride: RDSClientProtocol.DescribeCertificatesSyncType?
-    let describeCustomAvailabilityZonesAsyncOverride: RDSClientProtocol.DescribeCustomAvailabilityZonesAsyncType?
-    let describeCustomAvailabilityZonesSyncOverride: RDSClientProtocol.DescribeCustomAvailabilityZonesSyncType?
-    let describeDBClusterBacktracksAsyncOverride: RDSClientProtocol.DescribeDBClusterBacktracksAsyncType?
-    let describeDBClusterBacktracksSyncOverride: RDSClientProtocol.DescribeDBClusterBacktracksSyncType?
-    let describeDBClusterEndpointsAsyncOverride: RDSClientProtocol.DescribeDBClusterEndpointsAsyncType?
-    let describeDBClusterEndpointsSyncOverride: RDSClientProtocol.DescribeDBClusterEndpointsSyncType?
-    let describeDBClusterParameterGroupsAsyncOverride: RDSClientProtocol.DescribeDBClusterParameterGroupsAsyncType?
-    let describeDBClusterParameterGroupsSyncOverride: RDSClientProtocol.DescribeDBClusterParameterGroupsSyncType?
-    let describeDBClusterParametersAsyncOverride: RDSClientProtocol.DescribeDBClusterParametersAsyncType?
-    let describeDBClusterParametersSyncOverride: RDSClientProtocol.DescribeDBClusterParametersSyncType?
-    let describeDBClusterSnapshotAttributesAsyncOverride: RDSClientProtocol.DescribeDBClusterSnapshotAttributesAsyncType?
-    let describeDBClusterSnapshotAttributesSyncOverride: RDSClientProtocol.DescribeDBClusterSnapshotAttributesSyncType?
-    let describeDBClusterSnapshotsAsyncOverride: RDSClientProtocol.DescribeDBClusterSnapshotsAsyncType?
-    let describeDBClusterSnapshotsSyncOverride: RDSClientProtocol.DescribeDBClusterSnapshotsSyncType?
-    let describeDBClustersAsyncOverride: RDSClientProtocol.DescribeDBClustersAsyncType?
-    let describeDBClustersSyncOverride: RDSClientProtocol.DescribeDBClustersSyncType?
-    let describeDBEngineVersionsAsyncOverride: RDSClientProtocol.DescribeDBEngineVersionsAsyncType?
-    let describeDBEngineVersionsSyncOverride: RDSClientProtocol.DescribeDBEngineVersionsSyncType?
-    let describeDBInstanceAutomatedBackupsAsyncOverride: RDSClientProtocol.DescribeDBInstanceAutomatedBackupsAsyncType?
-    let describeDBInstanceAutomatedBackupsSyncOverride: RDSClientProtocol.DescribeDBInstanceAutomatedBackupsSyncType?
-    let describeDBInstancesAsyncOverride: RDSClientProtocol.DescribeDBInstancesAsyncType?
-    let describeDBInstancesSyncOverride: RDSClientProtocol.DescribeDBInstancesSyncType?
-    let describeDBLogFilesAsyncOverride: RDSClientProtocol.DescribeDBLogFilesAsyncType?
-    let describeDBLogFilesSyncOverride: RDSClientProtocol.DescribeDBLogFilesSyncType?
-    let describeDBParameterGroupsAsyncOverride: RDSClientProtocol.DescribeDBParameterGroupsAsyncType?
-    let describeDBParameterGroupsSyncOverride: RDSClientProtocol.DescribeDBParameterGroupsSyncType?
-    let describeDBParametersAsyncOverride: RDSClientProtocol.DescribeDBParametersAsyncType?
-    let describeDBParametersSyncOverride: RDSClientProtocol.DescribeDBParametersSyncType?
-    let describeDBProxiesAsyncOverride: RDSClientProtocol.DescribeDBProxiesAsyncType?
-    let describeDBProxiesSyncOverride: RDSClientProtocol.DescribeDBProxiesSyncType?
-    let describeDBProxyTargetGroupsAsyncOverride: RDSClientProtocol.DescribeDBProxyTargetGroupsAsyncType?
-    let describeDBProxyTargetGroupsSyncOverride: RDSClientProtocol.DescribeDBProxyTargetGroupsSyncType?
-    let describeDBProxyTargetsAsyncOverride: RDSClientProtocol.DescribeDBProxyTargetsAsyncType?
-    let describeDBProxyTargetsSyncOverride: RDSClientProtocol.DescribeDBProxyTargetsSyncType?
-    let describeDBSecurityGroupsAsyncOverride: RDSClientProtocol.DescribeDBSecurityGroupsAsyncType?
-    let describeDBSecurityGroupsSyncOverride: RDSClientProtocol.DescribeDBSecurityGroupsSyncType?
-    let describeDBSnapshotAttributesAsyncOverride: RDSClientProtocol.DescribeDBSnapshotAttributesAsyncType?
-    let describeDBSnapshotAttributesSyncOverride: RDSClientProtocol.DescribeDBSnapshotAttributesSyncType?
-    let describeDBSnapshotsAsyncOverride: RDSClientProtocol.DescribeDBSnapshotsAsyncType?
-    let describeDBSnapshotsSyncOverride: RDSClientProtocol.DescribeDBSnapshotsSyncType?
-    let describeDBSubnetGroupsAsyncOverride: RDSClientProtocol.DescribeDBSubnetGroupsAsyncType?
-    let describeDBSubnetGroupsSyncOverride: RDSClientProtocol.DescribeDBSubnetGroupsSyncType?
-    let describeEngineDefaultClusterParametersAsyncOverride: RDSClientProtocol.DescribeEngineDefaultClusterParametersAsyncType?
-    let describeEngineDefaultClusterParametersSyncOverride: RDSClientProtocol.DescribeEngineDefaultClusterParametersSyncType?
-    let describeEngineDefaultParametersAsyncOverride: RDSClientProtocol.DescribeEngineDefaultParametersAsyncType?
-    let describeEngineDefaultParametersSyncOverride: RDSClientProtocol.DescribeEngineDefaultParametersSyncType?
-    let describeEventCategoriesAsyncOverride: RDSClientProtocol.DescribeEventCategoriesAsyncType?
-    let describeEventCategoriesSyncOverride: RDSClientProtocol.DescribeEventCategoriesSyncType?
-    let describeEventSubscriptionsAsyncOverride: RDSClientProtocol.DescribeEventSubscriptionsAsyncType?
-    let describeEventSubscriptionsSyncOverride: RDSClientProtocol.DescribeEventSubscriptionsSyncType?
-    let describeEventsAsyncOverride: RDSClientProtocol.DescribeEventsAsyncType?
-    let describeEventsSyncOverride: RDSClientProtocol.DescribeEventsSyncType?
-    let describeExportTasksAsyncOverride: RDSClientProtocol.DescribeExportTasksAsyncType?
-    let describeExportTasksSyncOverride: RDSClientProtocol.DescribeExportTasksSyncType?
-    let describeGlobalClustersAsyncOverride: RDSClientProtocol.DescribeGlobalClustersAsyncType?
-    let describeGlobalClustersSyncOverride: RDSClientProtocol.DescribeGlobalClustersSyncType?
-    let describeInstallationMediaAsyncOverride: RDSClientProtocol.DescribeInstallationMediaAsyncType?
-    let describeInstallationMediaSyncOverride: RDSClientProtocol.DescribeInstallationMediaSyncType?
-    let describeOptionGroupOptionsAsyncOverride: RDSClientProtocol.DescribeOptionGroupOptionsAsyncType?
-    let describeOptionGroupOptionsSyncOverride: RDSClientProtocol.DescribeOptionGroupOptionsSyncType?
-    let describeOptionGroupsAsyncOverride: RDSClientProtocol.DescribeOptionGroupsAsyncType?
-    let describeOptionGroupsSyncOverride: RDSClientProtocol.DescribeOptionGroupsSyncType?
-    let describeOrderableDBInstanceOptionsAsyncOverride: RDSClientProtocol.DescribeOrderableDBInstanceOptionsAsyncType?
-    let describeOrderableDBInstanceOptionsSyncOverride: RDSClientProtocol.DescribeOrderableDBInstanceOptionsSyncType?
-    let describePendingMaintenanceActionsAsyncOverride: RDSClientProtocol.DescribePendingMaintenanceActionsAsyncType?
-    let describePendingMaintenanceActionsSyncOverride: RDSClientProtocol.DescribePendingMaintenanceActionsSyncType?
-    let describeReservedDBInstancesAsyncOverride: RDSClientProtocol.DescribeReservedDBInstancesAsyncType?
-    let describeReservedDBInstancesSyncOverride: RDSClientProtocol.DescribeReservedDBInstancesSyncType?
-    let describeReservedDBInstancesOfferingsAsyncOverride: RDSClientProtocol.DescribeReservedDBInstancesOfferingsAsyncType?
-    let describeReservedDBInstancesOfferingsSyncOverride: RDSClientProtocol.DescribeReservedDBInstancesOfferingsSyncType?
-    let describeSourceRegionsAsyncOverride: RDSClientProtocol.DescribeSourceRegionsAsyncType?
-    let describeSourceRegionsSyncOverride: RDSClientProtocol.DescribeSourceRegionsSyncType?
-    let describeValidDBInstanceModificationsAsyncOverride: RDSClientProtocol.DescribeValidDBInstanceModificationsAsyncType?
-    let describeValidDBInstanceModificationsSyncOverride: RDSClientProtocol.DescribeValidDBInstanceModificationsSyncType?
-    let downloadDBLogFilePortionAsyncOverride: RDSClientProtocol.DownloadDBLogFilePortionAsyncType?
-    let downloadDBLogFilePortionSyncOverride: RDSClientProtocol.DownloadDBLogFilePortionSyncType?
-    let failoverDBClusterAsyncOverride: RDSClientProtocol.FailoverDBClusterAsyncType?
-    let failoverDBClusterSyncOverride: RDSClientProtocol.FailoverDBClusterSyncType?
-    let importInstallationMediaAsyncOverride: RDSClientProtocol.ImportInstallationMediaAsyncType?
-    let importInstallationMediaSyncOverride: RDSClientProtocol.ImportInstallationMediaSyncType?
-    let listTagsForResourceAsyncOverride: RDSClientProtocol.ListTagsForResourceAsyncType?
-    let listTagsForResourceSyncOverride: RDSClientProtocol.ListTagsForResourceSyncType?
-    let modifyCertificatesAsyncOverride: RDSClientProtocol.ModifyCertificatesAsyncType?
-    let modifyCertificatesSyncOverride: RDSClientProtocol.ModifyCertificatesSyncType?
-    let modifyCurrentDBClusterCapacityAsyncOverride: RDSClientProtocol.ModifyCurrentDBClusterCapacityAsyncType?
-    let modifyCurrentDBClusterCapacitySyncOverride: RDSClientProtocol.ModifyCurrentDBClusterCapacitySyncType?
-    let modifyDBClusterAsyncOverride: RDSClientProtocol.ModifyDBClusterAsyncType?
-    let modifyDBClusterSyncOverride: RDSClientProtocol.ModifyDBClusterSyncType?
-    let modifyDBClusterEndpointAsyncOverride: RDSClientProtocol.ModifyDBClusterEndpointAsyncType?
-    let modifyDBClusterEndpointSyncOverride: RDSClientProtocol.ModifyDBClusterEndpointSyncType?
-    let modifyDBClusterParameterGroupAsyncOverride: RDSClientProtocol.ModifyDBClusterParameterGroupAsyncType?
-    let modifyDBClusterParameterGroupSyncOverride: RDSClientProtocol.ModifyDBClusterParameterGroupSyncType?
-    let modifyDBClusterSnapshotAttributeAsyncOverride: RDSClientProtocol.ModifyDBClusterSnapshotAttributeAsyncType?
-    let modifyDBClusterSnapshotAttributeSyncOverride: RDSClientProtocol.ModifyDBClusterSnapshotAttributeSyncType?
-    let modifyDBInstanceAsyncOverride: RDSClientProtocol.ModifyDBInstanceAsyncType?
-    let modifyDBInstanceSyncOverride: RDSClientProtocol.ModifyDBInstanceSyncType?
-    let modifyDBParameterGroupAsyncOverride: RDSClientProtocol.ModifyDBParameterGroupAsyncType?
-    let modifyDBParameterGroupSyncOverride: RDSClientProtocol.ModifyDBParameterGroupSyncType?
-    let modifyDBProxyAsyncOverride: RDSClientProtocol.ModifyDBProxyAsyncType?
-    let modifyDBProxySyncOverride: RDSClientProtocol.ModifyDBProxySyncType?
-    let modifyDBProxyTargetGroupAsyncOverride: RDSClientProtocol.ModifyDBProxyTargetGroupAsyncType?
-    let modifyDBProxyTargetGroupSyncOverride: RDSClientProtocol.ModifyDBProxyTargetGroupSyncType?
-    let modifyDBSnapshotAsyncOverride: RDSClientProtocol.ModifyDBSnapshotAsyncType?
-    let modifyDBSnapshotSyncOverride: RDSClientProtocol.ModifyDBSnapshotSyncType?
-    let modifyDBSnapshotAttributeAsyncOverride: RDSClientProtocol.ModifyDBSnapshotAttributeAsyncType?
-    let modifyDBSnapshotAttributeSyncOverride: RDSClientProtocol.ModifyDBSnapshotAttributeSyncType?
-    let modifyDBSubnetGroupAsyncOverride: RDSClientProtocol.ModifyDBSubnetGroupAsyncType?
-    let modifyDBSubnetGroupSyncOverride: RDSClientProtocol.ModifyDBSubnetGroupSyncType?
-    let modifyEventSubscriptionAsyncOverride: RDSClientProtocol.ModifyEventSubscriptionAsyncType?
-    let modifyEventSubscriptionSyncOverride: RDSClientProtocol.ModifyEventSubscriptionSyncType?
-    let modifyGlobalClusterAsyncOverride: RDSClientProtocol.ModifyGlobalClusterAsyncType?
-    let modifyGlobalClusterSyncOverride: RDSClientProtocol.ModifyGlobalClusterSyncType?
-    let modifyOptionGroupAsyncOverride: RDSClientProtocol.ModifyOptionGroupAsyncType?
-    let modifyOptionGroupSyncOverride: RDSClientProtocol.ModifyOptionGroupSyncType?
-    let promoteReadReplicaAsyncOverride: RDSClientProtocol.PromoteReadReplicaAsyncType?
-    let promoteReadReplicaSyncOverride: RDSClientProtocol.PromoteReadReplicaSyncType?
-    let promoteReadReplicaDBClusterAsyncOverride: RDSClientProtocol.PromoteReadReplicaDBClusterAsyncType?
-    let promoteReadReplicaDBClusterSyncOverride: RDSClientProtocol.PromoteReadReplicaDBClusterSyncType?
-    let purchaseReservedDBInstancesOfferingAsyncOverride: RDSClientProtocol.PurchaseReservedDBInstancesOfferingAsyncType?
-    let purchaseReservedDBInstancesOfferingSyncOverride: RDSClientProtocol.PurchaseReservedDBInstancesOfferingSyncType?
-    let rebootDBInstanceAsyncOverride: RDSClientProtocol.RebootDBInstanceAsyncType?
-    let rebootDBInstanceSyncOverride: RDSClientProtocol.RebootDBInstanceSyncType?
-    let registerDBProxyTargetsAsyncOverride: RDSClientProtocol.RegisterDBProxyTargetsAsyncType?
-    let registerDBProxyTargetsSyncOverride: RDSClientProtocol.RegisterDBProxyTargetsSyncType?
-    let removeFromGlobalClusterAsyncOverride: RDSClientProtocol.RemoveFromGlobalClusterAsyncType?
-    let removeFromGlobalClusterSyncOverride: RDSClientProtocol.RemoveFromGlobalClusterSyncType?
-    let removeRoleFromDBClusterAsyncOverride: RDSClientProtocol.RemoveRoleFromDBClusterAsyncType?
-    let removeRoleFromDBClusterSyncOverride: RDSClientProtocol.RemoveRoleFromDBClusterSyncType?
-    let removeRoleFromDBInstanceAsyncOverride: RDSClientProtocol.RemoveRoleFromDBInstanceAsyncType?
-    let removeRoleFromDBInstanceSyncOverride: RDSClientProtocol.RemoveRoleFromDBInstanceSyncType?
-    let removeSourceIdentifierFromSubscriptionAsyncOverride: RDSClientProtocol.RemoveSourceIdentifierFromSubscriptionAsyncType?
-    let removeSourceIdentifierFromSubscriptionSyncOverride: RDSClientProtocol.RemoveSourceIdentifierFromSubscriptionSyncType?
-    let removeTagsFromResourceAsyncOverride: RDSClientProtocol.RemoveTagsFromResourceAsyncType?
-    let removeTagsFromResourceSyncOverride: RDSClientProtocol.RemoveTagsFromResourceSyncType?
-    let resetDBClusterParameterGroupAsyncOverride: RDSClientProtocol.ResetDBClusterParameterGroupAsyncType?
-    let resetDBClusterParameterGroupSyncOverride: RDSClientProtocol.ResetDBClusterParameterGroupSyncType?
-    let resetDBParameterGroupAsyncOverride: RDSClientProtocol.ResetDBParameterGroupAsyncType?
-    let resetDBParameterGroupSyncOverride: RDSClientProtocol.ResetDBParameterGroupSyncType?
-    let restoreDBClusterFromS3AsyncOverride: RDSClientProtocol.RestoreDBClusterFromS3AsyncType?
-    let restoreDBClusterFromS3SyncOverride: RDSClientProtocol.RestoreDBClusterFromS3SyncType?
-    let restoreDBClusterFromSnapshotAsyncOverride: RDSClientProtocol.RestoreDBClusterFromSnapshotAsyncType?
-    let restoreDBClusterFromSnapshotSyncOverride: RDSClientProtocol.RestoreDBClusterFromSnapshotSyncType?
-    let restoreDBClusterToPointInTimeAsyncOverride: RDSClientProtocol.RestoreDBClusterToPointInTimeAsyncType?
-    let restoreDBClusterToPointInTimeSyncOverride: RDSClientProtocol.RestoreDBClusterToPointInTimeSyncType?
-    let restoreDBInstanceFromDBSnapshotAsyncOverride: RDSClientProtocol.RestoreDBInstanceFromDBSnapshotAsyncType?
-    let restoreDBInstanceFromDBSnapshotSyncOverride: RDSClientProtocol.RestoreDBInstanceFromDBSnapshotSyncType?
-    let restoreDBInstanceFromS3AsyncOverride: RDSClientProtocol.RestoreDBInstanceFromS3AsyncType?
-    let restoreDBInstanceFromS3SyncOverride: RDSClientProtocol.RestoreDBInstanceFromS3SyncType?
-    let restoreDBInstanceToPointInTimeAsyncOverride: RDSClientProtocol.RestoreDBInstanceToPointInTimeAsyncType?
-    let restoreDBInstanceToPointInTimeSyncOverride: RDSClientProtocol.RestoreDBInstanceToPointInTimeSyncType?
-    let revokeDBSecurityGroupIngressAsyncOverride: RDSClientProtocol.RevokeDBSecurityGroupIngressAsyncType?
-    let revokeDBSecurityGroupIngressSyncOverride: RDSClientProtocol.RevokeDBSecurityGroupIngressSyncType?
-    let startActivityStreamAsyncOverride: RDSClientProtocol.StartActivityStreamAsyncType?
-    let startActivityStreamSyncOverride: RDSClientProtocol.StartActivityStreamSyncType?
-    let startDBClusterAsyncOverride: RDSClientProtocol.StartDBClusterAsyncType?
-    let startDBClusterSyncOverride: RDSClientProtocol.StartDBClusterSyncType?
-    let startDBInstanceAsyncOverride: RDSClientProtocol.StartDBInstanceAsyncType?
-    let startDBInstanceSyncOverride: RDSClientProtocol.StartDBInstanceSyncType?
-    let startExportTaskAsyncOverride: RDSClientProtocol.StartExportTaskAsyncType?
-    let startExportTaskSyncOverride: RDSClientProtocol.StartExportTaskSyncType?
-    let stopActivityStreamAsyncOverride: RDSClientProtocol.StopActivityStreamAsyncType?
-    let stopActivityStreamSyncOverride: RDSClientProtocol.StopActivityStreamSyncType?
-    let stopDBClusterAsyncOverride: RDSClientProtocol.StopDBClusterAsyncType?
-    let stopDBClusterSyncOverride: RDSClientProtocol.StopDBClusterSyncType?
-    let stopDBInstanceAsyncOverride: RDSClientProtocol.StopDBInstanceAsyncType?
-    let stopDBInstanceSyncOverride: RDSClientProtocol.StopDBInstanceSyncType?
+public struct MockRDSClient<ClientInvocationReportingType: SmokeAWSInvocationReporting>: RDSClientProtocol {
+    let addRoleToDBClusterAsyncOverride: AddRoleToDBClusterAsyncType<ClientInvocationReportingType>?
+    let addRoleToDBClusterSyncOverride: AddRoleToDBClusterSyncType<ClientInvocationReportingType>?
+    let addRoleToDBInstanceAsyncOverride: AddRoleToDBInstanceAsyncType<ClientInvocationReportingType>?
+    let addRoleToDBInstanceSyncOverride: AddRoleToDBInstanceSyncType<ClientInvocationReportingType>?
+    let addSourceIdentifierToSubscriptionAsyncOverride: AddSourceIdentifierToSubscriptionAsyncType<ClientInvocationReportingType>?
+    let addSourceIdentifierToSubscriptionSyncOverride: AddSourceIdentifierToSubscriptionSyncType<ClientInvocationReportingType>?
+    let addTagsToResourceAsyncOverride: AddTagsToResourceAsyncType<ClientInvocationReportingType>?
+    let addTagsToResourceSyncOverride: AddTagsToResourceSyncType<ClientInvocationReportingType>?
+    let applyPendingMaintenanceActionAsyncOverride: ApplyPendingMaintenanceActionAsyncType<ClientInvocationReportingType>?
+    let applyPendingMaintenanceActionSyncOverride: ApplyPendingMaintenanceActionSyncType<ClientInvocationReportingType>?
+    let authorizeDBSecurityGroupIngressAsyncOverride: AuthorizeDBSecurityGroupIngressAsyncType<ClientInvocationReportingType>?
+    let authorizeDBSecurityGroupIngressSyncOverride: AuthorizeDBSecurityGroupIngressSyncType<ClientInvocationReportingType>?
+    let backtrackDBClusterAsyncOverride: BacktrackDBClusterAsyncType<ClientInvocationReportingType>?
+    let backtrackDBClusterSyncOverride: BacktrackDBClusterSyncType<ClientInvocationReportingType>?
+    let cancelExportTaskAsyncOverride: CancelExportTaskAsyncType<ClientInvocationReportingType>?
+    let cancelExportTaskSyncOverride: CancelExportTaskSyncType<ClientInvocationReportingType>?
+    let copyDBClusterParameterGroupAsyncOverride: CopyDBClusterParameterGroupAsyncType<ClientInvocationReportingType>?
+    let copyDBClusterParameterGroupSyncOverride: CopyDBClusterParameterGroupSyncType<ClientInvocationReportingType>?
+    let copyDBClusterSnapshotAsyncOverride: CopyDBClusterSnapshotAsyncType<ClientInvocationReportingType>?
+    let copyDBClusterSnapshotSyncOverride: CopyDBClusterSnapshotSyncType<ClientInvocationReportingType>?
+    let copyDBParameterGroupAsyncOverride: CopyDBParameterGroupAsyncType<ClientInvocationReportingType>?
+    let copyDBParameterGroupSyncOverride: CopyDBParameterGroupSyncType<ClientInvocationReportingType>?
+    let copyDBSnapshotAsyncOverride: CopyDBSnapshotAsyncType<ClientInvocationReportingType>?
+    let copyDBSnapshotSyncOverride: CopyDBSnapshotSyncType<ClientInvocationReportingType>?
+    let copyOptionGroupAsyncOverride: CopyOptionGroupAsyncType<ClientInvocationReportingType>?
+    let copyOptionGroupSyncOverride: CopyOptionGroupSyncType<ClientInvocationReportingType>?
+    let createCustomAvailabilityZoneAsyncOverride: CreateCustomAvailabilityZoneAsyncType<ClientInvocationReportingType>?
+    let createCustomAvailabilityZoneSyncOverride: CreateCustomAvailabilityZoneSyncType<ClientInvocationReportingType>?
+    let createDBClusterAsyncOverride: CreateDBClusterAsyncType<ClientInvocationReportingType>?
+    let createDBClusterSyncOverride: CreateDBClusterSyncType<ClientInvocationReportingType>?
+    let createDBClusterEndpointAsyncOverride: CreateDBClusterEndpointAsyncType<ClientInvocationReportingType>?
+    let createDBClusterEndpointSyncOverride: CreateDBClusterEndpointSyncType<ClientInvocationReportingType>?
+    let createDBClusterParameterGroupAsyncOverride: CreateDBClusterParameterGroupAsyncType<ClientInvocationReportingType>?
+    let createDBClusterParameterGroupSyncOverride: CreateDBClusterParameterGroupSyncType<ClientInvocationReportingType>?
+    let createDBClusterSnapshotAsyncOverride: CreateDBClusterSnapshotAsyncType<ClientInvocationReportingType>?
+    let createDBClusterSnapshotSyncOverride: CreateDBClusterSnapshotSyncType<ClientInvocationReportingType>?
+    let createDBInstanceAsyncOverride: CreateDBInstanceAsyncType<ClientInvocationReportingType>?
+    let createDBInstanceSyncOverride: CreateDBInstanceSyncType<ClientInvocationReportingType>?
+    let createDBInstanceReadReplicaAsyncOverride: CreateDBInstanceReadReplicaAsyncType<ClientInvocationReportingType>?
+    let createDBInstanceReadReplicaSyncOverride: CreateDBInstanceReadReplicaSyncType<ClientInvocationReportingType>?
+    let createDBParameterGroupAsyncOverride: CreateDBParameterGroupAsyncType<ClientInvocationReportingType>?
+    let createDBParameterGroupSyncOverride: CreateDBParameterGroupSyncType<ClientInvocationReportingType>?
+    let createDBProxyAsyncOverride: CreateDBProxyAsyncType<ClientInvocationReportingType>?
+    let createDBProxySyncOverride: CreateDBProxySyncType<ClientInvocationReportingType>?
+    let createDBSecurityGroupAsyncOverride: CreateDBSecurityGroupAsyncType<ClientInvocationReportingType>?
+    let createDBSecurityGroupSyncOverride: CreateDBSecurityGroupSyncType<ClientInvocationReportingType>?
+    let createDBSnapshotAsyncOverride: CreateDBSnapshotAsyncType<ClientInvocationReportingType>?
+    let createDBSnapshotSyncOverride: CreateDBSnapshotSyncType<ClientInvocationReportingType>?
+    let createDBSubnetGroupAsyncOverride: CreateDBSubnetGroupAsyncType<ClientInvocationReportingType>?
+    let createDBSubnetGroupSyncOverride: CreateDBSubnetGroupSyncType<ClientInvocationReportingType>?
+    let createEventSubscriptionAsyncOverride: CreateEventSubscriptionAsyncType<ClientInvocationReportingType>?
+    let createEventSubscriptionSyncOverride: CreateEventSubscriptionSyncType<ClientInvocationReportingType>?
+    let createGlobalClusterAsyncOverride: CreateGlobalClusterAsyncType<ClientInvocationReportingType>?
+    let createGlobalClusterSyncOverride: CreateGlobalClusterSyncType<ClientInvocationReportingType>?
+    let createOptionGroupAsyncOverride: CreateOptionGroupAsyncType<ClientInvocationReportingType>?
+    let createOptionGroupSyncOverride: CreateOptionGroupSyncType<ClientInvocationReportingType>?
+    let deleteCustomAvailabilityZoneAsyncOverride: DeleteCustomAvailabilityZoneAsyncType<ClientInvocationReportingType>?
+    let deleteCustomAvailabilityZoneSyncOverride: DeleteCustomAvailabilityZoneSyncType<ClientInvocationReportingType>?
+    let deleteDBClusterAsyncOverride: DeleteDBClusterAsyncType<ClientInvocationReportingType>?
+    let deleteDBClusterSyncOverride: DeleteDBClusterSyncType<ClientInvocationReportingType>?
+    let deleteDBClusterEndpointAsyncOverride: DeleteDBClusterEndpointAsyncType<ClientInvocationReportingType>?
+    let deleteDBClusterEndpointSyncOverride: DeleteDBClusterEndpointSyncType<ClientInvocationReportingType>?
+    let deleteDBClusterParameterGroupAsyncOverride: DeleteDBClusterParameterGroupAsyncType<ClientInvocationReportingType>?
+    let deleteDBClusterParameterGroupSyncOverride: DeleteDBClusterParameterGroupSyncType<ClientInvocationReportingType>?
+    let deleteDBClusterSnapshotAsyncOverride: DeleteDBClusterSnapshotAsyncType<ClientInvocationReportingType>?
+    let deleteDBClusterSnapshotSyncOverride: DeleteDBClusterSnapshotSyncType<ClientInvocationReportingType>?
+    let deleteDBInstanceAsyncOverride: DeleteDBInstanceAsyncType<ClientInvocationReportingType>?
+    let deleteDBInstanceSyncOverride: DeleteDBInstanceSyncType<ClientInvocationReportingType>?
+    let deleteDBInstanceAutomatedBackupAsyncOverride: DeleteDBInstanceAutomatedBackupAsyncType<ClientInvocationReportingType>?
+    let deleteDBInstanceAutomatedBackupSyncOverride: DeleteDBInstanceAutomatedBackupSyncType<ClientInvocationReportingType>?
+    let deleteDBParameterGroupAsyncOverride: DeleteDBParameterGroupAsyncType<ClientInvocationReportingType>?
+    let deleteDBParameterGroupSyncOverride: DeleteDBParameterGroupSyncType<ClientInvocationReportingType>?
+    let deleteDBProxyAsyncOverride: DeleteDBProxyAsyncType<ClientInvocationReportingType>?
+    let deleteDBProxySyncOverride: DeleteDBProxySyncType<ClientInvocationReportingType>?
+    let deleteDBSecurityGroupAsyncOverride: DeleteDBSecurityGroupAsyncType<ClientInvocationReportingType>?
+    let deleteDBSecurityGroupSyncOverride: DeleteDBSecurityGroupSyncType<ClientInvocationReportingType>?
+    let deleteDBSnapshotAsyncOverride: DeleteDBSnapshotAsyncType<ClientInvocationReportingType>?
+    let deleteDBSnapshotSyncOverride: DeleteDBSnapshotSyncType<ClientInvocationReportingType>?
+    let deleteDBSubnetGroupAsyncOverride: DeleteDBSubnetGroupAsyncType<ClientInvocationReportingType>?
+    let deleteDBSubnetGroupSyncOverride: DeleteDBSubnetGroupSyncType<ClientInvocationReportingType>?
+    let deleteEventSubscriptionAsyncOverride: DeleteEventSubscriptionAsyncType<ClientInvocationReportingType>?
+    let deleteEventSubscriptionSyncOverride: DeleteEventSubscriptionSyncType<ClientInvocationReportingType>?
+    let deleteGlobalClusterAsyncOverride: DeleteGlobalClusterAsyncType<ClientInvocationReportingType>?
+    let deleteGlobalClusterSyncOverride: DeleteGlobalClusterSyncType<ClientInvocationReportingType>?
+    let deleteInstallationMediaAsyncOverride: DeleteInstallationMediaAsyncType<ClientInvocationReportingType>?
+    let deleteInstallationMediaSyncOverride: DeleteInstallationMediaSyncType<ClientInvocationReportingType>?
+    let deleteOptionGroupAsyncOverride: DeleteOptionGroupAsyncType<ClientInvocationReportingType>?
+    let deleteOptionGroupSyncOverride: DeleteOptionGroupSyncType<ClientInvocationReportingType>?
+    let deregisterDBProxyTargetsAsyncOverride: DeregisterDBProxyTargetsAsyncType<ClientInvocationReportingType>?
+    let deregisterDBProxyTargetsSyncOverride: DeregisterDBProxyTargetsSyncType<ClientInvocationReportingType>?
+    let describeAccountAttributesAsyncOverride: DescribeAccountAttributesAsyncType<ClientInvocationReportingType>?
+    let describeAccountAttributesSyncOverride: DescribeAccountAttributesSyncType<ClientInvocationReportingType>?
+    let describeCertificatesAsyncOverride: DescribeCertificatesAsyncType<ClientInvocationReportingType>?
+    let describeCertificatesSyncOverride: DescribeCertificatesSyncType<ClientInvocationReportingType>?
+    let describeCustomAvailabilityZonesAsyncOverride: DescribeCustomAvailabilityZonesAsyncType<ClientInvocationReportingType>?
+    let describeCustomAvailabilityZonesSyncOverride: DescribeCustomAvailabilityZonesSyncType<ClientInvocationReportingType>?
+    let describeDBClusterBacktracksAsyncOverride: DescribeDBClusterBacktracksAsyncType<ClientInvocationReportingType>?
+    let describeDBClusterBacktracksSyncOverride: DescribeDBClusterBacktracksSyncType<ClientInvocationReportingType>?
+    let describeDBClusterEndpointsAsyncOverride: DescribeDBClusterEndpointsAsyncType<ClientInvocationReportingType>?
+    let describeDBClusterEndpointsSyncOverride: DescribeDBClusterEndpointsSyncType<ClientInvocationReportingType>?
+    let describeDBClusterParameterGroupsAsyncOverride: DescribeDBClusterParameterGroupsAsyncType<ClientInvocationReportingType>?
+    let describeDBClusterParameterGroupsSyncOverride: DescribeDBClusterParameterGroupsSyncType<ClientInvocationReportingType>?
+    let describeDBClusterParametersAsyncOverride: DescribeDBClusterParametersAsyncType<ClientInvocationReportingType>?
+    let describeDBClusterParametersSyncOverride: DescribeDBClusterParametersSyncType<ClientInvocationReportingType>?
+    let describeDBClusterSnapshotAttributesAsyncOverride: DescribeDBClusterSnapshotAttributesAsyncType<ClientInvocationReportingType>?
+    let describeDBClusterSnapshotAttributesSyncOverride: DescribeDBClusterSnapshotAttributesSyncType<ClientInvocationReportingType>?
+    let describeDBClusterSnapshotsAsyncOverride: DescribeDBClusterSnapshotsAsyncType<ClientInvocationReportingType>?
+    let describeDBClusterSnapshotsSyncOverride: DescribeDBClusterSnapshotsSyncType<ClientInvocationReportingType>?
+    let describeDBClustersAsyncOverride: DescribeDBClustersAsyncType<ClientInvocationReportingType>?
+    let describeDBClustersSyncOverride: DescribeDBClustersSyncType<ClientInvocationReportingType>?
+    let describeDBEngineVersionsAsyncOverride: DescribeDBEngineVersionsAsyncType<ClientInvocationReportingType>?
+    let describeDBEngineVersionsSyncOverride: DescribeDBEngineVersionsSyncType<ClientInvocationReportingType>?
+    let describeDBInstanceAutomatedBackupsAsyncOverride: DescribeDBInstanceAutomatedBackupsAsyncType<ClientInvocationReportingType>?
+    let describeDBInstanceAutomatedBackupsSyncOverride: DescribeDBInstanceAutomatedBackupsSyncType<ClientInvocationReportingType>?
+    let describeDBInstancesAsyncOverride: DescribeDBInstancesAsyncType<ClientInvocationReportingType>?
+    let describeDBInstancesSyncOverride: DescribeDBInstancesSyncType<ClientInvocationReportingType>?
+    let describeDBLogFilesAsyncOverride: DescribeDBLogFilesAsyncType<ClientInvocationReportingType>?
+    let describeDBLogFilesSyncOverride: DescribeDBLogFilesSyncType<ClientInvocationReportingType>?
+    let describeDBParameterGroupsAsyncOverride: DescribeDBParameterGroupsAsyncType<ClientInvocationReportingType>?
+    let describeDBParameterGroupsSyncOverride: DescribeDBParameterGroupsSyncType<ClientInvocationReportingType>?
+    let describeDBParametersAsyncOverride: DescribeDBParametersAsyncType<ClientInvocationReportingType>?
+    let describeDBParametersSyncOverride: DescribeDBParametersSyncType<ClientInvocationReportingType>?
+    let describeDBProxiesAsyncOverride: DescribeDBProxiesAsyncType<ClientInvocationReportingType>?
+    let describeDBProxiesSyncOverride: DescribeDBProxiesSyncType<ClientInvocationReportingType>?
+    let describeDBProxyTargetGroupsAsyncOverride: DescribeDBProxyTargetGroupsAsyncType<ClientInvocationReportingType>?
+    let describeDBProxyTargetGroupsSyncOverride: DescribeDBProxyTargetGroupsSyncType<ClientInvocationReportingType>?
+    let describeDBProxyTargetsAsyncOverride: DescribeDBProxyTargetsAsyncType<ClientInvocationReportingType>?
+    let describeDBProxyTargetsSyncOverride: DescribeDBProxyTargetsSyncType<ClientInvocationReportingType>?
+    let describeDBSecurityGroupsAsyncOverride: DescribeDBSecurityGroupsAsyncType<ClientInvocationReportingType>?
+    let describeDBSecurityGroupsSyncOverride: DescribeDBSecurityGroupsSyncType<ClientInvocationReportingType>?
+    let describeDBSnapshotAttributesAsyncOverride: DescribeDBSnapshotAttributesAsyncType<ClientInvocationReportingType>?
+    let describeDBSnapshotAttributesSyncOverride: DescribeDBSnapshotAttributesSyncType<ClientInvocationReportingType>?
+    let describeDBSnapshotsAsyncOverride: DescribeDBSnapshotsAsyncType<ClientInvocationReportingType>?
+    let describeDBSnapshotsSyncOverride: DescribeDBSnapshotsSyncType<ClientInvocationReportingType>?
+    let describeDBSubnetGroupsAsyncOverride: DescribeDBSubnetGroupsAsyncType<ClientInvocationReportingType>?
+    let describeDBSubnetGroupsSyncOverride: DescribeDBSubnetGroupsSyncType<ClientInvocationReportingType>?
+    let describeEngineDefaultClusterParametersAsyncOverride: DescribeEngineDefaultClusterParametersAsyncType<ClientInvocationReportingType>?
+    let describeEngineDefaultClusterParametersSyncOverride: DescribeEngineDefaultClusterParametersSyncType<ClientInvocationReportingType>?
+    let describeEngineDefaultParametersAsyncOverride: DescribeEngineDefaultParametersAsyncType<ClientInvocationReportingType>?
+    let describeEngineDefaultParametersSyncOverride: DescribeEngineDefaultParametersSyncType<ClientInvocationReportingType>?
+    let describeEventCategoriesAsyncOverride: DescribeEventCategoriesAsyncType<ClientInvocationReportingType>?
+    let describeEventCategoriesSyncOverride: DescribeEventCategoriesSyncType<ClientInvocationReportingType>?
+    let describeEventSubscriptionsAsyncOverride: DescribeEventSubscriptionsAsyncType<ClientInvocationReportingType>?
+    let describeEventSubscriptionsSyncOverride: DescribeEventSubscriptionsSyncType<ClientInvocationReportingType>?
+    let describeEventsAsyncOverride: DescribeEventsAsyncType<ClientInvocationReportingType>?
+    let describeEventsSyncOverride: DescribeEventsSyncType<ClientInvocationReportingType>?
+    let describeExportTasksAsyncOverride: DescribeExportTasksAsyncType<ClientInvocationReportingType>?
+    let describeExportTasksSyncOverride: DescribeExportTasksSyncType<ClientInvocationReportingType>?
+    let describeGlobalClustersAsyncOverride: DescribeGlobalClustersAsyncType<ClientInvocationReportingType>?
+    let describeGlobalClustersSyncOverride: DescribeGlobalClustersSyncType<ClientInvocationReportingType>?
+    let describeInstallationMediaAsyncOverride: DescribeInstallationMediaAsyncType<ClientInvocationReportingType>?
+    let describeInstallationMediaSyncOverride: DescribeInstallationMediaSyncType<ClientInvocationReportingType>?
+    let describeOptionGroupOptionsAsyncOverride: DescribeOptionGroupOptionsAsyncType<ClientInvocationReportingType>?
+    let describeOptionGroupOptionsSyncOverride: DescribeOptionGroupOptionsSyncType<ClientInvocationReportingType>?
+    let describeOptionGroupsAsyncOverride: DescribeOptionGroupsAsyncType<ClientInvocationReportingType>?
+    let describeOptionGroupsSyncOverride: DescribeOptionGroupsSyncType<ClientInvocationReportingType>?
+    let describeOrderableDBInstanceOptionsAsyncOverride: DescribeOrderableDBInstanceOptionsAsyncType<ClientInvocationReportingType>?
+    let describeOrderableDBInstanceOptionsSyncOverride: DescribeOrderableDBInstanceOptionsSyncType<ClientInvocationReportingType>?
+    let describePendingMaintenanceActionsAsyncOverride: DescribePendingMaintenanceActionsAsyncType<ClientInvocationReportingType>?
+    let describePendingMaintenanceActionsSyncOverride: DescribePendingMaintenanceActionsSyncType<ClientInvocationReportingType>?
+    let describeReservedDBInstancesAsyncOverride: DescribeReservedDBInstancesAsyncType<ClientInvocationReportingType>?
+    let describeReservedDBInstancesSyncOverride: DescribeReservedDBInstancesSyncType<ClientInvocationReportingType>?
+    let describeReservedDBInstancesOfferingsAsyncOverride: DescribeReservedDBInstancesOfferingsAsyncType<ClientInvocationReportingType>?
+    let describeReservedDBInstancesOfferingsSyncOverride: DescribeReservedDBInstancesOfferingsSyncType<ClientInvocationReportingType>?
+    let describeSourceRegionsAsyncOverride: DescribeSourceRegionsAsyncType<ClientInvocationReportingType>?
+    let describeSourceRegionsSyncOverride: DescribeSourceRegionsSyncType<ClientInvocationReportingType>?
+    let describeValidDBInstanceModificationsAsyncOverride: DescribeValidDBInstanceModificationsAsyncType<ClientInvocationReportingType>?
+    let describeValidDBInstanceModificationsSyncOverride: DescribeValidDBInstanceModificationsSyncType<ClientInvocationReportingType>?
+    let downloadDBLogFilePortionAsyncOverride: DownloadDBLogFilePortionAsyncType<ClientInvocationReportingType>?
+    let downloadDBLogFilePortionSyncOverride: DownloadDBLogFilePortionSyncType<ClientInvocationReportingType>?
+    let failoverDBClusterAsyncOverride: FailoverDBClusterAsyncType<ClientInvocationReportingType>?
+    let failoverDBClusterSyncOverride: FailoverDBClusterSyncType<ClientInvocationReportingType>?
+    let importInstallationMediaAsyncOverride: ImportInstallationMediaAsyncType<ClientInvocationReportingType>?
+    let importInstallationMediaSyncOverride: ImportInstallationMediaSyncType<ClientInvocationReportingType>?
+    let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType<ClientInvocationReportingType>?
+    let listTagsForResourceSyncOverride: ListTagsForResourceSyncType<ClientInvocationReportingType>?
+    let modifyCertificatesAsyncOverride: ModifyCertificatesAsyncType<ClientInvocationReportingType>?
+    let modifyCertificatesSyncOverride: ModifyCertificatesSyncType<ClientInvocationReportingType>?
+    let modifyCurrentDBClusterCapacityAsyncOverride: ModifyCurrentDBClusterCapacityAsyncType<ClientInvocationReportingType>?
+    let modifyCurrentDBClusterCapacitySyncOverride: ModifyCurrentDBClusterCapacitySyncType<ClientInvocationReportingType>?
+    let modifyDBClusterAsyncOverride: ModifyDBClusterAsyncType<ClientInvocationReportingType>?
+    let modifyDBClusterSyncOverride: ModifyDBClusterSyncType<ClientInvocationReportingType>?
+    let modifyDBClusterEndpointAsyncOverride: ModifyDBClusterEndpointAsyncType<ClientInvocationReportingType>?
+    let modifyDBClusterEndpointSyncOverride: ModifyDBClusterEndpointSyncType<ClientInvocationReportingType>?
+    let modifyDBClusterParameterGroupAsyncOverride: ModifyDBClusterParameterGroupAsyncType<ClientInvocationReportingType>?
+    let modifyDBClusterParameterGroupSyncOverride: ModifyDBClusterParameterGroupSyncType<ClientInvocationReportingType>?
+    let modifyDBClusterSnapshotAttributeAsyncOverride: ModifyDBClusterSnapshotAttributeAsyncType<ClientInvocationReportingType>?
+    let modifyDBClusterSnapshotAttributeSyncOverride: ModifyDBClusterSnapshotAttributeSyncType<ClientInvocationReportingType>?
+    let modifyDBInstanceAsyncOverride: ModifyDBInstanceAsyncType<ClientInvocationReportingType>?
+    let modifyDBInstanceSyncOverride: ModifyDBInstanceSyncType<ClientInvocationReportingType>?
+    let modifyDBParameterGroupAsyncOverride: ModifyDBParameterGroupAsyncType<ClientInvocationReportingType>?
+    let modifyDBParameterGroupSyncOverride: ModifyDBParameterGroupSyncType<ClientInvocationReportingType>?
+    let modifyDBProxyAsyncOverride: ModifyDBProxyAsyncType<ClientInvocationReportingType>?
+    let modifyDBProxySyncOverride: ModifyDBProxySyncType<ClientInvocationReportingType>?
+    let modifyDBProxyTargetGroupAsyncOverride: ModifyDBProxyTargetGroupAsyncType<ClientInvocationReportingType>?
+    let modifyDBProxyTargetGroupSyncOverride: ModifyDBProxyTargetGroupSyncType<ClientInvocationReportingType>?
+    let modifyDBSnapshotAsyncOverride: ModifyDBSnapshotAsyncType<ClientInvocationReportingType>?
+    let modifyDBSnapshotSyncOverride: ModifyDBSnapshotSyncType<ClientInvocationReportingType>?
+    let modifyDBSnapshotAttributeAsyncOverride: ModifyDBSnapshotAttributeAsyncType<ClientInvocationReportingType>?
+    let modifyDBSnapshotAttributeSyncOverride: ModifyDBSnapshotAttributeSyncType<ClientInvocationReportingType>?
+    let modifyDBSubnetGroupAsyncOverride: ModifyDBSubnetGroupAsyncType<ClientInvocationReportingType>?
+    let modifyDBSubnetGroupSyncOverride: ModifyDBSubnetGroupSyncType<ClientInvocationReportingType>?
+    let modifyEventSubscriptionAsyncOverride: ModifyEventSubscriptionAsyncType<ClientInvocationReportingType>?
+    let modifyEventSubscriptionSyncOverride: ModifyEventSubscriptionSyncType<ClientInvocationReportingType>?
+    let modifyGlobalClusterAsyncOverride: ModifyGlobalClusterAsyncType<ClientInvocationReportingType>?
+    let modifyGlobalClusterSyncOverride: ModifyGlobalClusterSyncType<ClientInvocationReportingType>?
+    let modifyOptionGroupAsyncOverride: ModifyOptionGroupAsyncType<ClientInvocationReportingType>?
+    let modifyOptionGroupSyncOverride: ModifyOptionGroupSyncType<ClientInvocationReportingType>?
+    let promoteReadReplicaAsyncOverride: PromoteReadReplicaAsyncType<ClientInvocationReportingType>?
+    let promoteReadReplicaSyncOverride: PromoteReadReplicaSyncType<ClientInvocationReportingType>?
+    let promoteReadReplicaDBClusterAsyncOverride: PromoteReadReplicaDBClusterAsyncType<ClientInvocationReportingType>?
+    let promoteReadReplicaDBClusterSyncOverride: PromoteReadReplicaDBClusterSyncType<ClientInvocationReportingType>?
+    let purchaseReservedDBInstancesOfferingAsyncOverride: PurchaseReservedDBInstancesOfferingAsyncType<ClientInvocationReportingType>?
+    let purchaseReservedDBInstancesOfferingSyncOverride: PurchaseReservedDBInstancesOfferingSyncType<ClientInvocationReportingType>?
+    let rebootDBInstanceAsyncOverride: RebootDBInstanceAsyncType<ClientInvocationReportingType>?
+    let rebootDBInstanceSyncOverride: RebootDBInstanceSyncType<ClientInvocationReportingType>?
+    let registerDBProxyTargetsAsyncOverride: RegisterDBProxyTargetsAsyncType<ClientInvocationReportingType>?
+    let registerDBProxyTargetsSyncOverride: RegisterDBProxyTargetsSyncType<ClientInvocationReportingType>?
+    let removeFromGlobalClusterAsyncOverride: RemoveFromGlobalClusterAsyncType<ClientInvocationReportingType>?
+    let removeFromGlobalClusterSyncOverride: RemoveFromGlobalClusterSyncType<ClientInvocationReportingType>?
+    let removeRoleFromDBClusterAsyncOverride: RemoveRoleFromDBClusterAsyncType<ClientInvocationReportingType>?
+    let removeRoleFromDBClusterSyncOverride: RemoveRoleFromDBClusterSyncType<ClientInvocationReportingType>?
+    let removeRoleFromDBInstanceAsyncOverride: RemoveRoleFromDBInstanceAsyncType<ClientInvocationReportingType>?
+    let removeRoleFromDBInstanceSyncOverride: RemoveRoleFromDBInstanceSyncType<ClientInvocationReportingType>?
+    let removeSourceIdentifierFromSubscriptionAsyncOverride: RemoveSourceIdentifierFromSubscriptionAsyncType<ClientInvocationReportingType>?
+    let removeSourceIdentifierFromSubscriptionSyncOverride: RemoveSourceIdentifierFromSubscriptionSyncType<ClientInvocationReportingType>?
+    let removeTagsFromResourceAsyncOverride: RemoveTagsFromResourceAsyncType<ClientInvocationReportingType>?
+    let removeTagsFromResourceSyncOverride: RemoveTagsFromResourceSyncType<ClientInvocationReportingType>?
+    let resetDBClusterParameterGroupAsyncOverride: ResetDBClusterParameterGroupAsyncType<ClientInvocationReportingType>?
+    let resetDBClusterParameterGroupSyncOverride: ResetDBClusterParameterGroupSyncType<ClientInvocationReportingType>?
+    let resetDBParameterGroupAsyncOverride: ResetDBParameterGroupAsyncType<ClientInvocationReportingType>?
+    let resetDBParameterGroupSyncOverride: ResetDBParameterGroupSyncType<ClientInvocationReportingType>?
+    let restoreDBClusterFromS3AsyncOverride: RestoreDBClusterFromS3AsyncType<ClientInvocationReportingType>?
+    let restoreDBClusterFromS3SyncOverride: RestoreDBClusterFromS3SyncType<ClientInvocationReportingType>?
+    let restoreDBClusterFromSnapshotAsyncOverride: RestoreDBClusterFromSnapshotAsyncType<ClientInvocationReportingType>?
+    let restoreDBClusterFromSnapshotSyncOverride: RestoreDBClusterFromSnapshotSyncType<ClientInvocationReportingType>?
+    let restoreDBClusterToPointInTimeAsyncOverride: RestoreDBClusterToPointInTimeAsyncType<ClientInvocationReportingType>?
+    let restoreDBClusterToPointInTimeSyncOverride: RestoreDBClusterToPointInTimeSyncType<ClientInvocationReportingType>?
+    let restoreDBInstanceFromDBSnapshotAsyncOverride: RestoreDBInstanceFromDBSnapshotAsyncType<ClientInvocationReportingType>?
+    let restoreDBInstanceFromDBSnapshotSyncOverride: RestoreDBInstanceFromDBSnapshotSyncType<ClientInvocationReportingType>?
+    let restoreDBInstanceFromS3AsyncOverride: RestoreDBInstanceFromS3AsyncType<ClientInvocationReportingType>?
+    let restoreDBInstanceFromS3SyncOverride: RestoreDBInstanceFromS3SyncType<ClientInvocationReportingType>?
+    let restoreDBInstanceToPointInTimeAsyncOverride: RestoreDBInstanceToPointInTimeAsyncType<ClientInvocationReportingType>?
+    let restoreDBInstanceToPointInTimeSyncOverride: RestoreDBInstanceToPointInTimeSyncType<ClientInvocationReportingType>?
+    let revokeDBSecurityGroupIngressAsyncOverride: RevokeDBSecurityGroupIngressAsyncType<ClientInvocationReportingType>?
+    let revokeDBSecurityGroupIngressSyncOverride: RevokeDBSecurityGroupIngressSyncType<ClientInvocationReportingType>?
+    let startActivityStreamAsyncOverride: StartActivityStreamAsyncType<ClientInvocationReportingType>?
+    let startActivityStreamSyncOverride: StartActivityStreamSyncType<ClientInvocationReportingType>?
+    let startDBClusterAsyncOverride: StartDBClusterAsyncType<ClientInvocationReportingType>?
+    let startDBClusterSyncOverride: StartDBClusterSyncType<ClientInvocationReportingType>?
+    let startDBInstanceAsyncOverride: StartDBInstanceAsyncType<ClientInvocationReportingType>?
+    let startDBInstanceSyncOverride: StartDBInstanceSyncType<ClientInvocationReportingType>?
+    let startExportTaskAsyncOverride: StartExportTaskAsyncType<ClientInvocationReportingType>?
+    let startExportTaskSyncOverride: StartExportTaskSyncType<ClientInvocationReportingType>?
+    let stopActivityStreamAsyncOverride: StopActivityStreamAsyncType<ClientInvocationReportingType>?
+    let stopActivityStreamSyncOverride: StopActivityStreamSyncType<ClientInvocationReportingType>?
+    let stopDBClusterAsyncOverride: StopDBClusterAsyncType<ClientInvocationReportingType>?
+    let stopDBClusterSyncOverride: StopDBClusterSyncType<ClientInvocationReportingType>?
+    let stopDBInstanceAsyncOverride: StopDBInstanceAsyncType<ClientInvocationReportingType>?
+    let stopDBInstanceSyncOverride: StopDBInstanceSyncType<ClientInvocationReportingType>?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(
-            addRoleToDBClusterAsync: RDSClientProtocol.AddRoleToDBClusterAsyncType? = nil,
-            addRoleToDBClusterSync: RDSClientProtocol.AddRoleToDBClusterSyncType? = nil,
-            addRoleToDBInstanceAsync: RDSClientProtocol.AddRoleToDBInstanceAsyncType? = nil,
-            addRoleToDBInstanceSync: RDSClientProtocol.AddRoleToDBInstanceSyncType? = nil,
-            addSourceIdentifierToSubscriptionAsync: RDSClientProtocol.AddSourceIdentifierToSubscriptionAsyncType? = nil,
-            addSourceIdentifierToSubscriptionSync: RDSClientProtocol.AddSourceIdentifierToSubscriptionSyncType? = nil,
-            addTagsToResourceAsync: RDSClientProtocol.AddTagsToResourceAsyncType? = nil,
-            addTagsToResourceSync: RDSClientProtocol.AddTagsToResourceSyncType? = nil,
-            applyPendingMaintenanceActionAsync: RDSClientProtocol.ApplyPendingMaintenanceActionAsyncType? = nil,
-            applyPendingMaintenanceActionSync: RDSClientProtocol.ApplyPendingMaintenanceActionSyncType? = nil,
-            authorizeDBSecurityGroupIngressAsync: RDSClientProtocol.AuthorizeDBSecurityGroupIngressAsyncType? = nil,
-            authorizeDBSecurityGroupIngressSync: RDSClientProtocol.AuthorizeDBSecurityGroupIngressSyncType? = nil,
-            backtrackDBClusterAsync: RDSClientProtocol.BacktrackDBClusterAsyncType? = nil,
-            backtrackDBClusterSync: RDSClientProtocol.BacktrackDBClusterSyncType? = nil,
-            cancelExportTaskAsync: RDSClientProtocol.CancelExportTaskAsyncType? = nil,
-            cancelExportTaskSync: RDSClientProtocol.CancelExportTaskSyncType? = nil,
-            copyDBClusterParameterGroupAsync: RDSClientProtocol.CopyDBClusterParameterGroupAsyncType? = nil,
-            copyDBClusterParameterGroupSync: RDSClientProtocol.CopyDBClusterParameterGroupSyncType? = nil,
-            copyDBClusterSnapshotAsync: RDSClientProtocol.CopyDBClusterSnapshotAsyncType? = nil,
-            copyDBClusterSnapshotSync: RDSClientProtocol.CopyDBClusterSnapshotSyncType? = nil,
-            copyDBParameterGroupAsync: RDSClientProtocol.CopyDBParameterGroupAsyncType? = nil,
-            copyDBParameterGroupSync: RDSClientProtocol.CopyDBParameterGroupSyncType? = nil,
-            copyDBSnapshotAsync: RDSClientProtocol.CopyDBSnapshotAsyncType? = nil,
-            copyDBSnapshotSync: RDSClientProtocol.CopyDBSnapshotSyncType? = nil,
-            copyOptionGroupAsync: RDSClientProtocol.CopyOptionGroupAsyncType? = nil,
-            copyOptionGroupSync: RDSClientProtocol.CopyOptionGroupSyncType? = nil,
-            createCustomAvailabilityZoneAsync: RDSClientProtocol.CreateCustomAvailabilityZoneAsyncType? = nil,
-            createCustomAvailabilityZoneSync: RDSClientProtocol.CreateCustomAvailabilityZoneSyncType? = nil,
-            createDBClusterAsync: RDSClientProtocol.CreateDBClusterAsyncType? = nil,
-            createDBClusterSync: RDSClientProtocol.CreateDBClusterSyncType? = nil,
-            createDBClusterEndpointAsync: RDSClientProtocol.CreateDBClusterEndpointAsyncType? = nil,
-            createDBClusterEndpointSync: RDSClientProtocol.CreateDBClusterEndpointSyncType? = nil,
-            createDBClusterParameterGroupAsync: RDSClientProtocol.CreateDBClusterParameterGroupAsyncType? = nil,
-            createDBClusterParameterGroupSync: RDSClientProtocol.CreateDBClusterParameterGroupSyncType? = nil,
-            createDBClusterSnapshotAsync: RDSClientProtocol.CreateDBClusterSnapshotAsyncType? = nil,
-            createDBClusterSnapshotSync: RDSClientProtocol.CreateDBClusterSnapshotSyncType? = nil,
-            createDBInstanceAsync: RDSClientProtocol.CreateDBInstanceAsyncType? = nil,
-            createDBInstanceSync: RDSClientProtocol.CreateDBInstanceSyncType? = nil,
-            createDBInstanceReadReplicaAsync: RDSClientProtocol.CreateDBInstanceReadReplicaAsyncType? = nil,
-            createDBInstanceReadReplicaSync: RDSClientProtocol.CreateDBInstanceReadReplicaSyncType? = nil,
-            createDBParameterGroupAsync: RDSClientProtocol.CreateDBParameterGroupAsyncType? = nil,
-            createDBParameterGroupSync: RDSClientProtocol.CreateDBParameterGroupSyncType? = nil,
-            createDBProxyAsync: RDSClientProtocol.CreateDBProxyAsyncType? = nil,
-            createDBProxySync: RDSClientProtocol.CreateDBProxySyncType? = nil,
-            createDBSecurityGroupAsync: RDSClientProtocol.CreateDBSecurityGroupAsyncType? = nil,
-            createDBSecurityGroupSync: RDSClientProtocol.CreateDBSecurityGroupSyncType? = nil,
-            createDBSnapshotAsync: RDSClientProtocol.CreateDBSnapshotAsyncType? = nil,
-            createDBSnapshotSync: RDSClientProtocol.CreateDBSnapshotSyncType? = nil,
-            createDBSubnetGroupAsync: RDSClientProtocol.CreateDBSubnetGroupAsyncType? = nil,
-            createDBSubnetGroupSync: RDSClientProtocol.CreateDBSubnetGroupSyncType? = nil,
-            createEventSubscriptionAsync: RDSClientProtocol.CreateEventSubscriptionAsyncType? = nil,
-            createEventSubscriptionSync: RDSClientProtocol.CreateEventSubscriptionSyncType? = nil,
-            createGlobalClusterAsync: RDSClientProtocol.CreateGlobalClusterAsyncType? = nil,
-            createGlobalClusterSync: RDSClientProtocol.CreateGlobalClusterSyncType? = nil,
-            createOptionGroupAsync: RDSClientProtocol.CreateOptionGroupAsyncType? = nil,
-            createOptionGroupSync: RDSClientProtocol.CreateOptionGroupSyncType? = nil,
-            deleteCustomAvailabilityZoneAsync: RDSClientProtocol.DeleteCustomAvailabilityZoneAsyncType? = nil,
-            deleteCustomAvailabilityZoneSync: RDSClientProtocol.DeleteCustomAvailabilityZoneSyncType? = nil,
-            deleteDBClusterAsync: RDSClientProtocol.DeleteDBClusterAsyncType? = nil,
-            deleteDBClusterSync: RDSClientProtocol.DeleteDBClusterSyncType? = nil,
-            deleteDBClusterEndpointAsync: RDSClientProtocol.DeleteDBClusterEndpointAsyncType? = nil,
-            deleteDBClusterEndpointSync: RDSClientProtocol.DeleteDBClusterEndpointSyncType? = nil,
-            deleteDBClusterParameterGroupAsync: RDSClientProtocol.DeleteDBClusterParameterGroupAsyncType? = nil,
-            deleteDBClusterParameterGroupSync: RDSClientProtocol.DeleteDBClusterParameterGroupSyncType? = nil,
-            deleteDBClusterSnapshotAsync: RDSClientProtocol.DeleteDBClusterSnapshotAsyncType? = nil,
-            deleteDBClusterSnapshotSync: RDSClientProtocol.DeleteDBClusterSnapshotSyncType? = nil,
-            deleteDBInstanceAsync: RDSClientProtocol.DeleteDBInstanceAsyncType? = nil,
-            deleteDBInstanceSync: RDSClientProtocol.DeleteDBInstanceSyncType? = nil,
-            deleteDBInstanceAutomatedBackupAsync: RDSClientProtocol.DeleteDBInstanceAutomatedBackupAsyncType? = nil,
-            deleteDBInstanceAutomatedBackupSync: RDSClientProtocol.DeleteDBInstanceAutomatedBackupSyncType? = nil,
-            deleteDBParameterGroupAsync: RDSClientProtocol.DeleteDBParameterGroupAsyncType? = nil,
-            deleteDBParameterGroupSync: RDSClientProtocol.DeleteDBParameterGroupSyncType? = nil,
-            deleteDBProxyAsync: RDSClientProtocol.DeleteDBProxyAsyncType? = nil,
-            deleteDBProxySync: RDSClientProtocol.DeleteDBProxySyncType? = nil,
-            deleteDBSecurityGroupAsync: RDSClientProtocol.DeleteDBSecurityGroupAsyncType? = nil,
-            deleteDBSecurityGroupSync: RDSClientProtocol.DeleteDBSecurityGroupSyncType? = nil,
-            deleteDBSnapshotAsync: RDSClientProtocol.DeleteDBSnapshotAsyncType? = nil,
-            deleteDBSnapshotSync: RDSClientProtocol.DeleteDBSnapshotSyncType? = nil,
-            deleteDBSubnetGroupAsync: RDSClientProtocol.DeleteDBSubnetGroupAsyncType? = nil,
-            deleteDBSubnetGroupSync: RDSClientProtocol.DeleteDBSubnetGroupSyncType? = nil,
-            deleteEventSubscriptionAsync: RDSClientProtocol.DeleteEventSubscriptionAsyncType? = nil,
-            deleteEventSubscriptionSync: RDSClientProtocol.DeleteEventSubscriptionSyncType? = nil,
-            deleteGlobalClusterAsync: RDSClientProtocol.DeleteGlobalClusterAsyncType? = nil,
-            deleteGlobalClusterSync: RDSClientProtocol.DeleteGlobalClusterSyncType? = nil,
-            deleteInstallationMediaAsync: RDSClientProtocol.DeleteInstallationMediaAsyncType? = nil,
-            deleteInstallationMediaSync: RDSClientProtocol.DeleteInstallationMediaSyncType? = nil,
-            deleteOptionGroupAsync: RDSClientProtocol.DeleteOptionGroupAsyncType? = nil,
-            deleteOptionGroupSync: RDSClientProtocol.DeleteOptionGroupSyncType? = nil,
-            deregisterDBProxyTargetsAsync: RDSClientProtocol.DeregisterDBProxyTargetsAsyncType? = nil,
-            deregisterDBProxyTargetsSync: RDSClientProtocol.DeregisterDBProxyTargetsSyncType? = nil,
-            describeAccountAttributesAsync: RDSClientProtocol.DescribeAccountAttributesAsyncType? = nil,
-            describeAccountAttributesSync: RDSClientProtocol.DescribeAccountAttributesSyncType? = nil,
-            describeCertificatesAsync: RDSClientProtocol.DescribeCertificatesAsyncType? = nil,
-            describeCertificatesSync: RDSClientProtocol.DescribeCertificatesSyncType? = nil,
-            describeCustomAvailabilityZonesAsync: RDSClientProtocol.DescribeCustomAvailabilityZonesAsyncType? = nil,
-            describeCustomAvailabilityZonesSync: RDSClientProtocol.DescribeCustomAvailabilityZonesSyncType? = nil,
-            describeDBClusterBacktracksAsync: RDSClientProtocol.DescribeDBClusterBacktracksAsyncType? = nil,
-            describeDBClusterBacktracksSync: RDSClientProtocol.DescribeDBClusterBacktracksSyncType? = nil,
-            describeDBClusterEndpointsAsync: RDSClientProtocol.DescribeDBClusterEndpointsAsyncType? = nil,
-            describeDBClusterEndpointsSync: RDSClientProtocol.DescribeDBClusterEndpointsSyncType? = nil,
-            describeDBClusterParameterGroupsAsync: RDSClientProtocol.DescribeDBClusterParameterGroupsAsyncType? = nil,
-            describeDBClusterParameterGroupsSync: RDSClientProtocol.DescribeDBClusterParameterGroupsSyncType? = nil,
-            describeDBClusterParametersAsync: RDSClientProtocol.DescribeDBClusterParametersAsyncType? = nil,
-            describeDBClusterParametersSync: RDSClientProtocol.DescribeDBClusterParametersSyncType? = nil,
-            describeDBClusterSnapshotAttributesAsync: RDSClientProtocol.DescribeDBClusterSnapshotAttributesAsyncType? = nil,
-            describeDBClusterSnapshotAttributesSync: RDSClientProtocol.DescribeDBClusterSnapshotAttributesSyncType? = nil,
-            describeDBClusterSnapshotsAsync: RDSClientProtocol.DescribeDBClusterSnapshotsAsyncType? = nil,
-            describeDBClusterSnapshotsSync: RDSClientProtocol.DescribeDBClusterSnapshotsSyncType? = nil,
-            describeDBClustersAsync: RDSClientProtocol.DescribeDBClustersAsyncType? = nil,
-            describeDBClustersSync: RDSClientProtocol.DescribeDBClustersSyncType? = nil,
-            describeDBEngineVersionsAsync: RDSClientProtocol.DescribeDBEngineVersionsAsyncType? = nil,
-            describeDBEngineVersionsSync: RDSClientProtocol.DescribeDBEngineVersionsSyncType? = nil,
-            describeDBInstanceAutomatedBackupsAsync: RDSClientProtocol.DescribeDBInstanceAutomatedBackupsAsyncType? = nil,
-            describeDBInstanceAutomatedBackupsSync: RDSClientProtocol.DescribeDBInstanceAutomatedBackupsSyncType? = nil,
-            describeDBInstancesAsync: RDSClientProtocol.DescribeDBInstancesAsyncType? = nil,
-            describeDBInstancesSync: RDSClientProtocol.DescribeDBInstancesSyncType? = nil,
-            describeDBLogFilesAsync: RDSClientProtocol.DescribeDBLogFilesAsyncType? = nil,
-            describeDBLogFilesSync: RDSClientProtocol.DescribeDBLogFilesSyncType? = nil,
-            describeDBParameterGroupsAsync: RDSClientProtocol.DescribeDBParameterGroupsAsyncType? = nil,
-            describeDBParameterGroupsSync: RDSClientProtocol.DescribeDBParameterGroupsSyncType? = nil,
-            describeDBParametersAsync: RDSClientProtocol.DescribeDBParametersAsyncType? = nil,
-            describeDBParametersSync: RDSClientProtocol.DescribeDBParametersSyncType? = nil,
-            describeDBProxiesAsync: RDSClientProtocol.DescribeDBProxiesAsyncType? = nil,
-            describeDBProxiesSync: RDSClientProtocol.DescribeDBProxiesSyncType? = nil,
-            describeDBProxyTargetGroupsAsync: RDSClientProtocol.DescribeDBProxyTargetGroupsAsyncType? = nil,
-            describeDBProxyTargetGroupsSync: RDSClientProtocol.DescribeDBProxyTargetGroupsSyncType? = nil,
-            describeDBProxyTargetsAsync: RDSClientProtocol.DescribeDBProxyTargetsAsyncType? = nil,
-            describeDBProxyTargetsSync: RDSClientProtocol.DescribeDBProxyTargetsSyncType? = nil,
-            describeDBSecurityGroupsAsync: RDSClientProtocol.DescribeDBSecurityGroupsAsyncType? = nil,
-            describeDBSecurityGroupsSync: RDSClientProtocol.DescribeDBSecurityGroupsSyncType? = nil,
-            describeDBSnapshotAttributesAsync: RDSClientProtocol.DescribeDBSnapshotAttributesAsyncType? = nil,
-            describeDBSnapshotAttributesSync: RDSClientProtocol.DescribeDBSnapshotAttributesSyncType? = nil,
-            describeDBSnapshotsAsync: RDSClientProtocol.DescribeDBSnapshotsAsyncType? = nil,
-            describeDBSnapshotsSync: RDSClientProtocol.DescribeDBSnapshotsSyncType? = nil,
-            describeDBSubnetGroupsAsync: RDSClientProtocol.DescribeDBSubnetGroupsAsyncType? = nil,
-            describeDBSubnetGroupsSync: RDSClientProtocol.DescribeDBSubnetGroupsSyncType? = nil,
-            describeEngineDefaultClusterParametersAsync: RDSClientProtocol.DescribeEngineDefaultClusterParametersAsyncType? = nil,
-            describeEngineDefaultClusterParametersSync: RDSClientProtocol.DescribeEngineDefaultClusterParametersSyncType? = nil,
-            describeEngineDefaultParametersAsync: RDSClientProtocol.DescribeEngineDefaultParametersAsyncType? = nil,
-            describeEngineDefaultParametersSync: RDSClientProtocol.DescribeEngineDefaultParametersSyncType? = nil,
-            describeEventCategoriesAsync: RDSClientProtocol.DescribeEventCategoriesAsyncType? = nil,
-            describeEventCategoriesSync: RDSClientProtocol.DescribeEventCategoriesSyncType? = nil,
-            describeEventSubscriptionsAsync: RDSClientProtocol.DescribeEventSubscriptionsAsyncType? = nil,
-            describeEventSubscriptionsSync: RDSClientProtocol.DescribeEventSubscriptionsSyncType? = nil,
-            describeEventsAsync: RDSClientProtocol.DescribeEventsAsyncType? = nil,
-            describeEventsSync: RDSClientProtocol.DescribeEventsSyncType? = nil,
-            describeExportTasksAsync: RDSClientProtocol.DescribeExportTasksAsyncType? = nil,
-            describeExportTasksSync: RDSClientProtocol.DescribeExportTasksSyncType? = nil,
-            describeGlobalClustersAsync: RDSClientProtocol.DescribeGlobalClustersAsyncType? = nil,
-            describeGlobalClustersSync: RDSClientProtocol.DescribeGlobalClustersSyncType? = nil,
-            describeInstallationMediaAsync: RDSClientProtocol.DescribeInstallationMediaAsyncType? = nil,
-            describeInstallationMediaSync: RDSClientProtocol.DescribeInstallationMediaSyncType? = nil,
-            describeOptionGroupOptionsAsync: RDSClientProtocol.DescribeOptionGroupOptionsAsyncType? = nil,
-            describeOptionGroupOptionsSync: RDSClientProtocol.DescribeOptionGroupOptionsSyncType? = nil,
-            describeOptionGroupsAsync: RDSClientProtocol.DescribeOptionGroupsAsyncType? = nil,
-            describeOptionGroupsSync: RDSClientProtocol.DescribeOptionGroupsSyncType? = nil,
-            describeOrderableDBInstanceOptionsAsync: RDSClientProtocol.DescribeOrderableDBInstanceOptionsAsyncType? = nil,
-            describeOrderableDBInstanceOptionsSync: RDSClientProtocol.DescribeOrderableDBInstanceOptionsSyncType? = nil,
-            describePendingMaintenanceActionsAsync: RDSClientProtocol.DescribePendingMaintenanceActionsAsyncType? = nil,
-            describePendingMaintenanceActionsSync: RDSClientProtocol.DescribePendingMaintenanceActionsSyncType? = nil,
-            describeReservedDBInstancesAsync: RDSClientProtocol.DescribeReservedDBInstancesAsyncType? = nil,
-            describeReservedDBInstancesSync: RDSClientProtocol.DescribeReservedDBInstancesSyncType? = nil,
-            describeReservedDBInstancesOfferingsAsync: RDSClientProtocol.DescribeReservedDBInstancesOfferingsAsyncType? = nil,
-            describeReservedDBInstancesOfferingsSync: RDSClientProtocol.DescribeReservedDBInstancesOfferingsSyncType? = nil,
-            describeSourceRegionsAsync: RDSClientProtocol.DescribeSourceRegionsAsyncType? = nil,
-            describeSourceRegionsSync: RDSClientProtocol.DescribeSourceRegionsSyncType? = nil,
-            describeValidDBInstanceModificationsAsync: RDSClientProtocol.DescribeValidDBInstanceModificationsAsyncType? = nil,
-            describeValidDBInstanceModificationsSync: RDSClientProtocol.DescribeValidDBInstanceModificationsSyncType? = nil,
-            downloadDBLogFilePortionAsync: RDSClientProtocol.DownloadDBLogFilePortionAsyncType? = nil,
-            downloadDBLogFilePortionSync: RDSClientProtocol.DownloadDBLogFilePortionSyncType? = nil,
-            failoverDBClusterAsync: RDSClientProtocol.FailoverDBClusterAsyncType? = nil,
-            failoverDBClusterSync: RDSClientProtocol.FailoverDBClusterSyncType? = nil,
-            importInstallationMediaAsync: RDSClientProtocol.ImportInstallationMediaAsyncType? = nil,
-            importInstallationMediaSync: RDSClientProtocol.ImportInstallationMediaSyncType? = nil,
-            listTagsForResourceAsync: RDSClientProtocol.ListTagsForResourceAsyncType? = nil,
-            listTagsForResourceSync: RDSClientProtocol.ListTagsForResourceSyncType? = nil,
-            modifyCertificatesAsync: RDSClientProtocol.ModifyCertificatesAsyncType? = nil,
-            modifyCertificatesSync: RDSClientProtocol.ModifyCertificatesSyncType? = nil,
-            modifyCurrentDBClusterCapacityAsync: RDSClientProtocol.ModifyCurrentDBClusterCapacityAsyncType? = nil,
-            modifyCurrentDBClusterCapacitySync: RDSClientProtocol.ModifyCurrentDBClusterCapacitySyncType? = nil,
-            modifyDBClusterAsync: RDSClientProtocol.ModifyDBClusterAsyncType? = nil,
-            modifyDBClusterSync: RDSClientProtocol.ModifyDBClusterSyncType? = nil,
-            modifyDBClusterEndpointAsync: RDSClientProtocol.ModifyDBClusterEndpointAsyncType? = nil,
-            modifyDBClusterEndpointSync: RDSClientProtocol.ModifyDBClusterEndpointSyncType? = nil,
-            modifyDBClusterParameterGroupAsync: RDSClientProtocol.ModifyDBClusterParameterGroupAsyncType? = nil,
-            modifyDBClusterParameterGroupSync: RDSClientProtocol.ModifyDBClusterParameterGroupSyncType? = nil,
-            modifyDBClusterSnapshotAttributeAsync: RDSClientProtocol.ModifyDBClusterSnapshotAttributeAsyncType? = nil,
-            modifyDBClusterSnapshotAttributeSync: RDSClientProtocol.ModifyDBClusterSnapshotAttributeSyncType? = nil,
-            modifyDBInstanceAsync: RDSClientProtocol.ModifyDBInstanceAsyncType? = nil,
-            modifyDBInstanceSync: RDSClientProtocol.ModifyDBInstanceSyncType? = nil,
-            modifyDBParameterGroupAsync: RDSClientProtocol.ModifyDBParameterGroupAsyncType? = nil,
-            modifyDBParameterGroupSync: RDSClientProtocol.ModifyDBParameterGroupSyncType? = nil,
-            modifyDBProxyAsync: RDSClientProtocol.ModifyDBProxyAsyncType? = nil,
-            modifyDBProxySync: RDSClientProtocol.ModifyDBProxySyncType? = nil,
-            modifyDBProxyTargetGroupAsync: RDSClientProtocol.ModifyDBProxyTargetGroupAsyncType? = nil,
-            modifyDBProxyTargetGroupSync: RDSClientProtocol.ModifyDBProxyTargetGroupSyncType? = nil,
-            modifyDBSnapshotAsync: RDSClientProtocol.ModifyDBSnapshotAsyncType? = nil,
-            modifyDBSnapshotSync: RDSClientProtocol.ModifyDBSnapshotSyncType? = nil,
-            modifyDBSnapshotAttributeAsync: RDSClientProtocol.ModifyDBSnapshotAttributeAsyncType? = nil,
-            modifyDBSnapshotAttributeSync: RDSClientProtocol.ModifyDBSnapshotAttributeSyncType? = nil,
-            modifyDBSubnetGroupAsync: RDSClientProtocol.ModifyDBSubnetGroupAsyncType? = nil,
-            modifyDBSubnetGroupSync: RDSClientProtocol.ModifyDBSubnetGroupSyncType? = nil,
-            modifyEventSubscriptionAsync: RDSClientProtocol.ModifyEventSubscriptionAsyncType? = nil,
-            modifyEventSubscriptionSync: RDSClientProtocol.ModifyEventSubscriptionSyncType? = nil,
-            modifyGlobalClusterAsync: RDSClientProtocol.ModifyGlobalClusterAsyncType? = nil,
-            modifyGlobalClusterSync: RDSClientProtocol.ModifyGlobalClusterSyncType? = nil,
-            modifyOptionGroupAsync: RDSClientProtocol.ModifyOptionGroupAsyncType? = nil,
-            modifyOptionGroupSync: RDSClientProtocol.ModifyOptionGroupSyncType? = nil,
-            promoteReadReplicaAsync: RDSClientProtocol.PromoteReadReplicaAsyncType? = nil,
-            promoteReadReplicaSync: RDSClientProtocol.PromoteReadReplicaSyncType? = nil,
-            promoteReadReplicaDBClusterAsync: RDSClientProtocol.PromoteReadReplicaDBClusterAsyncType? = nil,
-            promoteReadReplicaDBClusterSync: RDSClientProtocol.PromoteReadReplicaDBClusterSyncType? = nil,
-            purchaseReservedDBInstancesOfferingAsync: RDSClientProtocol.PurchaseReservedDBInstancesOfferingAsyncType? = nil,
-            purchaseReservedDBInstancesOfferingSync: RDSClientProtocol.PurchaseReservedDBInstancesOfferingSyncType? = nil,
-            rebootDBInstanceAsync: RDSClientProtocol.RebootDBInstanceAsyncType? = nil,
-            rebootDBInstanceSync: RDSClientProtocol.RebootDBInstanceSyncType? = nil,
-            registerDBProxyTargetsAsync: RDSClientProtocol.RegisterDBProxyTargetsAsyncType? = nil,
-            registerDBProxyTargetsSync: RDSClientProtocol.RegisterDBProxyTargetsSyncType? = nil,
-            removeFromGlobalClusterAsync: RDSClientProtocol.RemoveFromGlobalClusterAsyncType? = nil,
-            removeFromGlobalClusterSync: RDSClientProtocol.RemoveFromGlobalClusterSyncType? = nil,
-            removeRoleFromDBClusterAsync: RDSClientProtocol.RemoveRoleFromDBClusterAsyncType? = nil,
-            removeRoleFromDBClusterSync: RDSClientProtocol.RemoveRoleFromDBClusterSyncType? = nil,
-            removeRoleFromDBInstanceAsync: RDSClientProtocol.RemoveRoleFromDBInstanceAsyncType? = nil,
-            removeRoleFromDBInstanceSync: RDSClientProtocol.RemoveRoleFromDBInstanceSyncType? = nil,
-            removeSourceIdentifierFromSubscriptionAsync: RDSClientProtocol.RemoveSourceIdentifierFromSubscriptionAsyncType? = nil,
-            removeSourceIdentifierFromSubscriptionSync: RDSClientProtocol.RemoveSourceIdentifierFromSubscriptionSyncType? = nil,
-            removeTagsFromResourceAsync: RDSClientProtocol.RemoveTagsFromResourceAsyncType? = nil,
-            removeTagsFromResourceSync: RDSClientProtocol.RemoveTagsFromResourceSyncType? = nil,
-            resetDBClusterParameterGroupAsync: RDSClientProtocol.ResetDBClusterParameterGroupAsyncType? = nil,
-            resetDBClusterParameterGroupSync: RDSClientProtocol.ResetDBClusterParameterGroupSyncType? = nil,
-            resetDBParameterGroupAsync: RDSClientProtocol.ResetDBParameterGroupAsyncType? = nil,
-            resetDBParameterGroupSync: RDSClientProtocol.ResetDBParameterGroupSyncType? = nil,
-            restoreDBClusterFromS3Async: RDSClientProtocol.RestoreDBClusterFromS3AsyncType? = nil,
-            restoreDBClusterFromS3Sync: RDSClientProtocol.RestoreDBClusterFromS3SyncType? = nil,
-            restoreDBClusterFromSnapshotAsync: RDSClientProtocol.RestoreDBClusterFromSnapshotAsyncType? = nil,
-            restoreDBClusterFromSnapshotSync: RDSClientProtocol.RestoreDBClusterFromSnapshotSyncType? = nil,
-            restoreDBClusterToPointInTimeAsync: RDSClientProtocol.RestoreDBClusterToPointInTimeAsyncType? = nil,
-            restoreDBClusterToPointInTimeSync: RDSClientProtocol.RestoreDBClusterToPointInTimeSyncType? = nil,
-            restoreDBInstanceFromDBSnapshotAsync: RDSClientProtocol.RestoreDBInstanceFromDBSnapshotAsyncType? = nil,
-            restoreDBInstanceFromDBSnapshotSync: RDSClientProtocol.RestoreDBInstanceFromDBSnapshotSyncType? = nil,
-            restoreDBInstanceFromS3Async: RDSClientProtocol.RestoreDBInstanceFromS3AsyncType? = nil,
-            restoreDBInstanceFromS3Sync: RDSClientProtocol.RestoreDBInstanceFromS3SyncType? = nil,
-            restoreDBInstanceToPointInTimeAsync: RDSClientProtocol.RestoreDBInstanceToPointInTimeAsyncType? = nil,
-            restoreDBInstanceToPointInTimeSync: RDSClientProtocol.RestoreDBInstanceToPointInTimeSyncType? = nil,
-            revokeDBSecurityGroupIngressAsync: RDSClientProtocol.RevokeDBSecurityGroupIngressAsyncType? = nil,
-            revokeDBSecurityGroupIngressSync: RDSClientProtocol.RevokeDBSecurityGroupIngressSyncType? = nil,
-            startActivityStreamAsync: RDSClientProtocol.StartActivityStreamAsyncType? = nil,
-            startActivityStreamSync: RDSClientProtocol.StartActivityStreamSyncType? = nil,
-            startDBClusterAsync: RDSClientProtocol.StartDBClusterAsyncType? = nil,
-            startDBClusterSync: RDSClientProtocol.StartDBClusterSyncType? = nil,
-            startDBInstanceAsync: RDSClientProtocol.StartDBInstanceAsyncType? = nil,
-            startDBInstanceSync: RDSClientProtocol.StartDBInstanceSyncType? = nil,
-            startExportTaskAsync: RDSClientProtocol.StartExportTaskAsyncType? = nil,
-            startExportTaskSync: RDSClientProtocol.StartExportTaskSyncType? = nil,
-            stopActivityStreamAsync: RDSClientProtocol.StopActivityStreamAsyncType? = nil,
-            stopActivityStreamSync: RDSClientProtocol.StopActivityStreamSyncType? = nil,
-            stopDBClusterAsync: RDSClientProtocol.StopDBClusterAsyncType? = nil,
-            stopDBClusterSync: RDSClientProtocol.StopDBClusterSyncType? = nil,
-            stopDBInstanceAsync: RDSClientProtocol.StopDBInstanceAsyncType? = nil,
-            stopDBInstanceSync: RDSClientProtocol.StopDBInstanceSyncType? = nil) {
+            addRoleToDBClusterAsync: AddRoleToDBClusterAsyncType<ClientInvocationReportingType>? = nil,
+            addRoleToDBClusterSync: AddRoleToDBClusterSyncType<ClientInvocationReportingType>? = nil,
+            addRoleToDBInstanceAsync: AddRoleToDBInstanceAsyncType<ClientInvocationReportingType>? = nil,
+            addRoleToDBInstanceSync: AddRoleToDBInstanceSyncType<ClientInvocationReportingType>? = nil,
+            addSourceIdentifierToSubscriptionAsync: AddSourceIdentifierToSubscriptionAsyncType<ClientInvocationReportingType>? = nil,
+            addSourceIdentifierToSubscriptionSync: AddSourceIdentifierToSubscriptionSyncType<ClientInvocationReportingType>? = nil,
+            addTagsToResourceAsync: AddTagsToResourceAsyncType<ClientInvocationReportingType>? = nil,
+            addTagsToResourceSync: AddTagsToResourceSyncType<ClientInvocationReportingType>? = nil,
+            applyPendingMaintenanceActionAsync: ApplyPendingMaintenanceActionAsyncType<ClientInvocationReportingType>? = nil,
+            applyPendingMaintenanceActionSync: ApplyPendingMaintenanceActionSyncType<ClientInvocationReportingType>? = nil,
+            authorizeDBSecurityGroupIngressAsync: AuthorizeDBSecurityGroupIngressAsyncType<ClientInvocationReportingType>? = nil,
+            authorizeDBSecurityGroupIngressSync: AuthorizeDBSecurityGroupIngressSyncType<ClientInvocationReportingType>? = nil,
+            backtrackDBClusterAsync: BacktrackDBClusterAsyncType<ClientInvocationReportingType>? = nil,
+            backtrackDBClusterSync: BacktrackDBClusterSyncType<ClientInvocationReportingType>? = nil,
+            cancelExportTaskAsync: CancelExportTaskAsyncType<ClientInvocationReportingType>? = nil,
+            cancelExportTaskSync: CancelExportTaskSyncType<ClientInvocationReportingType>? = nil,
+            copyDBClusterParameterGroupAsync: CopyDBClusterParameterGroupAsyncType<ClientInvocationReportingType>? = nil,
+            copyDBClusterParameterGroupSync: CopyDBClusterParameterGroupSyncType<ClientInvocationReportingType>? = nil,
+            copyDBClusterSnapshotAsync: CopyDBClusterSnapshotAsyncType<ClientInvocationReportingType>? = nil,
+            copyDBClusterSnapshotSync: CopyDBClusterSnapshotSyncType<ClientInvocationReportingType>? = nil,
+            copyDBParameterGroupAsync: CopyDBParameterGroupAsyncType<ClientInvocationReportingType>? = nil,
+            copyDBParameterGroupSync: CopyDBParameterGroupSyncType<ClientInvocationReportingType>? = nil,
+            copyDBSnapshotAsync: CopyDBSnapshotAsyncType<ClientInvocationReportingType>? = nil,
+            copyDBSnapshotSync: CopyDBSnapshotSyncType<ClientInvocationReportingType>? = nil,
+            copyOptionGroupAsync: CopyOptionGroupAsyncType<ClientInvocationReportingType>? = nil,
+            copyOptionGroupSync: CopyOptionGroupSyncType<ClientInvocationReportingType>? = nil,
+            createCustomAvailabilityZoneAsync: CreateCustomAvailabilityZoneAsyncType<ClientInvocationReportingType>? = nil,
+            createCustomAvailabilityZoneSync: CreateCustomAvailabilityZoneSyncType<ClientInvocationReportingType>? = nil,
+            createDBClusterAsync: CreateDBClusterAsyncType<ClientInvocationReportingType>? = nil,
+            createDBClusterSync: CreateDBClusterSyncType<ClientInvocationReportingType>? = nil,
+            createDBClusterEndpointAsync: CreateDBClusterEndpointAsyncType<ClientInvocationReportingType>? = nil,
+            createDBClusterEndpointSync: CreateDBClusterEndpointSyncType<ClientInvocationReportingType>? = nil,
+            createDBClusterParameterGroupAsync: CreateDBClusterParameterGroupAsyncType<ClientInvocationReportingType>? = nil,
+            createDBClusterParameterGroupSync: CreateDBClusterParameterGroupSyncType<ClientInvocationReportingType>? = nil,
+            createDBClusterSnapshotAsync: CreateDBClusterSnapshotAsyncType<ClientInvocationReportingType>? = nil,
+            createDBClusterSnapshotSync: CreateDBClusterSnapshotSyncType<ClientInvocationReportingType>? = nil,
+            createDBInstanceAsync: CreateDBInstanceAsyncType<ClientInvocationReportingType>? = nil,
+            createDBInstanceSync: CreateDBInstanceSyncType<ClientInvocationReportingType>? = nil,
+            createDBInstanceReadReplicaAsync: CreateDBInstanceReadReplicaAsyncType<ClientInvocationReportingType>? = nil,
+            createDBInstanceReadReplicaSync: CreateDBInstanceReadReplicaSyncType<ClientInvocationReportingType>? = nil,
+            createDBParameterGroupAsync: CreateDBParameterGroupAsyncType<ClientInvocationReportingType>? = nil,
+            createDBParameterGroupSync: CreateDBParameterGroupSyncType<ClientInvocationReportingType>? = nil,
+            createDBProxyAsync: CreateDBProxyAsyncType<ClientInvocationReportingType>? = nil,
+            createDBProxySync: CreateDBProxySyncType<ClientInvocationReportingType>? = nil,
+            createDBSecurityGroupAsync: CreateDBSecurityGroupAsyncType<ClientInvocationReportingType>? = nil,
+            createDBSecurityGroupSync: CreateDBSecurityGroupSyncType<ClientInvocationReportingType>? = nil,
+            createDBSnapshotAsync: CreateDBSnapshotAsyncType<ClientInvocationReportingType>? = nil,
+            createDBSnapshotSync: CreateDBSnapshotSyncType<ClientInvocationReportingType>? = nil,
+            createDBSubnetGroupAsync: CreateDBSubnetGroupAsyncType<ClientInvocationReportingType>? = nil,
+            createDBSubnetGroupSync: CreateDBSubnetGroupSyncType<ClientInvocationReportingType>? = nil,
+            createEventSubscriptionAsync: CreateEventSubscriptionAsyncType<ClientInvocationReportingType>? = nil,
+            createEventSubscriptionSync: CreateEventSubscriptionSyncType<ClientInvocationReportingType>? = nil,
+            createGlobalClusterAsync: CreateGlobalClusterAsyncType<ClientInvocationReportingType>? = nil,
+            createGlobalClusterSync: CreateGlobalClusterSyncType<ClientInvocationReportingType>? = nil,
+            createOptionGroupAsync: CreateOptionGroupAsyncType<ClientInvocationReportingType>? = nil,
+            createOptionGroupSync: CreateOptionGroupSyncType<ClientInvocationReportingType>? = nil,
+            deleteCustomAvailabilityZoneAsync: DeleteCustomAvailabilityZoneAsyncType<ClientInvocationReportingType>? = nil,
+            deleteCustomAvailabilityZoneSync: DeleteCustomAvailabilityZoneSyncType<ClientInvocationReportingType>? = nil,
+            deleteDBClusterAsync: DeleteDBClusterAsyncType<ClientInvocationReportingType>? = nil,
+            deleteDBClusterSync: DeleteDBClusterSyncType<ClientInvocationReportingType>? = nil,
+            deleteDBClusterEndpointAsync: DeleteDBClusterEndpointAsyncType<ClientInvocationReportingType>? = nil,
+            deleteDBClusterEndpointSync: DeleteDBClusterEndpointSyncType<ClientInvocationReportingType>? = nil,
+            deleteDBClusterParameterGroupAsync: DeleteDBClusterParameterGroupAsyncType<ClientInvocationReportingType>? = nil,
+            deleteDBClusterParameterGroupSync: DeleteDBClusterParameterGroupSyncType<ClientInvocationReportingType>? = nil,
+            deleteDBClusterSnapshotAsync: DeleteDBClusterSnapshotAsyncType<ClientInvocationReportingType>? = nil,
+            deleteDBClusterSnapshotSync: DeleteDBClusterSnapshotSyncType<ClientInvocationReportingType>? = nil,
+            deleteDBInstanceAsync: DeleteDBInstanceAsyncType<ClientInvocationReportingType>? = nil,
+            deleteDBInstanceSync: DeleteDBInstanceSyncType<ClientInvocationReportingType>? = nil,
+            deleteDBInstanceAutomatedBackupAsync: DeleteDBInstanceAutomatedBackupAsyncType<ClientInvocationReportingType>? = nil,
+            deleteDBInstanceAutomatedBackupSync: DeleteDBInstanceAutomatedBackupSyncType<ClientInvocationReportingType>? = nil,
+            deleteDBParameterGroupAsync: DeleteDBParameterGroupAsyncType<ClientInvocationReportingType>? = nil,
+            deleteDBParameterGroupSync: DeleteDBParameterGroupSyncType<ClientInvocationReportingType>? = nil,
+            deleteDBProxyAsync: DeleteDBProxyAsyncType<ClientInvocationReportingType>? = nil,
+            deleteDBProxySync: DeleteDBProxySyncType<ClientInvocationReportingType>? = nil,
+            deleteDBSecurityGroupAsync: DeleteDBSecurityGroupAsyncType<ClientInvocationReportingType>? = nil,
+            deleteDBSecurityGroupSync: DeleteDBSecurityGroupSyncType<ClientInvocationReportingType>? = nil,
+            deleteDBSnapshotAsync: DeleteDBSnapshotAsyncType<ClientInvocationReportingType>? = nil,
+            deleteDBSnapshotSync: DeleteDBSnapshotSyncType<ClientInvocationReportingType>? = nil,
+            deleteDBSubnetGroupAsync: DeleteDBSubnetGroupAsyncType<ClientInvocationReportingType>? = nil,
+            deleteDBSubnetGroupSync: DeleteDBSubnetGroupSyncType<ClientInvocationReportingType>? = nil,
+            deleteEventSubscriptionAsync: DeleteEventSubscriptionAsyncType<ClientInvocationReportingType>? = nil,
+            deleteEventSubscriptionSync: DeleteEventSubscriptionSyncType<ClientInvocationReportingType>? = nil,
+            deleteGlobalClusterAsync: DeleteGlobalClusterAsyncType<ClientInvocationReportingType>? = nil,
+            deleteGlobalClusterSync: DeleteGlobalClusterSyncType<ClientInvocationReportingType>? = nil,
+            deleteInstallationMediaAsync: DeleteInstallationMediaAsyncType<ClientInvocationReportingType>? = nil,
+            deleteInstallationMediaSync: DeleteInstallationMediaSyncType<ClientInvocationReportingType>? = nil,
+            deleteOptionGroupAsync: DeleteOptionGroupAsyncType<ClientInvocationReportingType>? = nil,
+            deleteOptionGroupSync: DeleteOptionGroupSyncType<ClientInvocationReportingType>? = nil,
+            deregisterDBProxyTargetsAsync: DeregisterDBProxyTargetsAsyncType<ClientInvocationReportingType>? = nil,
+            deregisterDBProxyTargetsSync: DeregisterDBProxyTargetsSyncType<ClientInvocationReportingType>? = nil,
+            describeAccountAttributesAsync: DescribeAccountAttributesAsyncType<ClientInvocationReportingType>? = nil,
+            describeAccountAttributesSync: DescribeAccountAttributesSyncType<ClientInvocationReportingType>? = nil,
+            describeCertificatesAsync: DescribeCertificatesAsyncType<ClientInvocationReportingType>? = nil,
+            describeCertificatesSync: DescribeCertificatesSyncType<ClientInvocationReportingType>? = nil,
+            describeCustomAvailabilityZonesAsync: DescribeCustomAvailabilityZonesAsyncType<ClientInvocationReportingType>? = nil,
+            describeCustomAvailabilityZonesSync: DescribeCustomAvailabilityZonesSyncType<ClientInvocationReportingType>? = nil,
+            describeDBClusterBacktracksAsync: DescribeDBClusterBacktracksAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBClusterBacktracksSync: DescribeDBClusterBacktracksSyncType<ClientInvocationReportingType>? = nil,
+            describeDBClusterEndpointsAsync: DescribeDBClusterEndpointsAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBClusterEndpointsSync: DescribeDBClusterEndpointsSyncType<ClientInvocationReportingType>? = nil,
+            describeDBClusterParameterGroupsAsync: DescribeDBClusterParameterGroupsAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBClusterParameterGroupsSync: DescribeDBClusterParameterGroupsSyncType<ClientInvocationReportingType>? = nil,
+            describeDBClusterParametersAsync: DescribeDBClusterParametersAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBClusterParametersSync: DescribeDBClusterParametersSyncType<ClientInvocationReportingType>? = nil,
+            describeDBClusterSnapshotAttributesAsync: DescribeDBClusterSnapshotAttributesAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBClusterSnapshotAttributesSync: DescribeDBClusterSnapshotAttributesSyncType<ClientInvocationReportingType>? = nil,
+            describeDBClusterSnapshotsAsync: DescribeDBClusterSnapshotsAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBClusterSnapshotsSync: DescribeDBClusterSnapshotsSyncType<ClientInvocationReportingType>? = nil,
+            describeDBClustersAsync: DescribeDBClustersAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBClustersSync: DescribeDBClustersSyncType<ClientInvocationReportingType>? = nil,
+            describeDBEngineVersionsAsync: DescribeDBEngineVersionsAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBEngineVersionsSync: DescribeDBEngineVersionsSyncType<ClientInvocationReportingType>? = nil,
+            describeDBInstanceAutomatedBackupsAsync: DescribeDBInstanceAutomatedBackupsAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBInstanceAutomatedBackupsSync: DescribeDBInstanceAutomatedBackupsSyncType<ClientInvocationReportingType>? = nil,
+            describeDBInstancesAsync: DescribeDBInstancesAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBInstancesSync: DescribeDBInstancesSyncType<ClientInvocationReportingType>? = nil,
+            describeDBLogFilesAsync: DescribeDBLogFilesAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBLogFilesSync: DescribeDBLogFilesSyncType<ClientInvocationReportingType>? = nil,
+            describeDBParameterGroupsAsync: DescribeDBParameterGroupsAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBParameterGroupsSync: DescribeDBParameterGroupsSyncType<ClientInvocationReportingType>? = nil,
+            describeDBParametersAsync: DescribeDBParametersAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBParametersSync: DescribeDBParametersSyncType<ClientInvocationReportingType>? = nil,
+            describeDBProxiesAsync: DescribeDBProxiesAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBProxiesSync: DescribeDBProxiesSyncType<ClientInvocationReportingType>? = nil,
+            describeDBProxyTargetGroupsAsync: DescribeDBProxyTargetGroupsAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBProxyTargetGroupsSync: DescribeDBProxyTargetGroupsSyncType<ClientInvocationReportingType>? = nil,
+            describeDBProxyTargetsAsync: DescribeDBProxyTargetsAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBProxyTargetsSync: DescribeDBProxyTargetsSyncType<ClientInvocationReportingType>? = nil,
+            describeDBSecurityGroupsAsync: DescribeDBSecurityGroupsAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBSecurityGroupsSync: DescribeDBSecurityGroupsSyncType<ClientInvocationReportingType>? = nil,
+            describeDBSnapshotAttributesAsync: DescribeDBSnapshotAttributesAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBSnapshotAttributesSync: DescribeDBSnapshotAttributesSyncType<ClientInvocationReportingType>? = nil,
+            describeDBSnapshotsAsync: DescribeDBSnapshotsAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBSnapshotsSync: DescribeDBSnapshotsSyncType<ClientInvocationReportingType>? = nil,
+            describeDBSubnetGroupsAsync: DescribeDBSubnetGroupsAsyncType<ClientInvocationReportingType>? = nil,
+            describeDBSubnetGroupsSync: DescribeDBSubnetGroupsSyncType<ClientInvocationReportingType>? = nil,
+            describeEngineDefaultClusterParametersAsync: DescribeEngineDefaultClusterParametersAsyncType<ClientInvocationReportingType>? = nil,
+            describeEngineDefaultClusterParametersSync: DescribeEngineDefaultClusterParametersSyncType<ClientInvocationReportingType>? = nil,
+            describeEngineDefaultParametersAsync: DescribeEngineDefaultParametersAsyncType<ClientInvocationReportingType>? = nil,
+            describeEngineDefaultParametersSync: DescribeEngineDefaultParametersSyncType<ClientInvocationReportingType>? = nil,
+            describeEventCategoriesAsync: DescribeEventCategoriesAsyncType<ClientInvocationReportingType>? = nil,
+            describeEventCategoriesSync: DescribeEventCategoriesSyncType<ClientInvocationReportingType>? = nil,
+            describeEventSubscriptionsAsync: DescribeEventSubscriptionsAsyncType<ClientInvocationReportingType>? = nil,
+            describeEventSubscriptionsSync: DescribeEventSubscriptionsSyncType<ClientInvocationReportingType>? = nil,
+            describeEventsAsync: DescribeEventsAsyncType<ClientInvocationReportingType>? = nil,
+            describeEventsSync: DescribeEventsSyncType<ClientInvocationReportingType>? = nil,
+            describeExportTasksAsync: DescribeExportTasksAsyncType<ClientInvocationReportingType>? = nil,
+            describeExportTasksSync: DescribeExportTasksSyncType<ClientInvocationReportingType>? = nil,
+            describeGlobalClustersAsync: DescribeGlobalClustersAsyncType<ClientInvocationReportingType>? = nil,
+            describeGlobalClustersSync: DescribeGlobalClustersSyncType<ClientInvocationReportingType>? = nil,
+            describeInstallationMediaAsync: DescribeInstallationMediaAsyncType<ClientInvocationReportingType>? = nil,
+            describeInstallationMediaSync: DescribeInstallationMediaSyncType<ClientInvocationReportingType>? = nil,
+            describeOptionGroupOptionsAsync: DescribeOptionGroupOptionsAsyncType<ClientInvocationReportingType>? = nil,
+            describeOptionGroupOptionsSync: DescribeOptionGroupOptionsSyncType<ClientInvocationReportingType>? = nil,
+            describeOptionGroupsAsync: DescribeOptionGroupsAsyncType<ClientInvocationReportingType>? = nil,
+            describeOptionGroupsSync: DescribeOptionGroupsSyncType<ClientInvocationReportingType>? = nil,
+            describeOrderableDBInstanceOptionsAsync: DescribeOrderableDBInstanceOptionsAsyncType<ClientInvocationReportingType>? = nil,
+            describeOrderableDBInstanceOptionsSync: DescribeOrderableDBInstanceOptionsSyncType<ClientInvocationReportingType>? = nil,
+            describePendingMaintenanceActionsAsync: DescribePendingMaintenanceActionsAsyncType<ClientInvocationReportingType>? = nil,
+            describePendingMaintenanceActionsSync: DescribePendingMaintenanceActionsSyncType<ClientInvocationReportingType>? = nil,
+            describeReservedDBInstancesAsync: DescribeReservedDBInstancesAsyncType<ClientInvocationReportingType>? = nil,
+            describeReservedDBInstancesSync: DescribeReservedDBInstancesSyncType<ClientInvocationReportingType>? = nil,
+            describeReservedDBInstancesOfferingsAsync: DescribeReservedDBInstancesOfferingsAsyncType<ClientInvocationReportingType>? = nil,
+            describeReservedDBInstancesOfferingsSync: DescribeReservedDBInstancesOfferingsSyncType<ClientInvocationReportingType>? = nil,
+            describeSourceRegionsAsync: DescribeSourceRegionsAsyncType<ClientInvocationReportingType>? = nil,
+            describeSourceRegionsSync: DescribeSourceRegionsSyncType<ClientInvocationReportingType>? = nil,
+            describeValidDBInstanceModificationsAsync: DescribeValidDBInstanceModificationsAsyncType<ClientInvocationReportingType>? = nil,
+            describeValidDBInstanceModificationsSync: DescribeValidDBInstanceModificationsSyncType<ClientInvocationReportingType>? = nil,
+            downloadDBLogFilePortionAsync: DownloadDBLogFilePortionAsyncType<ClientInvocationReportingType>? = nil,
+            downloadDBLogFilePortionSync: DownloadDBLogFilePortionSyncType<ClientInvocationReportingType>? = nil,
+            failoverDBClusterAsync: FailoverDBClusterAsyncType<ClientInvocationReportingType>? = nil,
+            failoverDBClusterSync: FailoverDBClusterSyncType<ClientInvocationReportingType>? = nil,
+            importInstallationMediaAsync: ImportInstallationMediaAsyncType<ClientInvocationReportingType>? = nil,
+            importInstallationMediaSync: ImportInstallationMediaSyncType<ClientInvocationReportingType>? = nil,
+            listTagsForResourceAsync: ListTagsForResourceAsyncType<ClientInvocationReportingType>? = nil,
+            listTagsForResourceSync: ListTagsForResourceSyncType<ClientInvocationReportingType>? = nil,
+            modifyCertificatesAsync: ModifyCertificatesAsyncType<ClientInvocationReportingType>? = nil,
+            modifyCertificatesSync: ModifyCertificatesSyncType<ClientInvocationReportingType>? = nil,
+            modifyCurrentDBClusterCapacityAsync: ModifyCurrentDBClusterCapacityAsyncType<ClientInvocationReportingType>? = nil,
+            modifyCurrentDBClusterCapacitySync: ModifyCurrentDBClusterCapacitySyncType<ClientInvocationReportingType>? = nil,
+            modifyDBClusterAsync: ModifyDBClusterAsyncType<ClientInvocationReportingType>? = nil,
+            modifyDBClusterSync: ModifyDBClusterSyncType<ClientInvocationReportingType>? = nil,
+            modifyDBClusterEndpointAsync: ModifyDBClusterEndpointAsyncType<ClientInvocationReportingType>? = nil,
+            modifyDBClusterEndpointSync: ModifyDBClusterEndpointSyncType<ClientInvocationReportingType>? = nil,
+            modifyDBClusterParameterGroupAsync: ModifyDBClusterParameterGroupAsyncType<ClientInvocationReportingType>? = nil,
+            modifyDBClusterParameterGroupSync: ModifyDBClusterParameterGroupSyncType<ClientInvocationReportingType>? = nil,
+            modifyDBClusterSnapshotAttributeAsync: ModifyDBClusterSnapshotAttributeAsyncType<ClientInvocationReportingType>? = nil,
+            modifyDBClusterSnapshotAttributeSync: ModifyDBClusterSnapshotAttributeSyncType<ClientInvocationReportingType>? = nil,
+            modifyDBInstanceAsync: ModifyDBInstanceAsyncType<ClientInvocationReportingType>? = nil,
+            modifyDBInstanceSync: ModifyDBInstanceSyncType<ClientInvocationReportingType>? = nil,
+            modifyDBParameterGroupAsync: ModifyDBParameterGroupAsyncType<ClientInvocationReportingType>? = nil,
+            modifyDBParameterGroupSync: ModifyDBParameterGroupSyncType<ClientInvocationReportingType>? = nil,
+            modifyDBProxyAsync: ModifyDBProxyAsyncType<ClientInvocationReportingType>? = nil,
+            modifyDBProxySync: ModifyDBProxySyncType<ClientInvocationReportingType>? = nil,
+            modifyDBProxyTargetGroupAsync: ModifyDBProxyTargetGroupAsyncType<ClientInvocationReportingType>? = nil,
+            modifyDBProxyTargetGroupSync: ModifyDBProxyTargetGroupSyncType<ClientInvocationReportingType>? = nil,
+            modifyDBSnapshotAsync: ModifyDBSnapshotAsyncType<ClientInvocationReportingType>? = nil,
+            modifyDBSnapshotSync: ModifyDBSnapshotSyncType<ClientInvocationReportingType>? = nil,
+            modifyDBSnapshotAttributeAsync: ModifyDBSnapshotAttributeAsyncType<ClientInvocationReportingType>? = nil,
+            modifyDBSnapshotAttributeSync: ModifyDBSnapshotAttributeSyncType<ClientInvocationReportingType>? = nil,
+            modifyDBSubnetGroupAsync: ModifyDBSubnetGroupAsyncType<ClientInvocationReportingType>? = nil,
+            modifyDBSubnetGroupSync: ModifyDBSubnetGroupSyncType<ClientInvocationReportingType>? = nil,
+            modifyEventSubscriptionAsync: ModifyEventSubscriptionAsyncType<ClientInvocationReportingType>? = nil,
+            modifyEventSubscriptionSync: ModifyEventSubscriptionSyncType<ClientInvocationReportingType>? = nil,
+            modifyGlobalClusterAsync: ModifyGlobalClusterAsyncType<ClientInvocationReportingType>? = nil,
+            modifyGlobalClusterSync: ModifyGlobalClusterSyncType<ClientInvocationReportingType>? = nil,
+            modifyOptionGroupAsync: ModifyOptionGroupAsyncType<ClientInvocationReportingType>? = nil,
+            modifyOptionGroupSync: ModifyOptionGroupSyncType<ClientInvocationReportingType>? = nil,
+            promoteReadReplicaAsync: PromoteReadReplicaAsyncType<ClientInvocationReportingType>? = nil,
+            promoteReadReplicaSync: PromoteReadReplicaSyncType<ClientInvocationReportingType>? = nil,
+            promoteReadReplicaDBClusterAsync: PromoteReadReplicaDBClusterAsyncType<ClientInvocationReportingType>? = nil,
+            promoteReadReplicaDBClusterSync: PromoteReadReplicaDBClusterSyncType<ClientInvocationReportingType>? = nil,
+            purchaseReservedDBInstancesOfferingAsync: PurchaseReservedDBInstancesOfferingAsyncType<ClientInvocationReportingType>? = nil,
+            purchaseReservedDBInstancesOfferingSync: PurchaseReservedDBInstancesOfferingSyncType<ClientInvocationReportingType>? = nil,
+            rebootDBInstanceAsync: RebootDBInstanceAsyncType<ClientInvocationReportingType>? = nil,
+            rebootDBInstanceSync: RebootDBInstanceSyncType<ClientInvocationReportingType>? = nil,
+            registerDBProxyTargetsAsync: RegisterDBProxyTargetsAsyncType<ClientInvocationReportingType>? = nil,
+            registerDBProxyTargetsSync: RegisterDBProxyTargetsSyncType<ClientInvocationReportingType>? = nil,
+            removeFromGlobalClusterAsync: RemoveFromGlobalClusterAsyncType<ClientInvocationReportingType>? = nil,
+            removeFromGlobalClusterSync: RemoveFromGlobalClusterSyncType<ClientInvocationReportingType>? = nil,
+            removeRoleFromDBClusterAsync: RemoveRoleFromDBClusterAsyncType<ClientInvocationReportingType>? = nil,
+            removeRoleFromDBClusterSync: RemoveRoleFromDBClusterSyncType<ClientInvocationReportingType>? = nil,
+            removeRoleFromDBInstanceAsync: RemoveRoleFromDBInstanceAsyncType<ClientInvocationReportingType>? = nil,
+            removeRoleFromDBInstanceSync: RemoveRoleFromDBInstanceSyncType<ClientInvocationReportingType>? = nil,
+            removeSourceIdentifierFromSubscriptionAsync: RemoveSourceIdentifierFromSubscriptionAsyncType<ClientInvocationReportingType>? = nil,
+            removeSourceIdentifierFromSubscriptionSync: RemoveSourceIdentifierFromSubscriptionSyncType<ClientInvocationReportingType>? = nil,
+            removeTagsFromResourceAsync: RemoveTagsFromResourceAsyncType<ClientInvocationReportingType>? = nil,
+            removeTagsFromResourceSync: RemoveTagsFromResourceSyncType<ClientInvocationReportingType>? = nil,
+            resetDBClusterParameterGroupAsync: ResetDBClusterParameterGroupAsyncType<ClientInvocationReportingType>? = nil,
+            resetDBClusterParameterGroupSync: ResetDBClusterParameterGroupSyncType<ClientInvocationReportingType>? = nil,
+            resetDBParameterGroupAsync: ResetDBParameterGroupAsyncType<ClientInvocationReportingType>? = nil,
+            resetDBParameterGroupSync: ResetDBParameterGroupSyncType<ClientInvocationReportingType>? = nil,
+            restoreDBClusterFromS3Async: RestoreDBClusterFromS3AsyncType<ClientInvocationReportingType>? = nil,
+            restoreDBClusterFromS3Sync: RestoreDBClusterFromS3SyncType<ClientInvocationReportingType>? = nil,
+            restoreDBClusterFromSnapshotAsync: RestoreDBClusterFromSnapshotAsyncType<ClientInvocationReportingType>? = nil,
+            restoreDBClusterFromSnapshotSync: RestoreDBClusterFromSnapshotSyncType<ClientInvocationReportingType>? = nil,
+            restoreDBClusterToPointInTimeAsync: RestoreDBClusterToPointInTimeAsyncType<ClientInvocationReportingType>? = nil,
+            restoreDBClusterToPointInTimeSync: RestoreDBClusterToPointInTimeSyncType<ClientInvocationReportingType>? = nil,
+            restoreDBInstanceFromDBSnapshotAsync: RestoreDBInstanceFromDBSnapshotAsyncType<ClientInvocationReportingType>? = nil,
+            restoreDBInstanceFromDBSnapshotSync: RestoreDBInstanceFromDBSnapshotSyncType<ClientInvocationReportingType>? = nil,
+            restoreDBInstanceFromS3Async: RestoreDBInstanceFromS3AsyncType<ClientInvocationReportingType>? = nil,
+            restoreDBInstanceFromS3Sync: RestoreDBInstanceFromS3SyncType<ClientInvocationReportingType>? = nil,
+            restoreDBInstanceToPointInTimeAsync: RestoreDBInstanceToPointInTimeAsyncType<ClientInvocationReportingType>? = nil,
+            restoreDBInstanceToPointInTimeSync: RestoreDBInstanceToPointInTimeSyncType<ClientInvocationReportingType>? = nil,
+            revokeDBSecurityGroupIngressAsync: RevokeDBSecurityGroupIngressAsyncType<ClientInvocationReportingType>? = nil,
+            revokeDBSecurityGroupIngressSync: RevokeDBSecurityGroupIngressSyncType<ClientInvocationReportingType>? = nil,
+            startActivityStreamAsync: StartActivityStreamAsyncType<ClientInvocationReportingType>? = nil,
+            startActivityStreamSync: StartActivityStreamSyncType<ClientInvocationReportingType>? = nil,
+            startDBClusterAsync: StartDBClusterAsyncType<ClientInvocationReportingType>? = nil,
+            startDBClusterSync: StartDBClusterSyncType<ClientInvocationReportingType>? = nil,
+            startDBInstanceAsync: StartDBInstanceAsyncType<ClientInvocationReportingType>? = nil,
+            startDBInstanceSync: StartDBInstanceSyncType<ClientInvocationReportingType>? = nil,
+            startExportTaskAsync: StartExportTaskAsyncType<ClientInvocationReportingType>? = nil,
+            startExportTaskSync: StartExportTaskSyncType<ClientInvocationReportingType>? = nil,
+            stopActivityStreamAsync: StopActivityStreamAsyncType<ClientInvocationReportingType>? = nil,
+            stopActivityStreamSync: StopActivityStreamSyncType<ClientInvocationReportingType>? = nil,
+            stopDBClusterAsync: StopDBClusterAsyncType<ClientInvocationReportingType>? = nil,
+            stopDBClusterSync: StopDBClusterSyncType<ClientInvocationReportingType>? = nil,
+            stopDBInstanceAsync: StopDBInstanceAsyncType<ClientInvocationReportingType>? = nil,
+            stopDBInstanceSync: StopDBInstanceSyncType<ClientInvocationReportingType>? = nil) {
         self.addRoleToDBClusterAsyncOverride = addRoleToDBClusterAsync
         self.addRoleToDBClusterSyncOverride = addRoleToDBClusterSync
         self.addRoleToDBInstanceAsyncOverride = addRoleToDBInstanceAsync
@@ -825,12 +825,17 @@ public struct MockRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBClusterRoleAlreadyExists, dBClusterRoleQuotaExceeded, invalidDBClusterState.
      */
-    public func addRoleToDBClusterAsync(
+    public func addRoleToDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddRoleToDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let addRoleToDBClusterAsyncOverride = addRoleToDBClusterAsyncOverride {
-            return try addRoleToDBClusterAsyncOverride(input, reporting, completion)
+        if let addRoleToDBClusterAsyncOverrideNonOptional = addRoleToDBClusterAsyncOverride {
+            if let addRoleToDBClusterAsyncOverrideTyped = addRoleToDBClusterAsyncOverrideNonOptional
+                    as? AddRoleToDBClusterAsyncType<InvocationReportingType> {
+                return try addRoleToDBClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -843,11 +848,16 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated AddRoleToDBClusterMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBClusterRoleAlreadyExists, dBClusterRoleQuotaExceeded, invalidDBClusterState.
      */
-    public func addRoleToDBClusterSync(
+    public func addRoleToDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddRoleToDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let addRoleToDBClusterSyncOverride = addRoleToDBClusterSyncOverride {
-            return try addRoleToDBClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let addRoleToDBClusterSyncOverrideNonOptional = addRoleToDBClusterSyncOverride {
+            if let addRoleToDBClusterSyncOverrideTyped = addRoleToDBClusterSyncOverrideNonOptional
+                    as? AddRoleToDBClusterSyncType<InvocationReportingType> {
+                return try addRoleToDBClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -861,12 +871,17 @@ public struct MockRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBInstanceNotFound, dBInstanceRoleAlreadyExists, dBInstanceRoleQuotaExceeded, invalidDBInstanceState.
      */
-    public func addRoleToDBInstanceAsync(
+    public func addRoleToDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddRoleToDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let addRoleToDBInstanceAsyncOverride = addRoleToDBInstanceAsyncOverride {
-            return try addRoleToDBInstanceAsyncOverride(input, reporting, completion)
+        if let addRoleToDBInstanceAsyncOverrideNonOptional = addRoleToDBInstanceAsyncOverride {
+            if let addRoleToDBInstanceAsyncOverrideTyped = addRoleToDBInstanceAsyncOverrideNonOptional
+                    as? AddRoleToDBInstanceAsyncType<InvocationReportingType> {
+                return try addRoleToDBInstanceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -879,11 +894,16 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated AddRoleToDBInstanceMessage object being passed to this operation.
      - Throws: dBInstanceNotFound, dBInstanceRoleAlreadyExists, dBInstanceRoleQuotaExceeded, invalidDBInstanceState.
      */
-    public func addRoleToDBInstanceSync(
+    public func addRoleToDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddRoleToDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let addRoleToDBInstanceSyncOverride = addRoleToDBInstanceSyncOverride {
-            return try addRoleToDBInstanceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let addRoleToDBInstanceSyncOverrideNonOptional = addRoleToDBInstanceSyncOverride {
+            if let addRoleToDBInstanceSyncOverrideTyped = addRoleToDBInstanceSyncOverrideNonOptional
+                    as? AddRoleToDBInstanceSyncType<InvocationReportingType> {
+                return try addRoleToDBInstanceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -898,12 +918,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: sourceNotFound, subscriptionNotFound.
      */
-    public func addSourceIdentifierToSubscriptionAsync(
+    public func addSourceIdentifierToSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddSourceIdentifierToSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, HTTPClientError>) -> ()) throws {
-        if let addSourceIdentifierToSubscriptionAsyncOverride = addSourceIdentifierToSubscriptionAsyncOverride {
-            return try addSourceIdentifierToSubscriptionAsyncOverride(input, reporting, completion)
+        if let addSourceIdentifierToSubscriptionAsyncOverrideNonOptional = addSourceIdentifierToSubscriptionAsyncOverride {
+            if let addSourceIdentifierToSubscriptionAsyncOverrideTyped = addSourceIdentifierToSubscriptionAsyncOverrideNonOptional
+                    as? AddSourceIdentifierToSubscriptionAsyncType<InvocationReportingType> {
+                return try addSourceIdentifierToSubscriptionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription.__default
@@ -920,11 +945,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: sourceNotFound, subscriptionNotFound.
      */
-    public func addSourceIdentifierToSubscriptionSync(
+    public func addSourceIdentifierToSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddSourceIdentifierToSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription {
-        if let addSourceIdentifierToSubscriptionSyncOverride = addSourceIdentifierToSubscriptionSyncOverride {
-            return try addSourceIdentifierToSubscriptionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription {
+        if let addSourceIdentifierToSubscriptionSyncOverrideNonOptional = addSourceIdentifierToSubscriptionSyncOverride {
+            if let addSourceIdentifierToSubscriptionSyncOverrideTyped = addSourceIdentifierToSubscriptionSyncOverrideNonOptional
+                    as? AddSourceIdentifierToSubscriptionSyncType<InvocationReportingType> {
+                return try addSourceIdentifierToSubscriptionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription.__default
@@ -939,12 +969,17 @@ public struct MockRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func addTagsToResourceAsync(
+    public func addTagsToResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddTagsToResourceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let addTagsToResourceAsyncOverride = addTagsToResourceAsyncOverride {
-            return try addTagsToResourceAsyncOverride(input, reporting, completion)
+        if let addTagsToResourceAsyncOverrideNonOptional = addTagsToResourceAsyncOverride {
+            if let addTagsToResourceAsyncOverrideTyped = addTagsToResourceAsyncOverrideNonOptional
+                    as? AddTagsToResourceAsyncType<InvocationReportingType> {
+                return try addTagsToResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -957,11 +992,16 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated AddTagsToResourceMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func addTagsToResourceSync(
+    public func addTagsToResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AddTagsToResourceMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let addTagsToResourceSyncOverride = addTagsToResourceSyncOverride {
-            return try addTagsToResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let addTagsToResourceSyncOverrideNonOptional = addTagsToResourceSyncOverride {
+            if let addTagsToResourceSyncOverrideTyped = addTagsToResourceSyncOverrideNonOptional
+                    as? AddTagsToResourceSyncType<InvocationReportingType> {
+                return try addTagsToResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -976,12 +1016,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func applyPendingMaintenanceActionAsync(
+    public func applyPendingMaintenanceActionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ApplyPendingMaintenanceActionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, HTTPClientError>) -> ()) throws {
-        if let applyPendingMaintenanceActionAsyncOverride = applyPendingMaintenanceActionAsyncOverride {
-            return try applyPendingMaintenanceActionAsyncOverride(input, reporting, completion)
+        if let applyPendingMaintenanceActionAsyncOverrideNonOptional = applyPendingMaintenanceActionAsyncOverride {
+            if let applyPendingMaintenanceActionAsyncOverrideTyped = applyPendingMaintenanceActionAsyncOverrideNonOptional
+                    as? ApplyPendingMaintenanceActionAsyncType<InvocationReportingType> {
+                return try applyPendingMaintenanceActionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction.__default
@@ -998,11 +1043,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func applyPendingMaintenanceActionSync(
+    public func applyPendingMaintenanceActionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ApplyPendingMaintenanceActionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction {
-        if let applyPendingMaintenanceActionSyncOverride = applyPendingMaintenanceActionSyncOverride {
-            return try applyPendingMaintenanceActionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction {
+        if let applyPendingMaintenanceActionSyncOverrideNonOptional = applyPendingMaintenanceActionSyncOverride {
+            if let applyPendingMaintenanceActionSyncOverrideTyped = applyPendingMaintenanceActionSyncOverrideNonOptional
+                    as? ApplyPendingMaintenanceActionSyncType<InvocationReportingType> {
+                return try applyPendingMaintenanceActionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction.__default
@@ -1018,12 +1068,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationAlreadyExists, authorizationQuotaExceeded, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func authorizeDBSecurityGroupIngressAsync(
+    public func authorizeDBSecurityGroupIngressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AuthorizeDBSecurityGroupIngressMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws {
-        if let authorizeDBSecurityGroupIngressAsyncOverride = authorizeDBSecurityGroupIngressAsyncOverride {
-            return try authorizeDBSecurityGroupIngressAsyncOverride(input, reporting, completion)
+        if let authorizeDBSecurityGroupIngressAsyncOverrideNonOptional = authorizeDBSecurityGroupIngressAsyncOverride {
+            if let authorizeDBSecurityGroupIngressAsyncOverrideTyped = authorizeDBSecurityGroupIngressAsyncOverrideNonOptional
+                    as? AuthorizeDBSecurityGroupIngressAsyncType<InvocationReportingType> {
+                return try authorizeDBSecurityGroupIngressAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress.__default
@@ -1040,11 +1095,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationAlreadyExists, authorizationQuotaExceeded, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func authorizeDBSecurityGroupIngressSync(
+    public func authorizeDBSecurityGroupIngressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.AuthorizeDBSecurityGroupIngressMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress {
-        if let authorizeDBSecurityGroupIngressSyncOverride = authorizeDBSecurityGroupIngressSyncOverride {
-            return try authorizeDBSecurityGroupIngressSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress {
+        if let authorizeDBSecurityGroupIngressSyncOverrideNonOptional = authorizeDBSecurityGroupIngressSyncOverride {
+            if let authorizeDBSecurityGroupIngressSyncOverrideTyped = authorizeDBSecurityGroupIngressSyncOverrideNonOptional
+                    as? AuthorizeDBSecurityGroupIngressSyncType<InvocationReportingType> {
+                return try authorizeDBSecurityGroupIngressSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress.__default
@@ -1060,12 +1120,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState.
      */
-    public func backtrackDBClusterAsync(
+    public func backtrackDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.BacktrackDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, HTTPClientError>) -> ()) throws {
-        if let backtrackDBClusterAsyncOverride = backtrackDBClusterAsyncOverride {
-            return try backtrackDBClusterAsyncOverride(input, reporting, completion)
+        if let backtrackDBClusterAsyncOverrideNonOptional = backtrackDBClusterAsyncOverride {
+            if let backtrackDBClusterAsyncOverrideTyped = backtrackDBClusterAsyncOverrideNonOptional
+                    as? BacktrackDBClusterAsyncType<InvocationReportingType> {
+                return try backtrackDBClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBClusterBacktrackForBacktrackDBCluster.__default
@@ -1082,11 +1147,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState.
      */
-    public func backtrackDBClusterSync(
+    public func backtrackDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.BacktrackDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster {
-        if let backtrackDBClusterSyncOverride = backtrackDBClusterSyncOverride {
-            return try backtrackDBClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster {
+        if let backtrackDBClusterSyncOverrideNonOptional = backtrackDBClusterSyncOverride {
+            if let backtrackDBClusterSyncOverrideTyped = backtrackDBClusterSyncOverrideNonOptional
+                    as? BacktrackDBClusterSyncType<InvocationReportingType> {
+                return try backtrackDBClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBClusterBacktrackForBacktrackDBCluster.__default
@@ -1102,12 +1172,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: exportTaskNotFound, invalidExportTaskState.
      */
-    public func cancelExportTaskAsync(
+    public func cancelExportTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CancelExportTaskMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, HTTPClientError>) -> ()) throws {
-        if let cancelExportTaskAsyncOverride = cancelExportTaskAsyncOverride {
-            return try cancelExportTaskAsyncOverride(input, reporting, completion)
+        if let cancelExportTaskAsyncOverrideNonOptional = cancelExportTaskAsyncOverride {
+            if let cancelExportTaskAsyncOverrideTyped = cancelExportTaskAsyncOverrideNonOptional
+                    as? CancelExportTaskAsyncType<InvocationReportingType> {
+                return try cancelExportTaskAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ExportTaskForCancelExportTask.__default
@@ -1124,11 +1199,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: exportTaskNotFound, invalidExportTaskState.
      */
-    public func cancelExportTaskSync(
+    public func cancelExportTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CancelExportTaskMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForCancelExportTask {
-        if let cancelExportTaskSyncOverride = cancelExportTaskSyncOverride {
-            return try cancelExportTaskSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ExportTaskForCancelExportTask {
+        if let cancelExportTaskSyncOverrideNonOptional = cancelExportTaskSyncOverride {
+            if let cancelExportTaskSyncOverrideTyped = cancelExportTaskSyncOverrideNonOptional
+                    as? CancelExportTaskSyncType<InvocationReportingType> {
+                return try cancelExportTaskSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ExportTaskForCancelExportTask.__default
@@ -1144,12 +1224,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBClusterParameterGroupAsync(
+    public func copyDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
-        if let copyDBClusterParameterGroupAsyncOverride = copyDBClusterParameterGroupAsyncOverride {
-            return try copyDBClusterParameterGroupAsyncOverride(input, reporting, completion)
+        if let copyDBClusterParameterGroupAsyncOverrideNonOptional = copyDBClusterParameterGroupAsyncOverride {
+            if let copyDBClusterParameterGroupAsyncOverrideTyped = copyDBClusterParameterGroupAsyncOverrideNonOptional
+                    as? CopyDBClusterParameterGroupAsyncType<InvocationReportingType> {
+                return try copyDBClusterParameterGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup.__default
@@ -1166,11 +1251,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBClusterParameterGroupSync(
+    public func copyDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup {
-        if let copyDBClusterParameterGroupSyncOverride = copyDBClusterParameterGroupSyncOverride {
-            return try copyDBClusterParameterGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup {
+        if let copyDBClusterParameterGroupSyncOverrideNonOptional = copyDBClusterParameterGroupSyncOverride {
+            if let copyDBClusterParameterGroupSyncOverrideTyped = copyDBClusterParameterGroupSyncOverrideNonOptional
+                    as? CopyDBClusterParameterGroupSyncType<InvocationReportingType> {
+                return try copyDBClusterParameterGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup.__default
@@ -1186,12 +1276,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotAlreadyExists, dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, invalidDBClusterState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBClusterSnapshotAsync(
+    public func copyDBClusterSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBClusterSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, HTTPClientError>) -> ()) throws {
-        if let copyDBClusterSnapshotAsyncOverride = copyDBClusterSnapshotAsyncOverride {
-            return try copyDBClusterSnapshotAsyncOverride(input, reporting, completion)
+        if let copyDBClusterSnapshotAsyncOverrideNonOptional = copyDBClusterSnapshotAsyncOverride {
+            if let copyDBClusterSnapshotAsyncOverrideTyped = copyDBClusterSnapshotAsyncOverrideNonOptional
+                    as? CopyDBClusterSnapshotAsyncType<InvocationReportingType> {
+                return try copyDBClusterSnapshotAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CopyDBClusterSnapshotResultForCopyDBClusterSnapshot.__default
@@ -1208,11 +1303,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotAlreadyExists, dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, invalidDBClusterState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBClusterSnapshotSync(
+    public func copyDBClusterSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBClusterSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
-        if let copyDBClusterSnapshotSyncOverride = copyDBClusterSnapshotSyncOverride {
-            return try copyDBClusterSnapshotSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
+        if let copyDBClusterSnapshotSyncOverrideNonOptional = copyDBClusterSnapshotSyncOverride {
+            if let copyDBClusterSnapshotSyncOverrideTyped = copyDBClusterSnapshotSyncOverrideNonOptional
+                    as? CopyDBClusterSnapshotSyncType<InvocationReportingType> {
+                return try copyDBClusterSnapshotSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CopyDBClusterSnapshotResultForCopyDBClusterSnapshot.__default
@@ -1228,12 +1328,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBParameterGroupAsync(
+    public func copyDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, HTTPClientError>) -> ()) throws {
-        if let copyDBParameterGroupAsyncOverride = copyDBParameterGroupAsyncOverride {
-            return try copyDBParameterGroupAsyncOverride(input, reporting, completion)
+        if let copyDBParameterGroupAsyncOverrideNonOptional = copyDBParameterGroupAsyncOverride {
+            if let copyDBParameterGroupAsyncOverrideTyped = copyDBParameterGroupAsyncOverrideNonOptional
+                    as? CopyDBParameterGroupAsyncType<InvocationReportingType> {
+                return try copyDBParameterGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CopyDBParameterGroupResultForCopyDBParameterGroup.__default
@@ -1250,11 +1355,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBParameterGroupSync(
+    public func copyDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup {
-        if let copyDBParameterGroupSyncOverride = copyDBParameterGroupSyncOverride {
-            return try copyDBParameterGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup {
+        if let copyDBParameterGroupSyncOverrideNonOptional = copyDBParameterGroupSyncOverride {
+            if let copyDBParameterGroupSyncOverrideTyped = copyDBParameterGroupSyncOverrideNonOptional
+                    as? CopyDBParameterGroupSyncType<InvocationReportingType> {
+                return try copyDBParameterGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CopyDBParameterGroupResultForCopyDBParameterGroup.__default
@@ -1270,12 +1380,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBSnapshotAsync(
+    public func copyDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, HTTPClientError>) -> ()) throws {
-        if let copyDBSnapshotAsyncOverride = copyDBSnapshotAsyncOverride {
-            return try copyDBSnapshotAsyncOverride(input, reporting, completion)
+        if let copyDBSnapshotAsyncOverrideNonOptional = copyDBSnapshotAsyncOverride {
+            if let copyDBSnapshotAsyncOverrideTyped = copyDBSnapshotAsyncOverrideNonOptional
+                    as? CopyDBSnapshotAsyncType<InvocationReportingType> {
+                return try copyDBSnapshotAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CopyDBSnapshotResultForCopyDBSnapshot.__default
@@ -1292,11 +1407,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBSnapshotSync(
+    public func copyDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot {
-        if let copyDBSnapshotSyncOverride = copyDBSnapshotSyncOverride {
-            return try copyDBSnapshotSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot {
+        if let copyDBSnapshotSyncOverrideNonOptional = copyDBSnapshotSyncOverride {
+            if let copyDBSnapshotSyncOverrideTyped = copyDBSnapshotSyncOverrideNonOptional
+                    as? CopyDBSnapshotSyncType<InvocationReportingType> {
+                return try copyDBSnapshotSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CopyDBSnapshotResultForCopyDBSnapshot.__default
@@ -1312,12 +1432,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: optionGroupAlreadyExists, optionGroupNotFound, optionGroupQuotaExceeded.
      */
-    public func copyOptionGroupAsync(
+    public func copyOptionGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, HTTPClientError>) -> ()) throws {
-        if let copyOptionGroupAsyncOverride = copyOptionGroupAsyncOverride {
-            return try copyOptionGroupAsyncOverride(input, reporting, completion)
+        if let copyOptionGroupAsyncOverrideNonOptional = copyOptionGroupAsyncOverride {
+            if let copyOptionGroupAsyncOverrideTyped = copyOptionGroupAsyncOverrideNonOptional
+                    as? CopyOptionGroupAsyncType<InvocationReportingType> {
+                return try copyOptionGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CopyOptionGroupResultForCopyOptionGroup.__default
@@ -1334,11 +1459,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: optionGroupAlreadyExists, optionGroupNotFound, optionGroupQuotaExceeded.
      */
-    public func copyOptionGroupSync(
+    public func copyOptionGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CopyOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
-        if let copyOptionGroupSyncOverride = copyOptionGroupSyncOverride {
-            return try copyOptionGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
+        if let copyOptionGroupSyncOverrideNonOptional = copyOptionGroupSyncOverride {
+            if let copyOptionGroupSyncOverrideTyped = copyOptionGroupSyncOverrideNonOptional
+                    as? CopyOptionGroupSyncType<InvocationReportingType> {
+                return try copyOptionGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CopyOptionGroupResultForCopyOptionGroup.__default
@@ -1354,12 +1484,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
      */
-    public func createCustomAvailabilityZoneAsync(
+    public func createCustomAvailabilityZoneAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateCustomAvailabilityZoneMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, HTTPClientError>) -> ()) throws {
-        if let createCustomAvailabilityZoneAsyncOverride = createCustomAvailabilityZoneAsyncOverride {
-            return try createCustomAvailabilityZoneAsyncOverride(input, reporting, completion)
+        if let createCustomAvailabilityZoneAsyncOverrideNonOptional = createCustomAvailabilityZoneAsyncOverride {
+            if let createCustomAvailabilityZoneAsyncOverrideTyped = createCustomAvailabilityZoneAsyncOverrideNonOptional
+                    as? CreateCustomAvailabilityZoneAsyncType<InvocationReportingType> {
+                return try createCustomAvailabilityZoneAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone.__default
@@ -1376,11 +1511,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
      */
-    public func createCustomAvailabilityZoneSync(
+    public func createCustomAvailabilityZoneSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateCustomAvailabilityZoneMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
-        if let createCustomAvailabilityZoneSyncOverride = createCustomAvailabilityZoneSyncOverride {
-            return try createCustomAvailabilityZoneSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
+        if let createCustomAvailabilityZoneSyncOverrideNonOptional = createCustomAvailabilityZoneSyncOverride {
+            if let createCustomAvailabilityZoneSyncOverrideTyped = createCustomAvailabilityZoneSyncOverrideNonOptional
+                    as? CreateCustomAvailabilityZoneSyncType<InvocationReportingType> {
+                return try createCustomAvailabilityZoneSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone.__default
@@ -1396,12 +1536,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func createDBClusterAsync(
+    public func createDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, HTTPClientError>) -> ()) throws {
-        if let createDBClusterAsyncOverride = createDBClusterAsyncOverride {
-            return try createDBClusterAsyncOverride(input, reporting, completion)
+        if let createDBClusterAsyncOverrideNonOptional = createDBClusterAsyncOverride {
+            if let createDBClusterAsyncOverrideTyped = createDBClusterAsyncOverrideNonOptional
+                    as? CreateDBClusterAsyncType<InvocationReportingType> {
+                return try createDBClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateDBClusterResultForCreateDBCluster.__default
@@ -1418,11 +1563,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func createDBClusterSync(
+    public func createDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster {
-        if let createDBClusterSyncOverride = createDBClusterSyncOverride {
-            return try createDBClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster {
+        if let createDBClusterSyncOverrideNonOptional = createDBClusterSyncOverride {
+            if let createDBClusterSyncOverrideTyped = createDBClusterSyncOverrideNonOptional
+                    as? CreateDBClusterSyncType<InvocationReportingType> {
+                return try createDBClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateDBClusterResultForCreateDBCluster.__default
@@ -1438,12 +1588,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterEndpointAlreadyExists, dBClusterEndpointQuotaExceeded, dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func createDBClusterEndpointAsync(
+    public func createDBClusterEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterEndpointMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, HTTPClientError>) -> ()) throws {
-        if let createDBClusterEndpointAsyncOverride = createDBClusterEndpointAsyncOverride {
-            return try createDBClusterEndpointAsyncOverride(input, reporting, completion)
+        if let createDBClusterEndpointAsyncOverrideNonOptional = createDBClusterEndpointAsyncOverride {
+            if let createDBClusterEndpointAsyncOverrideTyped = createDBClusterEndpointAsyncOverrideNonOptional
+                    as? CreateDBClusterEndpointAsyncType<InvocationReportingType> {
+                return try createDBClusterEndpointAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBClusterEndpointForCreateDBClusterEndpoint.__default
@@ -1460,11 +1615,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterEndpointAlreadyExists, dBClusterEndpointQuotaExceeded, dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func createDBClusterEndpointSync(
+    public func createDBClusterEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterEndpointMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint {
-        if let createDBClusterEndpointSyncOverride = createDBClusterEndpointSyncOverride {
-            return try createDBClusterEndpointSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint {
+        if let createDBClusterEndpointSyncOverrideNonOptional = createDBClusterEndpointSyncOverride {
+            if let createDBClusterEndpointSyncOverrideTyped = createDBClusterEndpointSyncOverrideNonOptional
+                    as? CreateDBClusterEndpointSyncType<InvocationReportingType> {
+                return try createDBClusterEndpointSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBClusterEndpointForCreateDBClusterEndpoint.__default
@@ -1480,12 +1640,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBClusterParameterGroupAsync(
+    public func createDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
-        if let createDBClusterParameterGroupAsyncOverride = createDBClusterParameterGroupAsyncOverride {
-            return try createDBClusterParameterGroupAsyncOverride(input, reporting, completion)
+        if let createDBClusterParameterGroupAsyncOverrideNonOptional = createDBClusterParameterGroupAsyncOverride {
+            if let createDBClusterParameterGroupAsyncOverrideTyped = createDBClusterParameterGroupAsyncOverrideNonOptional
+                    as? CreateDBClusterParameterGroupAsyncType<InvocationReportingType> {
+                return try createDBClusterParameterGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup.__default
@@ -1502,11 +1667,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBClusterParameterGroupSync(
+    public func createDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup {
-        if let createDBClusterParameterGroupSyncOverride = createDBClusterParameterGroupSyncOverride {
-            return try createDBClusterParameterGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup {
+        if let createDBClusterParameterGroupSyncOverrideNonOptional = createDBClusterParameterGroupSyncOverride {
+            if let createDBClusterParameterGroupSyncOverrideTyped = createDBClusterParameterGroupSyncOverrideNonOptional
+                    as? CreateDBClusterParameterGroupSyncType<InvocationReportingType> {
+                return try createDBClusterParameterGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup.__default
@@ -1522,12 +1692,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func createDBClusterSnapshotAsync(
+    public func createDBClusterSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, HTTPClientError>) -> ()) throws {
-        if let createDBClusterSnapshotAsyncOverride = createDBClusterSnapshotAsyncOverride {
-            return try createDBClusterSnapshotAsyncOverride(input, reporting, completion)
+        if let createDBClusterSnapshotAsyncOverrideNonOptional = createDBClusterSnapshotAsyncOverride {
+            if let createDBClusterSnapshotAsyncOverrideTyped = createDBClusterSnapshotAsyncOverrideNonOptional
+                    as? CreateDBClusterSnapshotAsyncType<InvocationReportingType> {
+                return try createDBClusterSnapshotAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateDBClusterSnapshotResultForCreateDBClusterSnapshot.__default
@@ -1544,11 +1719,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func createDBClusterSnapshotSync(
+    public func createDBClusterSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBClusterSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
-        if let createDBClusterSnapshotSyncOverride = createDBClusterSnapshotSyncOverride {
-            return try createDBClusterSnapshotSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
+        if let createDBClusterSnapshotSyncOverrideNonOptional = createDBClusterSnapshotSyncOverride {
+            if let createDBClusterSnapshotSyncOverrideTyped = createDBClusterSnapshotSyncOverrideNonOptional
+                    as? CreateDBClusterSnapshotSyncType<InvocationReportingType> {
+                return try createDBClusterSnapshotSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateDBClusterSnapshotResultForCreateDBClusterSnapshot.__default
@@ -1564,12 +1744,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceAsync(
+    public func createDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, HTTPClientError>) -> ()) throws {
-        if let createDBInstanceAsyncOverride = createDBInstanceAsyncOverride {
-            return try createDBInstanceAsyncOverride(input, reporting, completion)
+        if let createDBInstanceAsyncOverrideNonOptional = createDBInstanceAsyncOverride {
+            if let createDBInstanceAsyncOverrideTyped = createDBInstanceAsyncOverrideNonOptional
+                    as? CreateDBInstanceAsyncType<InvocationReportingType> {
+                return try createDBInstanceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateDBInstanceResultForCreateDBInstance.__default
@@ -1586,11 +1771,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceSync(
+    public func createDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
-        if let createDBInstanceSyncOverride = createDBInstanceSyncOverride {
-            return try createDBInstanceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
+        if let createDBInstanceSyncOverrideNonOptional = createDBInstanceSyncOverride {
+            if let createDBInstanceSyncOverrideTyped = createDBInstanceSyncOverrideNonOptional
+                    as? CreateDBInstanceSyncType<InvocationReportingType> {
+                return try createDBInstanceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateDBInstanceResultForCreateDBInstance.__default
@@ -1606,12 +1796,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceReadReplicaAsync(
+    public func createDBInstanceReadReplicaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBInstanceReadReplicaMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, HTTPClientError>) -> ()) throws {
-        if let createDBInstanceReadReplicaAsyncOverride = createDBInstanceReadReplicaAsyncOverride {
-            return try createDBInstanceReadReplicaAsyncOverride(input, reporting, completion)
+        if let createDBInstanceReadReplicaAsyncOverrideNonOptional = createDBInstanceReadReplicaAsyncOverride {
+            if let createDBInstanceReadReplicaAsyncOverrideTyped = createDBInstanceReadReplicaAsyncOverrideNonOptional
+                    as? CreateDBInstanceReadReplicaAsyncType<InvocationReportingType> {
+                return try createDBInstanceReadReplicaAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica.__default
@@ -1628,11 +1823,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceReadReplicaSync(
+    public func createDBInstanceReadReplicaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBInstanceReadReplicaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
-        if let createDBInstanceReadReplicaSyncOverride = createDBInstanceReadReplicaSyncOverride {
-            return try createDBInstanceReadReplicaSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
+        if let createDBInstanceReadReplicaSyncOverrideNonOptional = createDBInstanceReadReplicaSyncOverride {
+            if let createDBInstanceReadReplicaSyncOverrideTyped = createDBInstanceReadReplicaSyncOverrideNonOptional
+                    as? CreateDBInstanceReadReplicaSyncType<InvocationReportingType> {
+                return try createDBInstanceReadReplicaSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica.__default
@@ -1648,12 +1848,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBParameterGroupAsync(
+    public func createDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, HTTPClientError>) -> ()) throws {
-        if let createDBParameterGroupAsyncOverride = createDBParameterGroupAsyncOverride {
-            return try createDBParameterGroupAsyncOverride(input, reporting, completion)
+        if let createDBParameterGroupAsyncOverrideNonOptional = createDBParameterGroupAsyncOverride {
+            if let createDBParameterGroupAsyncOverrideTyped = createDBParameterGroupAsyncOverrideNonOptional
+                    as? CreateDBParameterGroupAsyncType<InvocationReportingType> {
+                return try createDBParameterGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateDBParameterGroupResultForCreateDBParameterGroup.__default
@@ -1670,11 +1875,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBParameterGroupSync(
+    public func createDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup {
-        if let createDBParameterGroupSyncOverride = createDBParameterGroupSyncOverride {
-            return try createDBParameterGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup {
+        if let createDBParameterGroupSyncOverrideNonOptional = createDBParameterGroupSyncOverride {
+            if let createDBParameterGroupSyncOverrideTyped = createDBParameterGroupSyncOverrideNonOptional
+                    as? CreateDBParameterGroupSyncType<InvocationReportingType> {
+                return try createDBParameterGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateDBParameterGroupResultForCreateDBParameterGroup.__default
@@ -1690,12 +1900,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
      */
-    public func createDBProxyAsync(
+    public func createDBProxyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBProxyRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, HTTPClientError>) -> ()) throws {
-        if let createDBProxyAsyncOverride = createDBProxyAsyncOverride {
-            return try createDBProxyAsyncOverride(input, reporting, completion)
+        if let createDBProxyAsyncOverrideNonOptional = createDBProxyAsyncOverride {
+            if let createDBProxyAsyncOverrideTyped = createDBProxyAsyncOverrideNonOptional
+                    as? CreateDBProxyAsyncType<InvocationReportingType> {
+                return try createDBProxyAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateDBProxyResponseForCreateDBProxy.__default
@@ -1712,11 +1927,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
      */
-    public func createDBProxySync(
+    public func createDBProxySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBProxyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy {
-        if let createDBProxySyncOverride = createDBProxySyncOverride {
-            return try createDBProxySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy {
+        if let createDBProxySyncOverrideNonOptional = createDBProxySyncOverride {
+            if let createDBProxySyncOverrideTyped = createDBProxySyncOverrideNonOptional
+                    as? CreateDBProxySyncType<InvocationReportingType> {
+                return try createDBProxySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateDBProxyResponseForCreateDBProxy.__default
@@ -1732,12 +1952,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSecurityGroupAlreadyExists, dBSecurityGroupNotSupported, dBSecurityGroupQuotaExceeded.
      */
-    public func createDBSecurityGroupAsync(
+    public func createDBSecurityGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBSecurityGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, HTTPClientError>) -> ()) throws {
-        if let createDBSecurityGroupAsyncOverride = createDBSecurityGroupAsyncOverride {
-            return try createDBSecurityGroupAsyncOverride(input, reporting, completion)
+        if let createDBSecurityGroupAsyncOverrideNonOptional = createDBSecurityGroupAsyncOverride {
+            if let createDBSecurityGroupAsyncOverrideTyped = createDBSecurityGroupAsyncOverrideNonOptional
+                    as? CreateDBSecurityGroupAsyncType<InvocationReportingType> {
+                return try createDBSecurityGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateDBSecurityGroupResultForCreateDBSecurityGroup.__default
@@ -1754,11 +1979,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSecurityGroupAlreadyExists, dBSecurityGroupNotSupported, dBSecurityGroupQuotaExceeded.
      */
-    public func createDBSecurityGroupSync(
+    public func createDBSecurityGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBSecurityGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup {
-        if let createDBSecurityGroupSyncOverride = createDBSecurityGroupSyncOverride {
-            return try createDBSecurityGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup {
+        if let createDBSecurityGroupSyncOverrideNonOptional = createDBSecurityGroupSyncOverride {
+            if let createDBSecurityGroupSyncOverrideTyped = createDBSecurityGroupSyncOverrideNonOptional
+                    as? CreateDBSecurityGroupSyncType<InvocationReportingType> {
+                return try createDBSecurityGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateDBSecurityGroupResultForCreateDBSecurityGroup.__default
@@ -1774,12 +2004,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func createDBSnapshotAsync(
+    public func createDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, HTTPClientError>) -> ()) throws {
-        if let createDBSnapshotAsyncOverride = createDBSnapshotAsyncOverride {
-            return try createDBSnapshotAsyncOverride(input, reporting, completion)
+        if let createDBSnapshotAsyncOverrideNonOptional = createDBSnapshotAsyncOverride {
+            if let createDBSnapshotAsyncOverrideTyped = createDBSnapshotAsyncOverrideNonOptional
+                    as? CreateDBSnapshotAsyncType<InvocationReportingType> {
+                return try createDBSnapshotAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateDBSnapshotResultForCreateDBSnapshot.__default
@@ -1796,11 +2031,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func createDBSnapshotSync(
+    public func createDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot {
-        if let createDBSnapshotSyncOverride = createDBSnapshotSyncOverride {
-            return try createDBSnapshotSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot {
+        if let createDBSnapshotSyncOverrideNonOptional = createDBSnapshotSyncOverride {
+            if let createDBSnapshotSyncOverrideTyped = createDBSnapshotSyncOverrideNonOptional
+                    as? CreateDBSnapshotSyncType<InvocationReportingType> {
+                return try createDBSnapshotSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateDBSnapshotResultForCreateDBSnapshot.__default
@@ -1816,12 +2056,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSubnetGroupAlreadyExists, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupQuotaExceeded, dBSubnetQuotaExceeded, invalidSubnet.
      */
-    public func createDBSubnetGroupAsync(
+    public func createDBSubnetGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBSubnetGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, HTTPClientError>) -> ()) throws {
-        if let createDBSubnetGroupAsyncOverride = createDBSubnetGroupAsyncOverride {
-            return try createDBSubnetGroupAsyncOverride(input, reporting, completion)
+        if let createDBSubnetGroupAsyncOverrideNonOptional = createDBSubnetGroupAsyncOverride {
+            if let createDBSubnetGroupAsyncOverrideTyped = createDBSubnetGroupAsyncOverrideNonOptional
+                    as? CreateDBSubnetGroupAsyncType<InvocationReportingType> {
+                return try createDBSubnetGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateDBSubnetGroupResultForCreateDBSubnetGroup.__default
@@ -1838,11 +2083,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSubnetGroupAlreadyExists, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupQuotaExceeded, dBSubnetQuotaExceeded, invalidSubnet.
      */
-    public func createDBSubnetGroupSync(
+    public func createDBSubnetGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateDBSubnetGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup {
-        if let createDBSubnetGroupSyncOverride = createDBSubnetGroupSyncOverride {
-            return try createDBSubnetGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup {
+        if let createDBSubnetGroupSyncOverrideNonOptional = createDBSubnetGroupSyncOverride {
+            if let createDBSubnetGroupSyncOverrideTyped = createDBSubnetGroupSyncOverrideNonOptional
+                    as? CreateDBSubnetGroupSyncType<InvocationReportingType> {
+                return try createDBSubnetGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateDBSubnetGroupResultForCreateDBSubnetGroup.__default
@@ -1858,12 +2108,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, sourceNotFound, subscriptionAlreadyExist, subscriptionCategoryNotFound.
      */
-    public func createEventSubscriptionAsync(
+    public func createEventSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateEventSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, HTTPClientError>) -> ()) throws {
-        if let createEventSubscriptionAsyncOverride = createEventSubscriptionAsyncOverride {
-            return try createEventSubscriptionAsyncOverride(input, reporting, completion)
+        if let createEventSubscriptionAsyncOverrideNonOptional = createEventSubscriptionAsyncOverride {
+            if let createEventSubscriptionAsyncOverrideTyped = createEventSubscriptionAsyncOverrideNonOptional
+                    as? CreateEventSubscriptionAsyncType<InvocationReportingType> {
+                return try createEventSubscriptionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateEventSubscriptionResultForCreateEventSubscription.__default
@@ -1880,11 +2135,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, sourceNotFound, subscriptionAlreadyExist, subscriptionCategoryNotFound.
      */
-    public func createEventSubscriptionSync(
+    public func createEventSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateEventSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription {
-        if let createEventSubscriptionSyncOverride = createEventSubscriptionSyncOverride {
-            return try createEventSubscriptionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription {
+        if let createEventSubscriptionSyncOverrideNonOptional = createEventSubscriptionSyncOverride {
+            if let createEventSubscriptionSyncOverrideTyped = createEventSubscriptionSyncOverrideNonOptional
+                    as? CreateEventSubscriptionSyncType<InvocationReportingType> {
+                return try createEventSubscriptionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateEventSubscriptionResultForCreateEventSubscription.__default
@@ -1900,12 +2160,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, globalClusterAlreadyExists, globalClusterQuotaExceeded, invalidDBClusterState.
      */
-    public func createGlobalClusterAsync(
+    public func createGlobalClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, HTTPClientError>) -> ()) throws {
-        if let createGlobalClusterAsyncOverride = createGlobalClusterAsyncOverride {
-            return try createGlobalClusterAsyncOverride(input, reporting, completion)
+        if let createGlobalClusterAsyncOverrideNonOptional = createGlobalClusterAsyncOverride {
+            if let createGlobalClusterAsyncOverrideTyped = createGlobalClusterAsyncOverrideNonOptional
+                    as? CreateGlobalClusterAsyncType<InvocationReportingType> {
+                return try createGlobalClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateGlobalClusterResultForCreateGlobalCluster.__default
@@ -1922,11 +2187,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, globalClusterAlreadyExists, globalClusterQuotaExceeded, invalidDBClusterState.
      */
-    public func createGlobalClusterSync(
+    public func createGlobalClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster {
-        if let createGlobalClusterSyncOverride = createGlobalClusterSyncOverride {
-            return try createGlobalClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster {
+        if let createGlobalClusterSyncOverrideNonOptional = createGlobalClusterSyncOverride {
+            if let createGlobalClusterSyncOverrideTyped = createGlobalClusterSyncOverrideNonOptional
+                    as? CreateGlobalClusterSyncType<InvocationReportingType> {
+                return try createGlobalClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateGlobalClusterResultForCreateGlobalCluster.__default
@@ -1942,12 +2212,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: optionGroupAlreadyExists, optionGroupQuotaExceeded.
      */
-    public func createOptionGroupAsync(
+    public func createOptionGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, HTTPClientError>) -> ()) throws {
-        if let createOptionGroupAsyncOverride = createOptionGroupAsyncOverride {
-            return try createOptionGroupAsyncOverride(input, reporting, completion)
+        if let createOptionGroupAsyncOverrideNonOptional = createOptionGroupAsyncOverride {
+            if let createOptionGroupAsyncOverrideTyped = createOptionGroupAsyncOverrideNonOptional
+                    as? CreateOptionGroupAsyncType<InvocationReportingType> {
+                return try createOptionGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateOptionGroupResultForCreateOptionGroup.__default
@@ -1964,11 +2239,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: optionGroupAlreadyExists, optionGroupQuotaExceeded.
      */
-    public func createOptionGroupSync(
+    public func createOptionGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.CreateOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
-        if let createOptionGroupSyncOverride = createOptionGroupSyncOverride {
-            return try createOptionGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
+        if let createOptionGroupSyncOverrideNonOptional = createOptionGroupSyncOverride {
+            if let createOptionGroupSyncOverrideTyped = createOptionGroupSyncOverrideNonOptional
+                    as? CreateOptionGroupSyncType<InvocationReportingType> {
+                return try createOptionGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateOptionGroupResultForCreateOptionGroup.__default
@@ -1984,12 +2264,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
      */
-    public func deleteCustomAvailabilityZoneAsync(
+    public func deleteCustomAvailabilityZoneAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, HTTPClientError>) -> ()) throws {
-        if let deleteCustomAvailabilityZoneAsyncOverride = deleteCustomAvailabilityZoneAsyncOverride {
-            return try deleteCustomAvailabilityZoneAsyncOverride(input, reporting, completion)
+        if let deleteCustomAvailabilityZoneAsyncOverrideNonOptional = deleteCustomAvailabilityZoneAsyncOverride {
+            if let deleteCustomAvailabilityZoneAsyncOverrideTyped = deleteCustomAvailabilityZoneAsyncOverrideNonOptional
+                    as? DeleteCustomAvailabilityZoneAsyncType<InvocationReportingType> {
+                return try deleteCustomAvailabilityZoneAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone.__default
@@ -2006,11 +2291,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
      */
-    public func deleteCustomAvailabilityZoneSync(
+    public func deleteCustomAvailabilityZoneSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteCustomAvailabilityZoneMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
-        if let deleteCustomAvailabilityZoneSyncOverride = deleteCustomAvailabilityZoneSyncOverride {
-            return try deleteCustomAvailabilityZoneSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
+        if let deleteCustomAvailabilityZoneSyncOverrideNonOptional = deleteCustomAvailabilityZoneSyncOverride {
+            if let deleteCustomAvailabilityZoneSyncOverrideTyped = deleteCustomAvailabilityZoneSyncOverrideNonOptional
+                    as? DeleteCustomAvailabilityZoneSyncType<InvocationReportingType> {
+                return try deleteCustomAvailabilityZoneSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone.__default
@@ -2026,12 +2316,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func deleteDBClusterAsync(
+    public func deleteDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, HTTPClientError>) -> ()) throws {
-        if let deleteDBClusterAsyncOverride = deleteDBClusterAsyncOverride {
-            return try deleteDBClusterAsyncOverride(input, reporting, completion)
+        if let deleteDBClusterAsyncOverrideNonOptional = deleteDBClusterAsyncOverride {
+            if let deleteDBClusterAsyncOverrideTyped = deleteDBClusterAsyncOverrideNonOptional
+                    as? DeleteDBClusterAsyncType<InvocationReportingType> {
+                return try deleteDBClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteDBClusterResultForDeleteDBCluster.__default
@@ -2048,11 +2343,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func deleteDBClusterSync(
+    public func deleteDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
-        if let deleteDBClusterSyncOverride = deleteDBClusterSyncOverride {
-            return try deleteDBClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
+        if let deleteDBClusterSyncOverrideNonOptional = deleteDBClusterSyncOverride {
+            if let deleteDBClusterSyncOverrideTyped = deleteDBClusterSyncOverrideNonOptional
+                    as? DeleteDBClusterSyncType<InvocationReportingType> {
+                return try deleteDBClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteDBClusterResultForDeleteDBCluster.__default
@@ -2068,12 +2368,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterEndpointNotFound, invalidDBClusterEndpointState, invalidDBClusterState.
      */
-    public func deleteDBClusterEndpointAsync(
+    public func deleteDBClusterEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterEndpointMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, HTTPClientError>) -> ()) throws {
-        if let deleteDBClusterEndpointAsyncOverride = deleteDBClusterEndpointAsyncOverride {
-            return try deleteDBClusterEndpointAsyncOverride(input, reporting, completion)
+        if let deleteDBClusterEndpointAsyncOverrideNonOptional = deleteDBClusterEndpointAsyncOverride {
+            if let deleteDBClusterEndpointAsyncOverrideTyped = deleteDBClusterEndpointAsyncOverrideNonOptional
+                    as? DeleteDBClusterEndpointAsyncType<InvocationReportingType> {
+                return try deleteDBClusterEndpointAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBClusterEndpointForDeleteDBClusterEndpoint.__default
@@ -2090,11 +2395,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterEndpointNotFound, invalidDBClusterEndpointState, invalidDBClusterState.
      */
-    public func deleteDBClusterEndpointSync(
+    public func deleteDBClusterEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterEndpointMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint {
-        if let deleteDBClusterEndpointSyncOverride = deleteDBClusterEndpointSyncOverride {
-            return try deleteDBClusterEndpointSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint {
+        if let deleteDBClusterEndpointSyncOverrideNonOptional = deleteDBClusterEndpointSyncOverride {
+            if let deleteDBClusterEndpointSyncOverrideTyped = deleteDBClusterEndpointSyncOverrideNonOptional
+                    as? DeleteDBClusterEndpointSyncType<InvocationReportingType> {
+                return try deleteDBClusterEndpointSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBClusterEndpointForDeleteDBClusterEndpoint.__default
@@ -2109,12 +2419,17 @@ public struct MockRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBClusterParameterGroupAsync(
+    public func deleteDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteDBClusterParameterGroupAsyncOverride = deleteDBClusterParameterGroupAsyncOverride {
-            return try deleteDBClusterParameterGroupAsyncOverride(input, reporting, completion)
+        if let deleteDBClusterParameterGroupAsyncOverrideNonOptional = deleteDBClusterParameterGroupAsyncOverride {
+            if let deleteDBClusterParameterGroupAsyncOverrideTyped = deleteDBClusterParameterGroupAsyncOverrideNonOptional
+                    as? DeleteDBClusterParameterGroupAsyncType<InvocationReportingType> {
+                return try deleteDBClusterParameterGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -2127,11 +2442,16 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBClusterParameterGroupMessage object being passed to this operation.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBClusterParameterGroupSync(
+    public func deleteDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteDBClusterParameterGroupSyncOverride = deleteDBClusterParameterGroupSyncOverride {
-            return try deleteDBClusterParameterGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteDBClusterParameterGroupSyncOverrideNonOptional = deleteDBClusterParameterGroupSyncOverride {
+            if let deleteDBClusterParameterGroupSyncOverrideTyped = deleteDBClusterParameterGroupSyncOverrideNonOptional
+                    as? DeleteDBClusterParameterGroupSyncType<InvocationReportingType> {
+                return try deleteDBClusterParameterGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -2146,12 +2466,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState.
      */
-    public func deleteDBClusterSnapshotAsync(
+    public func deleteDBClusterSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, HTTPClientError>) -> ()) throws {
-        if let deleteDBClusterSnapshotAsyncOverride = deleteDBClusterSnapshotAsyncOverride {
-            return try deleteDBClusterSnapshotAsyncOverride(input, reporting, completion)
+        if let deleteDBClusterSnapshotAsyncOverrideNonOptional = deleteDBClusterSnapshotAsyncOverride {
+            if let deleteDBClusterSnapshotAsyncOverrideTyped = deleteDBClusterSnapshotAsyncOverrideNonOptional
+                    as? DeleteDBClusterSnapshotAsyncType<InvocationReportingType> {
+                return try deleteDBClusterSnapshotAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot.__default
@@ -2168,11 +2493,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState.
      */
-    public func deleteDBClusterSnapshotSync(
+    public func deleteDBClusterSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBClusterSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
-        if let deleteDBClusterSnapshotSyncOverride = deleteDBClusterSnapshotSyncOverride {
-            return try deleteDBClusterSnapshotSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
+        if let deleteDBClusterSnapshotSyncOverrideNonOptional = deleteDBClusterSnapshotSyncOverride {
+            if let deleteDBClusterSnapshotSyncOverrideTyped = deleteDBClusterSnapshotSyncOverrideNonOptional
+                    as? DeleteDBClusterSnapshotSyncType<InvocationReportingType> {
+                return try deleteDBClusterSnapshotSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot.__default
@@ -2188,12 +2518,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func deleteDBInstanceAsync(
+    public func deleteDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, HTTPClientError>) -> ()) throws {
-        if let deleteDBInstanceAsyncOverride = deleteDBInstanceAsyncOverride {
-            return try deleteDBInstanceAsyncOverride(input, reporting, completion)
+        if let deleteDBInstanceAsyncOverrideNonOptional = deleteDBInstanceAsyncOverride {
+            if let deleteDBInstanceAsyncOverrideTyped = deleteDBInstanceAsyncOverrideNonOptional
+                    as? DeleteDBInstanceAsyncType<InvocationReportingType> {
+                return try deleteDBInstanceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteDBInstanceResultForDeleteDBInstance.__default
@@ -2210,11 +2545,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func deleteDBInstanceSync(
+    public func deleteDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance {
-        if let deleteDBInstanceSyncOverride = deleteDBInstanceSyncOverride {
-            return try deleteDBInstanceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance {
+        if let deleteDBInstanceSyncOverrideNonOptional = deleteDBInstanceSyncOverride {
+            if let deleteDBInstanceSyncOverrideTyped = deleteDBInstanceSyncOverrideNonOptional
+                    as? DeleteDBInstanceSyncType<InvocationReportingType> {
+                return try deleteDBInstanceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteDBInstanceResultForDeleteDBInstance.__default
@@ -2230,12 +2570,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAutomatedBackupNotFound, invalidDBInstanceAutomatedBackupState.
      */
-    public func deleteDBInstanceAutomatedBackupAsync(
+    public func deleteDBInstanceAutomatedBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBInstanceAutomatedBackupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, HTTPClientError>) -> ()) throws {
-        if let deleteDBInstanceAutomatedBackupAsyncOverride = deleteDBInstanceAutomatedBackupAsyncOverride {
-            return try deleteDBInstanceAutomatedBackupAsyncOverride(input, reporting, completion)
+        if let deleteDBInstanceAutomatedBackupAsyncOverrideNonOptional = deleteDBInstanceAutomatedBackupAsyncOverride {
+            if let deleteDBInstanceAutomatedBackupAsyncOverrideTyped = deleteDBInstanceAutomatedBackupAsyncOverrideNonOptional
+                    as? DeleteDBInstanceAutomatedBackupAsyncType<InvocationReportingType> {
+                return try deleteDBInstanceAutomatedBackupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup.__default
@@ -2252,11 +2597,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAutomatedBackupNotFound, invalidDBInstanceAutomatedBackupState.
      */
-    public func deleteDBInstanceAutomatedBackupSync(
+    public func deleteDBInstanceAutomatedBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBInstanceAutomatedBackupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup {
-        if let deleteDBInstanceAutomatedBackupSyncOverride = deleteDBInstanceAutomatedBackupSyncOverride {
-            return try deleteDBInstanceAutomatedBackupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup {
+        if let deleteDBInstanceAutomatedBackupSyncOverrideNonOptional = deleteDBInstanceAutomatedBackupSyncOverride {
+            if let deleteDBInstanceAutomatedBackupSyncOverrideTyped = deleteDBInstanceAutomatedBackupSyncOverrideNonOptional
+                    as? DeleteDBInstanceAutomatedBackupSyncType<InvocationReportingType> {
+                return try deleteDBInstanceAutomatedBackupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup.__default
@@ -2271,12 +2621,17 @@ public struct MockRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBParameterGroupAsync(
+    public func deleteDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteDBParameterGroupAsyncOverride = deleteDBParameterGroupAsyncOverride {
-            return try deleteDBParameterGroupAsyncOverride(input, reporting, completion)
+        if let deleteDBParameterGroupAsyncOverrideNonOptional = deleteDBParameterGroupAsyncOverride {
+            if let deleteDBParameterGroupAsyncOverrideTyped = deleteDBParameterGroupAsyncOverrideNonOptional
+                    as? DeleteDBParameterGroupAsyncType<InvocationReportingType> {
+                return try deleteDBParameterGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -2289,11 +2644,16 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBParameterGroupMessage object being passed to this operation.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBParameterGroupSync(
+    public func deleteDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteDBParameterGroupSyncOverride = deleteDBParameterGroupSyncOverride {
-            return try deleteDBParameterGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteDBParameterGroupSyncOverrideNonOptional = deleteDBParameterGroupSyncOverride {
+            if let deleteDBParameterGroupSyncOverrideTyped = deleteDBParameterGroupSyncOverrideNonOptional
+                    as? DeleteDBParameterGroupSyncType<InvocationReportingType> {
+                return try deleteDBParameterGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -2308,12 +2668,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound, invalidDBProxyState.
      */
-    public func deleteDBProxyAsync(
+    public func deleteDBProxyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBProxyRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, HTTPClientError>) -> ()) throws {
-        if let deleteDBProxyAsyncOverride = deleteDBProxyAsyncOverride {
-            return try deleteDBProxyAsyncOverride(input, reporting, completion)
+        if let deleteDBProxyAsyncOverrideNonOptional = deleteDBProxyAsyncOverride {
+            if let deleteDBProxyAsyncOverrideTyped = deleteDBProxyAsyncOverrideNonOptional
+                    as? DeleteDBProxyAsyncType<InvocationReportingType> {
+                return try deleteDBProxyAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteDBProxyResponseForDeleteDBProxy.__default
@@ -2330,11 +2695,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound, invalidDBProxyState.
      */
-    public func deleteDBProxySync(
+    public func deleteDBProxySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBProxyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy {
-        if let deleteDBProxySyncOverride = deleteDBProxySyncOverride {
-            return try deleteDBProxySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy {
+        if let deleteDBProxySyncOverrideNonOptional = deleteDBProxySyncOverride {
+            if let deleteDBProxySyncOverrideTyped = deleteDBProxySyncOverrideNonOptional
+                    as? DeleteDBProxySyncType<InvocationReportingType> {
+                return try deleteDBProxySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteDBProxyResponseForDeleteDBProxy.__default
@@ -2349,12 +2719,17 @@ public struct MockRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func deleteDBSecurityGroupAsync(
+    public func deleteDBSecurityGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBSecurityGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteDBSecurityGroupAsyncOverride = deleteDBSecurityGroupAsyncOverride {
-            return try deleteDBSecurityGroupAsyncOverride(input, reporting, completion)
+        if let deleteDBSecurityGroupAsyncOverrideNonOptional = deleteDBSecurityGroupAsyncOverride {
+            if let deleteDBSecurityGroupAsyncOverrideTyped = deleteDBSecurityGroupAsyncOverrideNonOptional
+                    as? DeleteDBSecurityGroupAsyncType<InvocationReportingType> {
+                return try deleteDBSecurityGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -2367,11 +2742,16 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBSecurityGroupMessage object being passed to this operation.
      - Throws: dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func deleteDBSecurityGroupSync(
+    public func deleteDBSecurityGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBSecurityGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteDBSecurityGroupSyncOverride = deleteDBSecurityGroupSyncOverride {
-            return try deleteDBSecurityGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteDBSecurityGroupSyncOverrideNonOptional = deleteDBSecurityGroupSyncOverride {
+            if let deleteDBSecurityGroupSyncOverrideTyped = deleteDBSecurityGroupSyncOverrideNonOptional
+                    as? DeleteDBSecurityGroupSyncType<InvocationReportingType> {
+                return try deleteDBSecurityGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -2386,12 +2766,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound, invalidDBSnapshotState.
      */
-    public func deleteDBSnapshotAsync(
+    public func deleteDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, HTTPClientError>) -> ()) throws {
-        if let deleteDBSnapshotAsyncOverride = deleteDBSnapshotAsyncOverride {
-            return try deleteDBSnapshotAsyncOverride(input, reporting, completion)
+        if let deleteDBSnapshotAsyncOverrideNonOptional = deleteDBSnapshotAsyncOverride {
+            if let deleteDBSnapshotAsyncOverrideTyped = deleteDBSnapshotAsyncOverrideNonOptional
+                    as? DeleteDBSnapshotAsyncType<InvocationReportingType> {
+                return try deleteDBSnapshotAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteDBSnapshotResultForDeleteDBSnapshot.__default
@@ -2408,11 +2793,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound, invalidDBSnapshotState.
      */
-    public func deleteDBSnapshotSync(
+    public func deleteDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot {
-        if let deleteDBSnapshotSyncOverride = deleteDBSnapshotSyncOverride {
-            return try deleteDBSnapshotSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot {
+        if let deleteDBSnapshotSyncOverrideNonOptional = deleteDBSnapshotSyncOverride {
+            if let deleteDBSnapshotSyncOverrideTyped = deleteDBSnapshotSyncOverrideNonOptional
+                    as? DeleteDBSnapshotSyncType<InvocationReportingType> {
+                return try deleteDBSnapshotSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteDBSnapshotResultForDeleteDBSnapshot.__default
@@ -2427,12 +2817,17 @@ public struct MockRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBSubnetGroupNotFound, invalidDBSubnetGroupState, invalidDBSubnetState.
      */
-    public func deleteDBSubnetGroupAsync(
+    public func deleteDBSubnetGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBSubnetGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteDBSubnetGroupAsyncOverride = deleteDBSubnetGroupAsyncOverride {
-            return try deleteDBSubnetGroupAsyncOverride(input, reporting, completion)
+        if let deleteDBSubnetGroupAsyncOverrideNonOptional = deleteDBSubnetGroupAsyncOverride {
+            if let deleteDBSubnetGroupAsyncOverrideTyped = deleteDBSubnetGroupAsyncOverrideNonOptional
+                    as? DeleteDBSubnetGroupAsyncType<InvocationReportingType> {
+                return try deleteDBSubnetGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -2445,11 +2840,16 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBSubnetGroupMessage object being passed to this operation.
      - Throws: dBSubnetGroupNotFound, invalidDBSubnetGroupState, invalidDBSubnetState.
      */
-    public func deleteDBSubnetGroupSync(
+    public func deleteDBSubnetGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteDBSubnetGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteDBSubnetGroupSyncOverride = deleteDBSubnetGroupSyncOverride {
-            return try deleteDBSubnetGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteDBSubnetGroupSyncOverrideNonOptional = deleteDBSubnetGroupSyncOverride {
+            if let deleteDBSubnetGroupSyncOverrideTyped = deleteDBSubnetGroupSyncOverrideNonOptional
+                    as? DeleteDBSubnetGroupSyncType<InvocationReportingType> {
+                return try deleteDBSubnetGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -2464,12 +2864,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidEventSubscriptionState, subscriptionNotFound.
      */
-    public func deleteEventSubscriptionAsync(
+    public func deleteEventSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteEventSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, HTTPClientError>) -> ()) throws {
-        if let deleteEventSubscriptionAsyncOverride = deleteEventSubscriptionAsyncOverride {
-            return try deleteEventSubscriptionAsyncOverride(input, reporting, completion)
+        if let deleteEventSubscriptionAsyncOverrideNonOptional = deleteEventSubscriptionAsyncOverride {
+            if let deleteEventSubscriptionAsyncOverrideTyped = deleteEventSubscriptionAsyncOverrideNonOptional
+                    as? DeleteEventSubscriptionAsyncType<InvocationReportingType> {
+                return try deleteEventSubscriptionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteEventSubscriptionResultForDeleteEventSubscription.__default
@@ -2486,11 +2891,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidEventSubscriptionState, subscriptionNotFound.
      */
-    public func deleteEventSubscriptionSync(
+    public func deleteEventSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteEventSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription {
-        if let deleteEventSubscriptionSyncOverride = deleteEventSubscriptionSyncOverride {
-            return try deleteEventSubscriptionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription {
+        if let deleteEventSubscriptionSyncOverrideNonOptional = deleteEventSubscriptionSyncOverride {
+            if let deleteEventSubscriptionSyncOverrideTyped = deleteEventSubscriptionSyncOverrideNonOptional
+                    as? DeleteEventSubscriptionSyncType<InvocationReportingType> {
+                return try deleteEventSubscriptionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteEventSubscriptionResultForDeleteEventSubscription.__default
@@ -2506,12 +2916,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func deleteGlobalClusterAsync(
+    public func deleteGlobalClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, HTTPClientError>) -> ()) throws {
-        if let deleteGlobalClusterAsyncOverride = deleteGlobalClusterAsyncOverride {
-            return try deleteGlobalClusterAsyncOverride(input, reporting, completion)
+        if let deleteGlobalClusterAsyncOverrideNonOptional = deleteGlobalClusterAsyncOverride {
+            if let deleteGlobalClusterAsyncOverrideTyped = deleteGlobalClusterAsyncOverrideNonOptional
+                    as? DeleteGlobalClusterAsyncType<InvocationReportingType> {
+                return try deleteGlobalClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteGlobalClusterResultForDeleteGlobalCluster.__default
@@ -2528,11 +2943,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func deleteGlobalClusterSync(
+    public func deleteGlobalClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster {
-        if let deleteGlobalClusterSyncOverride = deleteGlobalClusterSyncOverride {
-            return try deleteGlobalClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster {
+        if let deleteGlobalClusterSyncOverrideNonOptional = deleteGlobalClusterSyncOverride {
+            if let deleteGlobalClusterSyncOverrideTyped = deleteGlobalClusterSyncOverrideNonOptional
+                    as? DeleteGlobalClusterSyncType<InvocationReportingType> {
+                return try deleteGlobalClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteGlobalClusterResultForDeleteGlobalCluster.__default
@@ -2548,12 +2968,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: installationMediaNotFound.
      */
-    public func deleteInstallationMediaAsync(
+    public func deleteInstallationMediaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteInstallationMediaMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, HTTPClientError>) -> ()) throws {
-        if let deleteInstallationMediaAsyncOverride = deleteInstallationMediaAsyncOverride {
-            return try deleteInstallationMediaAsyncOverride(input, reporting, completion)
+        if let deleteInstallationMediaAsyncOverrideNonOptional = deleteInstallationMediaAsyncOverride {
+            if let deleteInstallationMediaAsyncOverrideTyped = deleteInstallationMediaAsyncOverrideNonOptional
+                    as? DeleteInstallationMediaAsyncType<InvocationReportingType> {
+                return try deleteInstallationMediaAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = InstallationMediaForDeleteInstallationMedia.__default
@@ -2570,11 +2995,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: installationMediaNotFound.
      */
-    public func deleteInstallationMediaSync(
+    public func deleteInstallationMediaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteInstallationMediaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia {
-        if let deleteInstallationMediaSyncOverride = deleteInstallationMediaSyncOverride {
-            return try deleteInstallationMediaSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia {
+        if let deleteInstallationMediaSyncOverrideNonOptional = deleteInstallationMediaSyncOverride {
+            if let deleteInstallationMediaSyncOverrideTyped = deleteInstallationMediaSyncOverrideNonOptional
+                    as? DeleteInstallationMediaSyncType<InvocationReportingType> {
+                return try deleteInstallationMediaSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return InstallationMediaForDeleteInstallationMedia.__default
@@ -2589,12 +3019,17 @@ public struct MockRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func deleteOptionGroupAsync(
+    public func deleteOptionGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteOptionGroupAsyncOverride = deleteOptionGroupAsyncOverride {
-            return try deleteOptionGroupAsyncOverride(input, reporting, completion)
+        if let deleteOptionGroupAsyncOverrideNonOptional = deleteOptionGroupAsyncOverride {
+            if let deleteOptionGroupAsyncOverrideTyped = deleteOptionGroupAsyncOverrideNonOptional
+                    as? DeleteOptionGroupAsyncType<InvocationReportingType> {
+                return try deleteOptionGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -2607,11 +3042,16 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated DeleteOptionGroupMessage object being passed to this operation.
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func deleteOptionGroupSync(
+    public func deleteOptionGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeleteOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let deleteOptionGroupSyncOverride = deleteOptionGroupSyncOverride {
-            return try deleteOptionGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let deleteOptionGroupSyncOverrideNonOptional = deleteOptionGroupSyncOverride {
+            if let deleteOptionGroupSyncOverrideTyped = deleteOptionGroupSyncOverrideNonOptional
+                    as? DeleteOptionGroupSyncType<InvocationReportingType> {
+                return try deleteOptionGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -2626,12 +3066,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
-    public func deregisterDBProxyTargetsAsync(
+    public func deregisterDBProxyTargetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeregisterDBProxyTargetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, HTTPClientError>) -> ()) throws {
-        if let deregisterDBProxyTargetsAsyncOverride = deregisterDBProxyTargetsAsyncOverride {
-            return try deregisterDBProxyTargetsAsyncOverride(input, reporting, completion)
+        if let deregisterDBProxyTargetsAsyncOverrideNonOptional = deregisterDBProxyTargetsAsyncOverride {
+            if let deregisterDBProxyTargetsAsyncOverrideTyped = deregisterDBProxyTargetsAsyncOverrideNonOptional
+                    as? DeregisterDBProxyTargetsAsyncType<InvocationReportingType> {
+                return try deregisterDBProxyTargetsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets.__default
@@ -2648,11 +3093,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
-    public func deregisterDBProxyTargetsSync(
+    public func deregisterDBProxyTargetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DeregisterDBProxyTargetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
-        if let deregisterDBProxyTargetsSyncOverride = deregisterDBProxyTargetsSyncOverride {
-            return try deregisterDBProxyTargetsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
+        if let deregisterDBProxyTargetsSyncOverrideNonOptional = deregisterDBProxyTargetsSyncOverride {
+            if let deregisterDBProxyTargetsSyncOverrideTyped = deregisterDBProxyTargetsSyncOverrideNonOptional
+                    as? DeregisterDBProxyTargetsSyncType<InvocationReportingType> {
+                return try deregisterDBProxyTargetsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets.__default
@@ -2667,12 +3117,17 @@ public struct MockRDSClient: RDSClientProtocol {
            callback when the operation is complete. The AccountAttributesMessageForDescribeAccountAttributes
            object will be validated before being returned to caller.
      */
-    public func describeAccountAttributesAsync(
+    public func describeAccountAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeAccountAttributesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, HTTPClientError>) -> ()) throws {
-        if let describeAccountAttributesAsyncOverride = describeAccountAttributesAsyncOverride {
-            return try describeAccountAttributesAsyncOverride(input, reporting, completion)
+        if let describeAccountAttributesAsyncOverrideNonOptional = describeAccountAttributesAsyncOverride {
+            if let describeAccountAttributesAsyncOverrideTyped = describeAccountAttributesAsyncOverrideNonOptional
+                    as? DescribeAccountAttributesAsyncType<InvocationReportingType> {
+                return try describeAccountAttributesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = AccountAttributesMessageForDescribeAccountAttributes.__default
@@ -2688,11 +3143,16 @@ public struct MockRDSClient: RDSClientProtocol {
      - Returns: The AccountAttributesMessageForDescribeAccountAttributes object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAccountAttributesSync(
+    public func describeAccountAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeAccountAttributesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
-        if let describeAccountAttributesSyncOverride = describeAccountAttributesSyncOverride {
-            return try describeAccountAttributesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
+        if let describeAccountAttributesSyncOverrideNonOptional = describeAccountAttributesSyncOverride {
+            if let describeAccountAttributesSyncOverrideTyped = describeAccountAttributesSyncOverrideNonOptional
+                    as? DescribeAccountAttributesSyncType<InvocationReportingType> {
+                return try describeAccountAttributesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return AccountAttributesMessageForDescribeAccountAttributes.__default
@@ -2708,12 +3168,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: certificateNotFound.
      */
-    public func describeCertificatesAsync(
+    public func describeCertificatesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeCertificatesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, HTTPClientError>) -> ()) throws {
-        if let describeCertificatesAsyncOverride = describeCertificatesAsyncOverride {
-            return try describeCertificatesAsyncOverride(input, reporting, completion)
+        if let describeCertificatesAsyncOverrideNonOptional = describeCertificatesAsyncOverride {
+            if let describeCertificatesAsyncOverrideTyped = describeCertificatesAsyncOverrideNonOptional
+                    as? DescribeCertificatesAsyncType<InvocationReportingType> {
+                return try describeCertificatesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CertificateMessageForDescribeCertificates.__default
@@ -2730,11 +3195,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: certificateNotFound.
      */
-    public func describeCertificatesSync(
+    public func describeCertificatesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeCertificatesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CertificateMessageForDescribeCertificates {
-        if let describeCertificatesSyncOverride = describeCertificatesSyncOverride {
-            return try describeCertificatesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CertificateMessageForDescribeCertificates {
+        if let describeCertificatesSyncOverrideNonOptional = describeCertificatesSyncOverride {
+            if let describeCertificatesSyncOverrideTyped = describeCertificatesSyncOverrideNonOptional
+                    as? DescribeCertificatesSyncType<InvocationReportingType> {
+                return try describeCertificatesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CertificateMessageForDescribeCertificates.__default
@@ -2750,12 +3220,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: customAvailabilityZoneNotFound.
      */
-    public func describeCustomAvailabilityZonesAsync(
+    public func describeCustomAvailabilityZonesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, HTTPClientError>) -> ()) throws {
-        if let describeCustomAvailabilityZonesAsyncOverride = describeCustomAvailabilityZonesAsyncOverride {
-            return try describeCustomAvailabilityZonesAsyncOverride(input, reporting, completion)
+        if let describeCustomAvailabilityZonesAsyncOverrideNonOptional = describeCustomAvailabilityZonesAsyncOverride {
+            if let describeCustomAvailabilityZonesAsyncOverrideTyped = describeCustomAvailabilityZonesAsyncOverrideNonOptional
+                    as? DescribeCustomAvailabilityZonesAsyncType<InvocationReportingType> {
+                return try describeCustomAvailabilityZonesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones.__default
@@ -2772,11 +3247,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: customAvailabilityZoneNotFound.
      */
-    public func describeCustomAvailabilityZonesSync(
+    public func describeCustomAvailabilityZonesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeCustomAvailabilityZonesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
-        if let describeCustomAvailabilityZonesSyncOverride = describeCustomAvailabilityZonesSyncOverride {
-            return try describeCustomAvailabilityZonesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
+        if let describeCustomAvailabilityZonesSyncOverrideNonOptional = describeCustomAvailabilityZonesSyncOverride {
+            if let describeCustomAvailabilityZonesSyncOverrideTyped = describeCustomAvailabilityZonesSyncOverrideNonOptional
+                    as? DescribeCustomAvailabilityZonesSyncType<InvocationReportingType> {
+                return try describeCustomAvailabilityZonesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones.__default
@@ -2792,12 +3272,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterBacktrackNotFound, dBClusterNotFound.
      */
-    public func describeDBClusterBacktracksAsync(
+    public func describeDBClusterBacktracksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterBacktracksMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, HTTPClientError>) -> ()) throws {
-        if let describeDBClusterBacktracksAsyncOverride = describeDBClusterBacktracksAsyncOverride {
-            return try describeDBClusterBacktracksAsyncOverride(input, reporting, completion)
+        if let describeDBClusterBacktracksAsyncOverrideNonOptional = describeDBClusterBacktracksAsyncOverride {
+            if let describeDBClusterBacktracksAsyncOverrideTyped = describeDBClusterBacktracksAsyncOverrideNonOptional
+                    as? DescribeDBClusterBacktracksAsyncType<InvocationReportingType> {
+                return try describeDBClusterBacktracksAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBClusterBacktrackMessageForDescribeDBClusterBacktracks.__default
@@ -2814,11 +3299,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterBacktrackNotFound, dBClusterNotFound.
      */
-    public func describeDBClusterBacktracksSync(
+    public func describeDBClusterBacktracksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterBacktracksMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
-        if let describeDBClusterBacktracksSyncOverride = describeDBClusterBacktracksSyncOverride {
-            return try describeDBClusterBacktracksSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
+        if let describeDBClusterBacktracksSyncOverrideNonOptional = describeDBClusterBacktracksSyncOverride {
+            if let describeDBClusterBacktracksSyncOverrideTyped = describeDBClusterBacktracksSyncOverrideNonOptional
+                    as? DescribeDBClusterBacktracksSyncType<InvocationReportingType> {
+                return try describeDBClusterBacktracksSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBClusterBacktrackMessageForDescribeDBClusterBacktracks.__default
@@ -2834,12 +3324,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound.
      */
-    public func describeDBClusterEndpointsAsync(
+    public func describeDBClusterEndpointsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterEndpointsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, HTTPClientError>) -> ()) throws {
-        if let describeDBClusterEndpointsAsyncOverride = describeDBClusterEndpointsAsyncOverride {
-            return try describeDBClusterEndpointsAsyncOverride(input, reporting, completion)
+        if let describeDBClusterEndpointsAsyncOverrideNonOptional = describeDBClusterEndpointsAsyncOverride {
+            if let describeDBClusterEndpointsAsyncOverrideTyped = describeDBClusterEndpointsAsyncOverrideNonOptional
+                    as? DescribeDBClusterEndpointsAsyncType<InvocationReportingType> {
+                return try describeDBClusterEndpointsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBClusterEndpointMessageForDescribeDBClusterEndpoints.__default
@@ -2856,11 +3351,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound.
      */
-    public func describeDBClusterEndpointsSync(
+    public func describeDBClusterEndpointsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterEndpointsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints {
-        if let describeDBClusterEndpointsSyncOverride = describeDBClusterEndpointsSyncOverride {
-            return try describeDBClusterEndpointsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints {
+        if let describeDBClusterEndpointsSyncOverrideNonOptional = describeDBClusterEndpointsSyncOverride {
+            if let describeDBClusterEndpointsSyncOverrideTyped = describeDBClusterEndpointsSyncOverrideNonOptional
+                    as? DescribeDBClusterEndpointsSyncType<InvocationReportingType> {
+                return try describeDBClusterEndpointsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBClusterEndpointMessageForDescribeDBClusterEndpoints.__default
@@ -2876,12 +3376,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParameterGroupsAsync(
+    public func describeDBClusterParameterGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterParameterGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, HTTPClientError>) -> ()) throws {
-        if let describeDBClusterParameterGroupsAsyncOverride = describeDBClusterParameterGroupsAsyncOverride {
-            return try describeDBClusterParameterGroupsAsyncOverride(input, reporting, completion)
+        if let describeDBClusterParameterGroupsAsyncOverrideNonOptional = describeDBClusterParameterGroupsAsyncOverride {
+            if let describeDBClusterParameterGroupsAsyncOverrideTyped = describeDBClusterParameterGroupsAsyncOverrideNonOptional
+                    as? DescribeDBClusterParameterGroupsAsyncType<InvocationReportingType> {
+                return try describeDBClusterParameterGroupsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups.__default
@@ -2898,11 +3403,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParameterGroupsSync(
+    public func describeDBClusterParameterGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterParameterGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups {
-        if let describeDBClusterParameterGroupsSyncOverride = describeDBClusterParameterGroupsSyncOverride {
-            return try describeDBClusterParameterGroupsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups {
+        if let describeDBClusterParameterGroupsSyncOverrideNonOptional = describeDBClusterParameterGroupsSyncOverride {
+            if let describeDBClusterParameterGroupsSyncOverrideTyped = describeDBClusterParameterGroupsSyncOverrideNonOptional
+                    as? DescribeDBClusterParameterGroupsSyncType<InvocationReportingType> {
+                return try describeDBClusterParameterGroupsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups.__default
@@ -2918,12 +3428,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParametersAsync(
+    public func describeDBClusterParametersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, HTTPClientError>) -> ()) throws {
-        if let describeDBClusterParametersAsyncOverride = describeDBClusterParametersAsyncOverride {
-            return try describeDBClusterParametersAsyncOverride(input, reporting, completion)
+        if let describeDBClusterParametersAsyncOverrideNonOptional = describeDBClusterParametersAsyncOverride {
+            if let describeDBClusterParametersAsyncOverrideTyped = describeDBClusterParametersAsyncOverrideNonOptional
+                    as? DescribeDBClusterParametersAsyncType<InvocationReportingType> {
+                return try describeDBClusterParametersAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBClusterParameterGroupDetailsForDescribeDBClusterParameters.__default
@@ -2940,11 +3455,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParametersSync(
+    public func describeDBClusterParametersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
-        if let describeDBClusterParametersSyncOverride = describeDBClusterParametersSyncOverride {
-            return try describeDBClusterParametersSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
+        if let describeDBClusterParametersSyncOverrideNonOptional = describeDBClusterParametersSyncOverride {
+            if let describeDBClusterParametersSyncOverrideTyped = describeDBClusterParametersSyncOverrideNonOptional
+                    as? DescribeDBClusterParametersSyncType<InvocationReportingType> {
+                return try describeDBClusterParametersSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBClusterParameterGroupDetailsForDescribeDBClusterParameters.__default
@@ -2960,12 +3480,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotAttributesAsync(
+    public func describeDBClusterSnapshotAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterSnapshotAttributesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, HTTPClientError>) -> ()) throws {
-        if let describeDBClusterSnapshotAttributesAsyncOverride = describeDBClusterSnapshotAttributesAsyncOverride {
-            return try describeDBClusterSnapshotAttributesAsyncOverride(input, reporting, completion)
+        if let describeDBClusterSnapshotAttributesAsyncOverrideNonOptional = describeDBClusterSnapshotAttributesAsyncOverride {
+            if let describeDBClusterSnapshotAttributesAsyncOverrideTyped = describeDBClusterSnapshotAttributesAsyncOverrideNonOptional
+                    as? DescribeDBClusterSnapshotAttributesAsyncType<InvocationReportingType> {
+                return try describeDBClusterSnapshotAttributesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes.__default
@@ -2982,11 +3507,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotAttributesSync(
+    public func describeDBClusterSnapshotAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterSnapshotAttributesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes {
-        if let describeDBClusterSnapshotAttributesSyncOverride = describeDBClusterSnapshotAttributesSyncOverride {
-            return try describeDBClusterSnapshotAttributesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes {
+        if let describeDBClusterSnapshotAttributesSyncOverrideNonOptional = describeDBClusterSnapshotAttributesSyncOverride {
+            if let describeDBClusterSnapshotAttributesSyncOverrideTyped = describeDBClusterSnapshotAttributesSyncOverrideNonOptional
+                    as? DescribeDBClusterSnapshotAttributesSyncType<InvocationReportingType> {
+                return try describeDBClusterSnapshotAttributesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes.__default
@@ -3002,12 +3532,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotsAsync(
+    public func describeDBClusterSnapshotsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterSnapshotsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, HTTPClientError>) -> ()) throws {
-        if let describeDBClusterSnapshotsAsyncOverride = describeDBClusterSnapshotsAsyncOverride {
-            return try describeDBClusterSnapshotsAsyncOverride(input, reporting, completion)
+        if let describeDBClusterSnapshotsAsyncOverrideNonOptional = describeDBClusterSnapshotsAsyncOverride {
+            if let describeDBClusterSnapshotsAsyncOverrideTyped = describeDBClusterSnapshotsAsyncOverrideNonOptional
+                    as? DescribeDBClusterSnapshotsAsyncType<InvocationReportingType> {
+                return try describeDBClusterSnapshotsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBClusterSnapshotMessageForDescribeDBClusterSnapshots.__default
@@ -3024,11 +3559,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotsSync(
+    public func describeDBClusterSnapshotsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClusterSnapshotsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
-        if let describeDBClusterSnapshotsSyncOverride = describeDBClusterSnapshotsSyncOverride {
-            return try describeDBClusterSnapshotsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
+        if let describeDBClusterSnapshotsSyncOverrideNonOptional = describeDBClusterSnapshotsSyncOverride {
+            if let describeDBClusterSnapshotsSyncOverrideTyped = describeDBClusterSnapshotsSyncOverrideNonOptional
+                    as? DescribeDBClusterSnapshotsSyncType<InvocationReportingType> {
+                return try describeDBClusterSnapshotsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBClusterSnapshotMessageForDescribeDBClusterSnapshots.__default
@@ -3044,12 +3584,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound.
      */
-    public func describeDBClustersAsync(
+    public func describeDBClustersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClustersMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, HTTPClientError>) -> ()) throws {
-        if let describeDBClustersAsyncOverride = describeDBClustersAsyncOverride {
-            return try describeDBClustersAsyncOverride(input, reporting, completion)
+        if let describeDBClustersAsyncOverrideNonOptional = describeDBClustersAsyncOverride {
+            if let describeDBClustersAsyncOverrideTyped = describeDBClustersAsyncOverrideNonOptional
+                    as? DescribeDBClustersAsyncType<InvocationReportingType> {
+                return try describeDBClustersAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBClusterMessageForDescribeDBClusters.__default
@@ -3066,11 +3611,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound.
      */
-    public func describeDBClustersSync(
+    public func describeDBClustersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBClustersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterMessageForDescribeDBClusters {
-        if let describeDBClustersSyncOverride = describeDBClustersSyncOverride {
-            return try describeDBClustersSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterMessageForDescribeDBClusters {
+        if let describeDBClustersSyncOverrideNonOptional = describeDBClustersSyncOverride {
+            if let describeDBClustersSyncOverrideTyped = describeDBClustersSyncOverrideNonOptional
+                    as? DescribeDBClustersSyncType<InvocationReportingType> {
+                return try describeDBClustersSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBClusterMessageForDescribeDBClusters.__default
@@ -3085,12 +3635,17 @@ public struct MockRDSClient: RDSClientProtocol {
            callback when the operation is complete. The DBEngineVersionMessageForDescribeDBEngineVersions
            object will be validated before being returned to caller.
      */
-    public func describeDBEngineVersionsAsync(
+    public func describeDBEngineVersionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBEngineVersionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, HTTPClientError>) -> ()) throws {
-        if let describeDBEngineVersionsAsyncOverride = describeDBEngineVersionsAsyncOverride {
-            return try describeDBEngineVersionsAsyncOverride(input, reporting, completion)
+        if let describeDBEngineVersionsAsyncOverrideNonOptional = describeDBEngineVersionsAsyncOverride {
+            if let describeDBEngineVersionsAsyncOverrideTyped = describeDBEngineVersionsAsyncOverrideNonOptional
+                    as? DescribeDBEngineVersionsAsyncType<InvocationReportingType> {
+                return try describeDBEngineVersionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBEngineVersionMessageForDescribeDBEngineVersions.__default
@@ -3106,11 +3661,16 @@ public struct MockRDSClient: RDSClientProtocol {
      - Returns: The DBEngineVersionMessageForDescribeDBEngineVersions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeDBEngineVersionsSync(
+    public func describeDBEngineVersionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBEngineVersionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions {
-        if let describeDBEngineVersionsSyncOverride = describeDBEngineVersionsSyncOverride {
-            return try describeDBEngineVersionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions {
+        if let describeDBEngineVersionsSyncOverrideNonOptional = describeDBEngineVersionsSyncOverride {
+            if let describeDBEngineVersionsSyncOverrideTyped = describeDBEngineVersionsSyncOverrideNonOptional
+                    as? DescribeDBEngineVersionsSyncType<InvocationReportingType> {
+                return try describeDBEngineVersionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBEngineVersionMessageForDescribeDBEngineVersions.__default
@@ -3126,12 +3686,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAutomatedBackupNotFound.
      */
-    public func describeDBInstanceAutomatedBackupsAsync(
+    public func describeDBInstanceAutomatedBackupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, HTTPClientError>) -> ()) throws {
-        if let describeDBInstanceAutomatedBackupsAsyncOverride = describeDBInstanceAutomatedBackupsAsyncOverride {
-            return try describeDBInstanceAutomatedBackupsAsyncOverride(input, reporting, completion)
+        if let describeDBInstanceAutomatedBackupsAsyncOverrideNonOptional = describeDBInstanceAutomatedBackupsAsyncOverride {
+            if let describeDBInstanceAutomatedBackupsAsyncOverrideTyped = describeDBInstanceAutomatedBackupsAsyncOverrideNonOptional
+                    as? DescribeDBInstanceAutomatedBackupsAsyncType<InvocationReportingType> {
+                return try describeDBInstanceAutomatedBackupsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups.__default
@@ -3148,11 +3713,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAutomatedBackupNotFound.
      */
-    public func describeDBInstanceAutomatedBackupsSync(
+    public func describeDBInstanceAutomatedBackupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups {
-        if let describeDBInstanceAutomatedBackupsSyncOverride = describeDBInstanceAutomatedBackupsSyncOverride {
-            return try describeDBInstanceAutomatedBackupsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups {
+        if let describeDBInstanceAutomatedBackupsSyncOverrideNonOptional = describeDBInstanceAutomatedBackupsSyncOverride {
+            if let describeDBInstanceAutomatedBackupsSyncOverrideTyped = describeDBInstanceAutomatedBackupsSyncOverrideNonOptional
+                    as? DescribeDBInstanceAutomatedBackupsSyncType<InvocationReportingType> {
+                return try describeDBInstanceAutomatedBackupsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups.__default
@@ -3168,12 +3738,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound.
      */
-    public func describeDBInstancesAsync(
+    public func describeDBInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBInstancesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, HTTPClientError>) -> ()) throws {
-        if let describeDBInstancesAsyncOverride = describeDBInstancesAsyncOverride {
-            return try describeDBInstancesAsyncOverride(input, reporting, completion)
+        if let describeDBInstancesAsyncOverrideNonOptional = describeDBInstancesAsyncOverride {
+            if let describeDBInstancesAsyncOverrideTyped = describeDBInstancesAsyncOverrideNonOptional
+                    as? DescribeDBInstancesAsyncType<InvocationReportingType> {
+                return try describeDBInstancesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBInstanceMessageForDescribeDBInstances.__default
@@ -3190,11 +3765,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound.
      */
-    public func describeDBInstancesSync(
+    public func describeDBInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBInstancesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances {
-        if let describeDBInstancesSyncOverride = describeDBInstancesSyncOverride {
-            return try describeDBInstancesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances {
+        if let describeDBInstancesSyncOverrideNonOptional = describeDBInstancesSyncOverride {
+            if let describeDBInstancesSyncOverrideTyped = describeDBInstancesSyncOverrideNonOptional
+                    as? DescribeDBInstancesSyncType<InvocationReportingType> {
+                return try describeDBInstancesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBInstanceMessageForDescribeDBInstances.__default
@@ -3210,12 +3790,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound.
      */
-    public func describeDBLogFilesAsync(
+    public func describeDBLogFilesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBLogFilesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, HTTPClientError>) -> ()) throws {
-        if let describeDBLogFilesAsyncOverride = describeDBLogFilesAsyncOverride {
-            return try describeDBLogFilesAsyncOverride(input, reporting, completion)
+        if let describeDBLogFilesAsyncOverrideNonOptional = describeDBLogFilesAsyncOverride {
+            if let describeDBLogFilesAsyncOverrideTyped = describeDBLogFilesAsyncOverrideNonOptional
+                    as? DescribeDBLogFilesAsyncType<InvocationReportingType> {
+                return try describeDBLogFilesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeDBLogFilesResponseForDescribeDBLogFiles.__default
@@ -3232,11 +3817,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound.
      */
-    public func describeDBLogFilesSync(
+    public func describeDBLogFilesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBLogFilesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles {
-        if let describeDBLogFilesSyncOverride = describeDBLogFilesSyncOverride {
-            return try describeDBLogFilesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles {
+        if let describeDBLogFilesSyncOverrideNonOptional = describeDBLogFilesSyncOverride {
+            if let describeDBLogFilesSyncOverrideTyped = describeDBLogFilesSyncOverrideNonOptional
+                    as? DescribeDBLogFilesSyncType<InvocationReportingType> {
+                return try describeDBLogFilesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeDBLogFilesResponseForDescribeDBLogFiles.__default
@@ -3252,12 +3842,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBParameterGroupsAsync(
+    public func describeDBParameterGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBParameterGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, HTTPClientError>) -> ()) throws {
-        if let describeDBParameterGroupsAsyncOverride = describeDBParameterGroupsAsyncOverride {
-            return try describeDBParameterGroupsAsyncOverride(input, reporting, completion)
+        if let describeDBParameterGroupsAsyncOverrideNonOptional = describeDBParameterGroupsAsyncOverride {
+            if let describeDBParameterGroupsAsyncOverrideTyped = describeDBParameterGroupsAsyncOverrideNonOptional
+                    as? DescribeDBParameterGroupsAsyncType<InvocationReportingType> {
+                return try describeDBParameterGroupsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBParameterGroupsMessageForDescribeDBParameterGroups.__default
@@ -3274,11 +3869,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBParameterGroupsSync(
+    public func describeDBParameterGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBParameterGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups {
-        if let describeDBParameterGroupsSyncOverride = describeDBParameterGroupsSyncOverride {
-            return try describeDBParameterGroupsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups {
+        if let describeDBParameterGroupsSyncOverrideNonOptional = describeDBParameterGroupsSyncOverride {
+            if let describeDBParameterGroupsSyncOverrideTyped = describeDBParameterGroupsSyncOverrideNonOptional
+                    as? DescribeDBParameterGroupsSyncType<InvocationReportingType> {
+                return try describeDBParameterGroupsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBParameterGroupsMessageForDescribeDBParameterGroups.__default
@@ -3294,12 +3894,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBParametersAsync(
+    public func describeDBParametersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, HTTPClientError>) -> ()) throws {
-        if let describeDBParametersAsyncOverride = describeDBParametersAsyncOverride {
-            return try describeDBParametersAsyncOverride(input, reporting, completion)
+        if let describeDBParametersAsyncOverrideNonOptional = describeDBParametersAsyncOverride {
+            if let describeDBParametersAsyncOverrideTyped = describeDBParametersAsyncOverrideNonOptional
+                    as? DescribeDBParametersAsyncType<InvocationReportingType> {
+                return try describeDBParametersAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBParameterGroupDetailsForDescribeDBParameters.__default
@@ -3316,11 +3921,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBParametersSync(
+    public func describeDBParametersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters {
-        if let describeDBParametersSyncOverride = describeDBParametersSyncOverride {
-            return try describeDBParametersSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters {
+        if let describeDBParametersSyncOverrideNonOptional = describeDBParametersSyncOverride {
+            if let describeDBParametersSyncOverrideTyped = describeDBParametersSyncOverrideNonOptional
+                    as? DescribeDBParametersSyncType<InvocationReportingType> {
+                return try describeDBParametersSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBParameterGroupDetailsForDescribeDBParameters.__default
@@ -3336,12 +3946,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound.
      */
-    public func describeDBProxiesAsync(
+    public func describeDBProxiesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBProxiesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, HTTPClientError>) -> ()) throws {
-        if let describeDBProxiesAsyncOverride = describeDBProxiesAsyncOverride {
-            return try describeDBProxiesAsyncOverride(input, reporting, completion)
+        if let describeDBProxiesAsyncOverrideNonOptional = describeDBProxiesAsyncOverride {
+            if let describeDBProxiesAsyncOverrideTyped = describeDBProxiesAsyncOverrideNonOptional
+                    as? DescribeDBProxiesAsyncType<InvocationReportingType> {
+                return try describeDBProxiesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeDBProxiesResponseForDescribeDBProxies.__default
@@ -3358,11 +3973,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound.
      */
-    public func describeDBProxiesSync(
+    public func describeDBProxiesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBProxiesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies {
-        if let describeDBProxiesSyncOverride = describeDBProxiesSyncOverride {
-            return try describeDBProxiesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies {
+        if let describeDBProxiesSyncOverrideNonOptional = describeDBProxiesSyncOverride {
+            if let describeDBProxiesSyncOverrideTyped = describeDBProxiesSyncOverrideNonOptional
+                    as? DescribeDBProxiesSyncType<InvocationReportingType> {
+                return try describeDBProxiesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeDBProxiesResponseForDescribeDBProxies.__default
@@ -3378,12 +3998,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyTargetGroupNotFound.
      */
-    public func describeDBProxyTargetGroupsAsync(
+    public func describeDBProxyTargetGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBProxyTargetGroupsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, HTTPClientError>) -> ()) throws {
-        if let describeDBProxyTargetGroupsAsyncOverride = describeDBProxyTargetGroupsAsyncOverride {
-            return try describeDBProxyTargetGroupsAsyncOverride(input, reporting, completion)
+        if let describeDBProxyTargetGroupsAsyncOverrideNonOptional = describeDBProxyTargetGroupsAsyncOverride {
+            if let describeDBProxyTargetGroupsAsyncOverrideTyped = describeDBProxyTargetGroupsAsyncOverrideNonOptional
+                    as? DescribeDBProxyTargetGroupsAsyncType<InvocationReportingType> {
+                return try describeDBProxyTargetGroupsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups.__default
@@ -3400,11 +4025,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyTargetGroupNotFound.
      */
-    public func describeDBProxyTargetGroupsSync(
+    public func describeDBProxyTargetGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBProxyTargetGroupsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
-        if let describeDBProxyTargetGroupsSyncOverride = describeDBProxyTargetGroupsSyncOverride {
-            return try describeDBProxyTargetGroupsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
+        if let describeDBProxyTargetGroupsSyncOverrideNonOptional = describeDBProxyTargetGroupsSyncOverride {
+            if let describeDBProxyTargetGroupsSyncOverrideTyped = describeDBProxyTargetGroupsSyncOverrideNonOptional
+                    as? DescribeDBProxyTargetGroupsSyncType<InvocationReportingType> {
+                return try describeDBProxyTargetGroupsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups.__default
@@ -3420,12 +4050,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
-    public func describeDBProxyTargetsAsync(
+    public func describeDBProxyTargetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBProxyTargetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, HTTPClientError>) -> ()) throws {
-        if let describeDBProxyTargetsAsyncOverride = describeDBProxyTargetsAsyncOverride {
-            return try describeDBProxyTargetsAsyncOverride(input, reporting, completion)
+        if let describeDBProxyTargetsAsyncOverrideNonOptional = describeDBProxyTargetsAsyncOverride {
+            if let describeDBProxyTargetsAsyncOverrideTyped = describeDBProxyTargetsAsyncOverrideNonOptional
+                    as? DescribeDBProxyTargetsAsyncType<InvocationReportingType> {
+                return try describeDBProxyTargetsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeDBProxyTargetsResponseForDescribeDBProxyTargets.__default
@@ -3442,11 +4077,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
-    public func describeDBProxyTargetsSync(
+    public func describeDBProxyTargetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBProxyTargetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
-        if let describeDBProxyTargetsSyncOverride = describeDBProxyTargetsSyncOverride {
-            return try describeDBProxyTargetsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
+        if let describeDBProxyTargetsSyncOverrideNonOptional = describeDBProxyTargetsSyncOverride {
+            if let describeDBProxyTargetsSyncOverrideTyped = describeDBProxyTargetsSyncOverrideNonOptional
+                    as? DescribeDBProxyTargetsSyncType<InvocationReportingType> {
+                return try describeDBProxyTargetsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeDBProxyTargetsResponseForDescribeDBProxyTargets.__default
@@ -3462,12 +4102,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSecurityGroupNotFound.
      */
-    public func describeDBSecurityGroupsAsync(
+    public func describeDBSecurityGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSecurityGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, HTTPClientError>) -> ()) throws {
-        if let describeDBSecurityGroupsAsyncOverride = describeDBSecurityGroupsAsyncOverride {
-            return try describeDBSecurityGroupsAsyncOverride(input, reporting, completion)
+        if let describeDBSecurityGroupsAsyncOverrideNonOptional = describeDBSecurityGroupsAsyncOverride {
+            if let describeDBSecurityGroupsAsyncOverrideTyped = describeDBSecurityGroupsAsyncOverrideNonOptional
+                    as? DescribeDBSecurityGroupsAsyncType<InvocationReportingType> {
+                return try describeDBSecurityGroupsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBSecurityGroupMessageForDescribeDBSecurityGroups.__default
@@ -3484,11 +4129,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSecurityGroupNotFound.
      */
-    public func describeDBSecurityGroupsSync(
+    public func describeDBSecurityGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSecurityGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups {
-        if let describeDBSecurityGroupsSyncOverride = describeDBSecurityGroupsSyncOverride {
-            return try describeDBSecurityGroupsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups {
+        if let describeDBSecurityGroupsSyncOverrideNonOptional = describeDBSecurityGroupsSyncOverride {
+            if let describeDBSecurityGroupsSyncOverrideTyped = describeDBSecurityGroupsSyncOverrideNonOptional
+                    as? DescribeDBSecurityGroupsSyncType<InvocationReportingType> {
+                return try describeDBSecurityGroupsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBSecurityGroupMessageForDescribeDBSecurityGroups.__default
@@ -3504,12 +4154,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotAttributesAsync(
+    public func describeDBSnapshotAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSnapshotAttributesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, HTTPClientError>) -> ()) throws {
-        if let describeDBSnapshotAttributesAsyncOverride = describeDBSnapshotAttributesAsyncOverride {
-            return try describeDBSnapshotAttributesAsyncOverride(input, reporting, completion)
+        if let describeDBSnapshotAttributesAsyncOverrideNonOptional = describeDBSnapshotAttributesAsyncOverride {
+            if let describeDBSnapshotAttributesAsyncOverrideTyped = describeDBSnapshotAttributesAsyncOverrideNonOptional
+                    as? DescribeDBSnapshotAttributesAsyncType<InvocationReportingType> {
+                return try describeDBSnapshotAttributesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes.__default
@@ -3526,11 +4181,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotAttributesSync(
+    public func describeDBSnapshotAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSnapshotAttributesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes {
-        if let describeDBSnapshotAttributesSyncOverride = describeDBSnapshotAttributesSyncOverride {
-            return try describeDBSnapshotAttributesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes {
+        if let describeDBSnapshotAttributesSyncOverrideNonOptional = describeDBSnapshotAttributesSyncOverride {
+            if let describeDBSnapshotAttributesSyncOverrideTyped = describeDBSnapshotAttributesSyncOverrideNonOptional
+                    as? DescribeDBSnapshotAttributesSyncType<InvocationReportingType> {
+                return try describeDBSnapshotAttributesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes.__default
@@ -3546,12 +4206,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotsAsync(
+    public func describeDBSnapshotsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSnapshotsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, HTTPClientError>) -> ()) throws {
-        if let describeDBSnapshotsAsyncOverride = describeDBSnapshotsAsyncOverride {
-            return try describeDBSnapshotsAsyncOverride(input, reporting, completion)
+        if let describeDBSnapshotsAsyncOverrideNonOptional = describeDBSnapshotsAsyncOverride {
+            if let describeDBSnapshotsAsyncOverrideTyped = describeDBSnapshotsAsyncOverrideNonOptional
+                    as? DescribeDBSnapshotsAsyncType<InvocationReportingType> {
+                return try describeDBSnapshotsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBSnapshotMessageForDescribeDBSnapshots.__default
@@ -3568,11 +4233,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotsSync(
+    public func describeDBSnapshotsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSnapshotsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots {
-        if let describeDBSnapshotsSyncOverride = describeDBSnapshotsSyncOverride {
-            return try describeDBSnapshotsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots {
+        if let describeDBSnapshotsSyncOverrideNonOptional = describeDBSnapshotsSyncOverride {
+            if let describeDBSnapshotsSyncOverrideTyped = describeDBSnapshotsSyncOverrideNonOptional
+                    as? DescribeDBSnapshotsSyncType<InvocationReportingType> {
+                return try describeDBSnapshotsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBSnapshotMessageForDescribeDBSnapshots.__default
@@ -3588,12 +4258,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSubnetGroupNotFound.
      */
-    public func describeDBSubnetGroupsAsync(
+    public func describeDBSubnetGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSubnetGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, HTTPClientError>) -> ()) throws {
-        if let describeDBSubnetGroupsAsyncOverride = describeDBSubnetGroupsAsyncOverride {
-            return try describeDBSubnetGroupsAsyncOverride(input, reporting, completion)
+        if let describeDBSubnetGroupsAsyncOverrideNonOptional = describeDBSubnetGroupsAsyncOverride {
+            if let describeDBSubnetGroupsAsyncOverrideTyped = describeDBSubnetGroupsAsyncOverrideNonOptional
+                    as? DescribeDBSubnetGroupsAsyncType<InvocationReportingType> {
+                return try describeDBSubnetGroupsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBSubnetGroupMessageForDescribeDBSubnetGroups.__default
@@ -3610,11 +4285,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSubnetGroupNotFound.
      */
-    public func describeDBSubnetGroupsSync(
+    public func describeDBSubnetGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeDBSubnetGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups {
-        if let describeDBSubnetGroupsSyncOverride = describeDBSubnetGroupsSyncOverride {
-            return try describeDBSubnetGroupsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups {
+        if let describeDBSubnetGroupsSyncOverrideNonOptional = describeDBSubnetGroupsSyncOverride {
+            if let describeDBSubnetGroupsSyncOverrideTyped = describeDBSubnetGroupsSyncOverrideNonOptional
+                    as? DescribeDBSubnetGroupsSyncType<InvocationReportingType> {
+                return try describeDBSubnetGroupsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBSubnetGroupMessageForDescribeDBSubnetGroups.__default
@@ -3629,12 +4309,17 @@ public struct MockRDSClient: RDSClientProtocol {
            callback when the operation is complete. The DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters
            object will be validated before being returned to caller.
      */
-    public func describeEngineDefaultClusterParametersAsync(
+    public func describeEngineDefaultClusterParametersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEngineDefaultClusterParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, HTTPClientError>) -> ()) throws {
-        if let describeEngineDefaultClusterParametersAsyncOverride = describeEngineDefaultClusterParametersAsyncOverride {
-            return try describeEngineDefaultClusterParametersAsyncOverride(input, reporting, completion)
+        if let describeEngineDefaultClusterParametersAsyncOverrideNonOptional = describeEngineDefaultClusterParametersAsyncOverride {
+            if let describeEngineDefaultClusterParametersAsyncOverrideTyped = describeEngineDefaultClusterParametersAsyncOverrideNonOptional
+                    as? DescribeEngineDefaultClusterParametersAsyncType<InvocationReportingType> {
+                return try describeEngineDefaultClusterParametersAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters.__default
@@ -3650,11 +4335,16 @@ public struct MockRDSClient: RDSClientProtocol {
      - Returns: The DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEngineDefaultClusterParametersSync(
+    public func describeEngineDefaultClusterParametersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEngineDefaultClusterParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters {
-        if let describeEngineDefaultClusterParametersSyncOverride = describeEngineDefaultClusterParametersSyncOverride {
-            return try describeEngineDefaultClusterParametersSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters {
+        if let describeEngineDefaultClusterParametersSyncOverrideNonOptional = describeEngineDefaultClusterParametersSyncOverride {
+            if let describeEngineDefaultClusterParametersSyncOverrideTyped = describeEngineDefaultClusterParametersSyncOverrideNonOptional
+                    as? DescribeEngineDefaultClusterParametersSyncType<InvocationReportingType> {
+                return try describeEngineDefaultClusterParametersSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters.__default
@@ -3669,12 +4359,17 @@ public struct MockRDSClient: RDSClientProtocol {
            callback when the operation is complete. The DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters
            object will be validated before being returned to caller.
      */
-    public func describeEngineDefaultParametersAsync(
+    public func describeEngineDefaultParametersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEngineDefaultParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, HTTPClientError>) -> ()) throws {
-        if let describeEngineDefaultParametersAsyncOverride = describeEngineDefaultParametersAsyncOverride {
-            return try describeEngineDefaultParametersAsyncOverride(input, reporting, completion)
+        if let describeEngineDefaultParametersAsyncOverrideNonOptional = describeEngineDefaultParametersAsyncOverride {
+            if let describeEngineDefaultParametersAsyncOverrideTyped = describeEngineDefaultParametersAsyncOverrideNonOptional
+                    as? DescribeEngineDefaultParametersAsyncType<InvocationReportingType> {
+                return try describeEngineDefaultParametersAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters.__default
@@ -3690,11 +4385,16 @@ public struct MockRDSClient: RDSClientProtocol {
      - Returns: The DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEngineDefaultParametersSync(
+    public func describeEngineDefaultParametersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEngineDefaultParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters {
-        if let describeEngineDefaultParametersSyncOverride = describeEngineDefaultParametersSyncOverride {
-            return try describeEngineDefaultParametersSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters {
+        if let describeEngineDefaultParametersSyncOverrideNonOptional = describeEngineDefaultParametersSyncOverride {
+            if let describeEngineDefaultParametersSyncOverrideTyped = describeEngineDefaultParametersSyncOverrideNonOptional
+                    as? DescribeEngineDefaultParametersSyncType<InvocationReportingType> {
+                return try describeEngineDefaultParametersSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters.__default
@@ -3709,12 +4409,17 @@ public struct MockRDSClient: RDSClientProtocol {
            callback when the operation is complete. The EventCategoriesMessageForDescribeEventCategories
            object will be validated before being returned to caller.
      */
-    public func describeEventCategoriesAsync(
+    public func describeEventCategoriesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEventCategoriesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, HTTPClientError>) -> ()) throws {
-        if let describeEventCategoriesAsyncOverride = describeEventCategoriesAsyncOverride {
-            return try describeEventCategoriesAsyncOverride(input, reporting, completion)
+        if let describeEventCategoriesAsyncOverrideNonOptional = describeEventCategoriesAsyncOverride {
+            if let describeEventCategoriesAsyncOverrideTyped = describeEventCategoriesAsyncOverrideNonOptional
+                    as? DescribeEventCategoriesAsyncType<InvocationReportingType> {
+                return try describeEventCategoriesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = EventCategoriesMessageForDescribeEventCategories.__default
@@ -3730,11 +4435,16 @@ public struct MockRDSClient: RDSClientProtocol {
      - Returns: The EventCategoriesMessageForDescribeEventCategories object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEventCategoriesSync(
+    public func describeEventCategoriesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEventCategoriesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories {
-        if let describeEventCategoriesSyncOverride = describeEventCategoriesSyncOverride {
-            return try describeEventCategoriesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories {
+        if let describeEventCategoriesSyncOverrideNonOptional = describeEventCategoriesSyncOverride {
+            if let describeEventCategoriesSyncOverrideTyped = describeEventCategoriesSyncOverrideNonOptional
+                    as? DescribeEventCategoriesSyncType<InvocationReportingType> {
+                return try describeEventCategoriesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return EventCategoriesMessageForDescribeEventCategories.__default
@@ -3750,12 +4460,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: subscriptionNotFound.
      */
-    public func describeEventSubscriptionsAsync(
+    public func describeEventSubscriptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEventSubscriptionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, HTTPClientError>) -> ()) throws {
-        if let describeEventSubscriptionsAsyncOverride = describeEventSubscriptionsAsyncOverride {
-            return try describeEventSubscriptionsAsyncOverride(input, reporting, completion)
+        if let describeEventSubscriptionsAsyncOverrideNonOptional = describeEventSubscriptionsAsyncOverride {
+            if let describeEventSubscriptionsAsyncOverrideTyped = describeEventSubscriptionsAsyncOverrideNonOptional
+                    as? DescribeEventSubscriptionsAsyncType<InvocationReportingType> {
+                return try describeEventSubscriptionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = EventSubscriptionsMessageForDescribeEventSubscriptions.__default
@@ -3772,11 +4487,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: subscriptionNotFound.
      */
-    public func describeEventSubscriptionsSync(
+    public func describeEventSubscriptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEventSubscriptionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions {
-        if let describeEventSubscriptionsSyncOverride = describeEventSubscriptionsSyncOverride {
-            return try describeEventSubscriptionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions {
+        if let describeEventSubscriptionsSyncOverrideNonOptional = describeEventSubscriptionsSyncOverride {
+            if let describeEventSubscriptionsSyncOverrideTyped = describeEventSubscriptionsSyncOverrideNonOptional
+                    as? DescribeEventSubscriptionsSyncType<InvocationReportingType> {
+                return try describeEventSubscriptionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return EventSubscriptionsMessageForDescribeEventSubscriptions.__default
@@ -3791,12 +4511,17 @@ public struct MockRDSClient: RDSClientProtocol {
            callback when the operation is complete. The EventsMessageForDescribeEvents
            object will be validated before being returned to caller.
      */
-    public func describeEventsAsync(
+    public func describeEventsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEventsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, HTTPClientError>) -> ()) throws {
-        if let describeEventsAsyncOverride = describeEventsAsyncOverride {
-            return try describeEventsAsyncOverride(input, reporting, completion)
+        if let describeEventsAsyncOverrideNonOptional = describeEventsAsyncOverride {
+            if let describeEventsAsyncOverrideTyped = describeEventsAsyncOverrideNonOptional
+                    as? DescribeEventsAsyncType<InvocationReportingType> {
+                return try describeEventsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = EventsMessageForDescribeEvents.__default
@@ -3812,11 +4537,16 @@ public struct MockRDSClient: RDSClientProtocol {
      - Returns: The EventsMessageForDescribeEvents object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEventsSync(
+    public func describeEventsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeEventsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventsMessageForDescribeEvents {
-        if let describeEventsSyncOverride = describeEventsSyncOverride {
-            return try describeEventsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.EventsMessageForDescribeEvents {
+        if let describeEventsSyncOverrideNonOptional = describeEventsSyncOverride {
+            if let describeEventsSyncOverrideTyped = describeEventsSyncOverrideNonOptional
+                    as? DescribeEventsSyncType<InvocationReportingType> {
+                return try describeEventsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return EventsMessageForDescribeEvents.__default
@@ -3832,12 +4562,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: exportTaskNotFound.
      */
-    public func describeExportTasksAsync(
+    public func describeExportTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeExportTasksMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, HTTPClientError>) -> ()) throws {
-        if let describeExportTasksAsyncOverride = describeExportTasksAsyncOverride {
-            return try describeExportTasksAsyncOverride(input, reporting, completion)
+        if let describeExportTasksAsyncOverrideNonOptional = describeExportTasksAsyncOverride {
+            if let describeExportTasksAsyncOverrideTyped = describeExportTasksAsyncOverrideNonOptional
+                    as? DescribeExportTasksAsyncType<InvocationReportingType> {
+                return try describeExportTasksAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ExportTasksMessageForDescribeExportTasks.__default
@@ -3854,11 +4589,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: exportTaskNotFound.
      */
-    public func describeExportTasksSync(
+    public func describeExportTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeExportTasksMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks {
-        if let describeExportTasksSyncOverride = describeExportTasksSyncOverride {
-            return try describeExportTasksSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks {
+        if let describeExportTasksSyncOverrideNonOptional = describeExportTasksSyncOverride {
+            if let describeExportTasksSyncOverrideTyped = describeExportTasksSyncOverrideNonOptional
+                    as? DescribeExportTasksSyncType<InvocationReportingType> {
+                return try describeExportTasksSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ExportTasksMessageForDescribeExportTasks.__default
@@ -3874,12 +4614,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalClusterNotFound.
      */
-    public func describeGlobalClustersAsync(
+    public func describeGlobalClustersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeGlobalClustersMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, HTTPClientError>) -> ()) throws {
-        if let describeGlobalClustersAsyncOverride = describeGlobalClustersAsyncOverride {
-            return try describeGlobalClustersAsyncOverride(input, reporting, completion)
+        if let describeGlobalClustersAsyncOverrideNonOptional = describeGlobalClustersAsyncOverride {
+            if let describeGlobalClustersAsyncOverrideTyped = describeGlobalClustersAsyncOverrideNonOptional
+                    as? DescribeGlobalClustersAsyncType<InvocationReportingType> {
+                return try describeGlobalClustersAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = GlobalClustersMessageForDescribeGlobalClusters.__default
@@ -3896,11 +4641,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalClusterNotFound.
      */
-    public func describeGlobalClustersSync(
+    public func describeGlobalClustersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeGlobalClustersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
-        if let describeGlobalClustersSyncOverride = describeGlobalClustersSyncOverride {
-            return try describeGlobalClustersSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
+        if let describeGlobalClustersSyncOverrideNonOptional = describeGlobalClustersSyncOverride {
+            if let describeGlobalClustersSyncOverrideTyped = describeGlobalClustersSyncOverrideNonOptional
+                    as? DescribeGlobalClustersSyncType<InvocationReportingType> {
+                return try describeGlobalClustersSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return GlobalClustersMessageForDescribeGlobalClusters.__default
@@ -3916,12 +4666,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: installationMediaNotFound.
      */
-    public func describeInstallationMediaAsync(
+    public func describeInstallationMediaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeInstallationMediaMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, HTTPClientError>) -> ()) throws {
-        if let describeInstallationMediaAsyncOverride = describeInstallationMediaAsyncOverride {
-            return try describeInstallationMediaAsyncOverride(input, reporting, completion)
+        if let describeInstallationMediaAsyncOverrideNonOptional = describeInstallationMediaAsyncOverride {
+            if let describeInstallationMediaAsyncOverrideTyped = describeInstallationMediaAsyncOverrideNonOptional
+                    as? DescribeInstallationMediaAsyncType<InvocationReportingType> {
+                return try describeInstallationMediaAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = InstallationMediaMessageForDescribeInstallationMedia.__default
@@ -3938,11 +4693,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: installationMediaNotFound.
      */
-    public func describeInstallationMediaSync(
+    public func describeInstallationMediaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeInstallationMediaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
-        if let describeInstallationMediaSyncOverride = describeInstallationMediaSyncOverride {
-            return try describeInstallationMediaSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
+        if let describeInstallationMediaSyncOverrideNonOptional = describeInstallationMediaSyncOverride {
+            if let describeInstallationMediaSyncOverrideTyped = describeInstallationMediaSyncOverrideNonOptional
+                    as? DescribeInstallationMediaSyncType<InvocationReportingType> {
+                return try describeInstallationMediaSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return InstallationMediaMessageForDescribeInstallationMedia.__default
@@ -3957,12 +4717,17 @@ public struct MockRDSClient: RDSClientProtocol {
            callback when the operation is complete. The OptionGroupOptionsMessageForDescribeOptionGroupOptions
            object will be validated before being returned to caller.
      */
-    public func describeOptionGroupOptionsAsync(
+    public func describeOptionGroupOptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeOptionGroupOptionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, HTTPClientError>) -> ()) throws {
-        if let describeOptionGroupOptionsAsyncOverride = describeOptionGroupOptionsAsyncOverride {
-            return try describeOptionGroupOptionsAsyncOverride(input, reporting, completion)
+        if let describeOptionGroupOptionsAsyncOverrideNonOptional = describeOptionGroupOptionsAsyncOverride {
+            if let describeOptionGroupOptionsAsyncOverrideTyped = describeOptionGroupOptionsAsyncOverrideNonOptional
+                    as? DescribeOptionGroupOptionsAsyncType<InvocationReportingType> {
+                return try describeOptionGroupOptionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = OptionGroupOptionsMessageForDescribeOptionGroupOptions.__default
@@ -3978,11 +4743,16 @@ public struct MockRDSClient: RDSClientProtocol {
      - Returns: The OptionGroupOptionsMessageForDescribeOptionGroupOptions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeOptionGroupOptionsSync(
+    public func describeOptionGroupOptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeOptionGroupOptionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions {
-        if let describeOptionGroupOptionsSyncOverride = describeOptionGroupOptionsSyncOverride {
-            return try describeOptionGroupOptionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions {
+        if let describeOptionGroupOptionsSyncOverrideNonOptional = describeOptionGroupOptionsSyncOverride {
+            if let describeOptionGroupOptionsSyncOverrideTyped = describeOptionGroupOptionsSyncOverrideNonOptional
+                    as? DescribeOptionGroupOptionsSyncType<InvocationReportingType> {
+                return try describeOptionGroupOptionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return OptionGroupOptionsMessageForDescribeOptionGroupOptions.__default
@@ -3998,12 +4768,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: optionGroupNotFound.
      */
-    public func describeOptionGroupsAsync(
+    public func describeOptionGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeOptionGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, HTTPClientError>) -> ()) throws {
-        if let describeOptionGroupsAsyncOverride = describeOptionGroupsAsyncOverride {
-            return try describeOptionGroupsAsyncOverride(input, reporting, completion)
+        if let describeOptionGroupsAsyncOverrideNonOptional = describeOptionGroupsAsyncOverride {
+            if let describeOptionGroupsAsyncOverrideTyped = describeOptionGroupsAsyncOverrideNonOptional
+                    as? DescribeOptionGroupsAsyncType<InvocationReportingType> {
+                return try describeOptionGroupsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = OptionGroupsForDescribeOptionGroups.__default
@@ -4020,11 +4795,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: optionGroupNotFound.
      */
-    public func describeOptionGroupsSync(
+    public func describeOptionGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeOptionGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OptionGroupsForDescribeOptionGroups {
-        if let describeOptionGroupsSyncOverride = describeOptionGroupsSyncOverride {
-            return try describeOptionGroupsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.OptionGroupsForDescribeOptionGroups {
+        if let describeOptionGroupsSyncOverrideNonOptional = describeOptionGroupsSyncOverride {
+            if let describeOptionGroupsSyncOverrideTyped = describeOptionGroupsSyncOverrideNonOptional
+                    as? DescribeOptionGroupsSyncType<InvocationReportingType> {
+                return try describeOptionGroupsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return OptionGroupsForDescribeOptionGroups.__default
@@ -4039,12 +4819,17 @@ public struct MockRDSClient: RDSClientProtocol {
            callback when the operation is complete. The OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions
            object will be validated before being returned to caller.
      */
-    public func describeOrderableDBInstanceOptionsAsync(
+    public func describeOrderableDBInstanceOptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeOrderableDBInstanceOptionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, HTTPClientError>) -> ()) throws {
-        if let describeOrderableDBInstanceOptionsAsyncOverride = describeOrderableDBInstanceOptionsAsyncOverride {
-            return try describeOrderableDBInstanceOptionsAsyncOverride(input, reporting, completion)
+        if let describeOrderableDBInstanceOptionsAsyncOverrideNonOptional = describeOrderableDBInstanceOptionsAsyncOverride {
+            if let describeOrderableDBInstanceOptionsAsyncOverrideTyped = describeOrderableDBInstanceOptionsAsyncOverrideNonOptional
+                    as? DescribeOrderableDBInstanceOptionsAsyncType<InvocationReportingType> {
+                return try describeOrderableDBInstanceOptionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions.__default
@@ -4060,11 +4845,16 @@ public struct MockRDSClient: RDSClientProtocol {
      - Returns: The OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeOrderableDBInstanceOptionsSync(
+    public func describeOrderableDBInstanceOptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeOrderableDBInstanceOptionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions {
-        if let describeOrderableDBInstanceOptionsSyncOverride = describeOrderableDBInstanceOptionsSyncOverride {
-            return try describeOrderableDBInstanceOptionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions {
+        if let describeOrderableDBInstanceOptionsSyncOverrideNonOptional = describeOrderableDBInstanceOptionsSyncOverride {
+            if let describeOrderableDBInstanceOptionsSyncOverrideTyped = describeOrderableDBInstanceOptionsSyncOverrideNonOptional
+                    as? DescribeOrderableDBInstanceOptionsSyncType<InvocationReportingType> {
+                return try describeOrderableDBInstanceOptionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions.__default
@@ -4080,12 +4870,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: resourceNotFound.
      */
-    public func describePendingMaintenanceActionsAsync(
+    public func describePendingMaintenanceActionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribePendingMaintenanceActionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, HTTPClientError>) -> ()) throws {
-        if let describePendingMaintenanceActionsAsyncOverride = describePendingMaintenanceActionsAsyncOverride {
-            return try describePendingMaintenanceActionsAsyncOverride(input, reporting, completion)
+        if let describePendingMaintenanceActionsAsyncOverrideNonOptional = describePendingMaintenanceActionsAsyncOverride {
+            if let describePendingMaintenanceActionsAsyncOverrideTyped = describePendingMaintenanceActionsAsyncOverrideNonOptional
+                    as? DescribePendingMaintenanceActionsAsyncType<InvocationReportingType> {
+                return try describePendingMaintenanceActionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions.__default
@@ -4102,11 +4897,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: resourceNotFound.
      */
-    public func describePendingMaintenanceActionsSync(
+    public func describePendingMaintenanceActionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribePendingMaintenanceActionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions {
-        if let describePendingMaintenanceActionsSyncOverride = describePendingMaintenanceActionsSyncOverride {
-            return try describePendingMaintenanceActionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions {
+        if let describePendingMaintenanceActionsSyncOverrideNonOptional = describePendingMaintenanceActionsSyncOverride {
+            if let describePendingMaintenanceActionsSyncOverrideTyped = describePendingMaintenanceActionsSyncOverrideNonOptional
+                    as? DescribePendingMaintenanceActionsSyncType<InvocationReportingType> {
+                return try describePendingMaintenanceActionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions.__default
@@ -4122,12 +4922,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: reservedDBInstanceNotFound.
      */
-    public func describeReservedDBInstancesAsync(
+    public func describeReservedDBInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeReservedDBInstancesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, HTTPClientError>) -> ()) throws {
-        if let describeReservedDBInstancesAsyncOverride = describeReservedDBInstancesAsyncOverride {
-            return try describeReservedDBInstancesAsyncOverride(input, reporting, completion)
+        if let describeReservedDBInstancesAsyncOverrideNonOptional = describeReservedDBInstancesAsyncOverride {
+            if let describeReservedDBInstancesAsyncOverrideTyped = describeReservedDBInstancesAsyncOverrideNonOptional
+                    as? DescribeReservedDBInstancesAsyncType<InvocationReportingType> {
+                return try describeReservedDBInstancesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ReservedDBInstanceMessageForDescribeReservedDBInstances.__default
@@ -4144,11 +4949,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: reservedDBInstanceNotFound.
      */
-    public func describeReservedDBInstancesSync(
+    public func describeReservedDBInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeReservedDBInstancesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances {
-        if let describeReservedDBInstancesSyncOverride = describeReservedDBInstancesSyncOverride {
-            return try describeReservedDBInstancesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances {
+        if let describeReservedDBInstancesSyncOverrideNonOptional = describeReservedDBInstancesSyncOverride {
+            if let describeReservedDBInstancesSyncOverrideTyped = describeReservedDBInstancesSyncOverrideNonOptional
+                    as? DescribeReservedDBInstancesSyncType<InvocationReportingType> {
+                return try describeReservedDBInstancesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ReservedDBInstanceMessageForDescribeReservedDBInstances.__default
@@ -4164,12 +4974,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: reservedDBInstancesOfferingNotFound.
      */
-    public func describeReservedDBInstancesOfferingsAsync(
+    public func describeReservedDBInstancesOfferingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeReservedDBInstancesOfferingsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, HTTPClientError>) -> ()) throws {
-        if let describeReservedDBInstancesOfferingsAsyncOverride = describeReservedDBInstancesOfferingsAsyncOverride {
-            return try describeReservedDBInstancesOfferingsAsyncOverride(input, reporting, completion)
+        if let describeReservedDBInstancesOfferingsAsyncOverrideNonOptional = describeReservedDBInstancesOfferingsAsyncOverride {
+            if let describeReservedDBInstancesOfferingsAsyncOverrideTyped = describeReservedDBInstancesOfferingsAsyncOverrideNonOptional
+                    as? DescribeReservedDBInstancesOfferingsAsyncType<InvocationReportingType> {
+                return try describeReservedDBInstancesOfferingsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings.__default
@@ -4186,11 +5001,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: reservedDBInstancesOfferingNotFound.
      */
-    public func describeReservedDBInstancesOfferingsSync(
+    public func describeReservedDBInstancesOfferingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeReservedDBInstancesOfferingsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings {
-        if let describeReservedDBInstancesOfferingsSyncOverride = describeReservedDBInstancesOfferingsSyncOverride {
-            return try describeReservedDBInstancesOfferingsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings {
+        if let describeReservedDBInstancesOfferingsSyncOverrideNonOptional = describeReservedDBInstancesOfferingsSyncOverride {
+            if let describeReservedDBInstancesOfferingsSyncOverrideTyped = describeReservedDBInstancesOfferingsSyncOverrideNonOptional
+                    as? DescribeReservedDBInstancesOfferingsSyncType<InvocationReportingType> {
+                return try describeReservedDBInstancesOfferingsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings.__default
@@ -4205,12 +5025,17 @@ public struct MockRDSClient: RDSClientProtocol {
            callback when the operation is complete. The SourceRegionMessageForDescribeSourceRegions
            object will be validated before being returned to caller.
      */
-    public func describeSourceRegionsAsync(
+    public func describeSourceRegionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeSourceRegionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, HTTPClientError>) -> ()) throws {
-        if let describeSourceRegionsAsyncOverride = describeSourceRegionsAsyncOverride {
-            return try describeSourceRegionsAsyncOverride(input, reporting, completion)
+        if let describeSourceRegionsAsyncOverrideNonOptional = describeSourceRegionsAsyncOverride {
+            if let describeSourceRegionsAsyncOverrideTyped = describeSourceRegionsAsyncOverrideNonOptional
+                    as? DescribeSourceRegionsAsyncType<InvocationReportingType> {
+                return try describeSourceRegionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = SourceRegionMessageForDescribeSourceRegions.__default
@@ -4226,11 +5051,16 @@ public struct MockRDSClient: RDSClientProtocol {
      - Returns: The SourceRegionMessageForDescribeSourceRegions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSourceRegionsSync(
+    public func describeSourceRegionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeSourceRegionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions {
-        if let describeSourceRegionsSyncOverride = describeSourceRegionsSyncOverride {
-            return try describeSourceRegionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions {
+        if let describeSourceRegionsSyncOverrideNonOptional = describeSourceRegionsSyncOverride {
+            if let describeSourceRegionsSyncOverrideTyped = describeSourceRegionsSyncOverrideNonOptional
+                    as? DescribeSourceRegionsSyncType<InvocationReportingType> {
+                return try describeSourceRegionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return SourceRegionMessageForDescribeSourceRegions.__default
@@ -4246,12 +5076,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func describeValidDBInstanceModificationsAsync(
+    public func describeValidDBInstanceModificationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeValidDBInstanceModificationsMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, HTTPClientError>) -> ()) throws {
-        if let describeValidDBInstanceModificationsAsyncOverride = describeValidDBInstanceModificationsAsyncOverride {
-            return try describeValidDBInstanceModificationsAsyncOverride(input, reporting, completion)
+        if let describeValidDBInstanceModificationsAsyncOverrideNonOptional = describeValidDBInstanceModificationsAsyncOverride {
+            if let describeValidDBInstanceModificationsAsyncOverrideTyped = describeValidDBInstanceModificationsAsyncOverrideNonOptional
+                    as? DescribeValidDBInstanceModificationsAsyncType<InvocationReportingType> {
+                return try describeValidDBInstanceModificationsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications.__default
@@ -4268,11 +5103,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func describeValidDBInstanceModificationsSync(
+    public func describeValidDBInstanceModificationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DescribeValidDBInstanceModificationsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications {
-        if let describeValidDBInstanceModificationsSyncOverride = describeValidDBInstanceModificationsSyncOverride {
-            return try describeValidDBInstanceModificationsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications {
+        if let describeValidDBInstanceModificationsSyncOverrideNonOptional = describeValidDBInstanceModificationsSyncOverride {
+            if let describeValidDBInstanceModificationsSyncOverrideTyped = describeValidDBInstanceModificationsSyncOverrideNonOptional
+                    as? DescribeValidDBInstanceModificationsSyncType<InvocationReportingType> {
+                return try describeValidDBInstanceModificationsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications.__default
@@ -4288,12 +5128,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, dBLogFileNotFound.
      */
-    public func downloadDBLogFilePortionAsync(
+    public func downloadDBLogFilePortionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DownloadDBLogFilePortionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, HTTPClientError>) -> ()) throws {
-        if let downloadDBLogFilePortionAsyncOverride = downloadDBLogFilePortionAsyncOverride {
-            return try downloadDBLogFilePortionAsyncOverride(input, reporting, completion)
+        if let downloadDBLogFilePortionAsyncOverrideNonOptional = downloadDBLogFilePortionAsyncOverride {
+            if let downloadDBLogFilePortionAsyncOverrideTyped = downloadDBLogFilePortionAsyncOverrideNonOptional
+                    as? DownloadDBLogFilePortionAsyncType<InvocationReportingType> {
+                return try downloadDBLogFilePortionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion.__default
@@ -4310,11 +5155,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, dBLogFileNotFound.
      */
-    public func downloadDBLogFilePortionSync(
+    public func downloadDBLogFilePortionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.DownloadDBLogFilePortionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
-        if let downloadDBLogFilePortionSyncOverride = downloadDBLogFilePortionSyncOverride {
-            return try downloadDBLogFilePortionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
+        if let downloadDBLogFilePortionSyncOverrideNonOptional = downloadDBLogFilePortionSyncOverride {
+            if let downloadDBLogFilePortionSyncOverrideTyped = downloadDBLogFilePortionSyncOverrideNonOptional
+                    as? DownloadDBLogFilePortionSyncType<InvocationReportingType> {
+                return try downloadDBLogFilePortionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion.__default
@@ -4330,12 +5180,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func failoverDBClusterAsync(
+    public func failoverDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.FailoverDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, HTTPClientError>) -> ()) throws {
-        if let failoverDBClusterAsyncOverride = failoverDBClusterAsyncOverride {
-            return try failoverDBClusterAsyncOverride(input, reporting, completion)
+        if let failoverDBClusterAsyncOverrideNonOptional = failoverDBClusterAsyncOverride {
+            if let failoverDBClusterAsyncOverrideTyped = failoverDBClusterAsyncOverrideNonOptional
+                    as? FailoverDBClusterAsyncType<InvocationReportingType> {
+                return try failoverDBClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = FailoverDBClusterResultForFailoverDBCluster.__default
@@ -4352,11 +5207,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func failoverDBClusterSync(
+    public func failoverDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.FailoverDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
-        if let failoverDBClusterSyncOverride = failoverDBClusterSyncOverride {
-            return try failoverDBClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
+        if let failoverDBClusterSyncOverrideNonOptional = failoverDBClusterSyncOverride {
+            if let failoverDBClusterSyncOverrideTyped = failoverDBClusterSyncOverrideNonOptional
+                    as? FailoverDBClusterSyncType<InvocationReportingType> {
+                return try failoverDBClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return FailoverDBClusterResultForFailoverDBCluster.__default
@@ -4372,12 +5232,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
      */
-    public func importInstallationMediaAsync(
+    public func importInstallationMediaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ImportInstallationMediaMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, HTTPClientError>) -> ()) throws {
-        if let importInstallationMediaAsyncOverride = importInstallationMediaAsyncOverride {
-            return try importInstallationMediaAsyncOverride(input, reporting, completion)
+        if let importInstallationMediaAsyncOverrideNonOptional = importInstallationMediaAsyncOverride {
+            if let importInstallationMediaAsyncOverrideTyped = importInstallationMediaAsyncOverrideNonOptional
+                    as? ImportInstallationMediaAsyncType<InvocationReportingType> {
+                return try importInstallationMediaAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = InstallationMediaForImportInstallationMedia.__default
@@ -4394,11 +5259,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
      */
-    public func importInstallationMediaSync(
+    public func importInstallationMediaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ImportInstallationMediaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaForImportInstallationMedia {
-        if let importInstallationMediaSyncOverride = importInstallationMediaSyncOverride {
-            return try importInstallationMediaSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.InstallationMediaForImportInstallationMedia {
+        if let importInstallationMediaSyncOverrideNonOptional = importInstallationMediaSyncOverride {
+            if let importInstallationMediaSyncOverrideTyped = importInstallationMediaSyncOverrideNonOptional
+                    as? ImportInstallationMediaSyncType<InvocationReportingType> {
+                return try importInstallationMediaSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return InstallationMediaForImportInstallationMedia.__default
@@ -4414,12 +5284,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func listTagsForResourceAsync(
+    public func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ListTagsForResourceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, HTTPClientError>) -> ()) throws {
-        if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
-            return try listTagsForResourceAsyncOverride(input, reporting, completion)
+        if let listTagsForResourceAsyncOverrideNonOptional = listTagsForResourceAsyncOverride {
+            if let listTagsForResourceAsyncOverrideTyped = listTagsForResourceAsyncOverrideNonOptional
+                    as? ListTagsForResourceAsyncType<InvocationReportingType> {
+                return try listTagsForResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = TagListMessageForListTagsForResource.__default
@@ -4436,11 +5311,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func listTagsForResourceSync(
+    public func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ListTagsForResourceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.TagListMessageForListTagsForResource {
-        if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
-            return try listTagsForResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.TagListMessageForListTagsForResource {
+        if let listTagsForResourceSyncOverrideNonOptional = listTagsForResourceSyncOverride {
+            if let listTagsForResourceSyncOverrideTyped = listTagsForResourceSyncOverrideNonOptional
+                    as? ListTagsForResourceSyncType<InvocationReportingType> {
+                return try listTagsForResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return TagListMessageForListTagsForResource.__default
@@ -4456,12 +5336,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: certificateNotFound.
      */
-    public func modifyCertificatesAsync(
+    public func modifyCertificatesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyCertificatesMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, HTTPClientError>) -> ()) throws {
-        if let modifyCertificatesAsyncOverride = modifyCertificatesAsyncOverride {
-            return try modifyCertificatesAsyncOverride(input, reporting, completion)
+        if let modifyCertificatesAsyncOverrideNonOptional = modifyCertificatesAsyncOverride {
+            if let modifyCertificatesAsyncOverrideTyped = modifyCertificatesAsyncOverrideNonOptional
+                    as? ModifyCertificatesAsyncType<InvocationReportingType> {
+                return try modifyCertificatesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ModifyCertificatesResultForModifyCertificates.__default
@@ -4478,11 +5363,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: certificateNotFound.
      */
-    public func modifyCertificatesSync(
+    public func modifyCertificatesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyCertificatesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates {
-        if let modifyCertificatesSyncOverride = modifyCertificatesSyncOverride {
-            return try modifyCertificatesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates {
+        if let modifyCertificatesSyncOverrideNonOptional = modifyCertificatesSyncOverride {
+            if let modifyCertificatesSyncOverrideTyped = modifyCertificatesSyncOverrideNonOptional
+                    as? ModifyCertificatesSyncType<InvocationReportingType> {
+                return try modifyCertificatesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ModifyCertificatesResultForModifyCertificates.__default
@@ -4498,12 +5388,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterCapacity, invalidDBClusterState.
      */
-    public func modifyCurrentDBClusterCapacityAsync(
+    public func modifyCurrentDBClusterCapacityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyCurrentDBClusterCapacityMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, HTTPClientError>) -> ()) throws {
-        if let modifyCurrentDBClusterCapacityAsyncOverride = modifyCurrentDBClusterCapacityAsyncOverride {
-            return try modifyCurrentDBClusterCapacityAsyncOverride(input, reporting, completion)
+        if let modifyCurrentDBClusterCapacityAsyncOverrideNonOptional = modifyCurrentDBClusterCapacityAsyncOverride {
+            if let modifyCurrentDBClusterCapacityAsyncOverrideTyped = modifyCurrentDBClusterCapacityAsyncOverrideNonOptional
+                    as? ModifyCurrentDBClusterCapacityAsyncType<InvocationReportingType> {
+                return try modifyCurrentDBClusterCapacityAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBClusterCapacityInfoForModifyCurrentDBClusterCapacity.__default
@@ -4520,11 +5415,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterCapacity, invalidDBClusterState.
      */
-    public func modifyCurrentDBClusterCapacitySync(
+    public func modifyCurrentDBClusterCapacitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyCurrentDBClusterCapacityMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
-        if let modifyCurrentDBClusterCapacitySyncOverride = modifyCurrentDBClusterCapacitySyncOverride {
-            return try modifyCurrentDBClusterCapacitySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
+        if let modifyCurrentDBClusterCapacitySyncOverrideNonOptional = modifyCurrentDBClusterCapacitySyncOverride {
+            if let modifyCurrentDBClusterCapacitySyncOverrideTyped = modifyCurrentDBClusterCapacitySyncOverrideNonOptional
+                    as? ModifyCurrentDBClusterCapacitySyncType<InvocationReportingType> {
+                return try modifyCurrentDBClusterCapacitySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBClusterCapacityInfoForModifyCurrentDBClusterCapacity.__default
@@ -4540,12 +5440,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
      */
-    public func modifyDBClusterAsync(
+    public func modifyDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, HTTPClientError>) -> ()) throws {
-        if let modifyDBClusterAsyncOverride = modifyDBClusterAsyncOverride {
-            return try modifyDBClusterAsyncOverride(input, reporting, completion)
+        if let modifyDBClusterAsyncOverrideNonOptional = modifyDBClusterAsyncOverride {
+            if let modifyDBClusterAsyncOverrideTyped = modifyDBClusterAsyncOverrideNonOptional
+                    as? ModifyDBClusterAsyncType<InvocationReportingType> {
+                return try modifyDBClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ModifyDBClusterResultForModifyDBCluster.__default
@@ -4562,11 +5467,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
      */
-    public func modifyDBClusterSync(
+    public func modifyDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster {
-        if let modifyDBClusterSyncOverride = modifyDBClusterSyncOverride {
-            return try modifyDBClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster {
+        if let modifyDBClusterSyncOverrideNonOptional = modifyDBClusterSyncOverride {
+            if let modifyDBClusterSyncOverrideTyped = modifyDBClusterSyncOverrideNonOptional
+                    as? ModifyDBClusterSyncType<InvocationReportingType> {
+                return try modifyDBClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ModifyDBClusterResultForModifyDBCluster.__default
@@ -4582,12 +5492,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterEndpointNotFound, dBInstanceNotFound, invalidDBClusterEndpointState, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func modifyDBClusterEndpointAsync(
+    public func modifyDBClusterEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterEndpointMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, HTTPClientError>) -> ()) throws {
-        if let modifyDBClusterEndpointAsyncOverride = modifyDBClusterEndpointAsyncOverride {
-            return try modifyDBClusterEndpointAsyncOverride(input, reporting, completion)
+        if let modifyDBClusterEndpointAsyncOverrideNonOptional = modifyDBClusterEndpointAsyncOverride {
+            if let modifyDBClusterEndpointAsyncOverrideTyped = modifyDBClusterEndpointAsyncOverrideNonOptional
+                    as? ModifyDBClusterEndpointAsyncType<InvocationReportingType> {
+                return try modifyDBClusterEndpointAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBClusterEndpointForModifyDBClusterEndpoint.__default
@@ -4604,11 +5519,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterEndpointNotFound, dBInstanceNotFound, invalidDBClusterEndpointState, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func modifyDBClusterEndpointSync(
+    public func modifyDBClusterEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterEndpointMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint {
-        if let modifyDBClusterEndpointSyncOverride = modifyDBClusterEndpointSyncOverride {
-            return try modifyDBClusterEndpointSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint {
+        if let modifyDBClusterEndpointSyncOverrideNonOptional = modifyDBClusterEndpointSyncOverride {
+            if let modifyDBClusterEndpointSyncOverrideTyped = modifyDBClusterEndpointSyncOverrideNonOptional
+                    as? ModifyDBClusterEndpointSyncType<InvocationReportingType> {
+                return try modifyDBClusterEndpointSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBClusterEndpointForModifyDBClusterEndpoint.__default
@@ -4624,12 +5544,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBClusterParameterGroupAsync(
+    public func modifyDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
-        if let modifyDBClusterParameterGroupAsyncOverride = modifyDBClusterParameterGroupAsyncOverride {
-            return try modifyDBClusterParameterGroupAsyncOverride(input, reporting, completion)
+        if let modifyDBClusterParameterGroupAsyncOverrideNonOptional = modifyDBClusterParameterGroupAsyncOverride {
+            if let modifyDBClusterParameterGroupAsyncOverrideTyped = modifyDBClusterParameterGroupAsyncOverrideNonOptional
+                    as? ModifyDBClusterParameterGroupAsyncType<InvocationReportingType> {
+                return try modifyDBClusterParameterGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup.__default
@@ -4646,11 +5571,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBClusterParameterGroupSync(
+    public func modifyDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup {
-        if let modifyDBClusterParameterGroupSyncOverride = modifyDBClusterParameterGroupSyncOverride {
-            return try modifyDBClusterParameterGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup {
+        if let modifyDBClusterParameterGroupSyncOverrideNonOptional = modifyDBClusterParameterGroupSyncOverride {
+            if let modifyDBClusterParameterGroupSyncOverrideTyped = modifyDBClusterParameterGroupSyncOverrideNonOptional
+                    as? ModifyDBClusterParameterGroupSyncType<InvocationReportingType> {
+                return try modifyDBClusterParameterGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup.__default
@@ -4666,12 +5596,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBClusterSnapshotAttributeAsync(
+    public func modifyDBClusterSnapshotAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterSnapshotAttributeMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, HTTPClientError>) -> ()) throws {
-        if let modifyDBClusterSnapshotAttributeAsyncOverride = modifyDBClusterSnapshotAttributeAsyncOverride {
-            return try modifyDBClusterSnapshotAttributeAsyncOverride(input, reporting, completion)
+        if let modifyDBClusterSnapshotAttributeAsyncOverrideNonOptional = modifyDBClusterSnapshotAttributeAsyncOverride {
+            if let modifyDBClusterSnapshotAttributeAsyncOverrideTyped = modifyDBClusterSnapshotAttributeAsyncOverrideNonOptional
+                    as? ModifyDBClusterSnapshotAttributeAsyncType<InvocationReportingType> {
+                return try modifyDBClusterSnapshotAttributeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute.__default
@@ -4688,11 +5623,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBClusterSnapshotAttributeSync(
+    public func modifyDBClusterSnapshotAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBClusterSnapshotAttributeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute {
-        if let modifyDBClusterSnapshotAttributeSyncOverride = modifyDBClusterSnapshotAttributeSyncOverride {
-            return try modifyDBClusterSnapshotAttributeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute {
+        if let modifyDBClusterSnapshotAttributeSyncOverrideNonOptional = modifyDBClusterSnapshotAttributeSyncOverride {
+            if let modifyDBClusterSnapshotAttributeSyncOverrideTyped = modifyDBClusterSnapshotAttributeSyncOverrideNonOptional
+                    as? ModifyDBClusterSnapshotAttributeSyncType<InvocationReportingType> {
+                return try modifyDBClusterSnapshotAttributeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute.__default
@@ -4708,12 +5648,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func modifyDBInstanceAsync(
+    public func modifyDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, HTTPClientError>) -> ()) throws {
-        if let modifyDBInstanceAsyncOverride = modifyDBInstanceAsyncOverride {
-            return try modifyDBInstanceAsyncOverride(input, reporting, completion)
+        if let modifyDBInstanceAsyncOverrideNonOptional = modifyDBInstanceAsyncOverride {
+            if let modifyDBInstanceAsyncOverrideTyped = modifyDBInstanceAsyncOverrideNonOptional
+                    as? ModifyDBInstanceAsyncType<InvocationReportingType> {
+                return try modifyDBInstanceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ModifyDBInstanceResultForModifyDBInstance.__default
@@ -4730,11 +5675,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func modifyDBInstanceSync(
+    public func modifyDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
-        if let modifyDBInstanceSyncOverride = modifyDBInstanceSyncOverride {
-            return try modifyDBInstanceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
+        if let modifyDBInstanceSyncOverrideNonOptional = modifyDBInstanceSyncOverride {
+            if let modifyDBInstanceSyncOverrideTyped = modifyDBInstanceSyncOverrideNonOptional
+                    as? ModifyDBInstanceSyncType<InvocationReportingType> {
+                return try modifyDBInstanceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ModifyDBInstanceResultForModifyDBInstance.__default
@@ -4750,12 +5700,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBParameterGroupAsync(
+    public func modifyDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, HTTPClientError>) -> ()) throws {
-        if let modifyDBParameterGroupAsyncOverride = modifyDBParameterGroupAsyncOverride {
-            return try modifyDBParameterGroupAsyncOverride(input, reporting, completion)
+        if let modifyDBParameterGroupAsyncOverrideNonOptional = modifyDBParameterGroupAsyncOverride {
+            if let modifyDBParameterGroupAsyncOverrideTyped = modifyDBParameterGroupAsyncOverrideNonOptional
+                    as? ModifyDBParameterGroupAsyncType<InvocationReportingType> {
+                return try modifyDBParameterGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBParameterGroupNameMessageForModifyDBParameterGroup.__default
@@ -4772,11 +5727,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBParameterGroupSync(
+    public func modifyDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
-        if let modifyDBParameterGroupSyncOverride = modifyDBParameterGroupSyncOverride {
-            return try modifyDBParameterGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
+        if let modifyDBParameterGroupSyncOverrideNonOptional = modifyDBParameterGroupSyncOverride {
+            if let modifyDBParameterGroupSyncOverrideTyped = modifyDBParameterGroupSyncOverrideNonOptional
+                    as? ModifyDBParameterGroupSyncType<InvocationReportingType> {
+                return try modifyDBParameterGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBParameterGroupNameMessageForModifyDBParameterGroup.__default
@@ -4792,12 +5752,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
      */
-    public func modifyDBProxyAsync(
+    public func modifyDBProxyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBProxyRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, HTTPClientError>) -> ()) throws {
-        if let modifyDBProxyAsyncOverride = modifyDBProxyAsyncOverride {
-            return try modifyDBProxyAsyncOverride(input, reporting, completion)
+        if let modifyDBProxyAsyncOverrideNonOptional = modifyDBProxyAsyncOverride {
+            if let modifyDBProxyAsyncOverrideTyped = modifyDBProxyAsyncOverrideNonOptional
+                    as? ModifyDBProxyAsyncType<InvocationReportingType> {
+                return try modifyDBProxyAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ModifyDBProxyResponseForModifyDBProxy.__default
@@ -4814,11 +5779,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
      */
-    public func modifyDBProxySync(
+    public func modifyDBProxySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBProxyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy {
-        if let modifyDBProxySyncOverride = modifyDBProxySyncOverride {
-            return try modifyDBProxySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy {
+        if let modifyDBProxySyncOverrideNonOptional = modifyDBProxySyncOverride {
+            if let modifyDBProxySyncOverrideTyped = modifyDBProxySyncOverrideNonOptional
+                    as? ModifyDBProxySyncType<InvocationReportingType> {
+                return try modifyDBProxySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ModifyDBProxyResponseForModifyDBProxy.__default
@@ -4834,12 +5804,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound.
      */
-    public func modifyDBProxyTargetGroupAsync(
+    public func modifyDBProxyTargetGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBProxyTargetGroupRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, HTTPClientError>) -> ()) throws {
-        if let modifyDBProxyTargetGroupAsyncOverride = modifyDBProxyTargetGroupAsyncOverride {
-            return try modifyDBProxyTargetGroupAsyncOverride(input, reporting, completion)
+        if let modifyDBProxyTargetGroupAsyncOverrideNonOptional = modifyDBProxyTargetGroupAsyncOverride {
+            if let modifyDBProxyTargetGroupAsyncOverrideTyped = modifyDBProxyTargetGroupAsyncOverrideNonOptional
+                    as? ModifyDBProxyTargetGroupAsyncType<InvocationReportingType> {
+                return try modifyDBProxyTargetGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup.__default
@@ -4856,11 +5831,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound.
      */
-    public func modifyDBProxyTargetGroupSync(
+    public func modifyDBProxyTargetGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBProxyTargetGroupRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
-        if let modifyDBProxyTargetGroupSyncOverride = modifyDBProxyTargetGroupSyncOverride {
-            return try modifyDBProxyTargetGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
+        if let modifyDBProxyTargetGroupSyncOverrideNonOptional = modifyDBProxyTargetGroupSyncOverride {
+            if let modifyDBProxyTargetGroupSyncOverrideTyped = modifyDBProxyTargetGroupSyncOverrideNonOptional
+                    as? ModifyDBProxyTargetGroupSyncType<InvocationReportingType> {
+                return try modifyDBProxyTargetGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup.__default
@@ -4876,12 +5856,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound.
      */
-    public func modifyDBSnapshotAsync(
+    public func modifyDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, HTTPClientError>) -> ()) throws {
-        if let modifyDBSnapshotAsyncOverride = modifyDBSnapshotAsyncOverride {
-            return try modifyDBSnapshotAsyncOverride(input, reporting, completion)
+        if let modifyDBSnapshotAsyncOverrideNonOptional = modifyDBSnapshotAsyncOverride {
+            if let modifyDBSnapshotAsyncOverrideTyped = modifyDBSnapshotAsyncOverrideNonOptional
+                    as? ModifyDBSnapshotAsyncType<InvocationReportingType> {
+                return try modifyDBSnapshotAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ModifyDBSnapshotResultForModifyDBSnapshot.__default
@@ -4898,11 +5883,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound.
      */
-    public func modifyDBSnapshotSync(
+    public func modifyDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot {
-        if let modifyDBSnapshotSyncOverride = modifyDBSnapshotSyncOverride {
-            return try modifyDBSnapshotSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot {
+        if let modifyDBSnapshotSyncOverrideNonOptional = modifyDBSnapshotSyncOverride {
+            if let modifyDBSnapshotSyncOverrideTyped = modifyDBSnapshotSyncOverrideNonOptional
+                    as? ModifyDBSnapshotSyncType<InvocationReportingType> {
+                return try modifyDBSnapshotSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ModifyDBSnapshotResultForModifyDBSnapshot.__default
@@ -4918,12 +5908,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound, invalidDBSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBSnapshotAttributeAsync(
+    public func modifyDBSnapshotAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBSnapshotAttributeMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, HTTPClientError>) -> ()) throws {
-        if let modifyDBSnapshotAttributeAsyncOverride = modifyDBSnapshotAttributeAsyncOverride {
-            return try modifyDBSnapshotAttributeAsyncOverride(input, reporting, completion)
+        if let modifyDBSnapshotAttributeAsyncOverrideNonOptional = modifyDBSnapshotAttributeAsyncOverride {
+            if let modifyDBSnapshotAttributeAsyncOverrideTyped = modifyDBSnapshotAttributeAsyncOverrideNonOptional
+                    as? ModifyDBSnapshotAttributeAsyncType<InvocationReportingType> {
+                return try modifyDBSnapshotAttributeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute.__default
@@ -4940,11 +5935,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound, invalidDBSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBSnapshotAttributeSync(
+    public func modifyDBSnapshotAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBSnapshotAttributeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
-        if let modifyDBSnapshotAttributeSyncOverride = modifyDBSnapshotAttributeSyncOverride {
-            return try modifyDBSnapshotAttributeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
+        if let modifyDBSnapshotAttributeSyncOverrideNonOptional = modifyDBSnapshotAttributeSyncOverride {
+            if let modifyDBSnapshotAttributeSyncOverrideTyped = modifyDBSnapshotAttributeSyncOverrideNonOptional
+                    as? ModifyDBSnapshotAttributeSyncType<InvocationReportingType> {
+                return try modifyDBSnapshotAttributeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute.__default
@@ -4960,12 +5960,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetQuotaExceeded, invalidSubnet, subnetAlreadyInUse.
      */
-    public func modifyDBSubnetGroupAsync(
+    public func modifyDBSubnetGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBSubnetGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, HTTPClientError>) -> ()) throws {
-        if let modifyDBSubnetGroupAsyncOverride = modifyDBSubnetGroupAsyncOverride {
-            return try modifyDBSubnetGroupAsyncOverride(input, reporting, completion)
+        if let modifyDBSubnetGroupAsyncOverrideNonOptional = modifyDBSubnetGroupAsyncOverride {
+            if let modifyDBSubnetGroupAsyncOverrideTyped = modifyDBSubnetGroupAsyncOverrideNonOptional
+                    as? ModifyDBSubnetGroupAsyncType<InvocationReportingType> {
+                return try modifyDBSubnetGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ModifyDBSubnetGroupResultForModifyDBSubnetGroup.__default
@@ -4982,11 +5987,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetQuotaExceeded, invalidSubnet, subnetAlreadyInUse.
      */
-    public func modifyDBSubnetGroupSync(
+    public func modifyDBSubnetGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyDBSubnetGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
-        if let modifyDBSubnetGroupSyncOverride = modifyDBSubnetGroupSyncOverride {
-            return try modifyDBSubnetGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
+        if let modifyDBSubnetGroupSyncOverrideNonOptional = modifyDBSubnetGroupSyncOverride {
+            if let modifyDBSubnetGroupSyncOverrideTyped = modifyDBSubnetGroupSyncOverrideNonOptional
+                    as? ModifyDBSubnetGroupSyncType<InvocationReportingType> {
+                return try modifyDBSubnetGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ModifyDBSubnetGroupResultForModifyDBSubnetGroup.__default
@@ -5002,12 +6012,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, subscriptionCategoryNotFound, subscriptionNotFound.
      */
-    public func modifyEventSubscriptionAsync(
+    public func modifyEventSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyEventSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, HTTPClientError>) -> ()) throws {
-        if let modifyEventSubscriptionAsyncOverride = modifyEventSubscriptionAsyncOverride {
-            return try modifyEventSubscriptionAsyncOverride(input, reporting, completion)
+        if let modifyEventSubscriptionAsyncOverrideNonOptional = modifyEventSubscriptionAsyncOverride {
+            if let modifyEventSubscriptionAsyncOverrideTyped = modifyEventSubscriptionAsyncOverrideNonOptional
+                    as? ModifyEventSubscriptionAsyncType<InvocationReportingType> {
+                return try modifyEventSubscriptionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ModifyEventSubscriptionResultForModifyEventSubscription.__default
@@ -5024,11 +6039,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, subscriptionCategoryNotFound, subscriptionNotFound.
      */
-    public func modifyEventSubscriptionSync(
+    public func modifyEventSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyEventSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription {
-        if let modifyEventSubscriptionSyncOverride = modifyEventSubscriptionSyncOverride {
-            return try modifyEventSubscriptionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription {
+        if let modifyEventSubscriptionSyncOverrideNonOptional = modifyEventSubscriptionSyncOverride {
+            if let modifyEventSubscriptionSyncOverrideTyped = modifyEventSubscriptionSyncOverrideNonOptional
+                    as? ModifyEventSubscriptionSyncType<InvocationReportingType> {
+                return try modifyEventSubscriptionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ModifyEventSubscriptionResultForModifyEventSubscription.__default
@@ -5044,12 +6064,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func modifyGlobalClusterAsync(
+    public func modifyGlobalClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, HTTPClientError>) -> ()) throws {
-        if let modifyGlobalClusterAsyncOverride = modifyGlobalClusterAsyncOverride {
-            return try modifyGlobalClusterAsyncOverride(input, reporting, completion)
+        if let modifyGlobalClusterAsyncOverrideNonOptional = modifyGlobalClusterAsyncOverride {
+            if let modifyGlobalClusterAsyncOverrideTyped = modifyGlobalClusterAsyncOverrideNonOptional
+                    as? ModifyGlobalClusterAsyncType<InvocationReportingType> {
+                return try modifyGlobalClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ModifyGlobalClusterResultForModifyGlobalCluster.__default
@@ -5066,11 +6091,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func modifyGlobalClusterSync(
+    public func modifyGlobalClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
-        if let modifyGlobalClusterSyncOverride = modifyGlobalClusterSyncOverride {
-            return try modifyGlobalClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
+        if let modifyGlobalClusterSyncOverrideNonOptional = modifyGlobalClusterSyncOverride {
+            if let modifyGlobalClusterSyncOverrideTyped = modifyGlobalClusterSyncOverrideNonOptional
+                    as? ModifyGlobalClusterSyncType<InvocationReportingType> {
+                return try modifyGlobalClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ModifyGlobalClusterResultForModifyGlobalCluster.__default
@@ -5086,12 +6116,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func modifyOptionGroupAsync(
+    public func modifyOptionGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, HTTPClientError>) -> ()) throws {
-        if let modifyOptionGroupAsyncOverride = modifyOptionGroupAsyncOverride {
-            return try modifyOptionGroupAsyncOverride(input, reporting, completion)
+        if let modifyOptionGroupAsyncOverrideNonOptional = modifyOptionGroupAsyncOverride {
+            if let modifyOptionGroupAsyncOverrideTyped = modifyOptionGroupAsyncOverrideNonOptional
+                    as? ModifyOptionGroupAsyncType<InvocationReportingType> {
+                return try modifyOptionGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ModifyOptionGroupResultForModifyOptionGroup.__default
@@ -5108,11 +6143,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func modifyOptionGroupSync(
+    public func modifyOptionGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ModifyOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup {
-        if let modifyOptionGroupSyncOverride = modifyOptionGroupSyncOverride {
-            return try modifyOptionGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup {
+        if let modifyOptionGroupSyncOverrideNonOptional = modifyOptionGroupSyncOverride {
+            if let modifyOptionGroupSyncOverrideTyped = modifyOptionGroupSyncOverrideNonOptional
+                    as? ModifyOptionGroupSyncType<InvocationReportingType> {
+                return try modifyOptionGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ModifyOptionGroupResultForModifyOptionGroup.__default
@@ -5128,12 +6168,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func promoteReadReplicaAsync(
+    public func promoteReadReplicaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.PromoteReadReplicaMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, HTTPClientError>) -> ()) throws {
-        if let promoteReadReplicaAsyncOverride = promoteReadReplicaAsyncOverride {
-            return try promoteReadReplicaAsyncOverride(input, reporting, completion)
+        if let promoteReadReplicaAsyncOverrideNonOptional = promoteReadReplicaAsyncOverride {
+            if let promoteReadReplicaAsyncOverrideTyped = promoteReadReplicaAsyncOverrideNonOptional
+                    as? PromoteReadReplicaAsyncType<InvocationReportingType> {
+                return try promoteReadReplicaAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = PromoteReadReplicaResultForPromoteReadReplica.__default
@@ -5150,11 +6195,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func promoteReadReplicaSync(
+    public func promoteReadReplicaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.PromoteReadReplicaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica {
-        if let promoteReadReplicaSyncOverride = promoteReadReplicaSyncOverride {
-            return try promoteReadReplicaSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica {
+        if let promoteReadReplicaSyncOverrideNonOptional = promoteReadReplicaSyncOverride {
+            if let promoteReadReplicaSyncOverrideTyped = promoteReadReplicaSyncOverrideNonOptional
+                    as? PromoteReadReplicaSyncType<InvocationReportingType> {
+                return try promoteReadReplicaSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return PromoteReadReplicaResultForPromoteReadReplica.__default
@@ -5170,12 +6220,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState.
      */
-    public func promoteReadReplicaDBClusterAsync(
+    public func promoteReadReplicaDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.PromoteReadReplicaDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, HTTPClientError>) -> ()) throws {
-        if let promoteReadReplicaDBClusterAsyncOverride = promoteReadReplicaDBClusterAsyncOverride {
-            return try promoteReadReplicaDBClusterAsyncOverride(input, reporting, completion)
+        if let promoteReadReplicaDBClusterAsyncOverrideNonOptional = promoteReadReplicaDBClusterAsyncOverride {
+            if let promoteReadReplicaDBClusterAsyncOverrideTyped = promoteReadReplicaDBClusterAsyncOverrideNonOptional
+                    as? PromoteReadReplicaDBClusterAsyncType<InvocationReportingType> {
+                return try promoteReadReplicaDBClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster.__default
@@ -5192,11 +6247,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState.
      */
-    public func promoteReadReplicaDBClusterSync(
+    public func promoteReadReplicaDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.PromoteReadReplicaDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster {
-        if let promoteReadReplicaDBClusterSyncOverride = promoteReadReplicaDBClusterSyncOverride {
-            return try promoteReadReplicaDBClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster {
+        if let promoteReadReplicaDBClusterSyncOverrideNonOptional = promoteReadReplicaDBClusterSyncOverride {
+            if let promoteReadReplicaDBClusterSyncOverrideTyped = promoteReadReplicaDBClusterSyncOverrideNonOptional
+                    as? PromoteReadReplicaDBClusterSyncType<InvocationReportingType> {
+                return try promoteReadReplicaDBClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster.__default
@@ -5212,12 +6272,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: reservedDBInstanceAlreadyExists, reservedDBInstanceQuotaExceeded, reservedDBInstancesOfferingNotFound.
      */
-    public func purchaseReservedDBInstancesOfferingAsync(
+    public func purchaseReservedDBInstancesOfferingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, HTTPClientError>) -> ()) throws {
-        if let purchaseReservedDBInstancesOfferingAsyncOverride = purchaseReservedDBInstancesOfferingAsyncOverride {
-            return try purchaseReservedDBInstancesOfferingAsyncOverride(input, reporting, completion)
+        if let purchaseReservedDBInstancesOfferingAsyncOverrideNonOptional = purchaseReservedDBInstancesOfferingAsyncOverride {
+            if let purchaseReservedDBInstancesOfferingAsyncOverrideTyped = purchaseReservedDBInstancesOfferingAsyncOverrideNonOptional
+                    as? PurchaseReservedDBInstancesOfferingAsyncType<InvocationReportingType> {
+                return try purchaseReservedDBInstancesOfferingAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering.__default
@@ -5234,11 +6299,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: reservedDBInstanceAlreadyExists, reservedDBInstanceQuotaExceeded, reservedDBInstancesOfferingNotFound.
      */
-    public func purchaseReservedDBInstancesOfferingSync(
+    public func purchaseReservedDBInstancesOfferingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.PurchaseReservedDBInstancesOfferingMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering {
-        if let purchaseReservedDBInstancesOfferingSyncOverride = purchaseReservedDBInstancesOfferingSyncOverride {
-            return try purchaseReservedDBInstancesOfferingSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering {
+        if let purchaseReservedDBInstancesOfferingSyncOverrideNonOptional = purchaseReservedDBInstancesOfferingSyncOverride {
+            if let purchaseReservedDBInstancesOfferingSyncOverrideTyped = purchaseReservedDBInstancesOfferingSyncOverrideNonOptional
+                    as? PurchaseReservedDBInstancesOfferingSyncType<InvocationReportingType> {
+                return try purchaseReservedDBInstancesOfferingSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering.__default
@@ -5254,12 +6324,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func rebootDBInstanceAsync(
+    public func rebootDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RebootDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, HTTPClientError>) -> ()) throws {
-        if let rebootDBInstanceAsyncOverride = rebootDBInstanceAsyncOverride {
-            return try rebootDBInstanceAsyncOverride(input, reporting, completion)
+        if let rebootDBInstanceAsyncOverrideNonOptional = rebootDBInstanceAsyncOverride {
+            if let rebootDBInstanceAsyncOverrideTyped = rebootDBInstanceAsyncOverrideNonOptional
+                    as? RebootDBInstanceAsyncType<InvocationReportingType> {
+                return try rebootDBInstanceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RebootDBInstanceResultForRebootDBInstance.__default
@@ -5276,11 +6351,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func rebootDBInstanceSync(
+    public func rebootDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RebootDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
-        if let rebootDBInstanceSyncOverride = rebootDBInstanceSyncOverride {
-            return try rebootDBInstanceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
+        if let rebootDBInstanceSyncOverrideNonOptional = rebootDBInstanceSyncOverride {
+            if let rebootDBInstanceSyncOverrideTyped = rebootDBInstanceSyncOverrideNonOptional
+                    as? RebootDBInstanceSyncType<InvocationReportingType> {
+                return try rebootDBInstanceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RebootDBInstanceResultForRebootDBInstance.__default
@@ -5296,12 +6376,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func registerDBProxyTargetsAsync(
+    public func registerDBProxyTargetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RegisterDBProxyTargetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, HTTPClientError>) -> ()) throws {
-        if let registerDBProxyTargetsAsyncOverride = registerDBProxyTargetsAsyncOverride {
-            return try registerDBProxyTargetsAsyncOverride(input, reporting, completion)
+        if let registerDBProxyTargetsAsyncOverrideNonOptional = registerDBProxyTargetsAsyncOverride {
+            if let registerDBProxyTargetsAsyncOverrideTyped = registerDBProxyTargetsAsyncOverrideNonOptional
+                    as? RegisterDBProxyTargetsAsyncType<InvocationReportingType> {
+                return try registerDBProxyTargetsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RegisterDBProxyTargetsResponseForRegisterDBProxyTargets.__default
@@ -5318,11 +6403,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func registerDBProxyTargetsSync(
+    public func registerDBProxyTargetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RegisterDBProxyTargetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
-        if let registerDBProxyTargetsSyncOverride = registerDBProxyTargetsSyncOverride {
-            return try registerDBProxyTargetsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
+        if let registerDBProxyTargetsSyncOverrideNonOptional = registerDBProxyTargetsSyncOverride {
+            if let registerDBProxyTargetsSyncOverrideTyped = registerDBProxyTargetsSyncOverrideNonOptional
+                    as? RegisterDBProxyTargetsSyncType<InvocationReportingType> {
+                return try registerDBProxyTargetsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RegisterDBProxyTargetsResponseForRegisterDBProxyTargets.__default
@@ -5338,12 +6428,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func removeFromGlobalClusterAsync(
+    public func removeFromGlobalClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveFromGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, HTTPClientError>) -> ()) throws {
-        if let removeFromGlobalClusterAsyncOverride = removeFromGlobalClusterAsyncOverride {
-            return try removeFromGlobalClusterAsyncOverride(input, reporting, completion)
+        if let removeFromGlobalClusterAsyncOverrideNonOptional = removeFromGlobalClusterAsyncOverride {
+            if let removeFromGlobalClusterAsyncOverrideTyped = removeFromGlobalClusterAsyncOverrideNonOptional
+                    as? RemoveFromGlobalClusterAsyncType<InvocationReportingType> {
+                return try removeFromGlobalClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RemoveFromGlobalClusterResultForRemoveFromGlobalCluster.__default
@@ -5360,11 +6455,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func removeFromGlobalClusterSync(
+    public func removeFromGlobalClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveFromGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
-        if let removeFromGlobalClusterSyncOverride = removeFromGlobalClusterSyncOverride {
-            return try removeFromGlobalClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
+        if let removeFromGlobalClusterSyncOverrideNonOptional = removeFromGlobalClusterSyncOverride {
+            if let removeFromGlobalClusterSyncOverrideTyped = removeFromGlobalClusterSyncOverrideNonOptional
+                    as? RemoveFromGlobalClusterSyncType<InvocationReportingType> {
+                return try removeFromGlobalClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RemoveFromGlobalClusterResultForRemoveFromGlobalCluster.__default
@@ -5379,12 +6479,17 @@ public struct MockRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBClusterRoleNotFound, invalidDBClusterState.
      */
-    public func removeRoleFromDBClusterAsync(
+    public func removeRoleFromDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveRoleFromDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let removeRoleFromDBClusterAsyncOverride = removeRoleFromDBClusterAsyncOverride {
-            return try removeRoleFromDBClusterAsyncOverride(input, reporting, completion)
+        if let removeRoleFromDBClusterAsyncOverrideNonOptional = removeRoleFromDBClusterAsyncOverride {
+            if let removeRoleFromDBClusterAsyncOverrideTyped = removeRoleFromDBClusterAsyncOverrideNonOptional
+                    as? RemoveRoleFromDBClusterAsyncType<InvocationReportingType> {
+                return try removeRoleFromDBClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -5397,11 +6502,16 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated RemoveRoleFromDBClusterMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBClusterRoleNotFound, invalidDBClusterState.
      */
-    public func removeRoleFromDBClusterSync(
+    public func removeRoleFromDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveRoleFromDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let removeRoleFromDBClusterSyncOverride = removeRoleFromDBClusterSyncOverride {
-            return try removeRoleFromDBClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let removeRoleFromDBClusterSyncOverrideNonOptional = removeRoleFromDBClusterSyncOverride {
+            if let removeRoleFromDBClusterSyncOverrideTyped = removeRoleFromDBClusterSyncOverrideNonOptional
+                    as? RemoveRoleFromDBClusterSyncType<InvocationReportingType> {
+                return try removeRoleFromDBClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -5415,12 +6525,17 @@ public struct MockRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBInstanceNotFound, dBInstanceRoleNotFound, invalidDBInstanceState.
      */
-    public func removeRoleFromDBInstanceAsync(
+    public func removeRoleFromDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveRoleFromDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let removeRoleFromDBInstanceAsyncOverride = removeRoleFromDBInstanceAsyncOverride {
-            return try removeRoleFromDBInstanceAsyncOverride(input, reporting, completion)
+        if let removeRoleFromDBInstanceAsyncOverrideNonOptional = removeRoleFromDBInstanceAsyncOverride {
+            if let removeRoleFromDBInstanceAsyncOverrideTyped = removeRoleFromDBInstanceAsyncOverrideNonOptional
+                    as? RemoveRoleFromDBInstanceAsyncType<InvocationReportingType> {
+                return try removeRoleFromDBInstanceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -5433,11 +6548,16 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated RemoveRoleFromDBInstanceMessage object being passed to this operation.
      - Throws: dBInstanceNotFound, dBInstanceRoleNotFound, invalidDBInstanceState.
      */
-    public func removeRoleFromDBInstanceSync(
+    public func removeRoleFromDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveRoleFromDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let removeRoleFromDBInstanceSyncOverride = removeRoleFromDBInstanceSyncOverride {
-            return try removeRoleFromDBInstanceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let removeRoleFromDBInstanceSyncOverrideNonOptional = removeRoleFromDBInstanceSyncOverride {
+            if let removeRoleFromDBInstanceSyncOverrideTyped = removeRoleFromDBInstanceSyncOverrideNonOptional
+                    as? RemoveRoleFromDBInstanceSyncType<InvocationReportingType> {
+                return try removeRoleFromDBInstanceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -5452,12 +6572,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: sourceNotFound, subscriptionNotFound.
      */
-    public func removeSourceIdentifierFromSubscriptionAsync(
+    public func removeSourceIdentifierFromSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, HTTPClientError>) -> ()) throws {
-        if let removeSourceIdentifierFromSubscriptionAsyncOverride = removeSourceIdentifierFromSubscriptionAsyncOverride {
-            return try removeSourceIdentifierFromSubscriptionAsyncOverride(input, reporting, completion)
+        if let removeSourceIdentifierFromSubscriptionAsyncOverrideNonOptional = removeSourceIdentifierFromSubscriptionAsyncOverride {
+            if let removeSourceIdentifierFromSubscriptionAsyncOverrideTyped = removeSourceIdentifierFromSubscriptionAsyncOverrideNonOptional
+                    as? RemoveSourceIdentifierFromSubscriptionAsyncType<InvocationReportingType> {
+                return try removeSourceIdentifierFromSubscriptionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription.__default
@@ -5474,11 +6599,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: sourceNotFound, subscriptionNotFound.
      */
-    public func removeSourceIdentifierFromSubscriptionSync(
+    public func removeSourceIdentifierFromSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription {
-        if let removeSourceIdentifierFromSubscriptionSyncOverride = removeSourceIdentifierFromSubscriptionSyncOverride {
-            return try removeSourceIdentifierFromSubscriptionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription {
+        if let removeSourceIdentifierFromSubscriptionSyncOverrideNonOptional = removeSourceIdentifierFromSubscriptionSyncOverride {
+            if let removeSourceIdentifierFromSubscriptionSyncOverrideTyped = removeSourceIdentifierFromSubscriptionSyncOverrideNonOptional
+                    as? RemoveSourceIdentifierFromSubscriptionSyncType<InvocationReportingType> {
+                return try removeSourceIdentifierFromSubscriptionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription.__default
@@ -5493,12 +6623,17 @@ public struct MockRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func removeTagsFromResourceAsync(
+    public func removeTagsFromResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveTagsFromResourceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let removeTagsFromResourceAsyncOverride = removeTagsFromResourceAsyncOverride {
-            return try removeTagsFromResourceAsyncOverride(input, reporting, completion)
+        if let removeTagsFromResourceAsyncOverrideNonOptional = removeTagsFromResourceAsyncOverride {
+            if let removeTagsFromResourceAsyncOverrideTyped = removeTagsFromResourceAsyncOverrideNonOptional
+                    as? RemoveTagsFromResourceAsyncType<InvocationReportingType> {
+                return try removeTagsFromResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -5511,11 +6646,16 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated RemoveTagsFromResourceMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func removeTagsFromResourceSync(
+    public func removeTagsFromResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RemoveTagsFromResourceMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let removeTagsFromResourceSyncOverride = removeTagsFromResourceSyncOverride {
-            return try removeTagsFromResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let removeTagsFromResourceSyncOverrideNonOptional = removeTagsFromResourceSyncOverride {
+            if let removeTagsFromResourceSyncOverrideTyped = removeTagsFromResourceSyncOverrideNonOptional
+                    as? RemoveTagsFromResourceSyncType<InvocationReportingType> {
+                return try removeTagsFromResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -5530,12 +6670,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBClusterParameterGroupAsync(
+    public func resetDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ResetDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
-        if let resetDBClusterParameterGroupAsyncOverride = resetDBClusterParameterGroupAsyncOverride {
-            return try resetDBClusterParameterGroupAsyncOverride(input, reporting, completion)
+        if let resetDBClusterParameterGroupAsyncOverrideNonOptional = resetDBClusterParameterGroupAsyncOverride {
+            if let resetDBClusterParameterGroupAsyncOverrideTyped = resetDBClusterParameterGroupAsyncOverrideNonOptional
+                    as? ResetDBClusterParameterGroupAsyncType<InvocationReportingType> {
+                return try resetDBClusterParameterGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup.__default
@@ -5552,11 +6697,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBClusterParameterGroupSync(
+    public func resetDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ResetDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup {
-        if let resetDBClusterParameterGroupSyncOverride = resetDBClusterParameterGroupSyncOverride {
-            return try resetDBClusterParameterGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup {
+        if let resetDBClusterParameterGroupSyncOverrideNonOptional = resetDBClusterParameterGroupSyncOverride {
+            if let resetDBClusterParameterGroupSyncOverrideTyped = resetDBClusterParameterGroupSyncOverrideNonOptional
+                    as? ResetDBClusterParameterGroupSyncType<InvocationReportingType> {
+                return try resetDBClusterParameterGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup.__default
@@ -5572,12 +6722,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBParameterGroupAsync(
+    public func resetDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ResetDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, HTTPClientError>) -> ()) throws {
-        if let resetDBParameterGroupAsyncOverride = resetDBParameterGroupAsyncOverride {
-            return try resetDBParameterGroupAsyncOverride(input, reporting, completion)
+        if let resetDBParameterGroupAsyncOverrideNonOptional = resetDBParameterGroupAsyncOverride {
+            if let resetDBParameterGroupAsyncOverrideTyped = resetDBParameterGroupAsyncOverrideNonOptional
+                    as? ResetDBParameterGroupAsyncType<InvocationReportingType> {
+                return try resetDBParameterGroupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DBParameterGroupNameMessageForResetDBParameterGroup.__default
@@ -5594,11 +6749,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBParameterGroupSync(
+    public func resetDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.ResetDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup {
-        if let resetDBParameterGroupSyncOverride = resetDBParameterGroupSyncOverride {
-            return try resetDBParameterGroupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup {
+        if let resetDBParameterGroupSyncOverrideNonOptional = resetDBParameterGroupSyncOverride {
+            if let resetDBParameterGroupSyncOverrideTyped = resetDBParameterGroupSyncOverrideNonOptional
+                    as? ResetDBParameterGroupSyncType<InvocationReportingType> {
+                return try resetDBParameterGroupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DBParameterGroupNameMessageForResetDBParameterGroup.__default
@@ -5614,12 +6774,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromS3Async(
+    public func restoreDBClusterFromS3Async<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBClusterFromS3Message, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, HTTPClientError>) -> ()) throws {
-        if let restoreDBClusterFromS3AsyncOverride = restoreDBClusterFromS3AsyncOverride {
-            return try restoreDBClusterFromS3AsyncOverride(input, reporting, completion)
+        if let restoreDBClusterFromS3AsyncOverrideNonOptional = restoreDBClusterFromS3AsyncOverride {
+            if let restoreDBClusterFromS3AsyncOverrideTyped = restoreDBClusterFromS3AsyncOverrideNonOptional
+                    as? RestoreDBClusterFromS3AsyncType<InvocationReportingType> {
+                return try restoreDBClusterFromS3AsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3.__default
@@ -5636,11 +6801,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromS3Sync(
+    public func restoreDBClusterFromS3Sync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBClusterFromS3Message,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
-        if let restoreDBClusterFromS3SyncOverride = restoreDBClusterFromS3SyncOverride {
-            return try restoreDBClusterFromS3SyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
+        if let restoreDBClusterFromS3SyncOverrideNonOptional = restoreDBClusterFromS3SyncOverride {
+            if let restoreDBClusterFromS3SyncOverrideTyped = restoreDBClusterFromS3SyncOverrideNonOptional
+                    as? RestoreDBClusterFromS3SyncType<InvocationReportingType> {
+                return try restoreDBClusterFromS3SyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3.__default
@@ -5656,12 +6826,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromSnapshotAsync(
+    public func restoreDBClusterFromSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, HTTPClientError>) -> ()) throws {
-        if let restoreDBClusterFromSnapshotAsyncOverride = restoreDBClusterFromSnapshotAsyncOverride {
-            return try restoreDBClusterFromSnapshotAsyncOverride(input, reporting, completion)
+        if let restoreDBClusterFromSnapshotAsyncOverrideNonOptional = restoreDBClusterFromSnapshotAsyncOverride {
+            if let restoreDBClusterFromSnapshotAsyncOverrideTyped = restoreDBClusterFromSnapshotAsyncOverrideNonOptional
+                    as? RestoreDBClusterFromSnapshotAsyncType<InvocationReportingType> {
+                return try restoreDBClusterFromSnapshotAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot.__default
@@ -5678,11 +6853,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromSnapshotSync(
+    public func restoreDBClusterFromSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
-        if let restoreDBClusterFromSnapshotSyncOverride = restoreDBClusterFromSnapshotSyncOverride {
-            return try restoreDBClusterFromSnapshotSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
+        if let restoreDBClusterFromSnapshotSyncOverrideNonOptional = restoreDBClusterFromSnapshotSyncOverride {
+            if let restoreDBClusterFromSnapshotSyncOverrideTyped = restoreDBClusterFromSnapshotSyncOverrideNonOptional
+                    as? RestoreDBClusterFromSnapshotSyncType<InvocationReportingType> {
+                return try restoreDBClusterFromSnapshotSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot.__default
@@ -5698,12 +6878,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
-    public func restoreDBClusterToPointInTimeAsync(
+    public func restoreDBClusterToPointInTimeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, HTTPClientError>) -> ()) throws {
-        if let restoreDBClusterToPointInTimeAsyncOverride = restoreDBClusterToPointInTimeAsyncOverride {
-            return try restoreDBClusterToPointInTimeAsyncOverride(input, reporting, completion)
+        if let restoreDBClusterToPointInTimeAsyncOverrideNonOptional = restoreDBClusterToPointInTimeAsyncOverride {
+            if let restoreDBClusterToPointInTimeAsyncOverrideTyped = restoreDBClusterToPointInTimeAsyncOverrideNonOptional
+                    as? RestoreDBClusterToPointInTimeAsyncType<InvocationReportingType> {
+                return try restoreDBClusterToPointInTimeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime.__default
@@ -5720,11 +6905,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
-    public func restoreDBClusterToPointInTimeSync(
+    public func restoreDBClusterToPointInTimeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
-        if let restoreDBClusterToPointInTimeSyncOverride = restoreDBClusterToPointInTimeSyncOverride {
-            return try restoreDBClusterToPointInTimeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
+        if let restoreDBClusterToPointInTimeSyncOverrideNonOptional = restoreDBClusterToPointInTimeSyncOverride {
+            if let restoreDBClusterToPointInTimeSyncOverrideTyped = restoreDBClusterToPointInTimeSyncOverrideNonOptional
+                    as? RestoreDBClusterToPointInTimeSyncType<InvocationReportingType> {
+                return try restoreDBClusterToPointInTimeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime.__default
@@ -5740,12 +6930,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromDBSnapshotAsync(
+    public func restoreDBInstanceFromDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, HTTPClientError>) -> ()) throws {
-        if let restoreDBInstanceFromDBSnapshotAsyncOverride = restoreDBInstanceFromDBSnapshotAsyncOverride {
-            return try restoreDBInstanceFromDBSnapshotAsyncOverride(input, reporting, completion)
+        if let restoreDBInstanceFromDBSnapshotAsyncOverrideNonOptional = restoreDBInstanceFromDBSnapshotAsyncOverride {
+            if let restoreDBInstanceFromDBSnapshotAsyncOverrideTyped = restoreDBInstanceFromDBSnapshotAsyncOverrideNonOptional
+                    as? RestoreDBInstanceFromDBSnapshotAsyncType<InvocationReportingType> {
+                return try restoreDBInstanceFromDBSnapshotAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot.__default
@@ -5762,11 +6957,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromDBSnapshotSync(
+    public func restoreDBInstanceFromDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
-        if let restoreDBInstanceFromDBSnapshotSyncOverride = restoreDBInstanceFromDBSnapshotSyncOverride {
-            return try restoreDBInstanceFromDBSnapshotSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
+        if let restoreDBInstanceFromDBSnapshotSyncOverrideNonOptional = restoreDBInstanceFromDBSnapshotSyncOverride {
+            if let restoreDBInstanceFromDBSnapshotSyncOverrideTyped = restoreDBInstanceFromDBSnapshotSyncOverrideNonOptional
+                    as? RestoreDBInstanceFromDBSnapshotSyncType<InvocationReportingType> {
+                return try restoreDBInstanceFromDBSnapshotSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot.__default
@@ -5782,12 +6982,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromS3Async(
+    public func restoreDBInstanceFromS3Async<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBInstanceFromS3Message, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, HTTPClientError>) -> ()) throws {
-        if let restoreDBInstanceFromS3AsyncOverride = restoreDBInstanceFromS3AsyncOverride {
-            return try restoreDBInstanceFromS3AsyncOverride(input, reporting, completion)
+        if let restoreDBInstanceFromS3AsyncOverrideNonOptional = restoreDBInstanceFromS3AsyncOverride {
+            if let restoreDBInstanceFromS3AsyncOverrideTyped = restoreDBInstanceFromS3AsyncOverrideNonOptional
+                    as? RestoreDBInstanceFromS3AsyncType<InvocationReportingType> {
+                return try restoreDBInstanceFromS3AsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3.__default
@@ -5804,11 +7009,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromS3Sync(
+    public func restoreDBInstanceFromS3Sync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBInstanceFromS3Message,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
-        if let restoreDBInstanceFromS3SyncOverride = restoreDBInstanceFromS3SyncOverride {
-            return try restoreDBInstanceFromS3SyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
+        if let restoreDBInstanceFromS3SyncOverrideNonOptional = restoreDBInstanceFromS3SyncOverride {
+            if let restoreDBInstanceFromS3SyncOverrideTyped = restoreDBInstanceFromS3SyncOverrideNonOptional
+                    as? RestoreDBInstanceFromS3SyncType<InvocationReportingType> {
+                return try restoreDBInstanceFromS3SyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3.__default
@@ -5824,12 +7034,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceToPointInTimeAsync(
+    public func restoreDBInstanceToPointInTimeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, HTTPClientError>) -> ()) throws {
-        if let restoreDBInstanceToPointInTimeAsyncOverride = restoreDBInstanceToPointInTimeAsyncOverride {
-            return try restoreDBInstanceToPointInTimeAsyncOverride(input, reporting, completion)
+        if let restoreDBInstanceToPointInTimeAsyncOverrideNonOptional = restoreDBInstanceToPointInTimeAsyncOverride {
+            if let restoreDBInstanceToPointInTimeAsyncOverrideTyped = restoreDBInstanceToPointInTimeAsyncOverrideNonOptional
+                    as? RestoreDBInstanceToPointInTimeAsyncType<InvocationReportingType> {
+                return try restoreDBInstanceToPointInTimeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime.__default
@@ -5846,11 +7061,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceToPointInTimeSync(
+    public func restoreDBInstanceToPointInTimeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {
-        if let restoreDBInstanceToPointInTimeSyncOverride = restoreDBInstanceToPointInTimeSyncOverride {
-            return try restoreDBInstanceToPointInTimeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {
+        if let restoreDBInstanceToPointInTimeSyncOverrideNonOptional = restoreDBInstanceToPointInTimeSyncOverride {
+            if let restoreDBInstanceToPointInTimeSyncOverrideTyped = restoreDBInstanceToPointInTimeSyncOverrideNonOptional
+                    as? RestoreDBInstanceToPointInTimeSyncType<InvocationReportingType> {
+                return try restoreDBInstanceToPointInTimeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime.__default
@@ -5866,12 +7086,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func revokeDBSecurityGroupIngressAsync(
+    public func revokeDBSecurityGroupIngressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RevokeDBSecurityGroupIngressMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws {
-        if let revokeDBSecurityGroupIngressAsyncOverride = revokeDBSecurityGroupIngressAsyncOverride {
-            return try revokeDBSecurityGroupIngressAsyncOverride(input, reporting, completion)
+        if let revokeDBSecurityGroupIngressAsyncOverrideNonOptional = revokeDBSecurityGroupIngressAsyncOverride {
+            if let revokeDBSecurityGroupIngressAsyncOverrideTyped = revokeDBSecurityGroupIngressAsyncOverrideNonOptional
+                    as? RevokeDBSecurityGroupIngressAsyncType<InvocationReportingType> {
+                return try revokeDBSecurityGroupIngressAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress.__default
@@ -5888,11 +7113,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func revokeDBSecurityGroupIngressSync(
+    public func revokeDBSecurityGroupIngressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.RevokeDBSecurityGroupIngressMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress {
-        if let revokeDBSecurityGroupIngressSyncOverride = revokeDBSecurityGroupIngressSyncOverride {
-            return try revokeDBSecurityGroupIngressSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress {
+        if let revokeDBSecurityGroupIngressSyncOverrideNonOptional = revokeDBSecurityGroupIngressSyncOverride {
+            if let revokeDBSecurityGroupIngressSyncOverrideTyped = revokeDBSecurityGroupIngressSyncOverrideNonOptional
+                    as? RevokeDBSecurityGroupIngressSyncType<InvocationReportingType> {
+                return try revokeDBSecurityGroupIngressSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress.__default
@@ -5908,12 +7138,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
      */
-    public func startActivityStreamAsync(
+    public func startActivityStreamAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartActivityStreamRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, HTTPClientError>) -> ()) throws {
-        if let startActivityStreamAsyncOverride = startActivityStreamAsyncOverride {
-            return try startActivityStreamAsyncOverride(input, reporting, completion)
+        if let startActivityStreamAsyncOverrideNonOptional = startActivityStreamAsyncOverride {
+            if let startActivityStreamAsyncOverrideTyped = startActivityStreamAsyncOverrideNonOptional
+                    as? StartActivityStreamAsyncType<InvocationReportingType> {
+                return try startActivityStreamAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = StartActivityStreamResponseForStartActivityStream.__default
@@ -5930,11 +7165,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
      */
-    public func startActivityStreamSync(
+    public func startActivityStreamSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartActivityStreamRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
-        if let startActivityStreamSyncOverride = startActivityStreamSyncOverride {
-            return try startActivityStreamSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
+        if let startActivityStreamSyncOverrideNonOptional = startActivityStreamSyncOverride {
+            if let startActivityStreamSyncOverrideTyped = startActivityStreamSyncOverrideNonOptional
+                    as? StartActivityStreamSyncType<InvocationReportingType> {
+                return try startActivityStreamSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return StartActivityStreamResponseForStartActivityStream.__default
@@ -5950,12 +7190,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func startDBClusterAsync(
+    public func startDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, HTTPClientError>) -> ()) throws {
-        if let startDBClusterAsyncOverride = startDBClusterAsyncOverride {
-            return try startDBClusterAsyncOverride(input, reporting, completion)
+        if let startDBClusterAsyncOverrideNonOptional = startDBClusterAsyncOverride {
+            if let startDBClusterAsyncOverrideTyped = startDBClusterAsyncOverrideNonOptional
+                    as? StartDBClusterAsyncType<InvocationReportingType> {
+                return try startDBClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = StartDBClusterResultForStartDBCluster.__default
@@ -5972,11 +7217,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func startDBClusterSync(
+    public func startDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartDBClusterResultForStartDBCluster {
-        if let startDBClusterSyncOverride = startDBClusterSyncOverride {
-            return try startDBClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.StartDBClusterResultForStartDBCluster {
+        if let startDBClusterSyncOverrideNonOptional = startDBClusterSyncOverride {
+            if let startDBClusterSyncOverrideTyped = startDBClusterSyncOverrideNonOptional
+                    as? StartDBClusterSyncType<InvocationReportingType> {
+                return try startDBClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return StartDBClusterResultForStartDBCluster.__default
@@ -5992,12 +7242,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, dBClusterNotFound, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible.
      */
-    public func startDBInstanceAsync(
+    public func startDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, HTTPClientError>) -> ()) throws {
-        if let startDBInstanceAsyncOverride = startDBInstanceAsyncOverride {
-            return try startDBInstanceAsyncOverride(input, reporting, completion)
+        if let startDBInstanceAsyncOverrideNonOptional = startDBInstanceAsyncOverride {
+            if let startDBInstanceAsyncOverrideTyped = startDBInstanceAsyncOverrideNonOptional
+                    as? StartDBInstanceAsyncType<InvocationReportingType> {
+                return try startDBInstanceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = StartDBInstanceResultForStartDBInstance.__default
@@ -6014,11 +7269,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, dBClusterNotFound, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible.
      */
-    public func startDBInstanceSync(
+    public func startDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
-        if let startDBInstanceSyncOverride = startDBInstanceSyncOverride {
-            return try startDBInstanceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
+        if let startDBInstanceSyncOverrideNonOptional = startDBInstanceSyncOverride {
+            if let startDBInstanceSyncOverrideTyped = startDBInstanceSyncOverrideNonOptional
+                    as? StartDBInstanceSyncType<InvocationReportingType> {
+                return try startDBInstanceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return StartDBInstanceResultForStartDBInstance.__default
@@ -6034,12 +7294,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
      */
-    public func startExportTaskAsync(
+    public func startExportTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartExportTaskMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, HTTPClientError>) -> ()) throws {
-        if let startExportTaskAsyncOverride = startExportTaskAsyncOverride {
-            return try startExportTaskAsyncOverride(input, reporting, completion)
+        if let startExportTaskAsyncOverrideNonOptional = startExportTaskAsyncOverride {
+            if let startExportTaskAsyncOverrideTyped = startExportTaskAsyncOverrideNonOptional
+                    as? StartExportTaskAsyncType<InvocationReportingType> {
+                return try startExportTaskAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ExportTaskForStartExportTask.__default
@@ -6056,11 +7321,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
      */
-    public func startExportTaskSync(
+    public func startExportTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StartExportTaskMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForStartExportTask {
-        if let startExportTaskSyncOverride = startExportTaskSyncOverride {
-            return try startExportTaskSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.ExportTaskForStartExportTask {
+        if let startExportTaskSyncOverrideNonOptional = startExportTaskSyncOverride {
+            if let startExportTaskSyncOverrideTyped = startExportTaskSyncOverrideNonOptional
+                    as? StartExportTaskSyncType<InvocationReportingType> {
+                return try startExportTaskSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ExportTaskForStartExportTask.__default
@@ -6076,12 +7346,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func stopActivityStreamAsync(
+    public func stopActivityStreamAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StopActivityStreamRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, HTTPClientError>) -> ()) throws {
-        if let stopActivityStreamAsyncOverride = stopActivityStreamAsyncOverride {
-            return try stopActivityStreamAsyncOverride(input, reporting, completion)
+        if let stopActivityStreamAsyncOverrideNonOptional = stopActivityStreamAsyncOverride {
+            if let stopActivityStreamAsyncOverrideTyped = stopActivityStreamAsyncOverrideNonOptional
+                    as? StopActivityStreamAsyncType<InvocationReportingType> {
+                return try stopActivityStreamAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = StopActivityStreamResponseForStopActivityStream.__default
@@ -6098,11 +7373,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func stopActivityStreamSync(
+    public func stopActivityStreamSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StopActivityStreamRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
-        if let stopActivityStreamSyncOverride = stopActivityStreamSyncOverride {
-            return try stopActivityStreamSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
+        if let stopActivityStreamSyncOverrideNonOptional = stopActivityStreamSyncOverride {
+            if let stopActivityStreamSyncOverrideTyped = stopActivityStreamSyncOverrideNonOptional
+                    as? StopActivityStreamSyncType<InvocationReportingType> {
+                return try stopActivityStreamSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return StopActivityStreamResponseForStopActivityStream.__default
@@ -6118,12 +7398,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func stopDBClusterAsync(
+    public func stopDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StopDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, HTTPClientError>) -> ()) throws {
-        if let stopDBClusterAsyncOverride = stopDBClusterAsyncOverride {
-            return try stopDBClusterAsyncOverride(input, reporting, completion)
+        if let stopDBClusterAsyncOverrideNonOptional = stopDBClusterAsyncOverride {
+            if let stopDBClusterAsyncOverrideTyped = stopDBClusterAsyncOverrideNonOptional
+                    as? StopDBClusterAsyncType<InvocationReportingType> {
+                return try stopDBClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = StopDBClusterResultForStopDBCluster.__default
@@ -6140,11 +7425,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func stopDBClusterSync(
+    public func stopDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StopDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopDBClusterResultForStopDBCluster {
-        if let stopDBClusterSyncOverride = stopDBClusterSyncOverride {
-            return try stopDBClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.StopDBClusterResultForStopDBCluster {
+        if let stopDBClusterSyncOverrideNonOptional = stopDBClusterSyncOverride {
+            if let stopDBClusterSyncOverrideTyped = stopDBClusterSyncOverrideNonOptional
+                    as? StopDBClusterSyncType<InvocationReportingType> {
+                return try stopDBClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return StopDBClusterResultForStopDBCluster.__default
@@ -6160,12 +7450,17 @@ public struct MockRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func stopDBInstanceAsync(
+    public func stopDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StopDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, HTTPClientError>) -> ()) throws {
-        if let stopDBInstanceAsyncOverride = stopDBInstanceAsyncOverride {
-            return try stopDBInstanceAsyncOverride(input, reporting, completion)
+        if let stopDBInstanceAsyncOverrideNonOptional = stopDBInstanceAsyncOverride {
+            if let stopDBInstanceAsyncOverrideTyped = stopDBInstanceAsyncOverrideNonOptional
+                    as? StopDBInstanceAsyncType<InvocationReportingType> {
+                return try stopDBInstanceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = StopDBInstanceResultForStopDBInstance.__default
@@ -6182,11 +7477,16 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func stopDBInstanceSync(
+    public func stopDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: RDSModel.StopDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopDBInstanceResultForStopDBInstance {
-        if let stopDBInstanceSyncOverride = stopDBInstanceSyncOverride {
-            return try stopDBInstanceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> RDSModel.StopDBInstanceResultForStopDBInstance {
+        if let stopDBInstanceSyncOverrideNonOptional = stopDBInstanceSyncOverride {
+            if let stopDBInstanceSyncOverrideTyped = stopDBInstanceSyncOverrideNonOptional
+                    as? StopDBInstanceSyncType<InvocationReportingType> {
+                return try stopDBInstanceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return StopDBInstanceResultForStopDBInstance.__default

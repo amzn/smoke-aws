@@ -27,205 +27,205 @@ import SmokeHTTPClient
 /**
  Mock Client for the ElasticContainer service by default returns the `__default` property of its return type.
  */
-public struct MockElasticContainerClient: ElasticContainerClientProtocol {
-    let createCapacityProviderAsyncOverride: ElasticContainerClientProtocol.CreateCapacityProviderAsyncType?
-    let createCapacityProviderSyncOverride: ElasticContainerClientProtocol.CreateCapacityProviderSyncType?
-    let createClusterAsyncOverride: ElasticContainerClientProtocol.CreateClusterAsyncType?
-    let createClusterSyncOverride: ElasticContainerClientProtocol.CreateClusterSyncType?
-    let createServiceAsyncOverride: ElasticContainerClientProtocol.CreateServiceAsyncType?
-    let createServiceSyncOverride: ElasticContainerClientProtocol.CreateServiceSyncType?
-    let createTaskSetAsyncOverride: ElasticContainerClientProtocol.CreateTaskSetAsyncType?
-    let createTaskSetSyncOverride: ElasticContainerClientProtocol.CreateTaskSetSyncType?
-    let deleteAccountSettingAsyncOverride: ElasticContainerClientProtocol.DeleteAccountSettingAsyncType?
-    let deleteAccountSettingSyncOverride: ElasticContainerClientProtocol.DeleteAccountSettingSyncType?
-    let deleteAttributesAsyncOverride: ElasticContainerClientProtocol.DeleteAttributesAsyncType?
-    let deleteAttributesSyncOverride: ElasticContainerClientProtocol.DeleteAttributesSyncType?
-    let deleteClusterAsyncOverride: ElasticContainerClientProtocol.DeleteClusterAsyncType?
-    let deleteClusterSyncOverride: ElasticContainerClientProtocol.DeleteClusterSyncType?
-    let deleteServiceAsyncOverride: ElasticContainerClientProtocol.DeleteServiceAsyncType?
-    let deleteServiceSyncOverride: ElasticContainerClientProtocol.DeleteServiceSyncType?
-    let deleteTaskSetAsyncOverride: ElasticContainerClientProtocol.DeleteTaskSetAsyncType?
-    let deleteTaskSetSyncOverride: ElasticContainerClientProtocol.DeleteTaskSetSyncType?
-    let deregisterContainerInstanceAsyncOverride: ElasticContainerClientProtocol.DeregisterContainerInstanceAsyncType?
-    let deregisterContainerInstanceSyncOverride: ElasticContainerClientProtocol.DeregisterContainerInstanceSyncType?
-    let deregisterTaskDefinitionAsyncOverride: ElasticContainerClientProtocol.DeregisterTaskDefinitionAsyncType?
-    let deregisterTaskDefinitionSyncOverride: ElasticContainerClientProtocol.DeregisterTaskDefinitionSyncType?
-    let describeCapacityProvidersAsyncOverride: ElasticContainerClientProtocol.DescribeCapacityProvidersAsyncType?
-    let describeCapacityProvidersSyncOverride: ElasticContainerClientProtocol.DescribeCapacityProvidersSyncType?
-    let describeClustersAsyncOverride: ElasticContainerClientProtocol.DescribeClustersAsyncType?
-    let describeClustersSyncOverride: ElasticContainerClientProtocol.DescribeClustersSyncType?
-    let describeContainerInstancesAsyncOverride: ElasticContainerClientProtocol.DescribeContainerInstancesAsyncType?
-    let describeContainerInstancesSyncOverride: ElasticContainerClientProtocol.DescribeContainerInstancesSyncType?
-    let describeServicesAsyncOverride: ElasticContainerClientProtocol.DescribeServicesAsyncType?
-    let describeServicesSyncOverride: ElasticContainerClientProtocol.DescribeServicesSyncType?
-    let describeTaskDefinitionAsyncOverride: ElasticContainerClientProtocol.DescribeTaskDefinitionAsyncType?
-    let describeTaskDefinitionSyncOverride: ElasticContainerClientProtocol.DescribeTaskDefinitionSyncType?
-    let describeTaskSetsAsyncOverride: ElasticContainerClientProtocol.DescribeTaskSetsAsyncType?
-    let describeTaskSetsSyncOverride: ElasticContainerClientProtocol.DescribeTaskSetsSyncType?
-    let describeTasksAsyncOverride: ElasticContainerClientProtocol.DescribeTasksAsyncType?
-    let describeTasksSyncOverride: ElasticContainerClientProtocol.DescribeTasksSyncType?
-    let discoverPollEndpointAsyncOverride: ElasticContainerClientProtocol.DiscoverPollEndpointAsyncType?
-    let discoverPollEndpointSyncOverride: ElasticContainerClientProtocol.DiscoverPollEndpointSyncType?
-    let listAccountSettingsAsyncOverride: ElasticContainerClientProtocol.ListAccountSettingsAsyncType?
-    let listAccountSettingsSyncOverride: ElasticContainerClientProtocol.ListAccountSettingsSyncType?
-    let listAttributesAsyncOverride: ElasticContainerClientProtocol.ListAttributesAsyncType?
-    let listAttributesSyncOverride: ElasticContainerClientProtocol.ListAttributesSyncType?
-    let listClustersAsyncOverride: ElasticContainerClientProtocol.ListClustersAsyncType?
-    let listClustersSyncOverride: ElasticContainerClientProtocol.ListClustersSyncType?
-    let listContainerInstancesAsyncOverride: ElasticContainerClientProtocol.ListContainerInstancesAsyncType?
-    let listContainerInstancesSyncOverride: ElasticContainerClientProtocol.ListContainerInstancesSyncType?
-    let listServicesAsyncOverride: ElasticContainerClientProtocol.ListServicesAsyncType?
-    let listServicesSyncOverride: ElasticContainerClientProtocol.ListServicesSyncType?
-    let listTagsForResourceAsyncOverride: ElasticContainerClientProtocol.ListTagsForResourceAsyncType?
-    let listTagsForResourceSyncOverride: ElasticContainerClientProtocol.ListTagsForResourceSyncType?
-    let listTaskDefinitionFamiliesAsyncOverride: ElasticContainerClientProtocol.ListTaskDefinitionFamiliesAsyncType?
-    let listTaskDefinitionFamiliesSyncOverride: ElasticContainerClientProtocol.ListTaskDefinitionFamiliesSyncType?
-    let listTaskDefinitionsAsyncOverride: ElasticContainerClientProtocol.ListTaskDefinitionsAsyncType?
-    let listTaskDefinitionsSyncOverride: ElasticContainerClientProtocol.ListTaskDefinitionsSyncType?
-    let listTasksAsyncOverride: ElasticContainerClientProtocol.ListTasksAsyncType?
-    let listTasksSyncOverride: ElasticContainerClientProtocol.ListTasksSyncType?
-    let putAccountSettingAsyncOverride: ElasticContainerClientProtocol.PutAccountSettingAsyncType?
-    let putAccountSettingSyncOverride: ElasticContainerClientProtocol.PutAccountSettingSyncType?
-    let putAccountSettingDefaultAsyncOverride: ElasticContainerClientProtocol.PutAccountSettingDefaultAsyncType?
-    let putAccountSettingDefaultSyncOverride: ElasticContainerClientProtocol.PutAccountSettingDefaultSyncType?
-    let putAttributesAsyncOverride: ElasticContainerClientProtocol.PutAttributesAsyncType?
-    let putAttributesSyncOverride: ElasticContainerClientProtocol.PutAttributesSyncType?
-    let putClusterCapacityProvidersAsyncOverride: ElasticContainerClientProtocol.PutClusterCapacityProvidersAsyncType?
-    let putClusterCapacityProvidersSyncOverride: ElasticContainerClientProtocol.PutClusterCapacityProvidersSyncType?
-    let registerContainerInstanceAsyncOverride: ElasticContainerClientProtocol.RegisterContainerInstanceAsyncType?
-    let registerContainerInstanceSyncOverride: ElasticContainerClientProtocol.RegisterContainerInstanceSyncType?
-    let registerTaskDefinitionAsyncOverride: ElasticContainerClientProtocol.RegisterTaskDefinitionAsyncType?
-    let registerTaskDefinitionSyncOverride: ElasticContainerClientProtocol.RegisterTaskDefinitionSyncType?
-    let runTaskAsyncOverride: ElasticContainerClientProtocol.RunTaskAsyncType?
-    let runTaskSyncOverride: ElasticContainerClientProtocol.RunTaskSyncType?
-    let startTaskAsyncOverride: ElasticContainerClientProtocol.StartTaskAsyncType?
-    let startTaskSyncOverride: ElasticContainerClientProtocol.StartTaskSyncType?
-    let stopTaskAsyncOverride: ElasticContainerClientProtocol.StopTaskAsyncType?
-    let stopTaskSyncOverride: ElasticContainerClientProtocol.StopTaskSyncType?
-    let submitAttachmentStateChangesAsyncOverride: ElasticContainerClientProtocol.SubmitAttachmentStateChangesAsyncType?
-    let submitAttachmentStateChangesSyncOverride: ElasticContainerClientProtocol.SubmitAttachmentStateChangesSyncType?
-    let submitContainerStateChangeAsyncOverride: ElasticContainerClientProtocol.SubmitContainerStateChangeAsyncType?
-    let submitContainerStateChangeSyncOverride: ElasticContainerClientProtocol.SubmitContainerStateChangeSyncType?
-    let submitTaskStateChangeAsyncOverride: ElasticContainerClientProtocol.SubmitTaskStateChangeAsyncType?
-    let submitTaskStateChangeSyncOverride: ElasticContainerClientProtocol.SubmitTaskStateChangeSyncType?
-    let tagResourceAsyncOverride: ElasticContainerClientProtocol.TagResourceAsyncType?
-    let tagResourceSyncOverride: ElasticContainerClientProtocol.TagResourceSyncType?
-    let untagResourceAsyncOverride: ElasticContainerClientProtocol.UntagResourceAsyncType?
-    let untagResourceSyncOverride: ElasticContainerClientProtocol.UntagResourceSyncType?
-    let updateClusterSettingsAsyncOverride: ElasticContainerClientProtocol.UpdateClusterSettingsAsyncType?
-    let updateClusterSettingsSyncOverride: ElasticContainerClientProtocol.UpdateClusterSettingsSyncType?
-    let updateContainerAgentAsyncOverride: ElasticContainerClientProtocol.UpdateContainerAgentAsyncType?
-    let updateContainerAgentSyncOverride: ElasticContainerClientProtocol.UpdateContainerAgentSyncType?
-    let updateContainerInstancesStateAsyncOverride: ElasticContainerClientProtocol.UpdateContainerInstancesStateAsyncType?
-    let updateContainerInstancesStateSyncOverride: ElasticContainerClientProtocol.UpdateContainerInstancesStateSyncType?
-    let updateServiceAsyncOverride: ElasticContainerClientProtocol.UpdateServiceAsyncType?
-    let updateServiceSyncOverride: ElasticContainerClientProtocol.UpdateServiceSyncType?
-    let updateServicePrimaryTaskSetAsyncOverride: ElasticContainerClientProtocol.UpdateServicePrimaryTaskSetAsyncType?
-    let updateServicePrimaryTaskSetSyncOverride: ElasticContainerClientProtocol.UpdateServicePrimaryTaskSetSyncType?
-    let updateTaskSetAsyncOverride: ElasticContainerClientProtocol.UpdateTaskSetAsyncType?
-    let updateTaskSetSyncOverride: ElasticContainerClientProtocol.UpdateTaskSetSyncType?
+public struct MockElasticContainerClient<ClientInvocationReportingType: SmokeAWSInvocationReporting>: ElasticContainerClientProtocol {
+    let createCapacityProviderAsyncOverride: CreateCapacityProviderAsyncType<ClientInvocationReportingType>?
+    let createCapacityProviderSyncOverride: CreateCapacityProviderSyncType<ClientInvocationReportingType>?
+    let createClusterAsyncOverride: CreateClusterAsyncType<ClientInvocationReportingType>?
+    let createClusterSyncOverride: CreateClusterSyncType<ClientInvocationReportingType>?
+    let createServiceAsyncOverride: CreateServiceAsyncType<ClientInvocationReportingType>?
+    let createServiceSyncOverride: CreateServiceSyncType<ClientInvocationReportingType>?
+    let createTaskSetAsyncOverride: CreateTaskSetAsyncType<ClientInvocationReportingType>?
+    let createTaskSetSyncOverride: CreateTaskSetSyncType<ClientInvocationReportingType>?
+    let deleteAccountSettingAsyncOverride: DeleteAccountSettingAsyncType<ClientInvocationReportingType>?
+    let deleteAccountSettingSyncOverride: DeleteAccountSettingSyncType<ClientInvocationReportingType>?
+    let deleteAttributesAsyncOverride: DeleteAttributesAsyncType<ClientInvocationReportingType>?
+    let deleteAttributesSyncOverride: DeleteAttributesSyncType<ClientInvocationReportingType>?
+    let deleteClusterAsyncOverride: DeleteClusterAsyncType<ClientInvocationReportingType>?
+    let deleteClusterSyncOverride: DeleteClusterSyncType<ClientInvocationReportingType>?
+    let deleteServiceAsyncOverride: DeleteServiceAsyncType<ClientInvocationReportingType>?
+    let deleteServiceSyncOverride: DeleteServiceSyncType<ClientInvocationReportingType>?
+    let deleteTaskSetAsyncOverride: DeleteTaskSetAsyncType<ClientInvocationReportingType>?
+    let deleteTaskSetSyncOverride: DeleteTaskSetSyncType<ClientInvocationReportingType>?
+    let deregisterContainerInstanceAsyncOverride: DeregisterContainerInstanceAsyncType<ClientInvocationReportingType>?
+    let deregisterContainerInstanceSyncOverride: DeregisterContainerInstanceSyncType<ClientInvocationReportingType>?
+    let deregisterTaskDefinitionAsyncOverride: DeregisterTaskDefinitionAsyncType<ClientInvocationReportingType>?
+    let deregisterTaskDefinitionSyncOverride: DeregisterTaskDefinitionSyncType<ClientInvocationReportingType>?
+    let describeCapacityProvidersAsyncOverride: DescribeCapacityProvidersAsyncType<ClientInvocationReportingType>?
+    let describeCapacityProvidersSyncOverride: DescribeCapacityProvidersSyncType<ClientInvocationReportingType>?
+    let describeClustersAsyncOverride: DescribeClustersAsyncType<ClientInvocationReportingType>?
+    let describeClustersSyncOverride: DescribeClustersSyncType<ClientInvocationReportingType>?
+    let describeContainerInstancesAsyncOverride: DescribeContainerInstancesAsyncType<ClientInvocationReportingType>?
+    let describeContainerInstancesSyncOverride: DescribeContainerInstancesSyncType<ClientInvocationReportingType>?
+    let describeServicesAsyncOverride: DescribeServicesAsyncType<ClientInvocationReportingType>?
+    let describeServicesSyncOverride: DescribeServicesSyncType<ClientInvocationReportingType>?
+    let describeTaskDefinitionAsyncOverride: DescribeTaskDefinitionAsyncType<ClientInvocationReportingType>?
+    let describeTaskDefinitionSyncOverride: DescribeTaskDefinitionSyncType<ClientInvocationReportingType>?
+    let describeTaskSetsAsyncOverride: DescribeTaskSetsAsyncType<ClientInvocationReportingType>?
+    let describeTaskSetsSyncOverride: DescribeTaskSetsSyncType<ClientInvocationReportingType>?
+    let describeTasksAsyncOverride: DescribeTasksAsyncType<ClientInvocationReportingType>?
+    let describeTasksSyncOverride: DescribeTasksSyncType<ClientInvocationReportingType>?
+    let discoverPollEndpointAsyncOverride: DiscoverPollEndpointAsyncType<ClientInvocationReportingType>?
+    let discoverPollEndpointSyncOverride: DiscoverPollEndpointSyncType<ClientInvocationReportingType>?
+    let listAccountSettingsAsyncOverride: ListAccountSettingsAsyncType<ClientInvocationReportingType>?
+    let listAccountSettingsSyncOverride: ListAccountSettingsSyncType<ClientInvocationReportingType>?
+    let listAttributesAsyncOverride: ListAttributesAsyncType<ClientInvocationReportingType>?
+    let listAttributesSyncOverride: ListAttributesSyncType<ClientInvocationReportingType>?
+    let listClustersAsyncOverride: ListClustersAsyncType<ClientInvocationReportingType>?
+    let listClustersSyncOverride: ListClustersSyncType<ClientInvocationReportingType>?
+    let listContainerInstancesAsyncOverride: ListContainerInstancesAsyncType<ClientInvocationReportingType>?
+    let listContainerInstancesSyncOverride: ListContainerInstancesSyncType<ClientInvocationReportingType>?
+    let listServicesAsyncOverride: ListServicesAsyncType<ClientInvocationReportingType>?
+    let listServicesSyncOverride: ListServicesSyncType<ClientInvocationReportingType>?
+    let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType<ClientInvocationReportingType>?
+    let listTagsForResourceSyncOverride: ListTagsForResourceSyncType<ClientInvocationReportingType>?
+    let listTaskDefinitionFamiliesAsyncOverride: ListTaskDefinitionFamiliesAsyncType<ClientInvocationReportingType>?
+    let listTaskDefinitionFamiliesSyncOverride: ListTaskDefinitionFamiliesSyncType<ClientInvocationReportingType>?
+    let listTaskDefinitionsAsyncOverride: ListTaskDefinitionsAsyncType<ClientInvocationReportingType>?
+    let listTaskDefinitionsSyncOverride: ListTaskDefinitionsSyncType<ClientInvocationReportingType>?
+    let listTasksAsyncOverride: ListTasksAsyncType<ClientInvocationReportingType>?
+    let listTasksSyncOverride: ListTasksSyncType<ClientInvocationReportingType>?
+    let putAccountSettingAsyncOverride: PutAccountSettingAsyncType<ClientInvocationReportingType>?
+    let putAccountSettingSyncOverride: PutAccountSettingSyncType<ClientInvocationReportingType>?
+    let putAccountSettingDefaultAsyncOverride: PutAccountSettingDefaultAsyncType<ClientInvocationReportingType>?
+    let putAccountSettingDefaultSyncOverride: PutAccountSettingDefaultSyncType<ClientInvocationReportingType>?
+    let putAttributesAsyncOverride: PutAttributesAsyncType<ClientInvocationReportingType>?
+    let putAttributesSyncOverride: PutAttributesSyncType<ClientInvocationReportingType>?
+    let putClusterCapacityProvidersAsyncOverride: PutClusterCapacityProvidersAsyncType<ClientInvocationReportingType>?
+    let putClusterCapacityProvidersSyncOverride: PutClusterCapacityProvidersSyncType<ClientInvocationReportingType>?
+    let registerContainerInstanceAsyncOverride: RegisterContainerInstanceAsyncType<ClientInvocationReportingType>?
+    let registerContainerInstanceSyncOverride: RegisterContainerInstanceSyncType<ClientInvocationReportingType>?
+    let registerTaskDefinitionAsyncOverride: RegisterTaskDefinitionAsyncType<ClientInvocationReportingType>?
+    let registerTaskDefinitionSyncOverride: RegisterTaskDefinitionSyncType<ClientInvocationReportingType>?
+    let runTaskAsyncOverride: RunTaskAsyncType<ClientInvocationReportingType>?
+    let runTaskSyncOverride: RunTaskSyncType<ClientInvocationReportingType>?
+    let startTaskAsyncOverride: StartTaskAsyncType<ClientInvocationReportingType>?
+    let startTaskSyncOverride: StartTaskSyncType<ClientInvocationReportingType>?
+    let stopTaskAsyncOverride: StopTaskAsyncType<ClientInvocationReportingType>?
+    let stopTaskSyncOverride: StopTaskSyncType<ClientInvocationReportingType>?
+    let submitAttachmentStateChangesAsyncOverride: SubmitAttachmentStateChangesAsyncType<ClientInvocationReportingType>?
+    let submitAttachmentStateChangesSyncOverride: SubmitAttachmentStateChangesSyncType<ClientInvocationReportingType>?
+    let submitContainerStateChangeAsyncOverride: SubmitContainerStateChangeAsyncType<ClientInvocationReportingType>?
+    let submitContainerStateChangeSyncOverride: SubmitContainerStateChangeSyncType<ClientInvocationReportingType>?
+    let submitTaskStateChangeAsyncOverride: SubmitTaskStateChangeAsyncType<ClientInvocationReportingType>?
+    let submitTaskStateChangeSyncOverride: SubmitTaskStateChangeSyncType<ClientInvocationReportingType>?
+    let tagResourceAsyncOverride: TagResourceAsyncType<ClientInvocationReportingType>?
+    let tagResourceSyncOverride: TagResourceSyncType<ClientInvocationReportingType>?
+    let untagResourceAsyncOverride: UntagResourceAsyncType<ClientInvocationReportingType>?
+    let untagResourceSyncOverride: UntagResourceSyncType<ClientInvocationReportingType>?
+    let updateClusterSettingsAsyncOverride: UpdateClusterSettingsAsyncType<ClientInvocationReportingType>?
+    let updateClusterSettingsSyncOverride: UpdateClusterSettingsSyncType<ClientInvocationReportingType>?
+    let updateContainerAgentAsyncOverride: UpdateContainerAgentAsyncType<ClientInvocationReportingType>?
+    let updateContainerAgentSyncOverride: UpdateContainerAgentSyncType<ClientInvocationReportingType>?
+    let updateContainerInstancesStateAsyncOverride: UpdateContainerInstancesStateAsyncType<ClientInvocationReportingType>?
+    let updateContainerInstancesStateSyncOverride: UpdateContainerInstancesStateSyncType<ClientInvocationReportingType>?
+    let updateServiceAsyncOverride: UpdateServiceAsyncType<ClientInvocationReportingType>?
+    let updateServiceSyncOverride: UpdateServiceSyncType<ClientInvocationReportingType>?
+    let updateServicePrimaryTaskSetAsyncOverride: UpdateServicePrimaryTaskSetAsyncType<ClientInvocationReportingType>?
+    let updateServicePrimaryTaskSetSyncOverride: UpdateServicePrimaryTaskSetSyncType<ClientInvocationReportingType>?
+    let updateTaskSetAsyncOverride: UpdateTaskSetAsyncType<ClientInvocationReportingType>?
+    let updateTaskSetSyncOverride: UpdateTaskSetSyncType<ClientInvocationReportingType>?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(
-            createCapacityProviderAsync: ElasticContainerClientProtocol.CreateCapacityProviderAsyncType? = nil,
-            createCapacityProviderSync: ElasticContainerClientProtocol.CreateCapacityProviderSyncType? = nil,
-            createClusterAsync: ElasticContainerClientProtocol.CreateClusterAsyncType? = nil,
-            createClusterSync: ElasticContainerClientProtocol.CreateClusterSyncType? = nil,
-            createServiceAsync: ElasticContainerClientProtocol.CreateServiceAsyncType? = nil,
-            createServiceSync: ElasticContainerClientProtocol.CreateServiceSyncType? = nil,
-            createTaskSetAsync: ElasticContainerClientProtocol.CreateTaskSetAsyncType? = nil,
-            createTaskSetSync: ElasticContainerClientProtocol.CreateTaskSetSyncType? = nil,
-            deleteAccountSettingAsync: ElasticContainerClientProtocol.DeleteAccountSettingAsyncType? = nil,
-            deleteAccountSettingSync: ElasticContainerClientProtocol.DeleteAccountSettingSyncType? = nil,
-            deleteAttributesAsync: ElasticContainerClientProtocol.DeleteAttributesAsyncType? = nil,
-            deleteAttributesSync: ElasticContainerClientProtocol.DeleteAttributesSyncType? = nil,
-            deleteClusterAsync: ElasticContainerClientProtocol.DeleteClusterAsyncType? = nil,
-            deleteClusterSync: ElasticContainerClientProtocol.DeleteClusterSyncType? = nil,
-            deleteServiceAsync: ElasticContainerClientProtocol.DeleteServiceAsyncType? = nil,
-            deleteServiceSync: ElasticContainerClientProtocol.DeleteServiceSyncType? = nil,
-            deleteTaskSetAsync: ElasticContainerClientProtocol.DeleteTaskSetAsyncType? = nil,
-            deleteTaskSetSync: ElasticContainerClientProtocol.DeleteTaskSetSyncType? = nil,
-            deregisterContainerInstanceAsync: ElasticContainerClientProtocol.DeregisterContainerInstanceAsyncType? = nil,
-            deregisterContainerInstanceSync: ElasticContainerClientProtocol.DeregisterContainerInstanceSyncType? = nil,
-            deregisterTaskDefinitionAsync: ElasticContainerClientProtocol.DeregisterTaskDefinitionAsyncType? = nil,
-            deregisterTaskDefinitionSync: ElasticContainerClientProtocol.DeregisterTaskDefinitionSyncType? = nil,
-            describeCapacityProvidersAsync: ElasticContainerClientProtocol.DescribeCapacityProvidersAsyncType? = nil,
-            describeCapacityProvidersSync: ElasticContainerClientProtocol.DescribeCapacityProvidersSyncType? = nil,
-            describeClustersAsync: ElasticContainerClientProtocol.DescribeClustersAsyncType? = nil,
-            describeClustersSync: ElasticContainerClientProtocol.DescribeClustersSyncType? = nil,
-            describeContainerInstancesAsync: ElasticContainerClientProtocol.DescribeContainerInstancesAsyncType? = nil,
-            describeContainerInstancesSync: ElasticContainerClientProtocol.DescribeContainerInstancesSyncType? = nil,
-            describeServicesAsync: ElasticContainerClientProtocol.DescribeServicesAsyncType? = nil,
-            describeServicesSync: ElasticContainerClientProtocol.DescribeServicesSyncType? = nil,
-            describeTaskDefinitionAsync: ElasticContainerClientProtocol.DescribeTaskDefinitionAsyncType? = nil,
-            describeTaskDefinitionSync: ElasticContainerClientProtocol.DescribeTaskDefinitionSyncType? = nil,
-            describeTaskSetsAsync: ElasticContainerClientProtocol.DescribeTaskSetsAsyncType? = nil,
-            describeTaskSetsSync: ElasticContainerClientProtocol.DescribeTaskSetsSyncType? = nil,
-            describeTasksAsync: ElasticContainerClientProtocol.DescribeTasksAsyncType? = nil,
-            describeTasksSync: ElasticContainerClientProtocol.DescribeTasksSyncType? = nil,
-            discoverPollEndpointAsync: ElasticContainerClientProtocol.DiscoverPollEndpointAsyncType? = nil,
-            discoverPollEndpointSync: ElasticContainerClientProtocol.DiscoverPollEndpointSyncType? = nil,
-            listAccountSettingsAsync: ElasticContainerClientProtocol.ListAccountSettingsAsyncType? = nil,
-            listAccountSettingsSync: ElasticContainerClientProtocol.ListAccountSettingsSyncType? = nil,
-            listAttributesAsync: ElasticContainerClientProtocol.ListAttributesAsyncType? = nil,
-            listAttributesSync: ElasticContainerClientProtocol.ListAttributesSyncType? = nil,
-            listClustersAsync: ElasticContainerClientProtocol.ListClustersAsyncType? = nil,
-            listClustersSync: ElasticContainerClientProtocol.ListClustersSyncType? = nil,
-            listContainerInstancesAsync: ElasticContainerClientProtocol.ListContainerInstancesAsyncType? = nil,
-            listContainerInstancesSync: ElasticContainerClientProtocol.ListContainerInstancesSyncType? = nil,
-            listServicesAsync: ElasticContainerClientProtocol.ListServicesAsyncType? = nil,
-            listServicesSync: ElasticContainerClientProtocol.ListServicesSyncType? = nil,
-            listTagsForResourceAsync: ElasticContainerClientProtocol.ListTagsForResourceAsyncType? = nil,
-            listTagsForResourceSync: ElasticContainerClientProtocol.ListTagsForResourceSyncType? = nil,
-            listTaskDefinitionFamiliesAsync: ElasticContainerClientProtocol.ListTaskDefinitionFamiliesAsyncType? = nil,
-            listTaskDefinitionFamiliesSync: ElasticContainerClientProtocol.ListTaskDefinitionFamiliesSyncType? = nil,
-            listTaskDefinitionsAsync: ElasticContainerClientProtocol.ListTaskDefinitionsAsyncType? = nil,
-            listTaskDefinitionsSync: ElasticContainerClientProtocol.ListTaskDefinitionsSyncType? = nil,
-            listTasksAsync: ElasticContainerClientProtocol.ListTasksAsyncType? = nil,
-            listTasksSync: ElasticContainerClientProtocol.ListTasksSyncType? = nil,
-            putAccountSettingAsync: ElasticContainerClientProtocol.PutAccountSettingAsyncType? = nil,
-            putAccountSettingSync: ElasticContainerClientProtocol.PutAccountSettingSyncType? = nil,
-            putAccountSettingDefaultAsync: ElasticContainerClientProtocol.PutAccountSettingDefaultAsyncType? = nil,
-            putAccountSettingDefaultSync: ElasticContainerClientProtocol.PutAccountSettingDefaultSyncType? = nil,
-            putAttributesAsync: ElasticContainerClientProtocol.PutAttributesAsyncType? = nil,
-            putAttributesSync: ElasticContainerClientProtocol.PutAttributesSyncType? = nil,
-            putClusterCapacityProvidersAsync: ElasticContainerClientProtocol.PutClusterCapacityProvidersAsyncType? = nil,
-            putClusterCapacityProvidersSync: ElasticContainerClientProtocol.PutClusterCapacityProvidersSyncType? = nil,
-            registerContainerInstanceAsync: ElasticContainerClientProtocol.RegisterContainerInstanceAsyncType? = nil,
-            registerContainerInstanceSync: ElasticContainerClientProtocol.RegisterContainerInstanceSyncType? = nil,
-            registerTaskDefinitionAsync: ElasticContainerClientProtocol.RegisterTaskDefinitionAsyncType? = nil,
-            registerTaskDefinitionSync: ElasticContainerClientProtocol.RegisterTaskDefinitionSyncType? = nil,
-            runTaskAsync: ElasticContainerClientProtocol.RunTaskAsyncType? = nil,
-            runTaskSync: ElasticContainerClientProtocol.RunTaskSyncType? = nil,
-            startTaskAsync: ElasticContainerClientProtocol.StartTaskAsyncType? = nil,
-            startTaskSync: ElasticContainerClientProtocol.StartTaskSyncType? = nil,
-            stopTaskAsync: ElasticContainerClientProtocol.StopTaskAsyncType? = nil,
-            stopTaskSync: ElasticContainerClientProtocol.StopTaskSyncType? = nil,
-            submitAttachmentStateChangesAsync: ElasticContainerClientProtocol.SubmitAttachmentStateChangesAsyncType? = nil,
-            submitAttachmentStateChangesSync: ElasticContainerClientProtocol.SubmitAttachmentStateChangesSyncType? = nil,
-            submitContainerStateChangeAsync: ElasticContainerClientProtocol.SubmitContainerStateChangeAsyncType? = nil,
-            submitContainerStateChangeSync: ElasticContainerClientProtocol.SubmitContainerStateChangeSyncType? = nil,
-            submitTaskStateChangeAsync: ElasticContainerClientProtocol.SubmitTaskStateChangeAsyncType? = nil,
-            submitTaskStateChangeSync: ElasticContainerClientProtocol.SubmitTaskStateChangeSyncType? = nil,
-            tagResourceAsync: ElasticContainerClientProtocol.TagResourceAsyncType? = nil,
-            tagResourceSync: ElasticContainerClientProtocol.TagResourceSyncType? = nil,
-            untagResourceAsync: ElasticContainerClientProtocol.UntagResourceAsyncType? = nil,
-            untagResourceSync: ElasticContainerClientProtocol.UntagResourceSyncType? = nil,
-            updateClusterSettingsAsync: ElasticContainerClientProtocol.UpdateClusterSettingsAsyncType? = nil,
-            updateClusterSettingsSync: ElasticContainerClientProtocol.UpdateClusterSettingsSyncType? = nil,
-            updateContainerAgentAsync: ElasticContainerClientProtocol.UpdateContainerAgentAsyncType? = nil,
-            updateContainerAgentSync: ElasticContainerClientProtocol.UpdateContainerAgentSyncType? = nil,
-            updateContainerInstancesStateAsync: ElasticContainerClientProtocol.UpdateContainerInstancesStateAsyncType? = nil,
-            updateContainerInstancesStateSync: ElasticContainerClientProtocol.UpdateContainerInstancesStateSyncType? = nil,
-            updateServiceAsync: ElasticContainerClientProtocol.UpdateServiceAsyncType? = nil,
-            updateServiceSync: ElasticContainerClientProtocol.UpdateServiceSyncType? = nil,
-            updateServicePrimaryTaskSetAsync: ElasticContainerClientProtocol.UpdateServicePrimaryTaskSetAsyncType? = nil,
-            updateServicePrimaryTaskSetSync: ElasticContainerClientProtocol.UpdateServicePrimaryTaskSetSyncType? = nil,
-            updateTaskSetAsync: ElasticContainerClientProtocol.UpdateTaskSetAsyncType? = nil,
-            updateTaskSetSync: ElasticContainerClientProtocol.UpdateTaskSetSyncType? = nil) {
+            createCapacityProviderAsync: CreateCapacityProviderAsyncType<ClientInvocationReportingType>? = nil,
+            createCapacityProviderSync: CreateCapacityProviderSyncType<ClientInvocationReportingType>? = nil,
+            createClusterAsync: CreateClusterAsyncType<ClientInvocationReportingType>? = nil,
+            createClusterSync: CreateClusterSyncType<ClientInvocationReportingType>? = nil,
+            createServiceAsync: CreateServiceAsyncType<ClientInvocationReportingType>? = nil,
+            createServiceSync: CreateServiceSyncType<ClientInvocationReportingType>? = nil,
+            createTaskSetAsync: CreateTaskSetAsyncType<ClientInvocationReportingType>? = nil,
+            createTaskSetSync: CreateTaskSetSyncType<ClientInvocationReportingType>? = nil,
+            deleteAccountSettingAsync: DeleteAccountSettingAsyncType<ClientInvocationReportingType>? = nil,
+            deleteAccountSettingSync: DeleteAccountSettingSyncType<ClientInvocationReportingType>? = nil,
+            deleteAttributesAsync: DeleteAttributesAsyncType<ClientInvocationReportingType>? = nil,
+            deleteAttributesSync: DeleteAttributesSyncType<ClientInvocationReportingType>? = nil,
+            deleteClusterAsync: DeleteClusterAsyncType<ClientInvocationReportingType>? = nil,
+            deleteClusterSync: DeleteClusterSyncType<ClientInvocationReportingType>? = nil,
+            deleteServiceAsync: DeleteServiceAsyncType<ClientInvocationReportingType>? = nil,
+            deleteServiceSync: DeleteServiceSyncType<ClientInvocationReportingType>? = nil,
+            deleteTaskSetAsync: DeleteTaskSetAsyncType<ClientInvocationReportingType>? = nil,
+            deleteTaskSetSync: DeleteTaskSetSyncType<ClientInvocationReportingType>? = nil,
+            deregisterContainerInstanceAsync: DeregisterContainerInstanceAsyncType<ClientInvocationReportingType>? = nil,
+            deregisterContainerInstanceSync: DeregisterContainerInstanceSyncType<ClientInvocationReportingType>? = nil,
+            deregisterTaskDefinitionAsync: DeregisterTaskDefinitionAsyncType<ClientInvocationReportingType>? = nil,
+            deregisterTaskDefinitionSync: DeregisterTaskDefinitionSyncType<ClientInvocationReportingType>? = nil,
+            describeCapacityProvidersAsync: DescribeCapacityProvidersAsyncType<ClientInvocationReportingType>? = nil,
+            describeCapacityProvidersSync: DescribeCapacityProvidersSyncType<ClientInvocationReportingType>? = nil,
+            describeClustersAsync: DescribeClustersAsyncType<ClientInvocationReportingType>? = nil,
+            describeClustersSync: DescribeClustersSyncType<ClientInvocationReportingType>? = nil,
+            describeContainerInstancesAsync: DescribeContainerInstancesAsyncType<ClientInvocationReportingType>? = nil,
+            describeContainerInstancesSync: DescribeContainerInstancesSyncType<ClientInvocationReportingType>? = nil,
+            describeServicesAsync: DescribeServicesAsyncType<ClientInvocationReportingType>? = nil,
+            describeServicesSync: DescribeServicesSyncType<ClientInvocationReportingType>? = nil,
+            describeTaskDefinitionAsync: DescribeTaskDefinitionAsyncType<ClientInvocationReportingType>? = nil,
+            describeTaskDefinitionSync: DescribeTaskDefinitionSyncType<ClientInvocationReportingType>? = nil,
+            describeTaskSetsAsync: DescribeTaskSetsAsyncType<ClientInvocationReportingType>? = nil,
+            describeTaskSetsSync: DescribeTaskSetsSyncType<ClientInvocationReportingType>? = nil,
+            describeTasksAsync: DescribeTasksAsyncType<ClientInvocationReportingType>? = nil,
+            describeTasksSync: DescribeTasksSyncType<ClientInvocationReportingType>? = nil,
+            discoverPollEndpointAsync: DiscoverPollEndpointAsyncType<ClientInvocationReportingType>? = nil,
+            discoverPollEndpointSync: DiscoverPollEndpointSyncType<ClientInvocationReportingType>? = nil,
+            listAccountSettingsAsync: ListAccountSettingsAsyncType<ClientInvocationReportingType>? = nil,
+            listAccountSettingsSync: ListAccountSettingsSyncType<ClientInvocationReportingType>? = nil,
+            listAttributesAsync: ListAttributesAsyncType<ClientInvocationReportingType>? = nil,
+            listAttributesSync: ListAttributesSyncType<ClientInvocationReportingType>? = nil,
+            listClustersAsync: ListClustersAsyncType<ClientInvocationReportingType>? = nil,
+            listClustersSync: ListClustersSyncType<ClientInvocationReportingType>? = nil,
+            listContainerInstancesAsync: ListContainerInstancesAsyncType<ClientInvocationReportingType>? = nil,
+            listContainerInstancesSync: ListContainerInstancesSyncType<ClientInvocationReportingType>? = nil,
+            listServicesAsync: ListServicesAsyncType<ClientInvocationReportingType>? = nil,
+            listServicesSync: ListServicesSyncType<ClientInvocationReportingType>? = nil,
+            listTagsForResourceAsync: ListTagsForResourceAsyncType<ClientInvocationReportingType>? = nil,
+            listTagsForResourceSync: ListTagsForResourceSyncType<ClientInvocationReportingType>? = nil,
+            listTaskDefinitionFamiliesAsync: ListTaskDefinitionFamiliesAsyncType<ClientInvocationReportingType>? = nil,
+            listTaskDefinitionFamiliesSync: ListTaskDefinitionFamiliesSyncType<ClientInvocationReportingType>? = nil,
+            listTaskDefinitionsAsync: ListTaskDefinitionsAsyncType<ClientInvocationReportingType>? = nil,
+            listTaskDefinitionsSync: ListTaskDefinitionsSyncType<ClientInvocationReportingType>? = nil,
+            listTasksAsync: ListTasksAsyncType<ClientInvocationReportingType>? = nil,
+            listTasksSync: ListTasksSyncType<ClientInvocationReportingType>? = nil,
+            putAccountSettingAsync: PutAccountSettingAsyncType<ClientInvocationReportingType>? = nil,
+            putAccountSettingSync: PutAccountSettingSyncType<ClientInvocationReportingType>? = nil,
+            putAccountSettingDefaultAsync: PutAccountSettingDefaultAsyncType<ClientInvocationReportingType>? = nil,
+            putAccountSettingDefaultSync: PutAccountSettingDefaultSyncType<ClientInvocationReportingType>? = nil,
+            putAttributesAsync: PutAttributesAsyncType<ClientInvocationReportingType>? = nil,
+            putAttributesSync: PutAttributesSyncType<ClientInvocationReportingType>? = nil,
+            putClusterCapacityProvidersAsync: PutClusterCapacityProvidersAsyncType<ClientInvocationReportingType>? = nil,
+            putClusterCapacityProvidersSync: PutClusterCapacityProvidersSyncType<ClientInvocationReportingType>? = nil,
+            registerContainerInstanceAsync: RegisterContainerInstanceAsyncType<ClientInvocationReportingType>? = nil,
+            registerContainerInstanceSync: RegisterContainerInstanceSyncType<ClientInvocationReportingType>? = nil,
+            registerTaskDefinitionAsync: RegisterTaskDefinitionAsyncType<ClientInvocationReportingType>? = nil,
+            registerTaskDefinitionSync: RegisterTaskDefinitionSyncType<ClientInvocationReportingType>? = nil,
+            runTaskAsync: RunTaskAsyncType<ClientInvocationReportingType>? = nil,
+            runTaskSync: RunTaskSyncType<ClientInvocationReportingType>? = nil,
+            startTaskAsync: StartTaskAsyncType<ClientInvocationReportingType>? = nil,
+            startTaskSync: StartTaskSyncType<ClientInvocationReportingType>? = nil,
+            stopTaskAsync: StopTaskAsyncType<ClientInvocationReportingType>? = nil,
+            stopTaskSync: StopTaskSyncType<ClientInvocationReportingType>? = nil,
+            submitAttachmentStateChangesAsync: SubmitAttachmentStateChangesAsyncType<ClientInvocationReportingType>? = nil,
+            submitAttachmentStateChangesSync: SubmitAttachmentStateChangesSyncType<ClientInvocationReportingType>? = nil,
+            submitContainerStateChangeAsync: SubmitContainerStateChangeAsyncType<ClientInvocationReportingType>? = nil,
+            submitContainerStateChangeSync: SubmitContainerStateChangeSyncType<ClientInvocationReportingType>? = nil,
+            submitTaskStateChangeAsync: SubmitTaskStateChangeAsyncType<ClientInvocationReportingType>? = nil,
+            submitTaskStateChangeSync: SubmitTaskStateChangeSyncType<ClientInvocationReportingType>? = nil,
+            tagResourceAsync: TagResourceAsyncType<ClientInvocationReportingType>? = nil,
+            tagResourceSync: TagResourceSyncType<ClientInvocationReportingType>? = nil,
+            untagResourceAsync: UntagResourceAsyncType<ClientInvocationReportingType>? = nil,
+            untagResourceSync: UntagResourceSyncType<ClientInvocationReportingType>? = nil,
+            updateClusterSettingsAsync: UpdateClusterSettingsAsyncType<ClientInvocationReportingType>? = nil,
+            updateClusterSettingsSync: UpdateClusterSettingsSyncType<ClientInvocationReportingType>? = nil,
+            updateContainerAgentAsync: UpdateContainerAgentAsyncType<ClientInvocationReportingType>? = nil,
+            updateContainerAgentSync: UpdateContainerAgentSyncType<ClientInvocationReportingType>? = nil,
+            updateContainerInstancesStateAsync: UpdateContainerInstancesStateAsyncType<ClientInvocationReportingType>? = nil,
+            updateContainerInstancesStateSync: UpdateContainerInstancesStateSyncType<ClientInvocationReportingType>? = nil,
+            updateServiceAsync: UpdateServiceAsyncType<ClientInvocationReportingType>? = nil,
+            updateServiceSync: UpdateServiceSyncType<ClientInvocationReportingType>? = nil,
+            updateServicePrimaryTaskSetAsync: UpdateServicePrimaryTaskSetAsyncType<ClientInvocationReportingType>? = nil,
+            updateServicePrimaryTaskSetSync: UpdateServicePrimaryTaskSetSyncType<ClientInvocationReportingType>? = nil,
+            updateTaskSetAsync: UpdateTaskSetAsyncType<ClientInvocationReportingType>? = nil,
+            updateTaskSetSync: UpdateTaskSetSyncType<ClientInvocationReportingType>? = nil) {
         self.createCapacityProviderAsyncOverride = createCapacityProviderAsync
         self.createCapacityProviderSyncOverride = createCapacityProviderSync
         self.createClusterAsyncOverride = createClusterAsync
@@ -334,12 +334,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, limitExceeded, server.
      */
-    public func createCapacityProviderAsync(
+    public func createCapacityProviderAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateCapacityProviderRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, HTTPClientError>) -> ()) throws {
-        if let createCapacityProviderAsyncOverride = createCapacityProviderAsyncOverride {
-            return try createCapacityProviderAsyncOverride(input, reporting, completion)
+        if let createCapacityProviderAsyncOverrideNonOptional = createCapacityProviderAsyncOverride {
+            if let createCapacityProviderAsyncOverrideTyped = createCapacityProviderAsyncOverrideNonOptional
+                    as? CreateCapacityProviderAsyncType<InvocationReportingType> {
+                return try createCapacityProviderAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateCapacityProviderResponse.__default
@@ -356,11 +361,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, limitExceeded, server.
      */
-    public func createCapacityProviderSync(
+    public func createCapacityProviderSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateCapacityProviderRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateCapacityProviderResponse {
-        if let createCapacityProviderSyncOverride = createCapacityProviderSyncOverride {
-            return try createCapacityProviderSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateCapacityProviderResponse {
+        if let createCapacityProviderSyncOverrideNonOptional = createCapacityProviderSyncOverride {
+            if let createCapacityProviderSyncOverrideTyped = createCapacityProviderSyncOverrideNonOptional
+                    as? CreateCapacityProviderSyncType<InvocationReportingType> {
+                return try createCapacityProviderSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateCapacityProviderResponse.__default
@@ -376,12 +386,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func createClusterAsync(
+    public func createClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateClusterRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.CreateClusterResponse, HTTPClientError>) -> ()) throws {
-        if let createClusterAsyncOverride = createClusterAsyncOverride {
-            return try createClusterAsyncOverride(input, reporting, completion)
+        if let createClusterAsyncOverrideNonOptional = createClusterAsyncOverride {
+            if let createClusterAsyncOverrideTyped = createClusterAsyncOverrideNonOptional
+                    as? CreateClusterAsyncType<InvocationReportingType> {
+                return try createClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateClusterResponse.__default
@@ -398,11 +413,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func createClusterSync(
+    public func createClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateClusterRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateClusterResponse {
-        if let createClusterSyncOverride = createClusterSyncOverride {
-            return try createClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateClusterResponse {
+        if let createClusterSyncOverrideNonOptional = createClusterSyncOverride {
+            if let createClusterSyncOverrideTyped = createClusterSyncOverrideNonOptional
+                    as? CreateClusterSyncType<InvocationReportingType> {
+                return try createClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateClusterResponse.__default
@@ -418,12 +438,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    public func createServiceAsync(
+    public func createServiceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateServiceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.CreateServiceResponse, HTTPClientError>) -> ()) throws {
-        if let createServiceAsyncOverride = createServiceAsyncOverride {
-            return try createServiceAsyncOverride(input, reporting, completion)
+        if let createServiceAsyncOverrideNonOptional = createServiceAsyncOverride {
+            if let createServiceAsyncOverrideTyped = createServiceAsyncOverrideNonOptional
+                    as? CreateServiceAsyncType<InvocationReportingType> {
+                return try createServiceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateServiceResponse.__default
@@ -440,11 +465,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    public func createServiceSync(
+    public func createServiceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateServiceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateServiceResponse {
-        if let createServiceSyncOverride = createServiceSyncOverride {
-            return try createServiceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateServiceResponse {
+        if let createServiceSyncOverrideNonOptional = createServiceSyncOverride {
+            if let createServiceSyncOverrideTyped = createServiceSyncOverrideNonOptional
+                    as? CreateServiceSyncType<InvocationReportingType> {
+                return try createServiceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateServiceResponse.__default
@@ -460,12 +490,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    public func createTaskSetAsync(
+    public func createTaskSetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateTaskSetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.CreateTaskSetResponse, HTTPClientError>) -> ()) throws {
-        if let createTaskSetAsyncOverride = createTaskSetAsyncOverride {
-            return try createTaskSetAsyncOverride(input, reporting, completion)
+        if let createTaskSetAsyncOverrideNonOptional = createTaskSetAsyncOverride {
+            if let createTaskSetAsyncOverrideTyped = createTaskSetAsyncOverrideNonOptional
+                    as? CreateTaskSetAsyncType<InvocationReportingType> {
+                return try createTaskSetAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateTaskSetResponse.__default
@@ -482,11 +517,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    public func createTaskSetSync(
+    public func createTaskSetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.CreateTaskSetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateTaskSetResponse {
-        if let createTaskSetSyncOverride = createTaskSetSyncOverride {
-            return try createTaskSetSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateTaskSetResponse {
+        if let createTaskSetSyncOverrideNonOptional = createTaskSetSyncOverride {
+            if let createTaskSetSyncOverrideTyped = createTaskSetSyncOverrideNonOptional
+                    as? CreateTaskSetSyncType<InvocationReportingType> {
+                return try createTaskSetSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateTaskSetResponse.__default
@@ -502,12 +542,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func deleteAccountSettingAsync(
+    public func deleteAccountSettingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteAccountSettingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteAccountSettingResponse, HTTPClientError>) -> ()) throws {
-        if let deleteAccountSettingAsyncOverride = deleteAccountSettingAsyncOverride {
-            return try deleteAccountSettingAsyncOverride(input, reporting, completion)
+        if let deleteAccountSettingAsyncOverrideNonOptional = deleteAccountSettingAsyncOverride {
+            if let deleteAccountSettingAsyncOverrideTyped = deleteAccountSettingAsyncOverrideNonOptional
+                    as? DeleteAccountSettingAsyncType<InvocationReportingType> {
+                return try deleteAccountSettingAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteAccountSettingResponse.__default
@@ -524,11 +569,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func deleteAccountSettingSync(
+    public func deleteAccountSettingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteAccountSettingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteAccountSettingResponse {
-        if let deleteAccountSettingSyncOverride = deleteAccountSettingSyncOverride {
-            return try deleteAccountSettingSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteAccountSettingResponse {
+        if let deleteAccountSettingSyncOverrideNonOptional = deleteAccountSettingSyncOverride {
+            if let deleteAccountSettingSyncOverrideTyped = deleteAccountSettingSyncOverrideNonOptional
+                    as? DeleteAccountSettingSyncType<InvocationReportingType> {
+                return try deleteAccountSettingSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteAccountSettingResponse.__default
@@ -544,12 +594,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: clusterNotFound, invalidParameter, targetNotFound.
      */
-    public func deleteAttributesAsync(
+    public func deleteAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, HTTPClientError>) -> ()) throws {
-        if let deleteAttributesAsyncOverride = deleteAttributesAsyncOverride {
-            return try deleteAttributesAsyncOverride(input, reporting, completion)
+        if let deleteAttributesAsyncOverrideNonOptional = deleteAttributesAsyncOverride {
+            if let deleteAttributesAsyncOverrideTyped = deleteAttributesAsyncOverrideNonOptional
+                    as? DeleteAttributesAsyncType<InvocationReportingType> {
+                return try deleteAttributesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteAttributesResponse.__default
@@ -566,11 +621,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: clusterNotFound, invalidParameter, targetNotFound.
      */
-    public func deleteAttributesSync(
+    public func deleteAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteAttributesResponse {
-        if let deleteAttributesSyncOverride = deleteAttributesSyncOverride {
-            return try deleteAttributesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteAttributesResponse {
+        if let deleteAttributesSyncOverrideNonOptional = deleteAttributesSyncOverride {
+            if let deleteAttributesSyncOverrideTyped = deleteAttributesSyncOverrideNonOptional
+                    as? DeleteAttributesSyncType<InvocationReportingType> {
+                return try deleteAttributesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteAttributesResponse.__default
@@ -586,12 +646,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
      */
-    public func deleteClusterAsync(
+    public func deleteClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteClusterRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteClusterResponse, HTTPClientError>) -> ()) throws {
-        if let deleteClusterAsyncOverride = deleteClusterAsyncOverride {
-            return try deleteClusterAsyncOverride(input, reporting, completion)
+        if let deleteClusterAsyncOverrideNonOptional = deleteClusterAsyncOverride {
+            if let deleteClusterAsyncOverrideTyped = deleteClusterAsyncOverrideNonOptional
+                    as? DeleteClusterAsyncType<InvocationReportingType> {
+                return try deleteClusterAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteClusterResponse.__default
@@ -608,11 +673,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
      */
-    public func deleteClusterSync(
+    public func deleteClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteClusterRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteClusterResponse {
-        if let deleteClusterSyncOverride = deleteClusterSyncOverride {
-            return try deleteClusterSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteClusterResponse {
+        if let deleteClusterSyncOverrideNonOptional = deleteClusterSyncOverride {
+            if let deleteClusterSyncOverrideTyped = deleteClusterSyncOverrideNonOptional
+                    as? DeleteClusterSyncType<InvocationReportingType> {
+                return try deleteClusterSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteClusterResponse.__default
@@ -628,12 +698,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    public func deleteServiceAsync(
+    public func deleteServiceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteServiceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, HTTPClientError>) -> ()) throws {
-        if let deleteServiceAsyncOverride = deleteServiceAsyncOverride {
-            return try deleteServiceAsyncOverride(input, reporting, completion)
+        if let deleteServiceAsyncOverrideNonOptional = deleteServiceAsyncOverride {
+            if let deleteServiceAsyncOverrideTyped = deleteServiceAsyncOverrideNonOptional
+                    as? DeleteServiceAsyncType<InvocationReportingType> {
+                return try deleteServiceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteServiceResponse.__default
@@ -650,11 +725,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    public func deleteServiceSync(
+    public func deleteServiceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteServiceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteServiceResponse {
-        if let deleteServiceSyncOverride = deleteServiceSyncOverride {
-            return try deleteServiceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteServiceResponse {
+        if let deleteServiceSyncOverrideNonOptional = deleteServiceSyncOverride {
+            if let deleteServiceSyncOverrideTyped = deleteServiceSyncOverrideNonOptional
+                    as? DeleteServiceSyncType<InvocationReportingType> {
+                return try deleteServiceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteServiceResponse.__default
@@ -670,12 +750,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func deleteTaskSetAsync(
+    public func deleteTaskSetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteTaskSetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteTaskSetResponse, HTTPClientError>) -> ()) throws {
-        if let deleteTaskSetAsyncOverride = deleteTaskSetAsyncOverride {
-            return try deleteTaskSetAsyncOverride(input, reporting, completion)
+        if let deleteTaskSetAsyncOverrideNonOptional = deleteTaskSetAsyncOverride {
+            if let deleteTaskSetAsyncOverrideTyped = deleteTaskSetAsyncOverrideNonOptional
+                    as? DeleteTaskSetAsyncType<InvocationReportingType> {
+                return try deleteTaskSetAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteTaskSetResponse.__default
@@ -692,11 +777,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func deleteTaskSetSync(
+    public func deleteTaskSetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeleteTaskSetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteTaskSetResponse {
-        if let deleteTaskSetSyncOverride = deleteTaskSetSyncOverride {
-            return try deleteTaskSetSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteTaskSetResponse {
+        if let deleteTaskSetSyncOverrideNonOptional = deleteTaskSetSyncOverride {
+            if let deleteTaskSetSyncOverrideTyped = deleteTaskSetSyncOverrideNonOptional
+                    as? DeleteTaskSetSyncType<InvocationReportingType> {
+                return try deleteTaskSetSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteTaskSetResponse.__default
@@ -712,12 +802,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func deregisterContainerInstanceAsync(
+    public func deregisterContainerInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeregisterContainerInstanceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeregisterContainerInstanceResponse, HTTPClientError>) -> ()) throws {
-        if let deregisterContainerInstanceAsyncOverride = deregisterContainerInstanceAsyncOverride {
-            return try deregisterContainerInstanceAsyncOverride(input, reporting, completion)
+        if let deregisterContainerInstanceAsyncOverrideNonOptional = deregisterContainerInstanceAsyncOverride {
+            if let deregisterContainerInstanceAsyncOverrideTyped = deregisterContainerInstanceAsyncOverrideNonOptional
+                    as? DeregisterContainerInstanceAsyncType<InvocationReportingType> {
+                return try deregisterContainerInstanceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeregisterContainerInstanceResponse.__default
@@ -734,11 +829,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func deregisterContainerInstanceSync(
+    public func deregisterContainerInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeregisterContainerInstanceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse {
-        if let deregisterContainerInstanceSyncOverride = deregisterContainerInstanceSyncOverride {
-            return try deregisterContainerInstanceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse {
+        if let deregisterContainerInstanceSyncOverrideNonOptional = deregisterContainerInstanceSyncOverride {
+            if let deregisterContainerInstanceSyncOverrideTyped = deregisterContainerInstanceSyncOverrideNonOptional
+                    as? DeregisterContainerInstanceSyncType<InvocationReportingType> {
+                return try deregisterContainerInstanceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeregisterContainerInstanceResponse.__default
@@ -754,12 +854,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func deregisterTaskDefinitionAsync(
+    public func deregisterTaskDefinitionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeregisterTaskDefinitionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
-        if let deregisterTaskDefinitionAsyncOverride = deregisterTaskDefinitionAsyncOverride {
-            return try deregisterTaskDefinitionAsyncOverride(input, reporting, completion)
+        if let deregisterTaskDefinitionAsyncOverrideNonOptional = deregisterTaskDefinitionAsyncOverride {
+            if let deregisterTaskDefinitionAsyncOverrideTyped = deregisterTaskDefinitionAsyncOverrideNonOptional
+                    as? DeregisterTaskDefinitionAsyncType<InvocationReportingType> {
+                return try deregisterTaskDefinitionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeregisterTaskDefinitionResponse.__default
@@ -776,11 +881,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func deregisterTaskDefinitionSync(
+    public func deregisterTaskDefinitionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DeregisterTaskDefinitionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse {
-        if let deregisterTaskDefinitionSyncOverride = deregisterTaskDefinitionSyncOverride {
-            return try deregisterTaskDefinitionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse {
+        if let deregisterTaskDefinitionSyncOverrideNonOptional = deregisterTaskDefinitionSyncOverride {
+            if let deregisterTaskDefinitionSyncOverrideTyped = deregisterTaskDefinitionSyncOverrideNonOptional
+                    as? DeregisterTaskDefinitionSyncType<InvocationReportingType> {
+                return try deregisterTaskDefinitionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeregisterTaskDefinitionResponse.__default
@@ -796,12 +906,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func describeCapacityProvidersAsync(
+    public func describeCapacityProvidersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeCapacityProvidersRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, HTTPClientError>) -> ()) throws {
-        if let describeCapacityProvidersAsyncOverride = describeCapacityProvidersAsyncOverride {
-            return try describeCapacityProvidersAsyncOverride(input, reporting, completion)
+        if let describeCapacityProvidersAsyncOverrideNonOptional = describeCapacityProvidersAsyncOverride {
+            if let describeCapacityProvidersAsyncOverrideTyped = describeCapacityProvidersAsyncOverrideNonOptional
+                    as? DescribeCapacityProvidersAsyncType<InvocationReportingType> {
+                return try describeCapacityProvidersAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeCapacityProvidersResponse.__default
@@ -818,11 +933,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func describeCapacityProvidersSync(
+    public func describeCapacityProvidersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeCapacityProvidersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse {
-        if let describeCapacityProvidersSyncOverride = describeCapacityProvidersSyncOverride {
-            return try describeCapacityProvidersSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse {
+        if let describeCapacityProvidersSyncOverrideNonOptional = describeCapacityProvidersSyncOverride {
+            if let describeCapacityProvidersSyncOverrideTyped = describeCapacityProvidersSyncOverrideNonOptional
+                    as? DescribeCapacityProvidersSyncType<InvocationReportingType> {
+                return try describeCapacityProvidersSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeCapacityProvidersResponse.__default
@@ -838,12 +958,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func describeClustersAsync(
+    public func describeClustersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeClustersRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeClustersResponse, HTTPClientError>) -> ()) throws {
-        if let describeClustersAsyncOverride = describeClustersAsyncOverride {
-            return try describeClustersAsyncOverride(input, reporting, completion)
+        if let describeClustersAsyncOverrideNonOptional = describeClustersAsyncOverride {
+            if let describeClustersAsyncOverrideTyped = describeClustersAsyncOverrideNonOptional
+                    as? DescribeClustersAsyncType<InvocationReportingType> {
+                return try describeClustersAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeClustersResponse.__default
@@ -860,11 +985,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func describeClustersSync(
+    public func describeClustersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeClustersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeClustersResponse {
-        if let describeClustersSyncOverride = describeClustersSyncOverride {
-            return try describeClustersSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeClustersResponse {
+        if let describeClustersSyncOverrideNonOptional = describeClustersSyncOverride {
+            if let describeClustersSyncOverrideTyped = describeClustersSyncOverrideNonOptional
+                    as? DescribeClustersSyncType<InvocationReportingType> {
+                return try describeClustersSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeClustersResponse.__default
@@ -880,12 +1010,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeContainerInstancesAsync(
+    public func describeContainerInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeContainerInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeContainerInstancesResponse, HTTPClientError>) -> ()) throws {
-        if let describeContainerInstancesAsyncOverride = describeContainerInstancesAsyncOverride {
-            return try describeContainerInstancesAsyncOverride(input, reporting, completion)
+        if let describeContainerInstancesAsyncOverrideNonOptional = describeContainerInstancesAsyncOverride {
+            if let describeContainerInstancesAsyncOverrideTyped = describeContainerInstancesAsyncOverrideNonOptional
+                    as? DescribeContainerInstancesAsyncType<InvocationReportingType> {
+                return try describeContainerInstancesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeContainerInstancesResponse.__default
@@ -902,11 +1037,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeContainerInstancesSync(
+    public func describeContainerInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeContainerInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeContainerInstancesResponse {
-        if let describeContainerInstancesSyncOverride = describeContainerInstancesSyncOverride {
-            return try describeContainerInstancesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeContainerInstancesResponse {
+        if let describeContainerInstancesSyncOverrideNonOptional = describeContainerInstancesSyncOverride {
+            if let describeContainerInstancesSyncOverrideTyped = describeContainerInstancesSyncOverrideNonOptional
+                    as? DescribeContainerInstancesSyncType<InvocationReportingType> {
+                return try describeContainerInstancesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeContainerInstancesResponse.__default
@@ -922,12 +1062,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeServicesAsync(
+    public func describeServicesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeServicesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeServicesResponse, HTTPClientError>) -> ()) throws {
-        if let describeServicesAsyncOverride = describeServicesAsyncOverride {
-            return try describeServicesAsyncOverride(input, reporting, completion)
+        if let describeServicesAsyncOverrideNonOptional = describeServicesAsyncOverride {
+            if let describeServicesAsyncOverrideTyped = describeServicesAsyncOverrideNonOptional
+                    as? DescribeServicesAsyncType<InvocationReportingType> {
+                return try describeServicesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeServicesResponse.__default
@@ -944,11 +1089,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeServicesSync(
+    public func describeServicesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeServicesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeServicesResponse {
-        if let describeServicesSyncOverride = describeServicesSyncOverride {
-            return try describeServicesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeServicesResponse {
+        if let describeServicesSyncOverrideNonOptional = describeServicesSyncOverride {
+            if let describeServicesSyncOverrideTyped = describeServicesSyncOverrideNonOptional
+                    as? DescribeServicesSyncType<InvocationReportingType> {
+                return try describeServicesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeServicesResponse.__default
@@ -964,12 +1114,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func describeTaskDefinitionAsync(
+    public func describeTaskDefinitionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeTaskDefinitionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
-        if let describeTaskDefinitionAsyncOverride = describeTaskDefinitionAsyncOverride {
-            return try describeTaskDefinitionAsyncOverride(input, reporting, completion)
+        if let describeTaskDefinitionAsyncOverrideNonOptional = describeTaskDefinitionAsyncOverride {
+            if let describeTaskDefinitionAsyncOverrideTyped = describeTaskDefinitionAsyncOverrideNonOptional
+                    as? DescribeTaskDefinitionAsyncType<InvocationReportingType> {
+                return try describeTaskDefinitionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeTaskDefinitionResponse.__default
@@ -986,11 +1141,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func describeTaskDefinitionSync(
+    public func describeTaskDefinitionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeTaskDefinitionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse {
-        if let describeTaskDefinitionSyncOverride = describeTaskDefinitionSyncOverride {
-            return try describeTaskDefinitionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse {
+        if let describeTaskDefinitionSyncOverrideNonOptional = describeTaskDefinitionSyncOverride {
+            if let describeTaskDefinitionSyncOverrideTyped = describeTaskDefinitionSyncOverrideNonOptional
+                    as? DescribeTaskDefinitionSyncType<InvocationReportingType> {
+                return try describeTaskDefinitionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeTaskDefinitionResponse.__default
@@ -1006,12 +1166,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    public func describeTaskSetsAsync(
+    public func describeTaskSetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeTaskSetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeTaskSetsResponse, HTTPClientError>) -> ()) throws {
-        if let describeTaskSetsAsyncOverride = describeTaskSetsAsyncOverride {
-            return try describeTaskSetsAsyncOverride(input, reporting, completion)
+        if let describeTaskSetsAsyncOverrideNonOptional = describeTaskSetsAsyncOverride {
+            if let describeTaskSetsAsyncOverrideTyped = describeTaskSetsAsyncOverrideNonOptional
+                    as? DescribeTaskSetsAsyncType<InvocationReportingType> {
+                return try describeTaskSetsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeTaskSetsResponse.__default
@@ -1028,11 +1193,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    public func describeTaskSetsSync(
+    public func describeTaskSetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeTaskSetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeTaskSetsResponse {
-        if let describeTaskSetsSyncOverride = describeTaskSetsSyncOverride {
-            return try describeTaskSetsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeTaskSetsResponse {
+        if let describeTaskSetsSyncOverrideNonOptional = describeTaskSetsSyncOverride {
+            if let describeTaskSetsSyncOverrideTyped = describeTaskSetsSyncOverrideNonOptional
+                    as? DescribeTaskSetsSyncType<InvocationReportingType> {
+                return try describeTaskSetsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeTaskSetsResponse.__default
@@ -1048,12 +1218,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeTasksAsync(
+    public func describeTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeTasksRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeTasksResponse, HTTPClientError>) -> ()) throws {
-        if let describeTasksAsyncOverride = describeTasksAsyncOverride {
-            return try describeTasksAsyncOverride(input, reporting, completion)
+        if let describeTasksAsyncOverrideNonOptional = describeTasksAsyncOverride {
+            if let describeTasksAsyncOverrideTyped = describeTasksAsyncOverrideNonOptional
+                    as? DescribeTasksAsyncType<InvocationReportingType> {
+                return try describeTasksAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeTasksResponse.__default
@@ -1070,11 +1245,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func describeTasksSync(
+    public func describeTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DescribeTasksRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeTasksResponse {
-        if let describeTasksSyncOverride = describeTasksSyncOverride {
-            return try describeTasksSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeTasksResponse {
+        if let describeTasksSyncOverrideNonOptional = describeTasksSyncOverride {
+            if let describeTasksSyncOverrideTyped = describeTasksSyncOverrideNonOptional
+                    as? DescribeTasksSyncType<InvocationReportingType> {
+                return try describeTasksSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeTasksResponse.__default
@@ -1090,12 +1270,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, server.
      */
-    public func discoverPollEndpointAsync(
+    public func discoverPollEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DiscoverPollEndpointRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, HTTPClientError>) -> ()) throws {
-        if let discoverPollEndpointAsyncOverride = discoverPollEndpointAsyncOverride {
-            return try discoverPollEndpointAsyncOverride(input, reporting, completion)
+        if let discoverPollEndpointAsyncOverrideNonOptional = discoverPollEndpointAsyncOverride {
+            if let discoverPollEndpointAsyncOverrideTyped = discoverPollEndpointAsyncOverrideNonOptional
+                    as? DiscoverPollEndpointAsyncType<InvocationReportingType> {
+                return try discoverPollEndpointAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DiscoverPollEndpointResponse.__default
@@ -1112,11 +1297,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, server.
      */
-    public func discoverPollEndpointSync(
+    public func discoverPollEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.DiscoverPollEndpointRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DiscoverPollEndpointResponse {
-        if let discoverPollEndpointSyncOverride = discoverPollEndpointSyncOverride {
-            return try discoverPollEndpointSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.DiscoverPollEndpointResponse {
+        if let discoverPollEndpointSyncOverrideNonOptional = discoverPollEndpointSyncOverride {
+            if let discoverPollEndpointSyncOverrideTyped = discoverPollEndpointSyncOverrideNonOptional
+                    as? DiscoverPollEndpointSyncType<InvocationReportingType> {
+                return try discoverPollEndpointSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DiscoverPollEndpointResponse.__default
@@ -1132,12 +1322,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func listAccountSettingsAsync(
+    public func listAccountSettingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListAccountSettingsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListAccountSettingsResponse, HTTPClientError>) -> ()) throws {
-        if let listAccountSettingsAsyncOverride = listAccountSettingsAsyncOverride {
-            return try listAccountSettingsAsyncOverride(input, reporting, completion)
+        if let listAccountSettingsAsyncOverrideNonOptional = listAccountSettingsAsyncOverride {
+            if let listAccountSettingsAsyncOverrideTyped = listAccountSettingsAsyncOverrideNonOptional
+                    as? ListAccountSettingsAsyncType<InvocationReportingType> {
+                return try listAccountSettingsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListAccountSettingsResponse.__default
@@ -1154,11 +1349,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func listAccountSettingsSync(
+    public func listAccountSettingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListAccountSettingsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListAccountSettingsResponse {
-        if let listAccountSettingsSyncOverride = listAccountSettingsSyncOverride {
-            return try listAccountSettingsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListAccountSettingsResponse {
+        if let listAccountSettingsSyncOverrideNonOptional = listAccountSettingsSyncOverride {
+            if let listAccountSettingsSyncOverrideTyped = listAccountSettingsSyncOverrideNonOptional
+                    as? ListAccountSettingsSyncType<InvocationReportingType> {
+                return try listAccountSettingsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListAccountSettingsResponse.__default
@@ -1174,12 +1374,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: clusterNotFound, invalidParameter.
      */
-    public func listAttributesAsync(
+    public func listAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListAttributesResponse, HTTPClientError>) -> ()) throws {
-        if let listAttributesAsyncOverride = listAttributesAsyncOverride {
-            return try listAttributesAsyncOverride(input, reporting, completion)
+        if let listAttributesAsyncOverrideNonOptional = listAttributesAsyncOverride {
+            if let listAttributesAsyncOverrideTyped = listAttributesAsyncOverrideNonOptional
+                    as? ListAttributesAsyncType<InvocationReportingType> {
+                return try listAttributesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListAttributesResponse.__default
@@ -1196,11 +1401,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: clusterNotFound, invalidParameter.
      */
-    public func listAttributesSync(
+    public func listAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListAttributesResponse {
-        if let listAttributesSyncOverride = listAttributesSyncOverride {
-            return try listAttributesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListAttributesResponse {
+        if let listAttributesSyncOverrideNonOptional = listAttributesSyncOverride {
+            if let listAttributesSyncOverrideTyped = listAttributesSyncOverrideNonOptional
+                    as? ListAttributesSyncType<InvocationReportingType> {
+                return try listAttributesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListAttributesResponse.__default
@@ -1216,12 +1426,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func listClustersAsync(
+    public func listClustersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListClustersRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListClustersResponse, HTTPClientError>) -> ()) throws {
-        if let listClustersAsyncOverride = listClustersAsyncOverride {
-            return try listClustersAsyncOverride(input, reporting, completion)
+        if let listClustersAsyncOverrideNonOptional = listClustersAsyncOverride {
+            if let listClustersAsyncOverrideTyped = listClustersAsyncOverrideNonOptional
+                    as? ListClustersAsyncType<InvocationReportingType> {
+                return try listClustersAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListClustersResponse.__default
@@ -1238,11 +1453,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func listClustersSync(
+    public func listClustersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListClustersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListClustersResponse {
-        if let listClustersSyncOverride = listClustersSyncOverride {
-            return try listClustersSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListClustersResponse {
+        if let listClustersSyncOverrideNonOptional = listClustersSyncOverride {
+            if let listClustersSyncOverrideTyped = listClustersSyncOverrideNonOptional
+                    as? ListClustersSyncType<InvocationReportingType> {
+                return try listClustersSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListClustersResponse.__default
@@ -1258,12 +1478,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func listContainerInstancesAsync(
+    public func listContainerInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListContainerInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListContainerInstancesResponse, HTTPClientError>) -> ()) throws {
-        if let listContainerInstancesAsyncOverride = listContainerInstancesAsyncOverride {
-            return try listContainerInstancesAsyncOverride(input, reporting, completion)
+        if let listContainerInstancesAsyncOverrideNonOptional = listContainerInstancesAsyncOverride {
+            if let listContainerInstancesAsyncOverrideTyped = listContainerInstancesAsyncOverrideNonOptional
+                    as? ListContainerInstancesAsyncType<InvocationReportingType> {
+                return try listContainerInstancesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListContainerInstancesResponse.__default
@@ -1280,11 +1505,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func listContainerInstancesSync(
+    public func listContainerInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListContainerInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListContainerInstancesResponse {
-        if let listContainerInstancesSyncOverride = listContainerInstancesSyncOverride {
-            return try listContainerInstancesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListContainerInstancesResponse {
+        if let listContainerInstancesSyncOverrideNonOptional = listContainerInstancesSyncOverride {
+            if let listContainerInstancesSyncOverrideTyped = listContainerInstancesSyncOverrideNonOptional
+                    as? ListContainerInstancesSyncType<InvocationReportingType> {
+                return try listContainerInstancesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListContainerInstancesResponse.__default
@@ -1300,12 +1530,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func listServicesAsync(
+    public func listServicesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListServicesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, HTTPClientError>) -> ()) throws {
-        if let listServicesAsyncOverride = listServicesAsyncOverride {
-            return try listServicesAsyncOverride(input, reporting, completion)
+        if let listServicesAsyncOverrideNonOptional = listServicesAsyncOverride {
+            if let listServicesAsyncOverrideTyped = listServicesAsyncOverrideNonOptional
+                    as? ListServicesAsyncType<InvocationReportingType> {
+                return try listServicesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListServicesResponse.__default
@@ -1322,11 +1557,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func listServicesSync(
+    public func listServicesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListServicesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListServicesResponse {
-        if let listServicesSyncOverride = listServicesSyncOverride {
-            return try listServicesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListServicesResponse {
+        if let listServicesSyncOverrideNonOptional = listServicesSyncOverride {
+            if let listServicesSyncOverrideTyped = listServicesSyncOverrideNonOptional
+                    as? ListServicesSyncType<InvocationReportingType> {
+                return try listServicesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListServicesResponse.__default
@@ -1342,12 +1582,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func listTagsForResourceAsync(
+    public func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTagsForResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListTagsForResourceResponse, HTTPClientError>) -> ()) throws {
-        if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
-            return try listTagsForResourceAsyncOverride(input, reporting, completion)
+        if let listTagsForResourceAsyncOverrideNonOptional = listTagsForResourceAsyncOverride {
+            if let listTagsForResourceAsyncOverrideTyped = listTagsForResourceAsyncOverrideNonOptional
+                    as? ListTagsForResourceAsyncType<InvocationReportingType> {
+                return try listTagsForResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListTagsForResourceResponse.__default
@@ -1364,11 +1609,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func listTagsForResourceSync(
+    public func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTagsForResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTagsForResourceResponse {
-        if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
-            return try listTagsForResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTagsForResourceResponse {
+        if let listTagsForResourceSyncOverrideNonOptional = listTagsForResourceSyncOverride {
+            if let listTagsForResourceSyncOverrideTyped = listTagsForResourceSyncOverrideNonOptional
+                    as? ListTagsForResourceSyncType<InvocationReportingType> {
+                return try listTagsForResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListTagsForResourceResponse.__default
@@ -1384,12 +1634,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func listTaskDefinitionFamiliesAsync(
+    public func listTaskDefinitionFamiliesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, HTTPClientError>) -> ()) throws {
-        if let listTaskDefinitionFamiliesAsyncOverride = listTaskDefinitionFamiliesAsyncOverride {
-            return try listTaskDefinitionFamiliesAsyncOverride(input, reporting, completion)
+        if let listTaskDefinitionFamiliesAsyncOverrideNonOptional = listTaskDefinitionFamiliesAsyncOverride {
+            if let listTaskDefinitionFamiliesAsyncOverrideTyped = listTaskDefinitionFamiliesAsyncOverrideNonOptional
+                    as? ListTaskDefinitionFamiliesAsyncType<InvocationReportingType> {
+                return try listTaskDefinitionFamiliesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListTaskDefinitionFamiliesResponse.__default
@@ -1406,11 +1661,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func listTaskDefinitionFamiliesSync(
+    public func listTaskDefinitionFamiliesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse {
-        if let listTaskDefinitionFamiliesSyncOverride = listTaskDefinitionFamiliesSyncOverride {
-            return try listTaskDefinitionFamiliesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse {
+        if let listTaskDefinitionFamiliesSyncOverrideNonOptional = listTaskDefinitionFamiliesSyncOverride {
+            if let listTaskDefinitionFamiliesSyncOverrideTyped = listTaskDefinitionFamiliesSyncOverrideNonOptional
+                    as? ListTaskDefinitionFamiliesSyncType<InvocationReportingType> {
+                return try listTaskDefinitionFamiliesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListTaskDefinitionFamiliesResponse.__default
@@ -1426,12 +1686,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func listTaskDefinitionsAsync(
+    public func listTaskDefinitionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTaskDefinitionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionsResponse, HTTPClientError>) -> ()) throws {
-        if let listTaskDefinitionsAsyncOverride = listTaskDefinitionsAsyncOverride {
-            return try listTaskDefinitionsAsyncOverride(input, reporting, completion)
+        if let listTaskDefinitionsAsyncOverrideNonOptional = listTaskDefinitionsAsyncOverride {
+            if let listTaskDefinitionsAsyncOverrideTyped = listTaskDefinitionsAsyncOverrideNonOptional
+                    as? ListTaskDefinitionsAsyncType<InvocationReportingType> {
+                return try listTaskDefinitionsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListTaskDefinitionsResponse.__default
@@ -1448,11 +1713,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func listTaskDefinitionsSync(
+    public func listTaskDefinitionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTaskDefinitionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTaskDefinitionsResponse {
-        if let listTaskDefinitionsSyncOverride = listTaskDefinitionsSyncOverride {
-            return try listTaskDefinitionsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTaskDefinitionsResponse {
+        if let listTaskDefinitionsSyncOverrideNonOptional = listTaskDefinitionsSyncOverride {
+            if let listTaskDefinitionsSyncOverrideTyped = listTaskDefinitionsSyncOverrideNonOptional
+                    as? ListTaskDefinitionsSyncType<InvocationReportingType> {
+                return try listTaskDefinitionsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListTaskDefinitionsResponse.__default
@@ -1468,12 +1738,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    public func listTasksAsync(
+    public func listTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTasksRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListTasksResponse, HTTPClientError>) -> ()) throws {
-        if let listTasksAsyncOverride = listTasksAsyncOverride {
-            return try listTasksAsyncOverride(input, reporting, completion)
+        if let listTasksAsyncOverrideNonOptional = listTasksAsyncOverride {
+            if let listTasksAsyncOverrideTyped = listTasksAsyncOverrideNonOptional
+                    as? ListTasksAsyncType<InvocationReportingType> {
+                return try listTasksAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListTasksResponse.__default
@@ -1490,11 +1765,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    public func listTasksSync(
+    public func listTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.ListTasksRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTasksResponse {
-        if let listTasksSyncOverride = listTasksSyncOverride {
-            return try listTasksSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTasksResponse {
+        if let listTasksSyncOverrideNonOptional = listTasksSyncOverride {
+            if let listTasksSyncOverrideTyped = listTasksSyncOverrideNonOptional
+                    as? ListTasksSyncType<InvocationReportingType> {
+                return try listTasksSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListTasksResponse.__default
@@ -1510,12 +1790,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func putAccountSettingAsync(
+    public func putAccountSettingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutAccountSettingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.PutAccountSettingResponse, HTTPClientError>) -> ()) throws {
-        if let putAccountSettingAsyncOverride = putAccountSettingAsyncOverride {
-            return try putAccountSettingAsyncOverride(input, reporting, completion)
+        if let putAccountSettingAsyncOverrideNonOptional = putAccountSettingAsyncOverride {
+            if let putAccountSettingAsyncOverrideTyped = putAccountSettingAsyncOverrideNonOptional
+                    as? PutAccountSettingAsyncType<InvocationReportingType> {
+                return try putAccountSettingAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = PutAccountSettingResponse.__default
@@ -1532,11 +1817,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func putAccountSettingSync(
+    public func putAccountSettingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutAccountSettingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutAccountSettingResponse {
-        if let putAccountSettingSyncOverride = putAccountSettingSyncOverride {
-            return try putAccountSettingSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.PutAccountSettingResponse {
+        if let putAccountSettingSyncOverrideNonOptional = putAccountSettingSyncOverride {
+            if let putAccountSettingSyncOverrideTyped = putAccountSettingSyncOverrideNonOptional
+                    as? PutAccountSettingSyncType<InvocationReportingType> {
+                return try putAccountSettingSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return PutAccountSettingResponse.__default
@@ -1552,12 +1842,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func putAccountSettingDefaultAsync(
+    public func putAccountSettingDefaultAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutAccountSettingDefaultRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.PutAccountSettingDefaultResponse, HTTPClientError>) -> ()) throws {
-        if let putAccountSettingDefaultAsyncOverride = putAccountSettingDefaultAsyncOverride {
-            return try putAccountSettingDefaultAsyncOverride(input, reporting, completion)
+        if let putAccountSettingDefaultAsyncOverrideNonOptional = putAccountSettingDefaultAsyncOverride {
+            if let putAccountSettingDefaultAsyncOverrideTyped = putAccountSettingDefaultAsyncOverrideNonOptional
+                    as? PutAccountSettingDefaultAsyncType<InvocationReportingType> {
+                return try putAccountSettingDefaultAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = PutAccountSettingDefaultResponse.__default
@@ -1574,11 +1869,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func putAccountSettingDefaultSync(
+    public func putAccountSettingDefaultSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutAccountSettingDefaultRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse {
-        if let putAccountSettingDefaultSyncOverride = putAccountSettingDefaultSyncOverride {
-            return try putAccountSettingDefaultSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse {
+        if let putAccountSettingDefaultSyncOverrideNonOptional = putAccountSettingDefaultSyncOverride {
+            if let putAccountSettingDefaultSyncOverrideTyped = putAccountSettingDefaultSyncOverrideNonOptional
+                    as? PutAccountSettingDefaultSyncType<InvocationReportingType> {
+                return try putAccountSettingDefaultSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return PutAccountSettingDefaultResponse.__default
@@ -1594,12 +1894,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: attributeLimitExceeded, clusterNotFound, invalidParameter, targetNotFound.
      */
-    public func putAttributesAsync(
+    public func putAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.PutAttributesResponse, HTTPClientError>) -> ()) throws {
-        if let putAttributesAsyncOverride = putAttributesAsyncOverride {
-            return try putAttributesAsyncOverride(input, reporting, completion)
+        if let putAttributesAsyncOverrideNonOptional = putAttributesAsyncOverride {
+            if let putAttributesAsyncOverrideTyped = putAttributesAsyncOverrideNonOptional
+                    as? PutAttributesAsyncType<InvocationReportingType> {
+                return try putAttributesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = PutAttributesResponse.__default
@@ -1616,11 +1921,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: attributeLimitExceeded, clusterNotFound, invalidParameter, targetNotFound.
      */
-    public func putAttributesSync(
+    public func putAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutAttributesResponse {
-        if let putAttributesSyncOverride = putAttributesSyncOverride {
-            return try putAttributesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.PutAttributesResponse {
+        if let putAttributesSyncOverrideNonOptional = putAttributesSyncOverride {
+            if let putAttributesSyncOverrideTyped = putAttributesSyncOverrideNonOptional
+                    as? PutAttributesSyncType<InvocationReportingType> {
+                return try putAttributesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return PutAttributesResponse.__default
@@ -1636,12 +1946,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
      */
-    public func putClusterCapacityProvidersAsync(
+    public func putClusterCapacityProvidersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutClusterCapacityProvidersRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, HTTPClientError>) -> ()) throws {
-        if let putClusterCapacityProvidersAsyncOverride = putClusterCapacityProvidersAsyncOverride {
-            return try putClusterCapacityProvidersAsyncOverride(input, reporting, completion)
+        if let putClusterCapacityProvidersAsyncOverrideNonOptional = putClusterCapacityProvidersAsyncOverride {
+            if let putClusterCapacityProvidersAsyncOverrideTyped = putClusterCapacityProvidersAsyncOverrideNonOptional
+                    as? PutClusterCapacityProvidersAsyncType<InvocationReportingType> {
+                return try putClusterCapacityProvidersAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = PutClusterCapacityProvidersResponse.__default
@@ -1658,11 +1973,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
      */
-    public func putClusterCapacityProvidersSync(
+    public func putClusterCapacityProvidersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.PutClusterCapacityProvidersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse {
-        if let putClusterCapacityProvidersSyncOverride = putClusterCapacityProvidersSyncOverride {
-            return try putClusterCapacityProvidersSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse {
+        if let putClusterCapacityProvidersSyncOverrideNonOptional = putClusterCapacityProvidersSyncOverride {
+            if let putClusterCapacityProvidersSyncOverrideTyped = putClusterCapacityProvidersSyncOverrideNonOptional
+                    as? PutClusterCapacityProvidersSyncType<InvocationReportingType> {
+                return try putClusterCapacityProvidersSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return PutClusterCapacityProvidersResponse.__default
@@ -1678,12 +1998,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func registerContainerInstanceAsync(
+    public func registerContainerInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.RegisterContainerInstanceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.RegisterContainerInstanceResponse, HTTPClientError>) -> ()) throws {
-        if let registerContainerInstanceAsyncOverride = registerContainerInstanceAsyncOverride {
-            return try registerContainerInstanceAsyncOverride(input, reporting, completion)
+        if let registerContainerInstanceAsyncOverrideNonOptional = registerContainerInstanceAsyncOverride {
+            if let registerContainerInstanceAsyncOverrideTyped = registerContainerInstanceAsyncOverrideNonOptional
+                    as? RegisterContainerInstanceAsyncType<InvocationReportingType> {
+                return try registerContainerInstanceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RegisterContainerInstanceResponse.__default
@@ -1700,11 +2025,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func registerContainerInstanceSync(
+    public func registerContainerInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.RegisterContainerInstanceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.RegisterContainerInstanceResponse {
-        if let registerContainerInstanceSyncOverride = registerContainerInstanceSyncOverride {
-            return try registerContainerInstanceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.RegisterContainerInstanceResponse {
+        if let registerContainerInstanceSyncOverrideNonOptional = registerContainerInstanceSyncOverride {
+            if let registerContainerInstanceSyncOverrideTyped = registerContainerInstanceSyncOverrideNonOptional
+                    as? RegisterContainerInstanceSyncType<InvocationReportingType> {
+                return try registerContainerInstanceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RegisterContainerInstanceResponse.__default
@@ -1720,12 +2050,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    public func registerTaskDefinitionAsync(
+    public func registerTaskDefinitionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.RegisterTaskDefinitionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.RegisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
-        if let registerTaskDefinitionAsyncOverride = registerTaskDefinitionAsyncOverride {
-            return try registerTaskDefinitionAsyncOverride(input, reporting, completion)
+        if let registerTaskDefinitionAsyncOverrideNonOptional = registerTaskDefinitionAsyncOverride {
+            if let registerTaskDefinitionAsyncOverrideTyped = registerTaskDefinitionAsyncOverrideNonOptional
+                    as? RegisterTaskDefinitionAsyncType<InvocationReportingType> {
+                return try registerTaskDefinitionAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RegisterTaskDefinitionResponse.__default
@@ -1742,11 +2077,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    public func registerTaskDefinitionSync(
+    public func registerTaskDefinitionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.RegisterTaskDefinitionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse {
-        if let registerTaskDefinitionSyncOverride = registerTaskDefinitionSyncOverride {
-            return try registerTaskDefinitionSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse {
+        if let registerTaskDefinitionSyncOverrideNonOptional = registerTaskDefinitionSyncOverride {
+            if let registerTaskDefinitionSyncOverrideTyped = registerTaskDefinitionSyncOverrideNonOptional
+                    as? RegisterTaskDefinitionSyncType<InvocationReportingType> {
+                return try registerTaskDefinitionSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RegisterTaskDefinitionResponse.__default
@@ -1762,12 +2102,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, blocked, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    public func runTaskAsync(
+    public func runTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.RunTaskRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.RunTaskResponse, HTTPClientError>) -> ()) throws {
-        if let runTaskAsyncOverride = runTaskAsyncOverride {
-            return try runTaskAsyncOverride(input, reporting, completion)
+        if let runTaskAsyncOverrideNonOptional = runTaskAsyncOverride {
+            if let runTaskAsyncOverrideTyped = runTaskAsyncOverrideNonOptional
+                    as? RunTaskAsyncType<InvocationReportingType> {
+                return try runTaskAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RunTaskResponse.__default
@@ -1784,11 +2129,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, blocked, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    public func runTaskSync(
+    public func runTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.RunTaskRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.RunTaskResponse {
-        if let runTaskSyncOverride = runTaskSyncOverride {
-            return try runTaskSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.RunTaskResponse {
+        if let runTaskSyncOverrideNonOptional = runTaskSyncOverride {
+            if let runTaskSyncOverrideTyped = runTaskSyncOverrideNonOptional
+                    as? RunTaskSyncType<InvocationReportingType> {
+                return try runTaskSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RunTaskResponse.__default
@@ -1804,12 +2154,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func startTaskAsync(
+    public func startTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.StartTaskRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.StartTaskResponse, HTTPClientError>) -> ()) throws {
-        if let startTaskAsyncOverride = startTaskAsyncOverride {
-            return try startTaskAsyncOverride(input, reporting, completion)
+        if let startTaskAsyncOverrideNonOptional = startTaskAsyncOverride {
+            if let startTaskAsyncOverrideTyped = startTaskAsyncOverrideNonOptional
+                    as? StartTaskAsyncType<InvocationReportingType> {
+                return try startTaskAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = StartTaskResponse.__default
@@ -1826,11 +2181,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func startTaskSync(
+    public func startTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.StartTaskRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.StartTaskResponse {
-        if let startTaskSyncOverride = startTaskSyncOverride {
-            return try startTaskSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.StartTaskResponse {
+        if let startTaskSyncOverrideNonOptional = startTaskSyncOverride {
+            if let startTaskSyncOverrideTyped = startTaskSyncOverrideNonOptional
+                    as? StartTaskSyncType<InvocationReportingType> {
+                return try startTaskSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return StartTaskResponse.__default
@@ -1846,12 +2206,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func stopTaskAsync(
+    public func stopTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.StopTaskRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.StopTaskResponse, HTTPClientError>) -> ()) throws {
-        if let stopTaskAsyncOverride = stopTaskAsyncOverride {
-            return try stopTaskAsyncOverride(input, reporting, completion)
+        if let stopTaskAsyncOverrideNonOptional = stopTaskAsyncOverride {
+            if let stopTaskAsyncOverrideTyped = stopTaskAsyncOverrideNonOptional
+                    as? StopTaskAsyncType<InvocationReportingType> {
+                return try stopTaskAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = StopTaskResponse.__default
@@ -1868,11 +2233,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func stopTaskSync(
+    public func stopTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.StopTaskRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.StopTaskResponse {
-        if let stopTaskSyncOverride = stopTaskSyncOverride {
-            return try stopTaskSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.StopTaskResponse {
+        if let stopTaskSyncOverrideNonOptional = stopTaskSyncOverride {
+            if let stopTaskSyncOverrideTyped = stopTaskSyncOverrideNonOptional
+                    as? StopTaskSyncType<InvocationReportingType> {
+                return try stopTaskSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return StopTaskResponse.__default
@@ -1888,12 +2258,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, invalidParameter, server.
      */
-    public func submitAttachmentStateChangesAsync(
+    public func submitAttachmentStateChangesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, HTTPClientError>) -> ()) throws {
-        if let submitAttachmentStateChangesAsyncOverride = submitAttachmentStateChangesAsyncOverride {
-            return try submitAttachmentStateChangesAsyncOverride(input, reporting, completion)
+        if let submitAttachmentStateChangesAsyncOverrideNonOptional = submitAttachmentStateChangesAsyncOverride {
+            if let submitAttachmentStateChangesAsyncOverrideTyped = submitAttachmentStateChangesAsyncOverrideNonOptional
+                    as? SubmitAttachmentStateChangesAsyncType<InvocationReportingType> {
+                return try submitAttachmentStateChangesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = SubmitAttachmentStateChangesResponse.__default
@@ -1910,11 +2285,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, invalidParameter, server.
      */
-    public func submitAttachmentStateChangesSync(
+    public func submitAttachmentStateChangesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.SubmitAttachmentStateChangesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse {
-        if let submitAttachmentStateChangesSyncOverride = submitAttachmentStateChangesSyncOverride {
-            return try submitAttachmentStateChangesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse {
+        if let submitAttachmentStateChangesSyncOverrideNonOptional = submitAttachmentStateChangesSyncOverride {
+            if let submitAttachmentStateChangesSyncOverrideTyped = submitAttachmentStateChangesSyncOverrideNonOptional
+                    as? SubmitAttachmentStateChangesSyncType<InvocationReportingType> {
+                return try submitAttachmentStateChangesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return SubmitAttachmentStateChangesResponse.__default
@@ -1930,12 +2310,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, server.
      */
-    public func submitContainerStateChangeAsync(
+    public func submitContainerStateChangeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.SubmitContainerStateChangeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.SubmitContainerStateChangeResponse, HTTPClientError>) -> ()) throws {
-        if let submitContainerStateChangeAsyncOverride = submitContainerStateChangeAsyncOverride {
-            return try submitContainerStateChangeAsyncOverride(input, reporting, completion)
+        if let submitContainerStateChangeAsyncOverrideNonOptional = submitContainerStateChangeAsyncOverride {
+            if let submitContainerStateChangeAsyncOverrideTyped = submitContainerStateChangeAsyncOverrideNonOptional
+                    as? SubmitContainerStateChangeAsyncType<InvocationReportingType> {
+                return try submitContainerStateChangeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = SubmitContainerStateChangeResponse.__default
@@ -1952,11 +2337,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, server.
      */
-    public func submitContainerStateChangeSync(
+    public func submitContainerStateChangeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.SubmitContainerStateChangeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse {
-        if let submitContainerStateChangeSyncOverride = submitContainerStateChangeSyncOverride {
-            return try submitContainerStateChangeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse {
+        if let submitContainerStateChangeSyncOverrideNonOptional = submitContainerStateChangeSyncOverride {
+            if let submitContainerStateChangeSyncOverrideTyped = submitContainerStateChangeSyncOverrideNonOptional
+                    as? SubmitContainerStateChangeSyncType<InvocationReportingType> {
+                return try submitContainerStateChangeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return SubmitContainerStateChangeResponse.__default
@@ -1972,12 +2362,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, invalidParameter, server.
      */
-    public func submitTaskStateChangeAsync(
+    public func submitTaskStateChangeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.SubmitTaskStateChangeResponse, HTTPClientError>) -> ()) throws {
-        if let submitTaskStateChangeAsyncOverride = submitTaskStateChangeAsyncOverride {
-            return try submitTaskStateChangeAsyncOverride(input, reporting, completion)
+        if let submitTaskStateChangeAsyncOverrideNonOptional = submitTaskStateChangeAsyncOverride {
+            if let submitTaskStateChangeAsyncOverrideTyped = submitTaskStateChangeAsyncOverrideNonOptional
+                    as? SubmitTaskStateChangeAsyncType<InvocationReportingType> {
+                return try submitTaskStateChangeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = SubmitTaskStateChangeResponse.__default
@@ -1994,11 +2389,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, invalidParameter, server.
      */
-    public func submitTaskStateChangeSync(
+    public func submitTaskStateChangeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse {
-        if let submitTaskStateChangeSyncOverride = submitTaskStateChangeSyncOverride {
-            return try submitTaskStateChangeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse {
+        if let submitTaskStateChangeSyncOverrideNonOptional = submitTaskStateChangeSyncOverride {
+            if let submitTaskStateChangeSyncOverrideTyped = submitTaskStateChangeSyncOverrideNonOptional
+                    as? SubmitTaskStateChangeSyncType<InvocationReportingType> {
+                return try submitTaskStateChangeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return SubmitTaskStateChangeResponse.__default
@@ -2014,12 +2414,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    public func tagResourceAsync(
+    public func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.TagResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.TagResourceResponse, HTTPClientError>) -> ()) throws {
-        if let tagResourceAsyncOverride = tagResourceAsyncOverride {
-            return try tagResourceAsyncOverride(input, reporting, completion)
+        if let tagResourceAsyncOverrideNonOptional = tagResourceAsyncOverride {
+            if let tagResourceAsyncOverrideTyped = tagResourceAsyncOverrideNonOptional
+                    as? TagResourceAsyncType<InvocationReportingType> {
+                return try tagResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = TagResourceResponse.__default
@@ -2036,11 +2441,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    public func tagResourceSync(
+    public func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.TagResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.TagResourceResponse {
-        if let tagResourceSyncOverride = tagResourceSyncOverride {
-            return try tagResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.TagResourceResponse {
+        if let tagResourceSyncOverrideNonOptional = tagResourceSyncOverride {
+            if let tagResourceSyncOverrideTyped = tagResourceSyncOverrideNonOptional
+                    as? TagResourceSyncType<InvocationReportingType> {
+                return try tagResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return TagResourceResponse.__default
@@ -2056,12 +2466,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    public func untagResourceAsync(
+    public func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UntagResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, HTTPClientError>) -> ()) throws {
-        if let untagResourceAsyncOverride = untagResourceAsyncOverride {
-            return try untagResourceAsyncOverride(input, reporting, completion)
+        if let untagResourceAsyncOverrideNonOptional = untagResourceAsyncOverride {
+            if let untagResourceAsyncOverrideTyped = untagResourceAsyncOverrideNonOptional
+                    as? UntagResourceAsyncType<InvocationReportingType> {
+                return try untagResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UntagResourceResponse.__default
@@ -2078,11 +2493,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    public func untagResourceSync(
+    public func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UntagResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UntagResourceResponse {
-        if let untagResourceSyncOverride = untagResourceSyncOverride {
-            return try untagResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UntagResourceResponse {
+        if let untagResourceSyncOverrideNonOptional = untagResourceSyncOverride {
+            if let untagResourceSyncOverrideTyped = untagResourceSyncOverrideNonOptional
+                    as? UntagResourceSyncType<InvocationReportingType> {
+                return try untagResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UntagResourceResponse.__default
@@ -2098,12 +2518,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func updateClusterSettingsAsync(
+    public func updateClusterSettingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateClusterSettingsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, HTTPClientError>) -> ()) throws {
-        if let updateClusterSettingsAsyncOverride = updateClusterSettingsAsyncOverride {
-            return try updateClusterSettingsAsyncOverride(input, reporting, completion)
+        if let updateClusterSettingsAsyncOverrideNonOptional = updateClusterSettingsAsyncOverride {
+            if let updateClusterSettingsAsyncOverrideTyped = updateClusterSettingsAsyncOverrideNonOptional
+                    as? UpdateClusterSettingsAsyncType<InvocationReportingType> {
+                return try updateClusterSettingsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateClusterSettingsResponse.__default
@@ -2120,11 +2545,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func updateClusterSettingsSync(
+    public func updateClusterSettingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateClusterSettingsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateClusterSettingsResponse {
-        if let updateClusterSettingsSyncOverride = updateClusterSettingsSyncOverride {
-            return try updateClusterSettingsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateClusterSettingsResponse {
+        if let updateClusterSettingsSyncOverrideNonOptional = updateClusterSettingsSyncOverride {
+            if let updateClusterSettingsSyncOverrideTyped = updateClusterSettingsSyncOverrideNonOptional
+                    as? UpdateClusterSettingsSyncType<InvocationReportingType> {
+                return try updateClusterSettingsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateClusterSettingsResponse.__default
@@ -2140,12 +2570,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, missingVersion, noUpdateAvailable, server, updateInProgress.
      */
-    public func updateContainerAgentAsync(
+    public func updateContainerAgentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateContainerAgentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateContainerAgentResponse, HTTPClientError>) -> ()) throws {
-        if let updateContainerAgentAsyncOverride = updateContainerAgentAsyncOverride {
-            return try updateContainerAgentAsyncOverride(input, reporting, completion)
+        if let updateContainerAgentAsyncOverrideNonOptional = updateContainerAgentAsyncOverride {
+            if let updateContainerAgentAsyncOverrideTyped = updateContainerAgentAsyncOverrideNonOptional
+                    as? UpdateContainerAgentAsyncType<InvocationReportingType> {
+                return try updateContainerAgentAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateContainerAgentResponse.__default
@@ -2162,11 +2597,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, missingVersion, noUpdateAvailable, server, updateInProgress.
      */
-    public func updateContainerAgentSync(
+    public func updateContainerAgentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateContainerAgentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateContainerAgentResponse {
-        if let updateContainerAgentSyncOverride = updateContainerAgentSyncOverride {
-            return try updateContainerAgentSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateContainerAgentResponse {
+        if let updateContainerAgentSyncOverrideNonOptional = updateContainerAgentSyncOverride {
+            if let updateContainerAgentSyncOverrideTyped = updateContainerAgentSyncOverrideNonOptional
+                    as? UpdateContainerAgentSyncType<InvocationReportingType> {
+                return try updateContainerAgentSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateContainerAgentResponse.__default
@@ -2182,12 +2622,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    public func updateContainerInstancesStateAsync(
+    public func updateContainerInstancesStateAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateContainerInstancesStateRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, HTTPClientError>) -> ()) throws {
-        if let updateContainerInstancesStateAsyncOverride = updateContainerInstancesStateAsyncOverride {
-            return try updateContainerInstancesStateAsyncOverride(input, reporting, completion)
+        if let updateContainerInstancesStateAsyncOverrideNonOptional = updateContainerInstancesStateAsyncOverride {
+            if let updateContainerInstancesStateAsyncOverrideTyped = updateContainerInstancesStateAsyncOverrideNonOptional
+                    as? UpdateContainerInstancesStateAsyncType<InvocationReportingType> {
+                return try updateContainerInstancesStateAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateContainerInstancesStateResponse.__default
@@ -2204,11 +2649,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    public func updateContainerInstancesStateSync(
+    public func updateContainerInstancesStateSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateContainerInstancesStateRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse {
-        if let updateContainerInstancesStateSyncOverride = updateContainerInstancesStateSyncOverride {
-            return try updateContainerInstancesStateSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse {
+        if let updateContainerInstancesStateSyncOverrideNonOptional = updateContainerInstancesStateSyncOverride {
+            if let updateContainerInstancesStateSyncOverrideTyped = updateContainerInstancesStateSyncOverrideNonOptional
+                    as? UpdateContainerInstancesStateSyncType<InvocationReportingType> {
+                return try updateContainerInstancesStateSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateContainerInstancesStateResponse.__default
@@ -2224,12 +2674,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
      */
-    public func updateServiceAsync(
+    public func updateServiceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateServiceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateServiceResponse, HTTPClientError>) -> ()) throws {
-        if let updateServiceAsyncOverride = updateServiceAsyncOverride {
-            return try updateServiceAsyncOverride(input, reporting, completion)
+        if let updateServiceAsyncOverrideNonOptional = updateServiceAsyncOverride {
+            if let updateServiceAsyncOverrideTyped = updateServiceAsyncOverrideNonOptional
+                    as? UpdateServiceAsyncType<InvocationReportingType> {
+                return try updateServiceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateServiceResponse.__default
@@ -2246,11 +2701,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
      */
-    public func updateServiceSync(
+    public func updateServiceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateServiceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateServiceResponse {
-        if let updateServiceSyncOverride = updateServiceSyncOverride {
-            return try updateServiceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateServiceResponse {
+        if let updateServiceSyncOverrideNonOptional = updateServiceSyncOverride {
+            if let updateServiceSyncOverrideTyped = updateServiceSyncOverrideNonOptional
+                    as? UpdateServiceSyncType<InvocationReportingType> {
+                return try updateServiceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateServiceResponse.__default
@@ -2266,12 +2726,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func updateServicePrimaryTaskSetAsync(
+    public func updateServicePrimaryTaskSetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, HTTPClientError>) -> ()) throws {
-        if let updateServicePrimaryTaskSetAsyncOverride = updateServicePrimaryTaskSetAsyncOverride {
-            return try updateServicePrimaryTaskSetAsyncOverride(input, reporting, completion)
+        if let updateServicePrimaryTaskSetAsyncOverrideNonOptional = updateServicePrimaryTaskSetAsyncOverride {
+            if let updateServicePrimaryTaskSetAsyncOverrideTyped = updateServicePrimaryTaskSetAsyncOverrideNonOptional
+                    as? UpdateServicePrimaryTaskSetAsyncType<InvocationReportingType> {
+                return try updateServicePrimaryTaskSetAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateServicePrimaryTaskSetResponse.__default
@@ -2288,11 +2753,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func updateServicePrimaryTaskSetSync(
+    public func updateServicePrimaryTaskSetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse {
-        if let updateServicePrimaryTaskSetSyncOverride = updateServicePrimaryTaskSetSyncOverride {
-            return try updateServicePrimaryTaskSetSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse {
+        if let updateServicePrimaryTaskSetSyncOverrideNonOptional = updateServicePrimaryTaskSetSyncOverride {
+            if let updateServicePrimaryTaskSetSyncOverrideTyped = updateServicePrimaryTaskSetSyncOverrideNonOptional
+                    as? UpdateServicePrimaryTaskSetSyncType<InvocationReportingType> {
+                return try updateServicePrimaryTaskSetSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateServicePrimaryTaskSetResponse.__default
@@ -2308,12 +2778,17 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func updateTaskSetAsync(
+    public func updateTaskSetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateTaskSetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateTaskSetResponse, HTTPClientError>) -> ()) throws {
-        if let updateTaskSetAsyncOverride = updateTaskSetAsyncOverride {
-            return try updateTaskSetAsyncOverride(input, reporting, completion)
+        if let updateTaskSetAsyncOverrideNonOptional = updateTaskSetAsyncOverride {
+            if let updateTaskSetAsyncOverrideTyped = updateTaskSetAsyncOverrideNonOptional
+                    as? UpdateTaskSetAsyncType<InvocationReportingType> {
+                return try updateTaskSetAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateTaskSetResponse.__default
@@ -2330,11 +2805,16 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    public func updateTaskSetSync(
+    public func updateTaskSetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticContainerModel.UpdateTaskSetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateTaskSetResponse {
-        if let updateTaskSetSyncOverride = updateTaskSetSyncOverride {
-            return try updateTaskSetSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateTaskSetResponse {
+        if let updateTaskSetSyncOverrideNonOptional = updateTaskSetSyncOverride {
+            if let updateTaskSetSyncOverrideTyped = updateTaskSetSyncOverrideNonOptional
+                    as? UpdateTaskSetSyncType<InvocationReportingType> {
+                return try updateTaskSetSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateTaskSetResponse.__default

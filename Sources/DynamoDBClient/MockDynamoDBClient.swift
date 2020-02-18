@@ -27,177 +27,177 @@ import SmokeHTTPClient
 /**
  Mock Client for the DynamoDB service by default returns the `__default` property of its return type.
  */
-public struct MockDynamoDBClient: DynamoDBClientProtocol {
-    let batchGetItemAsyncOverride: DynamoDBClientProtocol.BatchGetItemAsyncType?
-    let batchGetItemSyncOverride: DynamoDBClientProtocol.BatchGetItemSyncType?
-    let batchWriteItemAsyncOverride: DynamoDBClientProtocol.BatchWriteItemAsyncType?
-    let batchWriteItemSyncOverride: DynamoDBClientProtocol.BatchWriteItemSyncType?
-    let createBackupAsyncOverride: DynamoDBClientProtocol.CreateBackupAsyncType?
-    let createBackupSyncOverride: DynamoDBClientProtocol.CreateBackupSyncType?
-    let createGlobalTableAsyncOverride: DynamoDBClientProtocol.CreateGlobalTableAsyncType?
-    let createGlobalTableSyncOverride: DynamoDBClientProtocol.CreateGlobalTableSyncType?
-    let createTableAsyncOverride: DynamoDBClientProtocol.CreateTableAsyncType?
-    let createTableSyncOverride: DynamoDBClientProtocol.CreateTableSyncType?
-    let deleteBackupAsyncOverride: DynamoDBClientProtocol.DeleteBackupAsyncType?
-    let deleteBackupSyncOverride: DynamoDBClientProtocol.DeleteBackupSyncType?
-    let deleteItemAsyncOverride: DynamoDBClientProtocol.DeleteItemAsyncType?
-    let deleteItemSyncOverride: DynamoDBClientProtocol.DeleteItemSyncType?
-    let deleteTableAsyncOverride: DynamoDBClientProtocol.DeleteTableAsyncType?
-    let deleteTableSyncOverride: DynamoDBClientProtocol.DeleteTableSyncType?
-    let describeBackupAsyncOverride: DynamoDBClientProtocol.DescribeBackupAsyncType?
-    let describeBackupSyncOverride: DynamoDBClientProtocol.DescribeBackupSyncType?
-    let describeContinuousBackupsAsyncOverride: DynamoDBClientProtocol.DescribeContinuousBackupsAsyncType?
-    let describeContinuousBackupsSyncOverride: DynamoDBClientProtocol.DescribeContinuousBackupsSyncType?
-    let describeContributorInsightsAsyncOverride: DynamoDBClientProtocol.DescribeContributorInsightsAsyncType?
-    let describeContributorInsightsSyncOverride: DynamoDBClientProtocol.DescribeContributorInsightsSyncType?
-    let describeEndpointsAsyncOverride: DynamoDBClientProtocol.DescribeEndpointsAsyncType?
-    let describeEndpointsSyncOverride: DynamoDBClientProtocol.DescribeEndpointsSyncType?
-    let describeGlobalTableAsyncOverride: DynamoDBClientProtocol.DescribeGlobalTableAsyncType?
-    let describeGlobalTableSyncOverride: DynamoDBClientProtocol.DescribeGlobalTableSyncType?
-    let describeGlobalTableSettingsAsyncOverride: DynamoDBClientProtocol.DescribeGlobalTableSettingsAsyncType?
-    let describeGlobalTableSettingsSyncOverride: DynamoDBClientProtocol.DescribeGlobalTableSettingsSyncType?
-    let describeLimitsAsyncOverride: DynamoDBClientProtocol.DescribeLimitsAsyncType?
-    let describeLimitsSyncOverride: DynamoDBClientProtocol.DescribeLimitsSyncType?
-    let describeTableAsyncOverride: DynamoDBClientProtocol.DescribeTableAsyncType?
-    let describeTableSyncOverride: DynamoDBClientProtocol.DescribeTableSyncType?
-    let describeTableReplicaAutoScalingAsyncOverride: DynamoDBClientProtocol.DescribeTableReplicaAutoScalingAsyncType?
-    let describeTableReplicaAutoScalingSyncOverride: DynamoDBClientProtocol.DescribeTableReplicaAutoScalingSyncType?
-    let describeTimeToLiveAsyncOverride: DynamoDBClientProtocol.DescribeTimeToLiveAsyncType?
-    let describeTimeToLiveSyncOverride: DynamoDBClientProtocol.DescribeTimeToLiveSyncType?
-    let getItemAsyncOverride: DynamoDBClientProtocol.GetItemAsyncType?
-    let getItemSyncOverride: DynamoDBClientProtocol.GetItemSyncType?
-    let listBackupsAsyncOverride: DynamoDBClientProtocol.ListBackupsAsyncType?
-    let listBackupsSyncOverride: DynamoDBClientProtocol.ListBackupsSyncType?
-    let listContributorInsightsAsyncOverride: DynamoDBClientProtocol.ListContributorInsightsAsyncType?
-    let listContributorInsightsSyncOverride: DynamoDBClientProtocol.ListContributorInsightsSyncType?
-    let listGlobalTablesAsyncOverride: DynamoDBClientProtocol.ListGlobalTablesAsyncType?
-    let listGlobalTablesSyncOverride: DynamoDBClientProtocol.ListGlobalTablesSyncType?
-    let listTablesAsyncOverride: DynamoDBClientProtocol.ListTablesAsyncType?
-    let listTablesSyncOverride: DynamoDBClientProtocol.ListTablesSyncType?
-    let listTagsOfResourceAsyncOverride: DynamoDBClientProtocol.ListTagsOfResourceAsyncType?
-    let listTagsOfResourceSyncOverride: DynamoDBClientProtocol.ListTagsOfResourceSyncType?
-    let putItemAsyncOverride: DynamoDBClientProtocol.PutItemAsyncType?
-    let putItemSyncOverride: DynamoDBClientProtocol.PutItemSyncType?
-    let queryAsyncOverride: DynamoDBClientProtocol.QueryAsyncType?
-    let querySyncOverride: DynamoDBClientProtocol.QuerySyncType?
-    let restoreTableFromBackupAsyncOverride: DynamoDBClientProtocol.RestoreTableFromBackupAsyncType?
-    let restoreTableFromBackupSyncOverride: DynamoDBClientProtocol.RestoreTableFromBackupSyncType?
-    let restoreTableToPointInTimeAsyncOverride: DynamoDBClientProtocol.RestoreTableToPointInTimeAsyncType?
-    let restoreTableToPointInTimeSyncOverride: DynamoDBClientProtocol.RestoreTableToPointInTimeSyncType?
-    let scanAsyncOverride: DynamoDBClientProtocol.ScanAsyncType?
-    let scanSyncOverride: DynamoDBClientProtocol.ScanSyncType?
-    let tagResourceAsyncOverride: DynamoDBClientProtocol.TagResourceAsyncType?
-    let tagResourceSyncOverride: DynamoDBClientProtocol.TagResourceSyncType?
-    let transactGetItemsAsyncOverride: DynamoDBClientProtocol.TransactGetItemsAsyncType?
-    let transactGetItemsSyncOverride: DynamoDBClientProtocol.TransactGetItemsSyncType?
-    let transactWriteItemsAsyncOverride: DynamoDBClientProtocol.TransactWriteItemsAsyncType?
-    let transactWriteItemsSyncOverride: DynamoDBClientProtocol.TransactWriteItemsSyncType?
-    let untagResourceAsyncOverride: DynamoDBClientProtocol.UntagResourceAsyncType?
-    let untagResourceSyncOverride: DynamoDBClientProtocol.UntagResourceSyncType?
-    let updateContinuousBackupsAsyncOverride: DynamoDBClientProtocol.UpdateContinuousBackupsAsyncType?
-    let updateContinuousBackupsSyncOverride: DynamoDBClientProtocol.UpdateContinuousBackupsSyncType?
-    let updateContributorInsightsAsyncOverride: DynamoDBClientProtocol.UpdateContributorInsightsAsyncType?
-    let updateContributorInsightsSyncOverride: DynamoDBClientProtocol.UpdateContributorInsightsSyncType?
-    let updateGlobalTableAsyncOverride: DynamoDBClientProtocol.UpdateGlobalTableAsyncType?
-    let updateGlobalTableSyncOverride: DynamoDBClientProtocol.UpdateGlobalTableSyncType?
-    let updateGlobalTableSettingsAsyncOverride: DynamoDBClientProtocol.UpdateGlobalTableSettingsAsyncType?
-    let updateGlobalTableSettingsSyncOverride: DynamoDBClientProtocol.UpdateGlobalTableSettingsSyncType?
-    let updateItemAsyncOverride: DynamoDBClientProtocol.UpdateItemAsyncType?
-    let updateItemSyncOverride: DynamoDBClientProtocol.UpdateItemSyncType?
-    let updateTableAsyncOverride: DynamoDBClientProtocol.UpdateTableAsyncType?
-    let updateTableSyncOverride: DynamoDBClientProtocol.UpdateTableSyncType?
-    let updateTableReplicaAutoScalingAsyncOverride: DynamoDBClientProtocol.UpdateTableReplicaAutoScalingAsyncType?
-    let updateTableReplicaAutoScalingSyncOverride: DynamoDBClientProtocol.UpdateTableReplicaAutoScalingSyncType?
-    let updateTimeToLiveAsyncOverride: DynamoDBClientProtocol.UpdateTimeToLiveAsyncType?
-    let updateTimeToLiveSyncOverride: DynamoDBClientProtocol.UpdateTimeToLiveSyncType?
+public struct MockDynamoDBClient<ClientInvocationReportingType: SmokeAWSInvocationReporting>: DynamoDBClientProtocol {
+    let batchGetItemAsyncOverride: BatchGetItemAsyncType<ClientInvocationReportingType>?
+    let batchGetItemSyncOverride: BatchGetItemSyncType<ClientInvocationReportingType>?
+    let batchWriteItemAsyncOverride: BatchWriteItemAsyncType<ClientInvocationReportingType>?
+    let batchWriteItemSyncOverride: BatchWriteItemSyncType<ClientInvocationReportingType>?
+    let createBackupAsyncOverride: CreateBackupAsyncType<ClientInvocationReportingType>?
+    let createBackupSyncOverride: CreateBackupSyncType<ClientInvocationReportingType>?
+    let createGlobalTableAsyncOverride: CreateGlobalTableAsyncType<ClientInvocationReportingType>?
+    let createGlobalTableSyncOverride: CreateGlobalTableSyncType<ClientInvocationReportingType>?
+    let createTableAsyncOverride: CreateTableAsyncType<ClientInvocationReportingType>?
+    let createTableSyncOverride: CreateTableSyncType<ClientInvocationReportingType>?
+    let deleteBackupAsyncOverride: DeleteBackupAsyncType<ClientInvocationReportingType>?
+    let deleteBackupSyncOverride: DeleteBackupSyncType<ClientInvocationReportingType>?
+    let deleteItemAsyncOverride: DeleteItemAsyncType<ClientInvocationReportingType>?
+    let deleteItemSyncOverride: DeleteItemSyncType<ClientInvocationReportingType>?
+    let deleteTableAsyncOverride: DeleteTableAsyncType<ClientInvocationReportingType>?
+    let deleteTableSyncOverride: DeleteTableSyncType<ClientInvocationReportingType>?
+    let describeBackupAsyncOverride: DescribeBackupAsyncType<ClientInvocationReportingType>?
+    let describeBackupSyncOverride: DescribeBackupSyncType<ClientInvocationReportingType>?
+    let describeContinuousBackupsAsyncOverride: DescribeContinuousBackupsAsyncType<ClientInvocationReportingType>?
+    let describeContinuousBackupsSyncOverride: DescribeContinuousBackupsSyncType<ClientInvocationReportingType>?
+    let describeContributorInsightsAsyncOverride: DescribeContributorInsightsAsyncType<ClientInvocationReportingType>?
+    let describeContributorInsightsSyncOverride: DescribeContributorInsightsSyncType<ClientInvocationReportingType>?
+    let describeEndpointsAsyncOverride: DescribeEndpointsAsyncType<ClientInvocationReportingType>?
+    let describeEndpointsSyncOverride: DescribeEndpointsSyncType<ClientInvocationReportingType>?
+    let describeGlobalTableAsyncOverride: DescribeGlobalTableAsyncType<ClientInvocationReportingType>?
+    let describeGlobalTableSyncOverride: DescribeGlobalTableSyncType<ClientInvocationReportingType>?
+    let describeGlobalTableSettingsAsyncOverride: DescribeGlobalTableSettingsAsyncType<ClientInvocationReportingType>?
+    let describeGlobalTableSettingsSyncOverride: DescribeGlobalTableSettingsSyncType<ClientInvocationReportingType>?
+    let describeLimitsAsyncOverride: DescribeLimitsAsyncType<ClientInvocationReportingType>?
+    let describeLimitsSyncOverride: DescribeLimitsSyncType<ClientInvocationReportingType>?
+    let describeTableAsyncOverride: DescribeTableAsyncType<ClientInvocationReportingType>?
+    let describeTableSyncOverride: DescribeTableSyncType<ClientInvocationReportingType>?
+    let describeTableReplicaAutoScalingAsyncOverride: DescribeTableReplicaAutoScalingAsyncType<ClientInvocationReportingType>?
+    let describeTableReplicaAutoScalingSyncOverride: DescribeTableReplicaAutoScalingSyncType<ClientInvocationReportingType>?
+    let describeTimeToLiveAsyncOverride: DescribeTimeToLiveAsyncType<ClientInvocationReportingType>?
+    let describeTimeToLiveSyncOverride: DescribeTimeToLiveSyncType<ClientInvocationReportingType>?
+    let getItemAsyncOverride: GetItemAsyncType<ClientInvocationReportingType>?
+    let getItemSyncOverride: GetItemSyncType<ClientInvocationReportingType>?
+    let listBackupsAsyncOverride: ListBackupsAsyncType<ClientInvocationReportingType>?
+    let listBackupsSyncOverride: ListBackupsSyncType<ClientInvocationReportingType>?
+    let listContributorInsightsAsyncOverride: ListContributorInsightsAsyncType<ClientInvocationReportingType>?
+    let listContributorInsightsSyncOverride: ListContributorInsightsSyncType<ClientInvocationReportingType>?
+    let listGlobalTablesAsyncOverride: ListGlobalTablesAsyncType<ClientInvocationReportingType>?
+    let listGlobalTablesSyncOverride: ListGlobalTablesSyncType<ClientInvocationReportingType>?
+    let listTablesAsyncOverride: ListTablesAsyncType<ClientInvocationReportingType>?
+    let listTablesSyncOverride: ListTablesSyncType<ClientInvocationReportingType>?
+    let listTagsOfResourceAsyncOverride: ListTagsOfResourceAsyncType<ClientInvocationReportingType>?
+    let listTagsOfResourceSyncOverride: ListTagsOfResourceSyncType<ClientInvocationReportingType>?
+    let putItemAsyncOverride: PutItemAsyncType<ClientInvocationReportingType>?
+    let putItemSyncOverride: PutItemSyncType<ClientInvocationReportingType>?
+    let queryAsyncOverride: QueryAsyncType<ClientInvocationReportingType>?
+    let querySyncOverride: QuerySyncType<ClientInvocationReportingType>?
+    let restoreTableFromBackupAsyncOverride: RestoreTableFromBackupAsyncType<ClientInvocationReportingType>?
+    let restoreTableFromBackupSyncOverride: RestoreTableFromBackupSyncType<ClientInvocationReportingType>?
+    let restoreTableToPointInTimeAsyncOverride: RestoreTableToPointInTimeAsyncType<ClientInvocationReportingType>?
+    let restoreTableToPointInTimeSyncOverride: RestoreTableToPointInTimeSyncType<ClientInvocationReportingType>?
+    let scanAsyncOverride: ScanAsyncType<ClientInvocationReportingType>?
+    let scanSyncOverride: ScanSyncType<ClientInvocationReportingType>?
+    let tagResourceAsyncOverride: TagResourceAsyncType<ClientInvocationReportingType>?
+    let tagResourceSyncOverride: TagResourceSyncType<ClientInvocationReportingType>?
+    let transactGetItemsAsyncOverride: TransactGetItemsAsyncType<ClientInvocationReportingType>?
+    let transactGetItemsSyncOverride: TransactGetItemsSyncType<ClientInvocationReportingType>?
+    let transactWriteItemsAsyncOverride: TransactWriteItemsAsyncType<ClientInvocationReportingType>?
+    let transactWriteItemsSyncOverride: TransactWriteItemsSyncType<ClientInvocationReportingType>?
+    let untagResourceAsyncOverride: UntagResourceAsyncType<ClientInvocationReportingType>?
+    let untagResourceSyncOverride: UntagResourceSyncType<ClientInvocationReportingType>?
+    let updateContinuousBackupsAsyncOverride: UpdateContinuousBackupsAsyncType<ClientInvocationReportingType>?
+    let updateContinuousBackupsSyncOverride: UpdateContinuousBackupsSyncType<ClientInvocationReportingType>?
+    let updateContributorInsightsAsyncOverride: UpdateContributorInsightsAsyncType<ClientInvocationReportingType>?
+    let updateContributorInsightsSyncOverride: UpdateContributorInsightsSyncType<ClientInvocationReportingType>?
+    let updateGlobalTableAsyncOverride: UpdateGlobalTableAsyncType<ClientInvocationReportingType>?
+    let updateGlobalTableSyncOverride: UpdateGlobalTableSyncType<ClientInvocationReportingType>?
+    let updateGlobalTableSettingsAsyncOverride: UpdateGlobalTableSettingsAsyncType<ClientInvocationReportingType>?
+    let updateGlobalTableSettingsSyncOverride: UpdateGlobalTableSettingsSyncType<ClientInvocationReportingType>?
+    let updateItemAsyncOverride: UpdateItemAsyncType<ClientInvocationReportingType>?
+    let updateItemSyncOverride: UpdateItemSyncType<ClientInvocationReportingType>?
+    let updateTableAsyncOverride: UpdateTableAsyncType<ClientInvocationReportingType>?
+    let updateTableSyncOverride: UpdateTableSyncType<ClientInvocationReportingType>?
+    let updateTableReplicaAutoScalingAsyncOverride: UpdateTableReplicaAutoScalingAsyncType<ClientInvocationReportingType>?
+    let updateTableReplicaAutoScalingSyncOverride: UpdateTableReplicaAutoScalingSyncType<ClientInvocationReportingType>?
+    let updateTimeToLiveAsyncOverride: UpdateTimeToLiveAsyncType<ClientInvocationReportingType>?
+    let updateTimeToLiveSyncOverride: UpdateTimeToLiveSyncType<ClientInvocationReportingType>?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(
-            batchGetItemAsync: DynamoDBClientProtocol.BatchGetItemAsyncType? = nil,
-            batchGetItemSync: DynamoDBClientProtocol.BatchGetItemSyncType? = nil,
-            batchWriteItemAsync: DynamoDBClientProtocol.BatchWriteItemAsyncType? = nil,
-            batchWriteItemSync: DynamoDBClientProtocol.BatchWriteItemSyncType? = nil,
-            createBackupAsync: DynamoDBClientProtocol.CreateBackupAsyncType? = nil,
-            createBackupSync: DynamoDBClientProtocol.CreateBackupSyncType? = nil,
-            createGlobalTableAsync: DynamoDBClientProtocol.CreateGlobalTableAsyncType? = nil,
-            createGlobalTableSync: DynamoDBClientProtocol.CreateGlobalTableSyncType? = nil,
-            createTableAsync: DynamoDBClientProtocol.CreateTableAsyncType? = nil,
-            createTableSync: DynamoDBClientProtocol.CreateTableSyncType? = nil,
-            deleteBackupAsync: DynamoDBClientProtocol.DeleteBackupAsyncType? = nil,
-            deleteBackupSync: DynamoDBClientProtocol.DeleteBackupSyncType? = nil,
-            deleteItemAsync: DynamoDBClientProtocol.DeleteItemAsyncType? = nil,
-            deleteItemSync: DynamoDBClientProtocol.DeleteItemSyncType? = nil,
-            deleteTableAsync: DynamoDBClientProtocol.DeleteTableAsyncType? = nil,
-            deleteTableSync: DynamoDBClientProtocol.DeleteTableSyncType? = nil,
-            describeBackupAsync: DynamoDBClientProtocol.DescribeBackupAsyncType? = nil,
-            describeBackupSync: DynamoDBClientProtocol.DescribeBackupSyncType? = nil,
-            describeContinuousBackupsAsync: DynamoDBClientProtocol.DescribeContinuousBackupsAsyncType? = nil,
-            describeContinuousBackupsSync: DynamoDBClientProtocol.DescribeContinuousBackupsSyncType? = nil,
-            describeContributorInsightsAsync: DynamoDBClientProtocol.DescribeContributorInsightsAsyncType? = nil,
-            describeContributorInsightsSync: DynamoDBClientProtocol.DescribeContributorInsightsSyncType? = nil,
-            describeEndpointsAsync: DynamoDBClientProtocol.DescribeEndpointsAsyncType? = nil,
-            describeEndpointsSync: DynamoDBClientProtocol.DescribeEndpointsSyncType? = nil,
-            describeGlobalTableAsync: DynamoDBClientProtocol.DescribeGlobalTableAsyncType? = nil,
-            describeGlobalTableSync: DynamoDBClientProtocol.DescribeGlobalTableSyncType? = nil,
-            describeGlobalTableSettingsAsync: DynamoDBClientProtocol.DescribeGlobalTableSettingsAsyncType? = nil,
-            describeGlobalTableSettingsSync: DynamoDBClientProtocol.DescribeGlobalTableSettingsSyncType? = nil,
-            describeLimitsAsync: DynamoDBClientProtocol.DescribeLimitsAsyncType? = nil,
-            describeLimitsSync: DynamoDBClientProtocol.DescribeLimitsSyncType? = nil,
-            describeTableAsync: DynamoDBClientProtocol.DescribeTableAsyncType? = nil,
-            describeTableSync: DynamoDBClientProtocol.DescribeTableSyncType? = nil,
-            describeTableReplicaAutoScalingAsync: DynamoDBClientProtocol.DescribeTableReplicaAutoScalingAsyncType? = nil,
-            describeTableReplicaAutoScalingSync: DynamoDBClientProtocol.DescribeTableReplicaAutoScalingSyncType? = nil,
-            describeTimeToLiveAsync: DynamoDBClientProtocol.DescribeTimeToLiveAsyncType? = nil,
-            describeTimeToLiveSync: DynamoDBClientProtocol.DescribeTimeToLiveSyncType? = nil,
-            getItemAsync: DynamoDBClientProtocol.GetItemAsyncType? = nil,
-            getItemSync: DynamoDBClientProtocol.GetItemSyncType? = nil,
-            listBackupsAsync: DynamoDBClientProtocol.ListBackupsAsyncType? = nil,
-            listBackupsSync: DynamoDBClientProtocol.ListBackupsSyncType? = nil,
-            listContributorInsightsAsync: DynamoDBClientProtocol.ListContributorInsightsAsyncType? = nil,
-            listContributorInsightsSync: DynamoDBClientProtocol.ListContributorInsightsSyncType? = nil,
-            listGlobalTablesAsync: DynamoDBClientProtocol.ListGlobalTablesAsyncType? = nil,
-            listGlobalTablesSync: DynamoDBClientProtocol.ListGlobalTablesSyncType? = nil,
-            listTablesAsync: DynamoDBClientProtocol.ListTablesAsyncType? = nil,
-            listTablesSync: DynamoDBClientProtocol.ListTablesSyncType? = nil,
-            listTagsOfResourceAsync: DynamoDBClientProtocol.ListTagsOfResourceAsyncType? = nil,
-            listTagsOfResourceSync: DynamoDBClientProtocol.ListTagsOfResourceSyncType? = nil,
-            putItemAsync: DynamoDBClientProtocol.PutItemAsyncType? = nil,
-            putItemSync: DynamoDBClientProtocol.PutItemSyncType? = nil,
-            queryAsync: DynamoDBClientProtocol.QueryAsyncType? = nil,
-            querySync: DynamoDBClientProtocol.QuerySyncType? = nil,
-            restoreTableFromBackupAsync: DynamoDBClientProtocol.RestoreTableFromBackupAsyncType? = nil,
-            restoreTableFromBackupSync: DynamoDBClientProtocol.RestoreTableFromBackupSyncType? = nil,
-            restoreTableToPointInTimeAsync: DynamoDBClientProtocol.RestoreTableToPointInTimeAsyncType? = nil,
-            restoreTableToPointInTimeSync: DynamoDBClientProtocol.RestoreTableToPointInTimeSyncType? = nil,
-            scanAsync: DynamoDBClientProtocol.ScanAsyncType? = nil,
-            scanSync: DynamoDBClientProtocol.ScanSyncType? = nil,
-            tagResourceAsync: DynamoDBClientProtocol.TagResourceAsyncType? = nil,
-            tagResourceSync: DynamoDBClientProtocol.TagResourceSyncType? = nil,
-            transactGetItemsAsync: DynamoDBClientProtocol.TransactGetItemsAsyncType? = nil,
-            transactGetItemsSync: DynamoDBClientProtocol.TransactGetItemsSyncType? = nil,
-            transactWriteItemsAsync: DynamoDBClientProtocol.TransactWriteItemsAsyncType? = nil,
-            transactWriteItemsSync: DynamoDBClientProtocol.TransactWriteItemsSyncType? = nil,
-            untagResourceAsync: DynamoDBClientProtocol.UntagResourceAsyncType? = nil,
-            untagResourceSync: DynamoDBClientProtocol.UntagResourceSyncType? = nil,
-            updateContinuousBackupsAsync: DynamoDBClientProtocol.UpdateContinuousBackupsAsyncType? = nil,
-            updateContinuousBackupsSync: DynamoDBClientProtocol.UpdateContinuousBackupsSyncType? = nil,
-            updateContributorInsightsAsync: DynamoDBClientProtocol.UpdateContributorInsightsAsyncType? = nil,
-            updateContributorInsightsSync: DynamoDBClientProtocol.UpdateContributorInsightsSyncType? = nil,
-            updateGlobalTableAsync: DynamoDBClientProtocol.UpdateGlobalTableAsyncType? = nil,
-            updateGlobalTableSync: DynamoDBClientProtocol.UpdateGlobalTableSyncType? = nil,
-            updateGlobalTableSettingsAsync: DynamoDBClientProtocol.UpdateGlobalTableSettingsAsyncType? = nil,
-            updateGlobalTableSettingsSync: DynamoDBClientProtocol.UpdateGlobalTableSettingsSyncType? = nil,
-            updateItemAsync: DynamoDBClientProtocol.UpdateItemAsyncType? = nil,
-            updateItemSync: DynamoDBClientProtocol.UpdateItemSyncType? = nil,
-            updateTableAsync: DynamoDBClientProtocol.UpdateTableAsyncType? = nil,
-            updateTableSync: DynamoDBClientProtocol.UpdateTableSyncType? = nil,
-            updateTableReplicaAutoScalingAsync: DynamoDBClientProtocol.UpdateTableReplicaAutoScalingAsyncType? = nil,
-            updateTableReplicaAutoScalingSync: DynamoDBClientProtocol.UpdateTableReplicaAutoScalingSyncType? = nil,
-            updateTimeToLiveAsync: DynamoDBClientProtocol.UpdateTimeToLiveAsyncType? = nil,
-            updateTimeToLiveSync: DynamoDBClientProtocol.UpdateTimeToLiveSyncType? = nil) {
+            batchGetItemAsync: BatchGetItemAsyncType<ClientInvocationReportingType>? = nil,
+            batchGetItemSync: BatchGetItemSyncType<ClientInvocationReportingType>? = nil,
+            batchWriteItemAsync: BatchWriteItemAsyncType<ClientInvocationReportingType>? = nil,
+            batchWriteItemSync: BatchWriteItemSyncType<ClientInvocationReportingType>? = nil,
+            createBackupAsync: CreateBackupAsyncType<ClientInvocationReportingType>? = nil,
+            createBackupSync: CreateBackupSyncType<ClientInvocationReportingType>? = nil,
+            createGlobalTableAsync: CreateGlobalTableAsyncType<ClientInvocationReportingType>? = nil,
+            createGlobalTableSync: CreateGlobalTableSyncType<ClientInvocationReportingType>? = nil,
+            createTableAsync: CreateTableAsyncType<ClientInvocationReportingType>? = nil,
+            createTableSync: CreateTableSyncType<ClientInvocationReportingType>? = nil,
+            deleteBackupAsync: DeleteBackupAsyncType<ClientInvocationReportingType>? = nil,
+            deleteBackupSync: DeleteBackupSyncType<ClientInvocationReportingType>? = nil,
+            deleteItemAsync: DeleteItemAsyncType<ClientInvocationReportingType>? = nil,
+            deleteItemSync: DeleteItemSyncType<ClientInvocationReportingType>? = nil,
+            deleteTableAsync: DeleteTableAsyncType<ClientInvocationReportingType>? = nil,
+            deleteTableSync: DeleteTableSyncType<ClientInvocationReportingType>? = nil,
+            describeBackupAsync: DescribeBackupAsyncType<ClientInvocationReportingType>? = nil,
+            describeBackupSync: DescribeBackupSyncType<ClientInvocationReportingType>? = nil,
+            describeContinuousBackupsAsync: DescribeContinuousBackupsAsyncType<ClientInvocationReportingType>? = nil,
+            describeContinuousBackupsSync: DescribeContinuousBackupsSyncType<ClientInvocationReportingType>? = nil,
+            describeContributorInsightsAsync: DescribeContributorInsightsAsyncType<ClientInvocationReportingType>? = nil,
+            describeContributorInsightsSync: DescribeContributorInsightsSyncType<ClientInvocationReportingType>? = nil,
+            describeEndpointsAsync: DescribeEndpointsAsyncType<ClientInvocationReportingType>? = nil,
+            describeEndpointsSync: DescribeEndpointsSyncType<ClientInvocationReportingType>? = nil,
+            describeGlobalTableAsync: DescribeGlobalTableAsyncType<ClientInvocationReportingType>? = nil,
+            describeGlobalTableSync: DescribeGlobalTableSyncType<ClientInvocationReportingType>? = nil,
+            describeGlobalTableSettingsAsync: DescribeGlobalTableSettingsAsyncType<ClientInvocationReportingType>? = nil,
+            describeGlobalTableSettingsSync: DescribeGlobalTableSettingsSyncType<ClientInvocationReportingType>? = nil,
+            describeLimitsAsync: DescribeLimitsAsyncType<ClientInvocationReportingType>? = nil,
+            describeLimitsSync: DescribeLimitsSyncType<ClientInvocationReportingType>? = nil,
+            describeTableAsync: DescribeTableAsyncType<ClientInvocationReportingType>? = nil,
+            describeTableSync: DescribeTableSyncType<ClientInvocationReportingType>? = nil,
+            describeTableReplicaAutoScalingAsync: DescribeTableReplicaAutoScalingAsyncType<ClientInvocationReportingType>? = nil,
+            describeTableReplicaAutoScalingSync: DescribeTableReplicaAutoScalingSyncType<ClientInvocationReportingType>? = nil,
+            describeTimeToLiveAsync: DescribeTimeToLiveAsyncType<ClientInvocationReportingType>? = nil,
+            describeTimeToLiveSync: DescribeTimeToLiveSyncType<ClientInvocationReportingType>? = nil,
+            getItemAsync: GetItemAsyncType<ClientInvocationReportingType>? = nil,
+            getItemSync: GetItemSyncType<ClientInvocationReportingType>? = nil,
+            listBackupsAsync: ListBackupsAsyncType<ClientInvocationReportingType>? = nil,
+            listBackupsSync: ListBackupsSyncType<ClientInvocationReportingType>? = nil,
+            listContributorInsightsAsync: ListContributorInsightsAsyncType<ClientInvocationReportingType>? = nil,
+            listContributorInsightsSync: ListContributorInsightsSyncType<ClientInvocationReportingType>? = nil,
+            listGlobalTablesAsync: ListGlobalTablesAsyncType<ClientInvocationReportingType>? = nil,
+            listGlobalTablesSync: ListGlobalTablesSyncType<ClientInvocationReportingType>? = nil,
+            listTablesAsync: ListTablesAsyncType<ClientInvocationReportingType>? = nil,
+            listTablesSync: ListTablesSyncType<ClientInvocationReportingType>? = nil,
+            listTagsOfResourceAsync: ListTagsOfResourceAsyncType<ClientInvocationReportingType>? = nil,
+            listTagsOfResourceSync: ListTagsOfResourceSyncType<ClientInvocationReportingType>? = nil,
+            putItemAsync: PutItemAsyncType<ClientInvocationReportingType>? = nil,
+            putItemSync: PutItemSyncType<ClientInvocationReportingType>? = nil,
+            queryAsync: QueryAsyncType<ClientInvocationReportingType>? = nil,
+            querySync: QuerySyncType<ClientInvocationReportingType>? = nil,
+            restoreTableFromBackupAsync: RestoreTableFromBackupAsyncType<ClientInvocationReportingType>? = nil,
+            restoreTableFromBackupSync: RestoreTableFromBackupSyncType<ClientInvocationReportingType>? = nil,
+            restoreTableToPointInTimeAsync: RestoreTableToPointInTimeAsyncType<ClientInvocationReportingType>? = nil,
+            restoreTableToPointInTimeSync: RestoreTableToPointInTimeSyncType<ClientInvocationReportingType>? = nil,
+            scanAsync: ScanAsyncType<ClientInvocationReportingType>? = nil,
+            scanSync: ScanSyncType<ClientInvocationReportingType>? = nil,
+            tagResourceAsync: TagResourceAsyncType<ClientInvocationReportingType>? = nil,
+            tagResourceSync: TagResourceSyncType<ClientInvocationReportingType>? = nil,
+            transactGetItemsAsync: TransactGetItemsAsyncType<ClientInvocationReportingType>? = nil,
+            transactGetItemsSync: TransactGetItemsSyncType<ClientInvocationReportingType>? = nil,
+            transactWriteItemsAsync: TransactWriteItemsAsyncType<ClientInvocationReportingType>? = nil,
+            transactWriteItemsSync: TransactWriteItemsSyncType<ClientInvocationReportingType>? = nil,
+            untagResourceAsync: UntagResourceAsyncType<ClientInvocationReportingType>? = nil,
+            untagResourceSync: UntagResourceSyncType<ClientInvocationReportingType>? = nil,
+            updateContinuousBackupsAsync: UpdateContinuousBackupsAsyncType<ClientInvocationReportingType>? = nil,
+            updateContinuousBackupsSync: UpdateContinuousBackupsSyncType<ClientInvocationReportingType>? = nil,
+            updateContributorInsightsAsync: UpdateContributorInsightsAsyncType<ClientInvocationReportingType>? = nil,
+            updateContributorInsightsSync: UpdateContributorInsightsSyncType<ClientInvocationReportingType>? = nil,
+            updateGlobalTableAsync: UpdateGlobalTableAsyncType<ClientInvocationReportingType>? = nil,
+            updateGlobalTableSync: UpdateGlobalTableSyncType<ClientInvocationReportingType>? = nil,
+            updateGlobalTableSettingsAsync: UpdateGlobalTableSettingsAsyncType<ClientInvocationReportingType>? = nil,
+            updateGlobalTableSettingsSync: UpdateGlobalTableSettingsSyncType<ClientInvocationReportingType>? = nil,
+            updateItemAsync: UpdateItemAsyncType<ClientInvocationReportingType>? = nil,
+            updateItemSync: UpdateItemSyncType<ClientInvocationReportingType>? = nil,
+            updateTableAsync: UpdateTableAsyncType<ClientInvocationReportingType>? = nil,
+            updateTableSync: UpdateTableSyncType<ClientInvocationReportingType>? = nil,
+            updateTableReplicaAutoScalingAsync: UpdateTableReplicaAutoScalingAsyncType<ClientInvocationReportingType>? = nil,
+            updateTableReplicaAutoScalingSync: UpdateTableReplicaAutoScalingSyncType<ClientInvocationReportingType>? = nil,
+            updateTimeToLiveAsync: UpdateTimeToLiveAsyncType<ClientInvocationReportingType>? = nil,
+            updateTimeToLiveSync: UpdateTimeToLiveSyncType<ClientInvocationReportingType>? = nil) {
         self.batchGetItemAsyncOverride = batchGetItemAsync
         self.batchGetItemSyncOverride = batchGetItemSync
         self.batchWriteItemAsyncOverride = batchWriteItemAsync
@@ -292,12 +292,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func batchGetItemAsync(
+    public func batchGetItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.BatchGetItemInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, HTTPClientError>) -> ()) throws {
-        if let batchGetItemAsyncOverride = batchGetItemAsyncOverride {
-            return try batchGetItemAsyncOverride(input, reporting, completion)
+        if let batchGetItemAsyncOverrideNonOptional = batchGetItemAsyncOverride {
+            if let batchGetItemAsyncOverrideTyped = batchGetItemAsyncOverrideNonOptional
+                    as? BatchGetItemAsyncType<InvocationReportingType> {
+                return try batchGetItemAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = BatchGetItemOutput.__default
@@ -314,11 +319,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func batchGetItemSync(
+    public func batchGetItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.BatchGetItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.BatchGetItemOutput {
-        if let batchGetItemSyncOverride = batchGetItemSyncOverride {
-            return try batchGetItemSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.BatchGetItemOutput {
+        if let batchGetItemSyncOverrideNonOptional = batchGetItemSyncOverride {
+            if let batchGetItemSyncOverrideTyped = batchGetItemSyncOverrideNonOptional
+                    as? BatchGetItemSyncType<InvocationReportingType> {
+                return try batchGetItemSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return BatchGetItemOutput.__default
@@ -334,12 +344,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func batchWriteItemAsync(
+    public func batchWriteItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.BatchWriteItemInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, HTTPClientError>) -> ()) throws {
-        if let batchWriteItemAsyncOverride = batchWriteItemAsyncOverride {
-            return try batchWriteItemAsyncOverride(input, reporting, completion)
+        if let batchWriteItemAsyncOverrideNonOptional = batchWriteItemAsyncOverride {
+            if let batchWriteItemAsyncOverrideTyped = batchWriteItemAsyncOverrideNonOptional
+                    as? BatchWriteItemAsyncType<InvocationReportingType> {
+                return try batchWriteItemAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = BatchWriteItemOutput.__default
@@ -356,11 +371,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func batchWriteItemSync(
+    public func batchWriteItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.BatchWriteItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.BatchWriteItemOutput {
-        if let batchWriteItemSyncOverride = batchWriteItemSyncOverride {
-            return try batchWriteItemSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.BatchWriteItemOutput {
+        if let batchWriteItemSyncOverrideNonOptional = batchWriteItemSyncOverride {
+            if let batchWriteItemSyncOverrideTyped = batchWriteItemSyncOverrideNonOptional
+                    as? BatchWriteItemSyncType<InvocationReportingType> {
+                return try batchWriteItemSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return BatchWriteItemOutput.__default
@@ -376,12 +396,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupInUse, continuousBackupsUnavailable, internalServer, limitExceeded, tableInUse, tableNotFound.
      */
-    public func createBackupAsync(
+    public func createBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.CreateBackupInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, HTTPClientError>) -> ()) throws {
-        if let createBackupAsyncOverride = createBackupAsyncOverride {
-            return try createBackupAsyncOverride(input, reporting, completion)
+        if let createBackupAsyncOverrideNonOptional = createBackupAsyncOverride {
+            if let createBackupAsyncOverrideTyped = createBackupAsyncOverrideNonOptional
+                    as? CreateBackupAsyncType<InvocationReportingType> {
+                return try createBackupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateBackupOutput.__default
@@ -398,11 +423,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupInUse, continuousBackupsUnavailable, internalServer, limitExceeded, tableInUse, tableNotFound.
      */
-    public func createBackupSync(
+    public func createBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.CreateBackupInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.CreateBackupOutput {
-        if let createBackupSyncOverride = createBackupSyncOverride {
-            return try createBackupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.CreateBackupOutput {
+        if let createBackupSyncOverrideNonOptional = createBackupSyncOverride {
+            if let createBackupSyncOverrideTyped = createBackupSyncOverrideNonOptional
+                    as? CreateBackupSyncType<InvocationReportingType> {
+                return try createBackupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateBackupOutput.__default
@@ -418,12 +448,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableAlreadyExists, internalServer, limitExceeded, tableNotFound.
      */
-    public func createGlobalTableAsync(
+    public func createGlobalTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.CreateGlobalTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, HTTPClientError>) -> ()) throws {
-        if let createGlobalTableAsyncOverride = createGlobalTableAsyncOverride {
-            return try createGlobalTableAsyncOverride(input, reporting, completion)
+        if let createGlobalTableAsyncOverrideNonOptional = createGlobalTableAsyncOverride {
+            if let createGlobalTableAsyncOverrideTyped = createGlobalTableAsyncOverrideNonOptional
+                    as? CreateGlobalTableAsyncType<InvocationReportingType> {
+                return try createGlobalTableAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateGlobalTableOutput.__default
@@ -440,11 +475,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableAlreadyExists, internalServer, limitExceeded, tableNotFound.
      */
-    public func createGlobalTableSync(
+    public func createGlobalTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.CreateGlobalTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.CreateGlobalTableOutput {
-        if let createGlobalTableSyncOverride = createGlobalTableSyncOverride {
-            return try createGlobalTableSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.CreateGlobalTableOutput {
+        if let createGlobalTableSyncOverrideNonOptional = createGlobalTableSyncOverride {
+            if let createGlobalTableSyncOverrideTyped = createGlobalTableSyncOverrideNonOptional
+                    as? CreateGlobalTableSyncType<InvocationReportingType> {
+                return try createGlobalTableSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateGlobalTableOutput.__default
@@ -460,12 +500,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse.
      */
-    public func createTableAsync(
+    public func createTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.CreateTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.CreateTableOutput, HTTPClientError>) -> ()) throws {
-        if let createTableAsyncOverride = createTableAsyncOverride {
-            return try createTableAsyncOverride(input, reporting, completion)
+        if let createTableAsyncOverrideNonOptional = createTableAsyncOverride {
+            if let createTableAsyncOverrideTyped = createTableAsyncOverrideNonOptional
+                    as? CreateTableAsyncType<InvocationReportingType> {
+                return try createTableAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = CreateTableOutput.__default
@@ -482,11 +527,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse.
      */
-    public func createTableSync(
+    public func createTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.CreateTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.CreateTableOutput {
-        if let createTableSyncOverride = createTableSyncOverride {
-            return try createTableSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.CreateTableOutput {
+        if let createTableSyncOverrideNonOptional = createTableSyncOverride {
+            if let createTableSyncOverrideTyped = createTableSyncOverrideNonOptional
+                    as? CreateTableSyncType<InvocationReportingType> {
+                return try createTableSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return CreateTableOutput.__default
@@ -502,12 +552,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupInUse, backupNotFound, internalServer, limitExceeded.
      */
-    public func deleteBackupAsync(
+    public func deleteBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DeleteBackupInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, HTTPClientError>) -> ()) throws {
-        if let deleteBackupAsyncOverride = deleteBackupAsyncOverride {
-            return try deleteBackupAsyncOverride(input, reporting, completion)
+        if let deleteBackupAsyncOverrideNonOptional = deleteBackupAsyncOverride {
+            if let deleteBackupAsyncOverrideTyped = deleteBackupAsyncOverrideNonOptional
+                    as? DeleteBackupAsyncType<InvocationReportingType> {
+                return try deleteBackupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteBackupOutput.__default
@@ -524,11 +579,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupInUse, backupNotFound, internalServer, limitExceeded.
      */
-    public func deleteBackupSync(
+    public func deleteBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DeleteBackupInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DeleteBackupOutput {
-        if let deleteBackupSyncOverride = deleteBackupSyncOverride {
-            return try deleteBackupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DeleteBackupOutput {
+        if let deleteBackupSyncOverrideNonOptional = deleteBackupSyncOverride {
+            if let deleteBackupSyncOverrideTyped = deleteBackupSyncOverrideNonOptional
+                    as? DeleteBackupSyncType<InvocationReportingType> {
+                return try deleteBackupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteBackupOutput.__default
@@ -544,12 +604,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func deleteItemAsync(
+    public func deleteItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DeleteItemInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, HTTPClientError>) -> ()) throws {
-        if let deleteItemAsyncOverride = deleteItemAsyncOverride {
-            return try deleteItemAsyncOverride(input, reporting, completion)
+        if let deleteItemAsyncOverrideNonOptional = deleteItemAsyncOverride {
+            if let deleteItemAsyncOverrideTyped = deleteItemAsyncOverrideNonOptional
+                    as? DeleteItemAsyncType<InvocationReportingType> {
+                return try deleteItemAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteItemOutput.__default
@@ -566,11 +631,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func deleteItemSync(
+    public func deleteItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DeleteItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DeleteItemOutput {
-        if let deleteItemSyncOverride = deleteItemSyncOverride {
-            return try deleteItemSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DeleteItemOutput {
+        if let deleteItemSyncOverrideNonOptional = deleteItemSyncOverride {
+            if let deleteItemSyncOverrideTyped = deleteItemSyncOverrideNonOptional
+                    as? DeleteItemSyncType<InvocationReportingType> {
+                return try deleteItemSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteItemOutput.__default
@@ -586,12 +656,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func deleteTableAsync(
+    public func deleteTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DeleteTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, HTTPClientError>) -> ()) throws {
-        if let deleteTableAsyncOverride = deleteTableAsyncOverride {
-            return try deleteTableAsyncOverride(input, reporting, completion)
+        if let deleteTableAsyncOverrideNonOptional = deleteTableAsyncOverride {
+            if let deleteTableAsyncOverrideTyped = deleteTableAsyncOverrideNonOptional
+                    as? DeleteTableAsyncType<InvocationReportingType> {
+                return try deleteTableAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DeleteTableOutput.__default
@@ -608,11 +683,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func deleteTableSync(
+    public func deleteTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DeleteTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DeleteTableOutput {
-        if let deleteTableSyncOverride = deleteTableSyncOverride {
-            return try deleteTableSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DeleteTableOutput {
+        if let deleteTableSyncOverrideNonOptional = deleteTableSyncOverride {
+            if let deleteTableSyncOverrideTyped = deleteTableSyncOverrideNonOptional
+                    as? DeleteTableSyncType<InvocationReportingType> {
+                return try deleteTableSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DeleteTableOutput.__default
@@ -628,12 +708,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupNotFound, internalServer.
      */
-    public func describeBackupAsync(
+    public func describeBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeBackupInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, HTTPClientError>) -> ()) throws {
-        if let describeBackupAsyncOverride = describeBackupAsyncOverride {
-            return try describeBackupAsyncOverride(input, reporting, completion)
+        if let describeBackupAsyncOverrideNonOptional = describeBackupAsyncOverride {
+            if let describeBackupAsyncOverrideTyped = describeBackupAsyncOverrideNonOptional
+                    as? DescribeBackupAsyncType<InvocationReportingType> {
+                return try describeBackupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeBackupOutput.__default
@@ -650,11 +735,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupNotFound, internalServer.
      */
-    public func describeBackupSync(
+    public func describeBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeBackupInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeBackupOutput {
-        if let describeBackupSyncOverride = describeBackupSyncOverride {
-            return try describeBackupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeBackupOutput {
+        if let describeBackupSyncOverrideNonOptional = describeBackupSyncOverride {
+            if let describeBackupSyncOverrideTyped = describeBackupSyncOverrideNonOptional
+                    as? DescribeBackupSyncType<InvocationReportingType> {
+                return try describeBackupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeBackupOutput.__default
@@ -670,12 +760,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, tableNotFound.
      */
-    public func describeContinuousBackupsAsync(
+    public func describeContinuousBackupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeContinuousBackupsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, HTTPClientError>) -> ()) throws {
-        if let describeContinuousBackupsAsyncOverride = describeContinuousBackupsAsyncOverride {
-            return try describeContinuousBackupsAsyncOverride(input, reporting, completion)
+        if let describeContinuousBackupsAsyncOverrideNonOptional = describeContinuousBackupsAsyncOverride {
+            if let describeContinuousBackupsAsyncOverrideTyped = describeContinuousBackupsAsyncOverrideNonOptional
+                    as? DescribeContinuousBackupsAsyncType<InvocationReportingType> {
+                return try describeContinuousBackupsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeContinuousBackupsOutput.__default
@@ -692,11 +787,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, tableNotFound.
      */
-    public func describeContinuousBackupsSync(
+    public func describeContinuousBackupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeContinuousBackupsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeContinuousBackupsOutput {
-        if let describeContinuousBackupsSyncOverride = describeContinuousBackupsSyncOverride {
-            return try describeContinuousBackupsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeContinuousBackupsOutput {
+        if let describeContinuousBackupsSyncOverrideNonOptional = describeContinuousBackupsSyncOverride {
+            if let describeContinuousBackupsSyncOverrideTyped = describeContinuousBackupsSyncOverrideNonOptional
+                    as? DescribeContinuousBackupsSyncType<InvocationReportingType> {
+                return try describeContinuousBackupsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeContinuousBackupsOutput.__default
@@ -712,12 +812,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func describeContributorInsightsAsync(
+    public func describeContributorInsightsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeContributorInsightsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) -> ()) throws {
-        if let describeContributorInsightsAsyncOverride = describeContributorInsightsAsyncOverride {
-            return try describeContributorInsightsAsyncOverride(input, reporting, completion)
+        if let describeContributorInsightsAsyncOverrideNonOptional = describeContributorInsightsAsyncOverride {
+            if let describeContributorInsightsAsyncOverrideTyped = describeContributorInsightsAsyncOverrideNonOptional
+                    as? DescribeContributorInsightsAsyncType<InvocationReportingType> {
+                return try describeContributorInsightsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeContributorInsightsOutput.__default
@@ -734,11 +839,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func describeContributorInsightsSync(
+    public func describeContributorInsightsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeContributorInsightsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeContributorInsightsOutput {
-        if let describeContributorInsightsSyncOverride = describeContributorInsightsSyncOverride {
-            return try describeContributorInsightsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeContributorInsightsOutput {
+        if let describeContributorInsightsSyncOverrideNonOptional = describeContributorInsightsSyncOverride {
+            if let describeContributorInsightsSyncOverrideTyped = describeContributorInsightsSyncOverrideNonOptional
+                    as? DescribeContributorInsightsSyncType<InvocationReportingType> {
+                return try describeContributorInsightsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeContributorInsightsOutput.__default
@@ -753,12 +863,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            callback when the operation is complete. The DescribeEndpointsResponse
            object will be validated before being returned to caller.
      */
-    public func describeEndpointsAsync(
+    public func describeEndpointsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeEndpointsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, HTTPClientError>) -> ()) throws {
-        if let describeEndpointsAsyncOverride = describeEndpointsAsyncOverride {
-            return try describeEndpointsAsyncOverride(input, reporting, completion)
+        if let describeEndpointsAsyncOverrideNonOptional = describeEndpointsAsyncOverride {
+            if let describeEndpointsAsyncOverrideTyped = describeEndpointsAsyncOverrideNonOptional
+                    as? DescribeEndpointsAsyncType<InvocationReportingType> {
+                return try describeEndpointsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeEndpointsResponse.__default
@@ -774,11 +889,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      - Returns: The DescribeEndpointsResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEndpointsSync(
+    public func describeEndpointsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeEndpointsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeEndpointsResponse {
-        if let describeEndpointsSyncOverride = describeEndpointsSyncOverride {
-            return try describeEndpointsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeEndpointsResponse {
+        if let describeEndpointsSyncOverrideNonOptional = describeEndpointsSyncOverride {
+            if let describeEndpointsSyncOverrideTyped = describeEndpointsSyncOverrideNonOptional
+                    as? DescribeEndpointsSyncType<InvocationReportingType> {
+                return try describeEndpointsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeEndpointsResponse.__default
@@ -794,12 +914,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, internalServer.
      */
-    public func describeGlobalTableAsync(
+    public func describeGlobalTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeGlobalTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, HTTPClientError>) -> ()) throws {
-        if let describeGlobalTableAsyncOverride = describeGlobalTableAsyncOverride {
-            return try describeGlobalTableAsyncOverride(input, reporting, completion)
+        if let describeGlobalTableAsyncOverrideNonOptional = describeGlobalTableAsyncOverride {
+            if let describeGlobalTableAsyncOverrideTyped = describeGlobalTableAsyncOverrideNonOptional
+                    as? DescribeGlobalTableAsyncType<InvocationReportingType> {
+                return try describeGlobalTableAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeGlobalTableOutput.__default
@@ -816,11 +941,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, internalServer.
      */
-    public func describeGlobalTableSync(
+    public func describeGlobalTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeGlobalTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeGlobalTableOutput {
-        if let describeGlobalTableSyncOverride = describeGlobalTableSyncOverride {
-            return try describeGlobalTableSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeGlobalTableOutput {
+        if let describeGlobalTableSyncOverrideNonOptional = describeGlobalTableSyncOverride {
+            if let describeGlobalTableSyncOverrideTyped = describeGlobalTableSyncOverrideNonOptional
+                    as? DescribeGlobalTableSyncType<InvocationReportingType> {
+                return try describeGlobalTableSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeGlobalTableOutput.__default
@@ -836,12 +966,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, internalServer.
      */
-    public func describeGlobalTableSettingsAsync(
+    public func describeGlobalTableSettingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeGlobalTableSettingsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws {
-        if let describeGlobalTableSettingsAsyncOverride = describeGlobalTableSettingsAsyncOverride {
-            return try describeGlobalTableSettingsAsyncOverride(input, reporting, completion)
+        if let describeGlobalTableSettingsAsyncOverrideNonOptional = describeGlobalTableSettingsAsyncOverride {
+            if let describeGlobalTableSettingsAsyncOverrideTyped = describeGlobalTableSettingsAsyncOverrideNonOptional
+                    as? DescribeGlobalTableSettingsAsyncType<InvocationReportingType> {
+                return try describeGlobalTableSettingsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeGlobalTableSettingsOutput.__default
@@ -858,11 +993,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, internalServer.
      */
-    public func describeGlobalTableSettingsSync(
+    public func describeGlobalTableSettingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeGlobalTableSettingsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput {
-        if let describeGlobalTableSettingsSyncOverride = describeGlobalTableSettingsSyncOverride {
-            return try describeGlobalTableSettingsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput {
+        if let describeGlobalTableSettingsSyncOverrideNonOptional = describeGlobalTableSettingsSyncOverride {
+            if let describeGlobalTableSettingsSyncOverrideTyped = describeGlobalTableSettingsSyncOverrideNonOptional
+                    as? DescribeGlobalTableSettingsSyncType<InvocationReportingType> {
+                return try describeGlobalTableSettingsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeGlobalTableSettingsOutput.__default
@@ -878,12 +1018,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    public func describeLimitsAsync(
+    public func describeLimitsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeLimitsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, HTTPClientError>) -> ()) throws {
-        if let describeLimitsAsyncOverride = describeLimitsAsyncOverride {
-            return try describeLimitsAsyncOverride(input, reporting, completion)
+        if let describeLimitsAsyncOverrideNonOptional = describeLimitsAsyncOverride {
+            if let describeLimitsAsyncOverrideTyped = describeLimitsAsyncOverrideNonOptional
+                    as? DescribeLimitsAsyncType<InvocationReportingType> {
+                return try describeLimitsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeLimitsOutput.__default
@@ -900,11 +1045,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    public func describeLimitsSync(
+    public func describeLimitsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeLimitsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeLimitsOutput {
-        if let describeLimitsSyncOverride = describeLimitsSyncOverride {
-            return try describeLimitsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeLimitsOutput {
+        if let describeLimitsSyncOverrideNonOptional = describeLimitsSyncOverride {
+            if let describeLimitsSyncOverrideTyped = describeLimitsSyncOverrideNonOptional
+                    as? DescribeLimitsSyncType<InvocationReportingType> {
+                return try describeLimitsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeLimitsOutput.__default
@@ -920,12 +1070,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func describeTableAsync(
+    public func describeTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, HTTPClientError>) -> ()) throws {
-        if let describeTableAsyncOverride = describeTableAsyncOverride {
-            return try describeTableAsyncOverride(input, reporting, completion)
+        if let describeTableAsyncOverrideNonOptional = describeTableAsyncOverride {
+            if let describeTableAsyncOverrideTyped = describeTableAsyncOverrideNonOptional
+                    as? DescribeTableAsyncType<InvocationReportingType> {
+                return try describeTableAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeTableOutput.__default
@@ -942,11 +1097,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func describeTableSync(
+    public func describeTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTableOutput {
-        if let describeTableSyncOverride = describeTableSyncOverride {
-            return try describeTableSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeTableOutput {
+        if let describeTableSyncOverrideNonOptional = describeTableSyncOverride {
+            if let describeTableSyncOverrideTyped = describeTableSyncOverrideNonOptional
+                    as? DescribeTableSyncType<InvocationReportingType> {
+                return try describeTableSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeTableOutput.__default
@@ -962,12 +1122,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func describeTableReplicaAutoScalingAsync(
+    public func describeTableReplicaAutoScalingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
-        if let describeTableReplicaAutoScalingAsyncOverride = describeTableReplicaAutoScalingAsyncOverride {
-            return try describeTableReplicaAutoScalingAsyncOverride(input, reporting, completion)
+        if let describeTableReplicaAutoScalingAsyncOverrideNonOptional = describeTableReplicaAutoScalingAsyncOverride {
+            if let describeTableReplicaAutoScalingAsyncOverrideTyped = describeTableReplicaAutoScalingAsyncOverrideNonOptional
+                    as? DescribeTableReplicaAutoScalingAsyncType<InvocationReportingType> {
+                return try describeTableReplicaAutoScalingAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeTableReplicaAutoScalingOutput.__default
@@ -984,11 +1149,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func describeTableReplicaAutoScalingSync(
+    public func describeTableReplicaAutoScalingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeTableReplicaAutoScalingInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
-        if let describeTableReplicaAutoScalingSyncOverride = describeTableReplicaAutoScalingSyncOverride {
-            return try describeTableReplicaAutoScalingSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
+        if let describeTableReplicaAutoScalingSyncOverrideNonOptional = describeTableReplicaAutoScalingSyncOverride {
+            if let describeTableReplicaAutoScalingSyncOverrideTyped = describeTableReplicaAutoScalingSyncOverrideNonOptional
+                    as? DescribeTableReplicaAutoScalingSyncType<InvocationReportingType> {
+                return try describeTableReplicaAutoScalingSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeTableReplicaAutoScalingOutput.__default
@@ -1004,12 +1174,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func describeTimeToLiveAsync(
+    public func describeTimeToLiveAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeTimeToLiveInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, HTTPClientError>) -> ()) throws {
-        if let describeTimeToLiveAsyncOverride = describeTimeToLiveAsyncOverride {
-            return try describeTimeToLiveAsyncOverride(input, reporting, completion)
+        if let describeTimeToLiveAsyncOverrideNonOptional = describeTimeToLiveAsyncOverride {
+            if let describeTimeToLiveAsyncOverrideTyped = describeTimeToLiveAsyncOverrideNonOptional
+                    as? DescribeTimeToLiveAsyncType<InvocationReportingType> {
+                return try describeTimeToLiveAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = DescribeTimeToLiveOutput.__default
@@ -1026,11 +1201,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func describeTimeToLiveSync(
+    public func describeTimeToLiveSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.DescribeTimeToLiveInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTimeToLiveOutput {
-        if let describeTimeToLiveSyncOverride = describeTimeToLiveSyncOverride {
-            return try describeTimeToLiveSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeTimeToLiveOutput {
+        if let describeTimeToLiveSyncOverrideNonOptional = describeTimeToLiveSyncOverride {
+            if let describeTimeToLiveSyncOverrideTyped = describeTimeToLiveSyncOverrideNonOptional
+                    as? DescribeTimeToLiveSyncType<InvocationReportingType> {
+                return try describeTimeToLiveSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return DescribeTimeToLiveOutput.__default
@@ -1046,12 +1226,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func getItemAsync(
+    public func getItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.GetItemInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.GetItemOutput, HTTPClientError>) -> ()) throws {
-        if let getItemAsyncOverride = getItemAsyncOverride {
-            return try getItemAsyncOverride(input, reporting, completion)
+        if let getItemAsyncOverrideNonOptional = getItemAsyncOverride {
+            if let getItemAsyncOverrideTyped = getItemAsyncOverrideNonOptional
+                    as? GetItemAsyncType<InvocationReportingType> {
+                return try getItemAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = GetItemOutput.__default
@@ -1068,11 +1253,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func getItemSync(
+    public func getItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.GetItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.GetItemOutput {
-        if let getItemSyncOverride = getItemSyncOverride {
-            return try getItemSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.GetItemOutput {
+        if let getItemSyncOverrideNonOptional = getItemSyncOverride {
+            if let getItemSyncOverrideTyped = getItemSyncOverrideNonOptional
+                    as? GetItemSyncType<InvocationReportingType> {
+                return try getItemSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return GetItemOutput.__default
@@ -1088,12 +1278,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    public func listBackupsAsync(
+    public func listBackupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListBackupsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, HTTPClientError>) -> ()) throws {
-        if let listBackupsAsyncOverride = listBackupsAsyncOverride {
-            return try listBackupsAsyncOverride(input, reporting, completion)
+        if let listBackupsAsyncOverrideNonOptional = listBackupsAsyncOverride {
+            if let listBackupsAsyncOverrideTyped = listBackupsAsyncOverrideNonOptional
+                    as? ListBackupsAsyncType<InvocationReportingType> {
+                return try listBackupsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListBackupsOutput.__default
@@ -1110,11 +1305,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    public func listBackupsSync(
+    public func listBackupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListBackupsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListBackupsOutput {
-        if let listBackupsSyncOverride = listBackupsSyncOverride {
-            return try listBackupsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.ListBackupsOutput {
+        if let listBackupsSyncOverrideNonOptional = listBackupsSyncOverride {
+            if let listBackupsSyncOverrideTyped = listBackupsSyncOverrideNonOptional
+                    as? ListBackupsSyncType<InvocationReportingType> {
+                return try listBackupsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListBackupsOutput.__default
@@ -1130,12 +1330,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func listContributorInsightsAsync(
+    public func listContributorInsightsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListContributorInsightsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) -> ()) throws {
-        if let listContributorInsightsAsyncOverride = listContributorInsightsAsyncOverride {
-            return try listContributorInsightsAsyncOverride(input, reporting, completion)
+        if let listContributorInsightsAsyncOverrideNonOptional = listContributorInsightsAsyncOverride {
+            if let listContributorInsightsAsyncOverrideTyped = listContributorInsightsAsyncOverrideNonOptional
+                    as? ListContributorInsightsAsyncType<InvocationReportingType> {
+                return try listContributorInsightsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListContributorInsightsOutput.__default
@@ -1152,11 +1357,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func listContributorInsightsSync(
+    public func listContributorInsightsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListContributorInsightsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListContributorInsightsOutput {
-        if let listContributorInsightsSyncOverride = listContributorInsightsSyncOverride {
-            return try listContributorInsightsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.ListContributorInsightsOutput {
+        if let listContributorInsightsSyncOverrideNonOptional = listContributorInsightsSyncOverride {
+            if let listContributorInsightsSyncOverrideTyped = listContributorInsightsSyncOverrideNonOptional
+                    as? ListContributorInsightsSyncType<InvocationReportingType> {
+                return try listContributorInsightsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListContributorInsightsOutput.__default
@@ -1172,12 +1382,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    public func listGlobalTablesAsync(
+    public func listGlobalTablesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListGlobalTablesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, HTTPClientError>) -> ()) throws {
-        if let listGlobalTablesAsyncOverride = listGlobalTablesAsyncOverride {
-            return try listGlobalTablesAsyncOverride(input, reporting, completion)
+        if let listGlobalTablesAsyncOverrideNonOptional = listGlobalTablesAsyncOverride {
+            if let listGlobalTablesAsyncOverrideTyped = listGlobalTablesAsyncOverrideNonOptional
+                    as? ListGlobalTablesAsyncType<InvocationReportingType> {
+                return try listGlobalTablesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListGlobalTablesOutput.__default
@@ -1194,11 +1409,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    public func listGlobalTablesSync(
+    public func listGlobalTablesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListGlobalTablesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListGlobalTablesOutput {
-        if let listGlobalTablesSyncOverride = listGlobalTablesSyncOverride {
-            return try listGlobalTablesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.ListGlobalTablesOutput {
+        if let listGlobalTablesSyncOverrideNonOptional = listGlobalTablesSyncOverride {
+            if let listGlobalTablesSyncOverrideTyped = listGlobalTablesSyncOverrideNonOptional
+                    as? ListGlobalTablesSyncType<InvocationReportingType> {
+                return try listGlobalTablesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListGlobalTablesOutput.__default
@@ -1214,12 +1434,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    public func listTablesAsync(
+    public func listTablesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListTablesInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListTablesOutput, HTTPClientError>) -> ()) throws {
-        if let listTablesAsyncOverride = listTablesAsyncOverride {
-            return try listTablesAsyncOverride(input, reporting, completion)
+        if let listTablesAsyncOverrideNonOptional = listTablesAsyncOverride {
+            if let listTablesAsyncOverrideTyped = listTablesAsyncOverrideNonOptional
+                    as? ListTablesAsyncType<InvocationReportingType> {
+                return try listTablesAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListTablesOutput.__default
@@ -1236,11 +1461,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    public func listTablesSync(
+    public func listTablesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListTablesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListTablesOutput {
-        if let listTablesSyncOverride = listTablesSyncOverride {
-            return try listTablesSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.ListTablesOutput {
+        if let listTablesSyncOverrideNonOptional = listTablesSyncOverride {
+            if let listTablesSyncOverrideTyped = listTablesSyncOverrideNonOptional
+                    as? ListTablesSyncType<InvocationReportingType> {
+                return try listTablesSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListTablesOutput.__default
@@ -1256,12 +1486,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func listTagsOfResourceAsync(
+    public func listTagsOfResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListTagsOfResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, HTTPClientError>) -> ()) throws {
-        if let listTagsOfResourceAsyncOverride = listTagsOfResourceAsyncOverride {
-            return try listTagsOfResourceAsyncOverride(input, reporting, completion)
+        if let listTagsOfResourceAsyncOverrideNonOptional = listTagsOfResourceAsyncOverride {
+            if let listTagsOfResourceAsyncOverrideTyped = listTagsOfResourceAsyncOverrideNonOptional
+                    as? ListTagsOfResourceAsyncType<InvocationReportingType> {
+                return try listTagsOfResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ListTagsOfResourceOutput.__default
@@ -1278,11 +1513,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func listTagsOfResourceSync(
+    public func listTagsOfResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ListTagsOfResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListTagsOfResourceOutput {
-        if let listTagsOfResourceSyncOverride = listTagsOfResourceSyncOverride {
-            return try listTagsOfResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.ListTagsOfResourceOutput {
+        if let listTagsOfResourceSyncOverrideNonOptional = listTagsOfResourceSyncOverride {
+            if let listTagsOfResourceSyncOverrideTyped = listTagsOfResourceSyncOverrideNonOptional
+                    as? ListTagsOfResourceSyncType<InvocationReportingType> {
+                return try listTagsOfResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ListTagsOfResourceOutput.__default
@@ -1298,12 +1538,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func putItemAsync(
+    public func putItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.PutItemInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.PutItemOutput, HTTPClientError>) -> ()) throws {
-        if let putItemAsyncOverride = putItemAsyncOverride {
-            return try putItemAsyncOverride(input, reporting, completion)
+        if let putItemAsyncOverrideNonOptional = putItemAsyncOverride {
+            if let putItemAsyncOverrideTyped = putItemAsyncOverrideNonOptional
+                    as? PutItemAsyncType<InvocationReportingType> {
+                return try putItemAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = PutItemOutput.__default
@@ -1320,11 +1565,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func putItemSync(
+    public func putItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.PutItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.PutItemOutput {
-        if let putItemSyncOverride = putItemSyncOverride {
-            return try putItemSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.PutItemOutput {
+        if let putItemSyncOverrideNonOptional = putItemSyncOverride {
+            if let putItemSyncOverrideTyped = putItemSyncOverrideNonOptional
+                    as? PutItemSyncType<InvocationReportingType> {
+                return try putItemSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return PutItemOutput.__default
@@ -1340,12 +1590,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func queryAsync(
+    public func queryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.QueryInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.QueryOutput, HTTPClientError>) -> ()) throws {
-        if let queryAsyncOverride = queryAsyncOverride {
-            return try queryAsyncOverride(input, reporting, completion)
+        if let queryAsyncOverrideNonOptional = queryAsyncOverride {
+            if let queryAsyncOverrideTyped = queryAsyncOverrideNonOptional
+                    as? QueryAsyncType<InvocationReportingType> {
+                return try queryAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = QueryOutput.__default
@@ -1362,11 +1617,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func querySync(
+    public func querySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.QueryInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.QueryOutput {
-        if let querySyncOverride = querySyncOverride {
-            return try querySyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.QueryOutput {
+        if let querySyncOverrideNonOptional = querySyncOverride {
+            if let querySyncOverrideTyped = querySyncOverrideNonOptional
+                    as? QuerySyncType<InvocationReportingType> {
+                return try querySyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return QueryOutput.__default
@@ -1382,12 +1642,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupInUse, backupNotFound, internalServer, limitExceeded, tableAlreadyExists, tableInUse.
      */
-    public func restoreTableFromBackupAsync(
+    public func restoreTableFromBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.RestoreTableFromBackupInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, HTTPClientError>) -> ()) throws {
-        if let restoreTableFromBackupAsyncOverride = restoreTableFromBackupAsyncOverride {
-            return try restoreTableFromBackupAsyncOverride(input, reporting, completion)
+        if let restoreTableFromBackupAsyncOverrideNonOptional = restoreTableFromBackupAsyncOverride {
+            if let restoreTableFromBackupAsyncOverrideTyped = restoreTableFromBackupAsyncOverrideNonOptional
+                    as? RestoreTableFromBackupAsyncType<InvocationReportingType> {
+                return try restoreTableFromBackupAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RestoreTableFromBackupOutput.__default
@@ -1404,11 +1669,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupInUse, backupNotFound, internalServer, limitExceeded, tableAlreadyExists, tableInUse.
      */
-    public func restoreTableFromBackupSync(
+    public func restoreTableFromBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.RestoreTableFromBackupInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.RestoreTableFromBackupOutput {
-        if let restoreTableFromBackupSyncOverride = restoreTableFromBackupSyncOverride {
-            return try restoreTableFromBackupSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.RestoreTableFromBackupOutput {
+        if let restoreTableFromBackupSyncOverrideNonOptional = restoreTableFromBackupSyncOverride {
+            if let restoreTableFromBackupSyncOverrideTyped = restoreTableFromBackupSyncOverrideNonOptional
+                    as? RestoreTableFromBackupSyncType<InvocationReportingType> {
+                return try restoreTableFromBackupSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RestoreTableFromBackupOutput.__default
@@ -1424,12 +1694,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, invalidRestoreTime, limitExceeded, pointInTimeRecoveryUnavailable, tableAlreadyExists, tableInUse, tableNotFound.
      */
-    public func restoreTableToPointInTimeAsync(
+    public func restoreTableToPointInTimeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.RestoreTableToPointInTimeInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, HTTPClientError>) -> ()) throws {
-        if let restoreTableToPointInTimeAsyncOverride = restoreTableToPointInTimeAsyncOverride {
-            return try restoreTableToPointInTimeAsyncOverride(input, reporting, completion)
+        if let restoreTableToPointInTimeAsyncOverrideNonOptional = restoreTableToPointInTimeAsyncOverride {
+            if let restoreTableToPointInTimeAsyncOverrideTyped = restoreTableToPointInTimeAsyncOverrideNonOptional
+                    as? RestoreTableToPointInTimeAsyncType<InvocationReportingType> {
+                return try restoreTableToPointInTimeAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = RestoreTableToPointInTimeOutput.__default
@@ -1446,11 +1721,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, invalidRestoreTime, limitExceeded, pointInTimeRecoveryUnavailable, tableAlreadyExists, tableInUse, tableNotFound.
      */
-    public func restoreTableToPointInTimeSync(
+    public func restoreTableToPointInTimeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.RestoreTableToPointInTimeInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput {
-        if let restoreTableToPointInTimeSyncOverride = restoreTableToPointInTimeSyncOverride {
-            return try restoreTableToPointInTimeSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput {
+        if let restoreTableToPointInTimeSyncOverrideNonOptional = restoreTableToPointInTimeSyncOverride {
+            if let restoreTableToPointInTimeSyncOverrideTyped = restoreTableToPointInTimeSyncOverrideNonOptional
+                    as? RestoreTableToPointInTimeSyncType<InvocationReportingType> {
+                return try restoreTableToPointInTimeSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return RestoreTableToPointInTimeOutput.__default
@@ -1466,12 +1746,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func scanAsync(
+    public func scanAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ScanInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ScanOutput, HTTPClientError>) -> ()) throws {
-        if let scanAsyncOverride = scanAsyncOverride {
-            return try scanAsyncOverride(input, reporting, completion)
+        if let scanAsyncOverrideNonOptional = scanAsyncOverride {
+            if let scanAsyncOverrideTyped = scanAsyncOverrideNonOptional
+                    as? ScanAsyncType<InvocationReportingType> {
+                return try scanAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = ScanOutput.__default
@@ -1488,11 +1773,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    public func scanSync(
+    public func scanSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.ScanInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ScanOutput {
-        if let scanSyncOverride = scanSyncOverride {
-            return try scanSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.ScanOutput {
+        if let scanSyncOverrideNonOptional = scanSyncOverride {
+            if let scanSyncOverrideTyped = scanSyncOverrideNonOptional
+                    as? ScanSyncType<InvocationReportingType> {
+                return try scanSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return ScanOutput.__default
@@ -1507,12 +1797,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func tagResourceAsync(
+    public func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.TagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let tagResourceAsyncOverride = tagResourceAsyncOverride {
-            return try tagResourceAsyncOverride(input, reporting, completion)
+        if let tagResourceAsyncOverrideNonOptional = tagResourceAsyncOverride {
+            if let tagResourceAsyncOverrideTyped = tagResourceAsyncOverrideNonOptional
+                    as? TagResourceAsyncType<InvocationReportingType> {
+                return try tagResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -1525,11 +1820,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated TagResourceInput object being passed to this operation.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func tagResourceSync(
+    public func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.TagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let tagResourceSyncOverride = tagResourceSyncOverride {
-            return try tagResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let tagResourceSyncOverrideNonOptional = tagResourceSyncOverride {
+            if let tagResourceSyncOverrideTyped = tagResourceSyncOverrideNonOptional
+                    as? TagResourceSyncType<InvocationReportingType> {
+                return try tagResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -1544,12 +1844,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
      */
-    public func transactGetItemsAsync(
+    public func transactGetItemsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.TransactGetItemsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, HTTPClientError>) -> ()) throws {
-        if let transactGetItemsAsyncOverride = transactGetItemsAsyncOverride {
-            return try transactGetItemsAsyncOverride(input, reporting, completion)
+        if let transactGetItemsAsyncOverrideNonOptional = transactGetItemsAsyncOverride {
+            if let transactGetItemsAsyncOverrideTyped = transactGetItemsAsyncOverrideNonOptional
+                    as? TransactGetItemsAsyncType<InvocationReportingType> {
+                return try transactGetItemsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = TransactGetItemsOutput.__default
@@ -1566,11 +1871,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
      */
-    public func transactGetItemsSync(
+    public func transactGetItemsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.TransactGetItemsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.TransactGetItemsOutput {
-        if let transactGetItemsSyncOverride = transactGetItemsSyncOverride {
-            return try transactGetItemsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.TransactGetItemsOutput {
+        if let transactGetItemsSyncOverrideNonOptional = transactGetItemsSyncOverride {
+            if let transactGetItemsSyncOverrideTyped = transactGetItemsSyncOverrideNonOptional
+                    as? TransactGetItemsSyncType<InvocationReportingType> {
+                return try transactGetItemsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return TransactGetItemsOutput.__default
@@ -1586,12 +1896,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
-    public func transactWriteItemsAsync(
+    public func transactWriteItemsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.TransactWriteItemsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, HTTPClientError>) -> ()) throws {
-        if let transactWriteItemsAsyncOverride = transactWriteItemsAsyncOverride {
-            return try transactWriteItemsAsyncOverride(input, reporting, completion)
+        if let transactWriteItemsAsyncOverrideNonOptional = transactWriteItemsAsyncOverride {
+            if let transactWriteItemsAsyncOverrideTyped = transactWriteItemsAsyncOverrideNonOptional
+                    as? TransactWriteItemsAsyncType<InvocationReportingType> {
+                return try transactWriteItemsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = TransactWriteItemsOutput.__default
@@ -1608,11 +1923,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
-    public func transactWriteItemsSync(
+    public func transactWriteItemsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.TransactWriteItemsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.TransactWriteItemsOutput {
-        if let transactWriteItemsSyncOverride = transactWriteItemsSyncOverride {
-            return try transactWriteItemsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.TransactWriteItemsOutput {
+        if let transactWriteItemsSyncOverrideNonOptional = transactWriteItemsSyncOverride {
+            if let transactWriteItemsSyncOverrideTyped = transactWriteItemsSyncOverrideNonOptional
+                    as? TransactWriteItemsSyncType<InvocationReportingType> {
+                return try transactWriteItemsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return TransactWriteItemsOutput.__default
@@ -1627,12 +1947,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func untagResourceAsync(
+    public func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UntagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let untagResourceAsyncOverride = untagResourceAsyncOverride {
-            return try untagResourceAsyncOverride(input, reporting, completion)
+        if let untagResourceAsyncOverrideNonOptional = untagResourceAsyncOverride {
+            if let untagResourceAsyncOverrideTyped = untagResourceAsyncOverrideNonOptional
+                    as? UntagResourceAsyncType<InvocationReportingType> {
+                return try untagResourceAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         completion(nil)
@@ -1645,11 +1970,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          - input: The validated UntagResourceInput object being passed to this operation.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func untagResourceSync(
+    public func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UntagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws {
-        if let untagResourceSyncOverride = untagResourceSyncOverride {
-            return try untagResourceSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws {
+        if let untagResourceSyncOverrideNonOptional = untagResourceSyncOverride {
+            if let untagResourceSyncOverrideTyped = untagResourceSyncOverrideNonOptional
+                    as? UntagResourceSyncType<InvocationReportingType> {
+                return try untagResourceSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
     }
@@ -1664,12 +1994,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: continuousBackupsUnavailable, internalServer, tableNotFound.
      */
-    public func updateContinuousBackupsAsync(
+    public func updateContinuousBackupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateContinuousBackupsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, HTTPClientError>) -> ()) throws {
-        if let updateContinuousBackupsAsyncOverride = updateContinuousBackupsAsyncOverride {
-            return try updateContinuousBackupsAsyncOverride(input, reporting, completion)
+        if let updateContinuousBackupsAsyncOverrideNonOptional = updateContinuousBackupsAsyncOverride {
+            if let updateContinuousBackupsAsyncOverrideTyped = updateContinuousBackupsAsyncOverrideNonOptional
+                    as? UpdateContinuousBackupsAsyncType<InvocationReportingType> {
+                return try updateContinuousBackupsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateContinuousBackupsOutput.__default
@@ -1686,11 +2021,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: continuousBackupsUnavailable, internalServer, tableNotFound.
      */
-    public func updateContinuousBackupsSync(
+    public func updateContinuousBackupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateContinuousBackupsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateContinuousBackupsOutput {
-        if let updateContinuousBackupsSyncOverride = updateContinuousBackupsSyncOverride {
-            return try updateContinuousBackupsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateContinuousBackupsOutput {
+        if let updateContinuousBackupsSyncOverrideNonOptional = updateContinuousBackupsSyncOverride {
+            if let updateContinuousBackupsSyncOverrideTyped = updateContinuousBackupsSyncOverrideNonOptional
+                    as? UpdateContinuousBackupsSyncType<InvocationReportingType> {
+                return try updateContinuousBackupsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateContinuousBackupsOutput.__default
@@ -1706,12 +2046,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    public func updateContributorInsightsAsync(
+    public func updateContributorInsightsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateContributorInsightsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) -> ()) throws {
-        if let updateContributorInsightsAsyncOverride = updateContributorInsightsAsyncOverride {
-            return try updateContributorInsightsAsyncOverride(input, reporting, completion)
+        if let updateContributorInsightsAsyncOverrideNonOptional = updateContributorInsightsAsyncOverride {
+            if let updateContributorInsightsAsyncOverrideTyped = updateContributorInsightsAsyncOverrideNonOptional
+                    as? UpdateContributorInsightsAsyncType<InvocationReportingType> {
+                return try updateContributorInsightsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateContributorInsightsOutput.__default
@@ -1728,11 +2073,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    public func updateContributorInsightsSync(
+    public func updateContributorInsightsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateContributorInsightsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateContributorInsightsOutput {
-        if let updateContributorInsightsSyncOverride = updateContributorInsightsSyncOverride {
-            return try updateContributorInsightsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateContributorInsightsOutput {
+        if let updateContributorInsightsSyncOverrideNonOptional = updateContributorInsightsSyncOverride {
+            if let updateContributorInsightsSyncOverrideTyped = updateContributorInsightsSyncOverrideNonOptional
+                    as? UpdateContributorInsightsSyncType<InvocationReportingType> {
+                return try updateContributorInsightsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateContributorInsightsOutput.__default
@@ -1748,12 +2098,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, internalServer, replicaAlreadyExists, replicaNotFound, tableNotFound.
      */
-    public func updateGlobalTableAsync(
+    public func updateGlobalTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateGlobalTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, HTTPClientError>) -> ()) throws {
-        if let updateGlobalTableAsyncOverride = updateGlobalTableAsyncOverride {
-            return try updateGlobalTableAsyncOverride(input, reporting, completion)
+        if let updateGlobalTableAsyncOverrideNonOptional = updateGlobalTableAsyncOverride {
+            if let updateGlobalTableAsyncOverrideTyped = updateGlobalTableAsyncOverrideNonOptional
+                    as? UpdateGlobalTableAsyncType<InvocationReportingType> {
+                return try updateGlobalTableAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateGlobalTableOutput.__default
@@ -1770,11 +2125,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, internalServer, replicaAlreadyExists, replicaNotFound, tableNotFound.
      */
-    public func updateGlobalTableSync(
+    public func updateGlobalTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateGlobalTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateGlobalTableOutput {
-        if let updateGlobalTableSyncOverride = updateGlobalTableSyncOverride {
-            return try updateGlobalTableSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateGlobalTableOutput {
+        if let updateGlobalTableSyncOverrideNonOptional = updateGlobalTableSyncOverride {
+            if let updateGlobalTableSyncOverrideTyped = updateGlobalTableSyncOverrideNonOptional
+                    as? UpdateGlobalTableSyncType<InvocationReportingType> {
+                return try updateGlobalTableSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateGlobalTableOutput.__default
@@ -1790,12 +2150,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, indexNotFound, internalServer, limitExceeded, replicaNotFound, resourceInUse.
      */
-    public func updateGlobalTableSettingsAsync(
+    public func updateGlobalTableSettingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateGlobalTableSettingsInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws {
-        if let updateGlobalTableSettingsAsyncOverride = updateGlobalTableSettingsAsyncOverride {
-            return try updateGlobalTableSettingsAsyncOverride(input, reporting, completion)
+        if let updateGlobalTableSettingsAsyncOverrideNonOptional = updateGlobalTableSettingsAsyncOverride {
+            if let updateGlobalTableSettingsAsyncOverrideTyped = updateGlobalTableSettingsAsyncOverrideNonOptional
+                    as? UpdateGlobalTableSettingsAsyncType<InvocationReportingType> {
+                return try updateGlobalTableSettingsAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateGlobalTableSettingsOutput.__default
@@ -1812,11 +2177,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, indexNotFound, internalServer, limitExceeded, replicaNotFound, resourceInUse.
      */
-    public func updateGlobalTableSettingsSync(
+    public func updateGlobalTableSettingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateGlobalTableSettingsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput {
-        if let updateGlobalTableSettingsSyncOverride = updateGlobalTableSettingsSyncOverride {
-            return try updateGlobalTableSettingsSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput {
+        if let updateGlobalTableSettingsSyncOverrideNonOptional = updateGlobalTableSettingsSyncOverride {
+            if let updateGlobalTableSettingsSyncOverrideTyped = updateGlobalTableSettingsSyncOverrideNonOptional
+                    as? UpdateGlobalTableSettingsSyncType<InvocationReportingType> {
+                return try updateGlobalTableSettingsSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateGlobalTableSettingsOutput.__default
@@ -1832,12 +2202,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func updateItemAsync(
+    public func updateItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateItemInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, HTTPClientError>) -> ()) throws {
-        if let updateItemAsyncOverride = updateItemAsyncOverride {
-            return try updateItemAsyncOverride(input, reporting, completion)
+        if let updateItemAsyncOverrideNonOptional = updateItemAsyncOverride {
+            if let updateItemAsyncOverrideTyped = updateItemAsyncOverrideNonOptional
+                    as? UpdateItemAsyncType<InvocationReportingType> {
+                return try updateItemAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateItemOutput.__default
@@ -1854,11 +2229,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    public func updateItemSync(
+    public func updateItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateItemOutput {
-        if let updateItemSyncOverride = updateItemSyncOverride {
-            return try updateItemSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateItemOutput {
+        if let updateItemSyncOverrideNonOptional = updateItemSyncOverride {
+            if let updateItemSyncOverrideTyped = updateItemSyncOverrideNonOptional
+                    as? UpdateItemSyncType<InvocationReportingType> {
+                return try updateItemSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateItemOutput.__default
@@ -1874,12 +2254,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTableAsync(
+    public func updateTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateTableInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, HTTPClientError>) -> ()) throws {
-        if let updateTableAsyncOverride = updateTableAsyncOverride {
-            return try updateTableAsyncOverride(input, reporting, completion)
+        if let updateTableAsyncOverrideNonOptional = updateTableAsyncOverride {
+            if let updateTableAsyncOverrideTyped = updateTableAsyncOverrideNonOptional
+                    as? UpdateTableAsyncType<InvocationReportingType> {
+                return try updateTableAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateTableOutput.__default
@@ -1896,11 +2281,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTableSync(
+    public func updateTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTableOutput {
-        if let updateTableSyncOverride = updateTableSyncOverride {
-            return try updateTableSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateTableOutput {
+        if let updateTableSyncOverrideNonOptional = updateTableSyncOverride {
+            if let updateTableSyncOverrideTyped = updateTableSyncOverrideNonOptional
+                    as? UpdateTableSyncType<InvocationReportingType> {
+                return try updateTableSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateTableOutput.__default
@@ -1916,12 +2306,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTableReplicaAutoScalingAsync(
+    public func updateTableReplicaAutoScalingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
-        if let updateTableReplicaAutoScalingAsyncOverride = updateTableReplicaAutoScalingAsyncOverride {
-            return try updateTableReplicaAutoScalingAsyncOverride(input, reporting, completion)
+        if let updateTableReplicaAutoScalingAsyncOverrideNonOptional = updateTableReplicaAutoScalingAsyncOverride {
+            if let updateTableReplicaAutoScalingAsyncOverrideTyped = updateTableReplicaAutoScalingAsyncOverrideNonOptional
+                    as? UpdateTableReplicaAutoScalingAsyncType<InvocationReportingType> {
+                return try updateTableReplicaAutoScalingAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateTableReplicaAutoScalingOutput.__default
@@ -1938,11 +2333,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTableReplicaAutoScalingSync(
+    public func updateTableReplicaAutoScalingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateTableReplicaAutoScalingInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
-        if let updateTableReplicaAutoScalingSyncOverride = updateTableReplicaAutoScalingSyncOverride {
-            return try updateTableReplicaAutoScalingSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
+        if let updateTableReplicaAutoScalingSyncOverrideNonOptional = updateTableReplicaAutoScalingSyncOverride {
+            if let updateTableReplicaAutoScalingSyncOverrideTyped = updateTableReplicaAutoScalingSyncOverrideNonOptional
+                    as? UpdateTableReplicaAutoScalingSyncType<InvocationReportingType> {
+                return try updateTableReplicaAutoScalingSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateTableReplicaAutoScalingOutput.__default
@@ -1958,12 +2358,17 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTimeToLiveAsync(
+    public func updateTimeToLiveAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateTimeToLiveInput, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, HTTPClientError>) -> ()) throws {
-        if let updateTimeToLiveAsyncOverride = updateTimeToLiveAsyncOverride {
-            return try updateTimeToLiveAsyncOverride(input, reporting, completion)
+        if let updateTimeToLiveAsyncOverrideNonOptional = updateTimeToLiveAsyncOverride {
+            if let updateTimeToLiveAsyncOverrideTyped = updateTimeToLiveAsyncOverrideNonOptional
+                    as? UpdateTimeToLiveAsyncType<InvocationReportingType> {
+                return try updateTimeToLiveAsyncOverrideTyped(input, reporting, completion)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         let result = UpdateTimeToLiveOutput.__default
@@ -1980,11 +2385,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    public func updateTimeToLiveSync(
+    public func updateTimeToLiveSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: DynamoDBModel.UpdateTimeToLiveInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTimeToLiveOutput {
-        if let updateTimeToLiveSyncOverride = updateTimeToLiveSyncOverride {
-            return try updateTimeToLiveSyncOverride(input, reporting)
+            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateTimeToLiveOutput {
+        if let updateTimeToLiveSyncOverrideNonOptional = updateTimeToLiveSyncOverride {
+            if let updateTimeToLiveSyncOverrideTyped = updateTimeToLiveSyncOverrideNonOptional
+                    as? UpdateTimeToLiveSyncType<InvocationReportingType> {
+                return try updateTimeToLiveSyncOverrideTyped(input, reporting)
+            } else {
+                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
+            }
         }
 
         return UpdateTimeToLiveOutput.__default

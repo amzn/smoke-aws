@@ -1316,9 +1316,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AcceptReservedInstancesExchangeQuoteResult
            object will be validated before being returned to caller.
      */
-    public func acceptReservedInstancesExchangeQuoteAsync(
+    public func acceptReservedInstancesExchangeQuoteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1354,9 +1354,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AcceptReservedInstancesExchangeQuoteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func acceptReservedInstancesExchangeQuoteSync(
+    public func acceptReservedInstancesExchangeQuoteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1391,9 +1391,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AcceptTransitGatewayPeeringAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func acceptTransitGatewayPeeringAttachmentAsync(
+    public func acceptTransitGatewayPeeringAttachmentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1429,9 +1429,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AcceptTransitGatewayPeeringAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func acceptTransitGatewayPeeringAttachmentSync(
+    public func acceptTransitGatewayPeeringAttachmentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1466,9 +1466,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AcceptTransitGatewayVpcAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func acceptTransitGatewayVpcAttachmentAsync(
+    public func acceptTransitGatewayVpcAttachmentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1504,9 +1504,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AcceptTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func acceptTransitGatewayVpcAttachmentSync(
+    public func acceptTransitGatewayVpcAttachmentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1541,9 +1541,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AcceptVpcEndpointConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func acceptVpcEndpointConnectionsAsync(
+    public func acceptVpcEndpointConnectionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1579,9 +1579,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AcceptVpcEndpointConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func acceptVpcEndpointConnectionsSync(
+    public func acceptVpcEndpointConnectionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1616,9 +1616,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AcceptVpcPeeringConnectionResult
            object will be validated before being returned to caller.
      */
-    public func acceptVpcPeeringConnectionAsync(
+    public func acceptVpcPeeringConnectionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1654,9 +1654,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AcceptVpcPeeringConnectionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func acceptVpcPeeringConnectionSync(
+    public func acceptVpcPeeringConnectionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1691,9 +1691,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AdvertiseByoipCidrResult
            object will be validated before being returned to caller.
      */
-    public func advertiseByoipCidrAsync(
+    public func advertiseByoipCidrAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AdvertiseByoipCidrResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1729,9 +1729,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AdvertiseByoipCidrResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func advertiseByoipCidrSync(
+    public func advertiseByoipCidrSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AdvertiseByoipCidrResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AdvertiseByoipCidrResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1766,9 +1766,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AllocateAddressResult
            object will be validated before being returned to caller.
      */
-    public func allocateAddressAsync(
+    public func allocateAddressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AllocateAddressRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AllocateAddressResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1804,9 +1804,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AllocateAddressResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func allocateAddressSync(
+    public func allocateAddressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AllocateAddressRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AllocateAddressResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AllocateAddressResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1841,9 +1841,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AllocateHostsResult
            object will be validated before being returned to caller.
      */
-    public func allocateHostsAsync(
+    public func allocateHostsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AllocateHostsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AllocateHostsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1879,9 +1879,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AllocateHostsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func allocateHostsSync(
+    public func allocateHostsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AllocateHostsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AllocateHostsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AllocateHostsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1916,9 +1916,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ApplySecurityGroupsToClientVpnTargetNetworkResult
            object will be validated before being returned to caller.
      */
-    public func applySecurityGroupsToClientVpnTargetNetworkAsync(
+    public func applySecurityGroupsToClientVpnTargetNetworkAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1954,9 +1954,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ApplySecurityGroupsToClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func applySecurityGroupsToClientVpnTargetNetworkSync(
+    public func applySecurityGroupsToClientVpnTargetNetworkSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1991,9 +1991,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AssignIpv6AddressesResult
            object will be validated before being returned to caller.
      */
-    public func assignIpv6AddressesAsync(
+    public func assignIpv6AddressesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssignIpv6AddressesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AssignIpv6AddressesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2029,9 +2029,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AssignIpv6AddressesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func assignIpv6AddressesSync(
+    public func assignIpv6AddressesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssignIpv6AddressesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssignIpv6AddressesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AssignIpv6AddressesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2066,9 +2066,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AssignPrivateIpAddressesResult
            object will be validated before being returned to caller.
      */
-    public func assignPrivateIpAddressesAsync(
+    public func assignPrivateIpAddressesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AssignPrivateIpAddressesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2104,9 +2104,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AssignPrivateIpAddressesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func assignPrivateIpAddressesSync(
+    public func assignPrivateIpAddressesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssignPrivateIpAddressesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AssignPrivateIpAddressesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2141,9 +2141,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AssociateAddressResult
            object will be validated before being returned to caller.
      */
-    public func associateAddressAsync(
+    public func associateAddressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateAddressRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateAddressResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2179,9 +2179,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AssociateAddressResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateAddressSync(
+    public func associateAddressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateAddressRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateAddressResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AssociateAddressResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2216,9 +2216,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AssociateClientVpnTargetNetworkResult
            object will be validated before being returned to caller.
      */
-    public func associateClientVpnTargetNetworkAsync(
+    public func associateClientVpnTargetNetworkAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2254,9 +2254,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AssociateClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateClientVpnTargetNetworkSync(
+    public func associateClientVpnTargetNetworkSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2290,9 +2290,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func associateDhcpOptionsAsync(
+    public func associateDhcpOptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2326,9 +2326,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated AssociateDhcpOptionsRequest object being passed to this operation.
      */
-    public func associateDhcpOptionsSync(
+    public func associateDhcpOptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2363,9 +2363,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AssociateIamInstanceProfileResult
            object will be validated before being returned to caller.
      */
-    public func associateIamInstanceProfileAsync(
+    public func associateIamInstanceProfileAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateIamInstanceProfileResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2401,9 +2401,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AssociateIamInstanceProfileResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateIamInstanceProfileSync(
+    public func associateIamInstanceProfileSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateIamInstanceProfileResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AssociateIamInstanceProfileResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2438,9 +2438,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AssociateRouteTableResult
            object will be validated before being returned to caller.
      */
-    public func associateRouteTableAsync(
+    public func associateRouteTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateRouteTableRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateRouteTableResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2476,9 +2476,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AssociateRouteTableResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateRouteTableSync(
+    public func associateRouteTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateRouteTableRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateRouteTableResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AssociateRouteTableResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2513,9 +2513,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AssociateSubnetCidrBlockResult
            object will be validated before being returned to caller.
      */
-    public func associateSubnetCidrBlockAsync(
+    public func associateSubnetCidrBlockAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateSubnetCidrBlockResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2551,9 +2551,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AssociateSubnetCidrBlockResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateSubnetCidrBlockSync(
+    public func associateSubnetCidrBlockSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateSubnetCidrBlockResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AssociateSubnetCidrBlockResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2588,9 +2588,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AssociateTransitGatewayMulticastDomainResult
            object will be validated before being returned to caller.
      */
-    public func associateTransitGatewayMulticastDomainAsync(
+    public func associateTransitGatewayMulticastDomainAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2626,9 +2626,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AssociateTransitGatewayMulticastDomainResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateTransitGatewayMulticastDomainSync(
+    public func associateTransitGatewayMulticastDomainSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2663,9 +2663,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AssociateTransitGatewayRouteTableResult
            object will be validated before being returned to caller.
      */
-    public func associateTransitGatewayRouteTableAsync(
+    public func associateTransitGatewayRouteTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2701,9 +2701,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AssociateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateTransitGatewayRouteTableSync(
+    public func associateTransitGatewayRouteTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2738,9 +2738,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AssociateVpcCidrBlockResult
            object will be validated before being returned to caller.
      */
-    public func associateVpcCidrBlockAsync(
+    public func associateVpcCidrBlockAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateVpcCidrBlockResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2776,9 +2776,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AssociateVpcCidrBlockResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func associateVpcCidrBlockSync(
+    public func associateVpcCidrBlockSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AssociateVpcCidrBlockResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AssociateVpcCidrBlockResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2813,9 +2813,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AttachClassicLinkVpcResult
            object will be validated before being returned to caller.
      */
-    public func attachClassicLinkVpcAsync(
+    public func attachClassicLinkVpcAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AttachClassicLinkVpcResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2851,9 +2851,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AttachClassicLinkVpcResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func attachClassicLinkVpcSync(
+    public func attachClassicLinkVpcSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AttachClassicLinkVpcResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AttachClassicLinkVpcResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2887,9 +2887,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func attachInternetGatewayAsync(
+    public func attachInternetGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AttachInternetGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2923,9 +2923,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated AttachInternetGatewayRequest object being passed to this operation.
      */
-    public func attachInternetGatewaySync(
+    public func attachInternetGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AttachInternetGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2960,9 +2960,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AttachNetworkInterfaceResult
            object will be validated before being returned to caller.
      */
-    public func attachNetworkInterfaceAsync(
+    public func attachNetworkInterfaceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AttachNetworkInterfaceResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2998,9 +2998,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AttachNetworkInterfaceResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func attachNetworkInterfaceSync(
+    public func attachNetworkInterfaceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AttachNetworkInterfaceResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AttachNetworkInterfaceResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3035,9 +3035,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The VolumeAttachment
            object will be validated before being returned to caller.
      */
-    public func attachVolumeAsync(
+    public func attachVolumeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AttachVolumeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3073,9 +3073,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The VolumeAttachment object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func attachVolumeSync(
+    public func attachVolumeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AttachVolumeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.VolumeAttachment {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.VolumeAttachment {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3110,9 +3110,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AttachVpnGatewayResult
            object will be validated before being returned to caller.
      */
-    public func attachVpnGatewayAsync(
+    public func attachVpnGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AttachVpnGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AttachVpnGatewayResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3148,9 +3148,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AttachVpnGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func attachVpnGatewaySync(
+    public func attachVpnGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AttachVpnGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AttachVpnGatewayResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AttachVpnGatewayResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3185,9 +3185,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The AuthorizeClientVpnIngressResult
            object will be validated before being returned to caller.
      */
-    public func authorizeClientVpnIngressAsync(
+    public func authorizeClientVpnIngressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3223,9 +3223,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The AuthorizeClientVpnIngressResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func authorizeClientVpnIngressSync(
+    public func authorizeClientVpnIngressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.AuthorizeClientVpnIngressResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.AuthorizeClientVpnIngressResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3259,9 +3259,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func authorizeSecurityGroupEgressAsync(
+    public func authorizeSecurityGroupEgressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3295,9 +3295,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated AuthorizeSecurityGroupEgressRequest object being passed to this operation.
      */
-    public func authorizeSecurityGroupEgressSync(
+    public func authorizeSecurityGroupEgressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3331,9 +3331,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func authorizeSecurityGroupIngressAsync(
+    public func authorizeSecurityGroupIngressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3367,9 +3367,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated AuthorizeSecurityGroupIngressRequest object being passed to this operation.
      */
-    public func authorizeSecurityGroupIngressSync(
+    public func authorizeSecurityGroupIngressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3404,9 +3404,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The BundleInstanceResult
            object will be validated before being returned to caller.
      */
-    public func bundleInstanceAsync(
+    public func bundleInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.BundleInstanceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.BundleInstanceResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3442,9 +3442,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The BundleInstanceResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func bundleInstanceSync(
+    public func bundleInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.BundleInstanceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.BundleInstanceResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.BundleInstanceResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3479,9 +3479,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CancelBundleTaskResult
            object will be validated before being returned to caller.
      */
-    public func cancelBundleTaskAsync(
+    public func cancelBundleTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelBundleTaskRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CancelBundleTaskResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3517,9 +3517,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CancelBundleTaskResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func cancelBundleTaskSync(
+    public func cancelBundleTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelBundleTaskRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CancelBundleTaskResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CancelBundleTaskResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3554,9 +3554,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CancelCapacityReservationResult
            object will be validated before being returned to caller.
      */
-    public func cancelCapacityReservationAsync(
+    public func cancelCapacityReservationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelCapacityReservationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CancelCapacityReservationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3592,9 +3592,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CancelCapacityReservationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func cancelCapacityReservationSync(
+    public func cancelCapacityReservationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelCapacityReservationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CancelCapacityReservationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CancelCapacityReservationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3628,9 +3628,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func cancelConversionTaskAsync(
+    public func cancelConversionTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelConversionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3664,9 +3664,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated CancelConversionRequest object being passed to this operation.
      */
-    public func cancelConversionTaskSync(
+    public func cancelConversionTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelConversionRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3700,9 +3700,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func cancelExportTaskAsync(
+    public func cancelExportTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelExportTaskRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3736,9 +3736,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated CancelExportTaskRequest object being passed to this operation.
      */
-    public func cancelExportTaskSync(
+    public func cancelExportTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelExportTaskRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3773,9 +3773,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CancelImportTaskResult
            object will be validated before being returned to caller.
      */
-    public func cancelImportTaskAsync(
+    public func cancelImportTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelImportTaskRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CancelImportTaskResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3811,9 +3811,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CancelImportTaskResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func cancelImportTaskSync(
+    public func cancelImportTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelImportTaskRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CancelImportTaskResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CancelImportTaskResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3848,9 +3848,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CancelReservedInstancesListingResult
            object will be validated before being returned to caller.
      */
-    public func cancelReservedInstancesListingAsync(
+    public func cancelReservedInstancesListingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CancelReservedInstancesListingResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3886,9 +3886,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CancelReservedInstancesListingResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func cancelReservedInstancesListingSync(
+    public func cancelReservedInstancesListingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CancelReservedInstancesListingResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CancelReservedInstancesListingResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3923,9 +3923,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CancelSpotFleetRequestsResponse
            object will be validated before being returned to caller.
      */
-    public func cancelSpotFleetRequestsAsync(
+    public func cancelSpotFleetRequestsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotFleetRequestsResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3961,9 +3961,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CancelSpotFleetRequestsResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func cancelSpotFleetRequestsSync(
+    public func cancelSpotFleetRequestsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CancelSpotFleetRequestsResponse {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CancelSpotFleetRequestsResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3998,9 +3998,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CancelSpotInstanceRequestsResult
            object will be validated before being returned to caller.
      */
-    public func cancelSpotInstanceRequestsAsync(
+    public func cancelSpotInstanceRequestsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotInstanceRequestsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4036,9 +4036,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CancelSpotInstanceRequestsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func cancelSpotInstanceRequestsSync(
+    public func cancelSpotInstanceRequestsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CancelSpotInstanceRequestsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CancelSpotInstanceRequestsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4073,9 +4073,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ConfirmProductInstanceResult
            object will be validated before being returned to caller.
      */
-    public func confirmProductInstanceAsync(
+    public func confirmProductInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ConfirmProductInstanceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ConfirmProductInstanceResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4111,9 +4111,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ConfirmProductInstanceResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func confirmProductInstanceSync(
+    public func confirmProductInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ConfirmProductInstanceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ConfirmProductInstanceResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ConfirmProductInstanceResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4148,9 +4148,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CopyFpgaImageResult
            object will be validated before being returned to caller.
      */
-    public func copyFpgaImageAsync(
+    public func copyFpgaImageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CopyFpgaImageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CopyFpgaImageResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4186,9 +4186,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CopyFpgaImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func copyFpgaImageSync(
+    public func copyFpgaImageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CopyFpgaImageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CopyFpgaImageResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CopyFpgaImageResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4223,9 +4223,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CopyImageResult
            object will be validated before being returned to caller.
      */
-    public func copyImageAsync(
+    public func copyImageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CopyImageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CopyImageResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4261,9 +4261,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CopyImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func copyImageSync(
+    public func copyImageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CopyImageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CopyImageResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CopyImageResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4298,9 +4298,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CopySnapshotResult
            object will be validated before being returned to caller.
      */
-    public func copySnapshotAsync(
+    public func copySnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CopySnapshotRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CopySnapshotResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4336,9 +4336,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CopySnapshotResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func copySnapshotSync(
+    public func copySnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CopySnapshotRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CopySnapshotResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CopySnapshotResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4373,9 +4373,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateCapacityReservationResult
            object will be validated before being returned to caller.
      */
-    public func createCapacityReservationAsync(
+    public func createCapacityReservationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateCapacityReservationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateCapacityReservationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4411,9 +4411,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateCapacityReservationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createCapacityReservationSync(
+    public func createCapacityReservationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateCapacityReservationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateCapacityReservationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateCapacityReservationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4448,9 +4448,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateClientVpnEndpointResult
            object will be validated before being returned to caller.
      */
-    public func createClientVpnEndpointAsync(
+    public func createClientVpnEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnEndpointResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4486,9 +4486,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateClientVpnEndpointResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createClientVpnEndpointSync(
+    public func createClientVpnEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateClientVpnEndpointResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateClientVpnEndpointResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4523,9 +4523,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateClientVpnRouteResult
            object will be validated before being returned to caller.
      */
-    public func createClientVpnRouteAsync(
+    public func createClientVpnRouteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateClientVpnRouteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnRouteResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4561,9 +4561,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateClientVpnRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createClientVpnRouteSync(
+    public func createClientVpnRouteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateClientVpnRouteRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateClientVpnRouteResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateClientVpnRouteResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4598,9 +4598,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateCustomerGatewayResult
            object will be validated before being returned to caller.
      */
-    public func createCustomerGatewayAsync(
+    public func createCustomerGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateCustomerGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateCustomerGatewayResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4636,9 +4636,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateCustomerGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createCustomerGatewaySync(
+    public func createCustomerGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateCustomerGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateCustomerGatewayResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateCustomerGatewayResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4673,9 +4673,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateDefaultSubnetResult
            object will be validated before being returned to caller.
      */
-    public func createDefaultSubnetAsync(
+    public func createDefaultSubnetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateDefaultSubnetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultSubnetResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4711,9 +4711,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateDefaultSubnetResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createDefaultSubnetSync(
+    public func createDefaultSubnetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateDefaultSubnetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateDefaultSubnetResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateDefaultSubnetResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4748,9 +4748,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateDefaultVpcResult
            object will be validated before being returned to caller.
      */
-    public func createDefaultVpcAsync(
+    public func createDefaultVpcAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateDefaultVpcRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultVpcResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4786,9 +4786,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateDefaultVpcResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createDefaultVpcSync(
+    public func createDefaultVpcSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateDefaultVpcRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateDefaultVpcResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateDefaultVpcResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4823,9 +4823,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateDhcpOptionsResult
            object will be validated before being returned to caller.
      */
-    public func createDhcpOptionsAsync(
+    public func createDhcpOptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateDhcpOptionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateDhcpOptionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4861,9 +4861,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateDhcpOptionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createDhcpOptionsSync(
+    public func createDhcpOptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateDhcpOptionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateDhcpOptionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateDhcpOptionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4898,9 +4898,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateEgressOnlyInternetGatewayResult
            object will be validated before being returned to caller.
      */
-    public func createEgressOnlyInternetGatewayAsync(
+    public func createEgressOnlyInternetGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4936,9 +4936,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateEgressOnlyInternetGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createEgressOnlyInternetGatewaySync(
+    public func createEgressOnlyInternetGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4973,9 +4973,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateFleetResult
            object will be validated before being returned to caller.
      */
-    public func createFleetAsync(
+    public func createFleetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateFleetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateFleetResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5011,9 +5011,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateFleetResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createFleetSync(
+    public func createFleetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateFleetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateFleetResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateFleetResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5048,9 +5048,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateFlowLogsResult
            object will be validated before being returned to caller.
      */
-    public func createFlowLogsAsync(
+    public func createFlowLogsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateFlowLogsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateFlowLogsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5086,9 +5086,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateFlowLogsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createFlowLogsSync(
+    public func createFlowLogsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateFlowLogsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateFlowLogsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateFlowLogsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5123,9 +5123,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateFpgaImageResult
            object will be validated before being returned to caller.
      */
-    public func createFpgaImageAsync(
+    public func createFpgaImageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateFpgaImageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateFpgaImageResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5161,9 +5161,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateFpgaImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createFpgaImageSync(
+    public func createFpgaImageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateFpgaImageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateFpgaImageResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateFpgaImageResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5198,9 +5198,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateImageResult
            object will be validated before being returned to caller.
      */
-    public func createImageAsync(
+    public func createImageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateImageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateImageResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5236,9 +5236,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createImageSync(
+    public func createImageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateImageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateImageResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateImageResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5273,9 +5273,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateInstanceExportTaskResult
            object will be validated before being returned to caller.
      */
-    public func createInstanceExportTaskAsync(
+    public func createInstanceExportTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceExportTaskResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5311,9 +5311,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateInstanceExportTaskResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createInstanceExportTaskSync(
+    public func createInstanceExportTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateInstanceExportTaskResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateInstanceExportTaskResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5348,9 +5348,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateInternetGatewayResult
            object will be validated before being returned to caller.
      */
-    public func createInternetGatewayAsync(
+    public func createInternetGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateInternetGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateInternetGatewayResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5386,9 +5386,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateInternetGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createInternetGatewaySync(
+    public func createInternetGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateInternetGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateInternetGatewayResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateInternetGatewayResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5423,9 +5423,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The KeyPair
            object will be validated before being returned to caller.
      */
-    public func createKeyPairAsync(
+    public func createKeyPairAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateKeyPairRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.KeyPair, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5461,9 +5461,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The KeyPair object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createKeyPairSync(
+    public func createKeyPairSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateKeyPairRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.KeyPair {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.KeyPair {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5498,9 +5498,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateLaunchTemplateResult
            object will be validated before being returned to caller.
      */
-    public func createLaunchTemplateAsync(
+    public func createLaunchTemplateAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateLaunchTemplateRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5536,9 +5536,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateLaunchTemplateResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createLaunchTemplateSync(
+    public func createLaunchTemplateSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateLaunchTemplateRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateLaunchTemplateResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateLaunchTemplateResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5573,9 +5573,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateLaunchTemplateVersionResult
            object will be validated before being returned to caller.
      */
-    public func createLaunchTemplateVersionAsync(
+    public func createLaunchTemplateVersionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateVersionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5611,9 +5611,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateLaunchTemplateVersionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createLaunchTemplateVersionSync(
+    public func createLaunchTemplateVersionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateLaunchTemplateVersionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateLaunchTemplateVersionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5648,9 +5648,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateLocalGatewayRouteResult
            object will be validated before being returned to caller.
      */
-    public func createLocalGatewayRouteAsync(
+    public func createLocalGatewayRouteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5686,9 +5686,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateLocalGatewayRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createLocalGatewayRouteSync(
+    public func createLocalGatewayRouteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateLocalGatewayRouteResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateLocalGatewayRouteResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5723,9 +5723,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateLocalGatewayRouteTableVpcAssociationResult
            object will be validated before being returned to caller.
      */
-    public func createLocalGatewayRouteTableVpcAssociationAsync(
+    public func createLocalGatewayRouteTableVpcAssociationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5761,9 +5761,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateLocalGatewayRouteTableVpcAssociationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createLocalGatewayRouteTableVpcAssociationSync(
+    public func createLocalGatewayRouteTableVpcAssociationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5798,9 +5798,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateNatGatewayResult
            object will be validated before being returned to caller.
      */
-    public func createNatGatewayAsync(
+    public func createNatGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateNatGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateNatGatewayResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5836,9 +5836,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateNatGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createNatGatewaySync(
+    public func createNatGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateNatGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateNatGatewayResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateNatGatewayResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5873,9 +5873,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateNetworkAclResult
            object will be validated before being returned to caller.
      */
-    public func createNetworkAclAsync(
+    public func createNetworkAclAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateNetworkAclRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkAclResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5911,9 +5911,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateNetworkAclResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createNetworkAclSync(
+    public func createNetworkAclSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateNetworkAclRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateNetworkAclResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateNetworkAclResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5947,9 +5947,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createNetworkAclEntryAsync(
+    public func createNetworkAclEntryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5983,9 +5983,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated CreateNetworkAclEntryRequest object being passed to this operation.
      */
-    public func createNetworkAclEntrySync(
+    public func createNetworkAclEntrySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6020,9 +6020,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateNetworkInterfaceResult
            object will be validated before being returned to caller.
      */
-    public func createNetworkInterfaceAsync(
+    public func createNetworkInterfaceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfaceResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6058,9 +6058,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateNetworkInterfaceResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createNetworkInterfaceSync(
+    public func createNetworkInterfaceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateNetworkInterfaceResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateNetworkInterfaceResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6095,9 +6095,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateNetworkInterfacePermissionResult
            object will be validated before being returned to caller.
      */
-    public func createNetworkInterfacePermissionAsync(
+    public func createNetworkInterfacePermissionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6133,9 +6133,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateNetworkInterfacePermissionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createNetworkInterfacePermissionSync(
+    public func createNetworkInterfacePermissionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6169,9 +6169,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createPlacementGroupAsync(
+    public func createPlacementGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreatePlacementGroupRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6205,9 +6205,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated CreatePlacementGroupRequest object being passed to this operation.
      */
-    public func createPlacementGroupSync(
+    public func createPlacementGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreatePlacementGroupRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6242,9 +6242,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateReservedInstancesListingResult
            object will be validated before being returned to caller.
      */
-    public func createReservedInstancesListingAsync(
+    public func createReservedInstancesListingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateReservedInstancesListingResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6280,9 +6280,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateReservedInstancesListingResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createReservedInstancesListingSync(
+    public func createReservedInstancesListingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateReservedInstancesListingResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateReservedInstancesListingResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6317,9 +6317,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateRouteResult
            object will be validated before being returned to caller.
      */
-    public func createRouteAsync(
+    public func createRouteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateRouteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6355,9 +6355,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createRouteSync(
+    public func createRouteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateRouteRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateRouteResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateRouteResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6392,9 +6392,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateRouteTableResult
            object will be validated before being returned to caller.
      */
-    public func createRouteTableAsync(
+    public func createRouteTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateRouteTableRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteTableResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6430,9 +6430,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateRouteTableResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createRouteTableSync(
+    public func createRouteTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateRouteTableRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateRouteTableResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateRouteTableResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6467,9 +6467,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateSecurityGroupResult
            object will be validated before being returned to caller.
      */
-    public func createSecurityGroupAsync(
+    public func createSecurityGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateSecurityGroupRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateSecurityGroupResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6505,9 +6505,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateSecurityGroupResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createSecurityGroupSync(
+    public func createSecurityGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateSecurityGroupRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateSecurityGroupResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateSecurityGroupResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6542,9 +6542,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The Snapshot
            object will be validated before being returned to caller.
      */
-    public func createSnapshotAsync(
+    public func createSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateSnapshotRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.Snapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6580,9 +6580,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The Snapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createSnapshotSync(
+    public func createSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateSnapshotRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.Snapshot {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.Snapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6617,9 +6617,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateSnapshotsResult
            object will be validated before being returned to caller.
      */
-    public func createSnapshotsAsync(
+    public func createSnapshotsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateSnapshotsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateSnapshotsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6655,9 +6655,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateSnapshotsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createSnapshotsSync(
+    public func createSnapshotsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateSnapshotsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateSnapshotsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateSnapshotsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6692,9 +6692,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateSpotDatafeedSubscriptionResult
            object will be validated before being returned to caller.
      */
-    public func createSpotDatafeedSubscriptionAsync(
+    public func createSpotDatafeedSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6730,9 +6730,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateSpotDatafeedSubscriptionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createSpotDatafeedSubscriptionSync(
+    public func createSpotDatafeedSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6767,9 +6767,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateSubnetResult
            object will be validated before being returned to caller.
      */
-    public func createSubnetAsync(
+    public func createSubnetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateSubnetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateSubnetResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6805,9 +6805,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateSubnetResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createSubnetSync(
+    public func createSubnetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateSubnetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateSubnetResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateSubnetResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6841,9 +6841,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createTagsAsync(
+    public func createTagsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTagsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6877,9 +6877,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated CreateTagsRequest object being passed to this operation.
      */
-    public func createTagsSync(
+    public func createTagsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTagsRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6914,9 +6914,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateTrafficMirrorFilterResult
            object will be validated before being returned to caller.
      */
-    public func createTrafficMirrorFilterAsync(
+    public func createTrafficMirrorFilterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6952,9 +6952,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateTrafficMirrorFilterResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTrafficMirrorFilterSync(
+    public func createTrafficMirrorFilterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6989,9 +6989,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateTrafficMirrorFilterRuleResult
            object will be validated before being returned to caller.
      */
-    public func createTrafficMirrorFilterRuleAsync(
+    public func createTrafficMirrorFilterRuleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7027,9 +7027,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateTrafficMirrorFilterRuleResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTrafficMirrorFilterRuleSync(
+    public func createTrafficMirrorFilterRuleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7064,9 +7064,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateTrafficMirrorSessionResult
            object will be validated before being returned to caller.
      */
-    public func createTrafficMirrorSessionAsync(
+    public func createTrafficMirrorSessionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorSessionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7102,9 +7102,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateTrafficMirrorSessionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTrafficMirrorSessionSync(
+    public func createTrafficMirrorSessionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTrafficMirrorSessionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateTrafficMirrorSessionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7139,9 +7139,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateTrafficMirrorTargetResult
            object will be validated before being returned to caller.
      */
-    public func createTrafficMirrorTargetAsync(
+    public func createTrafficMirrorTargetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorTargetResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7177,9 +7177,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateTrafficMirrorTargetResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTrafficMirrorTargetSync(
+    public func createTrafficMirrorTargetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTrafficMirrorTargetResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateTrafficMirrorTargetResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7214,9 +7214,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateTransitGatewayResult
            object will be validated before being returned to caller.
      */
-    public func createTransitGatewayAsync(
+    public func createTransitGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTransitGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7252,9 +7252,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateTransitGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTransitGatewaySync(
+    public func createTransitGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTransitGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTransitGatewayResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateTransitGatewayResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7289,9 +7289,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateTransitGatewayMulticastDomainResult
            object will be validated before being returned to caller.
      */
-    public func createTransitGatewayMulticastDomainAsync(
+    public func createTransitGatewayMulticastDomainAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7327,9 +7327,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateTransitGatewayMulticastDomainResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTransitGatewayMulticastDomainSync(
+    public func createTransitGatewayMulticastDomainSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7364,9 +7364,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateTransitGatewayPeeringAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func createTransitGatewayPeeringAttachmentAsync(
+    public func createTransitGatewayPeeringAttachmentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7402,9 +7402,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateTransitGatewayPeeringAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTransitGatewayPeeringAttachmentSync(
+    public func createTransitGatewayPeeringAttachmentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7439,9 +7439,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateTransitGatewayRouteResult
            object will be validated before being returned to caller.
      */
-    public func createTransitGatewayRouteAsync(
+    public func createTransitGatewayRouteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7477,9 +7477,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateTransitGatewayRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTransitGatewayRouteSync(
+    public func createTransitGatewayRouteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7514,9 +7514,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateTransitGatewayRouteTableResult
            object will be validated before being returned to caller.
      */
-    public func createTransitGatewayRouteTableAsync(
+    public func createTransitGatewayRouteTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7552,9 +7552,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTransitGatewayRouteTableSync(
+    public func createTransitGatewayRouteTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7589,9 +7589,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateTransitGatewayVpcAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func createTransitGatewayVpcAttachmentAsync(
+    public func createTransitGatewayVpcAttachmentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7627,9 +7627,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createTransitGatewayVpcAttachmentSync(
+    public func createTransitGatewayVpcAttachmentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7664,9 +7664,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The Volume
            object will be validated before being returned to caller.
      */
-    public func createVolumeAsync(
+    public func createVolumeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVolumeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.Volume, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7702,9 +7702,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The Volume object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVolumeSync(
+    public func createVolumeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVolumeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.Volume {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.Volume {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7739,9 +7739,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateVpcResult
            object will be validated before being returned to caller.
      */
-    public func createVpcAsync(
+    public func createVpcAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpcRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7777,9 +7777,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateVpcResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpcSync(
+    public func createVpcSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpcRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpcResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateVpcResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7814,9 +7814,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateVpcEndpointResult
            object will be validated before being returned to caller.
      */
-    public func createVpcEndpointAsync(
+    public func createVpcEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpcEndpointRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7852,9 +7852,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateVpcEndpointResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpcEndpointSync(
+    public func createVpcEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpcEndpointRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpcEndpointResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateVpcEndpointResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7889,9 +7889,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateVpcEndpointConnectionNotificationResult
            object will be validated before being returned to caller.
      */
-    public func createVpcEndpointConnectionNotificationAsync(
+    public func createVpcEndpointConnectionNotificationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7927,9 +7927,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateVpcEndpointConnectionNotificationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpcEndpointConnectionNotificationSync(
+    public func createVpcEndpointConnectionNotificationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7964,9 +7964,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateVpcEndpointServiceConfigurationResult
            object will be validated before being returned to caller.
      */
-    public func createVpcEndpointServiceConfigurationAsync(
+    public func createVpcEndpointServiceConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8002,9 +8002,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateVpcEndpointServiceConfigurationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpcEndpointServiceConfigurationSync(
+    public func createVpcEndpointServiceConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8039,9 +8039,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateVpcPeeringConnectionResult
            object will be validated before being returned to caller.
      */
-    public func createVpcPeeringConnectionAsync(
+    public func createVpcPeeringConnectionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8077,9 +8077,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateVpcPeeringConnectionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpcPeeringConnectionSync(
+    public func createVpcPeeringConnectionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpcPeeringConnectionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateVpcPeeringConnectionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8114,9 +8114,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateVpnConnectionResult
            object will be validated before being returned to caller.
      */
-    public func createVpnConnectionAsync(
+    public func createVpnConnectionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpnConnectionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnConnectionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8152,9 +8152,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateVpnConnectionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpnConnectionSync(
+    public func createVpnConnectionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpnConnectionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpnConnectionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateVpnConnectionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8188,9 +8188,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func createVpnConnectionRouteAsync(
+    public func createVpnConnectionRouteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8224,9 +8224,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated CreateVpnConnectionRouteRequest object being passed to this operation.
      */
-    public func createVpnConnectionRouteSync(
+    public func createVpnConnectionRouteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8261,9 +8261,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The CreateVpnGatewayResult
            object will be validated before being returned to caller.
      */
-    public func createVpnGatewayAsync(
+    public func createVpnGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpnGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnGatewayResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8299,9 +8299,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The CreateVpnGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func createVpnGatewaySync(
+    public func createVpnGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.CreateVpnGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.CreateVpnGatewayResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.CreateVpnGatewayResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8336,9 +8336,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteClientVpnEndpointResult
            object will be validated before being returned to caller.
      */
-    public func deleteClientVpnEndpointAsync(
+    public func deleteClientVpnEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnEndpointResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8374,9 +8374,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteClientVpnEndpointResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteClientVpnEndpointSync(
+    public func deleteClientVpnEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteClientVpnEndpointResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteClientVpnEndpointResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8411,9 +8411,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteClientVpnRouteResult
            object will be validated before being returned to caller.
      */
-    public func deleteClientVpnRouteAsync(
+    public func deleteClientVpnRouteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnRouteResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8449,9 +8449,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteClientVpnRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteClientVpnRouteSync(
+    public func deleteClientVpnRouteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteClientVpnRouteResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteClientVpnRouteResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8485,9 +8485,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteCustomerGatewayAsync(
+    public func deleteCustomerGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8521,9 +8521,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteCustomerGatewayRequest object being passed to this operation.
      */
-    public func deleteCustomerGatewaySync(
+    public func deleteCustomerGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8557,9 +8557,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteDhcpOptionsAsync(
+    public func deleteDhcpOptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8593,9 +8593,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteDhcpOptionsRequest object being passed to this operation.
      */
-    public func deleteDhcpOptionsSync(
+    public func deleteDhcpOptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8630,9 +8630,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteEgressOnlyInternetGatewayResult
            object will be validated before being returned to caller.
      */
-    public func deleteEgressOnlyInternetGatewayAsync(
+    public func deleteEgressOnlyInternetGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8668,9 +8668,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteEgressOnlyInternetGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteEgressOnlyInternetGatewaySync(
+    public func deleteEgressOnlyInternetGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8705,9 +8705,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteFleetsResult
            object will be validated before being returned to caller.
      */
-    public func deleteFleetsAsync(
+    public func deleteFleetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteFleetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteFleetsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8743,9 +8743,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteFleetsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteFleetsSync(
+    public func deleteFleetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteFleetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteFleetsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteFleetsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8780,9 +8780,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteFlowLogsResult
            object will be validated before being returned to caller.
      */
-    public func deleteFlowLogsAsync(
+    public func deleteFlowLogsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteFlowLogsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteFlowLogsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8818,9 +8818,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteFlowLogsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteFlowLogsSync(
+    public func deleteFlowLogsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteFlowLogsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteFlowLogsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteFlowLogsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8855,9 +8855,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteFpgaImageResult
            object will be validated before being returned to caller.
      */
-    public func deleteFpgaImageAsync(
+    public func deleteFpgaImageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteFpgaImageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteFpgaImageResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8893,9 +8893,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteFpgaImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteFpgaImageSync(
+    public func deleteFpgaImageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteFpgaImageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteFpgaImageResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteFpgaImageResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8929,9 +8929,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteInternetGatewayAsync(
+    public func deleteInternetGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8965,9 +8965,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteInternetGatewayRequest object being passed to this operation.
      */
-    public func deleteInternetGatewaySync(
+    public func deleteInternetGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteInternetGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9001,9 +9001,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteKeyPairAsync(
+    public func deleteKeyPairAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteKeyPairRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9037,9 +9037,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteKeyPairRequest object being passed to this operation.
      */
-    public func deleteKeyPairSync(
+    public func deleteKeyPairSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteKeyPairRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9074,9 +9074,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteLaunchTemplateResult
            object will be validated before being returned to caller.
      */
-    public func deleteLaunchTemplateAsync(
+    public func deleteLaunchTemplateAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9112,9 +9112,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteLaunchTemplateResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteLaunchTemplateSync(
+    public func deleteLaunchTemplateSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9149,9 +9149,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteLaunchTemplateVersionsResult
            object will be validated before being returned to caller.
      */
-    public func deleteLaunchTemplateVersionsAsync(
+    public func deleteLaunchTemplateVersionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9187,9 +9187,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteLaunchTemplateVersionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteLaunchTemplateVersionsSync(
+    public func deleteLaunchTemplateVersionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9224,9 +9224,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteLocalGatewayRouteResult
            object will be validated before being returned to caller.
      */
-    public func deleteLocalGatewayRouteAsync(
+    public func deleteLocalGatewayRouteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9262,9 +9262,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteLocalGatewayRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteLocalGatewayRouteSync(
+    public func deleteLocalGatewayRouteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteLocalGatewayRouteResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteLocalGatewayRouteResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9299,9 +9299,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteLocalGatewayRouteTableVpcAssociationResult
            object will be validated before being returned to caller.
      */
-    public func deleteLocalGatewayRouteTableVpcAssociationAsync(
+    public func deleteLocalGatewayRouteTableVpcAssociationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9337,9 +9337,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteLocalGatewayRouteTableVpcAssociationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteLocalGatewayRouteTableVpcAssociationSync(
+    public func deleteLocalGatewayRouteTableVpcAssociationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9374,9 +9374,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteNatGatewayResult
            object will be validated before being returned to caller.
      */
-    public func deleteNatGatewayAsync(
+    public func deleteNatGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteNatGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteNatGatewayResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9412,9 +9412,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteNatGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteNatGatewaySync(
+    public func deleteNatGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteNatGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteNatGatewayResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteNatGatewayResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9448,9 +9448,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteNetworkAclAsync(
+    public func deleteNetworkAclAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteNetworkAclRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9484,9 +9484,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteNetworkAclRequest object being passed to this operation.
      */
-    public func deleteNetworkAclSync(
+    public func deleteNetworkAclSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteNetworkAclRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9520,9 +9520,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteNetworkAclEntryAsync(
+    public func deleteNetworkAclEntryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9556,9 +9556,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteNetworkAclEntryRequest object being passed to this operation.
      */
-    public func deleteNetworkAclEntrySync(
+    public func deleteNetworkAclEntrySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9592,9 +9592,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteNetworkInterfaceAsync(
+    public func deleteNetworkInterfaceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9628,9 +9628,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteNetworkInterfaceRequest object being passed to this operation.
      */
-    public func deleteNetworkInterfaceSync(
+    public func deleteNetworkInterfaceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9665,9 +9665,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteNetworkInterfacePermissionResult
            object will be validated before being returned to caller.
      */
-    public func deleteNetworkInterfacePermissionAsync(
+    public func deleteNetworkInterfacePermissionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9703,9 +9703,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteNetworkInterfacePermissionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteNetworkInterfacePermissionSync(
+    public func deleteNetworkInterfacePermissionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9739,9 +9739,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deletePlacementGroupAsync(
+    public func deletePlacementGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeletePlacementGroupRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9775,9 +9775,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeletePlacementGroupRequest object being passed to this operation.
      */
-    public func deletePlacementGroupSync(
+    public func deletePlacementGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeletePlacementGroupRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9812,9 +9812,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteQueuedReservedInstancesResult
            object will be validated before being returned to caller.
      */
-    public func deleteQueuedReservedInstancesAsync(
+    public func deleteQueuedReservedInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteQueuedReservedInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9850,9 +9850,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteQueuedReservedInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteQueuedReservedInstancesSync(
+    public func deleteQueuedReservedInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteQueuedReservedInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9886,9 +9886,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteRouteAsync(
+    public func deleteRouteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteRouteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9922,9 +9922,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteRouteRequest object being passed to this operation.
      */
-    public func deleteRouteSync(
+    public func deleteRouteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteRouteRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9958,9 +9958,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteRouteTableAsync(
+    public func deleteRouteTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteRouteTableRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9994,9 +9994,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteRouteTableRequest object being passed to this operation.
      */
-    public func deleteRouteTableSync(
+    public func deleteRouteTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteRouteTableRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10030,9 +10030,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSecurityGroupAsync(
+    public func deleteSecurityGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10066,9 +10066,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteSecurityGroupRequest object being passed to this operation.
      */
-    public func deleteSecurityGroupSync(
+    public func deleteSecurityGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteSecurityGroupRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10102,9 +10102,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSnapshotAsync(
+    public func deleteSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteSnapshotRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10138,9 +10138,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteSnapshotRequest object being passed to this operation.
      */
-    public func deleteSnapshotSync(
+    public func deleteSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteSnapshotRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10174,9 +10174,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSpotDatafeedSubscriptionAsync(
+    public func deleteSpotDatafeedSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10210,9 +10210,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteSpotDatafeedSubscriptionRequest object being passed to this operation.
      */
-    public func deleteSpotDatafeedSubscriptionSync(
+    public func deleteSpotDatafeedSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10246,9 +10246,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteSubnetAsync(
+    public func deleteSubnetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteSubnetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10282,9 +10282,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteSubnetRequest object being passed to this operation.
      */
-    public func deleteSubnetSync(
+    public func deleteSubnetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteSubnetRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10318,9 +10318,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteTagsAsync(
+    public func deleteTagsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTagsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10354,9 +10354,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteTagsRequest object being passed to this operation.
      */
-    public func deleteTagsSync(
+    public func deleteTagsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTagsRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10391,9 +10391,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteTrafficMirrorFilterResult
            object will be validated before being returned to caller.
      */
-    public func deleteTrafficMirrorFilterAsync(
+    public func deleteTrafficMirrorFilterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10429,9 +10429,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteTrafficMirrorFilterResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTrafficMirrorFilterSync(
+    public func deleteTrafficMirrorFilterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10466,9 +10466,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteTrafficMirrorFilterRuleResult
            object will be validated before being returned to caller.
      */
-    public func deleteTrafficMirrorFilterRuleAsync(
+    public func deleteTrafficMirrorFilterRuleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10504,9 +10504,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteTrafficMirrorFilterRuleResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTrafficMirrorFilterRuleSync(
+    public func deleteTrafficMirrorFilterRuleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10541,9 +10541,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteTrafficMirrorSessionResult
            object will be validated before being returned to caller.
      */
-    public func deleteTrafficMirrorSessionAsync(
+    public func deleteTrafficMirrorSessionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10579,9 +10579,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteTrafficMirrorSessionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTrafficMirrorSessionSync(
+    public func deleteTrafficMirrorSessionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10616,9 +10616,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteTrafficMirrorTargetResult
            object will be validated before being returned to caller.
      */
-    public func deleteTrafficMirrorTargetAsync(
+    public func deleteTrafficMirrorTargetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10654,9 +10654,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteTrafficMirrorTargetResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTrafficMirrorTargetSync(
+    public func deleteTrafficMirrorTargetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10691,9 +10691,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteTransitGatewayResult
            object will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayAsync(
+    public func deleteTransitGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10729,9 +10729,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteTransitGatewayResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTransitGatewaySync(
+    public func deleteTransitGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTransitGatewayResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteTransitGatewayResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10766,9 +10766,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteTransitGatewayMulticastDomainResult
            object will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayMulticastDomainAsync(
+    public func deleteTransitGatewayMulticastDomainAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10804,9 +10804,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteTransitGatewayMulticastDomainResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayMulticastDomainSync(
+    public func deleteTransitGatewayMulticastDomainSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10841,9 +10841,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteTransitGatewayPeeringAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayPeeringAttachmentAsync(
+    public func deleteTransitGatewayPeeringAttachmentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10879,9 +10879,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteTransitGatewayPeeringAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayPeeringAttachmentSync(
+    public func deleteTransitGatewayPeeringAttachmentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10916,9 +10916,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteTransitGatewayRouteResult
            object will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayRouteAsync(
+    public func deleteTransitGatewayRouteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10954,9 +10954,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteTransitGatewayRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayRouteSync(
+    public func deleteTransitGatewayRouteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10991,9 +10991,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteTransitGatewayRouteTableResult
            object will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayRouteTableAsync(
+    public func deleteTransitGatewayRouteTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11029,9 +11029,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayRouteTableSync(
+    public func deleteTransitGatewayRouteTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11066,9 +11066,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteTransitGatewayVpcAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayVpcAttachmentAsync(
+    public func deleteTransitGatewayVpcAttachmentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11104,9 +11104,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteTransitGatewayVpcAttachmentSync(
+    public func deleteTransitGatewayVpcAttachmentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11140,9 +11140,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVolumeAsync(
+    public func deleteVolumeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVolumeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11176,9 +11176,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteVolumeRequest object being passed to this operation.
      */
-    public func deleteVolumeSync(
+    public func deleteVolumeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVolumeRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11212,9 +11212,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpcAsync(
+    public func deleteVpcAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpcRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11248,9 +11248,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteVpcRequest object being passed to this operation.
      */
-    public func deleteVpcSync(
+    public func deleteVpcSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpcRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11285,9 +11285,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteVpcEndpointConnectionNotificationsResult
            object will be validated before being returned to caller.
      */
-    public func deleteVpcEndpointConnectionNotificationsAsync(
+    public func deleteVpcEndpointConnectionNotificationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11323,9 +11323,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteVpcEndpointConnectionNotificationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteVpcEndpointConnectionNotificationsSync(
+    public func deleteVpcEndpointConnectionNotificationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11360,9 +11360,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteVpcEndpointServiceConfigurationsResult
            object will be validated before being returned to caller.
      */
-    public func deleteVpcEndpointServiceConfigurationsAsync(
+    public func deleteVpcEndpointServiceConfigurationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11398,9 +11398,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteVpcEndpointServiceConfigurationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteVpcEndpointServiceConfigurationsSync(
+    public func deleteVpcEndpointServiceConfigurationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11435,9 +11435,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteVpcEndpointsResult
            object will be validated before being returned to caller.
      */
-    public func deleteVpcEndpointsAsync(
+    public func deleteVpcEndpointsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11473,9 +11473,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteVpcEndpointsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteVpcEndpointsSync(
+    public func deleteVpcEndpointsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteVpcEndpointsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteVpcEndpointsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11510,9 +11510,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeleteVpcPeeringConnectionResult
            object will be validated before being returned to caller.
      */
-    public func deleteVpcPeeringConnectionAsync(
+    public func deleteVpcPeeringConnectionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11548,9 +11548,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeleteVpcPeeringConnectionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deleteVpcPeeringConnectionSync(
+    public func deleteVpcPeeringConnectionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11584,9 +11584,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpnConnectionAsync(
+    public func deleteVpnConnectionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11620,9 +11620,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteVpnConnectionRequest object being passed to this operation.
      */
-    public func deleteVpnConnectionSync(
+    public func deleteVpnConnectionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11656,9 +11656,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpnConnectionRouteAsync(
+    public func deleteVpnConnectionRouteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11692,9 +11692,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteVpnConnectionRouteRequest object being passed to this operation.
      */
-    public func deleteVpnConnectionRouteSync(
+    public func deleteVpnConnectionRouteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11728,9 +11728,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deleteVpnGatewayAsync(
+    public func deleteVpnGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11764,9 +11764,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeleteVpnGatewayRequest object being passed to this operation.
      */
-    public func deleteVpnGatewaySync(
+    public func deleteVpnGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeleteVpnGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11801,9 +11801,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeprovisionByoipCidrResult
            object will be validated before being returned to caller.
      */
-    public func deprovisionByoipCidrAsync(
+    public func deprovisionByoipCidrAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeprovisionByoipCidrResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11839,9 +11839,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeprovisionByoipCidrResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deprovisionByoipCidrSync(
+    public func deprovisionByoipCidrSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeprovisionByoipCidrResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeprovisionByoipCidrResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11875,9 +11875,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func deregisterImageAsync(
+    public func deregisterImageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeregisterImageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11911,9 +11911,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DeregisterImageRequest object being passed to this operation.
      */
-    public func deregisterImageSync(
+    public func deregisterImageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeregisterImageRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11948,9 +11948,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeregisterTransitGatewayMulticastGroupMembersResult
            object will be validated before being returned to caller.
      */
-    public func deregisterTransitGatewayMulticastGroupMembersAsync(
+    public func deregisterTransitGatewayMulticastGroupMembersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -11986,9 +11986,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeregisterTransitGatewayMulticastGroupMembersResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deregisterTransitGatewayMulticastGroupMembersSync(
+    public func deregisterTransitGatewayMulticastGroupMembersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12023,9 +12023,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DeregisterTransitGatewayMulticastGroupSourcesResult
            object will be validated before being returned to caller.
      */
-    public func deregisterTransitGatewayMulticastGroupSourcesAsync(
+    public func deregisterTransitGatewayMulticastGroupSourcesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -12061,9 +12061,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DeregisterTransitGatewayMulticastGroupSourcesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func deregisterTransitGatewayMulticastGroupSourcesSync(
+    public func deregisterTransitGatewayMulticastGroupSourcesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12098,9 +12098,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeAccountAttributesResult
            object will be validated before being returned to caller.
      */
-    public func describeAccountAttributesAsync(
+    public func describeAccountAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeAccountAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeAccountAttributesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -12136,9 +12136,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeAccountAttributesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAccountAttributesSync(
+    public func describeAccountAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeAccountAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeAccountAttributesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeAccountAttributesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12173,9 +12173,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeAddressesResult
            object will be validated before being returned to caller.
      */
-    public func describeAddressesAsync(
+    public func describeAddressesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeAddressesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -12211,9 +12211,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeAddressesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAddressesSync(
+    public func describeAddressesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeAddressesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeAddressesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeAddressesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12248,9 +12248,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeAggregateIdFormatResult
            object will be validated before being returned to caller.
      */
-    public func describeAggregateIdFormatAsync(
+    public func describeAggregateIdFormatAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeAggregateIdFormatResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -12286,9 +12286,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeAggregateIdFormatResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAggregateIdFormatSync(
+    public func describeAggregateIdFormatSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeAggregateIdFormatResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeAggregateIdFormatResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12323,9 +12323,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeAvailabilityZonesResult
            object will be validated before being returned to caller.
      */
-    public func describeAvailabilityZonesAsync(
+    public func describeAvailabilityZonesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeAvailabilityZonesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -12361,9 +12361,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeAvailabilityZonesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAvailabilityZonesSync(
+    public func describeAvailabilityZonesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeAvailabilityZonesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeAvailabilityZonesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12398,9 +12398,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeBundleTasksResult
            object will be validated before being returned to caller.
      */
-    public func describeBundleTasksAsync(
+    public func describeBundleTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeBundleTasksRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeBundleTasksResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -12436,9 +12436,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeBundleTasksResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeBundleTasksSync(
+    public func describeBundleTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeBundleTasksRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeBundleTasksResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeBundleTasksResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12473,9 +12473,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeByoipCidrsResult
            object will be validated before being returned to caller.
      */
-    public func describeByoipCidrsAsync(
+    public func describeByoipCidrsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeByoipCidrsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeByoipCidrsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -12511,9 +12511,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeByoipCidrsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeByoipCidrsSync(
+    public func describeByoipCidrsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeByoipCidrsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeByoipCidrsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeByoipCidrsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12548,9 +12548,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeCapacityReservationsResult
            object will be validated before being returned to caller.
      */
-    public func describeCapacityReservationsAsync(
+    public func describeCapacityReservationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeCapacityReservationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -12586,9 +12586,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeCapacityReservationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeCapacityReservationsSync(
+    public func describeCapacityReservationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeCapacityReservationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeCapacityReservationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12623,9 +12623,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeClassicLinkInstancesResult
            object will be validated before being returned to caller.
      */
-    public func describeClassicLinkInstancesAsync(
+    public func describeClassicLinkInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeClassicLinkInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -12661,9 +12661,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeClassicLinkInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeClassicLinkInstancesSync(
+    public func describeClassicLinkInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeClassicLinkInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeClassicLinkInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12698,9 +12698,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeClientVpnAuthorizationRulesResult
            object will be validated before being returned to caller.
      */
-    public func describeClientVpnAuthorizationRulesAsync(
+    public func describeClientVpnAuthorizationRulesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -12736,9 +12736,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeClientVpnAuthorizationRulesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeClientVpnAuthorizationRulesSync(
+    public func describeClientVpnAuthorizationRulesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12773,9 +12773,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeClientVpnConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func describeClientVpnConnectionsAsync(
+    public func describeClientVpnConnectionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -12811,9 +12811,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeClientVpnConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeClientVpnConnectionsSync(
+    public func describeClientVpnConnectionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeClientVpnConnectionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeClientVpnConnectionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12848,9 +12848,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeClientVpnEndpointsResult
            object will be validated before being returned to caller.
      */
-    public func describeClientVpnEndpointsAsync(
+    public func describeClientVpnEndpointsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -12886,9 +12886,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeClientVpnEndpointsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeClientVpnEndpointsSync(
+    public func describeClientVpnEndpointsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeClientVpnEndpointsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeClientVpnEndpointsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12923,9 +12923,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeClientVpnRoutesResult
            object will be validated before being returned to caller.
      */
-    public func describeClientVpnRoutesAsync(
+    public func describeClientVpnRoutesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnRoutesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -12961,9 +12961,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeClientVpnRoutesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeClientVpnRoutesSync(
+    public func describeClientVpnRoutesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeClientVpnRoutesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeClientVpnRoutesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12998,9 +12998,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeClientVpnTargetNetworksResult
            object will be validated before being returned to caller.
      */
-    public func describeClientVpnTargetNetworksAsync(
+    public func describeClientVpnTargetNetworksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -13036,9 +13036,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeClientVpnTargetNetworksResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeClientVpnTargetNetworksSync(
+    public func describeClientVpnTargetNetworksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13073,9 +13073,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeCoipPoolsResult
            object will be validated before being returned to caller.
      */
-    public func describeCoipPoolsAsync(
+    public func describeCoipPoolsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeCoipPoolsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeCoipPoolsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -13111,9 +13111,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeCoipPoolsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeCoipPoolsSync(
+    public func describeCoipPoolsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeCoipPoolsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeCoipPoolsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeCoipPoolsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13148,9 +13148,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeConversionTasksResult
            object will be validated before being returned to caller.
      */
-    public func describeConversionTasksAsync(
+    public func describeConversionTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeConversionTasksRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeConversionTasksResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -13186,9 +13186,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeConversionTasksResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeConversionTasksSync(
+    public func describeConversionTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeConversionTasksRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeConversionTasksResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeConversionTasksResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13223,9 +13223,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeCustomerGatewaysResult
            object will be validated before being returned to caller.
      */
-    public func describeCustomerGatewaysAsync(
+    public func describeCustomerGatewaysAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeCustomerGatewaysResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -13261,9 +13261,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeCustomerGatewaysResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeCustomerGatewaysSync(
+    public func describeCustomerGatewaysSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeCustomerGatewaysResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeCustomerGatewaysResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13298,9 +13298,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeDhcpOptionsResult
            object will be validated before being returned to caller.
      */
-    public func describeDhcpOptionsAsync(
+    public func describeDhcpOptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeDhcpOptionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -13336,9 +13336,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeDhcpOptionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeDhcpOptionsSync(
+    public func describeDhcpOptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeDhcpOptionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeDhcpOptionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13373,9 +13373,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeEgressOnlyInternetGatewaysResult
            object will be validated before being returned to caller.
      */
-    public func describeEgressOnlyInternetGatewaysAsync(
+    public func describeEgressOnlyInternetGatewaysAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -13411,9 +13411,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeEgressOnlyInternetGatewaysResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEgressOnlyInternetGatewaysSync(
+    public func describeEgressOnlyInternetGatewaysSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13448,9 +13448,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeElasticGpusResult
            object will be validated before being returned to caller.
      */
-    public func describeElasticGpusAsync(
+    public func describeElasticGpusAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeElasticGpusRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeElasticGpusResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -13486,9 +13486,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeElasticGpusResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeElasticGpusSync(
+    public func describeElasticGpusSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeElasticGpusRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeElasticGpusResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeElasticGpusResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13523,9 +13523,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeExportImageTasksResult
            object will be validated before being returned to caller.
      */
-    public func describeExportImageTasksAsync(
+    public func describeExportImageTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeExportImageTasksRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportImageTasksResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -13561,9 +13561,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeExportImageTasksResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeExportImageTasksSync(
+    public func describeExportImageTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeExportImageTasksRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeExportImageTasksResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeExportImageTasksResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13598,9 +13598,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeExportTasksResult
            object will be validated before being returned to caller.
      */
-    public func describeExportTasksAsync(
+    public func describeExportTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeExportTasksRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportTasksResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -13636,9 +13636,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeExportTasksResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeExportTasksSync(
+    public func describeExportTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeExportTasksRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeExportTasksResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeExportTasksResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13673,9 +13673,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeFastSnapshotRestoresResult
            object will be validated before being returned to caller.
      */
-    public func describeFastSnapshotRestoresAsync(
+    public func describeFastSnapshotRestoresAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFastSnapshotRestoresRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -13711,9 +13711,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeFastSnapshotRestoresResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeFastSnapshotRestoresSync(
+    public func describeFastSnapshotRestoresSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFastSnapshotRestoresRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13748,9 +13748,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeFleetHistoryResult
            object will be validated before being returned to caller.
      */
-    public func describeFleetHistoryAsync(
+    public func describeFleetHistoryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFleetHistoryRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetHistoryResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -13786,9 +13786,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeFleetHistoryResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeFleetHistorySync(
+    public func describeFleetHistorySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFleetHistoryRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFleetHistoryResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeFleetHistoryResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13823,9 +13823,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeFleetInstancesResult
            object will be validated before being returned to caller.
      */
-    public func describeFleetInstancesAsync(
+    public func describeFleetInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFleetInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -13861,9 +13861,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeFleetInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeFleetInstancesSync(
+    public func describeFleetInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFleetInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFleetInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeFleetInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13898,9 +13898,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeFleetsResult
            object will be validated before being returned to caller.
      */
-    public func describeFleetsAsync(
+    public func describeFleetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFleetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -13936,9 +13936,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeFleetsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeFleetsSync(
+    public func describeFleetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFleetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFleetsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeFleetsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13973,9 +13973,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeFlowLogsResult
            object will be validated before being returned to caller.
      */
-    public func describeFlowLogsAsync(
+    public func describeFlowLogsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFlowLogsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFlowLogsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14011,9 +14011,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeFlowLogsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeFlowLogsSync(
+    public func describeFlowLogsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFlowLogsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFlowLogsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeFlowLogsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14048,9 +14048,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeFpgaImageAttributeResult
            object will be validated before being returned to caller.
      */
-    public func describeFpgaImageAttributeAsync(
+    public func describeFpgaImageAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImageAttributeResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14086,9 +14086,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeFpgaImageAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeFpgaImageAttributeSync(
+    public func describeFpgaImageAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFpgaImageAttributeResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeFpgaImageAttributeResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14123,9 +14123,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeFpgaImagesResult
            object will be validated before being returned to caller.
      */
-    public func describeFpgaImagesAsync(
+    public func describeFpgaImagesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFpgaImagesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImagesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14161,9 +14161,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeFpgaImagesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeFpgaImagesSync(
+    public func describeFpgaImagesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeFpgaImagesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeFpgaImagesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeFpgaImagesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14198,9 +14198,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeHostReservationOfferingsResult
            object will be validated before being returned to caller.
      */
-    public func describeHostReservationOfferingsAsync(
+    public func describeHostReservationOfferingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationOfferingsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14236,9 +14236,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeHostReservationOfferingsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeHostReservationOfferingsSync(
+    public func describeHostReservationOfferingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeHostReservationOfferingsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeHostReservationOfferingsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14273,9 +14273,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeHostReservationsResult
            object will be validated before being returned to caller.
      */
-    public func describeHostReservationsAsync(
+    public func describeHostReservationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeHostReservationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14311,9 +14311,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeHostReservationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeHostReservationsSync(
+    public func describeHostReservationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeHostReservationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeHostReservationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeHostReservationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14348,9 +14348,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeHostsResult
            object will be validated before being returned to caller.
      */
-    public func describeHostsAsync(
+    public func describeHostsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeHostsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14386,9 +14386,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeHostsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeHostsSync(
+    public func describeHostsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeHostsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeHostsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeHostsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14423,9 +14423,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeIamInstanceProfileAssociationsResult
            object will be validated before being returned to caller.
      */
-    public func describeIamInstanceProfileAssociationsAsync(
+    public func describeIamInstanceProfileAssociationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14461,9 +14461,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeIamInstanceProfileAssociationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeIamInstanceProfileAssociationsSync(
+    public func describeIamInstanceProfileAssociationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14498,9 +14498,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeIdFormatResult
            object will be validated before being returned to caller.
      */
-    public func describeIdFormatAsync(
+    public func describeIdFormatAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeIdFormatRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdFormatResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14536,9 +14536,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeIdFormatResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeIdFormatSync(
+    public func describeIdFormatSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeIdFormatRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeIdFormatResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeIdFormatResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14573,9 +14573,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeIdentityIdFormatResult
            object will be validated before being returned to caller.
      */
-    public func describeIdentityIdFormatAsync(
+    public func describeIdentityIdFormatAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdentityIdFormatResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14611,9 +14611,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeIdentityIdFormatResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeIdentityIdFormatSync(
+    public func describeIdentityIdFormatSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeIdentityIdFormatResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeIdentityIdFormatResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14648,9 +14648,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ImageAttribute
            object will be validated before being returned to caller.
      */
-    public func describeImageAttributeAsync(
+    public func describeImageAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeImageAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ImageAttribute, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14686,9 +14686,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ImageAttribute object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeImageAttributeSync(
+    public func describeImageAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeImageAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImageAttribute {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ImageAttribute {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14723,9 +14723,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeImagesResult
            object will be validated before being returned to caller.
      */
-    public func describeImagesAsync(
+    public func describeImagesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeImagesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeImagesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14761,9 +14761,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeImagesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeImagesSync(
+    public func describeImagesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeImagesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeImagesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeImagesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14798,9 +14798,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeImportImageTasksResult
            object will be validated before being returned to caller.
      */
-    public func describeImportImageTasksAsync(
+    public func describeImportImageTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeImportImageTasksRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportImageTasksResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14836,9 +14836,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeImportImageTasksResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeImportImageTasksSync(
+    public func describeImportImageTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeImportImageTasksRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeImportImageTasksResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeImportImageTasksResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14873,9 +14873,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeImportSnapshotTasksResult
            object will be validated before being returned to caller.
      */
-    public func describeImportSnapshotTasksAsync(
+    public func describeImportSnapshotTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportSnapshotTasksResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14911,9 +14911,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeImportSnapshotTasksResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeImportSnapshotTasksSync(
+    public func describeImportSnapshotTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeImportSnapshotTasksResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeImportSnapshotTasksResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14948,9 +14948,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The InstanceAttribute
            object will be validated before being returned to caller.
      */
-    public func describeInstanceAttributeAsync(
+    public func describeInstanceAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.InstanceAttribute, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -14986,9 +14986,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The InstanceAttribute object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeInstanceAttributeSync(
+    public func describeInstanceAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.InstanceAttribute {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.InstanceAttribute {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15023,9 +15023,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeInstanceCreditSpecificationsResult
            object will be validated before being returned to caller.
      */
-    public func describeInstanceCreditSpecificationsAsync(
+    public func describeInstanceCreditSpecificationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -15061,9 +15061,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeInstanceCreditSpecificationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeInstanceCreditSpecificationsSync(
+    public func describeInstanceCreditSpecificationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15098,9 +15098,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeInstanceStatusResult
            object will be validated before being returned to caller.
      */
-    public func describeInstanceStatusAsync(
+    public func describeInstanceStatusAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInstanceStatusRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceStatusResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -15136,9 +15136,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeInstanceStatusResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeInstanceStatusSync(
+    public func describeInstanceStatusSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInstanceStatusRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeInstanceStatusResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeInstanceStatusResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15173,9 +15173,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeInstanceTypeOfferingsResult
            object will be validated before being returned to caller.
      */
-    public func describeInstanceTypeOfferingsAsync(
+    public func describeInstanceTypeOfferingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInstanceTypeOfferingsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -15211,9 +15211,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeInstanceTypeOfferingsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeInstanceTypeOfferingsSync(
+    public func describeInstanceTypeOfferingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInstanceTypeOfferingsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15248,9 +15248,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeInstanceTypesResult
            object will be validated before being returned to caller.
      */
-    public func describeInstanceTypesAsync(
+    public func describeInstanceTypesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInstanceTypesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -15286,9 +15286,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeInstanceTypesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeInstanceTypesSync(
+    public func describeInstanceTypesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInstanceTypesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeInstanceTypesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeInstanceTypesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15323,9 +15323,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeInstancesResult
            object will be validated before being returned to caller.
      */
-    public func describeInstancesAsync(
+    public func describeInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -15361,9 +15361,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeInstancesSync(
+    public func describeInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15398,9 +15398,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeInternetGatewaysResult
            object will be validated before being returned to caller.
      */
-    public func describeInternetGatewaysAsync(
+    public func describeInternetGatewaysAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeInternetGatewaysResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -15436,9 +15436,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeInternetGatewaysResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeInternetGatewaysSync(
+    public func describeInternetGatewaysSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeInternetGatewaysResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeInternetGatewaysResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15473,9 +15473,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeIpv6PoolsResult
            object will be validated before being returned to caller.
      */
-    public func describeIpv6PoolsAsync(
+    public func describeIpv6PoolsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeIpv6PoolsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpv6PoolsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -15511,9 +15511,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeIpv6PoolsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeIpv6PoolsSync(
+    public func describeIpv6PoolsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeIpv6PoolsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeIpv6PoolsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeIpv6PoolsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15548,9 +15548,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeKeyPairsResult
            object will be validated before being returned to caller.
      */
-    public func describeKeyPairsAsync(
+    public func describeKeyPairsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeKeyPairsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeKeyPairsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -15586,9 +15586,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeKeyPairsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeKeyPairsSync(
+    public func describeKeyPairsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeKeyPairsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeKeyPairsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeKeyPairsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15623,9 +15623,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeLaunchTemplateVersionsResult
            object will be validated before being returned to caller.
      */
-    public func describeLaunchTemplateVersionsAsync(
+    public func describeLaunchTemplateVersionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -15661,9 +15661,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeLaunchTemplateVersionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeLaunchTemplateVersionsSync(
+    public func describeLaunchTemplateVersionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15698,9 +15698,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeLaunchTemplatesResult
            object will be validated before being returned to caller.
      */
-    public func describeLaunchTemplatesAsync(
+    public func describeLaunchTemplatesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplatesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -15736,9 +15736,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeLaunchTemplatesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeLaunchTemplatesSync(
+    public func describeLaunchTemplatesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLaunchTemplatesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeLaunchTemplatesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15773,9 +15773,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult
            object will be validated before being returned to caller.
      */
-    public func describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsAsync(
+    public func describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -15811,9 +15811,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsSync(
+    public func describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15848,9 +15848,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeLocalGatewayRouteTableVpcAssociationsResult
            object will be validated before being returned to caller.
      */
-    public func describeLocalGatewayRouteTableVpcAssociationsAsync(
+    public func describeLocalGatewayRouteTableVpcAssociationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -15886,9 +15886,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeLocalGatewayRouteTableVpcAssociationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeLocalGatewayRouteTableVpcAssociationsSync(
+    public func describeLocalGatewayRouteTableVpcAssociationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15923,9 +15923,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeLocalGatewayRouteTablesResult
            object will be validated before being returned to caller.
      */
-    public func describeLocalGatewayRouteTablesAsync(
+    public func describeLocalGatewayRouteTablesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -15961,9 +15961,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeLocalGatewayRouteTablesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeLocalGatewayRouteTablesSync(
+    public func describeLocalGatewayRouteTablesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15998,9 +15998,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeLocalGatewayVirtualInterfaceGroupsResult
            object will be validated before being returned to caller.
      */
-    public func describeLocalGatewayVirtualInterfaceGroupsAsync(
+    public func describeLocalGatewayVirtualInterfaceGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -16036,9 +16036,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeLocalGatewayVirtualInterfaceGroupsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeLocalGatewayVirtualInterfaceGroupsSync(
+    public func describeLocalGatewayVirtualInterfaceGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16073,9 +16073,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeLocalGatewayVirtualInterfacesResult
            object will be validated before being returned to caller.
      */
-    public func describeLocalGatewayVirtualInterfacesAsync(
+    public func describeLocalGatewayVirtualInterfacesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -16111,9 +16111,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeLocalGatewayVirtualInterfacesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeLocalGatewayVirtualInterfacesSync(
+    public func describeLocalGatewayVirtualInterfacesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16148,9 +16148,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeLocalGatewaysResult
            object will be validated before being returned to caller.
      */
-    public func describeLocalGatewaysAsync(
+    public func describeLocalGatewaysAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLocalGatewaysRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewaysResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -16186,9 +16186,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeLocalGatewaysResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeLocalGatewaysSync(
+    public func describeLocalGatewaysSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeLocalGatewaysRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeLocalGatewaysResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeLocalGatewaysResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16223,9 +16223,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeMovingAddressesResult
            object will be validated before being returned to caller.
      */
-    public func describeMovingAddressesAsync(
+    public func describeMovingAddressesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeMovingAddressesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeMovingAddressesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -16261,9 +16261,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeMovingAddressesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeMovingAddressesSync(
+    public func describeMovingAddressesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeMovingAddressesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeMovingAddressesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeMovingAddressesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16298,9 +16298,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeNatGatewaysResult
            object will be validated before being returned to caller.
      */
-    public func describeNatGatewaysAsync(
+    public func describeNatGatewaysAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeNatGatewaysRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeNatGatewaysResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -16336,9 +16336,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeNatGatewaysResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeNatGatewaysSync(
+    public func describeNatGatewaysSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeNatGatewaysRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeNatGatewaysResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeNatGatewaysResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16373,9 +16373,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeNetworkAclsResult
            object will be validated before being returned to caller.
      */
-    public func describeNetworkAclsAsync(
+    public func describeNetworkAclsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeNetworkAclsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkAclsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -16411,9 +16411,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeNetworkAclsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeNetworkAclsSync(
+    public func describeNetworkAclsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeNetworkAclsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeNetworkAclsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeNetworkAclsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16448,9 +16448,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeNetworkInterfaceAttributeResult
            object will be validated before being returned to caller.
      */
-    public func describeNetworkInterfaceAttributeAsync(
+    public func describeNetworkInterfaceAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -16486,9 +16486,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeNetworkInterfaceAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeNetworkInterfaceAttributeSync(
+    public func describeNetworkInterfaceAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16523,9 +16523,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeNetworkInterfacePermissionsResult
            object will be validated before being returned to caller.
      */
-    public func describeNetworkInterfacePermissionsAsync(
+    public func describeNetworkInterfacePermissionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -16561,9 +16561,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeNetworkInterfacePermissionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeNetworkInterfacePermissionsSync(
+    public func describeNetworkInterfacePermissionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16598,9 +16598,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeNetworkInterfacesResult
            object will be validated before being returned to caller.
      */
-    public func describeNetworkInterfacesAsync(
+    public func describeNetworkInterfacesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -16636,9 +16636,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeNetworkInterfacesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeNetworkInterfacesSync(
+    public func describeNetworkInterfacesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeNetworkInterfacesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeNetworkInterfacesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16673,9 +16673,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribePlacementGroupsResult
            object will be validated before being returned to caller.
      */
-    public func describePlacementGroupsAsync(
+    public func describePlacementGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribePlacementGroupsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribePlacementGroupsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -16711,9 +16711,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribePlacementGroupsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describePlacementGroupsSync(
+    public func describePlacementGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribePlacementGroupsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribePlacementGroupsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribePlacementGroupsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16748,9 +16748,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribePrefixListsResult
            object will be validated before being returned to caller.
      */
-    public func describePrefixListsAsync(
+    public func describePrefixListsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribePrefixListsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribePrefixListsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -16786,9 +16786,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribePrefixListsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describePrefixListsSync(
+    public func describePrefixListsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribePrefixListsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribePrefixListsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribePrefixListsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16823,9 +16823,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribePrincipalIdFormatResult
            object will be validated before being returned to caller.
      */
-    public func describePrincipalIdFormatAsync(
+    public func describePrincipalIdFormatAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribePrincipalIdFormatResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -16861,9 +16861,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribePrincipalIdFormatResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describePrincipalIdFormatSync(
+    public func describePrincipalIdFormatSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribePrincipalIdFormatResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribePrincipalIdFormatResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16898,9 +16898,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribePublicIpv4PoolsResult
            object will be validated before being returned to caller.
      */
-    public func describePublicIpv4PoolsAsync(
+    public func describePublicIpv4PoolsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribePublicIpv4PoolsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -16936,9 +16936,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribePublicIpv4PoolsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describePublicIpv4PoolsSync(
+    public func describePublicIpv4PoolsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribePublicIpv4PoolsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribePublicIpv4PoolsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16973,9 +16973,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeRegionsResult
            object will be validated before being returned to caller.
      */
-    public func describeRegionsAsync(
+    public func describeRegionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeRegionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeRegionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17011,9 +17011,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeRegionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeRegionsSync(
+    public func describeRegionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeRegionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeRegionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeRegionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17048,9 +17048,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeReservedInstancesResult
            object will be validated before being returned to caller.
      */
-    public func describeReservedInstancesAsync(
+    public func describeReservedInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeReservedInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17086,9 +17086,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeReservedInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeReservedInstancesSync(
+    public func describeReservedInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeReservedInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeReservedInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeReservedInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17123,9 +17123,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeReservedInstancesListingsResult
            object will be validated before being returned to caller.
      */
-    public func describeReservedInstancesListingsAsync(
+    public func describeReservedInstancesListingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesListingsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17161,9 +17161,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeReservedInstancesListingsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeReservedInstancesListingsSync(
+    public func describeReservedInstancesListingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeReservedInstancesListingsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeReservedInstancesListingsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17198,9 +17198,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeReservedInstancesModificationsResult
            object will be validated before being returned to caller.
      */
-    public func describeReservedInstancesModificationsAsync(
+    public func describeReservedInstancesModificationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17236,9 +17236,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeReservedInstancesModificationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeReservedInstancesModificationsSync(
+    public func describeReservedInstancesModificationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17273,9 +17273,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeReservedInstancesOfferingsResult
            object will be validated before being returned to caller.
      */
-    public func describeReservedInstancesOfferingsAsync(
+    public func describeReservedInstancesOfferingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17311,9 +17311,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeReservedInstancesOfferingsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeReservedInstancesOfferingsSync(
+    public func describeReservedInstancesOfferingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17348,9 +17348,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeRouteTablesResult
            object will be validated before being returned to caller.
      */
-    public func describeRouteTablesAsync(
+    public func describeRouteTablesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeRouteTablesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeRouteTablesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17386,9 +17386,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeRouteTablesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeRouteTablesSync(
+    public func describeRouteTablesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeRouteTablesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeRouteTablesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeRouteTablesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17423,9 +17423,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeScheduledInstanceAvailabilityResult
            object will be validated before being returned to caller.
      */
-    public func describeScheduledInstanceAvailabilityAsync(
+    public func describeScheduledInstanceAvailabilityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17461,9 +17461,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeScheduledInstanceAvailabilityResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeScheduledInstanceAvailabilitySync(
+    public func describeScheduledInstanceAvailabilitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17498,9 +17498,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeScheduledInstancesResult
            object will be validated before being returned to caller.
      */
-    public func describeScheduledInstancesAsync(
+    public func describeScheduledInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17536,9 +17536,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeScheduledInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeScheduledInstancesSync(
+    public func describeScheduledInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeScheduledInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeScheduledInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17573,9 +17573,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeSecurityGroupReferencesResult
            object will be validated before being returned to caller.
      */
-    public func describeSecurityGroupReferencesAsync(
+    public func describeSecurityGroupReferencesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17611,9 +17611,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeSecurityGroupReferencesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSecurityGroupReferencesSync(
+    public func describeSecurityGroupReferencesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17648,9 +17648,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeSecurityGroupsResult
            object will be validated before being returned to caller.
      */
-    public func describeSecurityGroupsAsync(
+    public func describeSecurityGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17686,9 +17686,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeSecurityGroupsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSecurityGroupsSync(
+    public func describeSecurityGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSecurityGroupsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeSecurityGroupsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17723,9 +17723,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeSnapshotAttributeResult
            object will be validated before being returned to caller.
      */
-    public func describeSnapshotAttributeAsync(
+    public func describeSnapshotAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotAttributeResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17761,9 +17761,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeSnapshotAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSnapshotAttributeSync(
+    public func describeSnapshotAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSnapshotAttributeResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeSnapshotAttributeResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17798,9 +17798,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeSnapshotsResult
            object will be validated before being returned to caller.
      */
-    public func describeSnapshotsAsync(
+    public func describeSnapshotsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSnapshotsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17836,9 +17836,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeSnapshotsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSnapshotsSync(
+    public func describeSnapshotsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSnapshotsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSnapshotsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeSnapshotsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17873,9 +17873,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeSpotDatafeedSubscriptionResult
            object will be validated before being returned to caller.
      */
-    public func describeSpotDatafeedSubscriptionAsync(
+    public func describeSpotDatafeedSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17911,9 +17911,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeSpotDatafeedSubscriptionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSpotDatafeedSubscriptionSync(
+    public func describeSpotDatafeedSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17948,9 +17948,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeSpotFleetInstancesResponse
            object will be validated before being returned to caller.
      */
-    public func describeSpotFleetInstancesAsync(
+    public func describeSpotFleetInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -17986,9 +17986,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeSpotFleetInstancesResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSpotFleetInstancesSync(
+    public func describeSpotFleetInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18023,9 +18023,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeSpotFleetRequestHistoryResponse
            object will be validated before being returned to caller.
      */
-    public func describeSpotFleetRequestHistoryAsync(
+    public func describeSpotFleetRequestHistoryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -18061,9 +18061,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeSpotFleetRequestHistoryResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSpotFleetRequestHistorySync(
+    public func describeSpotFleetRequestHistorySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18098,9 +18098,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeSpotFleetRequestsResponse
            object will be validated before being returned to caller.
      */
-    public func describeSpotFleetRequestsAsync(
+    public func describeSpotFleetRequestsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -18136,9 +18136,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeSpotFleetRequestsResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSpotFleetRequestsSync(
+    public func describeSpotFleetRequestsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18173,9 +18173,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeSpotInstanceRequestsResult
            object will be validated before being returned to caller.
      */
-    public func describeSpotInstanceRequestsAsync(
+    public func describeSpotInstanceRequestsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -18211,9 +18211,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeSpotInstanceRequestsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSpotInstanceRequestsSync(
+    public func describeSpotInstanceRequestsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18248,9 +18248,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeSpotPriceHistoryResult
            object will be validated before being returned to caller.
      */
-    public func describeSpotPriceHistoryAsync(
+    public func describeSpotPriceHistoryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotPriceHistoryResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -18286,9 +18286,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeSpotPriceHistoryResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSpotPriceHistorySync(
+    public func describeSpotPriceHistorySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSpotPriceHistoryResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeSpotPriceHistoryResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18323,9 +18323,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeStaleSecurityGroupsResult
            object will be validated before being returned to caller.
      */
-    public func describeStaleSecurityGroupsAsync(
+    public func describeStaleSecurityGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -18361,9 +18361,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeStaleSecurityGroupsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeStaleSecurityGroupsSync(
+    public func describeStaleSecurityGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18398,9 +18398,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeSubnetsResult
            object will be validated before being returned to caller.
      */
-    public func describeSubnetsAsync(
+    public func describeSubnetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSubnetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSubnetsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -18436,9 +18436,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeSubnetsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSubnetsSync(
+    public func describeSubnetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeSubnetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeSubnetsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeSubnetsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18473,9 +18473,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeTagsResult
            object will be validated before being returned to caller.
      */
-    public func describeTagsAsync(
+    public func describeTagsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTagsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTagsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -18511,9 +18511,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeTagsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTagsSync(
+    public func describeTagsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTagsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTagsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeTagsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18548,9 +18548,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeTrafficMirrorFiltersResult
            object will be validated before being returned to caller.
      */
-    public func describeTrafficMirrorFiltersAsync(
+    public func describeTrafficMirrorFiltersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -18586,9 +18586,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeTrafficMirrorFiltersResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTrafficMirrorFiltersSync(
+    public func describeTrafficMirrorFiltersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18623,9 +18623,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeTrafficMirrorSessionsResult
            object will be validated before being returned to caller.
      */
-    public func describeTrafficMirrorSessionsAsync(
+    public func describeTrafficMirrorSessionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -18661,9 +18661,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeTrafficMirrorSessionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTrafficMirrorSessionsSync(
+    public func describeTrafficMirrorSessionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18698,9 +18698,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeTrafficMirrorTargetsResult
            object will be validated before being returned to caller.
      */
-    public func describeTrafficMirrorTargetsAsync(
+    public func describeTrafficMirrorTargetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -18736,9 +18736,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeTrafficMirrorTargetsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTrafficMirrorTargetsSync(
+    public func describeTrafficMirrorTargetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18773,9 +18773,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeTransitGatewayAttachmentsResult
            object will be validated before being returned to caller.
      */
-    public func describeTransitGatewayAttachmentsAsync(
+    public func describeTransitGatewayAttachmentsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -18811,9 +18811,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeTransitGatewayAttachmentsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTransitGatewayAttachmentsSync(
+    public func describeTransitGatewayAttachmentsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18848,9 +18848,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeTransitGatewayMulticastDomainsResult
            object will be validated before being returned to caller.
      */
-    public func describeTransitGatewayMulticastDomainsAsync(
+    public func describeTransitGatewayMulticastDomainsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -18886,9 +18886,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeTransitGatewayMulticastDomainsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTransitGatewayMulticastDomainsSync(
+    public func describeTransitGatewayMulticastDomainsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18923,9 +18923,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeTransitGatewayPeeringAttachmentsResult
            object will be validated before being returned to caller.
      */
-    public func describeTransitGatewayPeeringAttachmentsAsync(
+    public func describeTransitGatewayPeeringAttachmentsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -18961,9 +18961,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeTransitGatewayPeeringAttachmentsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTransitGatewayPeeringAttachmentsSync(
+    public func describeTransitGatewayPeeringAttachmentsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18998,9 +18998,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeTransitGatewayRouteTablesResult
            object will be validated before being returned to caller.
      */
-    public func describeTransitGatewayRouteTablesAsync(
+    public func describeTransitGatewayRouteTablesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -19036,9 +19036,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeTransitGatewayRouteTablesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTransitGatewayRouteTablesSync(
+    public func describeTransitGatewayRouteTablesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19073,9 +19073,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeTransitGatewayVpcAttachmentsResult
            object will be validated before being returned to caller.
      */
-    public func describeTransitGatewayVpcAttachmentsAsync(
+    public func describeTransitGatewayVpcAttachmentsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -19111,9 +19111,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeTransitGatewayVpcAttachmentsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTransitGatewayVpcAttachmentsSync(
+    public func describeTransitGatewayVpcAttachmentsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19148,9 +19148,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeTransitGatewaysResult
            object will be validated before being returned to caller.
      */
-    public func describeTransitGatewaysAsync(
+    public func describeTransitGatewaysAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewaysResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -19186,9 +19186,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeTransitGatewaysResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeTransitGatewaysSync(
+    public func describeTransitGatewaysSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeTransitGatewaysResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeTransitGatewaysResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19223,9 +19223,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVolumeAttributeResult
            object will be validated before being returned to caller.
      */
-    public func describeVolumeAttributeAsync(
+    public func describeVolumeAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeAttributeResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -19261,9 +19261,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVolumeAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVolumeAttributeSync(
+    public func describeVolumeAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVolumeAttributeResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVolumeAttributeResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19298,9 +19298,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVolumeStatusResult
            object will be validated before being returned to caller.
      */
-    public func describeVolumeStatusAsync(
+    public func describeVolumeStatusAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVolumeStatusRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeStatusResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -19336,9 +19336,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVolumeStatusResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVolumeStatusSync(
+    public func describeVolumeStatusSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVolumeStatusRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVolumeStatusResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVolumeStatusResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19373,9 +19373,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVolumesResult
            object will be validated before being returned to caller.
      */
-    public func describeVolumesAsync(
+    public func describeVolumesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVolumesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -19411,9 +19411,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVolumesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVolumesSync(
+    public func describeVolumesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVolumesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVolumesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVolumesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19448,9 +19448,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVolumesModificationsResult
            object will be validated before being returned to caller.
      */
-    public func describeVolumesModificationsAsync(
+    public func describeVolumesModificationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesModificationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -19486,9 +19486,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVolumesModificationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVolumesModificationsSync(
+    public func describeVolumesModificationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVolumesModificationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVolumesModificationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19523,9 +19523,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVpcAttributeResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcAttributeAsync(
+    public func describeVpcAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcAttributeResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -19561,9 +19561,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVpcAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcAttributeSync(
+    public func describeVpcAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcAttributeResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVpcAttributeResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19598,9 +19598,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVpcClassicLinkResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcClassicLinkAsync(
+    public func describeVpcClassicLinkAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -19636,9 +19636,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVpcClassicLinkResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcClassicLinkSync(
+    public func describeVpcClassicLinkSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19673,9 +19673,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVpcClassicLinkDnsSupportResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcClassicLinkDnsSupportAsync(
+    public func describeVpcClassicLinkDnsSupportAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -19711,9 +19711,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVpcClassicLinkDnsSupportResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcClassicLinkDnsSupportSync(
+    public func describeVpcClassicLinkDnsSupportSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19748,9 +19748,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVpcEndpointConnectionNotificationsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcEndpointConnectionNotificationsAsync(
+    public func describeVpcEndpointConnectionNotificationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -19786,9 +19786,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVpcEndpointConnectionNotificationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcEndpointConnectionNotificationsSync(
+    public func describeVpcEndpointConnectionNotificationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19823,9 +19823,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVpcEndpointConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcEndpointConnectionsAsync(
+    public func describeVpcEndpointConnectionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -19861,9 +19861,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVpcEndpointConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcEndpointConnectionsSync(
+    public func describeVpcEndpointConnectionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19898,9 +19898,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVpcEndpointServiceConfigurationsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcEndpointServiceConfigurationsAsync(
+    public func describeVpcEndpointServiceConfigurationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -19936,9 +19936,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVpcEndpointServiceConfigurationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcEndpointServiceConfigurationsSync(
+    public func describeVpcEndpointServiceConfigurationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19973,9 +19973,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVpcEndpointServicePermissionsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcEndpointServicePermissionsAsync(
+    public func describeVpcEndpointServicePermissionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20011,9 +20011,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVpcEndpointServicePermissionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcEndpointServicePermissionsSync(
+    public func describeVpcEndpointServicePermissionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20048,9 +20048,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVpcEndpointServicesResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcEndpointServicesAsync(
+    public func describeVpcEndpointServicesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20086,9 +20086,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVpcEndpointServicesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcEndpointServicesSync(
+    public func describeVpcEndpointServicesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20123,9 +20123,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVpcEndpointsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcEndpointsAsync(
+    public func describeVpcEndpointsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20161,9 +20161,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVpcEndpointsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcEndpointsSync(
+    public func describeVpcEndpointsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcEndpointsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVpcEndpointsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20198,9 +20198,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVpcPeeringConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcPeeringConnectionsAsync(
+    public func describeVpcPeeringConnectionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20236,9 +20236,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVpcPeeringConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcPeeringConnectionsSync(
+    public func describeVpcPeeringConnectionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20273,9 +20273,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVpcsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpcsAsync(
+    public func describeVpcsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20311,9 +20311,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVpcsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpcsSync(
+    public func describeVpcsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpcsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpcsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVpcsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20348,9 +20348,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVpnConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func describeVpnConnectionsAsync(
+    public func describeVpnConnectionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnConnectionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20386,9 +20386,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVpnConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpnConnectionsSync(
+    public func describeVpnConnectionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpnConnectionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVpnConnectionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20423,9 +20423,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DescribeVpnGatewaysResult
            object will be validated before being returned to caller.
      */
-    public func describeVpnGatewaysAsync(
+    public func describeVpnGatewaysAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnGatewaysResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20461,9 +20461,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DescribeVpnGatewaysResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeVpnGatewaysSync(
+    public func describeVpnGatewaysSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DescribeVpnGatewaysResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DescribeVpnGatewaysResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20498,9 +20498,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DetachClassicLinkVpcResult
            object will be validated before being returned to caller.
      */
-    public func detachClassicLinkVpcAsync(
+    public func detachClassicLinkVpcAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DetachClassicLinkVpcResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20536,9 +20536,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DetachClassicLinkVpcResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func detachClassicLinkVpcSync(
+    public func detachClassicLinkVpcSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DetachClassicLinkVpcResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DetachClassicLinkVpcResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20572,9 +20572,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func detachInternetGatewayAsync(
+    public func detachInternetGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DetachInternetGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20608,9 +20608,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DetachInternetGatewayRequest object being passed to this operation.
      */
-    public func detachInternetGatewaySync(
+    public func detachInternetGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DetachInternetGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20644,9 +20644,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func detachNetworkInterfaceAsync(
+    public func detachNetworkInterfaceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20680,9 +20680,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DetachNetworkInterfaceRequest object being passed to this operation.
      */
-    public func detachNetworkInterfaceSync(
+    public func detachNetworkInterfaceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20717,9 +20717,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The VolumeAttachment
            object will be validated before being returned to caller.
      */
-    public func detachVolumeAsync(
+    public func detachVolumeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DetachVolumeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20755,9 +20755,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The VolumeAttachment object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func detachVolumeSync(
+    public func detachVolumeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DetachVolumeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.VolumeAttachment {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.VolumeAttachment {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20791,9 +20791,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func detachVpnGatewayAsync(
+    public func detachVpnGatewayAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DetachVpnGatewayRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20827,9 +20827,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DetachVpnGatewayRequest object being passed to this operation.
      */
-    public func detachVpnGatewaySync(
+    public func detachVpnGatewaySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DetachVpnGatewayRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20864,9 +20864,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DisableEbsEncryptionByDefaultResult
            object will be validated before being returned to caller.
      */
-    public func disableEbsEncryptionByDefaultAsync(
+    public func disableEbsEncryptionByDefaultAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20902,9 +20902,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DisableEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disableEbsEncryptionByDefaultSync(
+    public func disableEbsEncryptionByDefaultSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20939,9 +20939,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DisableFastSnapshotRestoresResult
            object will be validated before being returned to caller.
      */
-    public func disableFastSnapshotRestoresAsync(
+    public func disableFastSnapshotRestoresAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DisableFastSnapshotRestoresResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -20977,9 +20977,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DisableFastSnapshotRestoresResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disableFastSnapshotRestoresSync(
+    public func disableFastSnapshotRestoresSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisableFastSnapshotRestoresResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DisableFastSnapshotRestoresResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21014,9 +21014,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DisableTransitGatewayRouteTablePropagationResult
            object will be validated before being returned to caller.
      */
-    public func disableTransitGatewayRouteTablePropagationAsync(
+    public func disableTransitGatewayRouteTablePropagationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -21052,9 +21052,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DisableTransitGatewayRouteTablePropagationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disableTransitGatewayRouteTablePropagationSync(
+    public func disableTransitGatewayRouteTablePropagationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21088,9 +21088,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disableVgwRoutePropagationAsync(
+    public func disableVgwRoutePropagationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -21124,9 +21124,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DisableVgwRoutePropagationRequest object being passed to this operation.
      */
-    public func disableVgwRoutePropagationSync(
+    public func disableVgwRoutePropagationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21161,9 +21161,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DisableVpcClassicLinkResult
            object will be validated before being returned to caller.
      */
-    public func disableVpcClassicLinkAsync(
+    public func disableVpcClassicLinkAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -21199,9 +21199,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DisableVpcClassicLinkResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disableVpcClassicLinkSync(
+    public func disableVpcClassicLinkSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21236,9 +21236,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DisableVpcClassicLinkDnsSupportResult
            object will be validated before being returned to caller.
      */
-    public func disableVpcClassicLinkDnsSupportAsync(
+    public func disableVpcClassicLinkDnsSupportAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -21274,9 +21274,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DisableVpcClassicLinkDnsSupportResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disableVpcClassicLinkDnsSupportSync(
+    public func disableVpcClassicLinkDnsSupportSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21310,9 +21310,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disassociateAddressAsync(
+    public func disassociateAddressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateAddressRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -21346,9 +21346,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DisassociateAddressRequest object being passed to this operation.
      */
-    public func disassociateAddressSync(
+    public func disassociateAddressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateAddressRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21383,9 +21383,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DisassociateClientVpnTargetNetworkResult
            object will be validated before being returned to caller.
      */
-    public func disassociateClientVpnTargetNetworkAsync(
+    public func disassociateClientVpnTargetNetworkAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -21421,9 +21421,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DisassociateClientVpnTargetNetworkResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disassociateClientVpnTargetNetworkSync(
+    public func disassociateClientVpnTargetNetworkSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21458,9 +21458,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DisassociateIamInstanceProfileResult
            object will be validated before being returned to caller.
      */
-    public func disassociateIamInstanceProfileAsync(
+    public func disassociateIamInstanceProfileAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -21496,9 +21496,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DisassociateIamInstanceProfileResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disassociateIamInstanceProfileSync(
+    public func disassociateIamInstanceProfileSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisassociateIamInstanceProfileResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DisassociateIamInstanceProfileResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21532,9 +21532,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func disassociateRouteTableAsync(
+    public func disassociateRouteTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateRouteTableRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -21568,9 +21568,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated DisassociateRouteTableRequest object being passed to this operation.
      */
-    public func disassociateRouteTableSync(
+    public func disassociateRouteTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateRouteTableRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21605,9 +21605,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DisassociateSubnetCidrBlockResult
            object will be validated before being returned to caller.
      */
-    public func disassociateSubnetCidrBlockAsync(
+    public func disassociateSubnetCidrBlockAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -21643,9 +21643,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DisassociateSubnetCidrBlockResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disassociateSubnetCidrBlockSync(
+    public func disassociateSubnetCidrBlockSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21680,9 +21680,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DisassociateTransitGatewayMulticastDomainResult
            object will be validated before being returned to caller.
      */
-    public func disassociateTransitGatewayMulticastDomainAsync(
+    public func disassociateTransitGatewayMulticastDomainAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -21718,9 +21718,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DisassociateTransitGatewayMulticastDomainResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disassociateTransitGatewayMulticastDomainSync(
+    public func disassociateTransitGatewayMulticastDomainSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21755,9 +21755,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DisassociateTransitGatewayRouteTableResult
            object will be validated before being returned to caller.
      */
-    public func disassociateTransitGatewayRouteTableAsync(
+    public func disassociateTransitGatewayRouteTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -21793,9 +21793,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DisassociateTransitGatewayRouteTableResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disassociateTransitGatewayRouteTableSync(
+    public func disassociateTransitGatewayRouteTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21830,9 +21830,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The DisassociateVpcCidrBlockResult
            object will be validated before being returned to caller.
      */
-    public func disassociateVpcCidrBlockAsync(
+    public func disassociateVpcCidrBlockAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -21868,9 +21868,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The DisassociateVpcCidrBlockResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func disassociateVpcCidrBlockSync(
+    public func disassociateVpcCidrBlockSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21905,9 +21905,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The EnableEbsEncryptionByDefaultResult
            object will be validated before being returned to caller.
      */
-    public func enableEbsEncryptionByDefaultAsync(
+    public func enableEbsEncryptionByDefaultAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -21943,9 +21943,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The EnableEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func enableEbsEncryptionByDefaultSync(
+    public func enableEbsEncryptionByDefaultSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21980,9 +21980,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The EnableFastSnapshotRestoresResult
            object will be validated before being returned to caller.
      */
-    public func enableFastSnapshotRestoresAsync(
+    public func enableFastSnapshotRestoresAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.EnableFastSnapshotRestoresResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22018,9 +22018,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The EnableFastSnapshotRestoresResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func enableFastSnapshotRestoresSync(
+    public func enableFastSnapshotRestoresSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.EnableFastSnapshotRestoresResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.EnableFastSnapshotRestoresResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22055,9 +22055,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The EnableTransitGatewayRouteTablePropagationResult
            object will be validated before being returned to caller.
      */
-    public func enableTransitGatewayRouteTablePropagationAsync(
+    public func enableTransitGatewayRouteTablePropagationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22093,9 +22093,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The EnableTransitGatewayRouteTablePropagationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func enableTransitGatewayRouteTablePropagationSync(
+    public func enableTransitGatewayRouteTablePropagationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22129,9 +22129,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableVgwRoutePropagationAsync(
+    public func enableVgwRoutePropagationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22165,9 +22165,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated EnableVgwRoutePropagationRequest object being passed to this operation.
      */
-    public func enableVgwRoutePropagationSync(
+    public func enableVgwRoutePropagationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22201,9 +22201,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func enableVolumeIOAsync(
+    public func enableVolumeIOAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableVolumeIORequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22237,9 +22237,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated EnableVolumeIORequest object being passed to this operation.
      */
-    public func enableVolumeIOSync(
+    public func enableVolumeIOSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableVolumeIORequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22274,9 +22274,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The EnableVpcClassicLinkResult
            object will be validated before being returned to caller.
      */
-    public func enableVpcClassicLinkAsync(
+    public func enableVpcClassicLinkAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22312,9 +22312,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The EnableVpcClassicLinkResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func enableVpcClassicLinkSync(
+    public func enableVpcClassicLinkSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22349,9 +22349,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The EnableVpcClassicLinkDnsSupportResult
            object will be validated before being returned to caller.
      */
-    public func enableVpcClassicLinkDnsSupportAsync(
+    public func enableVpcClassicLinkDnsSupportAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22387,9 +22387,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The EnableVpcClassicLinkDnsSupportResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func enableVpcClassicLinkDnsSupportSync(
+    public func enableVpcClassicLinkDnsSupportSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22424,9 +22424,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ExportClientVpnClientCertificateRevocationListResult
            object will be validated before being returned to caller.
      */
-    public func exportClientVpnClientCertificateRevocationListAsync(
+    public func exportClientVpnClientCertificateRevocationListAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22462,9 +22462,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ExportClientVpnClientCertificateRevocationListResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func exportClientVpnClientCertificateRevocationListSync(
+    public func exportClientVpnClientCertificateRevocationListSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22499,9 +22499,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ExportClientVpnClientConfigurationResult
            object will be validated before being returned to caller.
      */
-    public func exportClientVpnClientConfigurationAsync(
+    public func exportClientVpnClientConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22537,9 +22537,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ExportClientVpnClientConfigurationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func exportClientVpnClientConfigurationSync(
+    public func exportClientVpnClientConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22574,9 +22574,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ExportImageResult
            object will be validated before being returned to caller.
      */
-    public func exportImageAsync(
+    public func exportImageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ExportImageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ExportImageResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22612,9 +22612,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ExportImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func exportImageSync(
+    public func exportImageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ExportImageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ExportImageResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ExportImageResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22649,9 +22649,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ExportTransitGatewayRoutesResult
            object will be validated before being returned to caller.
      */
-    public func exportTransitGatewayRoutesAsync(
+    public func exportTransitGatewayRoutesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22687,9 +22687,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ExportTransitGatewayRoutesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func exportTransitGatewayRoutesSync(
+    public func exportTransitGatewayRoutesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22724,9 +22724,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetAssociatedIpv6PoolCidrsResult
            object will be validated before being returned to caller.
      */
-    public func getAssociatedIpv6PoolCidrsAsync(
+    public func getAssociatedIpv6PoolCidrsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22762,9 +22762,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetAssociatedIpv6PoolCidrsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getAssociatedIpv6PoolCidrsSync(
+    public func getAssociatedIpv6PoolCidrsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22799,9 +22799,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetCapacityReservationUsageResult
            object will be validated before being returned to caller.
      */
-    public func getCapacityReservationUsageAsync(
+    public func getCapacityReservationUsageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetCapacityReservationUsageResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22837,9 +22837,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetCapacityReservationUsageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getCapacityReservationUsageSync(
+    public func getCapacityReservationUsageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetCapacityReservationUsageResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetCapacityReservationUsageResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22874,9 +22874,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetCoipPoolUsageResult
            object will be validated before being returned to caller.
      */
-    public func getCoipPoolUsageAsync(
+    public func getCoipPoolUsageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetCoipPoolUsageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetCoipPoolUsageResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22912,9 +22912,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetCoipPoolUsageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getCoipPoolUsageSync(
+    public func getCoipPoolUsageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetCoipPoolUsageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetCoipPoolUsageResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetCoipPoolUsageResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22949,9 +22949,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetConsoleOutputResult
            object will be validated before being returned to caller.
      */
-    public func getConsoleOutputAsync(
+    public func getConsoleOutputAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetConsoleOutputRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleOutputResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -22987,9 +22987,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetConsoleOutputResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getConsoleOutputSync(
+    public func getConsoleOutputSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetConsoleOutputRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetConsoleOutputResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetConsoleOutputResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23024,9 +23024,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetConsoleScreenshotResult
            object will be validated before being returned to caller.
      */
-    public func getConsoleScreenshotAsync(
+    public func getConsoleScreenshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetConsoleScreenshotRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleScreenshotResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -23062,9 +23062,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetConsoleScreenshotResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getConsoleScreenshotSync(
+    public func getConsoleScreenshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetConsoleScreenshotRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetConsoleScreenshotResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetConsoleScreenshotResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23099,9 +23099,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetDefaultCreditSpecificationResult
            object will be validated before being returned to caller.
      */
-    public func getDefaultCreditSpecificationAsync(
+    public func getDefaultCreditSpecificationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetDefaultCreditSpecificationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetDefaultCreditSpecificationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -23137,9 +23137,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetDefaultCreditSpecificationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getDefaultCreditSpecificationSync(
+    public func getDefaultCreditSpecificationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetDefaultCreditSpecificationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetDefaultCreditSpecificationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetDefaultCreditSpecificationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23174,9 +23174,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetEbsDefaultKmsKeyIdResult
            object will be validated before being returned to caller.
      */
-    public func getEbsDefaultKmsKeyIdAsync(
+    public func getEbsDefaultKmsKeyIdAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -23212,9 +23212,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getEbsDefaultKmsKeyIdSync(
+    public func getEbsDefaultKmsKeyIdSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23249,9 +23249,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetEbsEncryptionByDefaultResult
            object will be validated before being returned to caller.
      */
-    public func getEbsEncryptionByDefaultAsync(
+    public func getEbsEncryptionByDefaultAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -23287,9 +23287,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetEbsEncryptionByDefaultResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getEbsEncryptionByDefaultSync(
+    public func getEbsEncryptionByDefaultSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23324,9 +23324,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetHostReservationPurchasePreviewResult
            object will be validated before being returned to caller.
      */
-    public func getHostReservationPurchasePreviewAsync(
+    public func getHostReservationPurchasePreviewAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -23362,9 +23362,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetHostReservationPurchasePreviewResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getHostReservationPurchasePreviewSync(
+    public func getHostReservationPurchasePreviewSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23399,9 +23399,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetLaunchTemplateDataResult
            object will be validated before being returned to caller.
      */
-    public func getLaunchTemplateDataAsync(
+    public func getLaunchTemplateDataAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetLaunchTemplateDataResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -23437,9 +23437,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetLaunchTemplateDataResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getLaunchTemplateDataSync(
+    public func getLaunchTemplateDataSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetLaunchTemplateDataResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetLaunchTemplateDataResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23474,9 +23474,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetPasswordDataResult
            object will be validated before being returned to caller.
      */
-    public func getPasswordDataAsync(
+    public func getPasswordDataAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetPasswordDataRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetPasswordDataResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -23512,9 +23512,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetPasswordDataResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getPasswordDataSync(
+    public func getPasswordDataSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetPasswordDataRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetPasswordDataResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetPasswordDataResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23549,9 +23549,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetReservedInstancesExchangeQuoteResult
            object will be validated before being returned to caller.
      */
-    public func getReservedInstancesExchangeQuoteAsync(
+    public func getReservedInstancesExchangeQuoteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -23587,9 +23587,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetReservedInstancesExchangeQuoteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getReservedInstancesExchangeQuoteSync(
+    public func getReservedInstancesExchangeQuoteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23624,9 +23624,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetTransitGatewayAttachmentPropagationsResult
            object will be validated before being returned to caller.
      */
-    public func getTransitGatewayAttachmentPropagationsAsync(
+    public func getTransitGatewayAttachmentPropagationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -23662,9 +23662,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetTransitGatewayAttachmentPropagationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getTransitGatewayAttachmentPropagationsSync(
+    public func getTransitGatewayAttachmentPropagationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23699,9 +23699,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetTransitGatewayMulticastDomainAssociationsResult
            object will be validated before being returned to caller.
      */
-    public func getTransitGatewayMulticastDomainAssociationsAsync(
+    public func getTransitGatewayMulticastDomainAssociationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -23737,9 +23737,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetTransitGatewayMulticastDomainAssociationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getTransitGatewayMulticastDomainAssociationsSync(
+    public func getTransitGatewayMulticastDomainAssociationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23774,9 +23774,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetTransitGatewayRouteTableAssociationsResult
            object will be validated before being returned to caller.
      */
-    public func getTransitGatewayRouteTableAssociationsAsync(
+    public func getTransitGatewayRouteTableAssociationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -23812,9 +23812,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetTransitGatewayRouteTableAssociationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getTransitGatewayRouteTableAssociationsSync(
+    public func getTransitGatewayRouteTableAssociationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23849,9 +23849,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The GetTransitGatewayRouteTablePropagationsResult
            object will be validated before being returned to caller.
      */
-    public func getTransitGatewayRouteTablePropagationsAsync(
+    public func getTransitGatewayRouteTablePropagationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -23887,9 +23887,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The GetTransitGatewayRouteTablePropagationsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func getTransitGatewayRouteTablePropagationsSync(
+    public func getTransitGatewayRouteTablePropagationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23924,9 +23924,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ImportClientVpnClientCertificateRevocationListResult
            object will be validated before being returned to caller.
      */
-    public func importClientVpnClientCertificateRevocationListAsync(
+    public func importClientVpnClientCertificateRevocationListAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -23962,9 +23962,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ImportClientVpnClientCertificateRevocationListResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func importClientVpnClientCertificateRevocationListSync(
+    public func importClientVpnClientCertificateRevocationListSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23999,9 +23999,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ImportImageResult
            object will be validated before being returned to caller.
      */
-    public func importImageAsync(
+    public func importImageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ImportImageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ImportImageResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -24037,9 +24037,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ImportImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func importImageSync(
+    public func importImageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ImportImageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImportImageResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ImportImageResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24074,9 +24074,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ImportInstanceResult
            object will be validated before being returned to caller.
      */
-    public func importInstanceAsync(
+    public func importInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ImportInstanceRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ImportInstanceResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -24112,9 +24112,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ImportInstanceResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func importInstanceSync(
+    public func importInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ImportInstanceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImportInstanceResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ImportInstanceResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24149,9 +24149,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ImportKeyPairResult
            object will be validated before being returned to caller.
      */
-    public func importKeyPairAsync(
+    public func importKeyPairAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ImportKeyPairRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ImportKeyPairResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -24187,9 +24187,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ImportKeyPairResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func importKeyPairSync(
+    public func importKeyPairSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ImportKeyPairRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImportKeyPairResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ImportKeyPairResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24224,9 +24224,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ImportSnapshotResult
            object will be validated before being returned to caller.
      */
-    public func importSnapshotAsync(
+    public func importSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ImportSnapshotRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ImportSnapshotResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -24262,9 +24262,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ImportSnapshotResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func importSnapshotSync(
+    public func importSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ImportSnapshotRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImportSnapshotResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ImportSnapshotResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24299,9 +24299,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ImportVolumeResult
            object will be validated before being returned to caller.
      */
-    public func importVolumeAsync(
+    public func importVolumeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ImportVolumeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ImportVolumeResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -24337,9 +24337,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ImportVolumeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func importVolumeSync(
+    public func importVolumeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ImportVolumeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ImportVolumeResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ImportVolumeResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24374,9 +24374,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyCapacityReservationResult
            object will be validated before being returned to caller.
      */
-    public func modifyCapacityReservationAsync(
+    public func modifyCapacityReservationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyCapacityReservationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyCapacityReservationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -24412,9 +24412,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyCapacityReservationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyCapacityReservationSync(
+    public func modifyCapacityReservationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyCapacityReservationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyCapacityReservationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyCapacityReservationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24449,9 +24449,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyClientVpnEndpointResult
            object will be validated before being returned to caller.
      */
-    public func modifyClientVpnEndpointAsync(
+    public func modifyClientVpnEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyClientVpnEndpointResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -24487,9 +24487,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyClientVpnEndpointResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyClientVpnEndpointSync(
+    public func modifyClientVpnEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24524,9 +24524,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyDefaultCreditSpecificationResult
            object will be validated before being returned to caller.
      */
-    public func modifyDefaultCreditSpecificationAsync(
+    public func modifyDefaultCreditSpecificationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyDefaultCreditSpecificationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -24562,9 +24562,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyDefaultCreditSpecificationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyDefaultCreditSpecificationSync(
+    public func modifyDefaultCreditSpecificationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyDefaultCreditSpecificationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24599,9 +24599,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyEbsDefaultKmsKeyIdResult
            object will be validated before being returned to caller.
      */
-    public func modifyEbsDefaultKmsKeyIdAsync(
+    public func modifyEbsDefaultKmsKeyIdAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -24637,9 +24637,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyEbsDefaultKmsKeyIdSync(
+    public func modifyEbsDefaultKmsKeyIdSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24674,9 +24674,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyFleetResult
            object will be validated before being returned to caller.
      */
-    public func modifyFleetAsync(
+    public func modifyFleetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyFleetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyFleetResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -24712,9 +24712,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyFleetResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyFleetSync(
+    public func modifyFleetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyFleetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyFleetResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyFleetResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24749,9 +24749,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyFpgaImageAttributeResult
            object will be validated before being returned to caller.
      */
-    public func modifyFpgaImageAttributeAsync(
+    public func modifyFpgaImageAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyFpgaImageAttributeResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -24787,9 +24787,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyFpgaImageAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyFpgaImageAttributeSync(
+    public func modifyFpgaImageAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyFpgaImageAttributeResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyFpgaImageAttributeResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24824,9 +24824,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyHostsResult
            object will be validated before being returned to caller.
      */
-    public func modifyHostsAsync(
+    public func modifyHostsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyHostsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyHostsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -24862,9 +24862,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyHostsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyHostsSync(
+    public func modifyHostsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyHostsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyHostsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyHostsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24898,9 +24898,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyIdFormatAsync(
+    public func modifyIdFormatAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyIdFormatRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -24934,9 +24934,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ModifyIdFormatRequest object being passed to this operation.
      */
-    public func modifyIdFormatSync(
+    public func modifyIdFormatSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyIdFormatRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24970,9 +24970,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyIdentityIdFormatAsync(
+    public func modifyIdentityIdFormatAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25006,9 +25006,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ModifyIdentityIdFormatRequest object being passed to this operation.
      */
-    public func modifyIdentityIdFormatSync(
+    public func modifyIdentityIdFormatSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25042,9 +25042,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyImageAttributeAsync(
+    public func modifyImageAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyImageAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25078,9 +25078,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ModifyImageAttributeRequest object being passed to this operation.
      */
-    public func modifyImageAttributeSync(
+    public func modifyImageAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyImageAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25114,9 +25114,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyInstanceAttributeAsync(
+    public func modifyInstanceAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25150,9 +25150,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ModifyInstanceAttributeRequest object being passed to this operation.
      */
-    public func modifyInstanceAttributeSync(
+    public func modifyInstanceAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25187,9 +25187,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyInstanceCapacityReservationAttributesResult
            object will be validated before being returned to caller.
      */
-    public func modifyInstanceCapacityReservationAttributesAsync(
+    public func modifyInstanceCapacityReservationAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25225,9 +25225,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyInstanceCapacityReservationAttributesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyInstanceCapacityReservationAttributesSync(
+    public func modifyInstanceCapacityReservationAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25262,9 +25262,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyInstanceCreditSpecificationResult
            object will be validated before being returned to caller.
      */
-    public func modifyInstanceCreditSpecificationAsync(
+    public func modifyInstanceCreditSpecificationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25300,9 +25300,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyInstanceCreditSpecificationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyInstanceCreditSpecificationSync(
+    public func modifyInstanceCreditSpecificationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25337,9 +25337,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyInstanceEventStartTimeResult
            object will be validated before being returned to caller.
      */
-    public func modifyInstanceEventStartTimeAsync(
+    public func modifyInstanceEventStartTimeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25375,9 +25375,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyInstanceEventStartTimeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyInstanceEventStartTimeSync(
+    public func modifyInstanceEventStartTimeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25412,9 +25412,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyInstanceMetadataOptionsResult
            object will be validated before being returned to caller.
      */
-    public func modifyInstanceMetadataOptionsAsync(
+    public func modifyInstanceMetadataOptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyInstanceMetadataOptionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25450,9 +25450,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyInstanceMetadataOptionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyInstanceMetadataOptionsSync(
+    public func modifyInstanceMetadataOptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyInstanceMetadataOptionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25487,9 +25487,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyInstancePlacementResult
            object will be validated before being returned to caller.
      */
-    public func modifyInstancePlacementAsync(
+    public func modifyInstancePlacementAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyInstancePlacementRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstancePlacementResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25525,9 +25525,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyInstancePlacementResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyInstancePlacementSync(
+    public func modifyInstancePlacementSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyInstancePlacementRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyInstancePlacementResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyInstancePlacementResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25562,9 +25562,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyLaunchTemplateResult
            object will be validated before being returned to caller.
      */
-    public func modifyLaunchTemplateAsync(
+    public func modifyLaunchTemplateAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyLaunchTemplateResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25600,9 +25600,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyLaunchTemplateResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyLaunchTemplateSync(
+    public func modifyLaunchTemplateSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyLaunchTemplateResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyLaunchTemplateResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25636,9 +25636,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyNetworkInterfaceAttributeAsync(
+    public func modifyNetworkInterfaceAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25672,9 +25672,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ModifyNetworkInterfaceAttributeRequest object being passed to this operation.
      */
-    public func modifyNetworkInterfaceAttributeSync(
+    public func modifyNetworkInterfaceAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25709,9 +25709,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyReservedInstancesResult
            object will be validated before being returned to caller.
      */
-    public func modifyReservedInstancesAsync(
+    public func modifyReservedInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyReservedInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyReservedInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25747,9 +25747,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyReservedInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyReservedInstancesSync(
+    public func modifyReservedInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyReservedInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyReservedInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyReservedInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25783,9 +25783,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifySnapshotAttributeAsync(
+    public func modifySnapshotAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25819,9 +25819,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ModifySnapshotAttributeRequest object being passed to this operation.
      */
-    public func modifySnapshotAttributeSync(
+    public func modifySnapshotAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25856,9 +25856,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifySpotFleetRequestResponse
            object will be validated before being returned to caller.
      */
-    public func modifySpotFleetRequestAsync(
+    public func modifySpotFleetRequestAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifySpotFleetRequestResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25894,9 +25894,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifySpotFleetRequestResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifySpotFleetRequestSync(
+    public func modifySpotFleetRequestSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifySpotFleetRequestResponse {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifySpotFleetRequestResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25930,9 +25930,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifySubnetAttributeAsync(
+    public func modifySubnetAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -25966,9 +25966,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ModifySubnetAttributeRequest object being passed to this operation.
      */
-    public func modifySubnetAttributeSync(
+    public func modifySubnetAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifySubnetAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26003,9 +26003,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyTrafficMirrorFilterNetworkServicesResult
            object will be validated before being returned to caller.
      */
-    public func modifyTrafficMirrorFilterNetworkServicesAsync(
+    public func modifyTrafficMirrorFilterNetworkServicesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -26041,9 +26041,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyTrafficMirrorFilterNetworkServicesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyTrafficMirrorFilterNetworkServicesSync(
+    public func modifyTrafficMirrorFilterNetworkServicesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26078,9 +26078,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyTrafficMirrorFilterRuleResult
            object will be validated before being returned to caller.
      */
-    public func modifyTrafficMirrorFilterRuleAsync(
+    public func modifyTrafficMirrorFilterRuleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -26116,9 +26116,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyTrafficMirrorFilterRuleResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyTrafficMirrorFilterRuleSync(
+    public func modifyTrafficMirrorFilterRuleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26153,9 +26153,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyTrafficMirrorSessionResult
            object will be validated before being returned to caller.
      */
-    public func modifyTrafficMirrorSessionAsync(
+    public func modifyTrafficMirrorSessionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -26191,9 +26191,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyTrafficMirrorSessionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyTrafficMirrorSessionSync(
+    public func modifyTrafficMirrorSessionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26228,9 +26228,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyTransitGatewayVpcAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func modifyTransitGatewayVpcAttachmentAsync(
+    public func modifyTransitGatewayVpcAttachmentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -26266,9 +26266,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyTransitGatewayVpcAttachmentSync(
+    public func modifyTransitGatewayVpcAttachmentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26303,9 +26303,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyVolumeResult
            object will be validated before being returned to caller.
      */
-    public func modifyVolumeAsync(
+    public func modifyVolumeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVolumeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVolumeResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -26341,9 +26341,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyVolumeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVolumeSync(
+    public func modifyVolumeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVolumeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVolumeResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyVolumeResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26377,9 +26377,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyVolumeAttributeAsync(
+    public func modifyVolumeAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -26413,9 +26413,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ModifyVolumeAttributeRequest object being passed to this operation.
      */
-    public func modifyVolumeAttributeSync(
+    public func modifyVolumeAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26449,9 +26449,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func modifyVpcAttributeAsync(
+    public func modifyVpcAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -26485,9 +26485,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ModifyVpcAttributeRequest object being passed to this operation.
      */
-    public func modifyVpcAttributeSync(
+    public func modifyVpcAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26522,9 +26522,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyVpcEndpointResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointAsync(
+    public func modifyVpcEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcEndpointRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -26560,9 +26560,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyVpcEndpointResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointSync(
+    public func modifyVpcEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcEndpointRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpcEndpointResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyVpcEndpointResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26597,9 +26597,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyVpcEndpointConnectionNotificationResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointConnectionNotificationAsync(
+    public func modifyVpcEndpointConnectionNotificationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -26635,9 +26635,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyVpcEndpointConnectionNotificationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointConnectionNotificationSync(
+    public func modifyVpcEndpointConnectionNotificationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26672,9 +26672,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyVpcEndpointServiceConfigurationResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointServiceConfigurationAsync(
+    public func modifyVpcEndpointServiceConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -26710,9 +26710,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyVpcEndpointServiceConfigurationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointServiceConfigurationSync(
+    public func modifyVpcEndpointServiceConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26747,9 +26747,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyVpcEndpointServicePermissionsResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointServicePermissionsAsync(
+    public func modifyVpcEndpointServicePermissionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -26785,9 +26785,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyVpcEndpointServicePermissionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpcEndpointServicePermissionsSync(
+    public func modifyVpcEndpointServicePermissionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26822,9 +26822,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyVpcPeeringConnectionOptionsResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpcPeeringConnectionOptionsAsync(
+    public func modifyVpcPeeringConnectionOptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -26860,9 +26860,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyVpcPeeringConnectionOptionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpcPeeringConnectionOptionsSync(
+    public func modifyVpcPeeringConnectionOptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26897,9 +26897,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyVpcTenancyResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpcTenancyAsync(
+    public func modifyVpcTenancyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcTenancyRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcTenancyResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -26935,9 +26935,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyVpcTenancyResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpcTenancySync(
+    public func modifyVpcTenancySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpcTenancyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpcTenancyResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyVpcTenancyResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26972,9 +26972,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyVpnConnectionResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpnConnectionAsync(
+    public func modifyVpnConnectionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpnConnectionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnConnectionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27010,9 +27010,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyVpnConnectionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpnConnectionSync(
+    public func modifyVpnConnectionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpnConnectionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpnConnectionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyVpnConnectionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27047,9 +27047,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyVpnTunnelCertificateResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpnTunnelCertificateAsync(
+    public func modifyVpnTunnelCertificateAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27085,9 +27085,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyVpnTunnelCertificateResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpnTunnelCertificateSync(
+    public func modifyVpnTunnelCertificateSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27122,9 +27122,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ModifyVpnTunnelOptionsResult
            object will be validated before being returned to caller.
      */
-    public func modifyVpnTunnelOptionsAsync(
+    public func modifyVpnTunnelOptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27160,9 +27160,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ModifyVpnTunnelOptionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func modifyVpnTunnelOptionsSync(
+    public func modifyVpnTunnelOptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27197,9 +27197,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The MonitorInstancesResult
            object will be validated before being returned to caller.
      */
-    public func monitorInstancesAsync(
+    public func monitorInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.MonitorInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.MonitorInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27235,9 +27235,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The MonitorInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func monitorInstancesSync(
+    public func monitorInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.MonitorInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.MonitorInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.MonitorInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27272,9 +27272,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The MoveAddressToVpcResult
            object will be validated before being returned to caller.
      */
-    public func moveAddressToVpcAsync(
+    public func moveAddressToVpcAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.MoveAddressToVpcRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.MoveAddressToVpcResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27310,9 +27310,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The MoveAddressToVpcResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func moveAddressToVpcSync(
+    public func moveAddressToVpcSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.MoveAddressToVpcRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.MoveAddressToVpcResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.MoveAddressToVpcResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27347,9 +27347,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ProvisionByoipCidrResult
            object will be validated before being returned to caller.
      */
-    public func provisionByoipCidrAsync(
+    public func provisionByoipCidrAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ProvisionByoipCidrRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ProvisionByoipCidrResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27385,9 +27385,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ProvisionByoipCidrResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func provisionByoipCidrSync(
+    public func provisionByoipCidrSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ProvisionByoipCidrRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ProvisionByoipCidrResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ProvisionByoipCidrResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27422,9 +27422,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The PurchaseHostReservationResult
            object will be validated before being returned to caller.
      */
-    public func purchaseHostReservationAsync(
+    public func purchaseHostReservationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.PurchaseHostReservationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.PurchaseHostReservationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27460,9 +27460,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The PurchaseHostReservationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func purchaseHostReservationSync(
+    public func purchaseHostReservationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.PurchaseHostReservationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.PurchaseHostReservationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.PurchaseHostReservationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27497,9 +27497,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The PurchaseReservedInstancesOfferingResult
            object will be validated before being returned to caller.
      */
-    public func purchaseReservedInstancesOfferingAsync(
+    public func purchaseReservedInstancesOfferingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27535,9 +27535,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The PurchaseReservedInstancesOfferingResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func purchaseReservedInstancesOfferingSync(
+    public func purchaseReservedInstancesOfferingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27572,9 +27572,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The PurchaseScheduledInstancesResult
            object will be validated before being returned to caller.
      */
-    public func purchaseScheduledInstancesAsync(
+    public func purchaseScheduledInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.PurchaseScheduledInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27610,9 +27610,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The PurchaseScheduledInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func purchaseScheduledInstancesSync(
+    public func purchaseScheduledInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.PurchaseScheduledInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.PurchaseScheduledInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27646,9 +27646,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func rebootInstancesAsync(
+    public func rebootInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RebootInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27682,9 +27682,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated RebootInstancesRequest object being passed to this operation.
      */
-    public func rebootInstancesSync(
+    public func rebootInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RebootInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27719,9 +27719,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The RegisterImageResult
            object will be validated before being returned to caller.
      */
-    public func registerImageAsync(
+    public func registerImageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RegisterImageRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.RegisterImageResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27757,9 +27757,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The RegisterImageResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func registerImageSync(
+    public func registerImageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RegisterImageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RegisterImageResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.RegisterImageResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27794,9 +27794,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The RegisterTransitGatewayMulticastGroupMembersResult
            object will be validated before being returned to caller.
      */
-    public func registerTransitGatewayMulticastGroupMembersAsync(
+    public func registerTransitGatewayMulticastGroupMembersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27832,9 +27832,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The RegisterTransitGatewayMulticastGroupMembersResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func registerTransitGatewayMulticastGroupMembersSync(
+    public func registerTransitGatewayMulticastGroupMembersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27869,9 +27869,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The RegisterTransitGatewayMulticastGroupSourcesResult
            object will be validated before being returned to caller.
      */
-    public func registerTransitGatewayMulticastGroupSourcesAsync(
+    public func registerTransitGatewayMulticastGroupSourcesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27907,9 +27907,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The RegisterTransitGatewayMulticastGroupSourcesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func registerTransitGatewayMulticastGroupSourcesSync(
+    public func registerTransitGatewayMulticastGroupSourcesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27944,9 +27944,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The RejectTransitGatewayPeeringAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func rejectTransitGatewayPeeringAttachmentAsync(
+    public func rejectTransitGatewayPeeringAttachmentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -27982,9 +27982,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The RejectTransitGatewayPeeringAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func rejectTransitGatewayPeeringAttachmentSync(
+    public func rejectTransitGatewayPeeringAttachmentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28019,9 +28019,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The RejectTransitGatewayVpcAttachmentResult
            object will be validated before being returned to caller.
      */
-    public func rejectTransitGatewayVpcAttachmentAsync(
+    public func rejectTransitGatewayVpcAttachmentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -28057,9 +28057,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The RejectTransitGatewayVpcAttachmentResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func rejectTransitGatewayVpcAttachmentSync(
+    public func rejectTransitGatewayVpcAttachmentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28094,9 +28094,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The RejectVpcEndpointConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func rejectVpcEndpointConnectionsAsync(
+    public func rejectVpcEndpointConnectionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -28132,9 +28132,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The RejectVpcEndpointConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func rejectVpcEndpointConnectionsSync(
+    public func rejectVpcEndpointConnectionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28169,9 +28169,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The RejectVpcPeeringConnectionResult
            object will be validated before being returned to caller.
      */
-    public func rejectVpcPeeringConnectionAsync(
+    public func rejectVpcPeeringConnectionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -28207,9 +28207,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The RejectVpcPeeringConnectionResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func rejectVpcPeeringConnectionSync(
+    public func rejectVpcPeeringConnectionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RejectVpcPeeringConnectionResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.RejectVpcPeeringConnectionResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28243,9 +28243,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func releaseAddressAsync(
+    public func releaseAddressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReleaseAddressRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -28279,9 +28279,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ReleaseAddressRequest object being passed to this operation.
      */
-    public func releaseAddressSync(
+    public func releaseAddressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReleaseAddressRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28316,9 +28316,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ReleaseHostsResult
            object will be validated before being returned to caller.
      */
-    public func releaseHostsAsync(
+    public func releaseHostsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReleaseHostsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ReleaseHostsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -28354,9 +28354,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ReleaseHostsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func releaseHostsSync(
+    public func releaseHostsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReleaseHostsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ReleaseHostsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ReleaseHostsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28391,9 +28391,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ReplaceIamInstanceProfileAssociationResult
            object will be validated before being returned to caller.
      */
-    public func replaceIamInstanceProfileAssociationAsync(
+    public func replaceIamInstanceProfileAssociationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -28429,9 +28429,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ReplaceIamInstanceProfileAssociationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func replaceIamInstanceProfileAssociationSync(
+    public func replaceIamInstanceProfileAssociationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28466,9 +28466,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ReplaceNetworkAclAssociationResult
            object will be validated before being returned to caller.
      */
-    public func replaceNetworkAclAssociationAsync(
+    public func replaceNetworkAclAssociationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -28504,9 +28504,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ReplaceNetworkAclAssociationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func replaceNetworkAclAssociationSync(
+    public func replaceNetworkAclAssociationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28540,9 +28540,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func replaceNetworkAclEntryAsync(
+    public func replaceNetworkAclEntryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -28576,9 +28576,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ReplaceNetworkAclEntryRequest object being passed to this operation.
      */
-    public func replaceNetworkAclEntrySync(
+    public func replaceNetworkAclEntrySync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28612,9 +28612,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func replaceRouteAsync(
+    public func replaceRouteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReplaceRouteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -28648,9 +28648,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ReplaceRouteRequest object being passed to this operation.
      */
-    public func replaceRouteSync(
+    public func replaceRouteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReplaceRouteRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28685,9 +28685,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ReplaceRouteTableAssociationResult
            object will be validated before being returned to caller.
      */
-    public func replaceRouteTableAssociationAsync(
+    public func replaceRouteTableAssociationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -28723,9 +28723,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ReplaceRouteTableAssociationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func replaceRouteTableAssociationSync(
+    public func replaceRouteTableAssociationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ReplaceRouteTableAssociationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ReplaceRouteTableAssociationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28760,9 +28760,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ReplaceTransitGatewayRouteResult
            object will be validated before being returned to caller.
      */
-    public func replaceTransitGatewayRouteAsync(
+    public func replaceTransitGatewayRouteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -28798,9 +28798,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ReplaceTransitGatewayRouteResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func replaceTransitGatewayRouteSync(
+    public func replaceTransitGatewayRouteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28834,9 +28834,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func reportInstanceStatusAsync(
+    public func reportInstanceStatusAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReportInstanceStatusRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -28870,9 +28870,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ReportInstanceStatusRequest object being passed to this operation.
      */
-    public func reportInstanceStatusSync(
+    public func reportInstanceStatusSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ReportInstanceStatusRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28907,9 +28907,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The RequestSpotFleetResponse
            object will be validated before being returned to caller.
      */
-    public func requestSpotFleetAsync(
+    public func requestSpotFleetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RequestSpotFleetRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotFleetResponse, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -28945,9 +28945,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The RequestSpotFleetResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func requestSpotFleetSync(
+    public func requestSpotFleetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RequestSpotFleetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RequestSpotFleetResponse {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.RequestSpotFleetResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28982,9 +28982,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The RequestSpotInstancesResult
            object will be validated before being returned to caller.
      */
-    public func requestSpotInstancesAsync(
+    public func requestSpotInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RequestSpotInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29020,9 +29020,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The RequestSpotInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func requestSpotInstancesSync(
+    public func requestSpotInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RequestSpotInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RequestSpotInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.RequestSpotInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29057,9 +29057,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ResetEbsDefaultKmsKeyIdResult
            object will be validated before being returned to caller.
      */
-    public func resetEbsDefaultKmsKeyIdAsync(
+    public func resetEbsDefaultKmsKeyIdAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29095,9 +29095,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ResetEbsDefaultKmsKeyIdResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func resetEbsDefaultKmsKeyIdSync(
+    public func resetEbsDefaultKmsKeyIdSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29132,9 +29132,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The ResetFpgaImageAttributeResult
            object will be validated before being returned to caller.
      */
-    public func resetFpgaImageAttributeAsync(
+    public func resetFpgaImageAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.ResetFpgaImageAttributeResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29170,9 +29170,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The ResetFpgaImageAttributeResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func resetFpgaImageAttributeSync(
+    public func resetFpgaImageAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.ResetFpgaImageAttributeResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.ResetFpgaImageAttributeResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29206,9 +29206,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetImageAttributeAsync(
+    public func resetImageAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ResetImageAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29242,9 +29242,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ResetImageAttributeRequest object being passed to this operation.
      */
-    public func resetImageAttributeSync(
+    public func resetImageAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ResetImageAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29278,9 +29278,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetInstanceAttributeAsync(
+    public func resetInstanceAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29314,9 +29314,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ResetInstanceAttributeRequest object being passed to this operation.
      */
-    public func resetInstanceAttributeSync(
+    public func resetInstanceAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ResetInstanceAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29350,9 +29350,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetNetworkInterfaceAttributeAsync(
+    public func resetNetworkInterfaceAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29386,9 +29386,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ResetNetworkInterfaceAttributeRequest object being passed to this operation.
      */
-    public func resetNetworkInterfaceAttributeSync(
+    public func resetNetworkInterfaceAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29422,9 +29422,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func resetSnapshotAttributeAsync(
+    public func resetSnapshotAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29458,9 +29458,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated ResetSnapshotAttributeRequest object being passed to this operation.
      */
-    public func resetSnapshotAttributeSync(
+    public func resetSnapshotAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29495,9 +29495,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The RestoreAddressToClassicResult
            object will be validated before being returned to caller.
      */
-    public func restoreAddressToClassicAsync(
+    public func restoreAddressToClassicAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RestoreAddressToClassicRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.RestoreAddressToClassicResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29533,9 +29533,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The RestoreAddressToClassicResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func restoreAddressToClassicSync(
+    public func restoreAddressToClassicSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RestoreAddressToClassicRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RestoreAddressToClassicResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.RestoreAddressToClassicResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29570,9 +29570,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The RevokeClientVpnIngressResult
            object will be validated before being returned to caller.
      */
-    public func revokeClientVpnIngressAsync(
+    public func revokeClientVpnIngressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.RevokeClientVpnIngressResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29608,9 +29608,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The RevokeClientVpnIngressResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func revokeClientVpnIngressSync(
+    public func revokeClientVpnIngressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RevokeClientVpnIngressResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.RevokeClientVpnIngressResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29644,9 +29644,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func revokeSecurityGroupEgressAsync(
+    public func revokeSecurityGroupEgressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29680,9 +29680,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated RevokeSecurityGroupEgressRequest object being passed to this operation.
      */
-    public func revokeSecurityGroupEgressSync(
+    public func revokeSecurityGroupEgressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29716,9 +29716,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func revokeSecurityGroupIngressAsync(
+    public func revokeSecurityGroupIngressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29752,9 +29752,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated RevokeSecurityGroupIngressRequest object being passed to this operation.
      */
-    public func revokeSecurityGroupIngressSync(
+    public func revokeSecurityGroupIngressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29789,9 +29789,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The Reservation
            object will be validated before being returned to caller.
      */
-    public func runInstancesAsync(
+    public func runInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RunInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.Reservation, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29827,9 +29827,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The Reservation object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func runInstancesSync(
+    public func runInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RunInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.Reservation {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.Reservation {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29864,9 +29864,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The RunScheduledInstancesResult
            object will be validated before being returned to caller.
      */
-    public func runScheduledInstancesAsync(
+    public func runScheduledInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RunScheduledInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.RunScheduledInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29902,9 +29902,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The RunScheduledInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func runScheduledInstancesSync(
+    public func runScheduledInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.RunScheduledInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.RunScheduledInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.RunScheduledInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29939,9 +29939,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The SearchLocalGatewayRoutesResult
            object will be validated before being returned to caller.
      */
-    public func searchLocalGatewayRoutesAsync(
+    public func searchLocalGatewayRoutesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.SearchLocalGatewayRoutesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.SearchLocalGatewayRoutesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -29977,9 +29977,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The SearchLocalGatewayRoutesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func searchLocalGatewayRoutesSync(
+    public func searchLocalGatewayRoutesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.SearchLocalGatewayRoutesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.SearchLocalGatewayRoutesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.SearchLocalGatewayRoutesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30014,9 +30014,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The SearchTransitGatewayMulticastGroupsResult
            object will be validated before being returned to caller.
      */
-    public func searchTransitGatewayMulticastGroupsAsync(
+    public func searchTransitGatewayMulticastGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -30052,9 +30052,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The SearchTransitGatewayMulticastGroupsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func searchTransitGatewayMulticastGroupsSync(
+    public func searchTransitGatewayMulticastGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30089,9 +30089,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The SearchTransitGatewayRoutesResult
            object will be validated before being returned to caller.
      */
-    public func searchTransitGatewayRoutesAsync(
+    public func searchTransitGatewayRoutesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -30127,9 +30127,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The SearchTransitGatewayRoutesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func searchTransitGatewayRoutesSync(
+    public func searchTransitGatewayRoutesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.SearchTransitGatewayRoutesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.SearchTransitGatewayRoutesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30163,9 +30163,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func sendDiagnosticInterruptAsync(
+    public func sendDiagnosticInterruptAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -30199,9 +30199,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated SendDiagnosticInterruptRequest object being passed to this operation.
      */
-    public func sendDiagnosticInterruptSync(
+    public func sendDiagnosticInterruptSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30236,9 +30236,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The StartInstancesResult
            object will be validated before being returned to caller.
      */
-    public func startInstancesAsync(
+    public func startInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.StartInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.StartInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -30274,9 +30274,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The StartInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func startInstancesSync(
+    public func startInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.StartInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.StartInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.StartInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30311,9 +30311,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The StartVpcEndpointServicePrivateDnsVerificationResult
            object will be validated before being returned to caller.
      */
-    public func startVpcEndpointServicePrivateDnsVerificationAsync(
+    public func startVpcEndpointServicePrivateDnsVerificationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -30349,9 +30349,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The StartVpcEndpointServicePrivateDnsVerificationResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func startVpcEndpointServicePrivateDnsVerificationSync(
+    public func startVpcEndpointServicePrivateDnsVerificationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30386,9 +30386,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The StopInstancesResult
            object will be validated before being returned to caller.
      */
-    public func stopInstancesAsync(
+    public func stopInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.StopInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.StopInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -30424,9 +30424,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The StopInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func stopInstancesSync(
+    public func stopInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.StopInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.StopInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.StopInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30461,9 +30461,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The TerminateClientVpnConnectionsResult
            object will be validated before being returned to caller.
      */
-    public func terminateClientVpnConnectionsAsync(
+    public func terminateClientVpnConnectionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -30499,9 +30499,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The TerminateClientVpnConnectionsResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func terminateClientVpnConnectionsSync(
+    public func terminateClientVpnConnectionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.TerminateClientVpnConnectionsResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.TerminateClientVpnConnectionsResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30536,9 +30536,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The TerminateInstancesResult
            object will be validated before being returned to caller.
      */
-    public func terminateInstancesAsync(
+    public func terminateInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.TerminateInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.TerminateInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -30574,9 +30574,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The TerminateInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func terminateInstancesSync(
+    public func terminateInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.TerminateInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.TerminateInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.TerminateInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30611,9 +30611,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The UnassignIpv6AddressesResult
            object will be validated before being returned to caller.
      */
-    public func unassignIpv6AddressesAsync(
+    public func unassignIpv6AddressesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.UnassignIpv6AddressesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -30649,9 +30649,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The UnassignIpv6AddressesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func unassignIpv6AddressesSync(
+    public func unassignIpv6AddressesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.UnassignIpv6AddressesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.UnassignIpv6AddressesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30685,9 +30685,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    public func unassignPrivateIpAddressesAsync(
+    public func unassignPrivateIpAddressesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -30721,9 +30721,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Parameters:
          - input: The validated UnassignPrivateIpAddressesRequest object being passed to this operation.
      */
-    public func unassignPrivateIpAddressesSync(
+    public func unassignPrivateIpAddressesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            reporting: InvocationReportingType) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30758,9 +30758,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The UnmonitorInstancesResult
            object will be validated before being returned to caller.
      */
-    public func unmonitorInstancesAsync(
+    public func unmonitorInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.UnmonitorInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.UnmonitorInstancesResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -30796,9 +30796,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The UnmonitorInstancesResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func unmonitorInstancesSync(
+    public func unmonitorInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.UnmonitorInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.UnmonitorInstancesResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.UnmonitorInstancesResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30833,9 +30833,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The UpdateSecurityGroupRuleDescriptionsEgressResult
            object will be validated before being returned to caller.
      */
-    public func updateSecurityGroupRuleDescriptionsEgressAsync(
+    public func updateSecurityGroupRuleDescriptionsEgressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -30871,9 +30871,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The UpdateSecurityGroupRuleDescriptionsEgressResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func updateSecurityGroupRuleDescriptionsEgressSync(
+    public func updateSecurityGroupRuleDescriptionsEgressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30908,9 +30908,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The UpdateSecurityGroupRuleDescriptionsIngressResult
            object will be validated before being returned to caller.
      */
-    public func updateSecurityGroupRuleDescriptionsIngressAsync(
+    public func updateSecurityGroupRuleDescriptionsIngressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -30946,9 +30946,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The UpdateSecurityGroupRuleDescriptionsIngressResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func updateSecurityGroupRuleDescriptionsIngressSync(
+    public func updateSecurityGroupRuleDescriptionsIngressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -30983,9 +30983,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
            callback when the operation is complete. The WithdrawByoipCidrResult
            object will be validated before being returned to caller.
      */
-    public func withdrawByoipCidrAsync(
+    public func withdrawByoipCidrAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.WithdrawByoipCidrRequest, 
-            reporting: SmokeAWSInvocationReporting,
+            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticComputeCloudModel.WithdrawByoipCidrResult, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -31021,9 +31021,9 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      - Returns: The WithdrawByoipCidrResult object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func withdrawByoipCidrSync(
+    public func withdrawByoipCidrSync<InvocationReportingType: SmokeAWSInvocationReporting>(
             input: ElasticComputeCloudModel.WithdrawByoipCidrRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticComputeCloudModel.WithdrawByoipCidrResult {
+            reporting: InvocationReportingType) throws -> ElasticComputeCloudModel.WithdrawByoipCidrResult {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
