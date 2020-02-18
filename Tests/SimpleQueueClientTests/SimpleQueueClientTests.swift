@@ -9,6 +9,26 @@ import SimpleQueueModel
 import SmokeAWSHttp
 import NIOHTTP1
 import SmokeHTTPClient
+import Logging
+
+struct TestInvocationTraceContext: InvocationTraceContext {
+    typealias OutwardsRequestContext = String
+    
+    func handleOutwardsRequestStart(method: HTTPMethod, uri: String, version: HTTPVersion, logger: Logger, internalRequestId: String,
+                                    headers: inout [(String, String)], bodyData: Data) -> String {
+        return "request"
+    }
+    
+    func handleOutwardsRequestSuccess(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
+                                      responseHead: HTTPResponseHead?, bodyData: Data?) {
+        // do nothing
+    }
+    
+    func handleOutwardsRequestFailure(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
+                                      responseHead: HTTPResponseHead?, bodyData: Data?, error: Error) {
+        // do nothing
+    }
+}
 
 class SimpleQueueClientTests: XCTestCase {
     
@@ -31,9 +51,10 @@ class SimpleQueueClientTests: XCTestCase {
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = XMLAWSHttpClientDelegate<SimpleQueueError>()
+        let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId", traceContext: TestInvocationTraceContext())
         let error = try clientDelegate.getResponseError(responseHead: responseHead,
                                                         responseComponents: components,
-                                                        invocationReporting: StandardHTTPClientInvocationReporting())
+                                                        invocationReporting: invocationReporting)
         
         guard case let SimpleQueueError.accessDenied(returnedMessage) = error.cause else {
             return XCTFail()
@@ -63,9 +84,10 @@ class SimpleQueueClientTests: XCTestCase {
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = DataAWSHttpClientDelegate<SimpleQueueError>()
+        let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId", traceContext: TestInvocationTraceContext())
         let error = try clientDelegate.getResponseError(responseHead: responseHead,
                                                         responseComponents: components,
-                                                        invocationReporting: StandardHTTPClientInvocationReporting())
+                                                        invocationReporting: invocationReporting)
         
         guard case SimpleQueueError.queueDoesNotExist = error.cause else {
             return XCTFail()

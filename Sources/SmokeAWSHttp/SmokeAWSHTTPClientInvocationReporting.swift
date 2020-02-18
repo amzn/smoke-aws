@@ -22,6 +22,8 @@ import Logging
 import Metrics
 
 public struct SmokeAWSHTTPClientInvocationReporting<InvocationReportingType: SmokeAWSInvocationReporting>: HTTPClientInvocationReporting {
+    public typealias TraceContextType = InvocationReportingType.TraceContextType
+    
     private let smokeAWSInvocationReporting: InvocationReportingType
     private let smokeAWSOperationReporting: SmokeAWSOperationReporting
     
@@ -33,6 +35,14 @@ public struct SmokeAWSHTTPClientInvocationReporting<InvocationReportingType: Smo
     
     public var logger: Logging.Logger {
         return smokeAWSInvocationReporting.logger
+    }
+    
+    public var internalRequestId: String {
+        return smokeAWSInvocationReporting.internalRequestId
+    }
+    
+    public var traceContext: InvocationReportingType.TraceContextType {
+        return smokeAWSInvocationReporting.traceContext
     }
     
     public var successCounter: Metrics.Counter? {

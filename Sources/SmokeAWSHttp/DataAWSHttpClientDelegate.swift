@@ -41,9 +41,10 @@ public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
         self.inputQueryMapDecodingStrategy = inputQueryMapDecodingStrategy
     }
     
-    public func getResponseError(responseHead: HTTPResponseHead,
-                                 responseComponents: HTTPResponseComponents,
-                                 invocationReporting: HTTPClientInvocationReporting) throws -> HTTPClientError {
+    public func getResponseError<InvocationReportingType: HTTPClientInvocationReporting>(
+            responseHead: HTTPResponseHead,
+            responseComponents: HTTPResponseComponents,
+            invocationReporting: InvocationReportingType) throws -> HTTPClientError {
         guard let bodyData = responseComponents.body else {
             throw HTTPError.unknownError("Error with status '\(responseHead.status)' with empty body")
         }
@@ -56,12 +57,10 @@ public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
         return HTTPClientError(responseCode: Int(responseHead.status.code), cause: cause)
     }
     
-    public func encodeInputAndQueryString<InputType>(
+    public func encodeInputAndQueryString<InputType, InvocationReportingType: HTTPClientInvocationReporting>(
         input: InputType,
         httpPath: String,
-        invocationReporting: HTTPClientInvocationReporting) throws -> HTTPRequestComponents
-        where InputType: HTTPRequestInputProtocol {
-            
+        invocationReporting: InvocationReportingType) throws -> HTTPRequestComponents where InputType: HTTPRequestInputProtocol {
             let pathPostfix = input.pathPostfix ?? ""
             
             let pathTemplate = "\(httpPath)\(pathPostfix)"
@@ -126,17 +125,17 @@ public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
                                          body: body)
     }
     
-    public func encodeInputAndQueryString<InputType: Encodable>(input: InputType, httpPath: String,
-                                                                invocationReporting: HTTPClientInvocationReporting) throws
-        -> (pathWithQuery: String, body: Data) {
-            // there is no query; encode the body as a JSON payload
-            return (pathWithQuery: httpPath, body: try JSONEncoder.awsCompatibleEncoder().encode(input))
+    public func encodeInputAndQueryString<InputType: Encodable, InvocationReportingType: HTTPClientInvocationReporting>(
+            input: InputType, httpPath: String,
+            invocationReporting: InvocationReportingType) throws -> (pathWithQuery: String, body: Data) {
+        // there is no query; encode the body as a JSON payload
+        return (pathWithQuery: httpPath, body: try JSONEncoder.awsCompatibleEncoder().encode(input))
     }
     
-    public func decodeOutput<OutputType>(output: Data?,
-                                  headers: [(String, String)],
-                                  invocationReporting: HTTPClientInvocationReporting) throws -> OutputType
-    where OutputType: HTTPResponseOutputProtocol {
+    public func decodeOutput<OutputType, InvocationReportingType: HTTPClientInvocationReporting>(
+            output: Data?,
+            headers: [(String, String)],
+            invocationReporting: InvocationReportingType) throws -> OutputType where OutputType: HTTPResponseOutputProtocol {
         // Convert output to a debug string only if debug logging is enabled
         invocationReporting.logger.debug("Attempting to decode result data: \(output.debugString)")
         

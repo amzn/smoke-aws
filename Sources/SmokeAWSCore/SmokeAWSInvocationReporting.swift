@@ -17,12 +17,13 @@
 
 import Foundation
 import Logging
+import SmokeHTTPClient
 
 /**
  A context related to reporting on the invocation of the HTTPClient.
  */
 public protocol SmokeAWSInvocationReporting {
-    associatedtype TraceContextType: OperationTraceContext
+    associatedtype TraceContextType: InvocationTraceContext
     
     /// The `Logging.Logger` to use for logging for this invocation.
     var logger: Logging.Logger { get }

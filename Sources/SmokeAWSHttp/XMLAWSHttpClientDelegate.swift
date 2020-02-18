@@ -140,9 +140,10 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
         self.inputQueryKeyEncodeTransformStrategy = inputQueryKeyEncodeTransformStrategy
     }
     
-    public func getResponseError(responseHead: HTTPResponseHead,
-                                 responseComponents: HTTPResponseComponents,
-                                 invocationReporting: HTTPClientInvocationReporting) throws -> HTTPClientError {
+    public func getResponseError<InvocationReportingType: HTTPClientInvocationReporting>(
+            responseHead: HTTPResponseHead,
+            responseComponents: HTTPResponseComponents,
+            invocationReporting: InvocationReportingType) throws -> HTTPClientError {
         guard let bodyData = responseComponents.body else {
             throw HTTPError.unknownError("Error with status '\(responseHead.status)' with empty body")
         }
@@ -155,12 +156,10 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
         return HTTPClientError(responseCode: Int(responseHead.status.code), cause: cause)
     }
     
-    public func encodeInputAndQueryString<InputType>(
+    public func encodeInputAndQueryString<InputType, InvocationReportingType: HTTPClientInvocationReporting>(
         input: InputType,
         httpPath: String,
-        invocationReporting: HTTPClientInvocationReporting) throws -> HTTPRequestComponents
-        where InputType: HTTPRequestInputProtocol {
-            
+        invocationReporting: InvocationReportingType) throws -> HTTPRequestComponents where InputType: HTTPRequestInputProtocol {
             let pathPostfix = input.pathPostfix ?? ""
             
             let pathTemplate = "\(httpPath)\(pathPostfix)"
@@ -228,9 +227,10 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
                                          body: body)
     }
     
-    public func decodeOutput<OutputType>(output: Data?, headers: [(String, String)],
-                                         invocationReporting: HTTPClientInvocationReporting) throws -> OutputType
-    where OutputType: HTTPResponseOutputProtocol {
+    public func decodeOutput<OutputType, InvocationReportingType: HTTPClientInvocationReporting>(
+            output: Data?,
+            headers: [(String, String)],
+            invocationReporting: InvocationReportingType) throws -> OutputType where OutputType: HTTPResponseOutputProtocol {
         let decoder = XMLDecoder.awsCompatibleDecoder()
         
         if let outputListDecodingStrategy = outputListDecodingStrategy {

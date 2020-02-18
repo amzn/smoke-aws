@@ -70,7 +70,9 @@ public struct AWSClientChannelInboundHandlerDelegate : HTTPClientChannelInboundH
         return headersToBeSigned
     }
     
-    public func addClientSpecificHeaders(handler: HTTPClientChannelInboundHandler, invocationReporting: HTTPClientInvocationReporting) -> [(String, String)] {
+    public func addClientSpecificHeaders<InvocationReportingType: HTTPClientInvocationReporting>(
+            handler: HTTPClientChannelInboundHandler<InvocationReportingType>,
+            invocationReporting: InvocationReportingType) -> [(String, String)] {
         let v4Signer = V4Signer(credentials: credentialsProvider.credentials, region: awsRegion,
                                 service: service,
                                 signAllHeaders: signAllHeaders)
@@ -101,7 +103,9 @@ public struct AWSClientChannelInboundHandlerDelegate : HTTPClientChannelInboundH
         return headers
     }
     
-    public func handleErrorResponses(responseHead: HTTPResponseHead, responseBodyData: Data?, invocationReporting: HTTPClientInvocationReporting) -> HTTPClientError? {
+    public func handleErrorResponses<InvocationReportingType: HTTPClientInvocationReporting>(
+            responseHead: HTTPResponseHead, responseBodyData: Data?,
+            invocationReporting: InvocationReportingType) -> HTTPClientError? {
         // Place the permanently moved location into the HTTPError
         if case .movedPermanently = responseHead.status {
             let locationHeader = responseHead.headers["Location"]
