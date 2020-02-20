@@ -1,0 +1,1230 @@
+// Copyright 2018-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License").
+// You may not use this file except in compliance with the License.
+// A copy of the License is located at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// or in the "license" file accompanying this file. This file is distributed
+// on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+// express or implied. See the License for the specific language governing
+// permissions and limitations under the License.
+//
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length line_length identifier_name type_name vertical_parameter_alignment
+// -- Generated Code; do not edit --
+//
+// ElasticComputeCloudOperationsReporting.swift
+// ElasticComputeCloudClient
+//
+
+import Foundation
+import SmokeAWSCore
+import ElasticComputeCloudModel
+
+/**
+ Operation reporting for the ElasticComputeCloudModel.
+ */
+public struct ElasticComputeCloudOperationsReporting {
+    let acceptReservedInstancesExchangeQuote: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let acceptTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let acceptTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let acceptVpcEndpointConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let acceptVpcPeeringConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let advertiseByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let allocateAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let allocateHosts: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let applySecurityGroupsToClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let assignIpv6Addresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let assignPrivateIpAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let associateAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let associateClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let associateDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let associateIamInstanceProfile: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let associateRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let associateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let associateTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let associateTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let associateVpcCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let attachClassicLinkVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let attachInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let attachNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let attachVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let attachVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let authorizeClientVpnIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let authorizeSecurityGroupEgress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let authorizeSecurityGroupIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let bundleInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let cancelBundleTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let cancelCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let cancelConversionTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let cancelExportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let cancelImportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let cancelReservedInstancesListing: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let cancelSpotFleetRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let cancelSpotInstanceRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let confirmProductInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let copyFpgaImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let copyImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let copySnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createClientVpnEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createClientVpnRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createCustomerGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createDefaultSubnet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createDefaultVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createEgressOnlyInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createFleet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createFlowLogs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createFpgaImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createInstanceExportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createLaunchTemplateVersion: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createLocalGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createLocalGatewayRouteTableVpcAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createNatGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createNetworkAcl: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createNetworkAclEntry: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createNetworkInterfacePermission: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createPlacementGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createReservedInstancesListing: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createSecurityGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createSnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createSnapshots: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createSpotDatafeedSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createSubnet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTags: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTrafficMirrorFilter: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTrafficMirrorFilterRule: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTrafficMirrorSession: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTrafficMirrorTarget: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTransitGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTransitGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createVpcEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createVpcEndpointConnectionNotification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createVpcEndpointServiceConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createVpcPeeringConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createVpnConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createVpnConnectionRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteClientVpnEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteClientVpnRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteCustomerGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteEgressOnlyInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteFleets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteFlowLogs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteFpgaImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteLaunchTemplateVersions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteLocalGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteLocalGatewayRouteTableVpcAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteNatGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteNetworkAcl: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteNetworkAclEntry: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteNetworkInterfacePermission: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deletePlacementGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteQueuedReservedInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteSecurityGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteSnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteSpotDatafeedSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteSubnet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTags: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTrafficMirrorFilter: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTrafficMirrorFilterRule: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTrafficMirrorSession: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTrafficMirrorTarget: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTransitGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTransitGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteVpcEndpointConnectionNotifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteVpcEndpointServiceConfigurations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteVpcEndpoints: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteVpcPeeringConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteVpnConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteVpnConnectionRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deprovisionByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deregisterImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deregisterTransitGatewayMulticastGroupMembers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deregisterTransitGatewayMulticastGroupSources: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeAccountAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeAggregateIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeAvailabilityZones: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeBundleTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeByoipCidrs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeCapacityReservations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeClassicLinkInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeClientVpnAuthorizationRules: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeClientVpnConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeClientVpnEndpoints: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeClientVpnRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeClientVpnTargetNetworks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeCoipPools: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeConversionTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeCustomerGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeEgressOnlyInternetGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeElasticGpus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeExportImageTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeExportTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeFleetHistory: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeFleetInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeFleets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeFlowLogs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeFpgaImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeFpgaImages: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeHostReservationOfferings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeHostReservations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeHosts: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeIamInstanceProfileAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeIdentityIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeImages: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeImportImageTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeImportSnapshotTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeInstanceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeInstanceCreditSpecifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeInstanceStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeInstanceTypeOfferings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeInstanceTypes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeInternetGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeIpv6Pools: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeKeyPairs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLaunchTemplateVersions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLaunchTemplates: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLocalGatewayRouteTableVpcAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLocalGatewayRouteTables: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLocalGatewayVirtualInterfaceGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLocalGatewayVirtualInterfaces: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeLocalGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeMovingAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeNatGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeNetworkAcls: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeNetworkInterfaceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeNetworkInterfacePermissions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeNetworkInterfaces: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describePlacementGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describePrefixLists: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describePrincipalIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describePublicIpv4Pools: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeRegions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeReservedInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeReservedInstancesListings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeReservedInstancesModifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeReservedInstancesOfferings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeRouteTables: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeScheduledInstanceAvailability: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeScheduledInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeSecurityGroupReferences: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeSecurityGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeSnapshotAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeSnapshots: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeSpotDatafeedSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeSpotFleetInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeSpotFleetRequestHistory: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeSpotFleetRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeSpotInstanceRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeSpotPriceHistory: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeStaleSecurityGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeSubnets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTags: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTrafficMirrorFilters: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTrafficMirrorSessions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTrafficMirrorTargets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTransitGatewayAttachments: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTransitGatewayMulticastDomains: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTransitGatewayPeeringAttachments: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTransitGatewayRouteTables: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTransitGatewayVpcAttachments: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTransitGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVolumeAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVolumeStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVolumes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVolumesModifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVpcAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVpcClassicLink: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVpcClassicLinkDnsSupport: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVpcEndpointConnectionNotifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVpcEndpointConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVpcEndpointServiceConfigurations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVpcEndpointServicePermissions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVpcEndpointServices: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVpcEndpoints: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVpcPeeringConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVpcs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVpnConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeVpnGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let detachClassicLinkVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let detachInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let detachNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let detachVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let detachVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disableTransitGatewayRouteTablePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disableVgwRoutePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disableVpcClassicLink: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disableVpcClassicLinkDnsSupport: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disassociateAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disassociateClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disassociateIamInstanceProfile: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disassociateRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disassociateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disassociateTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disassociateTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disassociateVpcCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let enableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let enableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let enableTransitGatewayRouteTablePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let enableVgwRoutePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let enableVolumeIO: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let enableVpcClassicLink: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let enableVpcClassicLinkDnsSupport: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let exportClientVpnClientCertificateRevocationList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let exportClientVpnClientConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let exportImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let exportTransitGatewayRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getAssociatedIpv6PoolCidrs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getCapacityReservationUsage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getCoipPoolUsage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getConsoleOutput: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getConsoleScreenshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getDefaultCreditSpecification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getEbsDefaultKmsKeyId: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getHostReservationPurchasePreview: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getLaunchTemplateData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getPasswordData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getReservedInstancesExchangeQuote: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getTransitGatewayAttachmentPropagations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getTransitGatewayMulticastDomainAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getTransitGatewayRouteTableAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getTransitGatewayRouteTablePropagations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let importClientVpnClientCertificateRevocationList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let importImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let importInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let importKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let importSnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let importVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyClientVpnEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyDefaultCreditSpecification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyEbsDefaultKmsKeyId: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyFleet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyFpgaImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyHosts: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyIdentityIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyInstanceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyInstanceCapacityReservationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyInstanceCreditSpecification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyInstanceEventStartTime: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyInstanceMetadataOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyInstancePlacement: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyNetworkInterfaceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyReservedInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifySnapshotAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifySpotFleetRequest: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifySubnetAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyTrafficMirrorFilterNetworkServices: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyTrafficMirrorFilterRule: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyTrafficMirrorSession: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVolumeAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVpcAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVpcEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVpcEndpointConnectionNotification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVpcEndpointServiceConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVpcEndpointServicePermissions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVpcPeeringConnectionOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVpcTenancy: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVpnConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVpnTunnelCertificate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyVpnTunnelOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let monitorInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let moveAddressToVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let provisionByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let purchaseHostReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let purchaseReservedInstancesOffering: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let purchaseScheduledInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let rebootInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let registerImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let registerTransitGatewayMulticastGroupMembers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let registerTransitGatewayMulticastGroupSources: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let rejectTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let rejectTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let rejectVpcEndpointConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let rejectVpcPeeringConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let releaseAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let releaseHosts: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let replaceIamInstanceProfileAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let replaceNetworkAclAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let replaceNetworkAclEntry: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let replaceRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let replaceRouteTableAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let replaceTransitGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let reportInstanceStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let requestSpotFleet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let requestSpotInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let resetEbsDefaultKmsKeyId: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let resetFpgaImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let resetImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let resetInstanceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let resetNetworkInterfaceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let resetSnapshotAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let restoreAddressToClassic: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let revokeClientVpnIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let revokeSecurityGroupEgress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let revokeSecurityGroupIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let runInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let runScheduledInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let searchLocalGatewayRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let searchTransitGatewayMulticastGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let searchTransitGatewayRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let sendDiagnosticInterrupt: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let startInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let startVpcEndpointServicePrivateDnsVerification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let stopInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let terminateClientVpnConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let terminateInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let unassignIpv6Addresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let unassignPrivateIpAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let unmonitorInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let updateSecurityGroupRuleDescriptionsEgress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let updateSecurityGroupRuleDescriptionsIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let withdrawByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+
+    public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>) {
+        self.acceptReservedInstancesExchangeQuote = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .acceptReservedInstancesExchangeQuote, configuration: reportingConfiguration)
+        self.acceptTransitGatewayPeeringAttachment = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .acceptTransitGatewayPeeringAttachment, configuration: reportingConfiguration)
+        self.acceptTransitGatewayVpcAttachment = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .acceptTransitGatewayVpcAttachment, configuration: reportingConfiguration)
+        self.acceptVpcEndpointConnections = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .acceptVpcEndpointConnections, configuration: reportingConfiguration)
+        self.acceptVpcPeeringConnection = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .acceptVpcPeeringConnection, configuration: reportingConfiguration)
+        self.advertiseByoipCidr = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .advertiseByoipCidr, configuration: reportingConfiguration)
+        self.allocateAddress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .allocateAddress, configuration: reportingConfiguration)
+        self.allocateHosts = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .allocateHosts, configuration: reportingConfiguration)
+        self.applySecurityGroupsToClientVpnTargetNetwork = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .applySecurityGroupsToClientVpnTargetNetwork, configuration: reportingConfiguration)
+        self.assignIpv6Addresses = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .assignIpv6Addresses, configuration: reportingConfiguration)
+        self.assignPrivateIpAddresses = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .assignPrivateIpAddresses, configuration: reportingConfiguration)
+        self.associateAddress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateAddress, configuration: reportingConfiguration)
+        self.associateClientVpnTargetNetwork = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateClientVpnTargetNetwork, configuration: reportingConfiguration)
+        self.associateDhcpOptions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateDhcpOptions, configuration: reportingConfiguration)
+        self.associateIamInstanceProfile = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateIamInstanceProfile, configuration: reportingConfiguration)
+        self.associateRouteTable = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateRouteTable, configuration: reportingConfiguration)
+        self.associateSubnetCidrBlock = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateSubnetCidrBlock, configuration: reportingConfiguration)
+        self.associateTransitGatewayMulticastDomain = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateTransitGatewayMulticastDomain, configuration: reportingConfiguration)
+        self.associateTransitGatewayRouteTable = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateTransitGatewayRouteTable, configuration: reportingConfiguration)
+        self.associateVpcCidrBlock = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateVpcCidrBlock, configuration: reportingConfiguration)
+        self.attachClassicLinkVpc = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .attachClassicLinkVpc, configuration: reportingConfiguration)
+        self.attachInternetGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .attachInternetGateway, configuration: reportingConfiguration)
+        self.attachNetworkInterface = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .attachNetworkInterface, configuration: reportingConfiguration)
+        self.attachVolume = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .attachVolume, configuration: reportingConfiguration)
+        self.attachVpnGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .attachVpnGateway, configuration: reportingConfiguration)
+        self.authorizeClientVpnIngress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .authorizeClientVpnIngress, configuration: reportingConfiguration)
+        self.authorizeSecurityGroupEgress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .authorizeSecurityGroupEgress, configuration: reportingConfiguration)
+        self.authorizeSecurityGroupIngress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .authorizeSecurityGroupIngress, configuration: reportingConfiguration)
+        self.bundleInstance = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .bundleInstance, configuration: reportingConfiguration)
+        self.cancelBundleTask = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .cancelBundleTask, configuration: reportingConfiguration)
+        self.cancelCapacityReservation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .cancelCapacityReservation, configuration: reportingConfiguration)
+        self.cancelConversionTask = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .cancelConversionTask, configuration: reportingConfiguration)
+        self.cancelExportTask = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .cancelExportTask, configuration: reportingConfiguration)
+        self.cancelImportTask = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .cancelImportTask, configuration: reportingConfiguration)
+        self.cancelReservedInstancesListing = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .cancelReservedInstancesListing, configuration: reportingConfiguration)
+        self.cancelSpotFleetRequests = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .cancelSpotFleetRequests, configuration: reportingConfiguration)
+        self.cancelSpotInstanceRequests = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .cancelSpotInstanceRequests, configuration: reportingConfiguration)
+        self.confirmProductInstance = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .confirmProductInstance, configuration: reportingConfiguration)
+        self.copyFpgaImage = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .copyFpgaImage, configuration: reportingConfiguration)
+        self.copyImage = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .copyImage, configuration: reportingConfiguration)
+        self.copySnapshot = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .copySnapshot, configuration: reportingConfiguration)
+        self.createCapacityReservation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createCapacityReservation, configuration: reportingConfiguration)
+        self.createClientVpnEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createClientVpnEndpoint, configuration: reportingConfiguration)
+        self.createClientVpnRoute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createClientVpnRoute, configuration: reportingConfiguration)
+        self.createCustomerGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createCustomerGateway, configuration: reportingConfiguration)
+        self.createDefaultSubnet = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createDefaultSubnet, configuration: reportingConfiguration)
+        self.createDefaultVpc = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createDefaultVpc, configuration: reportingConfiguration)
+        self.createDhcpOptions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createDhcpOptions, configuration: reportingConfiguration)
+        self.createEgressOnlyInternetGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createEgressOnlyInternetGateway, configuration: reportingConfiguration)
+        self.createFleet = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createFleet, configuration: reportingConfiguration)
+        self.createFlowLogs = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createFlowLogs, configuration: reportingConfiguration)
+        self.createFpgaImage = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createFpgaImage, configuration: reportingConfiguration)
+        self.createImage = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createImage, configuration: reportingConfiguration)
+        self.createInstanceExportTask = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createInstanceExportTask, configuration: reportingConfiguration)
+        self.createInternetGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createInternetGateway, configuration: reportingConfiguration)
+        self.createKeyPair = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createKeyPair, configuration: reportingConfiguration)
+        self.createLaunchTemplate = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createLaunchTemplate, configuration: reportingConfiguration)
+        self.createLaunchTemplateVersion = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createLaunchTemplateVersion, configuration: reportingConfiguration)
+        self.createLocalGatewayRoute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createLocalGatewayRoute, configuration: reportingConfiguration)
+        self.createLocalGatewayRouteTableVpcAssociation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createLocalGatewayRouteTableVpcAssociation, configuration: reportingConfiguration)
+        self.createNatGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createNatGateway, configuration: reportingConfiguration)
+        self.createNetworkAcl = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createNetworkAcl, configuration: reportingConfiguration)
+        self.createNetworkAclEntry = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createNetworkAclEntry, configuration: reportingConfiguration)
+        self.createNetworkInterface = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createNetworkInterface, configuration: reportingConfiguration)
+        self.createNetworkInterfacePermission = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createNetworkInterfacePermission, configuration: reportingConfiguration)
+        self.createPlacementGroup = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createPlacementGroup, configuration: reportingConfiguration)
+        self.createReservedInstancesListing = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createReservedInstancesListing, configuration: reportingConfiguration)
+        self.createRoute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createRoute, configuration: reportingConfiguration)
+        self.createRouteTable = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createRouteTable, configuration: reportingConfiguration)
+        self.createSecurityGroup = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createSecurityGroup, configuration: reportingConfiguration)
+        self.createSnapshot = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createSnapshot, configuration: reportingConfiguration)
+        self.createSnapshots = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createSnapshots, configuration: reportingConfiguration)
+        self.createSpotDatafeedSubscription = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createSpotDatafeedSubscription, configuration: reportingConfiguration)
+        self.createSubnet = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createSubnet, configuration: reportingConfiguration)
+        self.createTags = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createTags, configuration: reportingConfiguration)
+        self.createTrafficMirrorFilter = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createTrafficMirrorFilter, configuration: reportingConfiguration)
+        self.createTrafficMirrorFilterRule = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createTrafficMirrorFilterRule, configuration: reportingConfiguration)
+        self.createTrafficMirrorSession = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createTrafficMirrorSession, configuration: reportingConfiguration)
+        self.createTrafficMirrorTarget = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createTrafficMirrorTarget, configuration: reportingConfiguration)
+        self.createTransitGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createTransitGateway, configuration: reportingConfiguration)
+        self.createTransitGatewayMulticastDomain = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createTransitGatewayMulticastDomain, configuration: reportingConfiguration)
+        self.createTransitGatewayPeeringAttachment = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createTransitGatewayPeeringAttachment, configuration: reportingConfiguration)
+        self.createTransitGatewayRoute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createTransitGatewayRoute, configuration: reportingConfiguration)
+        self.createTransitGatewayRouteTable = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createTransitGatewayRouteTable, configuration: reportingConfiguration)
+        self.createTransitGatewayVpcAttachment = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createTransitGatewayVpcAttachment, configuration: reportingConfiguration)
+        self.createVolume = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createVolume, configuration: reportingConfiguration)
+        self.createVpc = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createVpc, configuration: reportingConfiguration)
+        self.createVpcEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createVpcEndpoint, configuration: reportingConfiguration)
+        self.createVpcEndpointConnectionNotification = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createVpcEndpointConnectionNotification, configuration: reportingConfiguration)
+        self.createVpcEndpointServiceConfiguration = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createVpcEndpointServiceConfiguration, configuration: reportingConfiguration)
+        self.createVpcPeeringConnection = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createVpcPeeringConnection, configuration: reportingConfiguration)
+        self.createVpnConnection = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createVpnConnection, configuration: reportingConfiguration)
+        self.createVpnConnectionRoute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createVpnConnectionRoute, configuration: reportingConfiguration)
+        self.createVpnGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createVpnGateway, configuration: reportingConfiguration)
+        self.deleteClientVpnEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteClientVpnEndpoint, configuration: reportingConfiguration)
+        self.deleteClientVpnRoute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteClientVpnRoute, configuration: reportingConfiguration)
+        self.deleteCustomerGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteCustomerGateway, configuration: reportingConfiguration)
+        self.deleteDhcpOptions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteDhcpOptions, configuration: reportingConfiguration)
+        self.deleteEgressOnlyInternetGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteEgressOnlyInternetGateway, configuration: reportingConfiguration)
+        self.deleteFleets = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteFleets, configuration: reportingConfiguration)
+        self.deleteFlowLogs = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteFlowLogs, configuration: reportingConfiguration)
+        self.deleteFpgaImage = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteFpgaImage, configuration: reportingConfiguration)
+        self.deleteInternetGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteInternetGateway, configuration: reportingConfiguration)
+        self.deleteKeyPair = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteKeyPair, configuration: reportingConfiguration)
+        self.deleteLaunchTemplate = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteLaunchTemplate, configuration: reportingConfiguration)
+        self.deleteLaunchTemplateVersions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteLaunchTemplateVersions, configuration: reportingConfiguration)
+        self.deleteLocalGatewayRoute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteLocalGatewayRoute, configuration: reportingConfiguration)
+        self.deleteLocalGatewayRouteTableVpcAssociation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteLocalGatewayRouteTableVpcAssociation, configuration: reportingConfiguration)
+        self.deleteNatGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteNatGateway, configuration: reportingConfiguration)
+        self.deleteNetworkAcl = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteNetworkAcl, configuration: reportingConfiguration)
+        self.deleteNetworkAclEntry = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteNetworkAclEntry, configuration: reportingConfiguration)
+        self.deleteNetworkInterface = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteNetworkInterface, configuration: reportingConfiguration)
+        self.deleteNetworkInterfacePermission = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteNetworkInterfacePermission, configuration: reportingConfiguration)
+        self.deletePlacementGroup = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deletePlacementGroup, configuration: reportingConfiguration)
+        self.deleteQueuedReservedInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteQueuedReservedInstances, configuration: reportingConfiguration)
+        self.deleteRoute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteRoute, configuration: reportingConfiguration)
+        self.deleteRouteTable = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteRouteTable, configuration: reportingConfiguration)
+        self.deleteSecurityGroup = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteSecurityGroup, configuration: reportingConfiguration)
+        self.deleteSnapshot = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteSnapshot, configuration: reportingConfiguration)
+        self.deleteSpotDatafeedSubscription = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteSpotDatafeedSubscription, configuration: reportingConfiguration)
+        self.deleteSubnet = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteSubnet, configuration: reportingConfiguration)
+        self.deleteTags = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTags, configuration: reportingConfiguration)
+        self.deleteTrafficMirrorFilter = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTrafficMirrorFilter, configuration: reportingConfiguration)
+        self.deleteTrafficMirrorFilterRule = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTrafficMirrorFilterRule, configuration: reportingConfiguration)
+        self.deleteTrafficMirrorSession = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTrafficMirrorSession, configuration: reportingConfiguration)
+        self.deleteTrafficMirrorTarget = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTrafficMirrorTarget, configuration: reportingConfiguration)
+        self.deleteTransitGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTransitGateway, configuration: reportingConfiguration)
+        self.deleteTransitGatewayMulticastDomain = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTransitGatewayMulticastDomain, configuration: reportingConfiguration)
+        self.deleteTransitGatewayPeeringAttachment = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTransitGatewayPeeringAttachment, configuration: reportingConfiguration)
+        self.deleteTransitGatewayRoute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTransitGatewayRoute, configuration: reportingConfiguration)
+        self.deleteTransitGatewayRouteTable = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTransitGatewayRouteTable, configuration: reportingConfiguration)
+        self.deleteTransitGatewayVpcAttachment = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTransitGatewayVpcAttachment, configuration: reportingConfiguration)
+        self.deleteVolume = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteVolume, configuration: reportingConfiguration)
+        self.deleteVpc = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteVpc, configuration: reportingConfiguration)
+        self.deleteVpcEndpointConnectionNotifications = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteVpcEndpointConnectionNotifications, configuration: reportingConfiguration)
+        self.deleteVpcEndpointServiceConfigurations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteVpcEndpointServiceConfigurations, configuration: reportingConfiguration)
+        self.deleteVpcEndpoints = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteVpcEndpoints, configuration: reportingConfiguration)
+        self.deleteVpcPeeringConnection = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteVpcPeeringConnection, configuration: reportingConfiguration)
+        self.deleteVpnConnection = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteVpnConnection, configuration: reportingConfiguration)
+        self.deleteVpnConnectionRoute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteVpnConnectionRoute, configuration: reportingConfiguration)
+        self.deleteVpnGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteVpnGateway, configuration: reportingConfiguration)
+        self.deprovisionByoipCidr = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deprovisionByoipCidr, configuration: reportingConfiguration)
+        self.deregisterImage = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deregisterImage, configuration: reportingConfiguration)
+        self.deregisterTransitGatewayMulticastGroupMembers = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deregisterTransitGatewayMulticastGroupMembers, configuration: reportingConfiguration)
+        self.deregisterTransitGatewayMulticastGroupSources = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deregisterTransitGatewayMulticastGroupSources, configuration: reportingConfiguration)
+        self.describeAccountAttributes = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeAccountAttributes, configuration: reportingConfiguration)
+        self.describeAddresses = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeAddresses, configuration: reportingConfiguration)
+        self.describeAggregateIdFormat = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeAggregateIdFormat, configuration: reportingConfiguration)
+        self.describeAvailabilityZones = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeAvailabilityZones, configuration: reportingConfiguration)
+        self.describeBundleTasks = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeBundleTasks, configuration: reportingConfiguration)
+        self.describeByoipCidrs = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeByoipCidrs, configuration: reportingConfiguration)
+        self.describeCapacityReservations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeCapacityReservations, configuration: reportingConfiguration)
+        self.describeClassicLinkInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeClassicLinkInstances, configuration: reportingConfiguration)
+        self.describeClientVpnAuthorizationRules = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeClientVpnAuthorizationRules, configuration: reportingConfiguration)
+        self.describeClientVpnConnections = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeClientVpnConnections, configuration: reportingConfiguration)
+        self.describeClientVpnEndpoints = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeClientVpnEndpoints, configuration: reportingConfiguration)
+        self.describeClientVpnRoutes = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeClientVpnRoutes, configuration: reportingConfiguration)
+        self.describeClientVpnTargetNetworks = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeClientVpnTargetNetworks, configuration: reportingConfiguration)
+        self.describeCoipPools = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeCoipPools, configuration: reportingConfiguration)
+        self.describeConversionTasks = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeConversionTasks, configuration: reportingConfiguration)
+        self.describeCustomerGateways = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeCustomerGateways, configuration: reportingConfiguration)
+        self.describeDhcpOptions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeDhcpOptions, configuration: reportingConfiguration)
+        self.describeEgressOnlyInternetGateways = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeEgressOnlyInternetGateways, configuration: reportingConfiguration)
+        self.describeElasticGpus = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeElasticGpus, configuration: reportingConfiguration)
+        self.describeExportImageTasks = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeExportImageTasks, configuration: reportingConfiguration)
+        self.describeExportTasks = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeExportTasks, configuration: reportingConfiguration)
+        self.describeFastSnapshotRestores = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeFastSnapshotRestores, configuration: reportingConfiguration)
+        self.describeFleetHistory = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeFleetHistory, configuration: reportingConfiguration)
+        self.describeFleetInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeFleetInstances, configuration: reportingConfiguration)
+        self.describeFleets = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeFleets, configuration: reportingConfiguration)
+        self.describeFlowLogs = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeFlowLogs, configuration: reportingConfiguration)
+        self.describeFpgaImageAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeFpgaImageAttribute, configuration: reportingConfiguration)
+        self.describeFpgaImages = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeFpgaImages, configuration: reportingConfiguration)
+        self.describeHostReservationOfferings = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeHostReservationOfferings, configuration: reportingConfiguration)
+        self.describeHostReservations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeHostReservations, configuration: reportingConfiguration)
+        self.describeHosts = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeHosts, configuration: reportingConfiguration)
+        self.describeIamInstanceProfileAssociations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeIamInstanceProfileAssociations, configuration: reportingConfiguration)
+        self.describeIdFormat = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeIdFormat, configuration: reportingConfiguration)
+        self.describeIdentityIdFormat = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeIdentityIdFormat, configuration: reportingConfiguration)
+        self.describeImageAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeImageAttribute, configuration: reportingConfiguration)
+        self.describeImages = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeImages, configuration: reportingConfiguration)
+        self.describeImportImageTasks = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeImportImageTasks, configuration: reportingConfiguration)
+        self.describeImportSnapshotTasks = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeImportSnapshotTasks, configuration: reportingConfiguration)
+        self.describeInstanceAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeInstanceAttribute, configuration: reportingConfiguration)
+        self.describeInstanceCreditSpecifications = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeInstanceCreditSpecifications, configuration: reportingConfiguration)
+        self.describeInstanceStatus = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeInstanceStatus, configuration: reportingConfiguration)
+        self.describeInstanceTypeOfferings = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeInstanceTypeOfferings, configuration: reportingConfiguration)
+        self.describeInstanceTypes = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeInstanceTypes, configuration: reportingConfiguration)
+        self.describeInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeInstances, configuration: reportingConfiguration)
+        self.describeInternetGateways = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeInternetGateways, configuration: reportingConfiguration)
+        self.describeIpv6Pools = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeIpv6Pools, configuration: reportingConfiguration)
+        self.describeKeyPairs = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeKeyPairs, configuration: reportingConfiguration)
+        self.describeLaunchTemplateVersions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeLaunchTemplateVersions, configuration: reportingConfiguration)
+        self.describeLaunchTemplates = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeLaunchTemplates, configuration: reportingConfiguration)
+        self.describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations, configuration: reportingConfiguration)
+        self.describeLocalGatewayRouteTableVpcAssociations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeLocalGatewayRouteTableVpcAssociations, configuration: reportingConfiguration)
+        self.describeLocalGatewayRouteTables = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeLocalGatewayRouteTables, configuration: reportingConfiguration)
+        self.describeLocalGatewayVirtualInterfaceGroups = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeLocalGatewayVirtualInterfaceGroups, configuration: reportingConfiguration)
+        self.describeLocalGatewayVirtualInterfaces = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeLocalGatewayVirtualInterfaces, configuration: reportingConfiguration)
+        self.describeLocalGateways = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeLocalGateways, configuration: reportingConfiguration)
+        self.describeMovingAddresses = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeMovingAddresses, configuration: reportingConfiguration)
+        self.describeNatGateways = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeNatGateways, configuration: reportingConfiguration)
+        self.describeNetworkAcls = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeNetworkAcls, configuration: reportingConfiguration)
+        self.describeNetworkInterfaceAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeNetworkInterfaceAttribute, configuration: reportingConfiguration)
+        self.describeNetworkInterfacePermissions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeNetworkInterfacePermissions, configuration: reportingConfiguration)
+        self.describeNetworkInterfaces = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeNetworkInterfaces, configuration: reportingConfiguration)
+        self.describePlacementGroups = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describePlacementGroups, configuration: reportingConfiguration)
+        self.describePrefixLists = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describePrefixLists, configuration: reportingConfiguration)
+        self.describePrincipalIdFormat = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describePrincipalIdFormat, configuration: reportingConfiguration)
+        self.describePublicIpv4Pools = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describePublicIpv4Pools, configuration: reportingConfiguration)
+        self.describeRegions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeRegions, configuration: reportingConfiguration)
+        self.describeReservedInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeReservedInstances, configuration: reportingConfiguration)
+        self.describeReservedInstancesListings = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeReservedInstancesListings, configuration: reportingConfiguration)
+        self.describeReservedInstancesModifications = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeReservedInstancesModifications, configuration: reportingConfiguration)
+        self.describeReservedInstancesOfferings = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeReservedInstancesOfferings, configuration: reportingConfiguration)
+        self.describeRouteTables = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeRouteTables, configuration: reportingConfiguration)
+        self.describeScheduledInstanceAvailability = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeScheduledInstanceAvailability, configuration: reportingConfiguration)
+        self.describeScheduledInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeScheduledInstances, configuration: reportingConfiguration)
+        self.describeSecurityGroupReferences = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeSecurityGroupReferences, configuration: reportingConfiguration)
+        self.describeSecurityGroups = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeSecurityGroups, configuration: reportingConfiguration)
+        self.describeSnapshotAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeSnapshotAttribute, configuration: reportingConfiguration)
+        self.describeSnapshots = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeSnapshots, configuration: reportingConfiguration)
+        self.describeSpotDatafeedSubscription = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeSpotDatafeedSubscription, configuration: reportingConfiguration)
+        self.describeSpotFleetInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeSpotFleetInstances, configuration: reportingConfiguration)
+        self.describeSpotFleetRequestHistory = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeSpotFleetRequestHistory, configuration: reportingConfiguration)
+        self.describeSpotFleetRequests = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeSpotFleetRequests, configuration: reportingConfiguration)
+        self.describeSpotInstanceRequests = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeSpotInstanceRequests, configuration: reportingConfiguration)
+        self.describeSpotPriceHistory = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeSpotPriceHistory, configuration: reportingConfiguration)
+        self.describeStaleSecurityGroups = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeStaleSecurityGroups, configuration: reportingConfiguration)
+        self.describeSubnets = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeSubnets, configuration: reportingConfiguration)
+        self.describeTags = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeTags, configuration: reportingConfiguration)
+        self.describeTrafficMirrorFilters = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeTrafficMirrorFilters, configuration: reportingConfiguration)
+        self.describeTrafficMirrorSessions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeTrafficMirrorSessions, configuration: reportingConfiguration)
+        self.describeTrafficMirrorTargets = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeTrafficMirrorTargets, configuration: reportingConfiguration)
+        self.describeTransitGatewayAttachments = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeTransitGatewayAttachments, configuration: reportingConfiguration)
+        self.describeTransitGatewayMulticastDomains = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeTransitGatewayMulticastDomains, configuration: reportingConfiguration)
+        self.describeTransitGatewayPeeringAttachments = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeTransitGatewayPeeringAttachments, configuration: reportingConfiguration)
+        self.describeTransitGatewayRouteTables = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeTransitGatewayRouteTables, configuration: reportingConfiguration)
+        self.describeTransitGatewayVpcAttachments = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeTransitGatewayVpcAttachments, configuration: reportingConfiguration)
+        self.describeTransitGateways = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeTransitGateways, configuration: reportingConfiguration)
+        self.describeVolumeAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVolumeAttribute, configuration: reportingConfiguration)
+        self.describeVolumeStatus = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVolumeStatus, configuration: reportingConfiguration)
+        self.describeVolumes = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVolumes, configuration: reportingConfiguration)
+        self.describeVolumesModifications = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVolumesModifications, configuration: reportingConfiguration)
+        self.describeVpcAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVpcAttribute, configuration: reportingConfiguration)
+        self.describeVpcClassicLink = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVpcClassicLink, configuration: reportingConfiguration)
+        self.describeVpcClassicLinkDnsSupport = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVpcClassicLinkDnsSupport, configuration: reportingConfiguration)
+        self.describeVpcEndpointConnectionNotifications = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVpcEndpointConnectionNotifications, configuration: reportingConfiguration)
+        self.describeVpcEndpointConnections = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVpcEndpointConnections, configuration: reportingConfiguration)
+        self.describeVpcEndpointServiceConfigurations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVpcEndpointServiceConfigurations, configuration: reportingConfiguration)
+        self.describeVpcEndpointServicePermissions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVpcEndpointServicePermissions, configuration: reportingConfiguration)
+        self.describeVpcEndpointServices = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVpcEndpointServices, configuration: reportingConfiguration)
+        self.describeVpcEndpoints = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVpcEndpoints, configuration: reportingConfiguration)
+        self.describeVpcPeeringConnections = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVpcPeeringConnections, configuration: reportingConfiguration)
+        self.describeVpcs = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVpcs, configuration: reportingConfiguration)
+        self.describeVpnConnections = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVpnConnections, configuration: reportingConfiguration)
+        self.describeVpnGateways = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVpnGateways, configuration: reportingConfiguration)
+        self.detachClassicLinkVpc = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .detachClassicLinkVpc, configuration: reportingConfiguration)
+        self.detachInternetGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .detachInternetGateway, configuration: reportingConfiguration)
+        self.detachNetworkInterface = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .detachNetworkInterface, configuration: reportingConfiguration)
+        self.detachVolume = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .detachVolume, configuration: reportingConfiguration)
+        self.detachVpnGateway = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .detachVpnGateway, configuration: reportingConfiguration)
+        self.disableEbsEncryptionByDefault = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disableEbsEncryptionByDefault, configuration: reportingConfiguration)
+        self.disableFastSnapshotRestores = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disableFastSnapshotRestores, configuration: reportingConfiguration)
+        self.disableTransitGatewayRouteTablePropagation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disableTransitGatewayRouteTablePropagation, configuration: reportingConfiguration)
+        self.disableVgwRoutePropagation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disableVgwRoutePropagation, configuration: reportingConfiguration)
+        self.disableVpcClassicLink = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disableVpcClassicLink, configuration: reportingConfiguration)
+        self.disableVpcClassicLinkDnsSupport = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disableVpcClassicLinkDnsSupport, configuration: reportingConfiguration)
+        self.disassociateAddress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disassociateAddress, configuration: reportingConfiguration)
+        self.disassociateClientVpnTargetNetwork = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disassociateClientVpnTargetNetwork, configuration: reportingConfiguration)
+        self.disassociateIamInstanceProfile = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disassociateIamInstanceProfile, configuration: reportingConfiguration)
+        self.disassociateRouteTable = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disassociateRouteTable, configuration: reportingConfiguration)
+        self.disassociateSubnetCidrBlock = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disassociateSubnetCidrBlock, configuration: reportingConfiguration)
+        self.disassociateTransitGatewayMulticastDomain = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disassociateTransitGatewayMulticastDomain, configuration: reportingConfiguration)
+        self.disassociateTransitGatewayRouteTable = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disassociateTransitGatewayRouteTable, configuration: reportingConfiguration)
+        self.disassociateVpcCidrBlock = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disassociateVpcCidrBlock, configuration: reportingConfiguration)
+        self.enableEbsEncryptionByDefault = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableEbsEncryptionByDefault, configuration: reportingConfiguration)
+        self.enableFastSnapshotRestores = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableFastSnapshotRestores, configuration: reportingConfiguration)
+        self.enableTransitGatewayRouteTablePropagation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableTransitGatewayRouteTablePropagation, configuration: reportingConfiguration)
+        self.enableVgwRoutePropagation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableVgwRoutePropagation, configuration: reportingConfiguration)
+        self.enableVolumeIO = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableVolumeIO, configuration: reportingConfiguration)
+        self.enableVpcClassicLink = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableVpcClassicLink, configuration: reportingConfiguration)
+        self.enableVpcClassicLinkDnsSupport = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableVpcClassicLinkDnsSupport, configuration: reportingConfiguration)
+        self.exportClientVpnClientCertificateRevocationList = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .exportClientVpnClientCertificateRevocationList, configuration: reportingConfiguration)
+        self.exportClientVpnClientConfiguration = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .exportClientVpnClientConfiguration, configuration: reportingConfiguration)
+        self.exportImage = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .exportImage, configuration: reportingConfiguration)
+        self.exportTransitGatewayRoutes = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .exportTransitGatewayRoutes, configuration: reportingConfiguration)
+        self.getAssociatedIpv6PoolCidrs = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getAssociatedIpv6PoolCidrs, configuration: reportingConfiguration)
+        self.getCapacityReservationUsage = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getCapacityReservationUsage, configuration: reportingConfiguration)
+        self.getCoipPoolUsage = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getCoipPoolUsage, configuration: reportingConfiguration)
+        self.getConsoleOutput = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getConsoleOutput, configuration: reportingConfiguration)
+        self.getConsoleScreenshot = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getConsoleScreenshot, configuration: reportingConfiguration)
+        self.getDefaultCreditSpecification = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getDefaultCreditSpecification, configuration: reportingConfiguration)
+        self.getEbsDefaultKmsKeyId = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getEbsDefaultKmsKeyId, configuration: reportingConfiguration)
+        self.getEbsEncryptionByDefault = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getEbsEncryptionByDefault, configuration: reportingConfiguration)
+        self.getHostReservationPurchasePreview = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getHostReservationPurchasePreview, configuration: reportingConfiguration)
+        self.getLaunchTemplateData = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getLaunchTemplateData, configuration: reportingConfiguration)
+        self.getPasswordData = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getPasswordData, configuration: reportingConfiguration)
+        self.getReservedInstancesExchangeQuote = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getReservedInstancesExchangeQuote, configuration: reportingConfiguration)
+        self.getTransitGatewayAttachmentPropagations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getTransitGatewayAttachmentPropagations, configuration: reportingConfiguration)
+        self.getTransitGatewayMulticastDomainAssociations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getTransitGatewayMulticastDomainAssociations, configuration: reportingConfiguration)
+        self.getTransitGatewayRouteTableAssociations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getTransitGatewayRouteTableAssociations, configuration: reportingConfiguration)
+        self.getTransitGatewayRouteTablePropagations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getTransitGatewayRouteTablePropagations, configuration: reportingConfiguration)
+        self.importClientVpnClientCertificateRevocationList = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .importClientVpnClientCertificateRevocationList, configuration: reportingConfiguration)
+        self.importImage = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .importImage, configuration: reportingConfiguration)
+        self.importInstance = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .importInstance, configuration: reportingConfiguration)
+        self.importKeyPair = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .importKeyPair, configuration: reportingConfiguration)
+        self.importSnapshot = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .importSnapshot, configuration: reportingConfiguration)
+        self.importVolume = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .importVolume, configuration: reportingConfiguration)
+        self.modifyCapacityReservation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyCapacityReservation, configuration: reportingConfiguration)
+        self.modifyClientVpnEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyClientVpnEndpoint, configuration: reportingConfiguration)
+        self.modifyDefaultCreditSpecification = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyDefaultCreditSpecification, configuration: reportingConfiguration)
+        self.modifyEbsDefaultKmsKeyId = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyEbsDefaultKmsKeyId, configuration: reportingConfiguration)
+        self.modifyFleet = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyFleet, configuration: reportingConfiguration)
+        self.modifyFpgaImageAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyFpgaImageAttribute, configuration: reportingConfiguration)
+        self.modifyHosts = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyHosts, configuration: reportingConfiguration)
+        self.modifyIdFormat = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyIdFormat, configuration: reportingConfiguration)
+        self.modifyIdentityIdFormat = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyIdentityIdFormat, configuration: reportingConfiguration)
+        self.modifyImageAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyImageAttribute, configuration: reportingConfiguration)
+        self.modifyInstanceAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyInstanceAttribute, configuration: reportingConfiguration)
+        self.modifyInstanceCapacityReservationAttributes = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyInstanceCapacityReservationAttributes, configuration: reportingConfiguration)
+        self.modifyInstanceCreditSpecification = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyInstanceCreditSpecification, configuration: reportingConfiguration)
+        self.modifyInstanceEventStartTime = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyInstanceEventStartTime, configuration: reportingConfiguration)
+        self.modifyInstanceMetadataOptions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyInstanceMetadataOptions, configuration: reportingConfiguration)
+        self.modifyInstancePlacement = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyInstancePlacement, configuration: reportingConfiguration)
+        self.modifyLaunchTemplate = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyLaunchTemplate, configuration: reportingConfiguration)
+        self.modifyNetworkInterfaceAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyNetworkInterfaceAttribute, configuration: reportingConfiguration)
+        self.modifyReservedInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyReservedInstances, configuration: reportingConfiguration)
+        self.modifySnapshotAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifySnapshotAttribute, configuration: reportingConfiguration)
+        self.modifySpotFleetRequest = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifySpotFleetRequest, configuration: reportingConfiguration)
+        self.modifySubnetAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifySubnetAttribute, configuration: reportingConfiguration)
+        self.modifyTrafficMirrorFilterNetworkServices = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyTrafficMirrorFilterNetworkServices, configuration: reportingConfiguration)
+        self.modifyTrafficMirrorFilterRule = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyTrafficMirrorFilterRule, configuration: reportingConfiguration)
+        self.modifyTrafficMirrorSession = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyTrafficMirrorSession, configuration: reportingConfiguration)
+        self.modifyTransitGatewayVpcAttachment = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyTransitGatewayVpcAttachment, configuration: reportingConfiguration)
+        self.modifyVolume = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVolume, configuration: reportingConfiguration)
+        self.modifyVolumeAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVolumeAttribute, configuration: reportingConfiguration)
+        self.modifyVpcAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVpcAttribute, configuration: reportingConfiguration)
+        self.modifyVpcEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVpcEndpoint, configuration: reportingConfiguration)
+        self.modifyVpcEndpointConnectionNotification = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVpcEndpointConnectionNotification, configuration: reportingConfiguration)
+        self.modifyVpcEndpointServiceConfiguration = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVpcEndpointServiceConfiguration, configuration: reportingConfiguration)
+        self.modifyVpcEndpointServicePermissions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVpcEndpointServicePermissions, configuration: reportingConfiguration)
+        self.modifyVpcPeeringConnectionOptions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVpcPeeringConnectionOptions, configuration: reportingConfiguration)
+        self.modifyVpcTenancy = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVpcTenancy, configuration: reportingConfiguration)
+        self.modifyVpnConnection = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVpnConnection, configuration: reportingConfiguration)
+        self.modifyVpnTunnelCertificate = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVpnTunnelCertificate, configuration: reportingConfiguration)
+        self.modifyVpnTunnelOptions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVpnTunnelOptions, configuration: reportingConfiguration)
+        self.monitorInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .monitorInstances, configuration: reportingConfiguration)
+        self.moveAddressToVpc = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .moveAddressToVpc, configuration: reportingConfiguration)
+        self.provisionByoipCidr = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .provisionByoipCidr, configuration: reportingConfiguration)
+        self.purchaseHostReservation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .purchaseHostReservation, configuration: reportingConfiguration)
+        self.purchaseReservedInstancesOffering = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .purchaseReservedInstancesOffering, configuration: reportingConfiguration)
+        self.purchaseScheduledInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .purchaseScheduledInstances, configuration: reportingConfiguration)
+        self.rebootInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .rebootInstances, configuration: reportingConfiguration)
+        self.registerImage = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .registerImage, configuration: reportingConfiguration)
+        self.registerTransitGatewayMulticastGroupMembers = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .registerTransitGatewayMulticastGroupMembers, configuration: reportingConfiguration)
+        self.registerTransitGatewayMulticastGroupSources = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .registerTransitGatewayMulticastGroupSources, configuration: reportingConfiguration)
+        self.rejectTransitGatewayPeeringAttachment = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .rejectTransitGatewayPeeringAttachment, configuration: reportingConfiguration)
+        self.rejectTransitGatewayVpcAttachment = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .rejectTransitGatewayVpcAttachment, configuration: reportingConfiguration)
+        self.rejectVpcEndpointConnections = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .rejectVpcEndpointConnections, configuration: reportingConfiguration)
+        self.rejectVpcPeeringConnection = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .rejectVpcPeeringConnection, configuration: reportingConfiguration)
+        self.releaseAddress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .releaseAddress, configuration: reportingConfiguration)
+        self.releaseHosts = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .releaseHosts, configuration: reportingConfiguration)
+        self.replaceIamInstanceProfileAssociation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .replaceIamInstanceProfileAssociation, configuration: reportingConfiguration)
+        self.replaceNetworkAclAssociation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .replaceNetworkAclAssociation, configuration: reportingConfiguration)
+        self.replaceNetworkAclEntry = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .replaceNetworkAclEntry, configuration: reportingConfiguration)
+        self.replaceRoute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .replaceRoute, configuration: reportingConfiguration)
+        self.replaceRouteTableAssociation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .replaceRouteTableAssociation, configuration: reportingConfiguration)
+        self.replaceTransitGatewayRoute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .replaceTransitGatewayRoute, configuration: reportingConfiguration)
+        self.reportInstanceStatus = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .reportInstanceStatus, configuration: reportingConfiguration)
+        self.requestSpotFleet = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .requestSpotFleet, configuration: reportingConfiguration)
+        self.requestSpotInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .requestSpotInstances, configuration: reportingConfiguration)
+        self.resetEbsDefaultKmsKeyId = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .resetEbsDefaultKmsKeyId, configuration: reportingConfiguration)
+        self.resetFpgaImageAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .resetFpgaImageAttribute, configuration: reportingConfiguration)
+        self.resetImageAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .resetImageAttribute, configuration: reportingConfiguration)
+        self.resetInstanceAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .resetInstanceAttribute, configuration: reportingConfiguration)
+        self.resetNetworkInterfaceAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .resetNetworkInterfaceAttribute, configuration: reportingConfiguration)
+        self.resetSnapshotAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .resetSnapshotAttribute, configuration: reportingConfiguration)
+        self.restoreAddressToClassic = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .restoreAddressToClassic, configuration: reportingConfiguration)
+        self.revokeClientVpnIngress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .revokeClientVpnIngress, configuration: reportingConfiguration)
+        self.revokeSecurityGroupEgress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .revokeSecurityGroupEgress, configuration: reportingConfiguration)
+        self.revokeSecurityGroupIngress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .revokeSecurityGroupIngress, configuration: reportingConfiguration)
+        self.runInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .runInstances, configuration: reportingConfiguration)
+        self.runScheduledInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .runScheduledInstances, configuration: reportingConfiguration)
+        self.searchLocalGatewayRoutes = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .searchLocalGatewayRoutes, configuration: reportingConfiguration)
+        self.searchTransitGatewayMulticastGroups = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .searchTransitGatewayMulticastGroups, configuration: reportingConfiguration)
+        self.searchTransitGatewayRoutes = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .searchTransitGatewayRoutes, configuration: reportingConfiguration)
+        self.sendDiagnosticInterrupt = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .sendDiagnosticInterrupt, configuration: reportingConfiguration)
+        self.startInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .startInstances, configuration: reportingConfiguration)
+        self.startVpcEndpointServicePrivateDnsVerification = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .startVpcEndpointServicePrivateDnsVerification, configuration: reportingConfiguration)
+        self.stopInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .stopInstances, configuration: reportingConfiguration)
+        self.terminateClientVpnConnections = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .terminateClientVpnConnections, configuration: reportingConfiguration)
+        self.terminateInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .terminateInstances, configuration: reportingConfiguration)
+        self.unassignIpv6Addresses = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .unassignIpv6Addresses, configuration: reportingConfiguration)
+        self.unassignPrivateIpAddresses = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .unassignPrivateIpAddresses, configuration: reportingConfiguration)
+        self.unmonitorInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .unmonitorInstances, configuration: reportingConfiguration)
+        self.updateSecurityGroupRuleDescriptionsEgress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .updateSecurityGroupRuleDescriptionsEgress, configuration: reportingConfiguration)
+        self.updateSecurityGroupRuleDescriptionsIngress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .updateSecurityGroupRuleDescriptionsIngress, configuration: reportingConfiguration)
+        self.withdrawByoipCidr = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .withdrawByoipCidr, configuration: reportingConfiguration)
+    }
+}

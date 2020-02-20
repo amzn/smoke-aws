@@ -27,101 +27,101 @@ import SmokeHTTPClient
 /**
  Mock Client for the StepFunctions service by default returns the `__default` property of its return type.
  */
-public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInvocationReporting>: StepFunctionsClientProtocol {
-    let createActivityAsyncOverride: CreateActivityAsyncType<ClientInvocationReportingType>?
-    let createActivitySyncOverride: CreateActivitySyncType<ClientInvocationReportingType>?
-    let createStateMachineAsyncOverride: CreateStateMachineAsyncType<ClientInvocationReportingType>?
-    let createStateMachineSyncOverride: CreateStateMachineSyncType<ClientInvocationReportingType>?
-    let deleteActivityAsyncOverride: DeleteActivityAsyncType<ClientInvocationReportingType>?
-    let deleteActivitySyncOverride: DeleteActivitySyncType<ClientInvocationReportingType>?
-    let deleteStateMachineAsyncOverride: DeleteStateMachineAsyncType<ClientInvocationReportingType>?
-    let deleteStateMachineSyncOverride: DeleteStateMachineSyncType<ClientInvocationReportingType>?
-    let describeActivityAsyncOverride: DescribeActivityAsyncType<ClientInvocationReportingType>?
-    let describeActivitySyncOverride: DescribeActivitySyncType<ClientInvocationReportingType>?
-    let describeExecutionAsyncOverride: DescribeExecutionAsyncType<ClientInvocationReportingType>?
-    let describeExecutionSyncOverride: DescribeExecutionSyncType<ClientInvocationReportingType>?
-    let describeStateMachineAsyncOverride: DescribeStateMachineAsyncType<ClientInvocationReportingType>?
-    let describeStateMachineSyncOverride: DescribeStateMachineSyncType<ClientInvocationReportingType>?
-    let describeStateMachineForExecutionAsyncOverride: DescribeStateMachineForExecutionAsyncType<ClientInvocationReportingType>?
-    let describeStateMachineForExecutionSyncOverride: DescribeStateMachineForExecutionSyncType<ClientInvocationReportingType>?
-    let getActivityTaskAsyncOverride: GetActivityTaskAsyncType<ClientInvocationReportingType>?
-    let getActivityTaskSyncOverride: GetActivityTaskSyncType<ClientInvocationReportingType>?
-    let getExecutionHistoryAsyncOverride: GetExecutionHistoryAsyncType<ClientInvocationReportingType>?
-    let getExecutionHistorySyncOverride: GetExecutionHistorySyncType<ClientInvocationReportingType>?
-    let listActivitiesAsyncOverride: ListActivitiesAsyncType<ClientInvocationReportingType>?
-    let listActivitiesSyncOverride: ListActivitiesSyncType<ClientInvocationReportingType>?
-    let listExecutionsAsyncOverride: ListExecutionsAsyncType<ClientInvocationReportingType>?
-    let listExecutionsSyncOverride: ListExecutionsSyncType<ClientInvocationReportingType>?
-    let listStateMachinesAsyncOverride: ListStateMachinesAsyncType<ClientInvocationReportingType>?
-    let listStateMachinesSyncOverride: ListStateMachinesSyncType<ClientInvocationReportingType>?
-    let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType<ClientInvocationReportingType>?
-    let listTagsForResourceSyncOverride: ListTagsForResourceSyncType<ClientInvocationReportingType>?
-    let sendTaskFailureAsyncOverride: SendTaskFailureAsyncType<ClientInvocationReportingType>?
-    let sendTaskFailureSyncOverride: SendTaskFailureSyncType<ClientInvocationReportingType>?
-    let sendTaskHeartbeatAsyncOverride: SendTaskHeartbeatAsyncType<ClientInvocationReportingType>?
-    let sendTaskHeartbeatSyncOverride: SendTaskHeartbeatSyncType<ClientInvocationReportingType>?
-    let sendTaskSuccessAsyncOverride: SendTaskSuccessAsyncType<ClientInvocationReportingType>?
-    let sendTaskSuccessSyncOverride: SendTaskSuccessSyncType<ClientInvocationReportingType>?
-    let startExecutionAsyncOverride: StartExecutionAsyncType<ClientInvocationReportingType>?
-    let startExecutionSyncOverride: StartExecutionSyncType<ClientInvocationReportingType>?
-    let stopExecutionAsyncOverride: StopExecutionAsyncType<ClientInvocationReportingType>?
-    let stopExecutionSyncOverride: StopExecutionSyncType<ClientInvocationReportingType>?
-    let tagResourceAsyncOverride: TagResourceAsyncType<ClientInvocationReportingType>?
-    let tagResourceSyncOverride: TagResourceSyncType<ClientInvocationReportingType>?
-    let untagResourceAsyncOverride: UntagResourceAsyncType<ClientInvocationReportingType>?
-    let untagResourceSyncOverride: UntagResourceSyncType<ClientInvocationReportingType>?
-    let updateStateMachineAsyncOverride: UpdateStateMachineAsyncType<ClientInvocationReportingType>?
-    let updateStateMachineSyncOverride: UpdateStateMachineSyncType<ClientInvocationReportingType>?
+public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
+    let createActivityAsyncOverride: CreateActivityAsyncType?
+    let createActivitySyncOverride: CreateActivitySyncType?
+    let createStateMachineAsyncOverride: CreateStateMachineAsyncType?
+    let createStateMachineSyncOverride: CreateStateMachineSyncType?
+    let deleteActivityAsyncOverride: DeleteActivityAsyncType?
+    let deleteActivitySyncOverride: DeleteActivitySyncType?
+    let deleteStateMachineAsyncOverride: DeleteStateMachineAsyncType?
+    let deleteStateMachineSyncOverride: DeleteStateMachineSyncType?
+    let describeActivityAsyncOverride: DescribeActivityAsyncType?
+    let describeActivitySyncOverride: DescribeActivitySyncType?
+    let describeExecutionAsyncOverride: DescribeExecutionAsyncType?
+    let describeExecutionSyncOverride: DescribeExecutionSyncType?
+    let describeStateMachineAsyncOverride: DescribeStateMachineAsyncType?
+    let describeStateMachineSyncOverride: DescribeStateMachineSyncType?
+    let describeStateMachineForExecutionAsyncOverride: DescribeStateMachineForExecutionAsyncType?
+    let describeStateMachineForExecutionSyncOverride: DescribeStateMachineForExecutionSyncType?
+    let getActivityTaskAsyncOverride: GetActivityTaskAsyncType?
+    let getActivityTaskSyncOverride: GetActivityTaskSyncType?
+    let getExecutionHistoryAsyncOverride: GetExecutionHistoryAsyncType?
+    let getExecutionHistorySyncOverride: GetExecutionHistorySyncType?
+    let listActivitiesAsyncOverride: ListActivitiesAsyncType?
+    let listActivitiesSyncOverride: ListActivitiesSyncType?
+    let listExecutionsAsyncOverride: ListExecutionsAsyncType?
+    let listExecutionsSyncOverride: ListExecutionsSyncType?
+    let listStateMachinesAsyncOverride: ListStateMachinesAsyncType?
+    let listStateMachinesSyncOverride: ListStateMachinesSyncType?
+    let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType?
+    let listTagsForResourceSyncOverride: ListTagsForResourceSyncType?
+    let sendTaskFailureAsyncOverride: SendTaskFailureAsyncType?
+    let sendTaskFailureSyncOverride: SendTaskFailureSyncType?
+    let sendTaskHeartbeatAsyncOverride: SendTaskHeartbeatAsyncType?
+    let sendTaskHeartbeatSyncOverride: SendTaskHeartbeatSyncType?
+    let sendTaskSuccessAsyncOverride: SendTaskSuccessAsyncType?
+    let sendTaskSuccessSyncOverride: SendTaskSuccessSyncType?
+    let startExecutionAsyncOverride: StartExecutionAsyncType?
+    let startExecutionSyncOverride: StartExecutionSyncType?
+    let stopExecutionAsyncOverride: StopExecutionAsyncType?
+    let stopExecutionSyncOverride: StopExecutionSyncType?
+    let tagResourceAsyncOverride: TagResourceAsyncType?
+    let tagResourceSyncOverride: TagResourceSyncType?
+    let untagResourceAsyncOverride: UntagResourceAsyncType?
+    let untagResourceSyncOverride: UntagResourceSyncType?
+    let updateStateMachineAsyncOverride: UpdateStateMachineAsyncType?
+    let updateStateMachineSyncOverride: UpdateStateMachineSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(
-            createActivityAsync: CreateActivityAsyncType<ClientInvocationReportingType>? = nil,
-            createActivitySync: CreateActivitySyncType<ClientInvocationReportingType>? = nil,
-            createStateMachineAsync: CreateStateMachineAsyncType<ClientInvocationReportingType>? = nil,
-            createStateMachineSync: CreateStateMachineSyncType<ClientInvocationReportingType>? = nil,
-            deleteActivityAsync: DeleteActivityAsyncType<ClientInvocationReportingType>? = nil,
-            deleteActivitySync: DeleteActivitySyncType<ClientInvocationReportingType>? = nil,
-            deleteStateMachineAsync: DeleteStateMachineAsyncType<ClientInvocationReportingType>? = nil,
-            deleteStateMachineSync: DeleteStateMachineSyncType<ClientInvocationReportingType>? = nil,
-            describeActivityAsync: DescribeActivityAsyncType<ClientInvocationReportingType>? = nil,
-            describeActivitySync: DescribeActivitySyncType<ClientInvocationReportingType>? = nil,
-            describeExecutionAsync: DescribeExecutionAsyncType<ClientInvocationReportingType>? = nil,
-            describeExecutionSync: DescribeExecutionSyncType<ClientInvocationReportingType>? = nil,
-            describeStateMachineAsync: DescribeStateMachineAsyncType<ClientInvocationReportingType>? = nil,
-            describeStateMachineSync: DescribeStateMachineSyncType<ClientInvocationReportingType>? = nil,
-            describeStateMachineForExecutionAsync: DescribeStateMachineForExecutionAsyncType<ClientInvocationReportingType>? = nil,
-            describeStateMachineForExecutionSync: DescribeStateMachineForExecutionSyncType<ClientInvocationReportingType>? = nil,
-            getActivityTaskAsync: GetActivityTaskAsyncType<ClientInvocationReportingType>? = nil,
-            getActivityTaskSync: GetActivityTaskSyncType<ClientInvocationReportingType>? = nil,
-            getExecutionHistoryAsync: GetExecutionHistoryAsyncType<ClientInvocationReportingType>? = nil,
-            getExecutionHistorySync: GetExecutionHistorySyncType<ClientInvocationReportingType>? = nil,
-            listActivitiesAsync: ListActivitiesAsyncType<ClientInvocationReportingType>? = nil,
-            listActivitiesSync: ListActivitiesSyncType<ClientInvocationReportingType>? = nil,
-            listExecutionsAsync: ListExecutionsAsyncType<ClientInvocationReportingType>? = nil,
-            listExecutionsSync: ListExecutionsSyncType<ClientInvocationReportingType>? = nil,
-            listStateMachinesAsync: ListStateMachinesAsyncType<ClientInvocationReportingType>? = nil,
-            listStateMachinesSync: ListStateMachinesSyncType<ClientInvocationReportingType>? = nil,
-            listTagsForResourceAsync: ListTagsForResourceAsyncType<ClientInvocationReportingType>? = nil,
-            listTagsForResourceSync: ListTagsForResourceSyncType<ClientInvocationReportingType>? = nil,
-            sendTaskFailureAsync: SendTaskFailureAsyncType<ClientInvocationReportingType>? = nil,
-            sendTaskFailureSync: SendTaskFailureSyncType<ClientInvocationReportingType>? = nil,
-            sendTaskHeartbeatAsync: SendTaskHeartbeatAsyncType<ClientInvocationReportingType>? = nil,
-            sendTaskHeartbeatSync: SendTaskHeartbeatSyncType<ClientInvocationReportingType>? = nil,
-            sendTaskSuccessAsync: SendTaskSuccessAsyncType<ClientInvocationReportingType>? = nil,
-            sendTaskSuccessSync: SendTaskSuccessSyncType<ClientInvocationReportingType>? = nil,
-            startExecutionAsync: StartExecutionAsyncType<ClientInvocationReportingType>? = nil,
-            startExecutionSync: StartExecutionSyncType<ClientInvocationReportingType>? = nil,
-            stopExecutionAsync: StopExecutionAsyncType<ClientInvocationReportingType>? = nil,
-            stopExecutionSync: StopExecutionSyncType<ClientInvocationReportingType>? = nil,
-            tagResourceAsync: TagResourceAsyncType<ClientInvocationReportingType>? = nil,
-            tagResourceSync: TagResourceSyncType<ClientInvocationReportingType>? = nil,
-            untagResourceAsync: UntagResourceAsyncType<ClientInvocationReportingType>? = nil,
-            untagResourceSync: UntagResourceSyncType<ClientInvocationReportingType>? = nil,
-            updateStateMachineAsync: UpdateStateMachineAsyncType<ClientInvocationReportingType>? = nil,
-            updateStateMachineSync: UpdateStateMachineSyncType<ClientInvocationReportingType>? = nil) {
+            createActivityAsync: CreateActivityAsyncType? = nil,
+            createActivitySync: CreateActivitySyncType? = nil,
+            createStateMachineAsync: CreateStateMachineAsyncType? = nil,
+            createStateMachineSync: CreateStateMachineSyncType? = nil,
+            deleteActivityAsync: DeleteActivityAsyncType? = nil,
+            deleteActivitySync: DeleteActivitySyncType? = nil,
+            deleteStateMachineAsync: DeleteStateMachineAsyncType? = nil,
+            deleteStateMachineSync: DeleteStateMachineSyncType? = nil,
+            describeActivityAsync: DescribeActivityAsyncType? = nil,
+            describeActivitySync: DescribeActivitySyncType? = nil,
+            describeExecutionAsync: DescribeExecutionAsyncType? = nil,
+            describeExecutionSync: DescribeExecutionSyncType? = nil,
+            describeStateMachineAsync: DescribeStateMachineAsyncType? = nil,
+            describeStateMachineSync: DescribeStateMachineSyncType? = nil,
+            describeStateMachineForExecutionAsync: DescribeStateMachineForExecutionAsyncType? = nil,
+            describeStateMachineForExecutionSync: DescribeStateMachineForExecutionSyncType? = nil,
+            getActivityTaskAsync: GetActivityTaskAsyncType? = nil,
+            getActivityTaskSync: GetActivityTaskSyncType? = nil,
+            getExecutionHistoryAsync: GetExecutionHistoryAsyncType? = nil,
+            getExecutionHistorySync: GetExecutionHistorySyncType? = nil,
+            listActivitiesAsync: ListActivitiesAsyncType? = nil,
+            listActivitiesSync: ListActivitiesSyncType? = nil,
+            listExecutionsAsync: ListExecutionsAsyncType? = nil,
+            listExecutionsSync: ListExecutionsSyncType? = nil,
+            listStateMachinesAsync: ListStateMachinesAsyncType? = nil,
+            listStateMachinesSync: ListStateMachinesSyncType? = nil,
+            listTagsForResourceAsync: ListTagsForResourceAsyncType? = nil,
+            listTagsForResourceSync: ListTagsForResourceSyncType? = nil,
+            sendTaskFailureAsync: SendTaskFailureAsyncType? = nil,
+            sendTaskFailureSync: SendTaskFailureSyncType? = nil,
+            sendTaskHeartbeatAsync: SendTaskHeartbeatAsyncType? = nil,
+            sendTaskHeartbeatSync: SendTaskHeartbeatSyncType? = nil,
+            sendTaskSuccessAsync: SendTaskSuccessAsyncType? = nil,
+            sendTaskSuccessSync: SendTaskSuccessSyncType? = nil,
+            startExecutionAsync: StartExecutionAsyncType? = nil,
+            startExecutionSync: StartExecutionSyncType? = nil,
+            stopExecutionAsync: StopExecutionAsyncType? = nil,
+            stopExecutionSync: StopExecutionSyncType? = nil,
+            tagResourceAsync: TagResourceAsyncType? = nil,
+            tagResourceSync: TagResourceSyncType? = nil,
+            untagResourceAsync: UntagResourceAsyncType? = nil,
+            untagResourceSync: UntagResourceSyncType? = nil,
+            updateStateMachineAsync: UpdateStateMachineAsyncType? = nil,
+            updateStateMachineSync: UpdateStateMachineSyncType? = nil) {
         self.createActivityAsyncOverride = createActivityAsync
         self.createActivitySyncOverride = createActivitySync
         self.createStateMachineAsyncOverride = createStateMachineAsync
@@ -178,17 +178,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: activityLimitExceeded, invalidName, tooManyTags.
      */
-    public func createActivityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createActivityAsync(
             input: StepFunctionsModel.CreateActivityInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, HTTPClientError>) -> ()) throws {
-        if let createActivityAsyncOverrideNonOptional = createActivityAsyncOverride {
-            if let createActivityAsyncOverrideTyped = createActivityAsyncOverrideNonOptional
-                    as? CreateActivityAsyncType<InvocationReportingType> {
-                return try createActivityAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let createActivityAsyncOverride = createActivityAsyncOverride {
+            return try createActivityAsyncOverride(input, completion)
         }
 
         let result = CreateActivityOutput.__default
@@ -205,16 +199,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: activityLimitExceeded, invalidName, tooManyTags.
      */
-    public func createActivitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.CreateActivityInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.CreateActivityOutput {
-        if let createActivitySyncOverrideNonOptional = createActivitySyncOverride {
-            if let createActivitySyncOverrideTyped = createActivitySyncOverrideNonOptional
-                    as? CreateActivitySyncType<InvocationReportingType> {
-                return try createActivitySyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func createActivitySync(
+            input: StepFunctionsModel.CreateActivityInput) throws -> StepFunctionsModel.CreateActivityOutput {
+        if let createActivitySyncOverride = createActivitySyncOverride {
+            return try createActivitySyncOverride(input)
         }
 
         return CreateActivityOutput.__default
@@ -230,17 +218,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
      */
-    public func createStateMachineAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createStateMachineAsync(
             input: StepFunctionsModel.CreateStateMachineInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, HTTPClientError>) -> ()) throws {
-        if let createStateMachineAsyncOverrideNonOptional = createStateMachineAsyncOverride {
-            if let createStateMachineAsyncOverrideTyped = createStateMachineAsyncOverrideNonOptional
-                    as? CreateStateMachineAsyncType<InvocationReportingType> {
-                return try createStateMachineAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let createStateMachineAsyncOverride = createStateMachineAsyncOverride {
+            return try createStateMachineAsyncOverride(input, completion)
         }
 
         let result = CreateStateMachineOutput.__default
@@ -257,16 +239,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
      */
-    public func createStateMachineSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.CreateStateMachineInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.CreateStateMachineOutput {
-        if let createStateMachineSyncOverrideNonOptional = createStateMachineSyncOverride {
-            if let createStateMachineSyncOverrideTyped = createStateMachineSyncOverrideNonOptional
-                    as? CreateStateMachineSyncType<InvocationReportingType> {
-                return try createStateMachineSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func createStateMachineSync(
+            input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput {
+        if let createStateMachineSyncOverride = createStateMachineSyncOverride {
+            return try createStateMachineSyncOverride(input)
         }
 
         return CreateStateMachineOutput.__default
@@ -282,17 +258,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidArn.
      */
-    public func deleteActivityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteActivityAsync(
             input: StepFunctionsModel.DeleteActivityInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, HTTPClientError>) -> ()) throws {
-        if let deleteActivityAsyncOverrideNonOptional = deleteActivityAsyncOverride {
-            if let deleteActivityAsyncOverrideTyped = deleteActivityAsyncOverrideNonOptional
-                    as? DeleteActivityAsyncType<InvocationReportingType> {
-                return try deleteActivityAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let deleteActivityAsyncOverride = deleteActivityAsyncOverride {
+            return try deleteActivityAsyncOverride(input, completion)
         }
 
         let result = DeleteActivityOutput.__default
@@ -309,16 +279,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidArn.
      */
-    public func deleteActivitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.DeleteActivityInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.DeleteActivityOutput {
-        if let deleteActivitySyncOverrideNonOptional = deleteActivitySyncOverride {
-            if let deleteActivitySyncOverrideTyped = deleteActivitySyncOverrideNonOptional
-                    as? DeleteActivitySyncType<InvocationReportingType> {
-                return try deleteActivitySyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func deleteActivitySync(
+            input: StepFunctionsModel.DeleteActivityInput) throws -> StepFunctionsModel.DeleteActivityOutput {
+        if let deleteActivitySyncOverride = deleteActivitySyncOverride {
+            return try deleteActivitySyncOverride(input)
         }
 
         return DeleteActivityOutput.__default
@@ -334,17 +298,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidArn.
      */
-    public func deleteStateMachineAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteStateMachineAsync(
             input: StepFunctionsModel.DeleteStateMachineInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, HTTPClientError>) -> ()) throws {
-        if let deleteStateMachineAsyncOverrideNonOptional = deleteStateMachineAsyncOverride {
-            if let deleteStateMachineAsyncOverrideTyped = deleteStateMachineAsyncOverrideNonOptional
-                    as? DeleteStateMachineAsyncType<InvocationReportingType> {
-                return try deleteStateMachineAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let deleteStateMachineAsyncOverride = deleteStateMachineAsyncOverride {
+            return try deleteStateMachineAsyncOverride(input, completion)
         }
 
         let result = DeleteStateMachineOutput.__default
@@ -361,16 +319,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidArn.
      */
-    public func deleteStateMachineSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.DeleteStateMachineInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.DeleteStateMachineOutput {
-        if let deleteStateMachineSyncOverrideNonOptional = deleteStateMachineSyncOverride {
-            if let deleteStateMachineSyncOverrideTyped = deleteStateMachineSyncOverrideNonOptional
-                    as? DeleteStateMachineSyncType<InvocationReportingType> {
-                return try deleteStateMachineSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func deleteStateMachineSync(
+            input: StepFunctionsModel.DeleteStateMachineInput) throws -> StepFunctionsModel.DeleteStateMachineOutput {
+        if let deleteStateMachineSyncOverride = deleteStateMachineSyncOverride {
+            return try deleteStateMachineSyncOverride(input)
         }
 
         return DeleteStateMachineOutput.__default
@@ -386,17 +338,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: activityDoesNotExist, invalidArn.
      */
-    public func describeActivityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeActivityAsync(
             input: StepFunctionsModel.DescribeActivityInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, HTTPClientError>) -> ()) throws {
-        if let describeActivityAsyncOverrideNonOptional = describeActivityAsyncOverride {
-            if let describeActivityAsyncOverrideTyped = describeActivityAsyncOverrideNonOptional
-                    as? DescribeActivityAsyncType<InvocationReportingType> {
-                return try describeActivityAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let describeActivityAsyncOverride = describeActivityAsyncOverride {
+            return try describeActivityAsyncOverride(input, completion)
         }
 
         let result = DescribeActivityOutput.__default
@@ -413,16 +359,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: activityDoesNotExist, invalidArn.
      */
-    public func describeActivitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.DescribeActivityInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.DescribeActivityOutput {
-        if let describeActivitySyncOverrideNonOptional = describeActivitySyncOverride {
-            if let describeActivitySyncOverrideTyped = describeActivitySyncOverrideNonOptional
-                    as? DescribeActivitySyncType<InvocationReportingType> {
-                return try describeActivitySyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func describeActivitySync(
+            input: StepFunctionsModel.DescribeActivityInput) throws -> StepFunctionsModel.DescribeActivityOutput {
+        if let describeActivitySyncOverride = describeActivitySyncOverride {
+            return try describeActivitySyncOverride(input)
         }
 
         return DescribeActivityOutput.__default
@@ -438,17 +378,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    public func describeExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeExecutionAsync(
             input: StepFunctionsModel.DescribeExecutionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, HTTPClientError>) -> ()) throws {
-        if let describeExecutionAsyncOverrideNonOptional = describeExecutionAsyncOverride {
-            if let describeExecutionAsyncOverrideTyped = describeExecutionAsyncOverrideNonOptional
-                    as? DescribeExecutionAsyncType<InvocationReportingType> {
-                return try describeExecutionAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let describeExecutionAsyncOverride = describeExecutionAsyncOverride {
+            return try describeExecutionAsyncOverride(input, completion)
         }
 
         let result = DescribeExecutionOutput.__default
@@ -465,16 +399,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    public func describeExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.DescribeExecutionInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.DescribeExecutionOutput {
-        if let describeExecutionSyncOverrideNonOptional = describeExecutionSyncOverride {
-            if let describeExecutionSyncOverrideTyped = describeExecutionSyncOverrideNonOptional
-                    as? DescribeExecutionSyncType<InvocationReportingType> {
-                return try describeExecutionSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func describeExecutionSync(
+            input: StepFunctionsModel.DescribeExecutionInput) throws -> StepFunctionsModel.DescribeExecutionOutput {
+        if let describeExecutionSyncOverride = describeExecutionSyncOverride {
+            return try describeExecutionSyncOverride(input)
         }
 
         return DescribeExecutionOutput.__default
@@ -490,17 +418,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, stateMachineDoesNotExist.
      */
-    public func describeStateMachineAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeStateMachineAsync(
             input: StepFunctionsModel.DescribeStateMachineInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, HTTPClientError>) -> ()) throws {
-        if let describeStateMachineAsyncOverrideNonOptional = describeStateMachineAsyncOverride {
-            if let describeStateMachineAsyncOverrideTyped = describeStateMachineAsyncOverrideNonOptional
-                    as? DescribeStateMachineAsyncType<InvocationReportingType> {
-                return try describeStateMachineAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let describeStateMachineAsyncOverride = describeStateMachineAsyncOverride {
+            return try describeStateMachineAsyncOverride(input, completion)
         }
 
         let result = DescribeStateMachineOutput.__default
@@ -517,16 +439,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidArn, stateMachineDoesNotExist.
      */
-    public func describeStateMachineSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.DescribeStateMachineInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.DescribeStateMachineOutput {
-        if let describeStateMachineSyncOverrideNonOptional = describeStateMachineSyncOverride {
-            if let describeStateMachineSyncOverrideTyped = describeStateMachineSyncOverrideNonOptional
-                    as? DescribeStateMachineSyncType<InvocationReportingType> {
-                return try describeStateMachineSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func describeStateMachineSync(
+            input: StepFunctionsModel.DescribeStateMachineInput) throws -> StepFunctionsModel.DescribeStateMachineOutput {
+        if let describeStateMachineSyncOverride = describeStateMachineSyncOverride {
+            return try describeStateMachineSyncOverride(input)
         }
 
         return DescribeStateMachineOutput.__default
@@ -542,17 +458,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    public func describeStateMachineForExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeStateMachineForExecutionAsync(
             input: StepFunctionsModel.DescribeStateMachineForExecutionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, HTTPClientError>) -> ()) throws {
-        if let describeStateMachineForExecutionAsyncOverrideNonOptional = describeStateMachineForExecutionAsyncOverride {
-            if let describeStateMachineForExecutionAsyncOverrideTyped = describeStateMachineForExecutionAsyncOverrideNonOptional
-                    as? DescribeStateMachineForExecutionAsyncType<InvocationReportingType> {
-                return try describeStateMachineForExecutionAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let describeStateMachineForExecutionAsyncOverride = describeStateMachineForExecutionAsyncOverride {
+            return try describeStateMachineForExecutionAsyncOverride(input, completion)
         }
 
         let result = DescribeStateMachineForExecutionOutput.__default
@@ -569,16 +479,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    public func describeStateMachineForExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.DescribeStateMachineForExecutionInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
-        if let describeStateMachineForExecutionSyncOverrideNonOptional = describeStateMachineForExecutionSyncOverride {
-            if let describeStateMachineForExecutionSyncOverrideTyped = describeStateMachineForExecutionSyncOverrideNonOptional
-                    as? DescribeStateMachineForExecutionSyncType<InvocationReportingType> {
-                return try describeStateMachineForExecutionSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func describeStateMachineForExecutionSync(
+            input: StepFunctionsModel.DescribeStateMachineForExecutionInput) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
+        if let describeStateMachineForExecutionSyncOverride = describeStateMachineForExecutionSyncOverride {
+            return try describeStateMachineForExecutionSyncOverride(input)
         }
 
         return DescribeStateMachineForExecutionOutput.__default
@@ -594,17 +498,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: activityDoesNotExist, activityWorkerLimitExceeded, invalidArn.
      */
-    public func getActivityTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getActivityTaskAsync(
             input: StepFunctionsModel.GetActivityTaskInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, HTTPClientError>) -> ()) throws {
-        if let getActivityTaskAsyncOverrideNonOptional = getActivityTaskAsyncOverride {
-            if let getActivityTaskAsyncOverrideTyped = getActivityTaskAsyncOverrideNonOptional
-                    as? GetActivityTaskAsyncType<InvocationReportingType> {
-                return try getActivityTaskAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let getActivityTaskAsyncOverride = getActivityTaskAsyncOverride {
+            return try getActivityTaskAsyncOverride(input, completion)
         }
 
         let result = GetActivityTaskOutput.__default
@@ -621,16 +519,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: activityDoesNotExist, activityWorkerLimitExceeded, invalidArn.
      */
-    public func getActivityTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.GetActivityTaskInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.GetActivityTaskOutput {
-        if let getActivityTaskSyncOverrideNonOptional = getActivityTaskSyncOverride {
-            if let getActivityTaskSyncOverrideTyped = getActivityTaskSyncOverrideNonOptional
-                    as? GetActivityTaskSyncType<InvocationReportingType> {
-                return try getActivityTaskSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func getActivityTaskSync(
+            input: StepFunctionsModel.GetActivityTaskInput) throws -> StepFunctionsModel.GetActivityTaskOutput {
+        if let getActivityTaskSyncOverride = getActivityTaskSyncOverride {
+            return try getActivityTaskSyncOverride(input)
         }
 
         return GetActivityTaskOutput.__default
@@ -646,17 +538,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn, invalidToken.
      */
-    public func getExecutionHistoryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getExecutionHistoryAsync(
             input: StepFunctionsModel.GetExecutionHistoryInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, HTTPClientError>) -> ()) throws {
-        if let getExecutionHistoryAsyncOverrideNonOptional = getExecutionHistoryAsyncOverride {
-            if let getExecutionHistoryAsyncOverrideTyped = getExecutionHistoryAsyncOverrideNonOptional
-                    as? GetExecutionHistoryAsyncType<InvocationReportingType> {
-                return try getExecutionHistoryAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let getExecutionHistoryAsyncOverride = getExecutionHistoryAsyncOverride {
+            return try getExecutionHistoryAsyncOverride(input, completion)
         }
 
         let result = GetExecutionHistoryOutput.__default
@@ -673,16 +559,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn, invalidToken.
      */
-    public func getExecutionHistorySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.GetExecutionHistoryInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.GetExecutionHistoryOutput {
-        if let getExecutionHistorySyncOverrideNonOptional = getExecutionHistorySyncOverride {
-            if let getExecutionHistorySyncOverrideTyped = getExecutionHistorySyncOverrideNonOptional
-                    as? GetExecutionHistorySyncType<InvocationReportingType> {
-                return try getExecutionHistorySyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func getExecutionHistorySync(
+            input: StepFunctionsModel.GetExecutionHistoryInput) throws -> StepFunctionsModel.GetExecutionHistoryOutput {
+        if let getExecutionHistorySyncOverride = getExecutionHistorySyncOverride {
+            return try getExecutionHistorySyncOverride(input)
         }
 
         return GetExecutionHistoryOutput.__default
@@ -698,17 +578,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidToken.
      */
-    public func listActivitiesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listActivitiesAsync(
             input: StepFunctionsModel.ListActivitiesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, HTTPClientError>) -> ()) throws {
-        if let listActivitiesAsyncOverrideNonOptional = listActivitiesAsyncOverride {
-            if let listActivitiesAsyncOverrideTyped = listActivitiesAsyncOverrideNonOptional
-                    as? ListActivitiesAsyncType<InvocationReportingType> {
-                return try listActivitiesAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let listActivitiesAsyncOverride = listActivitiesAsyncOverride {
+            return try listActivitiesAsyncOverride(input, completion)
         }
 
         let result = ListActivitiesOutput.__default
@@ -725,16 +599,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidToken.
      */
-    public func listActivitiesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.ListActivitiesInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.ListActivitiesOutput {
-        if let listActivitiesSyncOverrideNonOptional = listActivitiesSyncOverride {
-            if let listActivitiesSyncOverrideTyped = listActivitiesSyncOverrideNonOptional
-                    as? ListActivitiesSyncType<InvocationReportingType> {
-                return try listActivitiesSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func listActivitiesSync(
+            input: StepFunctionsModel.ListActivitiesInput) throws -> StepFunctionsModel.ListActivitiesOutput {
+        if let listActivitiesSyncOverride = listActivitiesSyncOverride {
+            return try listActivitiesSyncOverride(input)
         }
 
         return ListActivitiesOutput.__default
@@ -750,17 +618,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
      */
-    public func listExecutionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listExecutionsAsync(
             input: StepFunctionsModel.ListExecutionsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, HTTPClientError>) -> ()) throws {
-        if let listExecutionsAsyncOverrideNonOptional = listExecutionsAsyncOverride {
-            if let listExecutionsAsyncOverrideTyped = listExecutionsAsyncOverrideNonOptional
-                    as? ListExecutionsAsyncType<InvocationReportingType> {
-                return try listExecutionsAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let listExecutionsAsyncOverride = listExecutionsAsyncOverride {
+            return try listExecutionsAsyncOverride(input, completion)
         }
 
         let result = ListExecutionsOutput.__default
@@ -777,16 +639,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
      */
-    public func listExecutionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.ListExecutionsInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.ListExecutionsOutput {
-        if let listExecutionsSyncOverrideNonOptional = listExecutionsSyncOverride {
-            if let listExecutionsSyncOverrideTyped = listExecutionsSyncOverrideNonOptional
-                    as? ListExecutionsSyncType<InvocationReportingType> {
-                return try listExecutionsSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func listExecutionsSync(
+            input: StepFunctionsModel.ListExecutionsInput) throws -> StepFunctionsModel.ListExecutionsOutput {
+        if let listExecutionsSyncOverride = listExecutionsSyncOverride {
+            return try listExecutionsSyncOverride(input)
         }
 
         return ListExecutionsOutput.__default
@@ -802,17 +658,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidToken.
      */
-    public func listStateMachinesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listStateMachinesAsync(
             input: StepFunctionsModel.ListStateMachinesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, HTTPClientError>) -> ()) throws {
-        if let listStateMachinesAsyncOverrideNonOptional = listStateMachinesAsyncOverride {
-            if let listStateMachinesAsyncOverrideTyped = listStateMachinesAsyncOverrideNonOptional
-                    as? ListStateMachinesAsyncType<InvocationReportingType> {
-                return try listStateMachinesAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let listStateMachinesAsyncOverride = listStateMachinesAsyncOverride {
+            return try listStateMachinesAsyncOverride(input, completion)
         }
 
         let result = ListStateMachinesOutput.__default
@@ -829,16 +679,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidToken.
      */
-    public func listStateMachinesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.ListStateMachinesInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.ListStateMachinesOutput {
-        if let listStateMachinesSyncOverrideNonOptional = listStateMachinesSyncOverride {
-            if let listStateMachinesSyncOverrideTyped = listStateMachinesSyncOverrideNonOptional
-                    as? ListStateMachinesSyncType<InvocationReportingType> {
-                return try listStateMachinesSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func listStateMachinesSync(
+            input: StepFunctionsModel.ListStateMachinesInput) throws -> StepFunctionsModel.ListStateMachinesOutput {
+        if let listStateMachinesSyncOverride = listStateMachinesSyncOverride {
+            return try listStateMachinesSyncOverride(input)
         }
 
         return ListStateMachinesOutput.__default
@@ -854,17 +698,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound.
      */
-    public func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listTagsForResourceAsync(
             input: StepFunctionsModel.ListTagsForResourceInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws {
-        if let listTagsForResourceAsyncOverrideNonOptional = listTagsForResourceAsyncOverride {
-            if let listTagsForResourceAsyncOverrideTyped = listTagsForResourceAsyncOverrideNonOptional
-                    as? ListTagsForResourceAsyncType<InvocationReportingType> {
-                return try listTagsForResourceAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
+            return try listTagsForResourceAsyncOverride(input, completion)
         }
 
         let result = ListTagsForResourceOutput.__default
@@ -881,16 +719,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound.
      */
-    public func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.ListTagsForResourceInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.ListTagsForResourceOutput {
-        if let listTagsForResourceSyncOverrideNonOptional = listTagsForResourceSyncOverride {
-            if let listTagsForResourceSyncOverrideTyped = listTagsForResourceSyncOverrideNonOptional
-                    as? ListTagsForResourceSyncType<InvocationReportingType> {
-                return try listTagsForResourceSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func listTagsForResourceSync(
+            input: StepFunctionsModel.ListTagsForResourceInput) throws -> StepFunctionsModel.ListTagsForResourceOutput {
+        if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
+            return try listTagsForResourceSyncOverride(input)
         }
 
         return ListTagsForResourceOutput.__default
@@ -906,17 +738,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskFailureAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func sendTaskFailureAsync(
             input: StepFunctionsModel.SendTaskFailureInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, HTTPClientError>) -> ()) throws {
-        if let sendTaskFailureAsyncOverrideNonOptional = sendTaskFailureAsyncOverride {
-            if let sendTaskFailureAsyncOverrideTyped = sendTaskFailureAsyncOverrideNonOptional
-                    as? SendTaskFailureAsyncType<InvocationReportingType> {
-                return try sendTaskFailureAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let sendTaskFailureAsyncOverride = sendTaskFailureAsyncOverride {
+            return try sendTaskFailureAsyncOverride(input, completion)
         }
 
         let result = SendTaskFailureOutput.__default
@@ -933,16 +759,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskFailureSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.SendTaskFailureInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.SendTaskFailureOutput {
-        if let sendTaskFailureSyncOverrideNonOptional = sendTaskFailureSyncOverride {
-            if let sendTaskFailureSyncOverrideTyped = sendTaskFailureSyncOverrideNonOptional
-                    as? SendTaskFailureSyncType<InvocationReportingType> {
-                return try sendTaskFailureSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func sendTaskFailureSync(
+            input: StepFunctionsModel.SendTaskFailureInput) throws -> StepFunctionsModel.SendTaskFailureOutput {
+        if let sendTaskFailureSyncOverride = sendTaskFailureSyncOverride {
+            return try sendTaskFailureSyncOverride(input)
         }
 
         return SendTaskFailureOutput.__default
@@ -958,17 +778,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskHeartbeatAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func sendTaskHeartbeatAsync(
             input: StepFunctionsModel.SendTaskHeartbeatInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, HTTPClientError>) -> ()) throws {
-        if let sendTaskHeartbeatAsyncOverrideNonOptional = sendTaskHeartbeatAsyncOverride {
-            if let sendTaskHeartbeatAsyncOverrideTyped = sendTaskHeartbeatAsyncOverrideNonOptional
-                    as? SendTaskHeartbeatAsyncType<InvocationReportingType> {
-                return try sendTaskHeartbeatAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let sendTaskHeartbeatAsyncOverride = sendTaskHeartbeatAsyncOverride {
+            return try sendTaskHeartbeatAsyncOverride(input, completion)
         }
 
         let result = SendTaskHeartbeatOutput.__default
@@ -985,16 +799,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskHeartbeatSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.SendTaskHeartbeatInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
-        if let sendTaskHeartbeatSyncOverrideNonOptional = sendTaskHeartbeatSyncOverride {
-            if let sendTaskHeartbeatSyncOverrideTyped = sendTaskHeartbeatSyncOverrideNonOptional
-                    as? SendTaskHeartbeatSyncType<InvocationReportingType> {
-                return try sendTaskHeartbeatSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func sendTaskHeartbeatSync(
+            input: StepFunctionsModel.SendTaskHeartbeatInput) throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
+        if let sendTaskHeartbeatSyncOverride = sendTaskHeartbeatSyncOverride {
+            return try sendTaskHeartbeatSyncOverride(input)
         }
 
         return SendTaskHeartbeatOutput.__default
@@ -1010,17 +818,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidOutput, invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskSuccessAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func sendTaskSuccessAsync(
             input: StepFunctionsModel.SendTaskSuccessInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, HTTPClientError>) -> ()) throws {
-        if let sendTaskSuccessAsyncOverrideNonOptional = sendTaskSuccessAsyncOverride {
-            if let sendTaskSuccessAsyncOverrideTyped = sendTaskSuccessAsyncOverrideNonOptional
-                    as? SendTaskSuccessAsyncType<InvocationReportingType> {
-                return try sendTaskSuccessAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let sendTaskSuccessAsyncOverride = sendTaskSuccessAsyncOverride {
+            return try sendTaskSuccessAsyncOverride(input, completion)
         }
 
         let result = SendTaskSuccessOutput.__default
@@ -1037,16 +839,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidOutput, invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskSuccessSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.SendTaskSuccessInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.SendTaskSuccessOutput {
-        if let sendTaskSuccessSyncOverrideNonOptional = sendTaskSuccessSyncOverride {
-            if let sendTaskSuccessSyncOverrideTyped = sendTaskSuccessSyncOverrideNonOptional
-                    as? SendTaskSuccessSyncType<InvocationReportingType> {
-                return try sendTaskSuccessSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func sendTaskSuccessSync(
+            input: StepFunctionsModel.SendTaskSuccessInput) throws -> StepFunctionsModel.SendTaskSuccessOutput {
+        if let sendTaskSuccessSyncOverride = sendTaskSuccessSyncOverride {
+            return try sendTaskSuccessSyncOverride(input)
         }
 
         return SendTaskSuccessOutput.__default
@@ -1062,17 +858,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func startExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func startExecutionAsync(
             input: StepFunctionsModel.StartExecutionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, HTTPClientError>) -> ()) throws {
-        if let startExecutionAsyncOverrideNonOptional = startExecutionAsyncOverride {
-            if let startExecutionAsyncOverrideTyped = startExecutionAsyncOverrideNonOptional
-                    as? StartExecutionAsyncType<InvocationReportingType> {
-                return try startExecutionAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let startExecutionAsyncOverride = startExecutionAsyncOverride {
+            return try startExecutionAsyncOverride(input, completion)
         }
 
         let result = StartExecutionOutput.__default
@@ -1089,16 +879,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func startExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.StartExecutionInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.StartExecutionOutput {
-        if let startExecutionSyncOverrideNonOptional = startExecutionSyncOverride {
-            if let startExecutionSyncOverrideTyped = startExecutionSyncOverrideNonOptional
-                    as? StartExecutionSyncType<InvocationReportingType> {
-                return try startExecutionSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func startExecutionSync(
+            input: StepFunctionsModel.StartExecutionInput) throws -> StepFunctionsModel.StartExecutionOutput {
+        if let startExecutionSyncOverride = startExecutionSyncOverride {
+            return try startExecutionSyncOverride(input)
         }
 
         return StartExecutionOutput.__default
@@ -1114,17 +898,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    public func stopExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func stopExecutionAsync(
             input: StepFunctionsModel.StopExecutionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, HTTPClientError>) -> ()) throws {
-        if let stopExecutionAsyncOverrideNonOptional = stopExecutionAsyncOverride {
-            if let stopExecutionAsyncOverrideTyped = stopExecutionAsyncOverrideNonOptional
-                    as? StopExecutionAsyncType<InvocationReportingType> {
-                return try stopExecutionAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let stopExecutionAsyncOverride = stopExecutionAsyncOverride {
+            return try stopExecutionAsyncOverride(input, completion)
         }
 
         let result = StopExecutionOutput.__default
@@ -1141,16 +919,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    public func stopExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.StopExecutionInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.StopExecutionOutput {
-        if let stopExecutionSyncOverrideNonOptional = stopExecutionSyncOverride {
-            if let stopExecutionSyncOverrideTyped = stopExecutionSyncOverrideNonOptional
-                    as? StopExecutionSyncType<InvocationReportingType> {
-                return try stopExecutionSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func stopExecutionSync(
+            input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput {
+        if let stopExecutionSyncOverride = stopExecutionSyncOverride {
+            return try stopExecutionSyncOverride(input)
         }
 
         return StopExecutionOutput.__default
@@ -1166,17 +938,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound, tooManyTags.
      */
-    public func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func tagResourceAsync(
             input: StepFunctionsModel.TagResourceInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, HTTPClientError>) -> ()) throws {
-        if let tagResourceAsyncOverrideNonOptional = tagResourceAsyncOverride {
-            if let tagResourceAsyncOverrideTyped = tagResourceAsyncOverrideNonOptional
-                    as? TagResourceAsyncType<InvocationReportingType> {
-                return try tagResourceAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let tagResourceAsyncOverride = tagResourceAsyncOverride {
+            return try tagResourceAsyncOverride(input, completion)
         }
 
         let result = TagResourceOutput.__default
@@ -1193,16 +959,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound, tooManyTags.
      */
-    public func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.TagResourceInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.TagResourceOutput {
-        if let tagResourceSyncOverrideNonOptional = tagResourceSyncOverride {
-            if let tagResourceSyncOverrideTyped = tagResourceSyncOverrideNonOptional
-                    as? TagResourceSyncType<InvocationReportingType> {
-                return try tagResourceSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func tagResourceSync(
+            input: StepFunctionsModel.TagResourceInput) throws -> StepFunctionsModel.TagResourceOutput {
+        if let tagResourceSyncOverride = tagResourceSyncOverride {
+            return try tagResourceSyncOverride(input)
         }
 
         return TagResourceOutput.__default
@@ -1218,17 +978,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound.
      */
-    public func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func untagResourceAsync(
             input: StepFunctionsModel.UntagResourceInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, HTTPClientError>) -> ()) throws {
-        if let untagResourceAsyncOverrideNonOptional = untagResourceAsyncOverride {
-            if let untagResourceAsyncOverrideTyped = untagResourceAsyncOverrideNonOptional
-                    as? UntagResourceAsyncType<InvocationReportingType> {
-                return try untagResourceAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let untagResourceAsyncOverride = untagResourceAsyncOverride {
+            return try untagResourceAsyncOverride(input, completion)
         }
 
         let result = UntagResourceOutput.__default
@@ -1245,16 +999,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound.
      */
-    public func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.UntagResourceInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.UntagResourceOutput {
-        if let untagResourceSyncOverrideNonOptional = untagResourceSyncOverride {
-            if let untagResourceSyncOverrideTyped = untagResourceSyncOverrideNonOptional
-                    as? UntagResourceSyncType<InvocationReportingType> {
-                return try untagResourceSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func untagResourceSync(
+            input: StepFunctionsModel.UntagResourceInput) throws -> StepFunctionsModel.UntagResourceOutput {
+        if let untagResourceSyncOverride = untagResourceSyncOverride {
+            return try untagResourceSyncOverride(input)
         }
 
         return UntagResourceOutput.__default
@@ -1270,17 +1018,11 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func updateStateMachineAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func updateStateMachineAsync(
             input: StepFunctionsModel.UpdateStateMachineInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, HTTPClientError>) -> ()) throws {
-        if let updateStateMachineAsyncOverrideNonOptional = updateStateMachineAsyncOverride {
-            if let updateStateMachineAsyncOverrideTyped = updateStateMachineAsyncOverrideNonOptional
-                    as? UpdateStateMachineAsyncType<InvocationReportingType> {
-                return try updateStateMachineAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let updateStateMachineAsyncOverride = updateStateMachineAsyncOverride {
+            return try updateStateMachineAsyncOverride(input, completion)
         }
 
         let result = UpdateStateMachineOutput.__default
@@ -1297,16 +1039,10 @@ public struct MockStepFunctionsClient<ClientInvocationReportingType: SmokeAWSInv
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func updateStateMachineSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.UpdateStateMachineInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.UpdateStateMachineOutput {
-        if let updateStateMachineSyncOverrideNonOptional = updateStateMachineSyncOverride {
-            if let updateStateMachineSyncOverrideTyped = updateStateMachineSyncOverrideNonOptional
-                    as? UpdateStateMachineSyncType<InvocationReportingType> {
-                return try updateStateMachineSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func updateStateMachineSync(
+            input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput {
+        if let updateStateMachineSyncOverride = updateStateMachineSyncOverride {
+            return try updateStateMachineSyncOverride(input)
         }
 
         return UpdateStateMachineOutput.__default

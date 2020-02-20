@@ -28,292 +28,210 @@ import SmokeHTTPClient
  Client Protocol for the DynamoDB service.
  */
 public protocol DynamoDBClientProtocol {
-    typealias BatchGetItemSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.BatchGetItemInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.BatchGetItemOutput
-    typealias BatchGetItemAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias BatchGetItemSyncType = (
+            _ input: DynamoDBModel.BatchGetItemInput) throws -> DynamoDBModel.BatchGetItemOutput
+    typealias BatchGetItemAsyncType = (
             _ input: DynamoDBModel.BatchGetItemInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias BatchWriteItemSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.BatchWriteItemInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.BatchWriteItemOutput
-    typealias BatchWriteItemAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias BatchWriteItemSyncType = (
+            _ input: DynamoDBModel.BatchWriteItemInput) throws -> DynamoDBModel.BatchWriteItemOutput
+    typealias BatchWriteItemAsyncType = (
             _ input: DynamoDBModel.BatchWriteItemInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias CreateBackupSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.CreateBackupInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.CreateBackupOutput
-    typealias CreateBackupAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias CreateBackupSyncType = (
+            _ input: DynamoDBModel.CreateBackupInput) throws -> DynamoDBModel.CreateBackupOutput
+    typealias CreateBackupAsyncType = (
             _ input: DynamoDBModel.CreateBackupInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias CreateGlobalTableSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.CreateGlobalTableInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.CreateGlobalTableOutput
-    typealias CreateGlobalTableAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias CreateGlobalTableSyncType = (
+            _ input: DynamoDBModel.CreateGlobalTableInput) throws -> DynamoDBModel.CreateGlobalTableOutput
+    typealias CreateGlobalTableAsyncType = (
             _ input: DynamoDBModel.CreateGlobalTableInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias CreateTableSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.CreateTableInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.CreateTableOutput
-    typealias CreateTableAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias CreateTableSyncType = (
+            _ input: DynamoDBModel.CreateTableInput) throws -> DynamoDBModel.CreateTableOutput
+    typealias CreateTableAsyncType = (
             _ input: DynamoDBModel.CreateTableInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.CreateTableOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteBackupSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.DeleteBackupInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.DeleteBackupOutput
-    typealias DeleteBackupAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteBackupSyncType = (
+            _ input: DynamoDBModel.DeleteBackupInput) throws -> DynamoDBModel.DeleteBackupOutput
+    typealias DeleteBackupAsyncType = (
             _ input: DynamoDBModel.DeleteBackupInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteItemSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.DeleteItemInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.DeleteItemOutput
-    typealias DeleteItemAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteItemSyncType = (
+            _ input: DynamoDBModel.DeleteItemInput) throws -> DynamoDBModel.DeleteItemOutput
+    typealias DeleteItemAsyncType = (
             _ input: DynamoDBModel.DeleteItemInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteTableSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.DeleteTableInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.DeleteTableOutput
-    typealias DeleteTableAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteTableSyncType = (
+            _ input: DynamoDBModel.DeleteTableInput) throws -> DynamoDBModel.DeleteTableOutput
+    typealias DeleteTableAsyncType = (
             _ input: DynamoDBModel.DeleteTableInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeBackupSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.DescribeBackupInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeBackupOutput
-    typealias DescribeBackupAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeBackupSyncType = (
+            _ input: DynamoDBModel.DescribeBackupInput) throws -> DynamoDBModel.DescribeBackupOutput
+    typealias DescribeBackupAsyncType = (
             _ input: DynamoDBModel.DescribeBackupInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeContinuousBackupsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.DescribeContinuousBackupsInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeContinuousBackupsOutput
-    typealias DescribeContinuousBackupsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeContinuousBackupsSyncType = (
+            _ input: DynamoDBModel.DescribeContinuousBackupsInput) throws -> DynamoDBModel.DescribeContinuousBackupsOutput
+    typealias DescribeContinuousBackupsAsyncType = (
             _ input: DynamoDBModel.DescribeContinuousBackupsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeContributorInsightsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.DescribeContributorInsightsInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeContributorInsightsOutput
-    typealias DescribeContributorInsightsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeContributorInsightsSyncType = (
+            _ input: DynamoDBModel.DescribeContributorInsightsInput) throws -> DynamoDBModel.DescribeContributorInsightsOutput
+    typealias DescribeContributorInsightsAsyncType = (
             _ input: DynamoDBModel.DescribeContributorInsightsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeEndpointsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.DescribeEndpointsRequest,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeEndpointsResponse
-    typealias DescribeEndpointsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeEndpointsSyncType = (
+            _ input: DynamoDBModel.DescribeEndpointsRequest) throws -> DynamoDBModel.DescribeEndpointsResponse
+    typealias DescribeEndpointsAsyncType = (
             _ input: DynamoDBModel.DescribeEndpointsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeGlobalTableSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.DescribeGlobalTableInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeGlobalTableOutput
-    typealias DescribeGlobalTableAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeGlobalTableSyncType = (
+            _ input: DynamoDBModel.DescribeGlobalTableInput) throws -> DynamoDBModel.DescribeGlobalTableOutput
+    typealias DescribeGlobalTableAsyncType = (
             _ input: DynamoDBModel.DescribeGlobalTableInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeGlobalTableSettingsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.DescribeGlobalTableSettingsInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput
-    typealias DescribeGlobalTableSettingsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeGlobalTableSettingsSyncType = (
+            _ input: DynamoDBModel.DescribeGlobalTableSettingsInput) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput
+    typealias DescribeGlobalTableSettingsAsyncType = (
             _ input: DynamoDBModel.DescribeGlobalTableSettingsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeLimitsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.DescribeLimitsInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeLimitsOutput
-    typealias DescribeLimitsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeLimitsSyncType = (
+            _ input: DynamoDBModel.DescribeLimitsInput) throws -> DynamoDBModel.DescribeLimitsOutput
+    typealias DescribeLimitsAsyncType = (
             _ input: DynamoDBModel.DescribeLimitsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeTableSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.DescribeTableInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeTableOutput
-    typealias DescribeTableAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeTableSyncType = (
+            _ input: DynamoDBModel.DescribeTableInput) throws -> DynamoDBModel.DescribeTableOutput
+    typealias DescribeTableAsyncType = (
             _ input: DynamoDBModel.DescribeTableInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeTableReplicaAutoScalingSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.DescribeTableReplicaAutoScalingInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput
-    typealias DescribeTableReplicaAutoScalingAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeTableReplicaAutoScalingSyncType = (
+            _ input: DynamoDBModel.DescribeTableReplicaAutoScalingInput) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput
+    typealias DescribeTableReplicaAutoScalingAsyncType = (
             _ input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeTimeToLiveSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.DescribeTimeToLiveInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeTimeToLiveOutput
-    typealias DescribeTimeToLiveAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeTimeToLiveSyncType = (
+            _ input: DynamoDBModel.DescribeTimeToLiveInput) throws -> DynamoDBModel.DescribeTimeToLiveOutput
+    typealias DescribeTimeToLiveAsyncType = (
             _ input: DynamoDBModel.DescribeTimeToLiveInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetItemSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.GetItemInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.GetItemOutput
-    typealias GetItemAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetItemSyncType = (
+            _ input: DynamoDBModel.GetItemInput) throws -> DynamoDBModel.GetItemOutput
+    typealias GetItemAsyncType = (
             _ input: DynamoDBModel.GetItemInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.GetItemOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ListBackupsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.ListBackupsInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.ListBackupsOutput
-    typealias ListBackupsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListBackupsSyncType = (
+            _ input: DynamoDBModel.ListBackupsInput) throws -> DynamoDBModel.ListBackupsOutput
+    typealias ListBackupsAsyncType = (
             _ input: DynamoDBModel.ListBackupsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ListContributorInsightsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.ListContributorInsightsInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.ListContributorInsightsOutput
-    typealias ListContributorInsightsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListContributorInsightsSyncType = (
+            _ input: DynamoDBModel.ListContributorInsightsInput) throws -> DynamoDBModel.ListContributorInsightsOutput
+    typealias ListContributorInsightsAsyncType = (
             _ input: DynamoDBModel.ListContributorInsightsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ListGlobalTablesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.ListGlobalTablesInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.ListGlobalTablesOutput
-    typealias ListGlobalTablesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListGlobalTablesSyncType = (
+            _ input: DynamoDBModel.ListGlobalTablesInput) throws -> DynamoDBModel.ListGlobalTablesOutput
+    typealias ListGlobalTablesAsyncType = (
             _ input: DynamoDBModel.ListGlobalTablesInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ListTablesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.ListTablesInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.ListTablesOutput
-    typealias ListTablesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListTablesSyncType = (
+            _ input: DynamoDBModel.ListTablesInput) throws -> DynamoDBModel.ListTablesOutput
+    typealias ListTablesAsyncType = (
             _ input: DynamoDBModel.ListTablesInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.ListTablesOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ListTagsOfResourceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.ListTagsOfResourceInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.ListTagsOfResourceOutput
-    typealias ListTagsOfResourceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListTagsOfResourceSyncType = (
+            _ input: DynamoDBModel.ListTagsOfResourceInput) throws -> DynamoDBModel.ListTagsOfResourceOutput
+    typealias ListTagsOfResourceAsyncType = (
             _ input: DynamoDBModel.ListTagsOfResourceInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias PutItemSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.PutItemInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.PutItemOutput
-    typealias PutItemAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutItemSyncType = (
+            _ input: DynamoDBModel.PutItemInput) throws -> DynamoDBModel.PutItemOutput
+    typealias PutItemAsyncType = (
             _ input: DynamoDBModel.PutItemInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.PutItemOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias QuerySyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.QueryInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.QueryOutput
-    typealias QueryAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias QuerySyncType = (
+            _ input: DynamoDBModel.QueryInput) throws -> DynamoDBModel.QueryOutput
+    typealias QueryAsyncType = (
             _ input: DynamoDBModel.QueryInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.QueryOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias RestoreTableFromBackupSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.RestoreTableFromBackupInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.RestoreTableFromBackupOutput
-    typealias RestoreTableFromBackupAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias RestoreTableFromBackupSyncType = (
+            _ input: DynamoDBModel.RestoreTableFromBackupInput) throws -> DynamoDBModel.RestoreTableFromBackupOutput
+    typealias RestoreTableFromBackupAsyncType = (
             _ input: DynamoDBModel.RestoreTableFromBackupInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias RestoreTableToPointInTimeSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.RestoreTableToPointInTimeInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput
-    typealias RestoreTableToPointInTimeAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias RestoreTableToPointInTimeSyncType = (
+            _ input: DynamoDBModel.RestoreTableToPointInTimeInput) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput
+    typealias RestoreTableToPointInTimeAsyncType = (
             _ input: DynamoDBModel.RestoreTableToPointInTimeInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ScanSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.ScanInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.ScanOutput
-    typealias ScanAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ScanSyncType = (
+            _ input: DynamoDBModel.ScanInput) throws -> DynamoDBModel.ScanOutput
+    typealias ScanAsyncType = (
             _ input: DynamoDBModel.ScanInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.ScanOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias TagResourceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.TagResourceInput,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias TagResourceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias TagResourceSyncType = (
+            _ input: DynamoDBModel.TagResourceInput) throws -> ()
+    typealias TagResourceAsyncType = (
             _ input: DynamoDBModel.TagResourceInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias TransactGetItemsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.TransactGetItemsInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.TransactGetItemsOutput
-    typealias TransactGetItemsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias TransactGetItemsSyncType = (
+            _ input: DynamoDBModel.TransactGetItemsInput) throws -> DynamoDBModel.TransactGetItemsOutput
+    typealias TransactGetItemsAsyncType = (
             _ input: DynamoDBModel.TransactGetItemsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias TransactWriteItemsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.TransactWriteItemsInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.TransactWriteItemsOutput
-    typealias TransactWriteItemsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias TransactWriteItemsSyncType = (
+            _ input: DynamoDBModel.TransactWriteItemsInput) throws -> DynamoDBModel.TransactWriteItemsOutput
+    typealias TransactWriteItemsAsyncType = (
             _ input: DynamoDBModel.TransactWriteItemsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias UntagResourceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.UntagResourceInput,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias UntagResourceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UntagResourceSyncType = (
+            _ input: DynamoDBModel.UntagResourceInput) throws -> ()
+    typealias UntagResourceAsyncType = (
             _ input: DynamoDBModel.UntagResourceInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias UpdateContinuousBackupsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.UpdateContinuousBackupsInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateContinuousBackupsOutput
-    typealias UpdateContinuousBackupsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateContinuousBackupsSyncType = (
+            _ input: DynamoDBModel.UpdateContinuousBackupsInput) throws -> DynamoDBModel.UpdateContinuousBackupsOutput
+    typealias UpdateContinuousBackupsAsyncType = (
             _ input: DynamoDBModel.UpdateContinuousBackupsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias UpdateContributorInsightsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.UpdateContributorInsightsInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateContributorInsightsOutput
-    typealias UpdateContributorInsightsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateContributorInsightsSyncType = (
+            _ input: DynamoDBModel.UpdateContributorInsightsInput) throws -> DynamoDBModel.UpdateContributorInsightsOutput
+    typealias UpdateContributorInsightsAsyncType = (
             _ input: DynamoDBModel.UpdateContributorInsightsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias UpdateGlobalTableSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.UpdateGlobalTableInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateGlobalTableOutput
-    typealias UpdateGlobalTableAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateGlobalTableSyncType = (
+            _ input: DynamoDBModel.UpdateGlobalTableInput) throws -> DynamoDBModel.UpdateGlobalTableOutput
+    typealias UpdateGlobalTableAsyncType = (
             _ input: DynamoDBModel.UpdateGlobalTableInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias UpdateGlobalTableSettingsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.UpdateGlobalTableSettingsInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput
-    typealias UpdateGlobalTableSettingsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateGlobalTableSettingsSyncType = (
+            _ input: DynamoDBModel.UpdateGlobalTableSettingsInput) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput
+    typealias UpdateGlobalTableSettingsAsyncType = (
             _ input: DynamoDBModel.UpdateGlobalTableSettingsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias UpdateItemSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.UpdateItemInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateItemOutput
-    typealias UpdateItemAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateItemSyncType = (
+            _ input: DynamoDBModel.UpdateItemInput) throws -> DynamoDBModel.UpdateItemOutput
+    typealias UpdateItemAsyncType = (
             _ input: DynamoDBModel.UpdateItemInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias UpdateTableSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.UpdateTableInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateTableOutput
-    typealias UpdateTableAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateTableSyncType = (
+            _ input: DynamoDBModel.UpdateTableInput) throws -> DynamoDBModel.UpdateTableOutput
+    typealias UpdateTableAsyncType = (
             _ input: DynamoDBModel.UpdateTableInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias UpdateTableReplicaAutoScalingSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.UpdateTableReplicaAutoScalingInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput
-    typealias UpdateTableReplicaAutoScalingAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateTableReplicaAutoScalingSyncType = (
+            _ input: DynamoDBModel.UpdateTableReplicaAutoScalingInput) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput
+    typealias UpdateTableReplicaAutoScalingAsyncType = (
             _ input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias UpdateTimeToLiveSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: DynamoDBModel.UpdateTimeToLiveInput,
-            _ reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateTimeToLiveOutput
-    typealias UpdateTimeToLiveAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateTimeToLiveSyncType = (
+            _ input: DynamoDBModel.UpdateTimeToLiveInput) throws -> DynamoDBModel.UpdateTimeToLiveOutput
+    typealias UpdateTimeToLiveAsyncType = (
             _ input: DynamoDBModel.UpdateTimeToLiveInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, HTTPClientError>) -> ()) throws -> ()
 
     /**
@@ -326,9 +244,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    func batchGetItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func batchGetItemAsync(
             input: DynamoDBModel.BatchGetItemInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -340,9 +257,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    func batchGetItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.BatchGetItemInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.BatchGetItemOutput
+    func batchGetItemSync(
+            input: DynamoDBModel.BatchGetItemInput) throws -> DynamoDBModel.BatchGetItemOutput
 
     /**
      Invokes the BatchWriteItem operation returning immediately and passing the response to a callback.
@@ -354,9 +270,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    func batchWriteItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func batchWriteItemAsync(
             input: DynamoDBModel.BatchWriteItemInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -368,9 +283,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    func batchWriteItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.BatchWriteItemInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.BatchWriteItemOutput
+    func batchWriteItemSync(
+            input: DynamoDBModel.BatchWriteItemInput) throws -> DynamoDBModel.BatchWriteItemOutput
 
     /**
      Invokes the CreateBackup operation returning immediately and passing the response to a callback.
@@ -382,9 +296,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupInUse, continuousBackupsUnavailable, internalServer, limitExceeded, tableInUse, tableNotFound.
      */
-    func createBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func createBackupAsync(
             input: DynamoDBModel.CreateBackupInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -396,9 +309,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupInUse, continuousBackupsUnavailable, internalServer, limitExceeded, tableInUse, tableNotFound.
      */
-    func createBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.CreateBackupInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.CreateBackupOutput
+    func createBackupSync(
+            input: DynamoDBModel.CreateBackupInput) throws -> DynamoDBModel.CreateBackupOutput
 
     /**
      Invokes the CreateGlobalTable operation returning immediately and passing the response to a callback.
@@ -410,9 +322,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableAlreadyExists, internalServer, limitExceeded, tableNotFound.
      */
-    func createGlobalTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func createGlobalTableAsync(
             input: DynamoDBModel.CreateGlobalTableInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -424,9 +335,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableAlreadyExists, internalServer, limitExceeded, tableNotFound.
      */
-    func createGlobalTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.CreateGlobalTableInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.CreateGlobalTableOutput
+    func createGlobalTableSync(
+            input: DynamoDBModel.CreateGlobalTableInput) throws -> DynamoDBModel.CreateGlobalTableOutput
 
     /**
      Invokes the CreateTable operation returning immediately and passing the response to a callback.
@@ -438,9 +348,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse.
      */
-    func createTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func createTableAsync(
             input: DynamoDBModel.CreateTableInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.CreateTableOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -452,9 +361,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse.
      */
-    func createTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.CreateTableInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.CreateTableOutput
+    func createTableSync(
+            input: DynamoDBModel.CreateTableInput) throws -> DynamoDBModel.CreateTableOutput
 
     /**
      Invokes the DeleteBackup operation returning immediately and passing the response to a callback.
@@ -466,9 +374,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupInUse, backupNotFound, internalServer, limitExceeded.
      */
-    func deleteBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteBackupAsync(
             input: DynamoDBModel.DeleteBackupInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -480,9 +387,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupInUse, backupNotFound, internalServer, limitExceeded.
      */
-    func deleteBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.DeleteBackupInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.DeleteBackupOutput
+    func deleteBackupSync(
+            input: DynamoDBModel.DeleteBackupInput) throws -> DynamoDBModel.DeleteBackupOutput
 
     /**
      Invokes the DeleteItem operation returning immediately and passing the response to a callback.
@@ -494,9 +400,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    func deleteItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteItemAsync(
             input: DynamoDBModel.DeleteItemInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -508,9 +413,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    func deleteItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.DeleteItemInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.DeleteItemOutput
+    func deleteItemSync(
+            input: DynamoDBModel.DeleteItemInput) throws -> DynamoDBModel.DeleteItemOutput
 
     /**
      Invokes the DeleteTable operation returning immediately and passing the response to a callback.
@@ -522,9 +426,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func deleteTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteTableAsync(
             input: DynamoDBModel.DeleteTableInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -536,9 +439,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func deleteTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.DeleteTableInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.DeleteTableOutput
+    func deleteTableSync(
+            input: DynamoDBModel.DeleteTableInput) throws -> DynamoDBModel.DeleteTableOutput
 
     /**
      Invokes the DescribeBackup operation returning immediately and passing the response to a callback.
@@ -550,9 +452,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupNotFound, internalServer.
      */
-    func describeBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeBackupAsync(
             input: DynamoDBModel.DescribeBackupInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -564,9 +465,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupNotFound, internalServer.
      */
-    func describeBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.DescribeBackupInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeBackupOutput
+    func describeBackupSync(
+            input: DynamoDBModel.DescribeBackupInput) throws -> DynamoDBModel.DescribeBackupOutput
 
     /**
      Invokes the DescribeContinuousBackups operation returning immediately and passing the response to a callback.
@@ -578,9 +478,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, tableNotFound.
      */
-    func describeContinuousBackupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeContinuousBackupsAsync(
             input: DynamoDBModel.DescribeContinuousBackupsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -592,9 +491,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, tableNotFound.
      */
-    func describeContinuousBackupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.DescribeContinuousBackupsInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeContinuousBackupsOutput
+    func describeContinuousBackupsSync(
+            input: DynamoDBModel.DescribeContinuousBackupsInput) throws -> DynamoDBModel.DescribeContinuousBackupsOutput
 
     /**
      Invokes the DescribeContributorInsights operation returning immediately and passing the response to a callback.
@@ -606,9 +504,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    func describeContributorInsightsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeContributorInsightsAsync(
             input: DynamoDBModel.DescribeContributorInsightsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -620,9 +517,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    func describeContributorInsightsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.DescribeContributorInsightsInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeContributorInsightsOutput
+    func describeContributorInsightsSync(
+            input: DynamoDBModel.DescribeContributorInsightsInput) throws -> DynamoDBModel.DescribeContributorInsightsOutput
 
     /**
      Invokes the DescribeEndpoints operation returning immediately and passing the response to a callback.
@@ -633,9 +529,8 @@ public protocol DynamoDBClientProtocol {
            callback when the operation is complete. The DescribeEndpointsResponse
            object will be validated before being returned to caller.
      */
-    func describeEndpointsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeEndpointsAsync(
             input: DynamoDBModel.DescribeEndpointsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -646,9 +541,8 @@ public protocol DynamoDBClientProtocol {
      - Returns: The DescribeEndpointsResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func describeEndpointsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.DescribeEndpointsRequest,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeEndpointsResponse
+    func describeEndpointsSync(
+            input: DynamoDBModel.DescribeEndpointsRequest) throws -> DynamoDBModel.DescribeEndpointsResponse
 
     /**
      Invokes the DescribeGlobalTable operation returning immediately and passing the response to a callback.
@@ -660,9 +554,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, internalServer.
      */
-    func describeGlobalTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeGlobalTableAsync(
             input: DynamoDBModel.DescribeGlobalTableInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -674,9 +567,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, internalServer.
      */
-    func describeGlobalTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.DescribeGlobalTableInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeGlobalTableOutput
+    func describeGlobalTableSync(
+            input: DynamoDBModel.DescribeGlobalTableInput) throws -> DynamoDBModel.DescribeGlobalTableOutput
 
     /**
      Invokes the DescribeGlobalTableSettings operation returning immediately and passing the response to a callback.
@@ -688,9 +580,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, internalServer.
      */
-    func describeGlobalTableSettingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeGlobalTableSettingsAsync(
             input: DynamoDBModel.DescribeGlobalTableSettingsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -702,9 +593,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, internalServer.
      */
-    func describeGlobalTableSettingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.DescribeGlobalTableSettingsInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput
+    func describeGlobalTableSettingsSync(
+            input: DynamoDBModel.DescribeGlobalTableSettingsInput) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput
 
     /**
      Invokes the DescribeLimits operation returning immediately and passing the response to a callback.
@@ -716,9 +606,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    func describeLimitsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeLimitsAsync(
             input: DynamoDBModel.DescribeLimitsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -730,9 +619,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    func describeLimitsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.DescribeLimitsInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeLimitsOutput
+    func describeLimitsSync(
+            input: DynamoDBModel.DescribeLimitsInput) throws -> DynamoDBModel.DescribeLimitsOutput
 
     /**
      Invokes the DescribeTable operation returning immediately and passing the response to a callback.
@@ -744,9 +632,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    func describeTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeTableAsync(
             input: DynamoDBModel.DescribeTableInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -758,9 +645,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    func describeTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.DescribeTableInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeTableOutput
+    func describeTableSync(
+            input: DynamoDBModel.DescribeTableInput) throws -> DynamoDBModel.DescribeTableOutput
 
     /**
      Invokes the DescribeTableReplicaAutoScaling operation returning immediately and passing the response to a callback.
@@ -772,9 +658,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    func describeTableReplicaAutoScalingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeTableReplicaAutoScalingAsync(
             input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -786,9 +671,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    func describeTableReplicaAutoScalingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.DescribeTableReplicaAutoScalingInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput
+    func describeTableReplicaAutoScalingSync(
+            input: DynamoDBModel.DescribeTableReplicaAutoScalingInput) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput
 
     /**
      Invokes the DescribeTimeToLive operation returning immediately and passing the response to a callback.
@@ -800,9 +684,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    func describeTimeToLiveAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeTimeToLiveAsync(
             input: DynamoDBModel.DescribeTimeToLiveInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -814,9 +697,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    func describeTimeToLiveSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.DescribeTimeToLiveInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.DescribeTimeToLiveOutput
+    func describeTimeToLiveSync(
+            input: DynamoDBModel.DescribeTimeToLiveInput) throws -> DynamoDBModel.DescribeTimeToLiveOutput
 
     /**
      Invokes the GetItem operation returning immediately and passing the response to a callback.
@@ -828,9 +710,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    func getItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getItemAsync(
             input: DynamoDBModel.GetItemInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.GetItemOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -842,9 +723,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    func getItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.GetItemInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.GetItemOutput
+    func getItemSync(
+            input: DynamoDBModel.GetItemInput) throws -> DynamoDBModel.GetItemOutput
 
     /**
      Invokes the ListBackups operation returning immediately and passing the response to a callback.
@@ -856,9 +736,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    func listBackupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listBackupsAsync(
             input: DynamoDBModel.ListBackupsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -870,9 +749,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    func listBackupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.ListBackupsInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.ListBackupsOutput
+    func listBackupsSync(
+            input: DynamoDBModel.ListBackupsInput) throws -> DynamoDBModel.ListBackupsOutput
 
     /**
      Invokes the ListContributorInsights operation returning immediately and passing the response to a callback.
@@ -884,9 +762,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    func listContributorInsightsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listContributorInsightsAsync(
             input: DynamoDBModel.ListContributorInsightsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -898,9 +775,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    func listContributorInsightsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.ListContributorInsightsInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.ListContributorInsightsOutput
+    func listContributorInsightsSync(
+            input: DynamoDBModel.ListContributorInsightsInput) throws -> DynamoDBModel.ListContributorInsightsOutput
 
     /**
      Invokes the ListGlobalTables operation returning immediately and passing the response to a callback.
@@ -912,9 +788,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    func listGlobalTablesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listGlobalTablesAsync(
             input: DynamoDBModel.ListGlobalTablesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -926,9 +801,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    func listGlobalTablesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.ListGlobalTablesInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.ListGlobalTablesOutput
+    func listGlobalTablesSync(
+            input: DynamoDBModel.ListGlobalTablesInput) throws -> DynamoDBModel.ListGlobalTablesOutput
 
     /**
      Invokes the ListTables operation returning immediately and passing the response to a callback.
@@ -940,9 +814,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer.
      */
-    func listTablesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listTablesAsync(
             input: DynamoDBModel.ListTablesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListTablesOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -954,9 +827,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer.
      */
-    func listTablesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.ListTablesInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.ListTablesOutput
+    func listTablesSync(
+            input: DynamoDBModel.ListTablesInput) throws -> DynamoDBModel.ListTablesOutput
 
     /**
      Invokes the ListTagsOfResource operation returning immediately and passing the response to a callback.
@@ -968,9 +840,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    func listTagsOfResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listTagsOfResourceAsync(
             input: DynamoDBModel.ListTagsOfResourceInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -982,9 +853,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    func listTagsOfResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.ListTagsOfResourceInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.ListTagsOfResourceOutput
+    func listTagsOfResourceSync(
+            input: DynamoDBModel.ListTagsOfResourceInput) throws -> DynamoDBModel.ListTagsOfResourceOutput
 
     /**
      Invokes the PutItem operation returning immediately and passing the response to a callback.
@@ -996,9 +866,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    func putItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putItemAsync(
             input: DynamoDBModel.PutItemInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.PutItemOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1010,9 +879,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    func putItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.PutItemInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.PutItemOutput
+    func putItemSync(
+            input: DynamoDBModel.PutItemInput) throws -> DynamoDBModel.PutItemOutput
 
     /**
      Invokes the Query operation returning immediately and passing the response to a callback.
@@ -1024,9 +892,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    func queryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func queryAsync(
             input: DynamoDBModel.QueryInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.QueryOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1038,9 +905,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    func querySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.QueryInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.QueryOutput
+    func querySync(
+            input: DynamoDBModel.QueryInput) throws -> DynamoDBModel.QueryOutput
 
     /**
      Invokes the RestoreTableFromBackup operation returning immediately and passing the response to a callback.
@@ -1052,9 +918,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: backupInUse, backupNotFound, internalServer, limitExceeded, tableAlreadyExists, tableInUse.
      */
-    func restoreTableFromBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func restoreTableFromBackupAsync(
             input: DynamoDBModel.RestoreTableFromBackupInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1066,9 +931,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: backupInUse, backupNotFound, internalServer, limitExceeded, tableAlreadyExists, tableInUse.
      */
-    func restoreTableFromBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.RestoreTableFromBackupInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.RestoreTableFromBackupOutput
+    func restoreTableFromBackupSync(
+            input: DynamoDBModel.RestoreTableFromBackupInput) throws -> DynamoDBModel.RestoreTableFromBackupOutput
 
     /**
      Invokes the RestoreTableToPointInTime operation returning immediately and passing the response to a callback.
@@ -1080,9 +944,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, invalidRestoreTime, limitExceeded, pointInTimeRecoveryUnavailable, tableAlreadyExists, tableInUse, tableNotFound.
      */
-    func restoreTableToPointInTimeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func restoreTableToPointInTimeAsync(
             input: DynamoDBModel.RestoreTableToPointInTimeInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1094,9 +957,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, invalidRestoreTime, limitExceeded, pointInTimeRecoveryUnavailable, tableAlreadyExists, tableInUse, tableNotFound.
      */
-    func restoreTableToPointInTimeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.RestoreTableToPointInTimeInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput
+    func restoreTableToPointInTimeSync(
+            input: DynamoDBModel.RestoreTableToPointInTimeInput) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput
 
     /**
      Invokes the Scan operation returning immediately and passing the response to a callback.
@@ -1108,9 +970,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    func scanAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func scanAsync(
             input: DynamoDBModel.ScanInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.ScanOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1122,9 +983,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
-    func scanSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.ScanInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.ScanOutput
+    func scanSync(
+            input: DynamoDBModel.ScanInput) throws -> DynamoDBModel.ScanOutput
 
     /**
      Invokes the TagResource operation returning immediately and passing the response to a callback.
@@ -1135,9 +995,8 @@ public protocol DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func tagResourceAsync(
             input: DynamoDBModel.TagResourceInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -1147,9 +1006,8 @@ public protocol DynamoDBClientProtocol {
          - input: The validated TagResourceInput object being passed to this operation.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.TagResourceInput,
-            reporting: InvocationReportingType) throws
+    func tagResourceSync(
+            input: DynamoDBModel.TagResourceInput) throws
 
     /**
      Invokes the TransactGetItems operation returning immediately and passing the response to a callback.
@@ -1161,9 +1019,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
      */
-    func transactGetItemsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func transactGetItemsAsync(
             input: DynamoDBModel.TransactGetItemsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1175,9 +1032,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
      */
-    func transactGetItemsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.TransactGetItemsInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.TransactGetItemsOutput
+    func transactGetItemsSync(
+            input: DynamoDBModel.TransactGetItemsInput) throws -> DynamoDBModel.TransactGetItemsOutput
 
     /**
      Invokes the TransactWriteItems operation returning immediately and passing the response to a callback.
@@ -1189,9 +1045,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
-    func transactWriteItemsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func transactWriteItemsAsync(
             input: DynamoDBModel.TransactWriteItemsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1203,9 +1058,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
-    func transactWriteItemsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.TransactWriteItemsInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.TransactWriteItemsOutput
+    func transactWriteItemsSync(
+            input: DynamoDBModel.TransactWriteItemsInput) throws -> DynamoDBModel.TransactWriteItemsOutput
 
     /**
      Invokes the UntagResource operation returning immediately and passing the response to a callback.
@@ -1216,9 +1070,8 @@ public protocol DynamoDBClientProtocol {
            is complete.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func untagResourceAsync(
             input: DynamoDBModel.UntagResourceInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -1228,9 +1081,8 @@ public protocol DynamoDBClientProtocol {
          - input: The validated UntagResourceInput object being passed to this operation.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.UntagResourceInput,
-            reporting: InvocationReportingType) throws
+    func untagResourceSync(
+            input: DynamoDBModel.UntagResourceInput) throws
 
     /**
      Invokes the UpdateContinuousBackups operation returning immediately and passing the response to a callback.
@@ -1242,9 +1094,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: continuousBackupsUnavailable, internalServer, tableNotFound.
      */
-    func updateContinuousBackupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateContinuousBackupsAsync(
             input: DynamoDBModel.UpdateContinuousBackupsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1256,9 +1107,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: continuousBackupsUnavailable, internalServer, tableNotFound.
      */
-    func updateContinuousBackupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.UpdateContinuousBackupsInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateContinuousBackupsOutput
+    func updateContinuousBackupsSync(
+            input: DynamoDBModel.UpdateContinuousBackupsInput) throws -> DynamoDBModel.UpdateContinuousBackupsOutput
 
     /**
      Invokes the UpdateContributorInsights operation returning immediately and passing the response to a callback.
@@ -1270,9 +1120,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, resourceNotFound.
      */
-    func updateContributorInsightsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateContributorInsightsAsync(
             input: DynamoDBModel.UpdateContributorInsightsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1284,9 +1133,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, resourceNotFound.
      */
-    func updateContributorInsightsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.UpdateContributorInsightsInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateContributorInsightsOutput
+    func updateContributorInsightsSync(
+            input: DynamoDBModel.UpdateContributorInsightsInput) throws -> DynamoDBModel.UpdateContributorInsightsOutput
 
     /**
      Invokes the UpdateGlobalTable operation returning immediately and passing the response to a callback.
@@ -1298,9 +1146,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, internalServer, replicaAlreadyExists, replicaNotFound, tableNotFound.
      */
-    func updateGlobalTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateGlobalTableAsync(
             input: DynamoDBModel.UpdateGlobalTableInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1312,9 +1159,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, internalServer, replicaAlreadyExists, replicaNotFound, tableNotFound.
      */
-    func updateGlobalTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.UpdateGlobalTableInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateGlobalTableOutput
+    func updateGlobalTableSync(
+            input: DynamoDBModel.UpdateGlobalTableInput) throws -> DynamoDBModel.UpdateGlobalTableOutput
 
     /**
      Invokes the UpdateGlobalTableSettings operation returning immediately and passing the response to a callback.
@@ -1326,9 +1172,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalTableNotFound, indexNotFound, internalServer, limitExceeded, replicaNotFound, resourceInUse.
      */
-    func updateGlobalTableSettingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateGlobalTableSettingsAsync(
             input: DynamoDBModel.UpdateGlobalTableSettingsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1340,9 +1185,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalTableNotFound, indexNotFound, internalServer, limitExceeded, replicaNotFound, resourceInUse.
      */
-    func updateGlobalTableSettingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.UpdateGlobalTableSettingsInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput
+    func updateGlobalTableSettingsSync(
+            input: DynamoDBModel.UpdateGlobalTableSettingsInput) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput
 
     /**
      Invokes the UpdateItem operation returning immediately and passing the response to a callback.
@@ -1354,9 +1198,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    func updateItemAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateItemAsync(
             input: DynamoDBModel.UpdateItemInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1368,9 +1211,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
-    func updateItemSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.UpdateItemInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateItemOutput
+    func updateItemSync(
+            input: DynamoDBModel.UpdateItemInput) throws -> DynamoDBModel.UpdateItemOutput
 
     /**
      Invokes the UpdateTable operation returning immediately and passing the response to a callback.
@@ -1382,9 +1224,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func updateTableAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateTableAsync(
             input: DynamoDBModel.UpdateTableInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1396,9 +1237,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func updateTableSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.UpdateTableInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateTableOutput
+    func updateTableSync(
+            input: DynamoDBModel.UpdateTableInput) throws -> DynamoDBModel.UpdateTableOutput
 
     /**
      Invokes the UpdateTableReplicaAutoScaling operation returning immediately and passing the response to a callback.
@@ -1410,9 +1250,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func updateTableReplicaAutoScalingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateTableReplicaAutoScalingAsync(
             input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1424,9 +1263,8 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func updateTableReplicaAutoScalingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.UpdateTableReplicaAutoScalingInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput
+    func updateTableReplicaAutoScalingSync(
+            input: DynamoDBModel.UpdateTableReplicaAutoScalingInput) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput
 
     /**
      Invokes the UpdateTimeToLive operation returning immediately and passing the response to a callback.
@@ -1438,9 +1276,8 @@ public protocol DynamoDBClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func updateTimeToLiveAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateTimeToLiveAsync(
             input: DynamoDBModel.UpdateTimeToLiveInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1452,7 +1289,6 @@ public protocol DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
-    func updateTimeToLiveSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: DynamoDBModel.UpdateTimeToLiveInput,
-            reporting: InvocationReportingType) throws -> DynamoDBModel.UpdateTimeToLiveOutput
+    func updateTimeToLiveSync(
+            input: DynamoDBModel.UpdateTimeToLiveInput) throws -> DynamoDBModel.UpdateTimeToLiveOutput
 }

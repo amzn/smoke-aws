@@ -33,7 +33,7 @@ public enum RDSClientError: Swift.Error {
     case unknownError(String?)
 }
 
-private extension RDSError {
+internal extension RDSError {
     func isRetriable() -> Bool {
         return false
     }
@@ -52,7 +52,7 @@ private extension Swift.Error {
 /**
  AWS Client for the RDS service.
  */
-public struct AWSRDSClient: RDSClientProtocol {
+public struct AWSRDSClient<InvocationReportingType: SmokeAWSInvocationReporting>: RDSClientProtocol {
     let httpClient: HTTPClient
     let awsRegion: AWSRegion
     let service: String
@@ -61,139 +61,13 @@ public struct AWSRDSClient: RDSClientProtocol {
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
+    let reporting: InvocationReportingType
 
-    let addRoleToDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let addRoleToDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let addSourceIdentifierToSubscriptionOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let addTagsToResourceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let applyPendingMaintenanceActionOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let authorizeDBSecurityGroupIngressOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let backtrackDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let cancelExportTaskOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let copyDBClusterParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let copyDBClusterSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let copyDBParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let copyDBSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let copyOptionGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createCustomAvailabilityZoneOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBClusterEndpointOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBClusterParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBClusterSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBInstanceReadReplicaOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBProxyOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBSecurityGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBSubnetGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createEventSubscriptionOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createGlobalClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createOptionGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteCustomAvailabilityZoneOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBClusterEndpointOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBClusterParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBClusterSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBInstanceAutomatedBackupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBProxyOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBSecurityGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBSubnetGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteEventSubscriptionOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteGlobalClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteInstallationMediaOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteOptionGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deregisterDBProxyTargetsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeAccountAttributesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeCertificatesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeCustomAvailabilityZonesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClusterBacktracksOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClusterEndpointsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClusterParameterGroupsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClusterParametersOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClusterSnapshotAttributesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClusterSnapshotsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClustersOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBEngineVersionsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBInstanceAutomatedBackupsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBInstancesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBLogFilesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBParameterGroupsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBParametersOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBProxiesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBProxyTargetGroupsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBProxyTargetsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBSecurityGroupsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBSnapshotAttributesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBSnapshotsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBSubnetGroupsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeEngineDefaultClusterParametersOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeEngineDefaultParametersOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeEventCategoriesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeEventSubscriptionsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeEventsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeExportTasksOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeGlobalClustersOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeInstallationMediaOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeOptionGroupOptionsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeOptionGroupsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeOrderableDBInstanceOptionsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describePendingMaintenanceActionsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeReservedDBInstancesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeReservedDBInstancesOfferingsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeSourceRegionsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeValidDBInstanceModificationsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let downloadDBLogFilePortionOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let failoverDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let importInstallationMediaOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let listTagsForResourceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyCertificatesOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyCurrentDBClusterCapacityOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBClusterEndpointOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBClusterParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBClusterSnapshotAttributeOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBProxyOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBProxyTargetGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBSnapshotAttributeOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBSubnetGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyEventSubscriptionOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyGlobalClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyOptionGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let promoteReadReplicaOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let promoteReadReplicaDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let purchaseReservedDBInstancesOfferingOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let rebootDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let registerDBProxyTargetsOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let removeFromGlobalClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let removeRoleFromDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let removeRoleFromDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let removeSourceIdentifierFromSubscriptionOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let removeTagsFromResourceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let resetDBClusterParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let resetDBParameterGroupOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let restoreDBClusterFromS3OperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let restoreDBClusterFromSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let restoreDBClusterToPointInTimeOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let restoreDBInstanceFromDBSnapshotOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let restoreDBInstanceFromS3OperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let restoreDBInstanceToPointInTimeOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let revokeDBSecurityGroupIngressOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let startActivityStreamOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let startDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let startDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let startExportTaskOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let stopActivityStreamOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let stopDBClusterOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let stopDBInstanceOperationReporting: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let operationsReporting: RDSOperationsReporting
+    let invocationsReporting: RDSInvocationsReporting<InvocationReportingType>
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "rds",
@@ -217,269 +91,32 @@ public struct AWSRDSClient: RDSClientProtocol {
         self.target = nil
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
+        self.reporting = reporting
         self.retryOnErrorProvider = { error in error.isRetriable() }
         self.apiVersion = apiVersion
-
-        self.addRoleToDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .addRoleToDBCluster, configuration: reportingConfiguration)
-        self.addRoleToDBInstanceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .addRoleToDBInstance, configuration: reportingConfiguration)
-        self.addSourceIdentifierToSubscriptionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .addSourceIdentifierToSubscription, configuration: reportingConfiguration)
-        self.addTagsToResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .addTagsToResource, configuration: reportingConfiguration)
-        self.applyPendingMaintenanceActionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .applyPendingMaintenanceAction, configuration: reportingConfiguration)
-        self.authorizeDBSecurityGroupIngressOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .authorizeDBSecurityGroupIngress, configuration: reportingConfiguration)
-        self.backtrackDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .backtrackDBCluster, configuration: reportingConfiguration)
-        self.cancelExportTaskOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .cancelExportTask, configuration: reportingConfiguration)
-        self.copyDBClusterParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .copyDBClusterParameterGroup, configuration: reportingConfiguration)
-        self.copyDBClusterSnapshotOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .copyDBClusterSnapshot, configuration: reportingConfiguration)
-        self.copyDBParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .copyDBParameterGroup, configuration: reportingConfiguration)
-        self.copyDBSnapshotOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .copyDBSnapshot, configuration: reportingConfiguration)
-        self.copyOptionGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .copyOptionGroup, configuration: reportingConfiguration)
-        self.createCustomAvailabilityZoneOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createCustomAvailabilityZone, configuration: reportingConfiguration)
-        self.createDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createDBCluster, configuration: reportingConfiguration)
-        self.createDBClusterEndpointOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createDBClusterEndpoint, configuration: reportingConfiguration)
-        self.createDBClusterParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createDBClusterParameterGroup, configuration: reportingConfiguration)
-        self.createDBClusterSnapshotOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createDBClusterSnapshot, configuration: reportingConfiguration)
-        self.createDBInstanceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createDBInstance, configuration: reportingConfiguration)
-        self.createDBInstanceReadReplicaOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createDBInstanceReadReplica, configuration: reportingConfiguration)
-        self.createDBParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createDBParameterGroup, configuration: reportingConfiguration)
-        self.createDBProxyOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createDBProxy, configuration: reportingConfiguration)
-        self.createDBSecurityGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createDBSecurityGroup, configuration: reportingConfiguration)
-        self.createDBSnapshotOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createDBSnapshot, configuration: reportingConfiguration)
-        self.createDBSubnetGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createDBSubnetGroup, configuration: reportingConfiguration)
-        self.createEventSubscriptionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createEventSubscription, configuration: reportingConfiguration)
-        self.createGlobalClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createGlobalCluster, configuration: reportingConfiguration)
-        self.createOptionGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .createOptionGroup, configuration: reportingConfiguration)
-        self.deleteCustomAvailabilityZoneOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteCustomAvailabilityZone, configuration: reportingConfiguration)
-        self.deleteDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteDBCluster, configuration: reportingConfiguration)
-        self.deleteDBClusterEndpointOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteDBClusterEndpoint, configuration: reportingConfiguration)
-        self.deleteDBClusterParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteDBClusterParameterGroup, configuration: reportingConfiguration)
-        self.deleteDBClusterSnapshotOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteDBClusterSnapshot, configuration: reportingConfiguration)
-        self.deleteDBInstanceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteDBInstance, configuration: reportingConfiguration)
-        self.deleteDBInstanceAutomatedBackupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteDBInstanceAutomatedBackup, configuration: reportingConfiguration)
-        self.deleteDBParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteDBParameterGroup, configuration: reportingConfiguration)
-        self.deleteDBProxyOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteDBProxy, configuration: reportingConfiguration)
-        self.deleteDBSecurityGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteDBSecurityGroup, configuration: reportingConfiguration)
-        self.deleteDBSnapshotOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteDBSnapshot, configuration: reportingConfiguration)
-        self.deleteDBSubnetGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteDBSubnetGroup, configuration: reportingConfiguration)
-        self.deleteEventSubscriptionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteEventSubscription, configuration: reportingConfiguration)
-        self.deleteGlobalClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteGlobalCluster, configuration: reportingConfiguration)
-        self.deleteInstallationMediaOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteInstallationMedia, configuration: reportingConfiguration)
-        self.deleteOptionGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deleteOptionGroup, configuration: reportingConfiguration)
-        self.deregisterDBProxyTargetsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .deregisterDBProxyTargets, configuration: reportingConfiguration)
-        self.describeAccountAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeAccountAttributes, configuration: reportingConfiguration)
-        self.describeCertificatesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeCertificates, configuration: reportingConfiguration)
-        self.describeCustomAvailabilityZonesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeCustomAvailabilityZones, configuration: reportingConfiguration)
-        self.describeDBClusterBacktracksOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBClusterBacktracks, configuration: reportingConfiguration)
-        self.describeDBClusterEndpointsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBClusterEndpoints, configuration: reportingConfiguration)
-        self.describeDBClusterParameterGroupsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBClusterParameterGroups, configuration: reportingConfiguration)
-        self.describeDBClusterParametersOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBClusterParameters, configuration: reportingConfiguration)
-        self.describeDBClusterSnapshotAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBClusterSnapshotAttributes, configuration: reportingConfiguration)
-        self.describeDBClusterSnapshotsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBClusterSnapshots, configuration: reportingConfiguration)
-        self.describeDBClustersOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBClusters, configuration: reportingConfiguration)
-        self.describeDBEngineVersionsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBEngineVersions, configuration: reportingConfiguration)
-        self.describeDBInstanceAutomatedBackupsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBInstanceAutomatedBackups, configuration: reportingConfiguration)
-        self.describeDBInstancesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBInstances, configuration: reportingConfiguration)
-        self.describeDBLogFilesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBLogFiles, configuration: reportingConfiguration)
-        self.describeDBParameterGroupsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBParameterGroups, configuration: reportingConfiguration)
-        self.describeDBParametersOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBParameters, configuration: reportingConfiguration)
-        self.describeDBProxiesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBProxies, configuration: reportingConfiguration)
-        self.describeDBProxyTargetGroupsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBProxyTargetGroups, configuration: reportingConfiguration)
-        self.describeDBProxyTargetsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBProxyTargets, configuration: reportingConfiguration)
-        self.describeDBSecurityGroupsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBSecurityGroups, configuration: reportingConfiguration)
-        self.describeDBSnapshotAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBSnapshotAttributes, configuration: reportingConfiguration)
-        self.describeDBSnapshotsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBSnapshots, configuration: reportingConfiguration)
-        self.describeDBSubnetGroupsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeDBSubnetGroups, configuration: reportingConfiguration)
-        self.describeEngineDefaultClusterParametersOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeEngineDefaultClusterParameters, configuration: reportingConfiguration)
-        self.describeEngineDefaultParametersOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeEngineDefaultParameters, configuration: reportingConfiguration)
-        self.describeEventCategoriesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeEventCategories, configuration: reportingConfiguration)
-        self.describeEventSubscriptionsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeEventSubscriptions, configuration: reportingConfiguration)
-        self.describeEventsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeEvents, configuration: reportingConfiguration)
-        self.describeExportTasksOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeExportTasks, configuration: reportingConfiguration)
-        self.describeGlobalClustersOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeGlobalClusters, configuration: reportingConfiguration)
-        self.describeInstallationMediaOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeInstallationMedia, configuration: reportingConfiguration)
-        self.describeOptionGroupOptionsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeOptionGroupOptions, configuration: reportingConfiguration)
-        self.describeOptionGroupsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeOptionGroups, configuration: reportingConfiguration)
-        self.describeOrderableDBInstanceOptionsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeOrderableDBInstanceOptions, configuration: reportingConfiguration)
-        self.describePendingMaintenanceActionsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describePendingMaintenanceActions, configuration: reportingConfiguration)
-        self.describeReservedDBInstancesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeReservedDBInstances, configuration: reportingConfiguration)
-        self.describeReservedDBInstancesOfferingsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeReservedDBInstancesOfferings, configuration: reportingConfiguration)
-        self.describeSourceRegionsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeSourceRegions, configuration: reportingConfiguration)
-        self.describeValidDBInstanceModificationsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .describeValidDBInstanceModifications, configuration: reportingConfiguration)
-        self.downloadDBLogFilePortionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .downloadDBLogFilePortion, configuration: reportingConfiguration)
-        self.failoverDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .failoverDBCluster, configuration: reportingConfiguration)
-        self.importInstallationMediaOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .importInstallationMedia, configuration: reportingConfiguration)
-        self.listTagsForResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .listTagsForResource, configuration: reportingConfiguration)
-        self.modifyCertificatesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyCertificates, configuration: reportingConfiguration)
-        self.modifyCurrentDBClusterCapacityOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyCurrentDBClusterCapacity, configuration: reportingConfiguration)
-        self.modifyDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyDBCluster, configuration: reportingConfiguration)
-        self.modifyDBClusterEndpointOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyDBClusterEndpoint, configuration: reportingConfiguration)
-        self.modifyDBClusterParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyDBClusterParameterGroup, configuration: reportingConfiguration)
-        self.modifyDBClusterSnapshotAttributeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyDBClusterSnapshotAttribute, configuration: reportingConfiguration)
-        self.modifyDBInstanceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyDBInstance, configuration: reportingConfiguration)
-        self.modifyDBParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyDBParameterGroup, configuration: reportingConfiguration)
-        self.modifyDBProxyOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyDBProxy, configuration: reportingConfiguration)
-        self.modifyDBProxyTargetGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyDBProxyTargetGroup, configuration: reportingConfiguration)
-        self.modifyDBSnapshotOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyDBSnapshot, configuration: reportingConfiguration)
-        self.modifyDBSnapshotAttributeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyDBSnapshotAttribute, configuration: reportingConfiguration)
-        self.modifyDBSubnetGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyDBSubnetGroup, configuration: reportingConfiguration)
-        self.modifyEventSubscriptionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyEventSubscription, configuration: reportingConfiguration)
-        self.modifyGlobalClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyGlobalCluster, configuration: reportingConfiguration)
-        self.modifyOptionGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .modifyOptionGroup, configuration: reportingConfiguration)
-        self.promoteReadReplicaOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .promoteReadReplica, configuration: reportingConfiguration)
-        self.promoteReadReplicaDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .promoteReadReplicaDBCluster, configuration: reportingConfiguration)
-        self.purchaseReservedDBInstancesOfferingOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .purchaseReservedDBInstancesOffering, configuration: reportingConfiguration)
-        self.rebootDBInstanceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .rebootDBInstance, configuration: reportingConfiguration)
-        self.registerDBProxyTargetsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .registerDBProxyTargets, configuration: reportingConfiguration)
-        self.removeFromGlobalClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .removeFromGlobalCluster, configuration: reportingConfiguration)
-        self.removeRoleFromDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .removeRoleFromDBCluster, configuration: reportingConfiguration)
-        self.removeRoleFromDBInstanceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .removeRoleFromDBInstance, configuration: reportingConfiguration)
-        self.removeSourceIdentifierFromSubscriptionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .removeSourceIdentifierFromSubscription, configuration: reportingConfiguration)
-        self.removeTagsFromResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .removeTagsFromResource, configuration: reportingConfiguration)
-        self.resetDBClusterParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .resetDBClusterParameterGroup, configuration: reportingConfiguration)
-        self.resetDBParameterGroupOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .resetDBParameterGroup, configuration: reportingConfiguration)
-        self.restoreDBClusterFromS3OperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .restoreDBClusterFromS3, configuration: reportingConfiguration)
-        self.restoreDBClusterFromSnapshotOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .restoreDBClusterFromSnapshot, configuration: reportingConfiguration)
-        self.restoreDBClusterToPointInTimeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .restoreDBClusterToPointInTime, configuration: reportingConfiguration)
-        self.restoreDBInstanceFromDBSnapshotOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .restoreDBInstanceFromDBSnapshot, configuration: reportingConfiguration)
-        self.restoreDBInstanceFromS3OperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .restoreDBInstanceFromS3, configuration: reportingConfiguration)
-        self.restoreDBInstanceToPointInTimeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .restoreDBInstanceToPointInTime, configuration: reportingConfiguration)
-        self.revokeDBSecurityGroupIngressOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .revokeDBSecurityGroupIngress, configuration: reportingConfiguration)
-        self.startActivityStreamOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .startActivityStream, configuration: reportingConfiguration)
-        self.startDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .startDBCluster, configuration: reportingConfiguration)
-        self.startDBInstanceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .startDBInstance, configuration: reportingConfiguration)
-        self.startExportTaskOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .startExportTask, configuration: reportingConfiguration)
-        self.stopActivityStreamOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .stopActivityStream, configuration: reportingConfiguration)
-        self.stopDBClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .stopDBCluster, configuration: reportingConfiguration)
-        self.stopDBInstanceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSRDSClient", operation: .stopDBInstance, configuration: reportingConfiguration)
+        self.operationsReporting = RDSOperationsReporting(clientName: "AWSRDSClient", reportingConfiguration: reportingConfiguration)
+        self.invocationsReporting = RDSInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
+    }
+    
+    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                reporting: InvocationReportingType,
+                httpClient: HTTPClient,
+                service: String,
+                apiVersion: String,
+                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryConfiguration: HTTPClientRetryConfiguration,
+                operationsReporting: RDSOperationsReporting) {
+        self.httpClient = httpClient
+        self.awsRegion = awsRegion
+        self.service = service
+        self.target = nil
+        self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.reporting = reporting
+        self.retryOnErrorProvider = retryOnErrorProvider
+        self.apiVersion = apiVersion
+        self.operationsReporting = operationsReporting
+        self.invocationsReporting = RDSInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
 
     /**
@@ -507,9 +144,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBClusterRoleAlreadyExists, dBClusterRoleQuotaExceeded, invalidDBClusterState.
      */
-    public func addRoleToDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func addRoleToDBClusterAsync(
             input: RDSModel.AddRoleToDBClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -517,9 +153,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: addRoleToDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addRoleToDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AddRoleToDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -544,18 +179,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated AddRoleToDBClusterMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBClusterRoleAlreadyExists, dBClusterRoleQuotaExceeded, invalidDBClusterState.
      */
-    public func addRoleToDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.AddRoleToDBClusterMessage,
-            reporting: InvocationReportingType) throws {
+    public func addRoleToDBClusterSync(
+            input: RDSModel.AddRoleToDBClusterMessage) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: addRoleToDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addRoleToDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AddRoleToDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -581,9 +214,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBInstanceNotFound, dBInstanceRoleAlreadyExists, dBInstanceRoleQuotaExceeded, invalidDBInstanceState.
      */
-    public func addRoleToDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func addRoleToDBInstanceAsync(
             input: RDSModel.AddRoleToDBInstanceMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -591,9 +223,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: addRoleToDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addRoleToDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AddRoleToDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -618,18 +249,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated AddRoleToDBInstanceMessage object being passed to this operation.
      - Throws: dBInstanceNotFound, dBInstanceRoleAlreadyExists, dBInstanceRoleQuotaExceeded, invalidDBInstanceState.
      */
-    public func addRoleToDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.AddRoleToDBInstanceMessage,
-            reporting: InvocationReportingType) throws {
+    public func addRoleToDBInstanceSync(
+            input: RDSModel.AddRoleToDBInstanceMessage) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: addRoleToDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addRoleToDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AddRoleToDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -656,9 +285,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: sourceNotFound, subscriptionNotFound.
      */
-    public func addSourceIdentifierToSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func addSourceIdentifierToSubscriptionAsync(
             input: RDSModel.AddSourceIdentifierToSubscriptionMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -666,9 +294,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: addSourceIdentifierToSubscriptionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addSourceIdentifierToSubscription,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AddSourceIdentifierToSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -695,18 +322,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: sourceNotFound, subscriptionNotFound.
      */
-    public func addSourceIdentifierToSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.AddSourceIdentifierToSubscriptionMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription {
+    public func addSourceIdentifierToSubscriptionSync(
+            input: RDSModel.AddSourceIdentifierToSubscriptionMessage) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: addSourceIdentifierToSubscriptionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addSourceIdentifierToSubscription,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AddSourceIdentifierToSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -732,9 +357,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func addTagsToResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func addTagsToResourceAsync(
             input: RDSModel.AddTagsToResourceMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -742,9 +366,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: addTagsToResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addTagsToResource,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AddTagsToResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -769,18 +392,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated AddTagsToResourceMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func addTagsToResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.AddTagsToResourceMessage,
-            reporting: InvocationReportingType) throws {
+    public func addTagsToResourceSync(
+            input: RDSModel.AddTagsToResourceMessage) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: addTagsToResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addTagsToResource,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AddTagsToResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -807,9 +428,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func applyPendingMaintenanceActionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func applyPendingMaintenanceActionAsync(
             input: RDSModel.ApplyPendingMaintenanceActionMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -817,9 +437,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: applyPendingMaintenanceActionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.applyPendingMaintenanceAction,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ApplyPendingMaintenanceActionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -846,18 +465,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func applyPendingMaintenanceActionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ApplyPendingMaintenanceActionMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction {
+    public func applyPendingMaintenanceActionSync(
+            input: RDSModel.ApplyPendingMaintenanceActionMessage) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: applyPendingMaintenanceActionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.applyPendingMaintenanceAction,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ApplyPendingMaintenanceActionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -884,9 +501,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationAlreadyExists, authorizationQuotaExceeded, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func authorizeDBSecurityGroupIngressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func authorizeDBSecurityGroupIngressAsync(
             input: RDSModel.AuthorizeDBSecurityGroupIngressMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -894,9 +510,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: authorizeDBSecurityGroupIngressOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.authorizeDBSecurityGroupIngress,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AuthorizeDBSecurityGroupIngressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -923,18 +538,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationAlreadyExists, authorizationQuotaExceeded, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func authorizeDBSecurityGroupIngressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.AuthorizeDBSecurityGroupIngressMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress {
+    public func authorizeDBSecurityGroupIngressSync(
+            input: RDSModel.AuthorizeDBSecurityGroupIngressMessage) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: authorizeDBSecurityGroupIngressOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.authorizeDBSecurityGroupIngress,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AuthorizeDBSecurityGroupIngressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -961,9 +574,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState.
      */
-    public func backtrackDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func backtrackDBClusterAsync(
             input: RDSModel.BacktrackDBClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -971,9 +583,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: backtrackDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.backtrackDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = BacktrackDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1000,18 +611,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState.
      */
-    public func backtrackDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.BacktrackDBClusterMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster {
+    public func backtrackDBClusterSync(
+            input: RDSModel.BacktrackDBClusterMessage) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: backtrackDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.backtrackDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = BacktrackDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1038,9 +647,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: exportTaskNotFound, invalidExportTaskState.
      */
-    public func cancelExportTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func cancelExportTaskAsync(
             input: RDSModel.CancelExportTaskMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1048,9 +656,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: cancelExportTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.cancelExportTask,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CancelExportTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1077,18 +684,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: exportTaskNotFound, invalidExportTaskState.
      */
-    public func cancelExportTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CancelExportTaskMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ExportTaskForCancelExportTask {
+    public func cancelExportTaskSync(
+            input: RDSModel.CancelExportTaskMessage) throws -> RDSModel.ExportTaskForCancelExportTask {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: cancelExportTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.cancelExportTask,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CancelExportTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1115,9 +720,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func copyDBClusterParameterGroupAsync(
             input: RDSModel.CopyDBClusterParameterGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1125,9 +729,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: copyDBClusterParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.copyDBClusterParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CopyDBClusterParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1154,18 +757,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CopyDBClusterParameterGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup {
+    public func copyDBClusterParameterGroupSync(
+            input: RDSModel.CopyDBClusterParameterGroupMessage) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: copyDBClusterParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.copyDBClusterParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CopyDBClusterParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1192,9 +793,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotAlreadyExists, dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, invalidDBClusterState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBClusterSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func copyDBClusterSnapshotAsync(
             input: RDSModel.CopyDBClusterSnapshotMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1202,9 +802,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: copyDBClusterSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.copyDBClusterSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CopyDBClusterSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1231,18 +830,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotAlreadyExists, dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, invalidDBClusterState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBClusterSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CopyDBClusterSnapshotMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
+    public func copyDBClusterSnapshotSync(
+            input: RDSModel.CopyDBClusterSnapshotMessage) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: copyDBClusterSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.copyDBClusterSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CopyDBClusterSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1269,9 +866,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func copyDBParameterGroupAsync(
             input: RDSModel.CopyDBParameterGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1279,9 +875,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: copyDBParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.copyDBParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CopyDBParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1308,18 +903,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
-    public func copyDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CopyDBParameterGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup {
+    public func copyDBParameterGroupSync(
+            input: RDSModel.CopyDBParameterGroupMessage) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: copyDBParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.copyDBParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CopyDBParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1346,9 +939,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func copyDBSnapshotAsync(
             input: RDSModel.CopyDBSnapshotMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1356,9 +948,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: copyDBSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.copyDBSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CopyDBSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1385,18 +976,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
-    public func copyDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CopyDBSnapshotMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot {
+    public func copyDBSnapshotSync(
+            input: RDSModel.CopyDBSnapshotMessage) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: copyDBSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.copyDBSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CopyDBSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1423,9 +1012,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: optionGroupAlreadyExists, optionGroupNotFound, optionGroupQuotaExceeded.
      */
-    public func copyOptionGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func copyOptionGroupAsync(
             input: RDSModel.CopyOptionGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1433,9 +1021,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: copyOptionGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.copyOptionGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CopyOptionGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1462,18 +1049,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: optionGroupAlreadyExists, optionGroupNotFound, optionGroupQuotaExceeded.
      */
-    public func copyOptionGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CopyOptionGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
+    public func copyOptionGroupSync(
+            input: RDSModel.CopyOptionGroupMessage) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: copyOptionGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.copyOptionGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CopyOptionGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1500,9 +1085,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
      */
-    public func createCustomAvailabilityZoneAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createCustomAvailabilityZoneAsync(
             input: RDSModel.CreateCustomAvailabilityZoneMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1510,9 +1094,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createCustomAvailabilityZoneOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCustomAvailabilityZone,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateCustomAvailabilityZoneOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1539,18 +1122,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
      */
-    public func createCustomAvailabilityZoneSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateCustomAvailabilityZoneMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
+    public func createCustomAvailabilityZoneSync(
+            input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createCustomAvailabilityZoneOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCustomAvailabilityZone,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateCustomAvailabilityZoneOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1577,9 +1158,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func createDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createDBClusterAsync(
             input: RDSModel.CreateDBClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1587,9 +1167,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1616,18 +1195,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func createDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateDBClusterMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster {
+    public func createDBClusterSync(
+            input: RDSModel.CreateDBClusterMessage) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1654,9 +1231,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterEndpointAlreadyExists, dBClusterEndpointQuotaExceeded, dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func createDBClusterEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createDBClusterEndpointAsync(
             input: RDSModel.CreateDBClusterEndpointMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1664,9 +1240,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBClusterEndpointOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBClusterEndpoint,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBClusterEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1693,18 +1268,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterEndpointAlreadyExists, dBClusterEndpointQuotaExceeded, dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func createDBClusterEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateDBClusterEndpointMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint {
+    public func createDBClusterEndpointSync(
+            input: RDSModel.CreateDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBClusterEndpointOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBClusterEndpoint,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBClusterEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1731,9 +1304,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createDBClusterParameterGroupAsync(
             input: RDSModel.CreateDBClusterParameterGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1741,9 +1313,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBClusterParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBClusterParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBClusterParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1770,18 +1341,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateDBClusterParameterGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup {
+    public func createDBClusterParameterGroupSync(
+            input: RDSModel.CreateDBClusterParameterGroupMessage) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBClusterParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBClusterParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBClusterParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1808,9 +1377,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func createDBClusterSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createDBClusterSnapshotAsync(
             input: RDSModel.CreateDBClusterSnapshotMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1818,9 +1386,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBClusterSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBClusterSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBClusterSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1847,18 +1414,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func createDBClusterSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateDBClusterSnapshotMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
+    public func createDBClusterSnapshotSync(
+            input: RDSModel.CreateDBClusterSnapshotMessage) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBClusterSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBClusterSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBClusterSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1885,9 +1450,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createDBInstanceAsync(
             input: RDSModel.CreateDBInstanceMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1895,9 +1459,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1924,18 +1487,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateDBInstanceMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
+    public func createDBInstanceSync(
+            input: RDSModel.CreateDBInstanceMessage) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1962,9 +1523,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceReadReplicaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createDBInstanceReadReplicaAsync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1972,9 +1532,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBInstanceReadReplicaOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBInstanceReadReplica,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBInstanceReadReplicaOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2001,18 +1560,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func createDBInstanceReadReplicaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateDBInstanceReadReplicaMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
+    public func createDBInstanceReadReplicaSync(
+            input: RDSModel.CreateDBInstanceReadReplicaMessage) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBInstanceReadReplicaOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBInstanceReadReplica,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBInstanceReadReplicaOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2039,9 +1596,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createDBParameterGroupAsync(
             input: RDSModel.CreateDBParameterGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2049,9 +1605,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2078,18 +1633,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
-    public func createDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateDBParameterGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup {
+    public func createDBParameterGroupSync(
+            input: RDSModel.CreateDBParameterGroupMessage) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2116,9 +1669,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
      */
-    public func createDBProxyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createDBProxyAsync(
             input: RDSModel.CreateDBProxyRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2126,9 +1678,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBProxyOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBProxy,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBProxyOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2155,18 +1706,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
      */
-    public func createDBProxySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateDBProxyRequest,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy {
+    public func createDBProxySync(
+            input: RDSModel.CreateDBProxyRequest) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBProxyOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBProxy,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBProxyOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2193,9 +1742,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSecurityGroupAlreadyExists, dBSecurityGroupNotSupported, dBSecurityGroupQuotaExceeded.
      */
-    public func createDBSecurityGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createDBSecurityGroupAsync(
             input: RDSModel.CreateDBSecurityGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2203,9 +1751,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBSecurityGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBSecurityGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBSecurityGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2232,18 +1779,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSecurityGroupAlreadyExists, dBSecurityGroupNotSupported, dBSecurityGroupQuotaExceeded.
      */
-    public func createDBSecurityGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateDBSecurityGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup {
+    public func createDBSecurityGroupSync(
+            input: RDSModel.CreateDBSecurityGroupMessage) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBSecurityGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBSecurityGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBSecurityGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2270,9 +1815,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func createDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createDBSnapshotAsync(
             input: RDSModel.CreateDBSnapshotMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2280,9 +1824,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2309,18 +1852,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func createDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateDBSnapshotMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot {
+    public func createDBSnapshotSync(
+            input: RDSModel.CreateDBSnapshotMessage) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2347,9 +1888,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSubnetGroupAlreadyExists, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupQuotaExceeded, dBSubnetQuotaExceeded, invalidSubnet.
      */
-    public func createDBSubnetGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createDBSubnetGroupAsync(
             input: RDSModel.CreateDBSubnetGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2357,9 +1897,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBSubnetGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBSubnetGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBSubnetGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2386,18 +1925,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSubnetGroupAlreadyExists, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupQuotaExceeded, dBSubnetQuotaExceeded, invalidSubnet.
      */
-    public func createDBSubnetGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateDBSubnetGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup {
+    public func createDBSubnetGroupSync(
+            input: RDSModel.CreateDBSubnetGroupMessage) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createDBSubnetGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBSubnetGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateDBSubnetGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2424,9 +1961,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, sourceNotFound, subscriptionAlreadyExist, subscriptionCategoryNotFound.
      */
-    public func createEventSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createEventSubscriptionAsync(
             input: RDSModel.CreateEventSubscriptionMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2434,9 +1970,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createEventSubscriptionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createEventSubscription,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateEventSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2463,18 +1998,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, sourceNotFound, subscriptionAlreadyExist, subscriptionCategoryNotFound.
      */
-    public func createEventSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateEventSubscriptionMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription {
+    public func createEventSubscriptionSync(
+            input: RDSModel.CreateEventSubscriptionMessage) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createEventSubscriptionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createEventSubscription,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateEventSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2501,9 +2034,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, globalClusterAlreadyExists, globalClusterQuotaExceeded, invalidDBClusterState.
      */
-    public func createGlobalClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createGlobalClusterAsync(
             input: RDSModel.CreateGlobalClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2511,9 +2043,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createGlobalClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createGlobalCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateGlobalClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2540,18 +2071,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, globalClusterAlreadyExists, globalClusterQuotaExceeded, invalidDBClusterState.
      */
-    public func createGlobalClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateGlobalClusterMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster {
+    public func createGlobalClusterSync(
+            input: RDSModel.CreateGlobalClusterMessage) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createGlobalClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createGlobalCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateGlobalClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2578,9 +2107,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: optionGroupAlreadyExists, optionGroupQuotaExceeded.
      */
-    public func createOptionGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createOptionGroupAsync(
             input: RDSModel.CreateOptionGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2588,9 +2116,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createOptionGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createOptionGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateOptionGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2617,18 +2144,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: optionGroupAlreadyExists, optionGroupQuotaExceeded.
      */
-    public func createOptionGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.CreateOptionGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
+    public func createOptionGroupSync(
+            input: RDSModel.CreateOptionGroupMessage) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createOptionGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createOptionGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateOptionGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2655,9 +2180,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
      */
-    public func deleteCustomAvailabilityZoneAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteCustomAvailabilityZoneAsync(
             input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2665,9 +2189,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteCustomAvailabilityZoneOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCustomAvailabilityZone,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteCustomAvailabilityZoneOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2694,18 +2217,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
      */
-    public func deleteCustomAvailabilityZoneSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteCustomAvailabilityZoneMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
+    public func deleteCustomAvailabilityZoneSync(
+            input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteCustomAvailabilityZoneOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCustomAvailabilityZone,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteCustomAvailabilityZoneOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2732,9 +2253,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func deleteDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteDBClusterAsync(
             input: RDSModel.DeleteDBClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2742,9 +2262,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2771,18 +2290,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
-    public func deleteDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteDBClusterMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
+    public func deleteDBClusterSync(
+            input: RDSModel.DeleteDBClusterMessage) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2809,9 +2326,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterEndpointNotFound, invalidDBClusterEndpointState, invalidDBClusterState.
      */
-    public func deleteDBClusterEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteDBClusterEndpointAsync(
             input: RDSModel.DeleteDBClusterEndpointMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2819,9 +2335,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBClusterEndpointOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBClusterEndpoint,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBClusterEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2848,18 +2363,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterEndpointNotFound, invalidDBClusterEndpointState, invalidDBClusterState.
      */
-    public func deleteDBClusterEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteDBClusterEndpointMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint {
+    public func deleteDBClusterEndpointSync(
+            input: RDSModel.DeleteDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBClusterEndpointOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBClusterEndpoint,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBClusterEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2885,9 +2398,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteDBClusterParameterGroupAsync(
             input: RDSModel.DeleteDBClusterParameterGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2895,9 +2407,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBClusterParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBClusterParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBClusterParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2922,18 +2433,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBClusterParameterGroupMessage object being passed to this operation.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteDBClusterParameterGroupMessage,
-            reporting: InvocationReportingType) throws {
+    public func deleteDBClusterParameterGroupSync(
+            input: RDSModel.DeleteDBClusterParameterGroupMessage) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBClusterParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBClusterParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBClusterParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2960,9 +2469,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState.
      */
-    public func deleteDBClusterSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteDBClusterSnapshotAsync(
             input: RDSModel.DeleteDBClusterSnapshotMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2970,9 +2478,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBClusterSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBClusterSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBClusterSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2999,18 +2506,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState.
      */
-    public func deleteDBClusterSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteDBClusterSnapshotMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
+    public func deleteDBClusterSnapshotSync(
+            input: RDSModel.DeleteDBClusterSnapshotMessage) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBClusterSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBClusterSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBClusterSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3037,9 +2542,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func deleteDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteDBInstanceAsync(
             input: RDSModel.DeleteDBInstanceMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3047,9 +2551,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3076,18 +2579,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func deleteDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteDBInstanceMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance {
+    public func deleteDBInstanceSync(
+            input: RDSModel.DeleteDBInstanceMessage) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3114,9 +2615,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAutomatedBackupNotFound, invalidDBInstanceAutomatedBackupState.
      */
-    public func deleteDBInstanceAutomatedBackupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteDBInstanceAutomatedBackupAsync(
             input: RDSModel.DeleteDBInstanceAutomatedBackupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3124,9 +2624,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBInstanceAutomatedBackupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBInstanceAutomatedBackup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBInstanceAutomatedBackupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3153,18 +2652,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAutomatedBackupNotFound, invalidDBInstanceAutomatedBackupState.
      */
-    public func deleteDBInstanceAutomatedBackupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteDBInstanceAutomatedBackupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup {
+    public func deleteDBInstanceAutomatedBackupSync(
+            input: RDSModel.DeleteDBInstanceAutomatedBackupMessage) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBInstanceAutomatedBackupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBInstanceAutomatedBackup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBInstanceAutomatedBackupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3190,9 +2687,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteDBParameterGroupAsync(
             input: RDSModel.DeleteDBParameterGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3200,9 +2696,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3227,18 +2722,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBParameterGroupMessage object being passed to this operation.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func deleteDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteDBParameterGroupMessage,
-            reporting: InvocationReportingType) throws {
+    public func deleteDBParameterGroupSync(
+            input: RDSModel.DeleteDBParameterGroupMessage) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3265,9 +2758,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound, invalidDBProxyState.
      */
-    public func deleteDBProxyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteDBProxyAsync(
             input: RDSModel.DeleteDBProxyRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3275,9 +2767,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBProxyOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBProxy,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBProxyOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3304,18 +2795,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound, invalidDBProxyState.
      */
-    public func deleteDBProxySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteDBProxyRequest,
-            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy {
+    public func deleteDBProxySync(
+            input: RDSModel.DeleteDBProxyRequest) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBProxyOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBProxy,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBProxyOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3341,9 +2830,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func deleteDBSecurityGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteDBSecurityGroupAsync(
             input: RDSModel.DeleteDBSecurityGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3351,9 +2839,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBSecurityGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBSecurityGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBSecurityGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3378,18 +2865,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBSecurityGroupMessage object being passed to this operation.
      - Throws: dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func deleteDBSecurityGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteDBSecurityGroupMessage,
-            reporting: InvocationReportingType) throws {
+    public func deleteDBSecurityGroupSync(
+            input: RDSModel.DeleteDBSecurityGroupMessage) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBSecurityGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBSecurityGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBSecurityGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3416,9 +2901,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound, invalidDBSnapshotState.
      */
-    public func deleteDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteDBSnapshotAsync(
             input: RDSModel.DeleteDBSnapshotMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3426,9 +2910,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3455,18 +2938,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound, invalidDBSnapshotState.
      */
-    public func deleteDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteDBSnapshotMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot {
+    public func deleteDBSnapshotSync(
+            input: RDSModel.DeleteDBSnapshotMessage) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3492,9 +2973,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBSubnetGroupNotFound, invalidDBSubnetGroupState, invalidDBSubnetState.
      */
-    public func deleteDBSubnetGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteDBSubnetGroupAsync(
             input: RDSModel.DeleteDBSubnetGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3502,9 +2982,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBSubnetGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBSubnetGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBSubnetGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3529,18 +3008,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated DeleteDBSubnetGroupMessage object being passed to this operation.
      - Throws: dBSubnetGroupNotFound, invalidDBSubnetGroupState, invalidDBSubnetState.
      */
-    public func deleteDBSubnetGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteDBSubnetGroupMessage,
-            reporting: InvocationReportingType) throws {
+    public func deleteDBSubnetGroupSync(
+            input: RDSModel.DeleteDBSubnetGroupMessage) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteDBSubnetGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBSubnetGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteDBSubnetGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3567,9 +3044,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidEventSubscriptionState, subscriptionNotFound.
      */
-    public func deleteEventSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteEventSubscriptionAsync(
             input: RDSModel.DeleteEventSubscriptionMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3577,9 +3053,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteEventSubscriptionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteEventSubscription,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteEventSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3606,18 +3081,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidEventSubscriptionState, subscriptionNotFound.
      */
-    public func deleteEventSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteEventSubscriptionMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription {
+    public func deleteEventSubscriptionSync(
+            input: RDSModel.DeleteEventSubscriptionMessage) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteEventSubscriptionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteEventSubscription,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteEventSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3644,9 +3117,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func deleteGlobalClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteGlobalClusterAsync(
             input: RDSModel.DeleteGlobalClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3654,9 +3126,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteGlobalClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteGlobalCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteGlobalClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3683,18 +3154,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func deleteGlobalClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteGlobalClusterMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster {
+    public func deleteGlobalClusterSync(
+            input: RDSModel.DeleteGlobalClusterMessage) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteGlobalClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteGlobalCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteGlobalClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3721,9 +3190,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: installationMediaNotFound.
      */
-    public func deleteInstallationMediaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteInstallationMediaAsync(
             input: RDSModel.DeleteInstallationMediaMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3731,9 +3199,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteInstallationMediaOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteInstallationMedia,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteInstallationMediaOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3760,18 +3227,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: installationMediaNotFound.
      */
-    public func deleteInstallationMediaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteInstallationMediaMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia {
+    public func deleteInstallationMediaSync(
+            input: RDSModel.DeleteInstallationMediaMessage) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteInstallationMediaOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteInstallationMedia,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteInstallationMediaOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3797,9 +3262,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func deleteOptionGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteOptionGroupAsync(
             input: RDSModel.DeleteOptionGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3807,9 +3271,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteOptionGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteOptionGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteOptionGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3834,18 +3297,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated DeleteOptionGroupMessage object being passed to this operation.
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func deleteOptionGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeleteOptionGroupMessage,
-            reporting: InvocationReportingType) throws {
+    public func deleteOptionGroupSync(
+            input: RDSModel.DeleteOptionGroupMessage) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteOptionGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteOptionGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteOptionGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3872,9 +3333,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
-    public func deregisterDBProxyTargetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deregisterDBProxyTargetsAsync(
             input: RDSModel.DeregisterDBProxyTargetsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3882,9 +3342,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deregisterDBProxyTargetsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deregisterDBProxyTargets,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeregisterDBProxyTargetsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3911,18 +3370,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
-    public func deregisterDBProxyTargetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DeregisterDBProxyTargetsRequest,
-            reporting: InvocationReportingType) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
+    public func deregisterDBProxyTargetsSync(
+            input: RDSModel.DeregisterDBProxyTargetsRequest) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deregisterDBProxyTargetsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deregisterDBProxyTargets,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeregisterDBProxyTargetsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3948,9 +3405,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The AccountAttributesMessageForDescribeAccountAttributes
            object will be validated before being returned to caller.
      */
-    public func describeAccountAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeAccountAttributesAsync(
             input: RDSModel.DescribeAccountAttributesMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -3958,9 +3414,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeAccountAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeAccountAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeAccountAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -3986,18 +3441,16 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The AccountAttributesMessageForDescribeAccountAttributes object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeAccountAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeAccountAttributesMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
+    public func describeAccountAttributesSync(
+            input: RDSModel.DescribeAccountAttributesMessage) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeAccountAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeAccountAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeAccountAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4024,9 +3477,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: certificateNotFound.
      */
-    public func describeCertificatesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeCertificatesAsync(
             input: RDSModel.DescribeCertificatesMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4034,9 +3486,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeCertificatesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeCertificates,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeCertificatesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4063,18 +3514,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: certificateNotFound.
      */
-    public func describeCertificatesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeCertificatesMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CertificateMessageForDescribeCertificates {
+    public func describeCertificatesSync(
+            input: RDSModel.DescribeCertificatesMessage) throws -> RDSModel.CertificateMessageForDescribeCertificates {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeCertificatesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeCertificates,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeCertificatesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4101,9 +3550,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: customAvailabilityZoneNotFound.
      */
-    public func describeCustomAvailabilityZonesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeCustomAvailabilityZonesAsync(
             input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4111,9 +3559,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeCustomAvailabilityZonesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeCustomAvailabilityZones,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeCustomAvailabilityZonesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4140,18 +3587,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: customAvailabilityZoneNotFound.
      */
-    public func describeCustomAvailabilityZonesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeCustomAvailabilityZonesMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
+    public func describeCustomAvailabilityZonesSync(
+            input: RDSModel.DescribeCustomAvailabilityZonesMessage) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeCustomAvailabilityZonesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeCustomAvailabilityZones,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeCustomAvailabilityZonesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4178,9 +3623,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterBacktrackNotFound, dBClusterNotFound.
      */
-    public func describeDBClusterBacktracksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBClusterBacktracksAsync(
             input: RDSModel.DescribeDBClusterBacktracksMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4188,9 +3632,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClusterBacktracksOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterBacktracks,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClusterBacktracksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4217,18 +3660,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterBacktrackNotFound, dBClusterNotFound.
      */
-    public func describeDBClusterBacktracksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBClusterBacktracksMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
+    public func describeDBClusterBacktracksSync(
+            input: RDSModel.DescribeDBClusterBacktracksMessage) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClusterBacktracksOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterBacktracks,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClusterBacktracksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4255,9 +3696,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound.
      */
-    public func describeDBClusterEndpointsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBClusterEndpointsAsync(
             input: RDSModel.DescribeDBClusterEndpointsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4265,9 +3705,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClusterEndpointsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterEndpoints,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClusterEndpointsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4294,18 +3733,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound.
      */
-    public func describeDBClusterEndpointsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBClusterEndpointsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints {
+    public func describeDBClusterEndpointsSync(
+            input: RDSModel.DescribeDBClusterEndpointsMessage) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClusterEndpointsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterEndpoints,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClusterEndpointsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4332,9 +3769,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParameterGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBClusterParameterGroupsAsync(
             input: RDSModel.DescribeDBClusterParameterGroupsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4342,9 +3778,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClusterParameterGroupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterParameterGroups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClusterParameterGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4371,18 +3806,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParameterGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBClusterParameterGroupsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups {
+    public func describeDBClusterParameterGroupsSync(
+            input: RDSModel.DescribeDBClusterParameterGroupsMessage) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClusterParameterGroupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterParameterGroups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClusterParameterGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4409,9 +3842,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParametersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBClusterParametersAsync(
             input: RDSModel.DescribeDBClusterParametersMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4419,9 +3851,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClusterParametersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterParameters,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClusterParametersOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4448,18 +3879,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBClusterParametersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBClusterParametersMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
+    public func describeDBClusterParametersSync(
+            input: RDSModel.DescribeDBClusterParametersMessage) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClusterParametersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterParameters,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClusterParametersOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4486,9 +3915,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBClusterSnapshotAttributesAsync(
             input: RDSModel.DescribeDBClusterSnapshotAttributesMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4496,9 +3924,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClusterSnapshotAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterSnapshotAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClusterSnapshotAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4525,18 +3952,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBClusterSnapshotAttributesMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes {
+    public func describeDBClusterSnapshotAttributesSync(
+            input: RDSModel.DescribeDBClusterSnapshotAttributesMessage) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClusterSnapshotAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterSnapshotAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClusterSnapshotAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4563,9 +3988,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBClusterSnapshotsAsync(
             input: RDSModel.DescribeDBClusterSnapshotsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4573,9 +3997,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClusterSnapshotsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterSnapshots,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClusterSnapshotsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4602,18 +4025,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound.
      */
-    public func describeDBClusterSnapshotsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBClusterSnapshotsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
+    public func describeDBClusterSnapshotsSync(
+            input: RDSModel.DescribeDBClusterSnapshotsMessage) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClusterSnapshotsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterSnapshots,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClusterSnapshotsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4640,9 +4061,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound.
      */
-    public func describeDBClustersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBClustersAsync(
             input: RDSModel.DescribeDBClustersMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4650,9 +4070,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClustersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusters,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClustersOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4679,18 +4098,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound.
      */
-    public func describeDBClustersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBClustersMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBClusterMessageForDescribeDBClusters {
+    public func describeDBClustersSync(
+            input: RDSModel.DescribeDBClustersMessage) throws -> RDSModel.DBClusterMessageForDescribeDBClusters {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBClustersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusters,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBClustersOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4716,9 +4133,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The DBEngineVersionMessageForDescribeDBEngineVersions
            object will be validated before being returned to caller.
      */
-    public func describeDBEngineVersionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBEngineVersionsAsync(
             input: RDSModel.DescribeDBEngineVersionsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4726,9 +4142,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBEngineVersionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBEngineVersions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBEngineVersionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4754,18 +4169,16 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The DBEngineVersionMessageForDescribeDBEngineVersions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeDBEngineVersionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBEngineVersionsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions {
+    public func describeDBEngineVersionsSync(
+            input: RDSModel.DescribeDBEngineVersionsMessage) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBEngineVersionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBEngineVersions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBEngineVersionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4792,9 +4205,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceAutomatedBackupNotFound.
      */
-    public func describeDBInstanceAutomatedBackupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBInstanceAutomatedBackupsAsync(
             input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4802,9 +4214,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBInstanceAutomatedBackupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBInstanceAutomatedBackups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBInstanceAutomatedBackupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4831,18 +4242,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceAutomatedBackupNotFound.
      */
-    public func describeDBInstanceAutomatedBackupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups {
+    public func describeDBInstanceAutomatedBackupsSync(
+            input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBInstanceAutomatedBackupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBInstanceAutomatedBackups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBInstanceAutomatedBackupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4869,9 +4278,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound.
      */
-    public func describeDBInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBInstancesAsync(
             input: RDSModel.DescribeDBInstancesMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4879,9 +4287,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBInstancesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBInstances,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4908,18 +4315,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound.
      */
-    public func describeDBInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBInstancesMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances {
+    public func describeDBInstancesSync(
+            input: RDSModel.DescribeDBInstancesMessage) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBInstancesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBInstances,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4946,9 +4351,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound.
      */
-    public func describeDBLogFilesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBLogFilesAsync(
             input: RDSModel.DescribeDBLogFilesMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -4956,9 +4360,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBLogFilesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBLogFiles,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBLogFilesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -4985,18 +4388,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound.
      */
-    public func describeDBLogFilesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBLogFilesMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles {
+    public func describeDBLogFilesSync(
+            input: RDSModel.DescribeDBLogFilesMessage) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBLogFilesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBLogFiles,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBLogFilesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5023,9 +4424,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBParameterGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBParameterGroupsAsync(
             input: RDSModel.DescribeDBParameterGroupsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5033,9 +4433,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBParameterGroupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBParameterGroups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBParameterGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5062,18 +4461,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBParameterGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBParameterGroupsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups {
+    public func describeDBParameterGroupsSync(
+            input: RDSModel.DescribeDBParameterGroupsMessage) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBParameterGroupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBParameterGroups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBParameterGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5100,9 +4497,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound.
      */
-    public func describeDBParametersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBParametersAsync(
             input: RDSModel.DescribeDBParametersMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5110,9 +4506,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBParametersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBParameters,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBParametersOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5139,18 +4534,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound.
      */
-    public func describeDBParametersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBParametersMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters {
+    public func describeDBParametersSync(
+            input: RDSModel.DescribeDBParametersMessage) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBParametersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBParameters,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBParametersOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5177,9 +4570,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound.
      */
-    public func describeDBProxiesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBProxiesAsync(
             input: RDSModel.DescribeDBProxiesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5187,9 +4579,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBProxiesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBProxies,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBProxiesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5216,18 +4607,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound.
      */
-    public func describeDBProxiesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBProxiesRequest,
-            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies {
+    public func describeDBProxiesSync(
+            input: RDSModel.DescribeDBProxiesRequest) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBProxiesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBProxies,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBProxiesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5254,9 +4643,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyTargetGroupNotFound.
      */
-    public func describeDBProxyTargetGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBProxyTargetGroupsAsync(
             input: RDSModel.DescribeDBProxyTargetGroupsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5264,9 +4652,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBProxyTargetGroupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBProxyTargetGroups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBProxyTargetGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5293,18 +4680,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyTargetGroupNotFound.
      */
-    public func describeDBProxyTargetGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBProxyTargetGroupsRequest,
-            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
+    public func describeDBProxyTargetGroupsSync(
+            input: RDSModel.DescribeDBProxyTargetGroupsRequest) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBProxyTargetGroupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBProxyTargetGroups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBProxyTargetGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5331,9 +4716,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
-    public func describeDBProxyTargetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBProxyTargetsAsync(
             input: RDSModel.DescribeDBProxyTargetsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5341,9 +4725,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBProxyTargetsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBProxyTargets,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBProxyTargetsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5370,18 +4753,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
-    public func describeDBProxyTargetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBProxyTargetsRequest,
-            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
+    public func describeDBProxyTargetsSync(
+            input: RDSModel.DescribeDBProxyTargetsRequest) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBProxyTargetsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBProxyTargets,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBProxyTargetsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5408,9 +4789,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSecurityGroupNotFound.
      */
-    public func describeDBSecurityGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBSecurityGroupsAsync(
             input: RDSModel.DescribeDBSecurityGroupsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5418,9 +4798,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBSecurityGroupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBSecurityGroups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBSecurityGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5447,18 +4826,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSecurityGroupNotFound.
      */
-    public func describeDBSecurityGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBSecurityGroupsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups {
+    public func describeDBSecurityGroupsSync(
+            input: RDSModel.DescribeDBSecurityGroupsMessage) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBSecurityGroupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBSecurityGroups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBSecurityGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5485,9 +4862,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBSnapshotAttributesAsync(
             input: RDSModel.DescribeDBSnapshotAttributesMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5495,9 +4871,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBSnapshotAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBSnapshotAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBSnapshotAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5524,18 +4899,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBSnapshotAttributesMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes {
+    public func describeDBSnapshotAttributesSync(
+            input: RDSModel.DescribeDBSnapshotAttributesMessage) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBSnapshotAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBSnapshotAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBSnapshotAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5562,9 +4935,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBSnapshotsAsync(
             input: RDSModel.DescribeDBSnapshotsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5572,9 +4944,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBSnapshotsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBSnapshots,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBSnapshotsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5601,18 +4972,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound.
      */
-    public func describeDBSnapshotsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBSnapshotsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots {
+    public func describeDBSnapshotsSync(
+            input: RDSModel.DescribeDBSnapshotsMessage) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBSnapshotsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBSnapshots,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBSnapshotsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5639,9 +5008,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSubnetGroupNotFound.
      */
-    public func describeDBSubnetGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeDBSubnetGroupsAsync(
             input: RDSModel.DescribeDBSubnetGroupsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5649,9 +5017,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBSubnetGroupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBSubnetGroups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBSubnetGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5678,18 +5045,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSubnetGroupNotFound.
      */
-    public func describeDBSubnetGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeDBSubnetGroupsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups {
+    public func describeDBSubnetGroupsSync(
+            input: RDSModel.DescribeDBSubnetGroupsMessage) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDBSubnetGroupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBSubnetGroups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeDBSubnetGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5715,9 +5080,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters
            object will be validated before being returned to caller.
      */
-    public func describeEngineDefaultClusterParametersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeEngineDefaultClusterParametersAsync(
             input: RDSModel.DescribeEngineDefaultClusterParametersMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5725,9 +5089,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeEngineDefaultClusterParametersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeEngineDefaultClusterParameters,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeEngineDefaultClusterParametersOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5753,18 +5116,16 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEngineDefaultClusterParametersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeEngineDefaultClusterParametersMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters {
+    public func describeEngineDefaultClusterParametersSync(
+            input: RDSModel.DescribeEngineDefaultClusterParametersMessage) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeEngineDefaultClusterParametersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeEngineDefaultClusterParameters,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeEngineDefaultClusterParametersOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5790,9 +5151,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters
            object will be validated before being returned to caller.
      */
-    public func describeEngineDefaultParametersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeEngineDefaultParametersAsync(
             input: RDSModel.DescribeEngineDefaultParametersMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5800,9 +5160,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeEngineDefaultParametersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeEngineDefaultParameters,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeEngineDefaultParametersOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5828,18 +5187,16 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEngineDefaultParametersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeEngineDefaultParametersMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters {
+    public func describeEngineDefaultParametersSync(
+            input: RDSModel.DescribeEngineDefaultParametersMessage) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeEngineDefaultParametersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeEngineDefaultParameters,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeEngineDefaultParametersOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5865,9 +5222,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The EventCategoriesMessageForDescribeEventCategories
            object will be validated before being returned to caller.
      */
-    public func describeEventCategoriesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeEventCategoriesAsync(
             input: RDSModel.DescribeEventCategoriesMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5875,9 +5231,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeEventCategoriesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeEventCategories,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeEventCategoriesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5903,18 +5258,16 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The EventCategoriesMessageForDescribeEventCategories object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEventCategoriesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeEventCategoriesMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories {
+    public func describeEventCategoriesSync(
+            input: RDSModel.DescribeEventCategoriesMessage) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeEventCategoriesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeEventCategories,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeEventCategoriesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5941,9 +5294,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: subscriptionNotFound.
      */
-    public func describeEventSubscriptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeEventSubscriptionsAsync(
             input: RDSModel.DescribeEventSubscriptionsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -5951,9 +5303,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeEventSubscriptionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeEventSubscriptions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeEventSubscriptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -5980,18 +5331,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: subscriptionNotFound.
      */
-    public func describeEventSubscriptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeEventSubscriptionsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions {
+    public func describeEventSubscriptionsSync(
+            input: RDSModel.DescribeEventSubscriptionsMessage) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeEventSubscriptionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeEventSubscriptions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeEventSubscriptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6017,9 +5366,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The EventsMessageForDescribeEvents
            object will be validated before being returned to caller.
      */
-    public func describeEventsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeEventsAsync(
             input: RDSModel.DescribeEventsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6027,9 +5375,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeEventsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeEvents,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeEventsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6055,18 +5402,16 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The EventsMessageForDescribeEvents object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeEventsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeEventsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.EventsMessageForDescribeEvents {
+    public func describeEventsSync(
+            input: RDSModel.DescribeEventsMessage) throws -> RDSModel.EventsMessageForDescribeEvents {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeEventsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeEvents,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeEventsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6093,9 +5438,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: exportTaskNotFound.
      */
-    public func describeExportTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeExportTasksAsync(
             input: RDSModel.DescribeExportTasksMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6103,9 +5447,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeExportTasksOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeExportTasks,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeExportTasksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6132,18 +5475,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: exportTaskNotFound.
      */
-    public func describeExportTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeExportTasksMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks {
+    public func describeExportTasksSync(
+            input: RDSModel.DescribeExportTasksMessage) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeExportTasksOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeExportTasks,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeExportTasksOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6170,9 +5511,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalClusterNotFound.
      */
-    public func describeGlobalClustersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeGlobalClustersAsync(
             input: RDSModel.DescribeGlobalClustersMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6180,9 +5520,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeGlobalClustersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeGlobalClusters,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeGlobalClustersOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6209,18 +5548,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalClusterNotFound.
      */
-    public func describeGlobalClustersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeGlobalClustersMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
+    public func describeGlobalClustersSync(
+            input: RDSModel.DescribeGlobalClustersMessage) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeGlobalClustersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeGlobalClusters,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeGlobalClustersOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6247,9 +5584,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: installationMediaNotFound.
      */
-    public func describeInstallationMediaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeInstallationMediaAsync(
             input: RDSModel.DescribeInstallationMediaMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6257,9 +5593,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeInstallationMediaOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeInstallationMedia,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeInstallationMediaOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6286,18 +5621,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: installationMediaNotFound.
      */
-    public func describeInstallationMediaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeInstallationMediaMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
+    public func describeInstallationMediaSync(
+            input: RDSModel.DescribeInstallationMediaMessage) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeInstallationMediaOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeInstallationMedia,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeInstallationMediaOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6323,9 +5656,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The OptionGroupOptionsMessageForDescribeOptionGroupOptions
            object will be validated before being returned to caller.
      */
-    public func describeOptionGroupOptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeOptionGroupOptionsAsync(
             input: RDSModel.DescribeOptionGroupOptionsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6333,9 +5665,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeOptionGroupOptionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeOptionGroupOptions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeOptionGroupOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6361,18 +5692,16 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The OptionGroupOptionsMessageForDescribeOptionGroupOptions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeOptionGroupOptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeOptionGroupOptionsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions {
+    public func describeOptionGroupOptionsSync(
+            input: RDSModel.DescribeOptionGroupOptionsMessage) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeOptionGroupOptionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeOptionGroupOptions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeOptionGroupOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6399,9 +5728,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: optionGroupNotFound.
      */
-    public func describeOptionGroupsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeOptionGroupsAsync(
             input: RDSModel.DescribeOptionGroupsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6409,9 +5737,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeOptionGroupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeOptionGroups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeOptionGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6438,18 +5765,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: optionGroupNotFound.
      */
-    public func describeOptionGroupsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeOptionGroupsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.OptionGroupsForDescribeOptionGroups {
+    public func describeOptionGroupsSync(
+            input: RDSModel.DescribeOptionGroupsMessage) throws -> RDSModel.OptionGroupsForDescribeOptionGroups {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeOptionGroupsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeOptionGroups,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeOptionGroupsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6475,9 +5800,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions
            object will be validated before being returned to caller.
      */
-    public func describeOrderableDBInstanceOptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeOrderableDBInstanceOptionsAsync(
             input: RDSModel.DescribeOrderableDBInstanceOptionsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6485,9 +5809,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeOrderableDBInstanceOptionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeOrderableDBInstanceOptions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeOrderableDBInstanceOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6513,18 +5836,16 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeOrderableDBInstanceOptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeOrderableDBInstanceOptionsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions {
+    public func describeOrderableDBInstanceOptionsSync(
+            input: RDSModel.DescribeOrderableDBInstanceOptionsMessage) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeOrderableDBInstanceOptionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeOrderableDBInstanceOptions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeOrderableDBInstanceOptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6551,9 +5872,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: resourceNotFound.
      */
-    public func describePendingMaintenanceActionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describePendingMaintenanceActionsAsync(
             input: RDSModel.DescribePendingMaintenanceActionsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6561,9 +5881,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describePendingMaintenanceActionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describePendingMaintenanceActions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribePendingMaintenanceActionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6590,18 +5909,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: resourceNotFound.
      */
-    public func describePendingMaintenanceActionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribePendingMaintenanceActionsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions {
+    public func describePendingMaintenanceActionsSync(
+            input: RDSModel.DescribePendingMaintenanceActionsMessage) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describePendingMaintenanceActionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describePendingMaintenanceActions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribePendingMaintenanceActionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6628,9 +5945,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: reservedDBInstanceNotFound.
      */
-    public func describeReservedDBInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeReservedDBInstancesAsync(
             input: RDSModel.DescribeReservedDBInstancesMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6638,9 +5954,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeReservedDBInstancesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeReservedDBInstances,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeReservedDBInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6667,18 +5982,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: reservedDBInstanceNotFound.
      */
-    public func describeReservedDBInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeReservedDBInstancesMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances {
+    public func describeReservedDBInstancesSync(
+            input: RDSModel.DescribeReservedDBInstancesMessage) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeReservedDBInstancesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeReservedDBInstances,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeReservedDBInstancesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6705,9 +6018,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: reservedDBInstancesOfferingNotFound.
      */
-    public func describeReservedDBInstancesOfferingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeReservedDBInstancesOfferingsAsync(
             input: RDSModel.DescribeReservedDBInstancesOfferingsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6715,9 +6027,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeReservedDBInstancesOfferingsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeReservedDBInstancesOfferings,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeReservedDBInstancesOfferingsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6744,18 +6055,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: reservedDBInstancesOfferingNotFound.
      */
-    public func describeReservedDBInstancesOfferingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeReservedDBInstancesOfferingsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings {
+    public func describeReservedDBInstancesOfferingsSync(
+            input: RDSModel.DescribeReservedDBInstancesOfferingsMessage) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeReservedDBInstancesOfferingsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeReservedDBInstancesOfferings,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeReservedDBInstancesOfferingsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6781,9 +6090,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            callback when the operation is complete. The SourceRegionMessageForDescribeSourceRegions
            object will be validated before being returned to caller.
      */
-    public func describeSourceRegionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeSourceRegionsAsync(
             input: RDSModel.DescribeSourceRegionsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6791,9 +6099,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeSourceRegionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeSourceRegions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeSourceRegionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6819,18 +6126,16 @@ public struct AWSRDSClient: RDSClientProtocol {
      - Returns: The SourceRegionMessageForDescribeSourceRegions object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func describeSourceRegionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeSourceRegionsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions {
+    public func describeSourceRegionsSync(
+            input: RDSModel.DescribeSourceRegionsMessage) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeSourceRegionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeSourceRegions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeSourceRegionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6857,9 +6162,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func describeValidDBInstanceModificationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeValidDBInstanceModificationsAsync(
             input: RDSModel.DescribeValidDBInstanceModificationsMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6867,9 +6171,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeValidDBInstanceModificationsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeValidDBInstanceModifications,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeValidDBInstanceModificationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6896,18 +6199,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func describeValidDBInstanceModificationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DescribeValidDBInstanceModificationsMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications {
+    public func describeValidDBInstanceModificationsSync(
+            input: RDSModel.DescribeValidDBInstanceModificationsMessage) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeValidDBInstanceModificationsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeValidDBInstanceModifications,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DescribeValidDBInstanceModificationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6934,9 +6235,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, dBLogFileNotFound.
      */
-    public func downloadDBLogFilePortionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func downloadDBLogFilePortionAsync(
             input: RDSModel.DownloadDBLogFilePortionMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -6944,9 +6244,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: downloadDBLogFilePortionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.downloadDBLogFilePortion,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DownloadDBLogFilePortionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -6973,18 +6272,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, dBLogFileNotFound.
      */
-    public func downloadDBLogFilePortionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.DownloadDBLogFilePortionMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
+    public func downloadDBLogFilePortionSync(
+            input: RDSModel.DownloadDBLogFilePortionMessage) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: downloadDBLogFilePortionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.downloadDBLogFilePortion,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DownloadDBLogFilePortionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7011,9 +6308,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func failoverDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func failoverDBClusterAsync(
             input: RDSModel.FailoverDBClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7021,9 +6317,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: failoverDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.failoverDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = FailoverDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7050,18 +6345,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func failoverDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.FailoverDBClusterMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
+    public func failoverDBClusterSync(
+            input: RDSModel.FailoverDBClusterMessage) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: failoverDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.failoverDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = FailoverDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7088,9 +6381,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
      */
-    public func importInstallationMediaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func importInstallationMediaAsync(
             input: RDSModel.ImportInstallationMediaMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7098,9 +6390,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: importInstallationMediaOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.importInstallationMedia,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ImportInstallationMediaOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7127,18 +6418,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
      */
-    public func importInstallationMediaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ImportInstallationMediaMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.InstallationMediaForImportInstallationMedia {
+    public func importInstallationMediaSync(
+            input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: importInstallationMediaOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.importInstallationMedia,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ImportInstallationMediaOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7165,9 +6454,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listTagsForResourceAsync(
             input: RDSModel.ListTagsForResourceMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7175,9 +6463,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTagsForResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7204,18 +6491,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ListTagsForResourceMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.TagListMessageForListTagsForResource {
+    public func listTagsForResourceSync(
+            input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTagsForResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7242,9 +6527,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: certificateNotFound.
      */
-    public func modifyCertificatesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyCertificatesAsync(
             input: RDSModel.ModifyCertificatesMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7252,9 +6536,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyCertificatesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyCertificates,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyCertificatesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7281,18 +6564,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: certificateNotFound.
      */
-    public func modifyCertificatesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyCertificatesMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates {
+    public func modifyCertificatesSync(
+            input: RDSModel.ModifyCertificatesMessage) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyCertificatesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyCertificates,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyCertificatesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7319,9 +6600,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterCapacity, invalidDBClusterState.
      */
-    public func modifyCurrentDBClusterCapacityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyCurrentDBClusterCapacityAsync(
             input: RDSModel.ModifyCurrentDBClusterCapacityMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7329,9 +6609,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyCurrentDBClusterCapacityOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyCurrentDBClusterCapacity,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyCurrentDBClusterCapacityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7358,18 +6637,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterCapacity, invalidDBClusterState.
      */
-    public func modifyCurrentDBClusterCapacitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyCurrentDBClusterCapacityMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
+    public func modifyCurrentDBClusterCapacitySync(
+            input: RDSModel.ModifyCurrentDBClusterCapacityMessage) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyCurrentDBClusterCapacityOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyCurrentDBClusterCapacity,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyCurrentDBClusterCapacityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7396,9 +6673,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
      */
-    public func modifyDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyDBClusterAsync(
             input: RDSModel.ModifyDBClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7406,9 +6682,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7435,18 +6710,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
      */
-    public func modifyDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyDBClusterMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster {
+    public func modifyDBClusterSync(
+            input: RDSModel.ModifyDBClusterMessage) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7473,9 +6746,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterEndpointNotFound, dBInstanceNotFound, invalidDBClusterEndpointState, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func modifyDBClusterEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyDBClusterEndpointAsync(
             input: RDSModel.ModifyDBClusterEndpointMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7483,9 +6755,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBClusterEndpointOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBClusterEndpoint,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBClusterEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7512,18 +6783,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterEndpointNotFound, dBInstanceNotFound, invalidDBClusterEndpointState, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func modifyDBClusterEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyDBClusterEndpointMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint {
+    public func modifyDBClusterEndpointSync(
+            input: RDSModel.ModifyDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBClusterEndpointOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBClusterEndpoint,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBClusterEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7550,9 +6819,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyDBClusterParameterGroupAsync(
             input: RDSModel.ModifyDBClusterParameterGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7560,9 +6828,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBClusterParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBClusterParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBClusterParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7589,18 +6856,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyDBClusterParameterGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup {
+    public func modifyDBClusterParameterGroupSync(
+            input: RDSModel.ModifyDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBClusterParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBClusterParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBClusterParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7627,9 +6892,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBClusterSnapshotAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyDBClusterSnapshotAttributeAsync(
             input: RDSModel.ModifyDBClusterSnapshotAttributeMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7637,9 +6901,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBClusterSnapshotAttributeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBClusterSnapshotAttribute,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBClusterSnapshotAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7666,18 +6929,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBClusterSnapshotAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyDBClusterSnapshotAttributeMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute {
+    public func modifyDBClusterSnapshotAttributeSync(
+            input: RDSModel.ModifyDBClusterSnapshotAttributeMessage) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBClusterSnapshotAttributeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBClusterSnapshotAttribute,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBClusterSnapshotAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7704,9 +6965,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func modifyDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyDBInstanceAsync(
             input: RDSModel.ModifyDBInstanceMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7714,9 +6974,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7743,18 +7002,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func modifyDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyDBInstanceMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
+    public func modifyDBInstanceSync(
+            input: RDSModel.ModifyDBInstanceMessage) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7781,9 +7038,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyDBParameterGroupAsync(
             input: RDSModel.ModifyDBParameterGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7791,9 +7047,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7820,18 +7075,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func modifyDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyDBParameterGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
+    public func modifyDBParameterGroupSync(
+            input: RDSModel.ModifyDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7858,9 +7111,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
      */
-    public func modifyDBProxyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyDBProxyAsync(
             input: RDSModel.ModifyDBProxyRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7868,9 +7120,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBProxyOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBProxy,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBProxyOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7897,18 +7148,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
      */
-    public func modifyDBProxySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyDBProxyRequest,
-            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy {
+    public func modifyDBProxySync(
+            input: RDSModel.ModifyDBProxyRequest) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBProxyOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBProxy,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBProxyOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7935,9 +7184,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound.
      */
-    public func modifyDBProxyTargetGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyDBProxyTargetGroupAsync(
             input: RDSModel.ModifyDBProxyTargetGroupRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -7945,9 +7193,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBProxyTargetGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBProxyTargetGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBProxyTargetGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -7974,18 +7221,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound.
      */
-    public func modifyDBProxyTargetGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyDBProxyTargetGroupRequest,
-            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
+    public func modifyDBProxyTargetGroupSync(
+            input: RDSModel.ModifyDBProxyTargetGroupRequest) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBProxyTargetGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBProxyTargetGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBProxyTargetGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8012,9 +7257,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound.
      */
-    public func modifyDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyDBSnapshotAsync(
             input: RDSModel.ModifyDBSnapshotMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8022,9 +7266,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8051,18 +7294,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound.
      */
-    public func modifyDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyDBSnapshotMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot {
+    public func modifyDBSnapshotSync(
+            input: RDSModel.ModifyDBSnapshotMessage) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8089,9 +7330,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSnapshotNotFound, invalidDBSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBSnapshotAttributeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyDBSnapshotAttributeAsync(
             input: RDSModel.ModifyDBSnapshotAttributeMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8099,9 +7339,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBSnapshotAttributeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBSnapshotAttribute,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBSnapshotAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8128,18 +7367,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSnapshotNotFound, invalidDBSnapshotState, sharedSnapshotQuotaExceeded.
      */
-    public func modifyDBSnapshotAttributeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyDBSnapshotAttributeMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
+    public func modifyDBSnapshotAttributeSync(
+            input: RDSModel.ModifyDBSnapshotAttributeMessage) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBSnapshotAttributeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBSnapshotAttribute,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBSnapshotAttributeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8166,9 +7403,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetQuotaExceeded, invalidSubnet, subnetAlreadyInUse.
      */
-    public func modifyDBSubnetGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyDBSubnetGroupAsync(
             input: RDSModel.ModifyDBSubnetGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8176,9 +7412,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBSubnetGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBSubnetGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBSubnetGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8205,18 +7440,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetQuotaExceeded, invalidSubnet, subnetAlreadyInUse.
      */
-    public func modifyDBSubnetGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyDBSubnetGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
+    public func modifyDBSubnetGroupSync(
+            input: RDSModel.ModifyDBSubnetGroupMessage) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyDBSubnetGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBSubnetGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyDBSubnetGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8243,9 +7476,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, subscriptionCategoryNotFound, subscriptionNotFound.
      */
-    public func modifyEventSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyEventSubscriptionAsync(
             input: RDSModel.ModifyEventSubscriptionMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8253,9 +7485,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyEventSubscriptionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyEventSubscription,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyEventSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8282,18 +7513,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, subscriptionCategoryNotFound, subscriptionNotFound.
      */
-    public func modifyEventSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyEventSubscriptionMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription {
+    public func modifyEventSubscriptionSync(
+            input: RDSModel.ModifyEventSubscriptionMessage) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyEventSubscriptionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyEventSubscription,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyEventSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8320,9 +7549,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func modifyGlobalClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyGlobalClusterAsync(
             input: RDSModel.ModifyGlobalClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8330,9 +7558,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyGlobalClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyGlobalCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyGlobalClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8359,18 +7586,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func modifyGlobalClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyGlobalClusterMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
+    public func modifyGlobalClusterSync(
+            input: RDSModel.ModifyGlobalClusterMessage) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyGlobalClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyGlobalCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyGlobalClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8397,9 +7622,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func modifyOptionGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func modifyOptionGroupAsync(
             input: RDSModel.ModifyOptionGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8407,9 +7631,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyOptionGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyOptionGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyOptionGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8436,18 +7659,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
-    public func modifyOptionGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ModifyOptionGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup {
+    public func modifyOptionGroupSync(
+            input: RDSModel.ModifyOptionGroupMessage) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: modifyOptionGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyOptionGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ModifyOptionGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8474,9 +7695,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func promoteReadReplicaAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func promoteReadReplicaAsync(
             input: RDSModel.PromoteReadReplicaMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8484,9 +7704,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: promoteReadReplicaOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.promoteReadReplica,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = PromoteReadReplicaOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8513,18 +7732,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func promoteReadReplicaSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.PromoteReadReplicaMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica {
+    public func promoteReadReplicaSync(
+            input: RDSModel.PromoteReadReplicaMessage) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: promoteReadReplicaOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.promoteReadReplica,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = PromoteReadReplicaOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8551,9 +7768,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState.
      */
-    public func promoteReadReplicaDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func promoteReadReplicaDBClusterAsync(
             input: RDSModel.PromoteReadReplicaDBClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8561,9 +7777,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: promoteReadReplicaDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.promoteReadReplicaDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = PromoteReadReplicaDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8590,18 +7805,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState.
      */
-    public func promoteReadReplicaDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.PromoteReadReplicaDBClusterMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster {
+    public func promoteReadReplicaDBClusterSync(
+            input: RDSModel.PromoteReadReplicaDBClusterMessage) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: promoteReadReplicaDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.promoteReadReplicaDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = PromoteReadReplicaDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8628,9 +7841,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: reservedDBInstanceAlreadyExists, reservedDBInstanceQuotaExceeded, reservedDBInstancesOfferingNotFound.
      */
-    public func purchaseReservedDBInstancesOfferingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func purchaseReservedDBInstancesOfferingAsync(
             input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8638,9 +7850,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: purchaseReservedDBInstancesOfferingOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.purchaseReservedDBInstancesOffering,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = PurchaseReservedDBInstancesOfferingOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8667,18 +7878,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: reservedDBInstanceAlreadyExists, reservedDBInstanceQuotaExceeded, reservedDBInstancesOfferingNotFound.
      */
-    public func purchaseReservedDBInstancesOfferingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.PurchaseReservedDBInstancesOfferingMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering {
+    public func purchaseReservedDBInstancesOfferingSync(
+            input: RDSModel.PurchaseReservedDBInstancesOfferingMessage) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: purchaseReservedDBInstancesOfferingOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.purchaseReservedDBInstancesOffering,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = PurchaseReservedDBInstancesOfferingOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8705,9 +7914,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func rebootDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func rebootDBInstanceAsync(
             input: RDSModel.RebootDBInstanceMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8715,9 +7923,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: rebootDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.rebootDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RebootDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8744,18 +7951,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
-    public func rebootDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RebootDBInstanceMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
+    public func rebootDBInstanceSync(
+            input: RDSModel.RebootDBInstanceMessage) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: rebootDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.rebootDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RebootDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8782,9 +7987,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func registerDBProxyTargetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func registerDBProxyTargetsAsync(
             input: RDSModel.RegisterDBProxyTargetsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8792,9 +7996,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: registerDBProxyTargetsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerDBProxyTargets,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RegisterDBProxyTargetsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8821,18 +8024,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func registerDBProxyTargetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RegisterDBProxyTargetsRequest,
-            reporting: InvocationReportingType) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
+    public func registerDBProxyTargetsSync(
+            input: RDSModel.RegisterDBProxyTargetsRequest) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: registerDBProxyTargetsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerDBProxyTargets,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RegisterDBProxyTargetsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8859,9 +8060,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func removeFromGlobalClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func removeFromGlobalClusterAsync(
             input: RDSModel.RemoveFromGlobalClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8869,9 +8069,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removeFromGlobalClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removeFromGlobalCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemoveFromGlobalClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8898,18 +8097,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, globalClusterNotFound, invalidGlobalClusterState.
      */
-    public func removeFromGlobalClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RemoveFromGlobalClusterMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
+    public func removeFromGlobalClusterSync(
+            input: RDSModel.RemoveFromGlobalClusterMessage) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removeFromGlobalClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removeFromGlobalCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemoveFromGlobalClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8935,9 +8132,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBClusterRoleNotFound, invalidDBClusterState.
      */
-    public func removeRoleFromDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func removeRoleFromDBClusterAsync(
             input: RDSModel.RemoveRoleFromDBClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -8945,9 +8141,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removeRoleFromDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removeRoleFromDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemoveRoleFromDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -8972,18 +8167,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated RemoveRoleFromDBClusterMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBClusterRoleNotFound, invalidDBClusterState.
      */
-    public func removeRoleFromDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RemoveRoleFromDBClusterMessage,
-            reporting: InvocationReportingType) throws {
+    public func removeRoleFromDBClusterSync(
+            input: RDSModel.RemoveRoleFromDBClusterMessage) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removeRoleFromDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removeRoleFromDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemoveRoleFromDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9009,9 +8202,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBInstanceNotFound, dBInstanceRoleNotFound, invalidDBInstanceState.
      */
-    public func removeRoleFromDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func removeRoleFromDBInstanceAsync(
             input: RDSModel.RemoveRoleFromDBInstanceMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9019,9 +8211,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removeRoleFromDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removeRoleFromDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemoveRoleFromDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9046,18 +8237,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated RemoveRoleFromDBInstanceMessage object being passed to this operation.
      - Throws: dBInstanceNotFound, dBInstanceRoleNotFound, invalidDBInstanceState.
      */
-    public func removeRoleFromDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RemoveRoleFromDBInstanceMessage,
-            reporting: InvocationReportingType) throws {
+    public func removeRoleFromDBInstanceSync(
+            input: RDSModel.RemoveRoleFromDBInstanceMessage) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removeRoleFromDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removeRoleFromDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemoveRoleFromDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9084,9 +8273,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: sourceNotFound, subscriptionNotFound.
      */
-    public func removeSourceIdentifierFromSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func removeSourceIdentifierFromSubscriptionAsync(
             input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9094,9 +8282,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removeSourceIdentifierFromSubscriptionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removeSourceIdentifierFromSubscription,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemoveSourceIdentifierFromSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9123,18 +8310,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: sourceNotFound, subscriptionNotFound.
      */
-    public func removeSourceIdentifierFromSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription {
+    public func removeSourceIdentifierFromSubscriptionSync(
+            input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removeSourceIdentifierFromSubscriptionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removeSourceIdentifierFromSubscription,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemoveSourceIdentifierFromSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9160,9 +8345,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            is complete.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func removeTagsFromResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func removeTagsFromResourceAsync(
             input: RDSModel.RemoveTagsFromResourceMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9170,9 +8354,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removeTagsFromResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removeTagsFromResource,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemoveTagsFromResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9197,18 +8380,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          - input: The validated RemoveTagsFromResourceMessage object being passed to this operation.
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
-    public func removeTagsFromResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RemoveTagsFromResourceMessage,
-            reporting: InvocationReportingType) throws {
+    public func removeTagsFromResourceSync(
+            input: RDSModel.RemoveTagsFromResourceMessage) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removeTagsFromResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removeTagsFromResource,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemoveTagsFromResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9235,9 +8416,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBClusterParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func resetDBClusterParameterGroupAsync(
             input: RDSModel.ResetDBClusterParameterGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9245,9 +8425,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: resetDBClusterParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.resetDBClusterParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ResetDBClusterParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9274,18 +8453,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBClusterParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ResetDBClusterParameterGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup {
+    public func resetDBClusterParameterGroupSync(
+            input: RDSModel.ResetDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: resetDBClusterParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.resetDBClusterParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ResetDBClusterParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9312,9 +8489,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBParameterGroupAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func resetDBParameterGroupAsync(
             input: RDSModel.ResetDBParameterGroupMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9322,9 +8498,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: resetDBParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.resetDBParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ResetDBParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9351,18 +8526,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
-    public func resetDBParameterGroupSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.ResetDBParameterGroupMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup {
+    public func resetDBParameterGroupSync(
+            input: RDSModel.ResetDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: resetDBParameterGroupOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.resetDBParameterGroup,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ResetDBParameterGroupOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9389,9 +8562,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromS3Async<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func restoreDBClusterFromS3Async(
             input: RDSModel.RestoreDBClusterFromS3Message, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9399,9 +8571,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: restoreDBClusterFromS3OperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreDBClusterFromS3,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RestoreDBClusterFromS3OperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9428,18 +8599,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromS3Sync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RestoreDBClusterFromS3Message,
-            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
+    public func restoreDBClusterFromS3Sync(
+            input: RDSModel.RestoreDBClusterFromS3Message) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: restoreDBClusterFromS3OperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreDBClusterFromS3,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RestoreDBClusterFromS3OperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9466,9 +8635,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func restoreDBClusterFromSnapshotAsync(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9476,9 +8644,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: restoreDBClusterFromSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreDBClusterFromSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RestoreDBClusterFromSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9505,18 +8672,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
-    public func restoreDBClusterFromSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RestoreDBClusterFromSnapshotMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
+    public func restoreDBClusterFromSnapshotSync(
+            input: RDSModel.RestoreDBClusterFromSnapshotMessage) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: restoreDBClusterFromSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreDBClusterFromSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RestoreDBClusterFromSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9543,9 +8708,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
-    public func restoreDBClusterToPointInTimeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func restoreDBClusterToPointInTimeAsync(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9553,9 +8717,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: restoreDBClusterToPointInTimeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreDBClusterToPointInTime,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RestoreDBClusterToPointInTimeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9582,18 +8745,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
-    public func restoreDBClusterToPointInTimeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RestoreDBClusterToPointInTimeMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
+    public func restoreDBClusterToPointInTimeSync(
+            input: RDSModel.RestoreDBClusterToPointInTimeMessage) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: restoreDBClusterToPointInTimeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreDBClusterToPointInTime,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RestoreDBClusterToPointInTimeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9620,9 +8781,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromDBSnapshotAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func restoreDBInstanceFromDBSnapshotAsync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9630,9 +8790,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: restoreDBInstanceFromDBSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreDBInstanceFromDBSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RestoreDBInstanceFromDBSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9659,18 +8818,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromDBSnapshotSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
+    public func restoreDBInstanceFromDBSnapshotSync(
+            input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: restoreDBInstanceFromDBSnapshotOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreDBInstanceFromDBSnapshot,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RestoreDBInstanceFromDBSnapshotOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9697,9 +8854,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromS3Async<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func restoreDBInstanceFromS3Async(
             input: RDSModel.RestoreDBInstanceFromS3Message, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9707,9 +8863,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: restoreDBInstanceFromS3OperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreDBInstanceFromS3,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RestoreDBInstanceFromS3OperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9736,18 +8891,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceFromS3Sync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RestoreDBInstanceFromS3Message,
-            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
+    public func restoreDBInstanceFromS3Sync(
+            input: RDSModel.RestoreDBInstanceFromS3Message) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: restoreDBInstanceFromS3OperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreDBInstanceFromS3,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RestoreDBInstanceFromS3OperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9774,9 +8927,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceToPointInTimeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func restoreDBInstanceToPointInTimeAsync(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9784,9 +8936,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: restoreDBInstanceToPointInTimeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreDBInstanceToPointInTime,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RestoreDBInstanceToPointInTimeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9813,18 +8964,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
-    public func restoreDBInstanceToPointInTimeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RestoreDBInstanceToPointInTimeMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {
+    public func restoreDBInstanceToPointInTimeSync(
+            input: RDSModel.RestoreDBInstanceToPointInTimeMessage) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: restoreDBInstanceToPointInTimeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreDBInstanceToPointInTime,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RestoreDBInstanceToPointInTimeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9851,9 +9000,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func revokeDBSecurityGroupIngressAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func revokeDBSecurityGroupIngressAsync(
             input: RDSModel.RevokeDBSecurityGroupIngressMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9861,9 +9009,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: revokeDBSecurityGroupIngressOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.revokeDBSecurityGroupIngress,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RevokeDBSecurityGroupIngressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9890,18 +9037,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
-    public func revokeDBSecurityGroupIngressSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.RevokeDBSecurityGroupIngressMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress {
+    public func revokeDBSecurityGroupIngressSync(
+            input: RDSModel.RevokeDBSecurityGroupIngressMessage) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: revokeDBSecurityGroupIngressOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.revokeDBSecurityGroupIngress,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RevokeDBSecurityGroupIngressOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9928,9 +9073,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
      */
-    public func startActivityStreamAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func startActivityStreamAsync(
             input: RDSModel.StartActivityStreamRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -9938,9 +9082,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startActivityStreamOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startActivityStream,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StartActivityStreamOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -9967,18 +9110,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
      */
-    public func startActivityStreamSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.StartActivityStreamRequest,
-            reporting: InvocationReportingType) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
+    public func startActivityStreamSync(
+            input: RDSModel.StartActivityStreamRequest) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startActivityStreamOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startActivityStream,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StartActivityStreamOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -10005,9 +9146,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func startDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func startDBClusterAsync(
             input: RDSModel.StartDBClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10015,9 +9155,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StartDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -10044,18 +9183,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func startDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.StartDBClusterMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.StartDBClusterResultForStartDBCluster {
+    public func startDBClusterSync(
+            input: RDSModel.StartDBClusterMessage) throws -> RDSModel.StartDBClusterResultForStartDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StartDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -10082,9 +9219,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationNotFound, dBClusterNotFound, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible.
      */
-    public func startDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func startDBInstanceAsync(
             input: RDSModel.StartDBInstanceMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10092,9 +9228,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StartDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -10121,18 +9256,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationNotFound, dBClusterNotFound, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible.
      */
-    public func startDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.StartDBInstanceMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
+    public func startDBInstanceSync(
+            input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StartDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -10159,9 +9292,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
      */
-    public func startExportTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func startExportTaskAsync(
             input: RDSModel.StartExportTaskMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10169,9 +9301,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startExportTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startExportTask,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StartExportTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -10198,18 +9329,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
      */
-    public func startExportTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.StartExportTaskMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.ExportTaskForStartExportTask {
+    public func startExportTaskSync(
+            input: RDSModel.StartExportTaskMessage) throws -> RDSModel.ExportTaskForStartExportTask {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startExportTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startExportTask,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StartExportTaskOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -10236,9 +9365,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func stopActivityStreamAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func stopActivityStreamAsync(
             input: RDSModel.StopActivityStreamRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10246,9 +9374,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: stopActivityStreamOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopActivityStream,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StopActivityStreamOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -10275,18 +9402,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
-    public func stopActivityStreamSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.StopActivityStreamRequest,
-            reporting: InvocationReportingType) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
+    public func stopActivityStreamSync(
+            input: RDSModel.StopActivityStreamRequest) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: stopActivityStreamOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopActivityStream,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StopActivityStreamOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -10313,9 +9438,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func stopDBClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func stopDBClusterAsync(
             input: RDSModel.StopDBClusterMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10323,9 +9447,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: stopDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StopDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -10352,18 +9475,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
-    public func stopDBClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.StopDBClusterMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.StopDBClusterResultForStopDBCluster {
+    public func stopDBClusterSync(
+            input: RDSModel.StopDBClusterMessage) throws -> RDSModel.StopDBClusterResultForStopDBCluster {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: stopDBClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopDBCluster,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StopDBClusterOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -10390,9 +9511,8 @@ public struct AWSRDSClient: RDSClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func stopDBInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func stopDBInstanceAsync(
             input: RDSModel.StopDBInstanceMessage, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -10400,9 +9520,8 @@ public struct AWSRDSClient: RDSClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: stopDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StopDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -10429,18 +9548,16 @@ public struct AWSRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
-    public func stopDBInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSModel.StopDBInstanceMessage,
-            reporting: InvocationReportingType) throws -> RDSModel.StopDBInstanceResultForStopDBInstance {
+    public func stopDBInstanceSync(
+            input: RDSModel.StopDBInstanceMessage) throws -> RDSModel.StopDBInstanceResultForStopDBInstance {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: stopDBInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopDBInstance,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = StopDBInstanceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(

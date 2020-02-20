@@ -28,145 +28,105 @@ import SmokeHTTPClient
  Client Protocol for the SimpleQueue service.
  */
 public protocol SimpleQueueClientProtocol {
-    typealias AddPermissionSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.AddPermissionRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias AddPermissionAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias AddPermissionSyncType = (
+            _ input: SimpleQueueModel.AddPermissionRequest) throws -> ()
+    typealias AddPermissionAsyncType = (
             _ input: SimpleQueueModel.AddPermissionRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias ChangeMessageVisibilitySyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.ChangeMessageVisibilityRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias ChangeMessageVisibilityAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ChangeMessageVisibilitySyncType = (
+            _ input: SimpleQueueModel.ChangeMessageVisibilityRequest) throws -> ()
+    typealias ChangeMessageVisibilityAsyncType = (
             _ input: SimpleQueueModel.ChangeMessageVisibilityRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias ChangeMessageVisibilityBatchSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest,
-            _ reporting: InvocationReportingType) throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch
-    typealias ChangeMessageVisibilityBatchAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ChangeMessageVisibilityBatchSyncType = (
+            _ input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest) throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch
+    typealias ChangeMessageVisibilityBatchAsyncType = (
             _ input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, HTTPClientError>) -> ()) throws -> ()
-    typealias CreateQueueSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.CreateQueueRequest,
-            _ reporting: InvocationReportingType) throws -> SimpleQueueModel.CreateQueueResultForCreateQueue
-    typealias CreateQueueAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias CreateQueueSyncType = (
+            _ input: SimpleQueueModel.CreateQueueRequest) throws -> SimpleQueueModel.CreateQueueResultForCreateQueue
+    typealias CreateQueueAsyncType = (
             _ input: SimpleQueueModel.CreateQueueRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteMessageSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.DeleteMessageRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteMessageAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteMessageSyncType = (
+            _ input: SimpleQueueModel.DeleteMessageRequest) throws -> ()
+    typealias DeleteMessageAsyncType = (
             _ input: SimpleQueueModel.DeleteMessageRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteMessageBatchSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.DeleteMessageBatchRequest,
-            _ reporting: InvocationReportingType) throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch
-    typealias DeleteMessageBatchAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteMessageBatchSyncType = (
+            _ input: SimpleQueueModel.DeleteMessageBatchRequest) throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch
+    typealias DeleteMessageBatchAsyncType = (
             _ input: SimpleQueueModel.DeleteMessageBatchRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteQueueSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.DeleteQueueRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteQueueAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteQueueSyncType = (
+            _ input: SimpleQueueModel.DeleteQueueRequest) throws -> ()
+    typealias DeleteQueueAsyncType = (
             _ input: SimpleQueueModel.DeleteQueueRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias GetQueueAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.GetQueueAttributesRequest,
-            _ reporting: InvocationReportingType) throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes
-    typealias GetQueueAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetQueueAttributesSyncType = (
+            _ input: SimpleQueueModel.GetQueueAttributesRequest) throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes
+    typealias GetQueueAttributesAsyncType = (
             _ input: SimpleQueueModel.GetQueueAttributesRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, HTTPClientError>) -> ()) throws -> ()
-    typealias GetQueueUrlSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.GetQueueUrlRequest,
-            _ reporting: InvocationReportingType) throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl
-    typealias GetQueueUrlAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetQueueUrlSyncType = (
+            _ input: SimpleQueueModel.GetQueueUrlRequest) throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl
+    typealias GetQueueUrlAsyncType = (
             _ input: SimpleQueueModel.GetQueueUrlRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, HTTPClientError>) -> ()) throws -> ()
-    typealias ListDeadLetterSourceQueuesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest,
-            _ reporting: InvocationReportingType) throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues
-    typealias ListDeadLetterSourceQueuesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListDeadLetterSourceQueuesSyncType = (
+            _ input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest) throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues
+    typealias ListDeadLetterSourceQueuesAsyncType = (
             _ input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, HTTPClientError>) -> ()) throws -> ()
-    typealias ListQueueTagsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.ListQueueTagsRequest,
-            _ reporting: InvocationReportingType) throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags
-    typealias ListQueueTagsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListQueueTagsSyncType = (
+            _ input: SimpleQueueModel.ListQueueTagsRequest) throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags
+    typealias ListQueueTagsAsyncType = (
             _ input: SimpleQueueModel.ListQueueTagsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, HTTPClientError>) -> ()) throws -> ()
-    typealias ListQueuesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.ListQueuesRequest,
-            _ reporting: InvocationReportingType) throws -> SimpleQueueModel.ListQueuesResultForListQueues
-    typealias ListQueuesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListQueuesSyncType = (
+            _ input: SimpleQueueModel.ListQueuesRequest) throws -> SimpleQueueModel.ListQueuesResultForListQueues
+    typealias ListQueuesAsyncType = (
             _ input: SimpleQueueModel.ListQueuesRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, HTTPClientError>) -> ()) throws -> ()
-    typealias PurgeQueueSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.PurgeQueueRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PurgeQueueAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PurgeQueueSyncType = (
+            _ input: SimpleQueueModel.PurgeQueueRequest) throws -> ()
+    typealias PurgeQueueAsyncType = (
             _ input: SimpleQueueModel.PurgeQueueRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias ReceiveMessageSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.ReceiveMessageRequest,
-            _ reporting: InvocationReportingType) throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage
-    typealias ReceiveMessageAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ReceiveMessageSyncType = (
+            _ input: SimpleQueueModel.ReceiveMessageRequest) throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage
+    typealias ReceiveMessageAsyncType = (
             _ input: SimpleQueueModel.ReceiveMessageRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, HTTPClientError>) -> ()) throws -> ()
-    typealias RemovePermissionSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.RemovePermissionRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias RemovePermissionAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias RemovePermissionSyncType = (
+            _ input: SimpleQueueModel.RemovePermissionRequest) throws -> ()
+    typealias RemovePermissionAsyncType = (
             _ input: SimpleQueueModel.RemovePermissionRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias SendMessageSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.SendMessageRequest,
-            _ reporting: InvocationReportingType) throws -> SimpleQueueModel.SendMessageResultForSendMessage
-    typealias SendMessageAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias SendMessageSyncType = (
+            _ input: SimpleQueueModel.SendMessageRequest) throws -> SimpleQueueModel.SendMessageResultForSendMessage
+    typealias SendMessageAsyncType = (
             _ input: SimpleQueueModel.SendMessageRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, HTTPClientError>) -> ()) throws -> ()
-    typealias SendMessageBatchSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.SendMessageBatchRequest,
-            _ reporting: InvocationReportingType) throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch
-    typealias SendMessageBatchAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias SendMessageBatchSyncType = (
+            _ input: SimpleQueueModel.SendMessageBatchRequest) throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch
+    typealias SendMessageBatchAsyncType = (
             _ input: SimpleQueueModel.SendMessageBatchRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, HTTPClientError>) -> ()) throws -> ()
-    typealias SetQueueAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.SetQueueAttributesRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias SetQueueAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias SetQueueAttributesSyncType = (
+            _ input: SimpleQueueModel.SetQueueAttributesRequest) throws -> ()
+    typealias SetQueueAttributesAsyncType = (
             _ input: SimpleQueueModel.SetQueueAttributesRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias TagQueueSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.TagQueueRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias TagQueueAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias TagQueueSyncType = (
+            _ input: SimpleQueueModel.TagQueueRequest) throws -> ()
+    typealias TagQueueAsyncType = (
             _ input: SimpleQueueModel.TagQueueRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias UntagQueueSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: SimpleQueueModel.UntagQueueRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias UntagQueueAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UntagQueueSyncType = (
+            _ input: SimpleQueueModel.UntagQueueRequest) throws -> ()
+    typealias UntagQueueAsyncType = (
             _ input: SimpleQueueModel.UntagQueueRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
 
     /**
@@ -178,9 +138,8 @@ public protocol SimpleQueueClientProtocol {
            is complete.
            The possible errors are: overLimit.
      */
-    func addPermissionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func addPermissionAsync(
             input: SimpleQueueModel.AddPermissionRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -190,9 +149,8 @@ public protocol SimpleQueueClientProtocol {
          - input: The validated AddPermissionRequest object being passed to this operation.
      - Throws: overLimit.
      */
-    func addPermissionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.AddPermissionRequest,
-            reporting: InvocationReportingType) throws
+    func addPermissionSync(
+            input: SimpleQueueModel.AddPermissionRequest) throws
 
     /**
      Invokes the ChangeMessageVisibility operation returning immediately and passing the response to a callback.
@@ -203,9 +161,8 @@ public protocol SimpleQueueClientProtocol {
            is complete.
            The possible errors are: messageNotInflight, receiptHandleIsInvalid.
      */
-    func changeMessageVisibilityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func changeMessageVisibilityAsync(
             input: SimpleQueueModel.ChangeMessageVisibilityRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -215,9 +172,8 @@ public protocol SimpleQueueClientProtocol {
          - input: The validated ChangeMessageVisibilityRequest object being passed to this operation.
      - Throws: messageNotInflight, receiptHandleIsInvalid.
      */
-    func changeMessageVisibilitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.ChangeMessageVisibilityRequest,
-            reporting: InvocationReportingType) throws
+    func changeMessageVisibilitySync(
+            input: SimpleQueueModel.ChangeMessageVisibilityRequest) throws
 
     /**
      Invokes the ChangeMessageVisibilityBatch operation returning immediately and passing the response to a callback.
@@ -229,9 +185,8 @@ public protocol SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
-    func changeMessageVisibilityBatchAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func changeMessageVisibilityBatchAsync(
             input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, HTTPClientError>) -> ()) throws
 
     /**
@@ -243,9 +198,8 @@ public protocol SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
-    func changeMessageVisibilityBatchSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest,
-            reporting: InvocationReportingType) throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch
+    func changeMessageVisibilityBatchSync(
+            input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest) throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch
 
     /**
      Invokes the CreateQueue operation returning immediately and passing the response to a callback.
@@ -257,9 +211,8 @@ public protocol SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: queueDeletedRecently, queueNameExists.
      */
-    func createQueueAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func createQueueAsync(
             input: SimpleQueueModel.CreateQueueRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, HTTPClientError>) -> ()) throws
 
     /**
@@ -271,9 +224,8 @@ public protocol SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: queueDeletedRecently, queueNameExists.
      */
-    func createQueueSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.CreateQueueRequest,
-            reporting: InvocationReportingType) throws -> SimpleQueueModel.CreateQueueResultForCreateQueue
+    func createQueueSync(
+            input: SimpleQueueModel.CreateQueueRequest) throws -> SimpleQueueModel.CreateQueueResultForCreateQueue
 
     /**
      Invokes the DeleteMessage operation returning immediately and passing the response to a callback.
@@ -284,9 +236,8 @@ public protocol SimpleQueueClientProtocol {
            is complete.
            The possible errors are: invalidIdFormat, receiptHandleIsInvalid.
      */
-    func deleteMessageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteMessageAsync(
             input: SimpleQueueModel.DeleteMessageRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -296,9 +247,8 @@ public protocol SimpleQueueClientProtocol {
          - input: The validated DeleteMessageRequest object being passed to this operation.
      - Throws: invalidIdFormat, receiptHandleIsInvalid.
      */
-    func deleteMessageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.DeleteMessageRequest,
-            reporting: InvocationReportingType) throws
+    func deleteMessageSync(
+            input: SimpleQueueModel.DeleteMessageRequest) throws
 
     /**
      Invokes the DeleteMessageBatch operation returning immediately and passing the response to a callback.
@@ -310,9 +260,8 @@ public protocol SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
-    func deleteMessageBatchAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteMessageBatchAsync(
             input: SimpleQueueModel.DeleteMessageBatchRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, HTTPClientError>) -> ()) throws
 
     /**
@@ -324,9 +273,8 @@ public protocol SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
-    func deleteMessageBatchSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.DeleteMessageBatchRequest,
-            reporting: InvocationReportingType) throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch
+    func deleteMessageBatchSync(
+            input: SimpleQueueModel.DeleteMessageBatchRequest) throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch
 
     /**
      Invokes the DeleteQueue operation returning immediately and passing the response to a callback.
@@ -336,9 +284,8 @@ public protocol SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteQueueAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteQueueAsync(
             input: SimpleQueueModel.DeleteQueueRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -347,9 +294,8 @@ public protocol SimpleQueueClientProtocol {
      - Parameters:
          - input: The validated DeleteQueueRequest object being passed to this operation.
      */
-    func deleteQueueSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.DeleteQueueRequest,
-            reporting: InvocationReportingType) throws
+    func deleteQueueSync(
+            input: SimpleQueueModel.DeleteQueueRequest) throws
 
     /**
      Invokes the GetQueueAttributes operation returning immediately and passing the response to a callback.
@@ -361,9 +307,8 @@ public protocol SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidAttributeName.
      */
-    func getQueueAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getQueueAttributesAsync(
             input: SimpleQueueModel.GetQueueAttributesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, HTTPClientError>) -> ()) throws
 
     /**
@@ -375,9 +320,8 @@ public protocol SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidAttributeName.
      */
-    func getQueueAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.GetQueueAttributesRequest,
-            reporting: InvocationReportingType) throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes
+    func getQueueAttributesSync(
+            input: SimpleQueueModel.GetQueueAttributesRequest) throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes
 
     /**
      Invokes the GetQueueUrl operation returning immediately and passing the response to a callback.
@@ -389,9 +333,8 @@ public protocol SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: queueDoesNotExist.
      */
-    func getQueueUrlAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getQueueUrlAsync(
             input: SimpleQueueModel.GetQueueUrlRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, HTTPClientError>) -> ()) throws
 
     /**
@@ -403,9 +346,8 @@ public protocol SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: queueDoesNotExist.
      */
-    func getQueueUrlSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.GetQueueUrlRequest,
-            reporting: InvocationReportingType) throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl
+    func getQueueUrlSync(
+            input: SimpleQueueModel.GetQueueUrlRequest) throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl
 
     /**
      Invokes the ListDeadLetterSourceQueues operation returning immediately and passing the response to a callback.
@@ -417,9 +359,8 @@ public protocol SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: queueDoesNotExist.
      */
-    func listDeadLetterSourceQueuesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listDeadLetterSourceQueuesAsync(
             input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, HTTPClientError>) -> ()) throws
 
     /**
@@ -431,9 +372,8 @@ public protocol SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: queueDoesNotExist.
      */
-    func listDeadLetterSourceQueuesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest,
-            reporting: InvocationReportingType) throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues
+    func listDeadLetterSourceQueuesSync(
+            input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest) throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues
 
     /**
      Invokes the ListQueueTags operation returning immediately and passing the response to a callback.
@@ -444,9 +384,8 @@ public protocol SimpleQueueClientProtocol {
            callback when the operation is complete. The ListQueueTagsResultForListQueueTags
            object will be validated before being returned to caller.
      */
-    func listQueueTagsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listQueueTagsAsync(
             input: SimpleQueueModel.ListQueueTagsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, HTTPClientError>) -> ()) throws
 
     /**
@@ -457,9 +396,8 @@ public protocol SimpleQueueClientProtocol {
      - Returns: The ListQueueTagsResultForListQueueTags object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func listQueueTagsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.ListQueueTagsRequest,
-            reporting: InvocationReportingType) throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags
+    func listQueueTagsSync(
+            input: SimpleQueueModel.ListQueueTagsRequest) throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags
 
     /**
      Invokes the ListQueues operation returning immediately and passing the response to a callback.
@@ -470,9 +408,8 @@ public protocol SimpleQueueClientProtocol {
            callback when the operation is complete. The ListQueuesResultForListQueues
            object will be validated before being returned to caller.
      */
-    func listQueuesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listQueuesAsync(
             input: SimpleQueueModel.ListQueuesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, HTTPClientError>) -> ()) throws
 
     /**
@@ -483,9 +420,8 @@ public protocol SimpleQueueClientProtocol {
      - Returns: The ListQueuesResultForListQueues object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func listQueuesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.ListQueuesRequest,
-            reporting: InvocationReportingType) throws -> SimpleQueueModel.ListQueuesResultForListQueues
+    func listQueuesSync(
+            input: SimpleQueueModel.ListQueuesRequest) throws -> SimpleQueueModel.ListQueuesResultForListQueues
 
     /**
      Invokes the PurgeQueue operation returning immediately and passing the response to a callback.
@@ -496,9 +432,8 @@ public protocol SimpleQueueClientProtocol {
            is complete.
            The possible errors are: purgeQueueInProgress, queueDoesNotExist.
      */
-    func purgeQueueAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func purgeQueueAsync(
             input: SimpleQueueModel.PurgeQueueRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -508,9 +443,8 @@ public protocol SimpleQueueClientProtocol {
          - input: The validated PurgeQueueRequest object being passed to this operation.
      - Throws: purgeQueueInProgress, queueDoesNotExist.
      */
-    func purgeQueueSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.PurgeQueueRequest,
-            reporting: InvocationReportingType) throws
+    func purgeQueueSync(
+            input: SimpleQueueModel.PurgeQueueRequest) throws
 
     /**
      Invokes the ReceiveMessage operation returning immediately and passing the response to a callback.
@@ -522,9 +456,8 @@ public protocol SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: overLimit.
      */
-    func receiveMessageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func receiveMessageAsync(
             input: SimpleQueueModel.ReceiveMessageRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, HTTPClientError>) -> ()) throws
 
     /**
@@ -536,9 +469,8 @@ public protocol SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: overLimit.
      */
-    func receiveMessageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.ReceiveMessageRequest,
-            reporting: InvocationReportingType) throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage
+    func receiveMessageSync(
+            input: SimpleQueueModel.ReceiveMessageRequest) throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage
 
     /**
      Invokes the RemovePermission operation returning immediately and passing the response to a callback.
@@ -548,9 +480,8 @@ public protocol SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func removePermissionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func removePermissionAsync(
             input: SimpleQueueModel.RemovePermissionRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -559,9 +490,8 @@ public protocol SimpleQueueClientProtocol {
      - Parameters:
          - input: The validated RemovePermissionRequest object being passed to this operation.
      */
-    func removePermissionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.RemovePermissionRequest,
-            reporting: InvocationReportingType) throws
+    func removePermissionSync(
+            input: SimpleQueueModel.RemovePermissionRequest) throws
 
     /**
      Invokes the SendMessage operation returning immediately and passing the response to a callback.
@@ -573,9 +503,8 @@ public protocol SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidMessageContents, unsupportedOperation.
      */
-    func sendMessageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func sendMessageAsync(
             input: SimpleQueueModel.SendMessageRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, HTTPClientError>) -> ()) throws
 
     /**
@@ -587,9 +516,8 @@ public protocol SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidMessageContents, unsupportedOperation.
      */
-    func sendMessageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.SendMessageRequest,
-            reporting: InvocationReportingType) throws -> SimpleQueueModel.SendMessageResultForSendMessage
+    func sendMessageSync(
+            input: SimpleQueueModel.SendMessageRequest) throws -> SimpleQueueModel.SendMessageResultForSendMessage
 
     /**
      Invokes the SendMessageBatch operation returning immediately and passing the response to a callback.
@@ -601,9 +529,8 @@ public protocol SimpleQueueClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest, unsupportedOperation.
      */
-    func sendMessageBatchAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func sendMessageBatchAsync(
             input: SimpleQueueModel.SendMessageBatchRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, HTTPClientError>) -> ()) throws
 
     /**
@@ -615,9 +542,8 @@ public protocol SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      - Throws: batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest, unsupportedOperation.
      */
-    func sendMessageBatchSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.SendMessageBatchRequest,
-            reporting: InvocationReportingType) throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch
+    func sendMessageBatchSync(
+            input: SimpleQueueModel.SendMessageBatchRequest) throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch
 
     /**
      Invokes the SetQueueAttributes operation returning immediately and passing the response to a callback.
@@ -628,9 +554,8 @@ public protocol SimpleQueueClientProtocol {
            is complete.
            The possible errors are: invalidAttributeName.
      */
-    func setQueueAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func setQueueAttributesAsync(
             input: SimpleQueueModel.SetQueueAttributesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -640,9 +565,8 @@ public protocol SimpleQueueClientProtocol {
          - input: The validated SetQueueAttributesRequest object being passed to this operation.
      - Throws: invalidAttributeName.
      */
-    func setQueueAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.SetQueueAttributesRequest,
-            reporting: InvocationReportingType) throws
+    func setQueueAttributesSync(
+            input: SimpleQueueModel.SetQueueAttributesRequest) throws
 
     /**
      Invokes the TagQueue operation returning immediately and passing the response to a callback.
@@ -652,9 +576,8 @@ public protocol SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func tagQueueAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func tagQueueAsync(
             input: SimpleQueueModel.TagQueueRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -663,9 +586,8 @@ public protocol SimpleQueueClientProtocol {
      - Parameters:
          - input: The validated TagQueueRequest object being passed to this operation.
      */
-    func tagQueueSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.TagQueueRequest,
-            reporting: InvocationReportingType) throws
+    func tagQueueSync(
+            input: SimpleQueueModel.TagQueueRequest) throws
 
     /**
      Invokes the UntagQueue operation returning immediately and passing the response to a callback.
@@ -675,9 +597,8 @@ public protocol SimpleQueueClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func untagQueueAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func untagQueueAsync(
             input: SimpleQueueModel.UntagQueueRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -686,7 +607,6 @@ public protocol SimpleQueueClientProtocol {
      - Parameters:
          - input: The validated UntagQueueRequest object being passed to this operation.
      */
-    func untagQueueSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleQueueModel.UntagQueueRequest,
-            reporting: InvocationReportingType) throws
+    func untagQueueSync(
+            input: SimpleQueueModel.UntagQueueRequest) throws
 }

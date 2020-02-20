@@ -28,208 +28,150 @@ import SmokeHTTPClient
  Client Protocol for the CloudWatch service.
  */
 public protocol CloudWatchClientProtocol {
-    typealias DeleteAlarmsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.DeleteAlarmsInput,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteAlarmsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteAlarmsSyncType = (
+            _ input: CloudWatchModel.DeleteAlarmsInput) throws -> ()
+    typealias DeleteAlarmsAsyncType = (
             _ input: CloudWatchModel.DeleteAlarmsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteAnomalyDetectorSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.DeleteAnomalyDetectorInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector
-    typealias DeleteAnomalyDetectorAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteAnomalyDetectorSyncType = (
+            _ input: CloudWatchModel.DeleteAnomalyDetectorInput) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector
+    typealias DeleteAnomalyDetectorAsyncType = (
             _ input: CloudWatchModel.DeleteAnomalyDetectorInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteDashboardsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.DeleteDashboardsInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards
-    typealias DeleteDashboardsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteDashboardsSyncType = (
+            _ input: CloudWatchModel.DeleteDashboardsInput) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards
+    typealias DeleteDashboardsAsyncType = (
             _ input: CloudWatchModel.DeleteDashboardsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteInsightRulesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.DeleteInsightRulesInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules
-    typealias DeleteInsightRulesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteInsightRulesSyncType = (
+            _ input: CloudWatchModel.DeleteInsightRulesInput) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules
+    typealias DeleteInsightRulesAsyncType = (
             _ input: CloudWatchModel.DeleteInsightRulesInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeAlarmHistorySyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.DescribeAlarmHistoryInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory
-    typealias DescribeAlarmHistoryAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeAlarmHistorySyncType = (
+            _ input: CloudWatchModel.DescribeAlarmHistoryInput) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory
+    typealias DescribeAlarmHistoryAsyncType = (
             _ input: CloudWatchModel.DescribeAlarmHistoryInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeAlarmsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.DescribeAlarmsInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms
-    typealias DescribeAlarmsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeAlarmsSyncType = (
+            _ input: CloudWatchModel.DescribeAlarmsInput) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms
+    typealias DescribeAlarmsAsyncType = (
             _ input: CloudWatchModel.DescribeAlarmsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeAlarmsForMetricSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.DescribeAlarmsForMetricInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric
-    typealias DescribeAlarmsForMetricAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeAlarmsForMetricSyncType = (
+            _ input: CloudWatchModel.DescribeAlarmsForMetricInput) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric
+    typealias DescribeAlarmsForMetricAsyncType = (
             _ input: CloudWatchModel.DescribeAlarmsForMetricInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeAnomalyDetectorsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.DescribeAnomalyDetectorsInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
-    typealias DescribeAnomalyDetectorsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeAnomalyDetectorsSyncType = (
+            _ input: CloudWatchModel.DescribeAnomalyDetectorsInput) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
+    typealias DescribeAnomalyDetectorsAsyncType = (
             _ input: CloudWatchModel.DescribeAnomalyDetectorsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeInsightRulesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.DescribeInsightRulesInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules
-    typealias DescribeInsightRulesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeInsightRulesSyncType = (
+            _ input: CloudWatchModel.DescribeInsightRulesInput) throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules
+    typealias DescribeInsightRulesAsyncType = (
             _ input: CloudWatchModel.DescribeInsightRulesInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules, HTTPClientError>) -> ()) throws -> ()
-    typealias DisableAlarmActionsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.DisableAlarmActionsInput,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DisableAlarmActionsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DisableAlarmActionsSyncType = (
+            _ input: CloudWatchModel.DisableAlarmActionsInput) throws -> ()
+    typealias DisableAlarmActionsAsyncType = (
             _ input: CloudWatchModel.DisableAlarmActionsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DisableInsightRulesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.DisableInsightRulesInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules
-    typealias DisableInsightRulesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DisableInsightRulesSyncType = (
+            _ input: CloudWatchModel.DisableInsightRulesInput) throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules
+    typealias DisableInsightRulesAsyncType = (
             _ input: CloudWatchModel.DisableInsightRulesInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules, HTTPClientError>) -> ()) throws -> ()
-    typealias EnableAlarmActionsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.EnableAlarmActionsInput,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias EnableAlarmActionsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias EnableAlarmActionsSyncType = (
+            _ input: CloudWatchModel.EnableAlarmActionsInput) throws -> ()
+    typealias EnableAlarmActionsAsyncType = (
             _ input: CloudWatchModel.EnableAlarmActionsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias EnableInsightRulesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.EnableInsightRulesInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules
-    typealias EnableInsightRulesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias EnableInsightRulesSyncType = (
+            _ input: CloudWatchModel.EnableInsightRulesInput) throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules
+    typealias EnableInsightRulesAsyncType = (
             _ input: CloudWatchModel.EnableInsightRulesInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules, HTTPClientError>) -> ()) throws -> ()
-    typealias GetDashboardSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.GetDashboardInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard
-    typealias GetDashboardAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetDashboardSyncType = (
+            _ input: CloudWatchModel.GetDashboardInput) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard
+    typealias GetDashboardAsyncType = (
             _ input: CloudWatchModel.GetDashboardInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.GetDashboardOutputForGetDashboard, HTTPClientError>) -> ()) throws -> ()
-    typealias GetInsightRuleReportSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.GetInsightRuleReportInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport
-    typealias GetInsightRuleReportAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetInsightRuleReportSyncType = (
+            _ input: CloudWatchModel.GetInsightRuleReportInput) throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport
+    typealias GetInsightRuleReportAsyncType = (
             _ input: CloudWatchModel.GetInsightRuleReportInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport, HTTPClientError>) -> ()) throws -> ()
-    typealias GetMetricDataSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.GetMetricDataInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData
-    typealias GetMetricDataAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetMetricDataSyncType = (
+            _ input: CloudWatchModel.GetMetricDataInput) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData
+    typealias GetMetricDataAsyncType = (
             _ input: CloudWatchModel.GetMetricDataInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, HTTPClientError>) -> ()) throws -> ()
-    typealias GetMetricStatisticsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.GetMetricStatisticsInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics
-    typealias GetMetricStatisticsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetMetricStatisticsSyncType = (
+            _ input: CloudWatchModel.GetMetricStatisticsInput) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics
+    typealias GetMetricStatisticsAsyncType = (
             _ input: CloudWatchModel.GetMetricStatisticsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, HTTPClientError>) -> ()) throws -> ()
-    typealias GetMetricWidgetImageSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.GetMetricWidgetImageInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage
-    typealias GetMetricWidgetImageAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetMetricWidgetImageSyncType = (
+            _ input: CloudWatchModel.GetMetricWidgetImageInput) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage
+    typealias GetMetricWidgetImageAsyncType = (
             _ input: CloudWatchModel.GetMetricWidgetImageInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, HTTPClientError>) -> ()) throws -> ()
-    typealias ListDashboardsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.ListDashboardsInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards
-    typealias ListDashboardsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListDashboardsSyncType = (
+            _ input: CloudWatchModel.ListDashboardsInput) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards
+    typealias ListDashboardsAsyncType = (
             _ input: CloudWatchModel.ListDashboardsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.ListDashboardsOutputForListDashboards, HTTPClientError>) -> ()) throws -> ()
-    typealias ListMetricsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.ListMetricsInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.ListMetricsOutputForListMetrics
-    typealias ListMetricsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListMetricsSyncType = (
+            _ input: CloudWatchModel.ListMetricsInput) throws -> CloudWatchModel.ListMetricsOutputForListMetrics
+    typealias ListMetricsAsyncType = (
             _ input: CloudWatchModel.ListMetricsInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.ListMetricsOutputForListMetrics, HTTPClientError>) -> ()) throws -> ()
-    typealias ListTagsForResourceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.ListTagsForResourceInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource
-    typealias ListTagsForResourceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListTagsForResourceSyncType = (
+            _ input: CloudWatchModel.ListTagsForResourceInput) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource
+    typealias ListTagsForResourceAsyncType = (
             _ input: CloudWatchModel.ListTagsForResourceInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, HTTPClientError>) -> ()) throws -> ()
-    typealias PutAnomalyDetectorSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.PutAnomalyDetectorInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector
-    typealias PutAnomalyDetectorAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutAnomalyDetectorSyncType = (
+            _ input: CloudWatchModel.PutAnomalyDetectorInput) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector
+    typealias PutAnomalyDetectorAsyncType = (
             _ input: CloudWatchModel.PutAnomalyDetectorInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, HTTPClientError>) -> ()) throws -> ()
-    typealias PutDashboardSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.PutDashboardInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard
-    typealias PutDashboardAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutDashboardSyncType = (
+            _ input: CloudWatchModel.PutDashboardInput) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard
+    typealias PutDashboardAsyncType = (
             _ input: CloudWatchModel.PutDashboardInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.PutDashboardOutputForPutDashboard, HTTPClientError>) -> ()) throws -> ()
-    typealias PutInsightRuleSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.PutInsightRuleInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule
-    typealias PutInsightRuleAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutInsightRuleSyncType = (
+            _ input: CloudWatchModel.PutInsightRuleInput) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule
+    typealias PutInsightRuleAsyncType = (
             _ input: CloudWatchModel.PutInsightRuleInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, HTTPClientError>) -> ()) throws -> ()
-    typealias PutMetricAlarmSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.PutMetricAlarmInput,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutMetricAlarmAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutMetricAlarmSyncType = (
+            _ input: CloudWatchModel.PutMetricAlarmInput) throws -> ()
+    typealias PutMetricAlarmAsyncType = (
             _ input: CloudWatchModel.PutMetricAlarmInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutMetricDataSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.PutMetricDataInput,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutMetricDataAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutMetricDataSyncType = (
+            _ input: CloudWatchModel.PutMetricDataInput) throws -> ()
+    typealias PutMetricDataAsyncType = (
             _ input: CloudWatchModel.PutMetricDataInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias SetAlarmStateSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.SetAlarmStateInput,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias SetAlarmStateAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias SetAlarmStateSyncType = (
+            _ input: CloudWatchModel.SetAlarmStateInput) throws -> ()
+    typealias SetAlarmStateAsyncType = (
             _ input: CloudWatchModel.SetAlarmStateInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias TagResourceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.TagResourceInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.TagResourceOutputForTagResource
-    typealias TagResourceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias TagResourceSyncType = (
+            _ input: CloudWatchModel.TagResourceInput) throws -> CloudWatchModel.TagResourceOutputForTagResource
+    typealias TagResourceAsyncType = (
             _ input: CloudWatchModel.TagResourceInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.TagResourceOutputForTagResource, HTTPClientError>) -> ()) throws -> ()
-    typealias UntagResourceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: CloudWatchModel.UntagResourceInput,
-            _ reporting: InvocationReportingType) throws -> CloudWatchModel.UntagResourceOutputForUntagResource
-    typealias UntagResourceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UntagResourceSyncType = (
+            _ input: CloudWatchModel.UntagResourceInput) throws -> CloudWatchModel.UntagResourceOutputForUntagResource
+    typealias UntagResourceAsyncType = (
             _ input: CloudWatchModel.UntagResourceInput, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<CloudWatchModel.UntagResourceOutputForUntagResource, HTTPClientError>) -> ()) throws -> ()
 
     /**
@@ -241,9 +183,8 @@ public protocol CloudWatchClientProtocol {
            is complete.
            The possible errors are: resourceNotFound.
      */
-    func deleteAlarmsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteAlarmsAsync(
             input: CloudWatchModel.DeleteAlarmsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -253,9 +194,8 @@ public protocol CloudWatchClientProtocol {
          - input: The validated DeleteAlarmsInput object being passed to this operation.
      - Throws: resourceNotFound.
      */
-    func deleteAlarmsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.DeleteAlarmsInput,
-            reporting: InvocationReportingType) throws
+    func deleteAlarmsSync(
+            input: CloudWatchModel.DeleteAlarmsInput) throws
 
     /**
      Invokes the DeleteAnomalyDetector operation returning immediately and passing the response to a callback.
@@ -267,9 +207,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
-    func deleteAnomalyDetectorAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteAnomalyDetectorAsync(
             input: CloudWatchModel.DeleteAnomalyDetectorInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector, HTTPClientError>) -> ()) throws
 
     /**
@@ -281,9 +220,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
-    func deleteAnomalyDetectorSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.DeleteAnomalyDetectorInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector
+    func deleteAnomalyDetectorSync(
+            input: CloudWatchModel.DeleteAnomalyDetectorInput) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector
 
     /**
      Invokes the DeleteDashboards operation returning immediately and passing the response to a callback.
@@ -295,9 +233,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardNotFound, internalService, invalidParameterValue.
      */
-    func deleteDashboardsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteDashboardsAsync(
             input: CloudWatchModel.DeleteDashboardsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, HTTPClientError>) -> ()) throws
 
     /**
@@ -309,9 +246,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardNotFound, internalService, invalidParameterValue.
      */
-    func deleteDashboardsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.DeleteDashboardsInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards
+    func deleteDashboardsSync(
+            input: CloudWatchModel.DeleteDashboardsInput) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards
 
     /**
      Invokes the DeleteInsightRules operation returning immediately and passing the response to a callback.
@@ -323,9 +259,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, missingRequiredParameter.
      */
-    func deleteInsightRulesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteInsightRulesAsync(
             input: CloudWatchModel.DeleteInsightRulesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, HTTPClientError>) -> ()) throws
 
     /**
@@ -337,9 +272,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, missingRequiredParameter.
      */
-    func deleteInsightRulesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.DeleteInsightRulesInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules
+    func deleteInsightRulesSync(
+            input: CloudWatchModel.DeleteInsightRulesInput) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules
 
     /**
      Invokes the DescribeAlarmHistory operation returning immediately and passing the response to a callback.
@@ -351,9 +285,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    func describeAlarmHistoryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeAlarmHistoryAsync(
             input: CloudWatchModel.DescribeAlarmHistoryInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, HTTPClientError>) -> ()) throws
 
     /**
@@ -365,9 +298,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    func describeAlarmHistorySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.DescribeAlarmHistoryInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory
+    func describeAlarmHistorySync(
+            input: CloudWatchModel.DescribeAlarmHistoryInput) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory
 
     /**
      Invokes the DescribeAlarms operation returning immediately and passing the response to a callback.
@@ -379,9 +311,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    func describeAlarmsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeAlarmsAsync(
             input: CloudWatchModel.DescribeAlarmsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, HTTPClientError>) -> ()) throws
 
     /**
@@ -393,9 +324,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    func describeAlarmsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.DescribeAlarmsInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms
+    func describeAlarmsSync(
+            input: CloudWatchModel.DescribeAlarmsInput) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms
 
     /**
      Invokes the DescribeAlarmsForMetric operation returning immediately and passing the response to a callback.
@@ -406,9 +336,8 @@ public protocol CloudWatchClientProtocol {
            callback when the operation is complete. The DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric
            object will be validated before being returned to caller.
      */
-    func describeAlarmsForMetricAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeAlarmsForMetricAsync(
             input: CloudWatchModel.DescribeAlarmsForMetricInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, HTTPClientError>) -> ()) throws
 
     /**
@@ -419,9 +348,8 @@ public protocol CloudWatchClientProtocol {
      - Returns: The DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func describeAlarmsForMetricSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.DescribeAlarmsForMetricInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric
+    func describeAlarmsForMetricSync(
+            input: CloudWatchModel.DescribeAlarmsForMetricInput) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric
 
     /**
      Invokes the DescribeAnomalyDetectors operation returning immediately and passing the response to a callback.
@@ -433,9 +361,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidNextToken, invalidParameterValue.
      */
-    func describeAnomalyDetectorsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeAnomalyDetectorsAsync(
             input: CloudWatchModel.DescribeAnomalyDetectorsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors, HTTPClientError>) -> ()) throws
 
     /**
@@ -447,9 +374,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidNextToken, invalidParameterValue.
      */
-    func describeAnomalyDetectorsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.DescribeAnomalyDetectorsInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
+    func describeAnomalyDetectorsSync(
+            input: CloudWatchModel.DescribeAnomalyDetectorsInput) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
 
     /**
      Invokes the DescribeInsightRules operation returning immediately and passing the response to a callback.
@@ -461,9 +387,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    func describeInsightRulesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeInsightRulesAsync(
             input: CloudWatchModel.DescribeInsightRulesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules, HTTPClientError>) -> ()) throws
 
     /**
@@ -475,9 +400,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    func describeInsightRulesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.DescribeInsightRulesInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules
+    func describeInsightRulesSync(
+            input: CloudWatchModel.DescribeInsightRulesInput) throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules
 
     /**
      Invokes the DisableAlarmActions operation returning immediately and passing the response to a callback.
@@ -487,9 +411,8 @@ public protocol CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func disableAlarmActionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func disableAlarmActionsAsync(
             input: CloudWatchModel.DisableAlarmActionsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -498,9 +421,8 @@ public protocol CloudWatchClientProtocol {
      - Parameters:
          - input: The validated DisableAlarmActionsInput object being passed to this operation.
      */
-    func disableAlarmActionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.DisableAlarmActionsInput,
-            reporting: InvocationReportingType) throws
+    func disableAlarmActionsSync(
+            input: CloudWatchModel.DisableAlarmActionsInput) throws
 
     /**
      Invokes the DisableInsightRules operation returning immediately and passing the response to a callback.
@@ -512,9 +434,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, missingRequiredParameter.
      */
-    func disableInsightRulesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func disableInsightRulesAsync(
             input: CloudWatchModel.DisableInsightRulesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules, HTTPClientError>) -> ()) throws
 
     /**
@@ -526,9 +447,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, missingRequiredParameter.
      */
-    func disableInsightRulesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.DisableInsightRulesInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules
+    func disableInsightRulesSync(
+            input: CloudWatchModel.DisableInsightRulesInput) throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules
 
     /**
      Invokes the EnableAlarmActions operation returning immediately and passing the response to a callback.
@@ -538,9 +458,8 @@ public protocol CloudWatchClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func enableAlarmActionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func enableAlarmActionsAsync(
             input: CloudWatchModel.EnableAlarmActionsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -549,9 +468,8 @@ public protocol CloudWatchClientProtocol {
      - Parameters:
          - input: The validated EnableAlarmActionsInput object being passed to this operation.
      */
-    func enableAlarmActionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.EnableAlarmActionsInput,
-            reporting: InvocationReportingType) throws
+    func enableAlarmActionsSync(
+            input: CloudWatchModel.EnableAlarmActionsInput) throws
 
     /**
      Invokes the EnableInsightRules operation returning immediately and passing the response to a callback.
@@ -563,9 +481,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    func enableInsightRulesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func enableInsightRulesAsync(
             input: CloudWatchModel.EnableInsightRulesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules, HTTPClientError>) -> ()) throws
 
     /**
@@ -577,9 +494,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    func enableInsightRulesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.EnableInsightRulesInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules
+    func enableInsightRulesSync(
+            input: CloudWatchModel.EnableInsightRulesInput) throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules
 
     /**
      Invokes the GetDashboard operation returning immediately and passing the response to a callback.
@@ -591,9 +507,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardNotFound, internalService, invalidParameterValue.
      */
-    func getDashboardAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getDashboardAsync(
             input: CloudWatchModel.GetDashboardInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetDashboardOutputForGetDashboard, HTTPClientError>) -> ()) throws
 
     /**
@@ -605,9 +520,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardNotFound, internalService, invalidParameterValue.
      */
-    func getDashboardSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.GetDashboardInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard
+    func getDashboardSync(
+            input: CloudWatchModel.GetDashboardInput) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard
 
     /**
      Invokes the GetInsightRuleReport operation returning immediately and passing the response to a callback.
@@ -619,9 +533,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
-    func getInsightRuleReportAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getInsightRuleReportAsync(
             input: CloudWatchModel.GetInsightRuleReportInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport, HTTPClientError>) -> ()) throws
 
     /**
@@ -633,9 +546,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
-    func getInsightRuleReportSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.GetInsightRuleReportInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport
+    func getInsightRuleReportSync(
+            input: CloudWatchModel.GetInsightRuleReportInput) throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport
 
     /**
      Invokes the GetMetricData operation returning immediately and passing the response to a callback.
@@ -647,9 +559,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidNextToken.
      */
-    func getMetricDataAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getMetricDataAsync(
             input: CloudWatchModel.GetMetricDataInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, HTTPClientError>) -> ()) throws
 
     /**
@@ -661,9 +572,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidNextToken.
      */
-    func getMetricDataSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.GetMetricDataInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData
+    func getMetricDataSync(
+            input: CloudWatchModel.GetMetricDataInput) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData
 
     /**
      Invokes the GetMetricStatistics operation returning immediately and passing the response to a callback.
@@ -675,9 +585,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    func getMetricStatisticsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getMetricStatisticsAsync(
             input: CloudWatchModel.GetMetricStatisticsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, HTTPClientError>) -> ()) throws
 
     /**
@@ -689,9 +598,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    func getMetricStatisticsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.GetMetricStatisticsInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics
+    func getMetricStatisticsSync(
+            input: CloudWatchModel.GetMetricStatisticsInput) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics
 
     /**
      Invokes the GetMetricWidgetImage operation returning immediately and passing the response to a callback.
@@ -702,9 +610,8 @@ public protocol CloudWatchClientProtocol {
            callback when the operation is complete. The GetMetricWidgetImageOutputForGetMetricWidgetImage
            object will be validated before being returned to caller.
      */
-    func getMetricWidgetImageAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getMetricWidgetImageAsync(
             input: CloudWatchModel.GetMetricWidgetImageInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, HTTPClientError>) -> ()) throws
 
     /**
@@ -715,9 +622,8 @@ public protocol CloudWatchClientProtocol {
      - Returns: The GetMetricWidgetImageOutputForGetMetricWidgetImage object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getMetricWidgetImageSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.GetMetricWidgetImageInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage
+    func getMetricWidgetImageSync(
+            input: CloudWatchModel.GetMetricWidgetImageInput) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage
 
     /**
      Invokes the ListDashboards operation returning immediately and passing the response to a callback.
@@ -729,9 +635,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue.
      */
-    func listDashboardsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listDashboardsAsync(
             input: CloudWatchModel.ListDashboardsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.ListDashboardsOutputForListDashboards, HTTPClientError>) -> ()) throws
 
     /**
@@ -743,9 +648,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue.
      */
-    func listDashboardsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.ListDashboardsInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards
+    func listDashboardsSync(
+            input: CloudWatchModel.ListDashboardsInput) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards
 
     /**
      Invokes the ListMetrics operation returning immediately and passing the response to a callback.
@@ -757,9 +661,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue.
      */
-    func listMetricsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listMetricsAsync(
             input: CloudWatchModel.ListMetricsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.ListMetricsOutputForListMetrics, HTTPClientError>) -> ()) throws
 
     /**
@@ -771,9 +674,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue.
      */
-    func listMetricsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.ListMetricsInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.ListMetricsOutputForListMetrics
+    func listMetricsSync(
+            input: CloudWatchModel.ListMetricsInput) throws -> CloudWatchModel.ListMetricsOutputForListMetrics
 
     /**
      Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
@@ -785,9 +687,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue, resourceNotFound.
      */
-    func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listTagsForResourceAsync(
             input: CloudWatchModel.ListTagsForResourceInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, HTTPClientError>) -> ()) throws
 
     /**
@@ -799,9 +700,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue, resourceNotFound.
      */
-    func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.ListTagsForResourceInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource
+    func listTagsForResourceSync(
+            input: CloudWatchModel.ListTagsForResourceInput) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource
 
     /**
      Invokes the PutAnomalyDetector operation returning immediately and passing the response to a callback.
@@ -813,9 +713,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    func putAnomalyDetectorAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putAnomalyDetectorAsync(
             input: CloudWatchModel.PutAnomalyDetectorInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, HTTPClientError>) -> ()) throws
 
     /**
@@ -827,9 +726,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    func putAnomalyDetectorSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.PutAnomalyDetectorInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector
+    func putAnomalyDetectorSync(
+            input: CloudWatchModel.PutAnomalyDetectorInput) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector
 
     /**
      Invokes the PutDashboard operation returning immediately and passing the response to a callback.
@@ -841,9 +739,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: dashboardInvalidInput, internalService.
      */
-    func putDashboardAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putDashboardAsync(
             input: CloudWatchModel.PutDashboardInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.PutDashboardOutputForPutDashboard, HTTPClientError>) -> ()) throws
 
     /**
@@ -855,9 +752,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: dashboardInvalidInput, internalService.
      */
-    func putDashboardSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.PutDashboardInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard
+    func putDashboardSync(
+            input: CloudWatchModel.PutDashboardInput) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard
 
     /**
      Invokes the PutInsightRule operation returning immediately and passing the response to a callback.
@@ -869,9 +765,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    func putInsightRuleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putInsightRuleAsync(
             input: CloudWatchModel.PutInsightRuleInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, HTTPClientError>) -> ()) throws
 
     /**
@@ -883,9 +778,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
-    func putInsightRuleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.PutInsightRuleInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule
+    func putInsightRuleSync(
+            input: CloudWatchModel.PutInsightRuleInput) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule
 
     /**
      Invokes the PutMetricAlarm operation returning immediately and passing the response to a callback.
@@ -896,9 +790,8 @@ public protocol CloudWatchClientProtocol {
            is complete.
            The possible errors are: limitExceeded.
      */
-    func putMetricAlarmAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putMetricAlarmAsync(
             input: CloudWatchModel.PutMetricAlarmInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -908,9 +801,8 @@ public protocol CloudWatchClientProtocol {
          - input: The validated PutMetricAlarmInput object being passed to this operation.
      - Throws: limitExceeded.
      */
-    func putMetricAlarmSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.PutMetricAlarmInput,
-            reporting: InvocationReportingType) throws
+    func putMetricAlarmSync(
+            input: CloudWatchModel.PutMetricAlarmInput) throws
 
     /**
      Invokes the PutMetricData operation returning immediately and passing the response to a callback.
@@ -921,9 +813,8 @@ public protocol CloudWatchClientProtocol {
            is complete.
            The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    func putMetricDataAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putMetricDataAsync(
             input: CloudWatchModel.PutMetricDataInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -933,9 +824,8 @@ public protocol CloudWatchClientProtocol {
          - input: The validated PutMetricDataInput object being passed to this operation.
      - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
-    func putMetricDataSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.PutMetricDataInput,
-            reporting: InvocationReportingType) throws
+    func putMetricDataSync(
+            input: CloudWatchModel.PutMetricDataInput) throws
 
     /**
      Invokes the SetAlarmState operation returning immediately and passing the response to a callback.
@@ -946,9 +836,8 @@ public protocol CloudWatchClientProtocol {
            is complete.
            The possible errors are: invalidFormat, resourceNotFound.
      */
-    func setAlarmStateAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func setAlarmStateAsync(
             input: CloudWatchModel.SetAlarmStateInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -958,9 +847,8 @@ public protocol CloudWatchClientProtocol {
          - input: The validated SetAlarmStateInput object being passed to this operation.
      - Throws: invalidFormat, resourceNotFound.
      */
-    func setAlarmStateSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.SetAlarmStateInput,
-            reporting: InvocationReportingType) throws
+    func setAlarmStateSync(
+            input: CloudWatchModel.SetAlarmStateInput) throws
 
     /**
      Invokes the TagResource operation returning immediately and passing the response to a callback.
@@ -972,9 +860,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func tagResourceAsync(
             input: CloudWatchModel.TagResourceInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.TagResourceOutputForTagResource, HTTPClientError>) -> ()) throws
 
     /**
@@ -986,9 +873,8 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.TagResourceInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.TagResourceOutputForTagResource
+    func tagResourceSync(
+            input: CloudWatchModel.TagResourceInput) throws -> CloudWatchModel.TagResourceOutputForTagResource
 
     /**
      Invokes the UntagResource operation returning immediately and passing the response to a callback.
@@ -1000,9 +886,8 @@ public protocol CloudWatchClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func untagResourceAsync(
             input: CloudWatchModel.UntagResourceInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<CloudWatchModel.UntagResourceOutputForUntagResource, HTTPClientError>) -> ()) throws
 
     /**
@@ -1014,7 +899,6 @@ public protocol CloudWatchClientProtocol {
          Will be validated before being returned to caller.
      - Throws: concurrentModification, internalService, invalidParameterValue, resourceNotFound.
      */
-    func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: CloudWatchModel.UntagResourceInput,
-            reporting: InvocationReportingType) throws -> CloudWatchModel.UntagResourceOutputForUntagResource
+    func untagResourceSync(
+            input: CloudWatchModel.UntagResourceInput) throws -> CloudWatchModel.UntagResourceOutputForUntagResource
 }

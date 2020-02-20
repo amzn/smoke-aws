@@ -33,7 +33,7 @@ public enum StepFunctionsClientError: Swift.Error {
     case unknownError(String?)
 }
 
-private extension StepFunctionsError {
+internal extension StepFunctionsError {
     func isRetriable() -> Bool {
         switch self {
         case .activityLimitExceeded, .activityWorkerLimitExceeded, .executionLimitExceeded, .stateMachineLimitExceeded:
@@ -57,7 +57,7 @@ private extension Swift.Error {
 /**
  AWS Client for the StepFunctions service.
  */
-public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
+public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocationReporting>: StepFunctionsClientProtocol {
     let httpClient: HTTPClient
     let awsRegion: AWSRegion
     let service: String
@@ -65,31 +65,13 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
+    let reporting: InvocationReportingType
 
-    let createActivityOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let createStateMachineOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let deleteActivityOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let deleteStateMachineOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let describeActivityOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let describeExecutionOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let describeStateMachineOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let describeStateMachineForExecutionOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let getActivityTaskOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let getExecutionHistoryOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let listActivitiesOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let listExecutionsOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let listStateMachinesOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let listTagsForResourceOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let sendTaskFailureOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let sendTaskHeartbeatOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let sendTaskSuccessOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let startExecutionOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let stopExecutionOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let tagResourceOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let untagResourceOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let updateStateMachineOperationReporting: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    let operationsReporting: StepFunctionsOperationsReporting
+    let invocationsReporting: StepFunctionsInvocationsReporting<InvocationReportingType>
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "states",
@@ -113,52 +95,30 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
         self.target = target
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
+        self.reporting = reporting
         self.retryOnErrorProvider = { error in error.isRetriable() }
-
-        self.createActivityOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .createActivity, configuration: reportingConfiguration)
-        self.createStateMachineOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .createStateMachine, configuration: reportingConfiguration)
-        self.deleteActivityOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .deleteActivity, configuration: reportingConfiguration)
-        self.deleteStateMachineOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .deleteStateMachine, configuration: reportingConfiguration)
-        self.describeActivityOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .describeActivity, configuration: reportingConfiguration)
-        self.describeExecutionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .describeExecution, configuration: reportingConfiguration)
-        self.describeStateMachineOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .describeStateMachine, configuration: reportingConfiguration)
-        self.describeStateMachineForExecutionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .describeStateMachineForExecution, configuration: reportingConfiguration)
-        self.getActivityTaskOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .getActivityTask, configuration: reportingConfiguration)
-        self.getExecutionHistoryOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .getExecutionHistory, configuration: reportingConfiguration)
-        self.listActivitiesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .listActivities, configuration: reportingConfiguration)
-        self.listExecutionsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .listExecutions, configuration: reportingConfiguration)
-        self.listStateMachinesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .listStateMachines, configuration: reportingConfiguration)
-        self.listTagsForResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .listTagsForResource, configuration: reportingConfiguration)
-        self.sendTaskFailureOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .sendTaskFailure, configuration: reportingConfiguration)
-        self.sendTaskHeartbeatOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .sendTaskHeartbeat, configuration: reportingConfiguration)
-        self.sendTaskSuccessOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .sendTaskSuccess, configuration: reportingConfiguration)
-        self.startExecutionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .startExecution, configuration: reportingConfiguration)
-        self.stopExecutionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .stopExecution, configuration: reportingConfiguration)
-        self.tagResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .tagResource, configuration: reportingConfiguration)
-        self.untagResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .untagResource, configuration: reportingConfiguration)
-        self.updateStateMachineOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSStepFunctionsClient", operation: .updateStateMachine, configuration: reportingConfiguration)
+        self.operationsReporting = StepFunctionsOperationsReporting(clientName: "AWSStepFunctionsClient", reportingConfiguration: reportingConfiguration)
+        self.invocationsReporting = StepFunctionsInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
+    }
+    
+    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                reporting: InvocationReportingType,
+                httpClient: HTTPClient,
+                service: String,
+                target: String?,
+                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryConfiguration: HTTPClientRetryConfiguration,
+                operationsReporting: StepFunctionsOperationsReporting) {
+        self.httpClient = httpClient
+        self.awsRegion = awsRegion
+        self.service = service
+        self.target = target
+        self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.reporting = reporting
+        self.retryOnErrorProvider = retryOnErrorProvider
+        self.operationsReporting = operationsReporting
+        self.invocationsReporting = StepFunctionsInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
 
     /**
@@ -187,9 +147,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: activityLimitExceeded, invalidName, tooManyTags.
      */
-    public func createActivityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createActivityAsync(
             input: StepFunctionsModel.CreateActivityInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -198,9 +157,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.createActivity.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createActivityOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createActivity,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CreateActivityOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -222,9 +180,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: activityLimitExceeded, invalidName, tooManyTags.
      */
-    public func createActivitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.CreateActivityInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.CreateActivityOutput {
+    public func createActivitySync(
+            input: StepFunctionsModel.CreateActivityInput) throws -> StepFunctionsModel.CreateActivityOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -232,9 +189,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.createActivity.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createActivityOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createActivity,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CreateActivityOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -256,9 +212,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
      */
-    public func createStateMachineAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createStateMachineAsync(
             input: StepFunctionsModel.CreateStateMachineInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -267,9 +222,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.createStateMachine.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createStateMachineOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createStateMachine,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CreateStateMachineOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -291,9 +245,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
      */
-    public func createStateMachineSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.CreateStateMachineInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.CreateStateMachineOutput {
+    public func createStateMachineSync(
+            input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -301,9 +254,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.createStateMachine.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createStateMachineOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createStateMachine,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CreateStateMachineOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -325,9 +277,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn.
      */
-    public func deleteActivityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteActivityAsync(
             input: StepFunctionsModel.DeleteActivityInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -336,9 +287,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.deleteActivity.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteActivityOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteActivity,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteActivityOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -360,9 +310,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn.
      */
-    public func deleteActivitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.DeleteActivityInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.DeleteActivityOutput {
+    public func deleteActivitySync(
+            input: StepFunctionsModel.DeleteActivityInput) throws -> StepFunctionsModel.DeleteActivityOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -370,9 +319,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.deleteActivity.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteActivityOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteActivity,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteActivityOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -394,9 +342,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn.
      */
-    public func deleteStateMachineAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteStateMachineAsync(
             input: StepFunctionsModel.DeleteStateMachineInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -405,9 +352,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.deleteStateMachine.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteStateMachineOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStateMachine,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteStateMachineOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -429,9 +375,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn.
      */
-    public func deleteStateMachineSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.DeleteStateMachineInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.DeleteStateMachineOutput {
+    public func deleteStateMachineSync(
+            input: StepFunctionsModel.DeleteStateMachineInput) throws -> StepFunctionsModel.DeleteStateMachineOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -439,9 +384,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.deleteStateMachine.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteStateMachineOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStateMachine,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteStateMachineOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -463,9 +407,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: activityDoesNotExist, invalidArn.
      */
-    public func describeActivityAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeActivityAsync(
             input: StepFunctionsModel.DescribeActivityInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -474,9 +417,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.describeActivity.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeActivityOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeActivity,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeActivityOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -498,9 +440,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: activityDoesNotExist, invalidArn.
      */
-    public func describeActivitySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.DescribeActivityInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.DescribeActivityOutput {
+    public func describeActivitySync(
+            input: StepFunctionsModel.DescribeActivityInput) throws -> StepFunctionsModel.DescribeActivityOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -508,9 +449,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.describeActivity.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeActivityOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeActivity,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeActivityOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -532,9 +472,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    public func describeExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeExecutionAsync(
             input: StepFunctionsModel.DescribeExecutionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -543,9 +482,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.describeExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeExecutionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -567,9 +505,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    public func describeExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.DescribeExecutionInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.DescribeExecutionOutput {
+    public func describeExecutionSync(
+            input: StepFunctionsModel.DescribeExecutionInput) throws -> StepFunctionsModel.DescribeExecutionOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -577,9 +514,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.describeExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeExecutionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -601,9 +537,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, stateMachineDoesNotExist.
      */
-    public func describeStateMachineAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeStateMachineAsync(
             input: StepFunctionsModel.DescribeStateMachineInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -612,9 +547,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.describeStateMachine.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeStateMachineOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStateMachine,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeStateMachineOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -636,9 +570,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, stateMachineDoesNotExist.
      */
-    public func describeStateMachineSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.DescribeStateMachineInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.DescribeStateMachineOutput {
+    public func describeStateMachineSync(
+            input: StepFunctionsModel.DescribeStateMachineInput) throws -> StepFunctionsModel.DescribeStateMachineOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -646,9 +579,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.describeStateMachine.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeStateMachineOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStateMachine,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeStateMachineOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -670,9 +602,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    public func describeStateMachineForExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func describeStateMachineForExecutionAsync(
             input: StepFunctionsModel.DescribeStateMachineForExecutionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -681,9 +612,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.describeStateMachineForExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeStateMachineForExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStateMachineForExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeStateMachineForExecutionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -705,9 +635,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    public func describeStateMachineForExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.DescribeStateMachineForExecutionInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
+    public func describeStateMachineForExecutionSync(
+            input: StepFunctionsModel.DescribeStateMachineForExecutionInput) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -715,9 +644,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.describeStateMachineForExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeStateMachineForExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStateMachineForExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeStateMachineForExecutionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -739,9 +667,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: activityDoesNotExist, activityWorkerLimitExceeded, invalidArn.
      */
-    public func getActivityTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getActivityTaskAsync(
             input: StepFunctionsModel.GetActivityTaskInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -750,9 +677,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.getActivityTask.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getActivityTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getActivityTask,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = GetActivityTaskOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -774,9 +700,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: activityDoesNotExist, activityWorkerLimitExceeded, invalidArn.
      */
-    public func getActivityTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.GetActivityTaskInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.GetActivityTaskOutput {
+    public func getActivityTaskSync(
+            input: StepFunctionsModel.GetActivityTaskInput) throws -> StepFunctionsModel.GetActivityTaskOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -784,9 +709,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.getActivityTask.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getActivityTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getActivityTask,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = GetActivityTaskOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -808,9 +732,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn, invalidToken.
      */
-    public func getExecutionHistoryAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getExecutionHistoryAsync(
             input: StepFunctionsModel.GetExecutionHistoryInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -819,9 +742,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.getExecutionHistory.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getExecutionHistoryOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getExecutionHistory,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = GetExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -843,9 +765,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn, invalidToken.
      */
-    public func getExecutionHistorySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.GetExecutionHistoryInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.GetExecutionHistoryOutput {
+    public func getExecutionHistorySync(
+            input: StepFunctionsModel.GetExecutionHistoryInput) throws -> StepFunctionsModel.GetExecutionHistoryOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -853,9 +774,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.getExecutionHistory.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getExecutionHistoryOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getExecutionHistory,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = GetExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -877,9 +797,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken.
      */
-    public func listActivitiesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listActivitiesAsync(
             input: StepFunctionsModel.ListActivitiesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -888,9 +807,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.listActivities.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listActivitiesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listActivities,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListActivitiesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -912,9 +830,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken.
      */
-    public func listActivitiesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.ListActivitiesInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.ListActivitiesOutput {
+    public func listActivitiesSync(
+            input: StepFunctionsModel.ListActivitiesInput) throws -> StepFunctionsModel.ListActivitiesOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -922,9 +839,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.listActivities.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listActivitiesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listActivities,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListActivitiesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -946,9 +862,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
      */
-    public func listExecutionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listExecutionsAsync(
             input: StepFunctionsModel.ListExecutionsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -957,9 +872,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.listExecutions.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listExecutionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExecutions,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListExecutionsOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -981,9 +895,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
      */
-    public func listExecutionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.ListExecutionsInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.ListExecutionsOutput {
+    public func listExecutionsSync(
+            input: StepFunctionsModel.ListExecutionsInput) throws -> StepFunctionsModel.ListExecutionsOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -991,9 +904,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.listExecutions.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listExecutionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExecutions,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListExecutionsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1015,9 +927,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken.
      */
-    public func listStateMachinesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listStateMachinesAsync(
             input: StepFunctionsModel.ListStateMachinesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1026,9 +937,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.listStateMachines.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listStateMachinesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStateMachines,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListStateMachinesOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1050,9 +960,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken.
      */
-    public func listStateMachinesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.ListStateMachinesInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.ListStateMachinesOutput {
+    public func listStateMachinesSync(
+            input: StepFunctionsModel.ListStateMachinesInput) throws -> StepFunctionsModel.ListStateMachinesOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1060,9 +969,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.listStateMachines.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listStateMachinesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStateMachines,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListStateMachinesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1084,9 +992,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound.
      */
-    public func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listTagsForResourceAsync(
             input: StepFunctionsModel.ListTagsForResourceInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1095,9 +1002,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.listTagsForResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTagsForResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1119,9 +1025,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound.
      */
-    public func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.ListTagsForResourceInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.ListTagsForResourceOutput {
+    public func listTagsForResourceSync(
+            input: StepFunctionsModel.ListTagsForResourceInput) throws -> StepFunctionsModel.ListTagsForResourceOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1129,9 +1034,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.listTagsForResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTagsForResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1153,9 +1057,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskFailureAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func sendTaskFailureAsync(
             input: StepFunctionsModel.SendTaskFailureInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1164,9 +1067,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.sendTaskFailure.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: sendTaskFailureOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendTaskFailure,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SendTaskFailureOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1188,9 +1090,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskFailureSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.SendTaskFailureInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.SendTaskFailureOutput {
+    public func sendTaskFailureSync(
+            input: StepFunctionsModel.SendTaskFailureInput) throws -> StepFunctionsModel.SendTaskFailureOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1198,9 +1099,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.sendTaskFailure.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: sendTaskFailureOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendTaskFailure,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SendTaskFailureOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1222,9 +1122,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskHeartbeatAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func sendTaskHeartbeatAsync(
             input: StepFunctionsModel.SendTaskHeartbeatInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1233,9 +1132,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.sendTaskHeartbeat.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: sendTaskHeartbeatOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendTaskHeartbeat,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SendTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1257,9 +1155,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskHeartbeatSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.SendTaskHeartbeatInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
+    public func sendTaskHeartbeatSync(
+            input: StepFunctionsModel.SendTaskHeartbeatInput) throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1267,9 +1164,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.sendTaskHeartbeat.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: sendTaskHeartbeatOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendTaskHeartbeat,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SendTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1291,9 +1187,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidOutput, invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskSuccessAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func sendTaskSuccessAsync(
             input: StepFunctionsModel.SendTaskSuccessInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1302,9 +1197,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.sendTaskSuccess.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: sendTaskSuccessOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendTaskSuccess,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SendTaskSuccessOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1326,9 +1220,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidOutput, invalidToken, taskDoesNotExist, taskTimedOut.
      */
-    public func sendTaskSuccessSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.SendTaskSuccessInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.SendTaskSuccessOutput {
+    public func sendTaskSuccessSync(
+            input: StepFunctionsModel.SendTaskSuccessInput) throws -> StepFunctionsModel.SendTaskSuccessOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1336,9 +1229,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.sendTaskSuccess.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: sendTaskSuccessOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendTaskSuccess,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SendTaskSuccessOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1360,9 +1252,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func startExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func startExecutionAsync(
             input: StepFunctionsModel.StartExecutionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1371,9 +1262,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.startExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = StartExecutionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1395,9 +1285,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func startExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.StartExecutionInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.StartExecutionOutput {
+    public func startExecutionSync(
+            input: StepFunctionsModel.StartExecutionInput) throws -> StepFunctionsModel.StartExecutionOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1405,9 +1294,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.startExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = StartExecutionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1429,9 +1317,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: executionDoesNotExist, invalidArn.
      */
-    public func stopExecutionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func stopExecutionAsync(
             input: StepFunctionsModel.StopExecutionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1440,9 +1327,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.stopExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: stopExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = StopExecutionOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1464,9 +1350,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: executionDoesNotExist, invalidArn.
      */
-    public func stopExecutionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.StopExecutionInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.StopExecutionOutput {
+    public func stopExecutionSync(
+            input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1474,9 +1359,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.stopExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: stopExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = StopExecutionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1498,9 +1382,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound, tooManyTags.
      */
-    public func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func tagResourceAsync(
             input: StepFunctionsModel.TagResourceInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1509,9 +1392,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.tagResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: tagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1533,9 +1415,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound, tooManyTags.
      */
-    public func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.TagResourceInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.TagResourceOutput {
+    public func tagResourceSync(
+            input: StepFunctionsModel.TagResourceInput) throws -> StepFunctionsModel.TagResourceOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1543,9 +1424,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.tagResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: tagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1567,9 +1447,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, resourceNotFound.
      */
-    public func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func untagResourceAsync(
             input: StepFunctionsModel.UntagResourceInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1578,9 +1457,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.untagResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: untagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1602,9 +1480,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, resourceNotFound.
      */
-    public func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.UntagResourceInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.UntagResourceOutput {
+    public func untagResourceSync(
+            input: StepFunctionsModel.UntagResourceInput) throws -> StepFunctionsModel.UntagResourceOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1612,9 +1489,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.untagResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: untagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1636,9 +1512,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func updateStateMachineAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func updateStateMachineAsync(
             input: StepFunctionsModel.UpdateStateMachineInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1647,9 +1522,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.updateStateMachine.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateStateMachineOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateStateMachine,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateStateMachineOperationHTTPRequestInput(encodable: input)
 
         _ = try httpClient.executeAsyncRetriableWithOutput(
@@ -1671,9 +1545,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
          Will be validated before being returned to caller.
      - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
      */
-    public func updateStateMachineSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: StepFunctionsModel.UpdateStateMachineInput,
-            reporting: InvocationReportingType) throws -> StepFunctionsModel.UpdateStateMachineOutput {
+    public func updateStateMachineSync(
+            input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1681,9 +1554,8 @@ public struct AWSStepFunctionsClient: StepFunctionsClientProtocol {
                     operation: StepFunctionsModelOperations.updateStateMachine.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateStateMachineOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateStateMachine,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateStateMachineOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(

@@ -28,341 +28,245 @@ import SmokeHTTPClient
  Client Protocol for the ElasticContainer service.
  */
 public protocol ElasticContainerClientProtocol {
-    typealias CreateCapacityProviderSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.CreateCapacityProviderRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateCapacityProviderResponse
-    typealias CreateCapacityProviderAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias CreateCapacityProviderSyncType = (
+            _ input: ElasticContainerModel.CreateCapacityProviderRequest) throws -> ElasticContainerModel.CreateCapacityProviderResponse
+    typealias CreateCapacityProviderAsyncType = (
             _ input: ElasticContainerModel.CreateCapacityProviderRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias CreateClusterSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.CreateClusterRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateClusterResponse
-    typealias CreateClusterAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias CreateClusterSyncType = (
+            _ input: ElasticContainerModel.CreateClusterRequest) throws -> ElasticContainerModel.CreateClusterResponse
+    typealias CreateClusterAsyncType = (
             _ input: ElasticContainerModel.CreateClusterRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.CreateClusterResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias CreateServiceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.CreateServiceRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateServiceResponse
-    typealias CreateServiceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias CreateServiceSyncType = (
+            _ input: ElasticContainerModel.CreateServiceRequest) throws -> ElasticContainerModel.CreateServiceResponse
+    typealias CreateServiceAsyncType = (
             _ input: ElasticContainerModel.CreateServiceRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.CreateServiceResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias CreateTaskSetSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.CreateTaskSetRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateTaskSetResponse
-    typealias CreateTaskSetAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias CreateTaskSetSyncType = (
+            _ input: ElasticContainerModel.CreateTaskSetRequest) throws -> ElasticContainerModel.CreateTaskSetResponse
+    typealias CreateTaskSetAsyncType = (
             _ input: ElasticContainerModel.CreateTaskSetRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.CreateTaskSetResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteAccountSettingSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DeleteAccountSettingRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteAccountSettingResponse
-    typealias DeleteAccountSettingAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteAccountSettingSyncType = (
+            _ input: ElasticContainerModel.DeleteAccountSettingRequest) throws -> ElasticContainerModel.DeleteAccountSettingResponse
+    typealias DeleteAccountSettingAsyncType = (
             _ input: ElasticContainerModel.DeleteAccountSettingRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DeleteAccountSettingResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DeleteAttributesRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteAttributesResponse
-    typealias DeleteAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteAttributesSyncType = (
+            _ input: ElasticContainerModel.DeleteAttributesRequest) throws -> ElasticContainerModel.DeleteAttributesResponse
+    typealias DeleteAttributesAsyncType = (
             _ input: ElasticContainerModel.DeleteAttributesRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteClusterSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DeleteClusterRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteClusterResponse
-    typealias DeleteClusterAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteClusterSyncType = (
+            _ input: ElasticContainerModel.DeleteClusterRequest) throws -> ElasticContainerModel.DeleteClusterResponse
+    typealias DeleteClusterAsyncType = (
             _ input: ElasticContainerModel.DeleteClusterRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DeleteClusterResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteServiceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DeleteServiceRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteServiceResponse
-    typealias DeleteServiceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteServiceSyncType = (
+            _ input: ElasticContainerModel.DeleteServiceRequest) throws -> ElasticContainerModel.DeleteServiceResponse
+    typealias DeleteServiceAsyncType = (
             _ input: ElasticContainerModel.DeleteServiceRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteTaskSetSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DeleteTaskSetRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteTaskSetResponse
-    typealias DeleteTaskSetAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteTaskSetSyncType = (
+            _ input: ElasticContainerModel.DeleteTaskSetRequest) throws -> ElasticContainerModel.DeleteTaskSetResponse
+    typealias DeleteTaskSetAsyncType = (
             _ input: ElasticContainerModel.DeleteTaskSetRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DeleteTaskSetResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DeregisterContainerInstanceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DeregisterContainerInstanceRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse
-    typealias DeregisterContainerInstanceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeregisterContainerInstanceSyncType = (
+            _ input: ElasticContainerModel.DeregisterContainerInstanceRequest) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse
+    typealias DeregisterContainerInstanceAsyncType = (
             _ input: ElasticContainerModel.DeregisterContainerInstanceRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DeregisterContainerInstanceResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DeregisterTaskDefinitionSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DeregisterTaskDefinitionRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse
-    typealias DeregisterTaskDefinitionAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeregisterTaskDefinitionSyncType = (
+            _ input: ElasticContainerModel.DeregisterTaskDefinitionRequest) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse
+    typealias DeregisterTaskDefinitionAsyncType = (
             _ input: ElasticContainerModel.DeregisterTaskDefinitionRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeCapacityProvidersSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DescribeCapacityProvidersRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse
-    typealias DescribeCapacityProvidersAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeCapacityProvidersSyncType = (
+            _ input: ElasticContainerModel.DescribeCapacityProvidersRequest) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse
+    typealias DescribeCapacityProvidersAsyncType = (
             _ input: ElasticContainerModel.DescribeCapacityProvidersRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeClustersSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DescribeClustersRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeClustersResponse
-    typealias DescribeClustersAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeClustersSyncType = (
+            _ input: ElasticContainerModel.DescribeClustersRequest) throws -> ElasticContainerModel.DescribeClustersResponse
+    typealias DescribeClustersAsyncType = (
             _ input: ElasticContainerModel.DescribeClustersRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DescribeClustersResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeContainerInstancesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DescribeContainerInstancesRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeContainerInstancesResponse
-    typealias DescribeContainerInstancesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeContainerInstancesSyncType = (
+            _ input: ElasticContainerModel.DescribeContainerInstancesRequest) throws -> ElasticContainerModel.DescribeContainerInstancesResponse
+    typealias DescribeContainerInstancesAsyncType = (
             _ input: ElasticContainerModel.DescribeContainerInstancesRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DescribeContainerInstancesResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeServicesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DescribeServicesRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeServicesResponse
-    typealias DescribeServicesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeServicesSyncType = (
+            _ input: ElasticContainerModel.DescribeServicesRequest) throws -> ElasticContainerModel.DescribeServicesResponse
+    typealias DescribeServicesAsyncType = (
             _ input: ElasticContainerModel.DescribeServicesRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DescribeServicesResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeTaskDefinitionSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DescribeTaskDefinitionRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse
-    typealias DescribeTaskDefinitionAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeTaskDefinitionSyncType = (
+            _ input: ElasticContainerModel.DescribeTaskDefinitionRequest) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse
+    typealias DescribeTaskDefinitionAsyncType = (
             _ input: ElasticContainerModel.DescribeTaskDefinitionRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DescribeTaskDefinitionResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeTaskSetsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DescribeTaskSetsRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeTaskSetsResponse
-    typealias DescribeTaskSetsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeTaskSetsSyncType = (
+            _ input: ElasticContainerModel.DescribeTaskSetsRequest) throws -> ElasticContainerModel.DescribeTaskSetsResponse
+    typealias DescribeTaskSetsAsyncType = (
             _ input: ElasticContainerModel.DescribeTaskSetsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DescribeTaskSetsResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DescribeTasksSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DescribeTasksRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeTasksResponse
-    typealias DescribeTasksAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DescribeTasksSyncType = (
+            _ input: ElasticContainerModel.DescribeTasksRequest) throws -> ElasticContainerModel.DescribeTasksResponse
+    typealias DescribeTasksAsyncType = (
             _ input: ElasticContainerModel.DescribeTasksRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DescribeTasksResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias DiscoverPollEndpointSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.DiscoverPollEndpointRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.DiscoverPollEndpointResponse
-    typealias DiscoverPollEndpointAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DiscoverPollEndpointSyncType = (
+            _ input: ElasticContainerModel.DiscoverPollEndpointRequest) throws -> ElasticContainerModel.DiscoverPollEndpointResponse
+    typealias DiscoverPollEndpointAsyncType = (
             _ input: ElasticContainerModel.DiscoverPollEndpointRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias ListAccountSettingsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.ListAccountSettingsRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.ListAccountSettingsResponse
-    typealias ListAccountSettingsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListAccountSettingsSyncType = (
+            _ input: ElasticContainerModel.ListAccountSettingsRequest) throws -> ElasticContainerModel.ListAccountSettingsResponse
+    typealias ListAccountSettingsAsyncType = (
             _ input: ElasticContainerModel.ListAccountSettingsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.ListAccountSettingsResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias ListAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.ListAttributesRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.ListAttributesResponse
-    typealias ListAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListAttributesSyncType = (
+            _ input: ElasticContainerModel.ListAttributesRequest) throws -> ElasticContainerModel.ListAttributesResponse
+    typealias ListAttributesAsyncType = (
             _ input: ElasticContainerModel.ListAttributesRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.ListAttributesResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias ListClustersSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.ListClustersRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.ListClustersResponse
-    typealias ListClustersAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListClustersSyncType = (
+            _ input: ElasticContainerModel.ListClustersRequest) throws -> ElasticContainerModel.ListClustersResponse
+    typealias ListClustersAsyncType = (
             _ input: ElasticContainerModel.ListClustersRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.ListClustersResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias ListContainerInstancesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.ListContainerInstancesRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.ListContainerInstancesResponse
-    typealias ListContainerInstancesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListContainerInstancesSyncType = (
+            _ input: ElasticContainerModel.ListContainerInstancesRequest) throws -> ElasticContainerModel.ListContainerInstancesResponse
+    typealias ListContainerInstancesAsyncType = (
             _ input: ElasticContainerModel.ListContainerInstancesRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.ListContainerInstancesResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias ListServicesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.ListServicesRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.ListServicesResponse
-    typealias ListServicesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListServicesSyncType = (
+            _ input: ElasticContainerModel.ListServicesRequest) throws -> ElasticContainerModel.ListServicesResponse
+    typealias ListServicesAsyncType = (
             _ input: ElasticContainerModel.ListServicesRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias ListTagsForResourceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.ListTagsForResourceRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTagsForResourceResponse
-    typealias ListTagsForResourceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListTagsForResourceSyncType = (
+            _ input: ElasticContainerModel.ListTagsForResourceRequest) throws -> ElasticContainerModel.ListTagsForResourceResponse
+    typealias ListTagsForResourceAsyncType = (
             _ input: ElasticContainerModel.ListTagsForResourceRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.ListTagsForResourceResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias ListTaskDefinitionFamiliesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse
-    typealias ListTaskDefinitionFamiliesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListTaskDefinitionFamiliesSyncType = (
+            _ input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse
+    typealias ListTaskDefinitionFamiliesAsyncType = (
             _ input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias ListTaskDefinitionsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.ListTaskDefinitionsRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTaskDefinitionsResponse
-    typealias ListTaskDefinitionsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListTaskDefinitionsSyncType = (
+            _ input: ElasticContainerModel.ListTaskDefinitionsRequest) throws -> ElasticContainerModel.ListTaskDefinitionsResponse
+    typealias ListTaskDefinitionsAsyncType = (
             _ input: ElasticContainerModel.ListTaskDefinitionsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionsResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias ListTasksSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.ListTasksRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTasksResponse
-    typealias ListTasksAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListTasksSyncType = (
+            _ input: ElasticContainerModel.ListTasksRequest) throws -> ElasticContainerModel.ListTasksResponse
+    typealias ListTasksAsyncType = (
             _ input: ElasticContainerModel.ListTasksRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.ListTasksResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias PutAccountSettingSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.PutAccountSettingRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.PutAccountSettingResponse
-    typealias PutAccountSettingAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutAccountSettingSyncType = (
+            _ input: ElasticContainerModel.PutAccountSettingRequest) throws -> ElasticContainerModel.PutAccountSettingResponse
+    typealias PutAccountSettingAsyncType = (
             _ input: ElasticContainerModel.PutAccountSettingRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.PutAccountSettingResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias PutAccountSettingDefaultSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.PutAccountSettingDefaultRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse
-    typealias PutAccountSettingDefaultAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutAccountSettingDefaultSyncType = (
+            _ input: ElasticContainerModel.PutAccountSettingDefaultRequest) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse
+    typealias PutAccountSettingDefaultAsyncType = (
             _ input: ElasticContainerModel.PutAccountSettingDefaultRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.PutAccountSettingDefaultResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias PutAttributesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.PutAttributesRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.PutAttributesResponse
-    typealias PutAttributesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutAttributesSyncType = (
+            _ input: ElasticContainerModel.PutAttributesRequest) throws -> ElasticContainerModel.PutAttributesResponse
+    typealias PutAttributesAsyncType = (
             _ input: ElasticContainerModel.PutAttributesRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.PutAttributesResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias PutClusterCapacityProvidersSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.PutClusterCapacityProvidersRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse
-    typealias PutClusterCapacityProvidersAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutClusterCapacityProvidersSyncType = (
+            _ input: ElasticContainerModel.PutClusterCapacityProvidersRequest) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse
+    typealias PutClusterCapacityProvidersAsyncType = (
             _ input: ElasticContainerModel.PutClusterCapacityProvidersRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias RegisterContainerInstanceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.RegisterContainerInstanceRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.RegisterContainerInstanceResponse
-    typealias RegisterContainerInstanceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias RegisterContainerInstanceSyncType = (
+            _ input: ElasticContainerModel.RegisterContainerInstanceRequest) throws -> ElasticContainerModel.RegisterContainerInstanceResponse
+    typealias RegisterContainerInstanceAsyncType = (
             _ input: ElasticContainerModel.RegisterContainerInstanceRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.RegisterContainerInstanceResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias RegisterTaskDefinitionSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.RegisterTaskDefinitionRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse
-    typealias RegisterTaskDefinitionAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias RegisterTaskDefinitionSyncType = (
+            _ input: ElasticContainerModel.RegisterTaskDefinitionRequest) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse
+    typealias RegisterTaskDefinitionAsyncType = (
             _ input: ElasticContainerModel.RegisterTaskDefinitionRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.RegisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias RunTaskSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.RunTaskRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.RunTaskResponse
-    typealias RunTaskAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias RunTaskSyncType = (
+            _ input: ElasticContainerModel.RunTaskRequest) throws -> ElasticContainerModel.RunTaskResponse
+    typealias RunTaskAsyncType = (
             _ input: ElasticContainerModel.RunTaskRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.RunTaskResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias StartTaskSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.StartTaskRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.StartTaskResponse
-    typealias StartTaskAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias StartTaskSyncType = (
+            _ input: ElasticContainerModel.StartTaskRequest) throws -> ElasticContainerModel.StartTaskResponse
+    typealias StartTaskAsyncType = (
             _ input: ElasticContainerModel.StartTaskRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.StartTaskResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias StopTaskSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.StopTaskRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.StopTaskResponse
-    typealias StopTaskAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias StopTaskSyncType = (
+            _ input: ElasticContainerModel.StopTaskRequest) throws -> ElasticContainerModel.StopTaskResponse
+    typealias StopTaskAsyncType = (
             _ input: ElasticContainerModel.StopTaskRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.StopTaskResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias SubmitAttachmentStateChangesSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.SubmitAttachmentStateChangesRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse
-    typealias SubmitAttachmentStateChangesAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias SubmitAttachmentStateChangesSyncType = (
+            _ input: ElasticContainerModel.SubmitAttachmentStateChangesRequest) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse
+    typealias SubmitAttachmentStateChangesAsyncType = (
             _ input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias SubmitContainerStateChangeSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.SubmitContainerStateChangeRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse
-    typealias SubmitContainerStateChangeAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias SubmitContainerStateChangeSyncType = (
+            _ input: ElasticContainerModel.SubmitContainerStateChangeRequest) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse
+    typealias SubmitContainerStateChangeAsyncType = (
             _ input: ElasticContainerModel.SubmitContainerStateChangeRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.SubmitContainerStateChangeResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias SubmitTaskStateChangeSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.SubmitTaskStateChangeRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse
-    typealias SubmitTaskStateChangeAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias SubmitTaskStateChangeSyncType = (
+            _ input: ElasticContainerModel.SubmitTaskStateChangeRequest) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse
+    typealias SubmitTaskStateChangeAsyncType = (
             _ input: ElasticContainerModel.SubmitTaskStateChangeRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.SubmitTaskStateChangeResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias TagResourceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.TagResourceRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.TagResourceResponse
-    typealias TagResourceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias TagResourceSyncType = (
+            _ input: ElasticContainerModel.TagResourceRequest) throws -> ElasticContainerModel.TagResourceResponse
+    typealias TagResourceAsyncType = (
             _ input: ElasticContainerModel.TagResourceRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.TagResourceResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias UntagResourceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.UntagResourceRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.UntagResourceResponse
-    typealias UntagResourceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UntagResourceSyncType = (
+            _ input: ElasticContainerModel.UntagResourceRequest) throws -> ElasticContainerModel.UntagResourceResponse
+    typealias UntagResourceAsyncType = (
             _ input: ElasticContainerModel.UntagResourceRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias UpdateClusterSettingsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.UpdateClusterSettingsRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateClusterSettingsResponse
-    typealias UpdateClusterSettingsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateClusterSettingsSyncType = (
+            _ input: ElasticContainerModel.UpdateClusterSettingsRequest) throws -> ElasticContainerModel.UpdateClusterSettingsResponse
+    typealias UpdateClusterSettingsAsyncType = (
             _ input: ElasticContainerModel.UpdateClusterSettingsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias UpdateContainerAgentSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.UpdateContainerAgentRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateContainerAgentResponse
-    typealias UpdateContainerAgentAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateContainerAgentSyncType = (
+            _ input: ElasticContainerModel.UpdateContainerAgentRequest) throws -> ElasticContainerModel.UpdateContainerAgentResponse
+    typealias UpdateContainerAgentAsyncType = (
             _ input: ElasticContainerModel.UpdateContainerAgentRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.UpdateContainerAgentResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias UpdateContainerInstancesStateSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.UpdateContainerInstancesStateRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse
-    typealias UpdateContainerInstancesStateAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateContainerInstancesStateSyncType = (
+            _ input: ElasticContainerModel.UpdateContainerInstancesStateRequest) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse
+    typealias UpdateContainerInstancesStateAsyncType = (
             _ input: ElasticContainerModel.UpdateContainerInstancesStateRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias UpdateServiceSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.UpdateServiceRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateServiceResponse
-    typealias UpdateServiceAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateServiceSyncType = (
+            _ input: ElasticContainerModel.UpdateServiceRequest) throws -> ElasticContainerModel.UpdateServiceResponse
+    typealias UpdateServiceAsyncType = (
             _ input: ElasticContainerModel.UpdateServiceRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.UpdateServiceResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias UpdateServicePrimaryTaskSetSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse
-    typealias UpdateServicePrimaryTaskSetAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateServicePrimaryTaskSetSyncType = (
+            _ input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse
+    typealias UpdateServicePrimaryTaskSetAsyncType = (
             _ input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, HTTPClientError>) -> ()) throws -> ()
-    typealias UpdateTaskSetSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: ElasticContainerModel.UpdateTaskSetRequest,
-            _ reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateTaskSetResponse
-    typealias UpdateTaskSetAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UpdateTaskSetSyncType = (
+            _ input: ElasticContainerModel.UpdateTaskSetRequest) throws -> ElasticContainerModel.UpdateTaskSetResponse
+    typealias UpdateTaskSetAsyncType = (
             _ input: ElasticContainerModel.UpdateTaskSetRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<ElasticContainerModel.UpdateTaskSetResponse, HTTPClientError>) -> ()) throws -> ()
 
     /**
@@ -375,9 +279,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, limitExceeded, server.
      */
-    func createCapacityProviderAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func createCapacityProviderAsync(
             input: ElasticContainerModel.CreateCapacityProviderRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -389,9 +292,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, limitExceeded, server.
      */
-    func createCapacityProviderSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.CreateCapacityProviderRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateCapacityProviderResponse
+    func createCapacityProviderSync(
+            input: ElasticContainerModel.CreateCapacityProviderRequest) throws -> ElasticContainerModel.CreateCapacityProviderResponse
 
     /**
      Invokes the CreateCluster operation returning immediately and passing the response to a callback.
@@ -403,9 +305,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func createClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func createClusterAsync(
             input: ElasticContainerModel.CreateClusterRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.CreateClusterResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -417,9 +318,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func createClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.CreateClusterRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateClusterResponse
+    func createClusterSync(
+            input: ElasticContainerModel.CreateClusterRequest) throws -> ElasticContainerModel.CreateClusterResponse
 
     /**
      Invokes the CreateService operation returning immediately and passing the response to a callback.
@@ -431,9 +331,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    func createServiceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func createServiceAsync(
             input: ElasticContainerModel.CreateServiceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.CreateServiceResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -445,9 +344,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    func createServiceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.CreateServiceRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateServiceResponse
+    func createServiceSync(
+            input: ElasticContainerModel.CreateServiceRequest) throws -> ElasticContainerModel.CreateServiceResponse
 
     /**
      Invokes the CreateTaskSet operation returning immediately and passing the response to a callback.
@@ -459,9 +357,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    func createTaskSetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func createTaskSetAsync(
             input: ElasticContainerModel.CreateTaskSetRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.CreateTaskSetResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -473,9 +370,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    func createTaskSetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.CreateTaskSetRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.CreateTaskSetResponse
+    func createTaskSetSync(
+            input: ElasticContainerModel.CreateTaskSetRequest) throws -> ElasticContainerModel.CreateTaskSetResponse
 
     /**
      Invokes the DeleteAccountSetting operation returning immediately and passing the response to a callback.
@@ -487,9 +383,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func deleteAccountSettingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteAccountSettingAsync(
             input: ElasticContainerModel.DeleteAccountSettingRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteAccountSettingResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -501,9 +396,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func deleteAccountSettingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DeleteAccountSettingRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteAccountSettingResponse
+    func deleteAccountSettingSync(
+            input: ElasticContainerModel.DeleteAccountSettingRequest) throws -> ElasticContainerModel.DeleteAccountSettingResponse
 
     /**
      Invokes the DeleteAttributes operation returning immediately and passing the response to a callback.
@@ -515,9 +409,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: clusterNotFound, invalidParameter, targetNotFound.
      */
-    func deleteAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteAttributesAsync(
             input: ElasticContainerModel.DeleteAttributesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -529,9 +422,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: clusterNotFound, invalidParameter, targetNotFound.
      */
-    func deleteAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DeleteAttributesRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteAttributesResponse
+    func deleteAttributesSync(
+            input: ElasticContainerModel.DeleteAttributesRequest) throws -> ElasticContainerModel.DeleteAttributesResponse
 
     /**
      Invokes the DeleteCluster operation returning immediately and passing the response to a callback.
@@ -543,9 +435,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
      */
-    func deleteClusterAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteClusterAsync(
             input: ElasticContainerModel.DeleteClusterRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteClusterResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -557,9 +448,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
      */
-    func deleteClusterSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DeleteClusterRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteClusterResponse
+    func deleteClusterSync(
+            input: ElasticContainerModel.DeleteClusterRequest) throws -> ElasticContainerModel.DeleteClusterResponse
 
     /**
      Invokes the DeleteService operation returning immediately and passing the response to a callback.
@@ -571,9 +461,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    func deleteServiceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteServiceAsync(
             input: ElasticContainerModel.DeleteServiceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -585,9 +474,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    func deleteServiceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DeleteServiceRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteServiceResponse
+    func deleteServiceSync(
+            input: ElasticContainerModel.DeleteServiceRequest) throws -> ElasticContainerModel.DeleteServiceResponse
 
     /**
      Invokes the DeleteTaskSet operation returning immediately and passing the response to a callback.
@@ -599,9 +487,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    func deleteTaskSetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteTaskSetAsync(
             input: ElasticContainerModel.DeleteTaskSetRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeleteTaskSetResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -613,9 +500,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    func deleteTaskSetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DeleteTaskSetRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeleteTaskSetResponse
+    func deleteTaskSetSync(
+            input: ElasticContainerModel.DeleteTaskSetRequest) throws -> ElasticContainerModel.DeleteTaskSetResponse
 
     /**
      Invokes the DeregisterContainerInstance operation returning immediately and passing the response to a callback.
@@ -627,9 +513,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    func deregisterContainerInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deregisterContainerInstanceAsync(
             input: ElasticContainerModel.DeregisterContainerInstanceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeregisterContainerInstanceResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -641,9 +526,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    func deregisterContainerInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DeregisterContainerInstanceRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse
+    func deregisterContainerInstanceSync(
+            input: ElasticContainerModel.DeregisterContainerInstanceRequest) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse
 
     /**
      Invokes the DeregisterTaskDefinition operation returning immediately and passing the response to a callback.
@@ -655,9 +539,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func deregisterTaskDefinitionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deregisterTaskDefinitionAsync(
             input: ElasticContainerModel.DeregisterTaskDefinitionRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -669,9 +552,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func deregisterTaskDefinitionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DeregisterTaskDefinitionRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse
+    func deregisterTaskDefinitionSync(
+            input: ElasticContainerModel.DeregisterTaskDefinitionRequest) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse
 
     /**
      Invokes the DescribeCapacityProviders operation returning immediately and passing the response to a callback.
@@ -683,9 +565,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func describeCapacityProvidersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeCapacityProvidersAsync(
             input: ElasticContainerModel.DescribeCapacityProvidersRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -697,9 +578,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func describeCapacityProvidersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DescribeCapacityProvidersRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse
+    func describeCapacityProvidersSync(
+            input: ElasticContainerModel.DescribeCapacityProvidersRequest) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse
 
     /**
      Invokes the DescribeClusters operation returning immediately and passing the response to a callback.
@@ -711,9 +591,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func describeClustersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeClustersAsync(
             input: ElasticContainerModel.DescribeClustersRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeClustersResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -725,9 +604,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func describeClustersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DescribeClustersRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeClustersResponse
+    func describeClustersSync(
+            input: ElasticContainerModel.DescribeClustersRequest) throws -> ElasticContainerModel.DescribeClustersResponse
 
     /**
      Invokes the DescribeContainerInstances operation returning immediately and passing the response to a callback.
@@ -739,9 +617,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    func describeContainerInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeContainerInstancesAsync(
             input: ElasticContainerModel.DescribeContainerInstancesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeContainerInstancesResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -753,9 +630,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    func describeContainerInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DescribeContainerInstancesRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeContainerInstancesResponse
+    func describeContainerInstancesSync(
+            input: ElasticContainerModel.DescribeContainerInstancesRequest) throws -> ElasticContainerModel.DescribeContainerInstancesResponse
 
     /**
      Invokes the DescribeServices operation returning immediately and passing the response to a callback.
@@ -767,9 +643,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    func describeServicesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeServicesAsync(
             input: ElasticContainerModel.DescribeServicesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeServicesResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -781,9 +656,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    func describeServicesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DescribeServicesRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeServicesResponse
+    func describeServicesSync(
+            input: ElasticContainerModel.DescribeServicesRequest) throws -> ElasticContainerModel.DescribeServicesResponse
 
     /**
      Invokes the DescribeTaskDefinition operation returning immediately and passing the response to a callback.
@@ -795,9 +669,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func describeTaskDefinitionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeTaskDefinitionAsync(
             input: ElasticContainerModel.DescribeTaskDefinitionRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeTaskDefinitionResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -809,9 +682,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func describeTaskDefinitionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DescribeTaskDefinitionRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse
+    func describeTaskDefinitionSync(
+            input: ElasticContainerModel.DescribeTaskDefinitionRequest) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse
 
     /**
      Invokes the DescribeTaskSets operation returning immediately and passing the response to a callback.
@@ -823,9 +695,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    func describeTaskSetsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeTaskSetsAsync(
             input: ElasticContainerModel.DescribeTaskSetsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeTaskSetsResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -837,9 +708,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
-    func describeTaskSetsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DescribeTaskSetsRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeTaskSetsResponse
+    func describeTaskSetsSync(
+            input: ElasticContainerModel.DescribeTaskSetsRequest) throws -> ElasticContainerModel.DescribeTaskSetsResponse
 
     /**
      Invokes the DescribeTasks operation returning immediately and passing the response to a callback.
@@ -851,9 +721,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    func describeTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func describeTasksAsync(
             input: ElasticContainerModel.DescribeTasksRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DescribeTasksResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -865,9 +734,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    func describeTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DescribeTasksRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DescribeTasksResponse
+    func describeTasksSync(
+            input: ElasticContainerModel.DescribeTasksRequest) throws -> ElasticContainerModel.DescribeTasksResponse
 
     /**
      Invokes the DiscoverPollEndpoint operation returning immediately and passing the response to a callback.
@@ -879,9 +747,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, server.
      */
-    func discoverPollEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func discoverPollEndpointAsync(
             input: ElasticContainerModel.DiscoverPollEndpointRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -893,9 +760,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, server.
      */
-    func discoverPollEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.DiscoverPollEndpointRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.DiscoverPollEndpointResponse
+    func discoverPollEndpointSync(
+            input: ElasticContainerModel.DiscoverPollEndpointRequest) throws -> ElasticContainerModel.DiscoverPollEndpointResponse
 
     /**
      Invokes the ListAccountSettings operation returning immediately and passing the response to a callback.
@@ -907,9 +773,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func listAccountSettingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listAccountSettingsAsync(
             input: ElasticContainerModel.ListAccountSettingsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListAccountSettingsResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -921,9 +786,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func listAccountSettingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.ListAccountSettingsRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListAccountSettingsResponse
+    func listAccountSettingsSync(
+            input: ElasticContainerModel.ListAccountSettingsRequest) throws -> ElasticContainerModel.ListAccountSettingsResponse
 
     /**
      Invokes the ListAttributes operation returning immediately and passing the response to a callback.
@@ -935,9 +799,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: clusterNotFound, invalidParameter.
      */
-    func listAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listAttributesAsync(
             input: ElasticContainerModel.ListAttributesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListAttributesResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -949,9 +812,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: clusterNotFound, invalidParameter.
      */
-    func listAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.ListAttributesRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListAttributesResponse
+    func listAttributesSync(
+            input: ElasticContainerModel.ListAttributesRequest) throws -> ElasticContainerModel.ListAttributesResponse
 
     /**
      Invokes the ListClusters operation returning immediately and passing the response to a callback.
@@ -963,9 +825,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func listClustersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listClustersAsync(
             input: ElasticContainerModel.ListClustersRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListClustersResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -977,9 +838,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func listClustersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.ListClustersRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListClustersResponse
+    func listClustersSync(
+            input: ElasticContainerModel.ListClustersRequest) throws -> ElasticContainerModel.ListClustersResponse
 
     /**
      Invokes the ListContainerInstances operation returning immediately and passing the response to a callback.
@@ -991,9 +851,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    func listContainerInstancesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listContainerInstancesAsync(
             input: ElasticContainerModel.ListContainerInstancesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListContainerInstancesResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1005,9 +864,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    func listContainerInstancesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.ListContainerInstancesRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListContainerInstancesResponse
+    func listContainerInstancesSync(
+            input: ElasticContainerModel.ListContainerInstancesRequest) throws -> ElasticContainerModel.ListContainerInstancesResponse
 
     /**
      Invokes the ListServices operation returning immediately and passing the response to a callback.
@@ -1019,9 +877,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    func listServicesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listServicesAsync(
             input: ElasticContainerModel.ListServicesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1033,9 +890,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    func listServicesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.ListServicesRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListServicesResponse
+    func listServicesSync(
+            input: ElasticContainerModel.ListServicesRequest) throws -> ElasticContainerModel.ListServicesResponse
 
     /**
      Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
@@ -1047,9 +903,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listTagsForResourceAsync(
             input: ElasticContainerModel.ListTagsForResourceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListTagsForResourceResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1061,9 +916,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.ListTagsForResourceRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTagsForResourceResponse
+    func listTagsForResourceSync(
+            input: ElasticContainerModel.ListTagsForResourceRequest) throws -> ElasticContainerModel.ListTagsForResourceResponse
 
     /**
      Invokes the ListTaskDefinitionFamilies operation returning immediately and passing the response to a callback.
@@ -1075,9 +929,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func listTaskDefinitionFamiliesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listTaskDefinitionFamiliesAsync(
             input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1089,9 +942,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func listTaskDefinitionFamiliesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse
+    func listTaskDefinitionFamiliesSync(
+            input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse
 
     /**
      Invokes the ListTaskDefinitions operation returning immediately and passing the response to a callback.
@@ -1103,9 +955,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func listTaskDefinitionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listTaskDefinitionsAsync(
             input: ElasticContainerModel.ListTaskDefinitionsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionsResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1117,9 +968,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func listTaskDefinitionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.ListTaskDefinitionsRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTaskDefinitionsResponse
+    func listTaskDefinitionsSync(
+            input: ElasticContainerModel.ListTaskDefinitionsRequest) throws -> ElasticContainerModel.ListTaskDefinitionsResponse
 
     /**
      Invokes the ListTasks operation returning immediately and passing the response to a callback.
@@ -1131,9 +981,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    func listTasksAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listTasksAsync(
             input: ElasticContainerModel.ListTasksRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.ListTasksResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1145,9 +994,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
-    func listTasksSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.ListTasksRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.ListTasksResponse
+    func listTasksSync(
+            input: ElasticContainerModel.ListTasksRequest) throws -> ElasticContainerModel.ListTasksResponse
 
     /**
      Invokes the PutAccountSetting operation returning immediately and passing the response to a callback.
@@ -1159,9 +1007,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func putAccountSettingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putAccountSettingAsync(
             input: ElasticContainerModel.PutAccountSettingRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.PutAccountSettingResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1173,9 +1020,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func putAccountSettingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.PutAccountSettingRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.PutAccountSettingResponse
+    func putAccountSettingSync(
+            input: ElasticContainerModel.PutAccountSettingRequest) throws -> ElasticContainerModel.PutAccountSettingResponse
 
     /**
      Invokes the PutAccountSettingDefault operation returning immediately and passing the response to a callback.
@@ -1187,9 +1033,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func putAccountSettingDefaultAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putAccountSettingDefaultAsync(
             input: ElasticContainerModel.PutAccountSettingDefaultRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.PutAccountSettingDefaultResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1201,9 +1046,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func putAccountSettingDefaultSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.PutAccountSettingDefaultRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse
+    func putAccountSettingDefaultSync(
+            input: ElasticContainerModel.PutAccountSettingDefaultRequest) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse
 
     /**
      Invokes the PutAttributes operation returning immediately and passing the response to a callback.
@@ -1215,9 +1059,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: attributeLimitExceeded, clusterNotFound, invalidParameter, targetNotFound.
      */
-    func putAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putAttributesAsync(
             input: ElasticContainerModel.PutAttributesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.PutAttributesResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1229,9 +1072,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: attributeLimitExceeded, clusterNotFound, invalidParameter, targetNotFound.
      */
-    func putAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.PutAttributesRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.PutAttributesResponse
+    func putAttributesSync(
+            input: ElasticContainerModel.PutAttributesRequest) throws -> ElasticContainerModel.PutAttributesResponse
 
     /**
      Invokes the PutClusterCapacityProviders operation returning immediately and passing the response to a callback.
@@ -1243,9 +1085,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
      */
-    func putClusterCapacityProvidersAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putClusterCapacityProvidersAsync(
             input: ElasticContainerModel.PutClusterCapacityProvidersRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1257,9 +1098,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
      */
-    func putClusterCapacityProvidersSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.PutClusterCapacityProvidersRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse
+    func putClusterCapacityProvidersSync(
+            input: ElasticContainerModel.PutClusterCapacityProvidersRequest) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse
 
     /**
      Invokes the RegisterContainerInstance operation returning immediately and passing the response to a callback.
@@ -1271,9 +1111,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func registerContainerInstanceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func registerContainerInstanceAsync(
             input: ElasticContainerModel.RegisterContainerInstanceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.RegisterContainerInstanceResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1285,9 +1124,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func registerContainerInstanceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.RegisterContainerInstanceRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.RegisterContainerInstanceResponse
+    func registerContainerInstanceSync(
+            input: ElasticContainerModel.RegisterContainerInstanceRequest) throws -> ElasticContainerModel.RegisterContainerInstanceResponse
 
     /**
      Invokes the RegisterTaskDefinition operation returning immediately and passing the response to a callback.
@@ -1299,9 +1137,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, invalidParameter, server.
      */
-    func registerTaskDefinitionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func registerTaskDefinitionAsync(
             input: ElasticContainerModel.RegisterTaskDefinitionRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.RegisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1313,9 +1150,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, invalidParameter, server.
      */
-    func registerTaskDefinitionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.RegisterTaskDefinitionRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse
+    func registerTaskDefinitionSync(
+            input: ElasticContainerModel.RegisterTaskDefinitionRequest) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse
 
     /**
      Invokes the RunTask operation returning immediately and passing the response to a callback.
@@ -1327,9 +1163,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, blocked, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    func runTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func runTaskAsync(
             input: ElasticContainerModel.RunTaskRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.RunTaskResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1341,9 +1176,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, blocked, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
-    func runTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.RunTaskRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.RunTaskResponse
+    func runTaskSync(
+            input: ElasticContainerModel.RunTaskRequest) throws -> ElasticContainerModel.RunTaskResponse
 
     /**
      Invokes the StartTask operation returning immediately and passing the response to a callback.
@@ -1355,9 +1189,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    func startTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func startTaskAsync(
             input: ElasticContainerModel.StartTaskRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.StartTaskResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1369,9 +1202,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    func startTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.StartTaskRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.StartTaskResponse
+    func startTaskSync(
+            input: ElasticContainerModel.StartTaskRequest) throws -> ElasticContainerModel.StartTaskResponse
 
     /**
      Invokes the StopTask operation returning immediately and passing the response to a callback.
@@ -1383,9 +1215,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    func stopTaskAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func stopTaskAsync(
             input: ElasticContainerModel.StopTaskRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.StopTaskResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1397,9 +1228,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    func stopTaskSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.StopTaskRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.StopTaskResponse
+    func stopTaskSync(
+            input: ElasticContainerModel.StopTaskRequest) throws -> ElasticContainerModel.StopTaskResponse
 
     /**
      Invokes the SubmitAttachmentStateChanges operation returning immediately and passing the response to a callback.
@@ -1411,9 +1241,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, invalidParameter, server.
      */
-    func submitAttachmentStateChangesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func submitAttachmentStateChangesAsync(
             input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1425,9 +1254,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, invalidParameter, server.
      */
-    func submitAttachmentStateChangesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.SubmitAttachmentStateChangesRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse
+    func submitAttachmentStateChangesSync(
+            input: ElasticContainerModel.SubmitAttachmentStateChangesRequest) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse
 
     /**
      Invokes the SubmitContainerStateChange operation returning immediately and passing the response to a callback.
@@ -1439,9 +1267,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, server.
      */
-    func submitContainerStateChangeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func submitContainerStateChangeAsync(
             input: ElasticContainerModel.SubmitContainerStateChangeRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.SubmitContainerStateChangeResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1453,9 +1280,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, server.
      */
-    func submitContainerStateChangeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.SubmitContainerStateChangeRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse
+    func submitContainerStateChangeSync(
+            input: ElasticContainerModel.SubmitContainerStateChangeRequest) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse
 
     /**
      Invokes the SubmitTaskStateChange operation returning immediately and passing the response to a callback.
@@ -1467,9 +1293,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, invalidParameter, server.
      */
-    func submitTaskStateChangeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func submitTaskStateChangeAsync(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.SubmitTaskStateChangeResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1481,9 +1306,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, invalidParameter, server.
      */
-    func submitTaskStateChangeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.SubmitTaskStateChangeRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse
+    func submitTaskStateChangeSync(
+            input: ElasticContainerModel.SubmitTaskStateChangeRequest) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse
 
     /**
      Invokes the TagResource operation returning immediately and passing the response to a callback.
@@ -1495,9 +1319,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func tagResourceAsync(
             input: ElasticContainerModel.TagResourceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.TagResourceResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1509,9 +1332,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.TagResourceRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.TagResourceResponse
+    func tagResourceSync(
+            input: ElasticContainerModel.TagResourceRequest) throws -> ElasticContainerModel.TagResourceResponse
 
     /**
      Invokes the UntagResource operation returning immediately and passing the response to a callback.
@@ -1523,9 +1345,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func untagResourceAsync(
             input: ElasticContainerModel.UntagResourceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1537,9 +1358,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
-    func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.UntagResourceRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.UntagResourceResponse
+    func untagResourceSync(
+            input: ElasticContainerModel.UntagResourceRequest) throws -> ElasticContainerModel.UntagResourceResponse
 
     /**
      Invokes the UpdateClusterSettings operation returning immediately and passing the response to a callback.
@@ -1551,9 +1371,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    func updateClusterSettingsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateClusterSettingsAsync(
             input: ElasticContainerModel.UpdateClusterSettingsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1565,9 +1384,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    func updateClusterSettingsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.UpdateClusterSettingsRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateClusterSettingsResponse
+    func updateClusterSettingsSync(
+            input: ElasticContainerModel.UpdateClusterSettingsRequest) throws -> ElasticContainerModel.UpdateClusterSettingsResponse
 
     /**
      Invokes the UpdateContainerAgent operation returning immediately and passing the response to a callback.
@@ -1579,9 +1397,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, missingVersion, noUpdateAvailable, server, updateInProgress.
      */
-    func updateContainerAgentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateContainerAgentAsync(
             input: ElasticContainerModel.UpdateContainerAgentRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateContainerAgentResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1593,9 +1410,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, missingVersion, noUpdateAvailable, server, updateInProgress.
      */
-    func updateContainerAgentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.UpdateContainerAgentRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateContainerAgentResponse
+    func updateContainerAgentSync(
+            input: ElasticContainerModel.UpdateContainerAgentRequest) throws -> ElasticContainerModel.UpdateContainerAgentResponse
 
     /**
      Invokes the UpdateContainerInstancesState operation returning immediately and passing the response to a callback.
@@ -1607,9 +1423,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: client, clusterNotFound, invalidParameter, server.
      */
-    func updateContainerInstancesStateAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateContainerInstancesStateAsync(
             input: ElasticContainerModel.UpdateContainerInstancesStateRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1621,9 +1436,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
-    func updateContainerInstancesStateSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.UpdateContainerInstancesStateRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse
+    func updateContainerInstancesStateSync(
+            input: ElasticContainerModel.UpdateContainerInstancesStateRequest) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse
 
     /**
      Invokes the UpdateService operation returning immediately and passing the response to a callback.
@@ -1635,9 +1449,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
      */
-    func updateServiceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateServiceAsync(
             input: ElasticContainerModel.UpdateServiceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateServiceResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1649,9 +1462,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
      */
-    func updateServiceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.UpdateServiceRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateServiceResponse
+    func updateServiceSync(
+            input: ElasticContainerModel.UpdateServiceRequest) throws -> ElasticContainerModel.UpdateServiceResponse
 
     /**
      Invokes the UpdateServicePrimaryTaskSet operation returning immediately and passing the response to a callback.
@@ -1663,9 +1475,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    func updateServicePrimaryTaskSetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateServicePrimaryTaskSetAsync(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1677,9 +1488,8 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    func updateServicePrimaryTaskSetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse
+    func updateServicePrimaryTaskSetSync(
+            input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse
 
     /**
      Invokes the UpdateTaskSet operation returning immediately and passing the response to a callback.
@@ -1691,9 +1501,8 @@ public protocol ElasticContainerClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    func updateTaskSetAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func updateTaskSetAsync(
             input: ElasticContainerModel.UpdateTaskSetRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<ElasticContainerModel.UpdateTaskSetResponse, HTTPClientError>) -> ()) throws
 
     /**
@@ -1705,7 +1514,6 @@ public protocol ElasticContainerClientProtocol {
          Will be validated before being returned to caller.
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
-    func updateTaskSetSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: ElasticContainerModel.UpdateTaskSetRequest,
-            reporting: InvocationReportingType) throws -> ElasticContainerModel.UpdateTaskSetResponse
+    func updateTaskSetSync(
+            input: ElasticContainerModel.UpdateTaskSetRequest) throws -> ElasticContainerModel.UpdateTaskSetResponse
 }

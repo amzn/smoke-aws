@@ -27,37 +27,37 @@ import SmokeHTTPClient
 /**
  Mock Client for the RDSData service by default returns the `__default` property of its return type.
  */
-public struct MockRDSDataClient<ClientInvocationReportingType: SmokeAWSInvocationReporting>: RDSDataClientProtocol {
-    let batchExecuteStatementAsyncOverride: BatchExecuteStatementAsyncType<ClientInvocationReportingType>?
-    let batchExecuteStatementSyncOverride: BatchExecuteStatementSyncType<ClientInvocationReportingType>?
-    let beginTransactionAsyncOverride: BeginTransactionAsyncType<ClientInvocationReportingType>?
-    let beginTransactionSyncOverride: BeginTransactionSyncType<ClientInvocationReportingType>?
-    let commitTransactionAsyncOverride: CommitTransactionAsyncType<ClientInvocationReportingType>?
-    let commitTransactionSyncOverride: CommitTransactionSyncType<ClientInvocationReportingType>?
-    let executeSqlAsyncOverride: ExecuteSqlAsyncType<ClientInvocationReportingType>?
-    let executeSqlSyncOverride: ExecuteSqlSyncType<ClientInvocationReportingType>?
-    let executeStatementAsyncOverride: ExecuteStatementAsyncType<ClientInvocationReportingType>?
-    let executeStatementSyncOverride: ExecuteStatementSyncType<ClientInvocationReportingType>?
-    let rollbackTransactionAsyncOverride: RollbackTransactionAsyncType<ClientInvocationReportingType>?
-    let rollbackTransactionSyncOverride: RollbackTransactionSyncType<ClientInvocationReportingType>?
+public struct MockRDSDataClient: RDSDataClientProtocol {
+    let batchExecuteStatementAsyncOverride: BatchExecuteStatementAsyncType?
+    let batchExecuteStatementSyncOverride: BatchExecuteStatementSyncType?
+    let beginTransactionAsyncOverride: BeginTransactionAsyncType?
+    let beginTransactionSyncOverride: BeginTransactionSyncType?
+    let commitTransactionAsyncOverride: CommitTransactionAsyncType?
+    let commitTransactionSyncOverride: CommitTransactionSyncType?
+    let executeSqlAsyncOverride: ExecuteSqlAsyncType?
+    let executeSqlSyncOverride: ExecuteSqlSyncType?
+    let executeStatementAsyncOverride: ExecuteStatementAsyncType?
+    let executeStatementSyncOverride: ExecuteStatementSyncType?
+    let rollbackTransactionAsyncOverride: RollbackTransactionAsyncType?
+    let rollbackTransactionSyncOverride: RollbackTransactionSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(
-            batchExecuteStatementAsync: BatchExecuteStatementAsyncType<ClientInvocationReportingType>? = nil,
-            batchExecuteStatementSync: BatchExecuteStatementSyncType<ClientInvocationReportingType>? = nil,
-            beginTransactionAsync: BeginTransactionAsyncType<ClientInvocationReportingType>? = nil,
-            beginTransactionSync: BeginTransactionSyncType<ClientInvocationReportingType>? = nil,
-            commitTransactionAsync: CommitTransactionAsyncType<ClientInvocationReportingType>? = nil,
-            commitTransactionSync: CommitTransactionSyncType<ClientInvocationReportingType>? = nil,
-            executeSqlAsync: ExecuteSqlAsyncType<ClientInvocationReportingType>? = nil,
-            executeSqlSync: ExecuteSqlSyncType<ClientInvocationReportingType>? = nil,
-            executeStatementAsync: ExecuteStatementAsyncType<ClientInvocationReportingType>? = nil,
-            executeStatementSync: ExecuteStatementSyncType<ClientInvocationReportingType>? = nil,
-            rollbackTransactionAsync: RollbackTransactionAsyncType<ClientInvocationReportingType>? = nil,
-            rollbackTransactionSync: RollbackTransactionSyncType<ClientInvocationReportingType>? = nil) {
+            batchExecuteStatementAsync: BatchExecuteStatementAsyncType? = nil,
+            batchExecuteStatementSync: BatchExecuteStatementSyncType? = nil,
+            beginTransactionAsync: BeginTransactionAsyncType? = nil,
+            beginTransactionSync: BeginTransactionSyncType? = nil,
+            commitTransactionAsync: CommitTransactionAsyncType? = nil,
+            commitTransactionSync: CommitTransactionSyncType? = nil,
+            executeSqlAsync: ExecuteSqlAsyncType? = nil,
+            executeSqlSync: ExecuteSqlSyncType? = nil,
+            executeStatementAsync: ExecuteStatementAsyncType? = nil,
+            executeStatementSync: ExecuteStatementSyncType? = nil,
+            rollbackTransactionAsync: RollbackTransactionAsyncType? = nil,
+            rollbackTransactionSync: RollbackTransactionSyncType? = nil) {
         self.batchExecuteStatementAsyncOverride = batchExecuteStatementAsync
         self.batchExecuteStatementSyncOverride = batchExecuteStatementSync
         self.beginTransactionAsyncOverride = beginTransactionAsync
@@ -82,17 +82,11 @@ public struct MockRDSDataClient<ClientInvocationReportingType: SmokeAWSInvocatio
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func batchExecuteStatementAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func batchExecuteStatementAsync(
             input: RDSDataModel.BatchExecuteStatementRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, HTTPClientError>) -> ()) throws {
-        if let batchExecuteStatementAsyncOverrideNonOptional = batchExecuteStatementAsyncOverride {
-            if let batchExecuteStatementAsyncOverrideTyped = batchExecuteStatementAsyncOverrideNonOptional
-                    as? BatchExecuteStatementAsyncType<InvocationReportingType> {
-                return try batchExecuteStatementAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let batchExecuteStatementAsyncOverride = batchExecuteStatementAsyncOverride {
+            return try batchExecuteStatementAsyncOverride(input, completion)
         }
 
         let result = BatchExecuteStatementResponse.__default
@@ -109,16 +103,10 @@ public struct MockRDSDataClient<ClientInvocationReportingType: SmokeAWSInvocatio
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func batchExecuteStatementSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSDataModel.BatchExecuteStatementRequest,
-            reporting: InvocationReportingType) throws -> RDSDataModel.BatchExecuteStatementResponse {
-        if let batchExecuteStatementSyncOverrideNonOptional = batchExecuteStatementSyncOverride {
-            if let batchExecuteStatementSyncOverrideTyped = batchExecuteStatementSyncOverrideNonOptional
-                    as? BatchExecuteStatementSyncType<InvocationReportingType> {
-                return try batchExecuteStatementSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func batchExecuteStatementSync(
+            input: RDSDataModel.BatchExecuteStatementRequest) throws -> RDSDataModel.BatchExecuteStatementResponse {
+        if let batchExecuteStatementSyncOverride = batchExecuteStatementSyncOverride {
+            return try batchExecuteStatementSyncOverride(input)
         }
 
         return BatchExecuteStatementResponse.__default
@@ -134,17 +122,11 @@ public struct MockRDSDataClient<ClientInvocationReportingType: SmokeAWSInvocatio
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func beginTransactionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func beginTransactionAsync(
             input: RDSDataModel.BeginTransactionRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, HTTPClientError>) -> ()) throws {
-        if let beginTransactionAsyncOverrideNonOptional = beginTransactionAsyncOverride {
-            if let beginTransactionAsyncOverrideTyped = beginTransactionAsyncOverrideNonOptional
-                    as? BeginTransactionAsyncType<InvocationReportingType> {
-                return try beginTransactionAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let beginTransactionAsyncOverride = beginTransactionAsyncOverride {
+            return try beginTransactionAsyncOverride(input, completion)
         }
 
         let result = BeginTransactionResponse.__default
@@ -161,16 +143,10 @@ public struct MockRDSDataClient<ClientInvocationReportingType: SmokeAWSInvocatio
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func beginTransactionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSDataModel.BeginTransactionRequest,
-            reporting: InvocationReportingType) throws -> RDSDataModel.BeginTransactionResponse {
-        if let beginTransactionSyncOverrideNonOptional = beginTransactionSyncOverride {
-            if let beginTransactionSyncOverrideTyped = beginTransactionSyncOverrideNonOptional
-                    as? BeginTransactionSyncType<InvocationReportingType> {
-                return try beginTransactionSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func beginTransactionSync(
+            input: RDSDataModel.BeginTransactionRequest) throws -> RDSDataModel.BeginTransactionResponse {
+        if let beginTransactionSyncOverride = beginTransactionSyncOverride {
+            return try beginTransactionSyncOverride(input)
         }
 
         return BeginTransactionResponse.__default
@@ -186,17 +162,11 @@ public struct MockRDSDataClient<ClientInvocationReportingType: SmokeAWSInvocatio
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
-    public func commitTransactionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func commitTransactionAsync(
             input: RDSDataModel.CommitTransactionRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, HTTPClientError>) -> ()) throws {
-        if let commitTransactionAsyncOverrideNonOptional = commitTransactionAsyncOverride {
-            if let commitTransactionAsyncOverrideTyped = commitTransactionAsyncOverrideNonOptional
-                    as? CommitTransactionAsyncType<InvocationReportingType> {
-                return try commitTransactionAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let commitTransactionAsyncOverride = commitTransactionAsyncOverride {
+            return try commitTransactionAsyncOverride(input, completion)
         }
 
         let result = CommitTransactionResponse.__default
@@ -213,16 +183,10 @@ public struct MockRDSDataClient<ClientInvocationReportingType: SmokeAWSInvocatio
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
-    public func commitTransactionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSDataModel.CommitTransactionRequest,
-            reporting: InvocationReportingType) throws -> RDSDataModel.CommitTransactionResponse {
-        if let commitTransactionSyncOverrideNonOptional = commitTransactionSyncOverride {
-            if let commitTransactionSyncOverrideTyped = commitTransactionSyncOverrideNonOptional
-                    as? CommitTransactionSyncType<InvocationReportingType> {
-                return try commitTransactionSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func commitTransactionSync(
+            input: RDSDataModel.CommitTransactionRequest) throws -> RDSDataModel.CommitTransactionResponse {
+        if let commitTransactionSyncOverride = commitTransactionSyncOverride {
+            return try commitTransactionSyncOverride(input)
         }
 
         return CommitTransactionResponse.__default
@@ -238,17 +202,11 @@ public struct MockRDSDataClient<ClientInvocationReportingType: SmokeAWSInvocatio
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable.
      */
-    public func executeSqlAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func executeSqlAsync(
             input: RDSDataModel.ExecuteSqlRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, HTTPClientError>) -> ()) throws {
-        if let executeSqlAsyncOverrideNonOptional = executeSqlAsyncOverride {
-            if let executeSqlAsyncOverrideTyped = executeSqlAsyncOverrideNonOptional
-                    as? ExecuteSqlAsyncType<InvocationReportingType> {
-                return try executeSqlAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let executeSqlAsyncOverride = executeSqlAsyncOverride {
+            return try executeSqlAsyncOverride(input, completion)
         }
 
         let result = ExecuteSqlResponse.__default
@@ -265,16 +223,10 @@ public struct MockRDSDataClient<ClientInvocationReportingType: SmokeAWSInvocatio
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable.
      */
-    public func executeSqlSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSDataModel.ExecuteSqlRequest,
-            reporting: InvocationReportingType) throws -> RDSDataModel.ExecuteSqlResponse {
-        if let executeSqlSyncOverrideNonOptional = executeSqlSyncOverride {
-            if let executeSqlSyncOverrideTyped = executeSqlSyncOverrideNonOptional
-                    as? ExecuteSqlSyncType<InvocationReportingType> {
-                return try executeSqlSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func executeSqlSync(
+            input: RDSDataModel.ExecuteSqlRequest) throws -> RDSDataModel.ExecuteSqlResponse {
+        if let executeSqlSyncOverride = executeSqlSyncOverride {
+            return try executeSqlSyncOverride(input)
         }
 
         return ExecuteSqlResponse.__default
@@ -290,17 +242,11 @@ public struct MockRDSDataClient<ClientInvocationReportingType: SmokeAWSInvocatio
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func executeStatementAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func executeStatementAsync(
             input: RDSDataModel.ExecuteStatementRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, HTTPClientError>) -> ()) throws {
-        if let executeStatementAsyncOverrideNonOptional = executeStatementAsyncOverride {
-            if let executeStatementAsyncOverrideTyped = executeStatementAsyncOverrideNonOptional
-                    as? ExecuteStatementAsyncType<InvocationReportingType> {
-                return try executeStatementAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let executeStatementAsyncOverride = executeStatementAsyncOverride {
+            return try executeStatementAsyncOverride(input, completion)
         }
 
         let result = ExecuteStatementResponse.__default
@@ -317,16 +263,10 @@ public struct MockRDSDataClient<ClientInvocationReportingType: SmokeAWSInvocatio
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
-    public func executeStatementSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSDataModel.ExecuteStatementRequest,
-            reporting: InvocationReportingType) throws -> RDSDataModel.ExecuteStatementResponse {
-        if let executeStatementSyncOverrideNonOptional = executeStatementSyncOverride {
-            if let executeStatementSyncOverrideTyped = executeStatementSyncOverrideNonOptional
-                    as? ExecuteStatementSyncType<InvocationReportingType> {
-                return try executeStatementSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func executeStatementSync(
+            input: RDSDataModel.ExecuteStatementRequest) throws -> RDSDataModel.ExecuteStatementResponse {
+        if let executeStatementSyncOverride = executeStatementSyncOverride {
+            return try executeStatementSyncOverride(input)
         }
 
         return ExecuteStatementResponse.__default
@@ -342,17 +282,11 @@ public struct MockRDSDataClient<ClientInvocationReportingType: SmokeAWSInvocatio
            object will be validated before being returned to caller.
            The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
-    public func rollbackTransactionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func rollbackTransactionAsync(
             input: RDSDataModel.RollbackTransactionRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, HTTPClientError>) -> ()) throws {
-        if let rollbackTransactionAsyncOverrideNonOptional = rollbackTransactionAsyncOverride {
-            if let rollbackTransactionAsyncOverrideTyped = rollbackTransactionAsyncOverrideNonOptional
-                    as? RollbackTransactionAsyncType<InvocationReportingType> {
-                return try rollbackTransactionAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let rollbackTransactionAsyncOverride = rollbackTransactionAsyncOverride {
+            return try rollbackTransactionAsyncOverride(input, completion)
         }
 
         let result = RollbackTransactionResponse.__default
@@ -369,16 +303,10 @@ public struct MockRDSDataClient<ClientInvocationReportingType: SmokeAWSInvocatio
          Will be validated before being returned to caller.
      - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
-    public func rollbackTransactionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: RDSDataModel.RollbackTransactionRequest,
-            reporting: InvocationReportingType) throws -> RDSDataModel.RollbackTransactionResponse {
-        if let rollbackTransactionSyncOverrideNonOptional = rollbackTransactionSyncOverride {
-            if let rollbackTransactionSyncOverrideTyped = rollbackTransactionSyncOverrideNonOptional
-                    as? RollbackTransactionSyncType<InvocationReportingType> {
-                return try rollbackTransactionSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func rollbackTransactionSync(
+            input: RDSDataModel.RollbackTransactionRequest) throws -> RDSDataModel.RollbackTransactionResponse {
+        if let rollbackTransactionSyncOverride = rollbackTransactionSyncOverride {
+            return try rollbackTransactionSyncOverride(input)
         }
 
         return RollbackTransactionResponse.__default

@@ -27,145 +27,145 @@ import SmokeHTTPClient
 /**
  Mock Client for the SimpleNotification service by default returns the `__default` property of its return type.
  */
-public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeAWSInvocationReporting>: SimpleNotificationClientProtocol {
-    let addPermissionAsyncOverride: AddPermissionAsyncType<ClientInvocationReportingType>?
-    let addPermissionSyncOverride: AddPermissionSyncType<ClientInvocationReportingType>?
-    let checkIfPhoneNumberIsOptedOutAsyncOverride: CheckIfPhoneNumberIsOptedOutAsyncType<ClientInvocationReportingType>?
-    let checkIfPhoneNumberIsOptedOutSyncOverride: CheckIfPhoneNumberIsOptedOutSyncType<ClientInvocationReportingType>?
-    let confirmSubscriptionAsyncOverride: ConfirmSubscriptionAsyncType<ClientInvocationReportingType>?
-    let confirmSubscriptionSyncOverride: ConfirmSubscriptionSyncType<ClientInvocationReportingType>?
-    let createPlatformApplicationAsyncOverride: CreatePlatformApplicationAsyncType<ClientInvocationReportingType>?
-    let createPlatformApplicationSyncOverride: CreatePlatformApplicationSyncType<ClientInvocationReportingType>?
-    let createPlatformEndpointAsyncOverride: CreatePlatformEndpointAsyncType<ClientInvocationReportingType>?
-    let createPlatformEndpointSyncOverride: CreatePlatformEndpointSyncType<ClientInvocationReportingType>?
-    let createTopicAsyncOverride: CreateTopicAsyncType<ClientInvocationReportingType>?
-    let createTopicSyncOverride: CreateTopicSyncType<ClientInvocationReportingType>?
-    let deleteEndpointAsyncOverride: DeleteEndpointAsyncType<ClientInvocationReportingType>?
-    let deleteEndpointSyncOverride: DeleteEndpointSyncType<ClientInvocationReportingType>?
-    let deletePlatformApplicationAsyncOverride: DeletePlatformApplicationAsyncType<ClientInvocationReportingType>?
-    let deletePlatformApplicationSyncOverride: DeletePlatformApplicationSyncType<ClientInvocationReportingType>?
-    let deleteTopicAsyncOverride: DeleteTopicAsyncType<ClientInvocationReportingType>?
-    let deleteTopicSyncOverride: DeleteTopicSyncType<ClientInvocationReportingType>?
-    let getEndpointAttributesAsyncOverride: GetEndpointAttributesAsyncType<ClientInvocationReportingType>?
-    let getEndpointAttributesSyncOverride: GetEndpointAttributesSyncType<ClientInvocationReportingType>?
-    let getPlatformApplicationAttributesAsyncOverride: GetPlatformApplicationAttributesAsyncType<ClientInvocationReportingType>?
-    let getPlatformApplicationAttributesSyncOverride: GetPlatformApplicationAttributesSyncType<ClientInvocationReportingType>?
-    let getSMSAttributesAsyncOverride: GetSMSAttributesAsyncType<ClientInvocationReportingType>?
-    let getSMSAttributesSyncOverride: GetSMSAttributesSyncType<ClientInvocationReportingType>?
-    let getSubscriptionAttributesAsyncOverride: GetSubscriptionAttributesAsyncType<ClientInvocationReportingType>?
-    let getSubscriptionAttributesSyncOverride: GetSubscriptionAttributesSyncType<ClientInvocationReportingType>?
-    let getTopicAttributesAsyncOverride: GetTopicAttributesAsyncType<ClientInvocationReportingType>?
-    let getTopicAttributesSyncOverride: GetTopicAttributesSyncType<ClientInvocationReportingType>?
-    let listEndpointsByPlatformApplicationAsyncOverride: ListEndpointsByPlatformApplicationAsyncType<ClientInvocationReportingType>?
-    let listEndpointsByPlatformApplicationSyncOverride: ListEndpointsByPlatformApplicationSyncType<ClientInvocationReportingType>?
-    let listPhoneNumbersOptedOutAsyncOverride: ListPhoneNumbersOptedOutAsyncType<ClientInvocationReportingType>?
-    let listPhoneNumbersOptedOutSyncOverride: ListPhoneNumbersOptedOutSyncType<ClientInvocationReportingType>?
-    let listPlatformApplicationsAsyncOverride: ListPlatformApplicationsAsyncType<ClientInvocationReportingType>?
-    let listPlatformApplicationsSyncOverride: ListPlatformApplicationsSyncType<ClientInvocationReportingType>?
-    let listSubscriptionsAsyncOverride: ListSubscriptionsAsyncType<ClientInvocationReportingType>?
-    let listSubscriptionsSyncOverride: ListSubscriptionsSyncType<ClientInvocationReportingType>?
-    let listSubscriptionsByTopicAsyncOverride: ListSubscriptionsByTopicAsyncType<ClientInvocationReportingType>?
-    let listSubscriptionsByTopicSyncOverride: ListSubscriptionsByTopicSyncType<ClientInvocationReportingType>?
-    let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType<ClientInvocationReportingType>?
-    let listTagsForResourceSyncOverride: ListTagsForResourceSyncType<ClientInvocationReportingType>?
-    let listTopicsAsyncOverride: ListTopicsAsyncType<ClientInvocationReportingType>?
-    let listTopicsSyncOverride: ListTopicsSyncType<ClientInvocationReportingType>?
-    let optInPhoneNumberAsyncOverride: OptInPhoneNumberAsyncType<ClientInvocationReportingType>?
-    let optInPhoneNumberSyncOverride: OptInPhoneNumberSyncType<ClientInvocationReportingType>?
-    let publishAsyncOverride: PublishAsyncType<ClientInvocationReportingType>?
-    let publishSyncOverride: PublishSyncType<ClientInvocationReportingType>?
-    let removePermissionAsyncOverride: RemovePermissionAsyncType<ClientInvocationReportingType>?
-    let removePermissionSyncOverride: RemovePermissionSyncType<ClientInvocationReportingType>?
-    let setEndpointAttributesAsyncOverride: SetEndpointAttributesAsyncType<ClientInvocationReportingType>?
-    let setEndpointAttributesSyncOverride: SetEndpointAttributesSyncType<ClientInvocationReportingType>?
-    let setPlatformApplicationAttributesAsyncOverride: SetPlatformApplicationAttributesAsyncType<ClientInvocationReportingType>?
-    let setPlatformApplicationAttributesSyncOverride: SetPlatformApplicationAttributesSyncType<ClientInvocationReportingType>?
-    let setSMSAttributesAsyncOverride: SetSMSAttributesAsyncType<ClientInvocationReportingType>?
-    let setSMSAttributesSyncOverride: SetSMSAttributesSyncType<ClientInvocationReportingType>?
-    let setSubscriptionAttributesAsyncOverride: SetSubscriptionAttributesAsyncType<ClientInvocationReportingType>?
-    let setSubscriptionAttributesSyncOverride: SetSubscriptionAttributesSyncType<ClientInvocationReportingType>?
-    let setTopicAttributesAsyncOverride: SetTopicAttributesAsyncType<ClientInvocationReportingType>?
-    let setTopicAttributesSyncOverride: SetTopicAttributesSyncType<ClientInvocationReportingType>?
-    let subscribeAsyncOverride: SubscribeAsyncType<ClientInvocationReportingType>?
-    let subscribeSyncOverride: SubscribeSyncType<ClientInvocationReportingType>?
-    let tagResourceAsyncOverride: TagResourceAsyncType<ClientInvocationReportingType>?
-    let tagResourceSyncOverride: TagResourceSyncType<ClientInvocationReportingType>?
-    let unsubscribeAsyncOverride: UnsubscribeAsyncType<ClientInvocationReportingType>?
-    let unsubscribeSyncOverride: UnsubscribeSyncType<ClientInvocationReportingType>?
-    let untagResourceAsyncOverride: UntagResourceAsyncType<ClientInvocationReportingType>?
-    let untagResourceSyncOverride: UntagResourceSyncType<ClientInvocationReportingType>?
+public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
+    let addPermissionAsyncOverride: AddPermissionAsyncType?
+    let addPermissionSyncOverride: AddPermissionSyncType?
+    let checkIfPhoneNumberIsOptedOutAsyncOverride: CheckIfPhoneNumberIsOptedOutAsyncType?
+    let checkIfPhoneNumberIsOptedOutSyncOverride: CheckIfPhoneNumberIsOptedOutSyncType?
+    let confirmSubscriptionAsyncOverride: ConfirmSubscriptionAsyncType?
+    let confirmSubscriptionSyncOverride: ConfirmSubscriptionSyncType?
+    let createPlatformApplicationAsyncOverride: CreatePlatformApplicationAsyncType?
+    let createPlatformApplicationSyncOverride: CreatePlatformApplicationSyncType?
+    let createPlatformEndpointAsyncOverride: CreatePlatformEndpointAsyncType?
+    let createPlatformEndpointSyncOverride: CreatePlatformEndpointSyncType?
+    let createTopicAsyncOverride: CreateTopicAsyncType?
+    let createTopicSyncOverride: CreateTopicSyncType?
+    let deleteEndpointAsyncOverride: DeleteEndpointAsyncType?
+    let deleteEndpointSyncOverride: DeleteEndpointSyncType?
+    let deletePlatformApplicationAsyncOverride: DeletePlatformApplicationAsyncType?
+    let deletePlatformApplicationSyncOverride: DeletePlatformApplicationSyncType?
+    let deleteTopicAsyncOverride: DeleteTopicAsyncType?
+    let deleteTopicSyncOverride: DeleteTopicSyncType?
+    let getEndpointAttributesAsyncOverride: GetEndpointAttributesAsyncType?
+    let getEndpointAttributesSyncOverride: GetEndpointAttributesSyncType?
+    let getPlatformApplicationAttributesAsyncOverride: GetPlatformApplicationAttributesAsyncType?
+    let getPlatformApplicationAttributesSyncOverride: GetPlatformApplicationAttributesSyncType?
+    let getSMSAttributesAsyncOverride: GetSMSAttributesAsyncType?
+    let getSMSAttributesSyncOverride: GetSMSAttributesSyncType?
+    let getSubscriptionAttributesAsyncOverride: GetSubscriptionAttributesAsyncType?
+    let getSubscriptionAttributesSyncOverride: GetSubscriptionAttributesSyncType?
+    let getTopicAttributesAsyncOverride: GetTopicAttributesAsyncType?
+    let getTopicAttributesSyncOverride: GetTopicAttributesSyncType?
+    let listEndpointsByPlatformApplicationAsyncOverride: ListEndpointsByPlatformApplicationAsyncType?
+    let listEndpointsByPlatformApplicationSyncOverride: ListEndpointsByPlatformApplicationSyncType?
+    let listPhoneNumbersOptedOutAsyncOverride: ListPhoneNumbersOptedOutAsyncType?
+    let listPhoneNumbersOptedOutSyncOverride: ListPhoneNumbersOptedOutSyncType?
+    let listPlatformApplicationsAsyncOverride: ListPlatformApplicationsAsyncType?
+    let listPlatformApplicationsSyncOverride: ListPlatformApplicationsSyncType?
+    let listSubscriptionsAsyncOverride: ListSubscriptionsAsyncType?
+    let listSubscriptionsSyncOverride: ListSubscriptionsSyncType?
+    let listSubscriptionsByTopicAsyncOverride: ListSubscriptionsByTopicAsyncType?
+    let listSubscriptionsByTopicSyncOverride: ListSubscriptionsByTopicSyncType?
+    let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType?
+    let listTagsForResourceSyncOverride: ListTagsForResourceSyncType?
+    let listTopicsAsyncOverride: ListTopicsAsyncType?
+    let listTopicsSyncOverride: ListTopicsSyncType?
+    let optInPhoneNumberAsyncOverride: OptInPhoneNumberAsyncType?
+    let optInPhoneNumberSyncOverride: OptInPhoneNumberSyncType?
+    let publishAsyncOverride: PublishAsyncType?
+    let publishSyncOverride: PublishSyncType?
+    let removePermissionAsyncOverride: RemovePermissionAsyncType?
+    let removePermissionSyncOverride: RemovePermissionSyncType?
+    let setEndpointAttributesAsyncOverride: SetEndpointAttributesAsyncType?
+    let setEndpointAttributesSyncOverride: SetEndpointAttributesSyncType?
+    let setPlatformApplicationAttributesAsyncOverride: SetPlatformApplicationAttributesAsyncType?
+    let setPlatformApplicationAttributesSyncOverride: SetPlatformApplicationAttributesSyncType?
+    let setSMSAttributesAsyncOverride: SetSMSAttributesAsyncType?
+    let setSMSAttributesSyncOverride: SetSMSAttributesSyncType?
+    let setSubscriptionAttributesAsyncOverride: SetSubscriptionAttributesAsyncType?
+    let setSubscriptionAttributesSyncOverride: SetSubscriptionAttributesSyncType?
+    let setTopicAttributesAsyncOverride: SetTopicAttributesAsyncType?
+    let setTopicAttributesSyncOverride: SetTopicAttributesSyncType?
+    let subscribeAsyncOverride: SubscribeAsyncType?
+    let subscribeSyncOverride: SubscribeSyncType?
+    let tagResourceAsyncOverride: TagResourceAsyncType?
+    let tagResourceSyncOverride: TagResourceSyncType?
+    let unsubscribeAsyncOverride: UnsubscribeAsyncType?
+    let unsubscribeSyncOverride: UnsubscribeSyncType?
+    let untagResourceAsyncOverride: UntagResourceAsyncType?
+    let untagResourceSyncOverride: UntagResourceSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(
-            addPermissionAsync: AddPermissionAsyncType<ClientInvocationReportingType>? = nil,
-            addPermissionSync: AddPermissionSyncType<ClientInvocationReportingType>? = nil,
-            checkIfPhoneNumberIsOptedOutAsync: CheckIfPhoneNumberIsOptedOutAsyncType<ClientInvocationReportingType>? = nil,
-            checkIfPhoneNumberIsOptedOutSync: CheckIfPhoneNumberIsOptedOutSyncType<ClientInvocationReportingType>? = nil,
-            confirmSubscriptionAsync: ConfirmSubscriptionAsyncType<ClientInvocationReportingType>? = nil,
-            confirmSubscriptionSync: ConfirmSubscriptionSyncType<ClientInvocationReportingType>? = nil,
-            createPlatformApplicationAsync: CreatePlatformApplicationAsyncType<ClientInvocationReportingType>? = nil,
-            createPlatformApplicationSync: CreatePlatformApplicationSyncType<ClientInvocationReportingType>? = nil,
-            createPlatformEndpointAsync: CreatePlatformEndpointAsyncType<ClientInvocationReportingType>? = nil,
-            createPlatformEndpointSync: CreatePlatformEndpointSyncType<ClientInvocationReportingType>? = nil,
-            createTopicAsync: CreateTopicAsyncType<ClientInvocationReportingType>? = nil,
-            createTopicSync: CreateTopicSyncType<ClientInvocationReportingType>? = nil,
-            deleteEndpointAsync: DeleteEndpointAsyncType<ClientInvocationReportingType>? = nil,
-            deleteEndpointSync: DeleteEndpointSyncType<ClientInvocationReportingType>? = nil,
-            deletePlatformApplicationAsync: DeletePlatformApplicationAsyncType<ClientInvocationReportingType>? = nil,
-            deletePlatformApplicationSync: DeletePlatformApplicationSyncType<ClientInvocationReportingType>? = nil,
-            deleteTopicAsync: DeleteTopicAsyncType<ClientInvocationReportingType>? = nil,
-            deleteTopicSync: DeleteTopicSyncType<ClientInvocationReportingType>? = nil,
-            getEndpointAttributesAsync: GetEndpointAttributesAsyncType<ClientInvocationReportingType>? = nil,
-            getEndpointAttributesSync: GetEndpointAttributesSyncType<ClientInvocationReportingType>? = nil,
-            getPlatformApplicationAttributesAsync: GetPlatformApplicationAttributesAsyncType<ClientInvocationReportingType>? = nil,
-            getPlatformApplicationAttributesSync: GetPlatformApplicationAttributesSyncType<ClientInvocationReportingType>? = nil,
-            getSMSAttributesAsync: GetSMSAttributesAsyncType<ClientInvocationReportingType>? = nil,
-            getSMSAttributesSync: GetSMSAttributesSyncType<ClientInvocationReportingType>? = nil,
-            getSubscriptionAttributesAsync: GetSubscriptionAttributesAsyncType<ClientInvocationReportingType>? = nil,
-            getSubscriptionAttributesSync: GetSubscriptionAttributesSyncType<ClientInvocationReportingType>? = nil,
-            getTopicAttributesAsync: GetTopicAttributesAsyncType<ClientInvocationReportingType>? = nil,
-            getTopicAttributesSync: GetTopicAttributesSyncType<ClientInvocationReportingType>? = nil,
-            listEndpointsByPlatformApplicationAsync: ListEndpointsByPlatformApplicationAsyncType<ClientInvocationReportingType>? = nil,
-            listEndpointsByPlatformApplicationSync: ListEndpointsByPlatformApplicationSyncType<ClientInvocationReportingType>? = nil,
-            listPhoneNumbersOptedOutAsync: ListPhoneNumbersOptedOutAsyncType<ClientInvocationReportingType>? = nil,
-            listPhoneNumbersOptedOutSync: ListPhoneNumbersOptedOutSyncType<ClientInvocationReportingType>? = nil,
-            listPlatformApplicationsAsync: ListPlatformApplicationsAsyncType<ClientInvocationReportingType>? = nil,
-            listPlatformApplicationsSync: ListPlatformApplicationsSyncType<ClientInvocationReportingType>? = nil,
-            listSubscriptionsAsync: ListSubscriptionsAsyncType<ClientInvocationReportingType>? = nil,
-            listSubscriptionsSync: ListSubscriptionsSyncType<ClientInvocationReportingType>? = nil,
-            listSubscriptionsByTopicAsync: ListSubscriptionsByTopicAsyncType<ClientInvocationReportingType>? = nil,
-            listSubscriptionsByTopicSync: ListSubscriptionsByTopicSyncType<ClientInvocationReportingType>? = nil,
-            listTagsForResourceAsync: ListTagsForResourceAsyncType<ClientInvocationReportingType>? = nil,
-            listTagsForResourceSync: ListTagsForResourceSyncType<ClientInvocationReportingType>? = nil,
-            listTopicsAsync: ListTopicsAsyncType<ClientInvocationReportingType>? = nil,
-            listTopicsSync: ListTopicsSyncType<ClientInvocationReportingType>? = nil,
-            optInPhoneNumberAsync: OptInPhoneNumberAsyncType<ClientInvocationReportingType>? = nil,
-            optInPhoneNumberSync: OptInPhoneNumberSyncType<ClientInvocationReportingType>? = nil,
-            publishAsync: PublishAsyncType<ClientInvocationReportingType>? = nil,
-            publishSync: PublishSyncType<ClientInvocationReportingType>? = nil,
-            removePermissionAsync: RemovePermissionAsyncType<ClientInvocationReportingType>? = nil,
-            removePermissionSync: RemovePermissionSyncType<ClientInvocationReportingType>? = nil,
-            setEndpointAttributesAsync: SetEndpointAttributesAsyncType<ClientInvocationReportingType>? = nil,
-            setEndpointAttributesSync: SetEndpointAttributesSyncType<ClientInvocationReportingType>? = nil,
-            setPlatformApplicationAttributesAsync: SetPlatformApplicationAttributesAsyncType<ClientInvocationReportingType>? = nil,
-            setPlatformApplicationAttributesSync: SetPlatformApplicationAttributesSyncType<ClientInvocationReportingType>? = nil,
-            setSMSAttributesAsync: SetSMSAttributesAsyncType<ClientInvocationReportingType>? = nil,
-            setSMSAttributesSync: SetSMSAttributesSyncType<ClientInvocationReportingType>? = nil,
-            setSubscriptionAttributesAsync: SetSubscriptionAttributesAsyncType<ClientInvocationReportingType>? = nil,
-            setSubscriptionAttributesSync: SetSubscriptionAttributesSyncType<ClientInvocationReportingType>? = nil,
-            setTopicAttributesAsync: SetTopicAttributesAsyncType<ClientInvocationReportingType>? = nil,
-            setTopicAttributesSync: SetTopicAttributesSyncType<ClientInvocationReportingType>? = nil,
-            subscribeAsync: SubscribeAsyncType<ClientInvocationReportingType>? = nil,
-            subscribeSync: SubscribeSyncType<ClientInvocationReportingType>? = nil,
-            tagResourceAsync: TagResourceAsyncType<ClientInvocationReportingType>? = nil,
-            tagResourceSync: TagResourceSyncType<ClientInvocationReportingType>? = nil,
-            unsubscribeAsync: UnsubscribeAsyncType<ClientInvocationReportingType>? = nil,
-            unsubscribeSync: UnsubscribeSyncType<ClientInvocationReportingType>? = nil,
-            untagResourceAsync: UntagResourceAsyncType<ClientInvocationReportingType>? = nil,
-            untagResourceSync: UntagResourceSyncType<ClientInvocationReportingType>? = nil) {
+            addPermissionAsync: AddPermissionAsyncType? = nil,
+            addPermissionSync: AddPermissionSyncType? = nil,
+            checkIfPhoneNumberIsOptedOutAsync: CheckIfPhoneNumberIsOptedOutAsyncType? = nil,
+            checkIfPhoneNumberIsOptedOutSync: CheckIfPhoneNumberIsOptedOutSyncType? = nil,
+            confirmSubscriptionAsync: ConfirmSubscriptionAsyncType? = nil,
+            confirmSubscriptionSync: ConfirmSubscriptionSyncType? = nil,
+            createPlatformApplicationAsync: CreatePlatformApplicationAsyncType? = nil,
+            createPlatformApplicationSync: CreatePlatformApplicationSyncType? = nil,
+            createPlatformEndpointAsync: CreatePlatformEndpointAsyncType? = nil,
+            createPlatformEndpointSync: CreatePlatformEndpointSyncType? = nil,
+            createTopicAsync: CreateTopicAsyncType? = nil,
+            createTopicSync: CreateTopicSyncType? = nil,
+            deleteEndpointAsync: DeleteEndpointAsyncType? = nil,
+            deleteEndpointSync: DeleteEndpointSyncType? = nil,
+            deletePlatformApplicationAsync: DeletePlatformApplicationAsyncType? = nil,
+            deletePlatformApplicationSync: DeletePlatformApplicationSyncType? = nil,
+            deleteTopicAsync: DeleteTopicAsyncType? = nil,
+            deleteTopicSync: DeleteTopicSyncType? = nil,
+            getEndpointAttributesAsync: GetEndpointAttributesAsyncType? = nil,
+            getEndpointAttributesSync: GetEndpointAttributesSyncType? = nil,
+            getPlatformApplicationAttributesAsync: GetPlatformApplicationAttributesAsyncType? = nil,
+            getPlatformApplicationAttributesSync: GetPlatformApplicationAttributesSyncType? = nil,
+            getSMSAttributesAsync: GetSMSAttributesAsyncType? = nil,
+            getSMSAttributesSync: GetSMSAttributesSyncType? = nil,
+            getSubscriptionAttributesAsync: GetSubscriptionAttributesAsyncType? = nil,
+            getSubscriptionAttributesSync: GetSubscriptionAttributesSyncType? = nil,
+            getTopicAttributesAsync: GetTopicAttributesAsyncType? = nil,
+            getTopicAttributesSync: GetTopicAttributesSyncType? = nil,
+            listEndpointsByPlatformApplicationAsync: ListEndpointsByPlatformApplicationAsyncType? = nil,
+            listEndpointsByPlatformApplicationSync: ListEndpointsByPlatformApplicationSyncType? = nil,
+            listPhoneNumbersOptedOutAsync: ListPhoneNumbersOptedOutAsyncType? = nil,
+            listPhoneNumbersOptedOutSync: ListPhoneNumbersOptedOutSyncType? = nil,
+            listPlatformApplicationsAsync: ListPlatformApplicationsAsyncType? = nil,
+            listPlatformApplicationsSync: ListPlatformApplicationsSyncType? = nil,
+            listSubscriptionsAsync: ListSubscriptionsAsyncType? = nil,
+            listSubscriptionsSync: ListSubscriptionsSyncType? = nil,
+            listSubscriptionsByTopicAsync: ListSubscriptionsByTopicAsyncType? = nil,
+            listSubscriptionsByTopicSync: ListSubscriptionsByTopicSyncType? = nil,
+            listTagsForResourceAsync: ListTagsForResourceAsyncType? = nil,
+            listTagsForResourceSync: ListTagsForResourceSyncType? = nil,
+            listTopicsAsync: ListTopicsAsyncType? = nil,
+            listTopicsSync: ListTopicsSyncType? = nil,
+            optInPhoneNumberAsync: OptInPhoneNumberAsyncType? = nil,
+            optInPhoneNumberSync: OptInPhoneNumberSyncType? = nil,
+            publishAsync: PublishAsyncType? = nil,
+            publishSync: PublishSyncType? = nil,
+            removePermissionAsync: RemovePermissionAsyncType? = nil,
+            removePermissionSync: RemovePermissionSyncType? = nil,
+            setEndpointAttributesAsync: SetEndpointAttributesAsyncType? = nil,
+            setEndpointAttributesSync: SetEndpointAttributesSyncType? = nil,
+            setPlatformApplicationAttributesAsync: SetPlatformApplicationAttributesAsyncType? = nil,
+            setPlatformApplicationAttributesSync: SetPlatformApplicationAttributesSyncType? = nil,
+            setSMSAttributesAsync: SetSMSAttributesAsyncType? = nil,
+            setSMSAttributesSync: SetSMSAttributesSyncType? = nil,
+            setSubscriptionAttributesAsync: SetSubscriptionAttributesAsyncType? = nil,
+            setSubscriptionAttributesSync: SetSubscriptionAttributesSyncType? = nil,
+            setTopicAttributesAsync: SetTopicAttributesAsyncType? = nil,
+            setTopicAttributesSync: SetTopicAttributesSyncType? = nil,
+            subscribeAsync: SubscribeAsyncType? = nil,
+            subscribeSync: SubscribeSyncType? = nil,
+            tagResourceAsync: TagResourceAsyncType? = nil,
+            tagResourceSync: TagResourceSyncType? = nil,
+            unsubscribeAsync: UnsubscribeAsyncType? = nil,
+            unsubscribeSync: UnsubscribeSyncType? = nil,
+            untagResourceAsync: UntagResourceAsyncType? = nil,
+            untagResourceSync: UntagResourceSyncType? = nil) {
         self.addPermissionAsyncOverride = addPermissionAsync
         self.addPermissionSyncOverride = addPermissionSync
         self.checkIfPhoneNumberIsOptedOutAsyncOverride = checkIfPhoneNumberIsOptedOutAsync
@@ -243,17 +243,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func addPermissionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func addPermissionAsync(
             input: SimpleNotificationModel.AddPermissionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let addPermissionAsyncOverrideNonOptional = addPermissionAsyncOverride {
-            if let addPermissionAsyncOverrideTyped = addPermissionAsyncOverrideNonOptional
-                    as? AddPermissionAsyncType<InvocationReportingType> {
-                return try addPermissionAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let addPermissionAsyncOverride = addPermissionAsyncOverride {
+            return try addPermissionAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -266,16 +260,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          - input: The validated AddPermissionInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func addPermissionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.AddPermissionInput,
-            reporting: InvocationReportingType) throws {
-        if let addPermissionSyncOverrideNonOptional = addPermissionSyncOverride {
-            if let addPermissionSyncOverrideTyped = addPermissionSyncOverrideNonOptional
-                    as? AddPermissionSyncType<InvocationReportingType> {
-                return try addPermissionSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func addPermissionSync(
+            input: SimpleNotificationModel.AddPermissionInput) throws {
+        if let addPermissionSyncOverride = addPermissionSyncOverride {
+            return try addPermissionSyncOverride(input)
         }
 
     }
@@ -290,17 +278,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func checkIfPhoneNumberIsOptedOutAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func checkIfPhoneNumberIsOptedOutAsync(
             input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, HTTPClientError>) -> ()) throws {
-        if let checkIfPhoneNumberIsOptedOutAsyncOverrideNonOptional = checkIfPhoneNumberIsOptedOutAsyncOverride {
-            if let checkIfPhoneNumberIsOptedOutAsyncOverrideTyped = checkIfPhoneNumberIsOptedOutAsyncOverrideNonOptional
-                    as? CheckIfPhoneNumberIsOptedOutAsyncType<InvocationReportingType> {
-                return try checkIfPhoneNumberIsOptedOutAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let checkIfPhoneNumberIsOptedOutAsyncOverride = checkIfPhoneNumberIsOptedOutAsyncOverride {
+            return try checkIfPhoneNumberIsOptedOutAsyncOverride(input, completion)
         }
 
         let result = CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut.__default
@@ -317,16 +299,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func checkIfPhoneNumberIsOptedOutSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut {
-        if let checkIfPhoneNumberIsOptedOutSyncOverrideNonOptional = checkIfPhoneNumberIsOptedOutSyncOverride {
-            if let checkIfPhoneNumberIsOptedOutSyncOverrideTyped = checkIfPhoneNumberIsOptedOutSyncOverrideNonOptional
-                    as? CheckIfPhoneNumberIsOptedOutSyncType<InvocationReportingType> {
-                return try checkIfPhoneNumberIsOptedOutSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func checkIfPhoneNumberIsOptedOutSync(
+            input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut {
+        if let checkIfPhoneNumberIsOptedOutSyncOverride = checkIfPhoneNumberIsOptedOutSyncOverride {
+            return try checkIfPhoneNumberIsOptedOutSyncOverride(input)
         }
 
         return CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut.__default
@@ -342,17 +318,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
      */
-    public func confirmSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func confirmSubscriptionAsync(
             input: SimpleNotificationModel.ConfirmSubscriptionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, HTTPClientError>) -> ()) throws {
-        if let confirmSubscriptionAsyncOverrideNonOptional = confirmSubscriptionAsyncOverride {
-            if let confirmSubscriptionAsyncOverrideTyped = confirmSubscriptionAsyncOverrideNonOptional
-                    as? ConfirmSubscriptionAsyncType<InvocationReportingType> {
-                return try confirmSubscriptionAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let confirmSubscriptionAsyncOverride = confirmSubscriptionAsyncOverride {
+            return try confirmSubscriptionAsyncOverride(input, completion)
         }
 
         let result = ConfirmSubscriptionResponseForConfirmSubscription.__default
@@ -369,16 +339,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
      */
-    public func confirmSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ConfirmSubscriptionInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
-        if let confirmSubscriptionSyncOverrideNonOptional = confirmSubscriptionSyncOverride {
-            if let confirmSubscriptionSyncOverrideTyped = confirmSubscriptionSyncOverrideNonOptional
-                    as? ConfirmSubscriptionSyncType<InvocationReportingType> {
-                return try confirmSubscriptionSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func confirmSubscriptionSync(
+            input: SimpleNotificationModel.ConfirmSubscriptionInput) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
+        if let confirmSubscriptionSyncOverride = confirmSubscriptionSyncOverride {
+            return try confirmSubscriptionSyncOverride(input)
         }
 
         return ConfirmSubscriptionResponseForConfirmSubscription.__default
@@ -394,17 +358,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func createPlatformApplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createPlatformApplicationAsync(
             input: SimpleNotificationModel.CreatePlatformApplicationInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, HTTPClientError>) -> ()) throws {
-        if let createPlatformApplicationAsyncOverrideNonOptional = createPlatformApplicationAsyncOverride {
-            if let createPlatformApplicationAsyncOverrideTyped = createPlatformApplicationAsyncOverrideNonOptional
-                    as? CreatePlatformApplicationAsyncType<InvocationReportingType> {
-                return try createPlatformApplicationAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let createPlatformApplicationAsyncOverride = createPlatformApplicationAsyncOverride {
+            return try createPlatformApplicationAsyncOverride(input, completion)
         }
 
         let result = CreatePlatformApplicationResponseForCreatePlatformApplication.__default
@@ -421,16 +379,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func createPlatformApplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.CreatePlatformApplicationInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication {
-        if let createPlatformApplicationSyncOverrideNonOptional = createPlatformApplicationSyncOverride {
-            if let createPlatformApplicationSyncOverrideTyped = createPlatformApplicationSyncOverrideNonOptional
-                    as? CreatePlatformApplicationSyncType<InvocationReportingType> {
-                return try createPlatformApplicationSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func createPlatformApplicationSync(
+            input: SimpleNotificationModel.CreatePlatformApplicationInput) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication {
+        if let createPlatformApplicationSyncOverride = createPlatformApplicationSyncOverride {
+            return try createPlatformApplicationSyncOverride(input)
         }
 
         return CreatePlatformApplicationResponseForCreatePlatformApplication.__default
@@ -446,17 +398,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func createPlatformEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createPlatformEndpointAsync(
             input: SimpleNotificationModel.CreatePlatformEndpointInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, HTTPClientError>) -> ()) throws {
-        if let createPlatformEndpointAsyncOverrideNonOptional = createPlatformEndpointAsyncOverride {
-            if let createPlatformEndpointAsyncOverrideTyped = createPlatformEndpointAsyncOverrideNonOptional
-                    as? CreatePlatformEndpointAsyncType<InvocationReportingType> {
-                return try createPlatformEndpointAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let createPlatformEndpointAsyncOverride = createPlatformEndpointAsyncOverride {
+            return try createPlatformEndpointAsyncOverride(input, completion)
         }
 
         let result = CreateEndpointResponseForCreatePlatformEndpoint.__default
@@ -473,16 +419,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func createPlatformEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.CreatePlatformEndpointInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint {
-        if let createPlatformEndpointSyncOverrideNonOptional = createPlatformEndpointSyncOverride {
-            if let createPlatformEndpointSyncOverrideTyped = createPlatformEndpointSyncOverrideNonOptional
-                    as? CreatePlatformEndpointSyncType<InvocationReportingType> {
-                return try createPlatformEndpointSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func createPlatformEndpointSync(
+            input: SimpleNotificationModel.CreatePlatformEndpointInput) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint {
+        if let createPlatformEndpointSyncOverride = createPlatformEndpointSyncOverride {
+            return try createPlatformEndpointSyncOverride(input)
         }
 
         return CreateEndpointResponseForCreatePlatformEndpoint.__default
@@ -498,17 +438,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
      */
-    public func createTopicAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createTopicAsync(
             input: SimpleNotificationModel.CreateTopicInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, HTTPClientError>) -> ()) throws {
-        if let createTopicAsyncOverrideNonOptional = createTopicAsyncOverride {
-            if let createTopicAsyncOverrideTyped = createTopicAsyncOverrideNonOptional
-                    as? CreateTopicAsyncType<InvocationReportingType> {
-                return try createTopicAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let createTopicAsyncOverride = createTopicAsyncOverride {
+            return try createTopicAsyncOverride(input, completion)
         }
 
         let result = CreateTopicResponseForCreateTopic.__default
@@ -525,16 +459,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
      */
-    public func createTopicSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.CreateTopicInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
-        if let createTopicSyncOverrideNonOptional = createTopicSyncOverride {
-            if let createTopicSyncOverrideTyped = createTopicSyncOverrideNonOptional
-                    as? CreateTopicSyncType<InvocationReportingType> {
-                return try createTopicSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func createTopicSync(
+            input: SimpleNotificationModel.CreateTopicInput) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
+        if let createTopicSyncOverride = createTopicSyncOverride {
+            return try createTopicSyncOverride(input)
         }
 
         return CreateTopicResponseForCreateTopic.__default
@@ -549,17 +477,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func deleteEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteEndpointAsync(
             input: SimpleNotificationModel.DeleteEndpointInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteEndpointAsyncOverrideNonOptional = deleteEndpointAsyncOverride {
-            if let deleteEndpointAsyncOverrideTyped = deleteEndpointAsyncOverrideNonOptional
-                    as? DeleteEndpointAsyncType<InvocationReportingType> {
-                return try deleteEndpointAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let deleteEndpointAsyncOverride = deleteEndpointAsyncOverride {
+            return try deleteEndpointAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -572,16 +494,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          - input: The validated DeleteEndpointInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func deleteEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.DeleteEndpointInput,
-            reporting: InvocationReportingType) throws {
-        if let deleteEndpointSyncOverrideNonOptional = deleteEndpointSyncOverride {
-            if let deleteEndpointSyncOverrideTyped = deleteEndpointSyncOverrideNonOptional
-                    as? DeleteEndpointSyncType<InvocationReportingType> {
-                return try deleteEndpointSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func deleteEndpointSync(
+            input: SimpleNotificationModel.DeleteEndpointInput) throws {
+        if let deleteEndpointSyncOverride = deleteEndpointSyncOverride {
+            return try deleteEndpointSyncOverride(input)
         }
 
     }
@@ -595,17 +511,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func deletePlatformApplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deletePlatformApplicationAsync(
             input: SimpleNotificationModel.DeletePlatformApplicationInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deletePlatformApplicationAsyncOverrideNonOptional = deletePlatformApplicationAsyncOverride {
-            if let deletePlatformApplicationAsyncOverrideTyped = deletePlatformApplicationAsyncOverrideNonOptional
-                    as? DeletePlatformApplicationAsyncType<InvocationReportingType> {
-                return try deletePlatformApplicationAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let deletePlatformApplicationAsyncOverride = deletePlatformApplicationAsyncOverride {
+            return try deletePlatformApplicationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -618,16 +528,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          - input: The validated DeletePlatformApplicationInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func deletePlatformApplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.DeletePlatformApplicationInput,
-            reporting: InvocationReportingType) throws {
-        if let deletePlatformApplicationSyncOverrideNonOptional = deletePlatformApplicationSyncOverride {
-            if let deletePlatformApplicationSyncOverrideTyped = deletePlatformApplicationSyncOverrideNonOptional
-                    as? DeletePlatformApplicationSyncType<InvocationReportingType> {
-                return try deletePlatformApplicationSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func deletePlatformApplicationSync(
+            input: SimpleNotificationModel.DeletePlatformApplicationInput) throws {
+        if let deletePlatformApplicationSyncOverride = deletePlatformApplicationSyncOverride {
+            return try deletePlatformApplicationSyncOverride(input)
         }
 
     }
@@ -641,17 +545,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            is complete.
            The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
-    public func deleteTopicAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteTopicAsync(
             input: SimpleNotificationModel.DeleteTopicInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let deleteTopicAsyncOverrideNonOptional = deleteTopicAsyncOverride {
-            if let deleteTopicAsyncOverrideTyped = deleteTopicAsyncOverrideNonOptional
-                    as? DeleteTopicAsyncType<InvocationReportingType> {
-                return try deleteTopicAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let deleteTopicAsyncOverride = deleteTopicAsyncOverride {
+            return try deleteTopicAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -664,16 +562,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          - input: The validated DeleteTopicInput object being passed to this operation.
      - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
-    public func deleteTopicSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.DeleteTopicInput,
-            reporting: InvocationReportingType) throws {
-        if let deleteTopicSyncOverrideNonOptional = deleteTopicSyncOverride {
-            if let deleteTopicSyncOverrideTyped = deleteTopicSyncOverrideNonOptional
-                    as? DeleteTopicSyncType<InvocationReportingType> {
-                return try deleteTopicSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func deleteTopicSync(
+            input: SimpleNotificationModel.DeleteTopicInput) throws {
+        if let deleteTopicSyncOverride = deleteTopicSyncOverride {
+            return try deleteTopicSyncOverride(input)
         }
 
     }
@@ -688,17 +580,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getEndpointAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getEndpointAttributesAsync(
             input: SimpleNotificationModel.GetEndpointAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, HTTPClientError>) -> ()) throws {
-        if let getEndpointAttributesAsyncOverrideNonOptional = getEndpointAttributesAsyncOverride {
-            if let getEndpointAttributesAsyncOverrideTyped = getEndpointAttributesAsyncOverrideNonOptional
-                    as? GetEndpointAttributesAsyncType<InvocationReportingType> {
-                return try getEndpointAttributesAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let getEndpointAttributesAsyncOverride = getEndpointAttributesAsyncOverride {
+            return try getEndpointAttributesAsyncOverride(input, completion)
         }
 
         let result = GetEndpointAttributesResponseForGetEndpointAttributes.__default
@@ -715,16 +601,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getEndpointAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.GetEndpointAttributesInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes {
-        if let getEndpointAttributesSyncOverrideNonOptional = getEndpointAttributesSyncOverride {
-            if let getEndpointAttributesSyncOverrideTyped = getEndpointAttributesSyncOverrideNonOptional
-                    as? GetEndpointAttributesSyncType<InvocationReportingType> {
-                return try getEndpointAttributesSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func getEndpointAttributesSync(
+            input: SimpleNotificationModel.GetEndpointAttributesInput) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes {
+        if let getEndpointAttributesSyncOverride = getEndpointAttributesSyncOverride {
+            return try getEndpointAttributesSyncOverride(input)
         }
 
         return GetEndpointAttributesResponseForGetEndpointAttributes.__default
@@ -740,17 +620,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getPlatformApplicationAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.GetPlatformApplicationAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, HTTPClientError>) -> ()) throws {
-        if let getPlatformApplicationAttributesAsyncOverrideNonOptional = getPlatformApplicationAttributesAsyncOverride {
-            if let getPlatformApplicationAttributesAsyncOverrideTyped = getPlatformApplicationAttributesAsyncOverrideNonOptional
-                    as? GetPlatformApplicationAttributesAsyncType<InvocationReportingType> {
-                return try getPlatformApplicationAttributesAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let getPlatformApplicationAttributesAsyncOverride = getPlatformApplicationAttributesAsyncOverride {
+            return try getPlatformApplicationAttributesAsyncOverride(input, completion)
         }
 
         let result = GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes.__default
@@ -767,16 +641,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getPlatformApplicationAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.GetPlatformApplicationAttributesInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes {
-        if let getPlatformApplicationAttributesSyncOverrideNonOptional = getPlatformApplicationAttributesSyncOverride {
-            if let getPlatformApplicationAttributesSyncOverrideTyped = getPlatformApplicationAttributesSyncOverrideNonOptional
-                    as? GetPlatformApplicationAttributesSyncType<InvocationReportingType> {
-                return try getPlatformApplicationAttributesSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func getPlatformApplicationAttributesSync(
+            input: SimpleNotificationModel.GetPlatformApplicationAttributesInput) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes {
+        if let getPlatformApplicationAttributesSyncOverride = getPlatformApplicationAttributesSyncOverride {
+            return try getPlatformApplicationAttributesSyncOverride(input)
         }
 
         return GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes.__default
@@ -792,17 +660,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func getSMSAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getSMSAttributesAsync(
             input: SimpleNotificationModel.GetSMSAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, HTTPClientError>) -> ()) throws {
-        if let getSMSAttributesAsyncOverrideNonOptional = getSMSAttributesAsyncOverride {
-            if let getSMSAttributesAsyncOverrideTyped = getSMSAttributesAsyncOverrideNonOptional
-                    as? GetSMSAttributesAsyncType<InvocationReportingType> {
-                return try getSMSAttributesAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let getSMSAttributesAsyncOverride = getSMSAttributesAsyncOverride {
+            return try getSMSAttributesAsyncOverride(input, completion)
         }
 
         let result = GetSMSAttributesResponseForGetSMSAttributes.__default
@@ -819,16 +681,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func getSMSAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.GetSMSAttributesInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes {
-        if let getSMSAttributesSyncOverrideNonOptional = getSMSAttributesSyncOverride {
-            if let getSMSAttributesSyncOverrideTyped = getSMSAttributesSyncOverrideNonOptional
-                    as? GetSMSAttributesSyncType<InvocationReportingType> {
-                return try getSMSAttributesSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func getSMSAttributesSync(
+            input: SimpleNotificationModel.GetSMSAttributesInput) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes {
+        if let getSMSAttributesSyncOverride = getSMSAttributesSyncOverride {
+            return try getSMSAttributesSyncOverride(input)
         }
 
         return GetSMSAttributesResponseForGetSMSAttributes.__default
@@ -844,17 +700,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getSubscriptionAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getSubscriptionAttributesAsync(
             input: SimpleNotificationModel.GetSubscriptionAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, HTTPClientError>) -> ()) throws {
-        if let getSubscriptionAttributesAsyncOverrideNonOptional = getSubscriptionAttributesAsyncOverride {
-            if let getSubscriptionAttributesAsyncOverrideTyped = getSubscriptionAttributesAsyncOverrideNonOptional
-                    as? GetSubscriptionAttributesAsyncType<InvocationReportingType> {
-                return try getSubscriptionAttributesAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let getSubscriptionAttributesAsyncOverride = getSubscriptionAttributesAsyncOverride {
+            return try getSubscriptionAttributesAsyncOverride(input, completion)
         }
 
         let result = GetSubscriptionAttributesResponseForGetSubscriptionAttributes.__default
@@ -871,16 +721,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getSubscriptionAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.GetSubscriptionAttributesInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes {
-        if let getSubscriptionAttributesSyncOverrideNonOptional = getSubscriptionAttributesSyncOverride {
-            if let getSubscriptionAttributesSyncOverrideTyped = getSubscriptionAttributesSyncOverrideNonOptional
-                    as? GetSubscriptionAttributesSyncType<InvocationReportingType> {
-                return try getSubscriptionAttributesSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func getSubscriptionAttributesSync(
+            input: SimpleNotificationModel.GetSubscriptionAttributesInput) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes {
+        if let getSubscriptionAttributesSyncOverride = getSubscriptionAttributesSyncOverride {
+            return try getSubscriptionAttributesSyncOverride(input)
         }
 
         return GetSubscriptionAttributesResponseForGetSubscriptionAttributes.__default
@@ -896,17 +740,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func getTopicAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getTopicAttributesAsync(
             input: SimpleNotificationModel.GetTopicAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, HTTPClientError>) -> ()) throws {
-        if let getTopicAttributesAsyncOverrideNonOptional = getTopicAttributesAsyncOverride {
-            if let getTopicAttributesAsyncOverrideTyped = getTopicAttributesAsyncOverrideNonOptional
-                    as? GetTopicAttributesAsyncType<InvocationReportingType> {
-                return try getTopicAttributesAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let getTopicAttributesAsyncOverride = getTopicAttributesAsyncOverride {
+            return try getTopicAttributesAsyncOverride(input, completion)
         }
 
         let result = GetTopicAttributesResponseForGetTopicAttributes.__default
@@ -923,16 +761,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func getTopicAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.GetTopicAttributesInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes {
-        if let getTopicAttributesSyncOverrideNonOptional = getTopicAttributesSyncOverride {
-            if let getTopicAttributesSyncOverrideTyped = getTopicAttributesSyncOverrideNonOptional
-                    as? GetTopicAttributesSyncType<InvocationReportingType> {
-                return try getTopicAttributesSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func getTopicAttributesSync(
+            input: SimpleNotificationModel.GetTopicAttributesInput) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes {
+        if let getTopicAttributesSyncOverride = getTopicAttributesSyncOverride {
+            return try getTopicAttributesSyncOverride(input)
         }
 
         return GetTopicAttributesResponseForGetTopicAttributes.__default
@@ -948,17 +780,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func listEndpointsByPlatformApplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listEndpointsByPlatformApplicationAsync(
             input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, HTTPClientError>) -> ()) throws {
-        if let listEndpointsByPlatformApplicationAsyncOverrideNonOptional = listEndpointsByPlatformApplicationAsyncOverride {
-            if let listEndpointsByPlatformApplicationAsyncOverrideTyped = listEndpointsByPlatformApplicationAsyncOverrideNonOptional
-                    as? ListEndpointsByPlatformApplicationAsyncType<InvocationReportingType> {
-                return try listEndpointsByPlatformApplicationAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let listEndpointsByPlatformApplicationAsyncOverride = listEndpointsByPlatformApplicationAsyncOverride {
+            return try listEndpointsByPlatformApplicationAsyncOverride(input, completion)
         }
 
         let result = ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication.__default
@@ -975,16 +801,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func listEndpointsByPlatformApplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication {
-        if let listEndpointsByPlatformApplicationSyncOverrideNonOptional = listEndpointsByPlatformApplicationSyncOverride {
-            if let listEndpointsByPlatformApplicationSyncOverrideTyped = listEndpointsByPlatformApplicationSyncOverrideNonOptional
-                    as? ListEndpointsByPlatformApplicationSyncType<InvocationReportingType> {
-                return try listEndpointsByPlatformApplicationSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func listEndpointsByPlatformApplicationSync(
+            input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication {
+        if let listEndpointsByPlatformApplicationSyncOverride = listEndpointsByPlatformApplicationSyncOverride {
+            return try listEndpointsByPlatformApplicationSyncOverride(input)
         }
 
         return ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication.__default
@@ -1000,17 +820,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func listPhoneNumbersOptedOutAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listPhoneNumbersOptedOutAsync(
             input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, HTTPClientError>) -> ()) throws {
-        if let listPhoneNumbersOptedOutAsyncOverrideNonOptional = listPhoneNumbersOptedOutAsyncOverride {
-            if let listPhoneNumbersOptedOutAsyncOverrideTyped = listPhoneNumbersOptedOutAsyncOverrideNonOptional
-                    as? ListPhoneNumbersOptedOutAsyncType<InvocationReportingType> {
-                return try listPhoneNumbersOptedOutAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let listPhoneNumbersOptedOutAsyncOverride = listPhoneNumbersOptedOutAsyncOverride {
+            return try listPhoneNumbersOptedOutAsyncOverride(input, completion)
         }
 
         let result = ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut.__default
@@ -1027,16 +841,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func listPhoneNumbersOptedOutSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut {
-        if let listPhoneNumbersOptedOutSyncOverrideNonOptional = listPhoneNumbersOptedOutSyncOverride {
-            if let listPhoneNumbersOptedOutSyncOverrideTyped = listPhoneNumbersOptedOutSyncOverrideNonOptional
-                    as? ListPhoneNumbersOptedOutSyncType<InvocationReportingType> {
-                return try listPhoneNumbersOptedOutSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func listPhoneNumbersOptedOutSync(
+            input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut {
+        if let listPhoneNumbersOptedOutSyncOverride = listPhoneNumbersOptedOutSyncOverride {
+            return try listPhoneNumbersOptedOutSyncOverride(input)
         }
 
         return ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut.__default
@@ -1052,17 +860,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func listPlatformApplicationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listPlatformApplicationsAsync(
             input: SimpleNotificationModel.ListPlatformApplicationsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, HTTPClientError>) -> ()) throws {
-        if let listPlatformApplicationsAsyncOverrideNonOptional = listPlatformApplicationsAsyncOverride {
-            if let listPlatformApplicationsAsyncOverrideTyped = listPlatformApplicationsAsyncOverrideNonOptional
-                    as? ListPlatformApplicationsAsyncType<InvocationReportingType> {
-                return try listPlatformApplicationsAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let listPlatformApplicationsAsyncOverride = listPlatformApplicationsAsyncOverride {
+            return try listPlatformApplicationsAsyncOverride(input, completion)
         }
 
         let result = ListPlatformApplicationsResponseForListPlatformApplications.__default
@@ -1079,16 +881,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func listPlatformApplicationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListPlatformApplicationsInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications {
-        if let listPlatformApplicationsSyncOverrideNonOptional = listPlatformApplicationsSyncOverride {
-            if let listPlatformApplicationsSyncOverrideTyped = listPlatformApplicationsSyncOverrideNonOptional
-                    as? ListPlatformApplicationsSyncType<InvocationReportingType> {
-                return try listPlatformApplicationsSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func listPlatformApplicationsSync(
+            input: SimpleNotificationModel.ListPlatformApplicationsInput) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications {
+        if let listPlatformApplicationsSyncOverride = listPlatformApplicationsSyncOverride {
+            return try listPlatformApplicationsSyncOverride(input)
         }
 
         return ListPlatformApplicationsResponseForListPlatformApplications.__default
@@ -1104,17 +900,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func listSubscriptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listSubscriptionsAsync(
             input: SimpleNotificationModel.ListSubscriptionsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, HTTPClientError>) -> ()) throws {
-        if let listSubscriptionsAsyncOverrideNonOptional = listSubscriptionsAsyncOverride {
-            if let listSubscriptionsAsyncOverrideTyped = listSubscriptionsAsyncOverrideNonOptional
-                    as? ListSubscriptionsAsyncType<InvocationReportingType> {
-                return try listSubscriptionsAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let listSubscriptionsAsyncOverride = listSubscriptionsAsyncOverride {
+            return try listSubscriptionsAsyncOverride(input, completion)
         }
 
         let result = ListSubscriptionsResponseForListSubscriptions.__default
@@ -1131,16 +921,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func listSubscriptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListSubscriptionsInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions {
-        if let listSubscriptionsSyncOverrideNonOptional = listSubscriptionsSyncOverride {
-            if let listSubscriptionsSyncOverrideTyped = listSubscriptionsSyncOverrideNonOptional
-                    as? ListSubscriptionsSyncType<InvocationReportingType> {
-                return try listSubscriptionsSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func listSubscriptionsSync(
+            input: SimpleNotificationModel.ListSubscriptionsInput) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions {
+        if let listSubscriptionsSyncOverride = listSubscriptionsSyncOverride {
+            return try listSubscriptionsSyncOverride(input)
         }
 
         return ListSubscriptionsResponseForListSubscriptions.__default
@@ -1156,17 +940,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func listSubscriptionsByTopicAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listSubscriptionsByTopicAsync(
             input: SimpleNotificationModel.ListSubscriptionsByTopicInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, HTTPClientError>) -> ()) throws {
-        if let listSubscriptionsByTopicAsyncOverrideNonOptional = listSubscriptionsByTopicAsyncOverride {
-            if let listSubscriptionsByTopicAsyncOverrideTyped = listSubscriptionsByTopicAsyncOverrideNonOptional
-                    as? ListSubscriptionsByTopicAsyncType<InvocationReportingType> {
-                return try listSubscriptionsByTopicAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let listSubscriptionsByTopicAsyncOverride = listSubscriptionsByTopicAsyncOverride {
+            return try listSubscriptionsByTopicAsyncOverride(input, completion)
         }
 
         let result = ListSubscriptionsByTopicResponseForListSubscriptionsByTopic.__default
@@ -1183,16 +961,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func listSubscriptionsByTopicSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListSubscriptionsByTopicInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic {
-        if let listSubscriptionsByTopicSyncOverrideNonOptional = listSubscriptionsByTopicSyncOverride {
-            if let listSubscriptionsByTopicSyncOverrideTyped = listSubscriptionsByTopicSyncOverrideNonOptional
-                    as? ListSubscriptionsByTopicSyncType<InvocationReportingType> {
-                return try listSubscriptionsByTopicSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func listSubscriptionsByTopicSync(
+            input: SimpleNotificationModel.ListSubscriptionsByTopicInput) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic {
+        if let listSubscriptionsByTopicSyncOverride = listSubscriptionsByTopicSyncOverride {
+            return try listSubscriptionsByTopicSyncOverride(input)
         }
 
         return ListSubscriptionsByTopicResponseForListSubscriptionsByTopic.__default
@@ -1208,17 +980,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
      */
-    public func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listTagsForResourceAsync(
             input: SimpleNotificationModel.ListTagsForResourceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, HTTPClientError>) -> ()) throws {
-        if let listTagsForResourceAsyncOverrideNonOptional = listTagsForResourceAsyncOverride {
-            if let listTagsForResourceAsyncOverrideTyped = listTagsForResourceAsyncOverrideNonOptional
-                    as? ListTagsForResourceAsyncType<InvocationReportingType> {
-                return try listTagsForResourceAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
+            return try listTagsForResourceAsyncOverride(input, completion)
         }
 
         let result = ListTagsForResourceResponseForListTagsForResource.__default
@@ -1235,16 +1001,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
      */
-    public func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListTagsForResourceRequest,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
-        if let listTagsForResourceSyncOverrideNonOptional = listTagsForResourceSyncOverride {
-            if let listTagsForResourceSyncOverrideTyped = listTagsForResourceSyncOverrideNonOptional
-                    as? ListTagsForResourceSyncType<InvocationReportingType> {
-                return try listTagsForResourceSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func listTagsForResourceSync(
+            input: SimpleNotificationModel.ListTagsForResourceRequest) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
+        if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
+            return try listTagsForResourceSyncOverride(input)
         }
 
         return ListTagsForResourceResponseForListTagsForResource.__default
@@ -1260,17 +1020,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func listTopicsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listTopicsAsync(
             input: SimpleNotificationModel.ListTopicsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, HTTPClientError>) -> ()) throws {
-        if let listTopicsAsyncOverrideNonOptional = listTopicsAsyncOverride {
-            if let listTopicsAsyncOverrideTyped = listTopicsAsyncOverrideNonOptional
-                    as? ListTopicsAsyncType<InvocationReportingType> {
-                return try listTopicsAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let listTopicsAsyncOverride = listTopicsAsyncOverride {
+            return try listTopicsAsyncOverride(input, completion)
         }
 
         let result = ListTopicsResponseForListTopics.__default
@@ -1287,16 +1041,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func listTopicsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListTopicsInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics {
-        if let listTopicsSyncOverrideNonOptional = listTopicsSyncOverride {
-            if let listTopicsSyncOverrideTyped = listTopicsSyncOverrideNonOptional
-                    as? ListTopicsSyncType<InvocationReportingType> {
-                return try listTopicsSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func listTopicsSync(
+            input: SimpleNotificationModel.ListTopicsInput) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics {
+        if let listTopicsSyncOverride = listTopicsSyncOverride {
+            return try listTopicsSyncOverride(input)
         }
 
         return ListTopicsResponseForListTopics.__default
@@ -1312,17 +1060,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func optInPhoneNumberAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func optInPhoneNumberAsync(
             input: SimpleNotificationModel.OptInPhoneNumberInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, HTTPClientError>) -> ()) throws {
-        if let optInPhoneNumberAsyncOverrideNonOptional = optInPhoneNumberAsyncOverride {
-            if let optInPhoneNumberAsyncOverrideTyped = optInPhoneNumberAsyncOverrideNonOptional
-                    as? OptInPhoneNumberAsyncType<InvocationReportingType> {
-                return try optInPhoneNumberAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let optInPhoneNumberAsyncOverride = optInPhoneNumberAsyncOverride {
+            return try optInPhoneNumberAsyncOverride(input, completion)
         }
 
         let result = OptInPhoneNumberResponseForOptInPhoneNumber.__default
@@ -1339,16 +1081,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func optInPhoneNumberSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.OptInPhoneNumberInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber {
-        if let optInPhoneNumberSyncOverrideNonOptional = optInPhoneNumberSyncOverride {
-            if let optInPhoneNumberSyncOverrideTyped = optInPhoneNumberSyncOverrideNonOptional
-                    as? OptInPhoneNumberSyncType<InvocationReportingType> {
-                return try optInPhoneNumberSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func optInPhoneNumberSync(
+            input: SimpleNotificationModel.OptInPhoneNumberInput) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber {
+        if let optInPhoneNumberSyncOverride = optInPhoneNumberSyncOverride {
+            return try optInPhoneNumberSyncOverride(input)
         }
 
         return OptInPhoneNumberResponseForOptInPhoneNumber.__default
@@ -1364,17 +1100,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
      */
-    public func publishAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func publishAsync(
             input: SimpleNotificationModel.PublishInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, HTTPClientError>) -> ()) throws {
-        if let publishAsyncOverrideNonOptional = publishAsyncOverride {
-            if let publishAsyncOverrideTyped = publishAsyncOverrideNonOptional
-                    as? PublishAsyncType<InvocationReportingType> {
-                return try publishAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let publishAsyncOverride = publishAsyncOverride {
+            return try publishAsyncOverride(input, completion)
         }
 
         let result = PublishResponseForPublish.__default
@@ -1391,16 +1121,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
      */
-    public func publishSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.PublishInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.PublishResponseForPublish {
-        if let publishSyncOverrideNonOptional = publishSyncOverride {
-            if let publishSyncOverrideTyped = publishSyncOverrideNonOptional
-                    as? PublishSyncType<InvocationReportingType> {
-                return try publishSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func publishSync(
+            input: SimpleNotificationModel.PublishInput) throws -> SimpleNotificationModel.PublishResponseForPublish {
+        if let publishSyncOverride = publishSyncOverride {
+            return try publishSyncOverride(input)
         }
 
         return PublishResponseForPublish.__default
@@ -1415,17 +1139,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func removePermissionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func removePermissionAsync(
             input: SimpleNotificationModel.RemovePermissionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let removePermissionAsyncOverrideNonOptional = removePermissionAsyncOverride {
-            if let removePermissionAsyncOverrideTyped = removePermissionAsyncOverrideNonOptional
-                    as? RemovePermissionAsyncType<InvocationReportingType> {
-                return try removePermissionAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let removePermissionAsyncOverride = removePermissionAsyncOverride {
+            return try removePermissionAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1438,16 +1156,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          - input: The validated RemovePermissionInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func removePermissionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.RemovePermissionInput,
-            reporting: InvocationReportingType) throws {
-        if let removePermissionSyncOverrideNonOptional = removePermissionSyncOverride {
-            if let removePermissionSyncOverrideTyped = removePermissionSyncOverrideNonOptional
-                    as? RemovePermissionSyncType<InvocationReportingType> {
-                return try removePermissionSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func removePermissionSync(
+            input: SimpleNotificationModel.RemovePermissionInput) throws {
+        if let removePermissionSyncOverride = removePermissionSyncOverride {
+            return try removePermissionSyncOverride(input)
         }
 
     }
@@ -1461,17 +1173,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setEndpointAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func setEndpointAttributesAsync(
             input: SimpleNotificationModel.SetEndpointAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let setEndpointAttributesAsyncOverrideNonOptional = setEndpointAttributesAsyncOverride {
-            if let setEndpointAttributesAsyncOverrideTyped = setEndpointAttributesAsyncOverrideNonOptional
-                    as? SetEndpointAttributesAsyncType<InvocationReportingType> {
-                return try setEndpointAttributesAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let setEndpointAttributesAsyncOverride = setEndpointAttributesAsyncOverride {
+            return try setEndpointAttributesAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1484,16 +1190,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          - input: The validated SetEndpointAttributesInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setEndpointAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.SetEndpointAttributesInput,
-            reporting: InvocationReportingType) throws {
-        if let setEndpointAttributesSyncOverrideNonOptional = setEndpointAttributesSyncOverride {
-            if let setEndpointAttributesSyncOverrideTyped = setEndpointAttributesSyncOverrideNonOptional
-                    as? SetEndpointAttributesSyncType<InvocationReportingType> {
-                return try setEndpointAttributesSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func setEndpointAttributesSync(
+            input: SimpleNotificationModel.SetEndpointAttributesInput) throws {
+        if let setEndpointAttributesSyncOverride = setEndpointAttributesSyncOverride {
+            return try setEndpointAttributesSyncOverride(input)
         }
 
     }
@@ -1507,17 +1207,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setPlatformApplicationAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func setPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let setPlatformApplicationAttributesAsyncOverrideNonOptional = setPlatformApplicationAttributesAsyncOverride {
-            if let setPlatformApplicationAttributesAsyncOverrideTyped = setPlatformApplicationAttributesAsyncOverrideNonOptional
-                    as? SetPlatformApplicationAttributesAsyncType<InvocationReportingType> {
-                return try setPlatformApplicationAttributesAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let setPlatformApplicationAttributesAsyncOverride = setPlatformApplicationAttributesAsyncOverride {
+            return try setPlatformApplicationAttributesAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1530,16 +1224,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          - input: The validated SetPlatformApplicationAttributesInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setPlatformApplicationAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.SetPlatformApplicationAttributesInput,
-            reporting: InvocationReportingType) throws {
-        if let setPlatformApplicationAttributesSyncOverrideNonOptional = setPlatformApplicationAttributesSyncOverride {
-            if let setPlatformApplicationAttributesSyncOverrideTyped = setPlatformApplicationAttributesSyncOverrideNonOptional
-                    as? SetPlatformApplicationAttributesSyncType<InvocationReportingType> {
-                return try setPlatformApplicationAttributesSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func setPlatformApplicationAttributesSync(
+            input: SimpleNotificationModel.SetPlatformApplicationAttributesInput) throws {
+        if let setPlatformApplicationAttributesSyncOverride = setPlatformApplicationAttributesSyncOverride {
+            return try setPlatformApplicationAttributesSyncOverride(input)
         }
 
     }
@@ -1554,17 +1242,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func setSMSAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func setSMSAttributesAsync(
             input: SimpleNotificationModel.SetSMSAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, HTTPClientError>) -> ()) throws {
-        if let setSMSAttributesAsyncOverrideNonOptional = setSMSAttributesAsyncOverride {
-            if let setSMSAttributesAsyncOverrideTyped = setSMSAttributesAsyncOverrideNonOptional
-                    as? SetSMSAttributesAsyncType<InvocationReportingType> {
-                return try setSMSAttributesAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let setSMSAttributesAsyncOverride = setSMSAttributesAsyncOverride {
+            return try setSMSAttributesAsyncOverride(input, completion)
         }
 
         let result = SetSMSAttributesResponseForSetSMSAttributes.__default
@@ -1581,16 +1263,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func setSMSAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.SetSMSAttributesInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes {
-        if let setSMSAttributesSyncOverrideNonOptional = setSMSAttributesSyncOverride {
-            if let setSMSAttributesSyncOverrideTyped = setSMSAttributesSyncOverrideNonOptional
-                    as? SetSMSAttributesSyncType<InvocationReportingType> {
-                return try setSMSAttributesSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func setSMSAttributesSync(
+            input: SimpleNotificationModel.SetSMSAttributesInput) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes {
+        if let setSMSAttributesSyncOverride = setSMSAttributesSyncOverride {
+            return try setSMSAttributesSyncOverride(input)
         }
 
         return SetSMSAttributesResponseForSetSMSAttributes.__default
@@ -1605,17 +1281,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            is complete.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
      */
-    public func setSubscriptionAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func setSubscriptionAttributesAsync(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let setSubscriptionAttributesAsyncOverrideNonOptional = setSubscriptionAttributesAsyncOverride {
-            if let setSubscriptionAttributesAsyncOverrideTyped = setSubscriptionAttributesAsyncOverrideNonOptional
-                    as? SetSubscriptionAttributesAsyncType<InvocationReportingType> {
-                return try setSubscriptionAttributesAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let setSubscriptionAttributesAsyncOverride = setSubscriptionAttributesAsyncOverride {
+            return try setSubscriptionAttributesAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1628,16 +1298,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          - input: The validated SetSubscriptionAttributesInput object being passed to this operation.
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
      */
-    public func setSubscriptionAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.SetSubscriptionAttributesInput,
-            reporting: InvocationReportingType) throws {
-        if let setSubscriptionAttributesSyncOverrideNonOptional = setSubscriptionAttributesSyncOverride {
-            if let setSubscriptionAttributesSyncOverrideTyped = setSubscriptionAttributesSyncOverrideNonOptional
-                    as? SetSubscriptionAttributesSyncType<InvocationReportingType> {
-                return try setSubscriptionAttributesSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func setSubscriptionAttributesSync(
+            input: SimpleNotificationModel.SetSubscriptionAttributesInput) throws {
+        if let setSubscriptionAttributesSyncOverride = setSubscriptionAttributesSyncOverride {
+            return try setSubscriptionAttributesSyncOverride(input)
         }
 
     }
@@ -1651,17 +1315,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func setTopicAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func setTopicAttributesAsync(
             input: SimpleNotificationModel.SetTopicAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let setTopicAttributesAsyncOverrideNonOptional = setTopicAttributesAsyncOverride {
-            if let setTopicAttributesAsyncOverrideTyped = setTopicAttributesAsyncOverrideNonOptional
-                    as? SetTopicAttributesAsyncType<InvocationReportingType> {
-                return try setTopicAttributesAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let setTopicAttributesAsyncOverride = setTopicAttributesAsyncOverride {
+            return try setTopicAttributesAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1674,16 +1332,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          - input: The validated SetTopicAttributesInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func setTopicAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.SetTopicAttributesInput,
-            reporting: InvocationReportingType) throws {
-        if let setTopicAttributesSyncOverrideNonOptional = setTopicAttributesSyncOverride {
-            if let setTopicAttributesSyncOverrideTyped = setTopicAttributesSyncOverrideNonOptional
-                    as? SetTopicAttributesSyncType<InvocationReportingType> {
-                return try setTopicAttributesSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func setTopicAttributesSync(
+            input: SimpleNotificationModel.SetTopicAttributesInput) throws {
+        if let setTopicAttributesSyncOverride = setTopicAttributesSyncOverride {
+            return try setTopicAttributesSyncOverride(input)
         }
 
     }
@@ -1698,17 +1350,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
      */
-    public func subscribeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func subscribeAsync(
             input: SimpleNotificationModel.SubscribeInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, HTTPClientError>) -> ()) throws {
-        if let subscribeAsyncOverrideNonOptional = subscribeAsyncOverride {
-            if let subscribeAsyncOverrideTyped = subscribeAsyncOverrideNonOptional
-                    as? SubscribeAsyncType<InvocationReportingType> {
-                return try subscribeAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let subscribeAsyncOverride = subscribeAsyncOverride {
+            return try subscribeAsyncOverride(input, completion)
         }
 
         let result = SubscribeResponseForSubscribe.__default
@@ -1725,16 +1371,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
      */
-    public func subscribeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.SubscribeInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {
-        if let subscribeSyncOverrideNonOptional = subscribeSyncOverride {
-            if let subscribeSyncOverrideTyped = subscribeSyncOverrideNonOptional
-                    as? SubscribeSyncType<InvocationReportingType> {
-                return try subscribeSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func subscribeSync(
+            input: SimpleNotificationModel.SubscribeInput) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {
+        if let subscribeSyncOverride = subscribeSyncOverride {
+            return try subscribeSyncOverride(input)
         }
 
         return SubscribeResponseForSubscribe.__default
@@ -1750,17 +1390,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    public func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func tagResourceAsync(
             input: SimpleNotificationModel.TagResourceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, HTTPClientError>) -> ()) throws {
-        if let tagResourceAsyncOverrideNonOptional = tagResourceAsyncOverride {
-            if let tagResourceAsyncOverrideTyped = tagResourceAsyncOverrideNonOptional
-                    as? TagResourceAsyncType<InvocationReportingType> {
-                return try tagResourceAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let tagResourceAsyncOverride = tagResourceAsyncOverride {
+            return try tagResourceAsyncOverride(input, completion)
         }
 
         let result = TagResourceResponseForTagResource.__default
@@ -1777,16 +1411,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    public func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.TagResourceRequest,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.TagResourceResponseForTagResource {
-        if let tagResourceSyncOverrideNonOptional = tagResourceSyncOverride {
-            if let tagResourceSyncOverrideTyped = tagResourceSyncOverrideNonOptional
-                    as? TagResourceSyncType<InvocationReportingType> {
-                return try tagResourceSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func tagResourceSync(
+            input: SimpleNotificationModel.TagResourceRequest) throws -> SimpleNotificationModel.TagResourceResponseForTagResource {
+        if let tagResourceSyncOverride = tagResourceSyncOverride {
+            return try tagResourceSyncOverride(input)
         }
 
         return TagResourceResponseForTagResource.__default
@@ -1801,17 +1429,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func unsubscribeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func unsubscribeAsync(
             input: SimpleNotificationModel.UnsubscribeInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
-        if let unsubscribeAsyncOverrideNonOptional = unsubscribeAsyncOverride {
-            if let unsubscribeAsyncOverrideTyped = unsubscribeAsyncOverrideNonOptional
-                    as? UnsubscribeAsyncType<InvocationReportingType> {
-                return try unsubscribeAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let unsubscribeAsyncOverride = unsubscribeAsyncOverride {
+            return try unsubscribeAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1824,16 +1446,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          - input: The validated UnsubscribeInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func unsubscribeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.UnsubscribeInput,
-            reporting: InvocationReportingType) throws {
-        if let unsubscribeSyncOverrideNonOptional = unsubscribeSyncOverride {
-            if let unsubscribeSyncOverrideTyped = unsubscribeSyncOverrideNonOptional
-                    as? UnsubscribeSyncType<InvocationReportingType> {
-                return try unsubscribeSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func unsubscribeSync(
+            input: SimpleNotificationModel.UnsubscribeInput) throws {
+        if let unsubscribeSyncOverride = unsubscribeSyncOverride {
+            return try unsubscribeSyncOverride(input)
         }
 
     }
@@ -1848,17 +1464,11 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    public func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func untagResourceAsync(
             input: SimpleNotificationModel.UntagResourceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, HTTPClientError>) -> ()) throws {
-        if let untagResourceAsyncOverrideNonOptional = untagResourceAsyncOverride {
-            if let untagResourceAsyncOverrideTyped = untagResourceAsyncOverrideNonOptional
-                    as? UntagResourceAsyncType<InvocationReportingType> {
-                return try untagResourceAsyncOverrideTyped(input, reporting, completion)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+        if let untagResourceAsyncOverride = untagResourceAsyncOverride {
+            return try untagResourceAsyncOverride(input, completion)
         }
 
         let result = UntagResourceResponseForUntagResource.__default
@@ -1875,16 +1485,10 @@ public struct MockSimpleNotificationClient<ClientInvocationReportingType: SmokeA
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    public func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.UntagResourceRequest,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
-        if let untagResourceSyncOverrideNonOptional = untagResourceSyncOverride {
-            if let untagResourceSyncOverrideTyped = untagResourceSyncOverrideNonOptional
-                    as? UntagResourceSyncType<InvocationReportingType> {
-                return try untagResourceSyncOverrideTyped(input, reporting)
-            } else {
-                fatalError("Function reporting type '\(InvocationReportingType.self)' incompatible with client reporting type '\(ClientInvocationReportingType.self)'.")
-            }
+    public func untagResourceSync(
+            input: SimpleNotificationModel.UntagResourceRequest) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
+        if let untagResourceSyncOverride = untagResourceSyncOverride {
+            return try untagResourceSyncOverride(input)
         }
 
         return UntagResourceResponseForUntagResource.__default

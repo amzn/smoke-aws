@@ -33,7 +33,7 @@ public enum SimpleNotificationClientError: Swift.Error {
     case unknownError(String?)
 }
 
-private extension SimpleNotificationError {
+internal extension SimpleNotificationError {
     func isRetriable() -> Bool {
         switch self {
         case .filterPolicyLimitExceeded, .kMSThrottling, .subscriptionLimitExceeded, .throttled, .topicLimitExceeded:
@@ -57,7 +57,7 @@ private extension Swift.Error {
 /**
  AWS Client for the SimpleNotification service.
  */
-public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
+public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvocationReporting>: SimpleNotificationClientProtocol {
     let httpClient: HTTPClient
     let awsRegion: AWSRegion
     let service: String
@@ -66,42 +66,13 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
+    let reporting: InvocationReportingType
 
-    let addPermissionOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let checkIfPhoneNumberIsOptedOutOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let confirmSubscriptionOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let createPlatformApplicationOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let createPlatformEndpointOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let createTopicOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let deleteEndpointOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let deletePlatformApplicationOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let deleteTopicOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let getEndpointAttributesOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let getPlatformApplicationAttributesOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let getSMSAttributesOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let getSubscriptionAttributesOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let getTopicAttributesOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listEndpointsByPlatformApplicationOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listPhoneNumbersOptedOutOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listPlatformApplicationsOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listSubscriptionsOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listSubscriptionsByTopicOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listTagsForResourceOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listTopicsOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let optInPhoneNumberOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let publishOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let removePermissionOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let setEndpointAttributesOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let setPlatformApplicationAttributesOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let setSMSAttributesOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let setSubscriptionAttributesOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let setTopicAttributesOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let subscribeOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let tagResourceOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let unsubscribeOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let untagResourceOperationReporting: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    let operationsReporting: SimpleNotificationOperationsReporting
+    let invocationsReporting: SimpleNotificationInvocationsReporting<InvocationReportingType>
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "sns",
@@ -125,75 +96,32 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
         self.target = nil
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
+        self.reporting = reporting
         self.retryOnErrorProvider = { error in error.isRetriable() }
         self.apiVersion = apiVersion
-
-        self.addPermissionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .addPermission, configuration: reportingConfiguration)
-        self.checkIfPhoneNumberIsOptedOutOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .checkIfPhoneNumberIsOptedOut, configuration: reportingConfiguration)
-        self.confirmSubscriptionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .confirmSubscription, configuration: reportingConfiguration)
-        self.createPlatformApplicationOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .createPlatformApplication, configuration: reportingConfiguration)
-        self.createPlatformEndpointOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .createPlatformEndpoint, configuration: reportingConfiguration)
-        self.createTopicOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .createTopic, configuration: reportingConfiguration)
-        self.deleteEndpointOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .deleteEndpoint, configuration: reportingConfiguration)
-        self.deletePlatformApplicationOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .deletePlatformApplication, configuration: reportingConfiguration)
-        self.deleteTopicOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .deleteTopic, configuration: reportingConfiguration)
-        self.getEndpointAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .getEndpointAttributes, configuration: reportingConfiguration)
-        self.getPlatformApplicationAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .getPlatformApplicationAttributes, configuration: reportingConfiguration)
-        self.getSMSAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .getSMSAttributes, configuration: reportingConfiguration)
-        self.getSubscriptionAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .getSubscriptionAttributes, configuration: reportingConfiguration)
-        self.getTopicAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .getTopicAttributes, configuration: reportingConfiguration)
-        self.listEndpointsByPlatformApplicationOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .listEndpointsByPlatformApplication, configuration: reportingConfiguration)
-        self.listPhoneNumbersOptedOutOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .listPhoneNumbersOptedOut, configuration: reportingConfiguration)
-        self.listPlatformApplicationsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .listPlatformApplications, configuration: reportingConfiguration)
-        self.listSubscriptionsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .listSubscriptions, configuration: reportingConfiguration)
-        self.listSubscriptionsByTopicOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .listSubscriptionsByTopic, configuration: reportingConfiguration)
-        self.listTagsForResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .listTagsForResource, configuration: reportingConfiguration)
-        self.listTopicsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .listTopics, configuration: reportingConfiguration)
-        self.optInPhoneNumberOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .optInPhoneNumber, configuration: reportingConfiguration)
-        self.publishOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .publish, configuration: reportingConfiguration)
-        self.removePermissionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .removePermission, configuration: reportingConfiguration)
-        self.setEndpointAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .setEndpointAttributes, configuration: reportingConfiguration)
-        self.setPlatformApplicationAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .setPlatformApplicationAttributes, configuration: reportingConfiguration)
-        self.setSMSAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .setSMSAttributes, configuration: reportingConfiguration)
-        self.setSubscriptionAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .setSubscriptionAttributes, configuration: reportingConfiguration)
-        self.setTopicAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .setTopicAttributes, configuration: reportingConfiguration)
-        self.subscribeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .subscribe, configuration: reportingConfiguration)
-        self.tagResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .tagResource, configuration: reportingConfiguration)
-        self.unsubscribeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .unsubscribe, configuration: reportingConfiguration)
-        self.untagResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleNotificationClient", operation: .untagResource, configuration: reportingConfiguration)
+        self.operationsReporting = SimpleNotificationOperationsReporting(clientName: "AWSSimpleNotificationClient", reportingConfiguration: reportingConfiguration)
+        self.invocationsReporting = SimpleNotificationInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
+    }
+    
+    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                reporting: InvocationReportingType,
+                httpClient: HTTPClient,
+                service: String,
+                apiVersion: String,
+                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryConfiguration: HTTPClientRetryConfiguration,
+                operationsReporting: SimpleNotificationOperationsReporting) {
+        self.httpClient = httpClient
+        self.awsRegion = awsRegion
+        self.service = service
+        self.target = nil
+        self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.reporting = reporting
+        self.retryOnErrorProvider = retryOnErrorProvider
+        self.apiVersion = apiVersion
+        self.operationsReporting = operationsReporting
+        self.invocationsReporting = SimpleNotificationInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
 
     /**
@@ -221,9 +149,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func addPermissionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func addPermissionAsync(
             input: SimpleNotificationModel.AddPermissionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -231,9 +158,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: addPermissionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addPermission,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AddPermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -258,18 +184,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated AddPermissionInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func addPermissionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.AddPermissionInput,
-            reporting: InvocationReportingType) throws {
+    public func addPermissionSync(
+            input: SimpleNotificationModel.AddPermissionInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: addPermissionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addPermission,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AddPermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -296,9 +220,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func checkIfPhoneNumberIsOptedOutAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func checkIfPhoneNumberIsOptedOutAsync(
             input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -306,9 +229,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: checkIfPhoneNumberIsOptedOutOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.checkIfPhoneNumberIsOptedOut,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CheckIfPhoneNumberIsOptedOutOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -335,18 +257,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func checkIfPhoneNumberIsOptedOutSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut {
+    public func checkIfPhoneNumberIsOptedOutSync(
+            input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: checkIfPhoneNumberIsOptedOutOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.checkIfPhoneNumberIsOptedOut,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CheckIfPhoneNumberIsOptedOutOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -373,9 +293,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
      */
-    public func confirmSubscriptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func confirmSubscriptionAsync(
             input: SimpleNotificationModel.ConfirmSubscriptionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -383,9 +302,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: confirmSubscriptionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.confirmSubscription,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ConfirmSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -412,18 +330,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
      */
-    public func confirmSubscriptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ConfirmSubscriptionInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
+    public func confirmSubscriptionSync(
+            input: SimpleNotificationModel.ConfirmSubscriptionInput) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: confirmSubscriptionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.confirmSubscription,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ConfirmSubscriptionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -450,9 +366,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func createPlatformApplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createPlatformApplicationAsync(
             input: SimpleNotificationModel.CreatePlatformApplicationInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -460,9 +375,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createPlatformApplicationOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createPlatformApplication,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreatePlatformApplicationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -489,18 +403,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func createPlatformApplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.CreatePlatformApplicationInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication {
+    public func createPlatformApplicationSync(
+            input: SimpleNotificationModel.CreatePlatformApplicationInput) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createPlatformApplicationOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createPlatformApplication,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreatePlatformApplicationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -527,9 +439,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func createPlatformEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createPlatformEndpointAsync(
             input: SimpleNotificationModel.CreatePlatformEndpointInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -537,9 +448,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createPlatformEndpointOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createPlatformEndpoint,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreatePlatformEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -566,18 +476,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func createPlatformEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.CreatePlatformEndpointInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint {
+    public func createPlatformEndpointSync(
+            input: SimpleNotificationModel.CreatePlatformEndpointInput) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createPlatformEndpointOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createPlatformEndpoint,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreatePlatformEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -604,9 +512,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
      */
-    public func createTopicAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func createTopicAsync(
             input: SimpleNotificationModel.CreateTopicInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -614,9 +521,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createTopicOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createTopic,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateTopicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -643,18 +549,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
      */
-    public func createTopicSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.CreateTopicInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
+    public func createTopicSync(
+            input: SimpleNotificationModel.CreateTopicInput) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createTopicOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createTopic,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateTopicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -680,9 +584,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func deleteEndpointAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteEndpointAsync(
             input: SimpleNotificationModel.DeleteEndpointInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -690,9 +593,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteEndpointOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteEndpoint,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -717,18 +619,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated DeleteEndpointInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func deleteEndpointSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.DeleteEndpointInput,
-            reporting: InvocationReportingType) throws {
+    public func deleteEndpointSync(
+            input: SimpleNotificationModel.DeleteEndpointInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteEndpointOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteEndpoint,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteEndpointOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -754,9 +654,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func deletePlatformApplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deletePlatformApplicationAsync(
             input: SimpleNotificationModel.DeletePlatformApplicationInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -764,9 +663,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deletePlatformApplicationOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deletePlatformApplication,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeletePlatformApplicationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -791,18 +689,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated DeletePlatformApplicationInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func deletePlatformApplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.DeletePlatformApplicationInput,
-            reporting: InvocationReportingType) throws {
+    public func deletePlatformApplicationSync(
+            input: SimpleNotificationModel.DeletePlatformApplicationInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deletePlatformApplicationOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deletePlatformApplication,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeletePlatformApplicationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -828,9 +724,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
-    public func deleteTopicAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func deleteTopicAsync(
             input: SimpleNotificationModel.DeleteTopicInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -838,9 +733,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteTopicOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTopic,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteTopicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -865,18 +759,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated DeleteTopicInput object being passed to this operation.
      - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
-    public func deleteTopicSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.DeleteTopicInput,
-            reporting: InvocationReportingType) throws {
+    public func deleteTopicSync(
+            input: SimpleNotificationModel.DeleteTopicInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteTopicOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTopic,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteTopicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -903,9 +795,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getEndpointAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getEndpointAttributesAsync(
             input: SimpleNotificationModel.GetEndpointAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -913,9 +804,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getEndpointAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getEndpointAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetEndpointAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -942,18 +832,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getEndpointAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.GetEndpointAttributesInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes {
+    public func getEndpointAttributesSync(
+            input: SimpleNotificationModel.GetEndpointAttributesInput) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getEndpointAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getEndpointAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetEndpointAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -980,9 +868,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getPlatformApplicationAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.GetPlatformApplicationAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -990,9 +877,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getPlatformApplicationAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getPlatformApplicationAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetPlatformApplicationAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1019,18 +905,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getPlatformApplicationAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.GetPlatformApplicationAttributesInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes {
+    public func getPlatformApplicationAttributesSync(
+            input: SimpleNotificationModel.GetPlatformApplicationAttributesInput) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getPlatformApplicationAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getPlatformApplicationAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetPlatformApplicationAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1057,9 +941,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func getSMSAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getSMSAttributesAsync(
             input: SimpleNotificationModel.GetSMSAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1067,9 +950,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getSMSAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSMSAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetSMSAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1096,18 +978,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func getSMSAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.GetSMSAttributesInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes {
+    public func getSMSAttributesSync(
+            input: SimpleNotificationModel.GetSMSAttributesInput) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getSMSAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSMSAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetSMSAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1134,9 +1014,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getSubscriptionAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getSubscriptionAttributesAsync(
             input: SimpleNotificationModel.GetSubscriptionAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1144,9 +1023,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getSubscriptionAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSubscriptionAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetSubscriptionAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1173,18 +1051,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func getSubscriptionAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.GetSubscriptionAttributesInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes {
+    public func getSubscriptionAttributesSync(
+            input: SimpleNotificationModel.GetSubscriptionAttributesInput) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getSubscriptionAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSubscriptionAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetSubscriptionAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1211,9 +1087,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func getTopicAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func getTopicAttributesAsync(
             input: SimpleNotificationModel.GetTopicAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1221,9 +1096,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getTopicAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getTopicAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetTopicAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1250,18 +1124,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func getTopicAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.GetTopicAttributesInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes {
+    public func getTopicAttributesSync(
+            input: SimpleNotificationModel.GetTopicAttributesInput) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getTopicAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getTopicAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetTopicAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1288,9 +1160,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func listEndpointsByPlatformApplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listEndpointsByPlatformApplicationAsync(
             input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1298,9 +1169,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listEndpointsByPlatformApplicationOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listEndpointsByPlatformApplication,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListEndpointsByPlatformApplicationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1327,18 +1197,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func listEndpointsByPlatformApplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication {
+    public func listEndpointsByPlatformApplicationSync(
+            input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listEndpointsByPlatformApplicationOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listEndpointsByPlatformApplication,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListEndpointsByPlatformApplicationOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1365,9 +1233,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func listPhoneNumbersOptedOutAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listPhoneNumbersOptedOutAsync(
             input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1375,9 +1242,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listPhoneNumbersOptedOutOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listPhoneNumbersOptedOut,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListPhoneNumbersOptedOutOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1404,18 +1270,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func listPhoneNumbersOptedOutSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut {
+    public func listPhoneNumbersOptedOutSync(
+            input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listPhoneNumbersOptedOutOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listPhoneNumbersOptedOut,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListPhoneNumbersOptedOutOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1442,9 +1306,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func listPlatformApplicationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listPlatformApplicationsAsync(
             input: SimpleNotificationModel.ListPlatformApplicationsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1452,9 +1315,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listPlatformApplicationsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listPlatformApplications,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListPlatformApplicationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1481,18 +1343,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func listPlatformApplicationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListPlatformApplicationsInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications {
+    public func listPlatformApplicationsSync(
+            input: SimpleNotificationModel.ListPlatformApplicationsInput) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listPlatformApplicationsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listPlatformApplications,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListPlatformApplicationsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1519,9 +1379,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func listSubscriptionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listSubscriptionsAsync(
             input: SimpleNotificationModel.ListSubscriptionsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1529,9 +1388,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listSubscriptionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listSubscriptions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListSubscriptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1558,18 +1416,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func listSubscriptionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListSubscriptionsInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions {
+    public func listSubscriptionsSync(
+            input: SimpleNotificationModel.ListSubscriptionsInput) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listSubscriptionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listSubscriptions,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListSubscriptionsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1596,9 +1452,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func listSubscriptionsByTopicAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listSubscriptionsByTopicAsync(
             input: SimpleNotificationModel.ListSubscriptionsByTopicInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1606,9 +1461,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listSubscriptionsByTopicOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listSubscriptionsByTopic,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListSubscriptionsByTopicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1635,18 +1489,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func listSubscriptionsByTopicSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListSubscriptionsByTopicInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic {
+    public func listSubscriptionsByTopicSync(
+            input: SimpleNotificationModel.ListSubscriptionsByTopicInput) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listSubscriptionsByTopicOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listSubscriptionsByTopic,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListSubscriptionsByTopicOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1673,9 +1525,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
      */
-    public func listTagsForResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listTagsForResourceAsync(
             input: SimpleNotificationModel.ListTagsForResourceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1683,9 +1534,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTagsForResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1712,18 +1562,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
      */
-    public func listTagsForResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListTagsForResourceRequest,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
+    public func listTagsForResourceSync(
+            input: SimpleNotificationModel.ListTagsForResourceRequest) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTagsForResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1750,9 +1598,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter.
      */
-    public func listTopicsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func listTopicsAsync(
             input: SimpleNotificationModel.ListTopicsInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1760,9 +1607,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTopicsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTopics,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListTopicsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1789,18 +1635,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter.
      */
-    public func listTopicsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.ListTopicsInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics {
+    public func listTopicsSync(
+            input: SimpleNotificationModel.ListTopicsInput) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTopicsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTopics,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListTopicsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1827,9 +1671,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func optInPhoneNumberAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func optInPhoneNumberAsync(
             input: SimpleNotificationModel.OptInPhoneNumberInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1837,9 +1680,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: optInPhoneNumberOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.optInPhoneNumber,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = OptInPhoneNumberOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1866,18 +1708,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func optInPhoneNumberSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.OptInPhoneNumberInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber {
+    public func optInPhoneNumberSync(
+            input: SimpleNotificationModel.OptInPhoneNumberInput) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: optInPhoneNumberOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.optInPhoneNumber,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = OptInPhoneNumberOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1904,9 +1744,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
      */
-    public func publishAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func publishAsync(
             input: SimpleNotificationModel.PublishInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1914,9 +1753,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: publishOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.publish,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = PublishOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1943,18 +1781,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
      */
-    public func publishSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.PublishInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.PublishResponseForPublish {
+    public func publishSync(
+            input: SimpleNotificationModel.PublishInput) throws -> SimpleNotificationModel.PublishResponseForPublish {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: publishOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.publish,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = PublishOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1980,9 +1816,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func removePermissionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func removePermissionAsync(
             input: SimpleNotificationModel.RemovePermissionInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -1990,9 +1825,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removePermissionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removePermission,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemovePermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2017,18 +1851,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated RemovePermissionInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func removePermissionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.RemovePermissionInput,
-            reporting: InvocationReportingType) throws {
+    public func removePermissionSync(
+            input: SimpleNotificationModel.RemovePermissionInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removePermissionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removePermission,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemovePermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2054,9 +1886,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setEndpointAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func setEndpointAttributesAsync(
             input: SimpleNotificationModel.SetEndpointAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2064,9 +1895,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: setEndpointAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setEndpointAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SetEndpointAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2091,18 +1921,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated SetEndpointAttributesInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setEndpointAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.SetEndpointAttributesInput,
-            reporting: InvocationReportingType) throws {
+    public func setEndpointAttributesSync(
+            input: SimpleNotificationModel.SetEndpointAttributesInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: setEndpointAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setEndpointAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SetEndpointAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2128,9 +1956,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setPlatformApplicationAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func setPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2138,9 +1965,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: setPlatformApplicationAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setPlatformApplicationAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SetPlatformApplicationAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2165,18 +1991,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated SetPlatformApplicationAttributesInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
-    public func setPlatformApplicationAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.SetPlatformApplicationAttributesInput,
-            reporting: InvocationReportingType) throws {
+    public func setPlatformApplicationAttributesSync(
+            input: SimpleNotificationModel.SetPlatformApplicationAttributesInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: setPlatformApplicationAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setPlatformApplicationAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SetPlatformApplicationAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2203,9 +2027,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func setSMSAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func setSMSAttributesAsync(
             input: SimpleNotificationModel.SetSMSAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2213,9 +2036,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: setSMSAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setSMSAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SetSMSAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2242,18 +2064,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
-    public func setSMSAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.SetSMSAttributesInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes {
+    public func setSMSAttributesSync(
+            input: SimpleNotificationModel.SetSMSAttributesInput) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: setSMSAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setSMSAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SetSMSAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2279,9 +2099,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
      */
-    public func setSubscriptionAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func setSubscriptionAttributesAsync(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2289,9 +2108,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: setSubscriptionAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setSubscriptionAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SetSubscriptionAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2316,18 +2134,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated SetSubscriptionAttributesInput object being passed to this operation.
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
      */
-    public func setSubscriptionAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.SetSubscriptionAttributesInput,
-            reporting: InvocationReportingType) throws {
+    public func setSubscriptionAttributesSync(
+            input: SimpleNotificationModel.SetSubscriptionAttributesInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: setSubscriptionAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setSubscriptionAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SetSubscriptionAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2353,9 +2169,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func setTopicAttributesAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func setTopicAttributesAsync(
             input: SimpleNotificationModel.SetTopicAttributesInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2363,9 +2178,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: setTopicAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setTopicAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SetTopicAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2390,18 +2204,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated SetTopicAttributesInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func setTopicAttributesSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.SetTopicAttributesInput,
-            reporting: InvocationReportingType) throws {
+    public func setTopicAttributesSync(
+            input: SimpleNotificationModel.SetTopicAttributesInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: setTopicAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setTopicAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SetTopicAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2428,9 +2240,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
      */
-    public func subscribeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func subscribeAsync(
             input: SimpleNotificationModel.SubscribeInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2438,9 +2249,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: subscribeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.subscribe,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SubscribeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2467,18 +2277,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
      */
-    public func subscribeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.SubscribeInput,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {
+    public func subscribeSync(
+            input: SimpleNotificationModel.SubscribeInput) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: subscribeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.subscribe,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SubscribeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2505,9 +2313,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    public func tagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func tagResourceAsync(
             input: SimpleNotificationModel.TagResourceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2515,9 +2322,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: tagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = TagResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2544,18 +2350,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    public func tagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.TagResourceRequest,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.TagResourceResponseForTagResource {
+    public func tagResourceSync(
+            input: SimpleNotificationModel.TagResourceRequest) throws -> SimpleNotificationModel.TagResourceResponseForTagResource {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: tagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = TagResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2581,9 +2385,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            is complete.
            The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func unsubscribeAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func unsubscribeAsync(
             input: SimpleNotificationModel.UnsubscribeInput, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2591,9 +2394,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: unsubscribeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.unsubscribe,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = UnsubscribeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2618,18 +2420,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          - input: The validated UnsubscribeInput object being passed to this operation.
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
-    public func unsubscribeSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.UnsubscribeInput,
-            reporting: InvocationReportingType) throws {
+    public func unsubscribeSync(
+            input: SimpleNotificationModel.UnsubscribeInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: unsubscribeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.unsubscribe,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = UnsubscribeOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2656,9 +2456,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    public func untagResourceAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    public func untagResourceAsync(
             input: SimpleNotificationModel.UntagResourceRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, HTTPClientError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
@@ -2666,9 +2465,8 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: untagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = UntagResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -2695,18 +2493,16 @@ public struct AWSSimpleNotificationClient: SimpleNotificationClientProtocol {
          Will be validated before being returned to caller.
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
-    public func untagResourceSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: SimpleNotificationModel.UntagResourceRequest,
-            reporting: InvocationReportingType) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
+    public func untagResourceSync(
+            input: SimpleNotificationModel.UntagResourceRequest) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: untagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = UntagResourceOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(

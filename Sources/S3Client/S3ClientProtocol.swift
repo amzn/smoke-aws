@@ -28,619 +28,443 @@ import SmokeHTTPClient
  Client Protocol for the S3 service.
  */
 public protocol S3ClientProtocol {
-    typealias AbortMultipartUploadSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.AbortMultipartUploadRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.AbortMultipartUploadOutput
-    typealias AbortMultipartUploadAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias AbortMultipartUploadSyncType = (
+            _ input: S3Model.AbortMultipartUploadRequest) throws -> S3Model.AbortMultipartUploadOutput
+    typealias AbortMultipartUploadAsyncType = (
             _ input: S3Model.AbortMultipartUploadRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias CompleteMultipartUploadSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.CompleteMultipartUploadRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.CompleteMultipartUploadOutput
-    typealias CompleteMultipartUploadAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias CompleteMultipartUploadSyncType = (
+            _ input: S3Model.CompleteMultipartUploadRequest) throws -> S3Model.CompleteMultipartUploadOutput
+    typealias CompleteMultipartUploadAsyncType = (
             _ input: S3Model.CompleteMultipartUploadRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias CopyObjectSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.CopyObjectRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.CopyObjectOutput
-    typealias CopyObjectAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias CopyObjectSyncType = (
+            _ input: S3Model.CopyObjectRequest) throws -> S3Model.CopyObjectOutput
+    typealias CopyObjectAsyncType = (
             _ input: S3Model.CopyObjectRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.CopyObjectOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias CreateBucketSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.CreateBucketRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.CreateBucketOutput
-    typealias CreateBucketAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias CreateBucketSyncType = (
+            _ input: S3Model.CreateBucketRequest) throws -> S3Model.CreateBucketOutput
+    typealias CreateBucketAsyncType = (
             _ input: S3Model.CreateBucketRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.CreateBucketOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias CreateMultipartUploadSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.CreateMultipartUploadRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.CreateMultipartUploadOutput
-    typealias CreateMultipartUploadAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias CreateMultipartUploadSyncType = (
+            _ input: S3Model.CreateMultipartUploadRequest) throws -> S3Model.CreateMultipartUploadOutput
+    typealias CreateMultipartUploadAsyncType = (
             _ input: S3Model.CreateMultipartUploadRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteBucketSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteBucketRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteBucketAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteBucketSyncType = (
+            _ input: S3Model.DeleteBucketRequest) throws -> ()
+    typealias DeleteBucketAsyncType = (
             _ input: S3Model.DeleteBucketRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteBucketAnalyticsConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteBucketAnalyticsConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteBucketAnalyticsConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteBucketAnalyticsConfigurationSyncType = (
+            _ input: S3Model.DeleteBucketAnalyticsConfigurationRequest) throws -> ()
+    typealias DeleteBucketAnalyticsConfigurationAsyncType = (
             _ input: S3Model.DeleteBucketAnalyticsConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteBucketCorsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteBucketCorsRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteBucketCorsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteBucketCorsSyncType = (
+            _ input: S3Model.DeleteBucketCorsRequest) throws -> ()
+    typealias DeleteBucketCorsAsyncType = (
             _ input: S3Model.DeleteBucketCorsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteBucketEncryptionSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteBucketEncryptionRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteBucketEncryptionAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteBucketEncryptionSyncType = (
+            _ input: S3Model.DeleteBucketEncryptionRequest) throws -> ()
+    typealias DeleteBucketEncryptionAsyncType = (
             _ input: S3Model.DeleteBucketEncryptionRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteBucketInventoryConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteBucketInventoryConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteBucketInventoryConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteBucketInventoryConfigurationSyncType = (
+            _ input: S3Model.DeleteBucketInventoryConfigurationRequest) throws -> ()
+    typealias DeleteBucketInventoryConfigurationAsyncType = (
             _ input: S3Model.DeleteBucketInventoryConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteBucketLifecycleSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteBucketLifecycleRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteBucketLifecycleAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteBucketLifecycleSyncType = (
+            _ input: S3Model.DeleteBucketLifecycleRequest) throws -> ()
+    typealias DeleteBucketLifecycleAsyncType = (
             _ input: S3Model.DeleteBucketLifecycleRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteBucketMetricsConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteBucketMetricsConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteBucketMetricsConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteBucketMetricsConfigurationSyncType = (
+            _ input: S3Model.DeleteBucketMetricsConfigurationRequest) throws -> ()
+    typealias DeleteBucketMetricsConfigurationAsyncType = (
             _ input: S3Model.DeleteBucketMetricsConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteBucketPolicySyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteBucketPolicyRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteBucketPolicyAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteBucketPolicySyncType = (
+            _ input: S3Model.DeleteBucketPolicyRequest) throws -> ()
+    typealias DeleteBucketPolicyAsyncType = (
             _ input: S3Model.DeleteBucketPolicyRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteBucketReplicationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteBucketReplicationRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteBucketReplicationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteBucketReplicationSyncType = (
+            _ input: S3Model.DeleteBucketReplicationRequest) throws -> ()
+    typealias DeleteBucketReplicationAsyncType = (
             _ input: S3Model.DeleteBucketReplicationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteBucketTaggingSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteBucketTaggingRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteBucketTaggingAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteBucketTaggingSyncType = (
+            _ input: S3Model.DeleteBucketTaggingRequest) throws -> ()
+    typealias DeleteBucketTaggingAsyncType = (
             _ input: S3Model.DeleteBucketTaggingRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteBucketWebsiteSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteBucketWebsiteRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeleteBucketWebsiteAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteBucketWebsiteSyncType = (
+            _ input: S3Model.DeleteBucketWebsiteRequest) throws -> ()
+    typealias DeleteBucketWebsiteAsyncType = (
             _ input: S3Model.DeleteBucketWebsiteRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias DeleteObjectSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteObjectRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.DeleteObjectOutput
-    typealias DeleteObjectAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteObjectSyncType = (
+            _ input: S3Model.DeleteObjectRequest) throws -> S3Model.DeleteObjectOutput
+    typealias DeleteObjectAsyncType = (
             _ input: S3Model.DeleteObjectRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.DeleteObjectOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteObjectTaggingSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteObjectTaggingRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.DeleteObjectTaggingOutput
-    typealias DeleteObjectTaggingAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteObjectTaggingSyncType = (
+            _ input: S3Model.DeleteObjectTaggingRequest) throws -> S3Model.DeleteObjectTaggingOutput
+    typealias DeleteObjectTaggingAsyncType = (
             _ input: S3Model.DeleteObjectTaggingRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DeleteObjectsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeleteObjectsRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.DeleteObjectsOutput
-    typealias DeleteObjectsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeleteObjectsSyncType = (
+            _ input: S3Model.DeleteObjectsRequest) throws -> S3Model.DeleteObjectsOutput
+    typealias DeleteObjectsAsyncType = (
             _ input: S3Model.DeleteObjectsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.DeleteObjectsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias DeletePublicAccessBlockSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.DeletePublicAccessBlockRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias DeletePublicAccessBlockAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias DeletePublicAccessBlockSyncType = (
+            _ input: S3Model.DeletePublicAccessBlockRequest) throws -> ()
+    typealias DeletePublicAccessBlockAsyncType = (
             _ input: S3Model.DeletePublicAccessBlockRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias GetBucketAccelerateConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketAccelerateConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketAccelerateConfigurationOutput
-    typealias GetBucketAccelerateConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketAccelerateConfigurationSyncType = (
+            _ input: S3Model.GetBucketAccelerateConfigurationRequest) throws -> S3Model.GetBucketAccelerateConfigurationOutput
+    typealias GetBucketAccelerateConfigurationAsyncType = (
             _ input: S3Model.GetBucketAccelerateConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketAclSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketAclRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketAclOutput
-    typealias GetBucketAclAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketAclSyncType = (
+            _ input: S3Model.GetBucketAclRequest) throws -> S3Model.GetBucketAclOutput
+    typealias GetBucketAclAsyncType = (
             _ input: S3Model.GetBucketAclRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketAclOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketAnalyticsConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketAnalyticsConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketAnalyticsConfigurationOutput
-    typealias GetBucketAnalyticsConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketAnalyticsConfigurationSyncType = (
+            _ input: S3Model.GetBucketAnalyticsConfigurationRequest) throws -> S3Model.GetBucketAnalyticsConfigurationOutput
+    typealias GetBucketAnalyticsConfigurationAsyncType = (
             _ input: S3Model.GetBucketAnalyticsConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketCorsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketCorsRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketCorsOutput
-    typealias GetBucketCorsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketCorsSyncType = (
+            _ input: S3Model.GetBucketCorsRequest) throws -> S3Model.GetBucketCorsOutput
+    typealias GetBucketCorsAsyncType = (
             _ input: S3Model.GetBucketCorsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketCorsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketEncryptionSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketEncryptionRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketEncryptionOutput
-    typealias GetBucketEncryptionAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketEncryptionSyncType = (
+            _ input: S3Model.GetBucketEncryptionRequest) throws -> S3Model.GetBucketEncryptionOutput
+    typealias GetBucketEncryptionAsyncType = (
             _ input: S3Model.GetBucketEncryptionRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketInventoryConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketInventoryConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketInventoryConfigurationOutput
-    typealias GetBucketInventoryConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketInventoryConfigurationSyncType = (
+            _ input: S3Model.GetBucketInventoryConfigurationRequest) throws -> S3Model.GetBucketInventoryConfigurationOutput
+    typealias GetBucketInventoryConfigurationAsyncType = (
             _ input: S3Model.GetBucketInventoryConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketLifecycleSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketLifecycleRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketLifecycleOutput
-    typealias GetBucketLifecycleAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketLifecycleSyncType = (
+            _ input: S3Model.GetBucketLifecycleRequest) throws -> S3Model.GetBucketLifecycleOutput
+    typealias GetBucketLifecycleAsyncType = (
             _ input: S3Model.GetBucketLifecycleRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketLifecycleConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketLifecycleConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketLifecycleConfigurationOutput
-    typealias GetBucketLifecycleConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketLifecycleConfigurationSyncType = (
+            _ input: S3Model.GetBucketLifecycleConfigurationRequest) throws -> S3Model.GetBucketLifecycleConfigurationOutput
+    typealias GetBucketLifecycleConfigurationAsyncType = (
             _ input: S3Model.GetBucketLifecycleConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketLocationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketLocationRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketLocationOutput
-    typealias GetBucketLocationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketLocationSyncType = (
+            _ input: S3Model.GetBucketLocationRequest) throws -> S3Model.GetBucketLocationOutput
+    typealias GetBucketLocationAsyncType = (
             _ input: S3Model.GetBucketLocationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketLocationOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketLoggingSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketLoggingRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketLoggingOutput
-    typealias GetBucketLoggingAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketLoggingSyncType = (
+            _ input: S3Model.GetBucketLoggingRequest) throws -> S3Model.GetBucketLoggingOutput
+    typealias GetBucketLoggingAsyncType = (
             _ input: S3Model.GetBucketLoggingRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketLoggingOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketMetricsConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketMetricsConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketMetricsConfigurationOutput
-    typealias GetBucketMetricsConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketMetricsConfigurationSyncType = (
+            _ input: S3Model.GetBucketMetricsConfigurationRequest) throws -> S3Model.GetBucketMetricsConfigurationOutput
+    typealias GetBucketMetricsConfigurationAsyncType = (
             _ input: S3Model.GetBucketMetricsConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketNotificationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketNotificationConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.NotificationConfigurationDeprecated
-    typealias GetBucketNotificationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketNotificationSyncType = (
+            _ input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfigurationDeprecated
+    typealias GetBucketNotificationAsyncType = (
             _ input: S3Model.GetBucketNotificationConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketNotificationConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketNotificationConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.NotificationConfiguration
-    typealias GetBucketNotificationConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketNotificationConfigurationSyncType = (
+            _ input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfiguration
+    typealias GetBucketNotificationConfigurationAsyncType = (
             _ input: S3Model.GetBucketNotificationConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.NotificationConfiguration, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketPolicySyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketPolicyRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketPolicyOutput
-    typealias GetBucketPolicyAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketPolicySyncType = (
+            _ input: S3Model.GetBucketPolicyRequest) throws -> S3Model.GetBucketPolicyOutput
+    typealias GetBucketPolicyAsyncType = (
             _ input: S3Model.GetBucketPolicyRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketPolicyOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketPolicyStatusSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketPolicyStatusRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketPolicyStatusOutput
-    typealias GetBucketPolicyStatusAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketPolicyStatusSyncType = (
+            _ input: S3Model.GetBucketPolicyStatusRequest) throws -> S3Model.GetBucketPolicyStatusOutput
+    typealias GetBucketPolicyStatusAsyncType = (
             _ input: S3Model.GetBucketPolicyStatusRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketReplicationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketReplicationRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketReplicationOutput
-    typealias GetBucketReplicationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketReplicationSyncType = (
+            _ input: S3Model.GetBucketReplicationRequest) throws -> S3Model.GetBucketReplicationOutput
+    typealias GetBucketReplicationAsyncType = (
             _ input: S3Model.GetBucketReplicationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketReplicationOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketRequestPaymentSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketRequestPaymentRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketRequestPaymentOutput
-    typealias GetBucketRequestPaymentAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketRequestPaymentSyncType = (
+            _ input: S3Model.GetBucketRequestPaymentRequest) throws -> S3Model.GetBucketRequestPaymentOutput
+    typealias GetBucketRequestPaymentAsyncType = (
             _ input: S3Model.GetBucketRequestPaymentRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketTaggingSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketTaggingRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketTaggingOutput
-    typealias GetBucketTaggingAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketTaggingSyncType = (
+            _ input: S3Model.GetBucketTaggingRequest) throws -> S3Model.GetBucketTaggingOutput
+    typealias GetBucketTaggingAsyncType = (
             _ input: S3Model.GetBucketTaggingRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketTaggingOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketVersioningSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketVersioningRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketVersioningOutput
-    typealias GetBucketVersioningAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketVersioningSyncType = (
+            _ input: S3Model.GetBucketVersioningRequest) throws -> S3Model.GetBucketVersioningOutput
+    typealias GetBucketVersioningAsyncType = (
             _ input: S3Model.GetBucketVersioningRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketVersioningOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetBucketWebsiteSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetBucketWebsiteRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetBucketWebsiteOutput
-    typealias GetBucketWebsiteAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetBucketWebsiteSyncType = (
+            _ input: S3Model.GetBucketWebsiteRequest) throws -> S3Model.GetBucketWebsiteOutput
+    typealias GetBucketWebsiteAsyncType = (
             _ input: S3Model.GetBucketWebsiteRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetObjectSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetObjectRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetObjectOutput
-    typealias GetObjectAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetObjectSyncType = (
+            _ input: S3Model.GetObjectRequest) throws -> S3Model.GetObjectOutput
+    typealias GetObjectAsyncType = (
             _ input: S3Model.GetObjectRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetObjectOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetObjectAclSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetObjectAclRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetObjectAclOutput
-    typealias GetObjectAclAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetObjectAclSyncType = (
+            _ input: S3Model.GetObjectAclRequest) throws -> S3Model.GetObjectAclOutput
+    typealias GetObjectAclAsyncType = (
             _ input: S3Model.GetObjectAclRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetObjectAclOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetObjectLegalHoldSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetObjectLegalHoldRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetObjectLegalHoldOutput
-    typealias GetObjectLegalHoldAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetObjectLegalHoldSyncType = (
+            _ input: S3Model.GetObjectLegalHoldRequest) throws -> S3Model.GetObjectLegalHoldOutput
+    typealias GetObjectLegalHoldAsyncType = (
             _ input: S3Model.GetObjectLegalHoldRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetObjectLockConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetObjectLockConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetObjectLockConfigurationOutput
-    typealias GetObjectLockConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetObjectLockConfigurationSyncType = (
+            _ input: S3Model.GetObjectLockConfigurationRequest) throws -> S3Model.GetObjectLockConfigurationOutput
+    typealias GetObjectLockConfigurationAsyncType = (
             _ input: S3Model.GetObjectLockConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetObjectRetentionSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetObjectRetentionRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetObjectRetentionOutput
-    typealias GetObjectRetentionAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetObjectRetentionSyncType = (
+            _ input: S3Model.GetObjectRetentionRequest) throws -> S3Model.GetObjectRetentionOutput
+    typealias GetObjectRetentionAsyncType = (
             _ input: S3Model.GetObjectRetentionRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetObjectRetentionOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetObjectTaggingSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetObjectTaggingRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetObjectTaggingOutput
-    typealias GetObjectTaggingAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetObjectTaggingSyncType = (
+            _ input: S3Model.GetObjectTaggingRequest) throws -> S3Model.GetObjectTaggingOutput
+    typealias GetObjectTaggingAsyncType = (
             _ input: S3Model.GetObjectTaggingRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetObjectTaggingOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetObjectTorrentSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetObjectTorrentRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetObjectTorrentOutput
-    typealias GetObjectTorrentAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetObjectTorrentSyncType = (
+            _ input: S3Model.GetObjectTorrentRequest) throws -> S3Model.GetObjectTorrentOutput
+    typealias GetObjectTorrentAsyncType = (
             _ input: S3Model.GetObjectTorrentRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetObjectTorrentOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias GetPublicAccessBlockSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.GetPublicAccessBlockRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.GetPublicAccessBlockOutput
-    typealias GetPublicAccessBlockAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias GetPublicAccessBlockSyncType = (
+            _ input: S3Model.GetPublicAccessBlockRequest) throws -> S3Model.GetPublicAccessBlockOutput
+    typealias GetPublicAccessBlockAsyncType = (
             _ input: S3Model.GetPublicAccessBlockRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias HeadBucketSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.HeadBucketRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias HeadBucketAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias HeadBucketSyncType = (
+            _ input: S3Model.HeadBucketRequest) throws -> ()
+    typealias HeadBucketAsyncType = (
             _ input: S3Model.HeadBucketRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias HeadObjectSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.HeadObjectRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.HeadObjectOutput
-    typealias HeadObjectAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias HeadObjectSyncType = (
+            _ input: S3Model.HeadObjectRequest) throws -> S3Model.HeadObjectOutput
+    typealias HeadObjectAsyncType = (
             _ input: S3Model.HeadObjectRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.HeadObjectOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ListBucketAnalyticsConfigurationsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.ListBucketAnalyticsConfigurationsRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput
-    typealias ListBucketAnalyticsConfigurationsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListBucketAnalyticsConfigurationsSyncType = (
+            _ input: S3Model.ListBucketAnalyticsConfigurationsRequest) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput
+    typealias ListBucketAnalyticsConfigurationsAsyncType = (
             _ input: S3Model.ListBucketAnalyticsConfigurationsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ListBucketInventoryConfigurationsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.ListBucketInventoryConfigurationsRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.ListBucketInventoryConfigurationsOutput
-    typealias ListBucketInventoryConfigurationsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListBucketInventoryConfigurationsSyncType = (
+            _ input: S3Model.ListBucketInventoryConfigurationsRequest) throws -> S3Model.ListBucketInventoryConfigurationsOutput
+    typealias ListBucketInventoryConfigurationsAsyncType = (
             _ input: S3Model.ListBucketInventoryConfigurationsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ListBucketMetricsConfigurationsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.ListBucketMetricsConfigurationsRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.ListBucketMetricsConfigurationsOutput
-    typealias ListBucketMetricsConfigurationsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListBucketMetricsConfigurationsSyncType = (
+            _ input: S3Model.ListBucketMetricsConfigurationsRequest) throws -> S3Model.ListBucketMetricsConfigurationsOutput
+    typealias ListBucketMetricsConfigurationsAsyncType = (
             _ input: S3Model.ListBucketMetricsConfigurationsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ListBucketsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ reporting: InvocationReportingType) throws -> S3Model.ListBucketsOutput
-    typealias ListBucketsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ reporting: InvocationReportingType,
+    typealias ListBucketsSyncType = () throws -> S3Model.ListBucketsOutput
+    typealias ListBucketsAsyncType = (
             _ completion: @escaping (Result<S3Model.ListBucketsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ListMultipartUploadsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.ListMultipartUploadsRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.ListMultipartUploadsOutput
-    typealias ListMultipartUploadsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListMultipartUploadsSyncType = (
+            _ input: S3Model.ListMultipartUploadsRequest) throws -> S3Model.ListMultipartUploadsOutput
+    typealias ListMultipartUploadsAsyncType = (
             _ input: S3Model.ListMultipartUploadsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ListObjectVersionsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.ListObjectVersionsRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.ListObjectVersionsOutput
-    typealias ListObjectVersionsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListObjectVersionsSyncType = (
+            _ input: S3Model.ListObjectVersionsRequest) throws -> S3Model.ListObjectVersionsOutput
+    typealias ListObjectVersionsAsyncType = (
             _ input: S3Model.ListObjectVersionsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.ListObjectVersionsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ListObjectsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.ListObjectsRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.ListObjectsOutput
-    typealias ListObjectsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListObjectsSyncType = (
+            _ input: S3Model.ListObjectsRequest) throws -> S3Model.ListObjectsOutput
+    typealias ListObjectsAsyncType = (
             _ input: S3Model.ListObjectsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.ListObjectsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias ListObjectsV2SyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.ListObjectsV2Request,
-            _ reporting: InvocationReportingType) throws -> S3Model.ListObjectsV2Output
-    typealias ListObjectsV2AsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListObjectsV2SyncType = (
+            _ input: S3Model.ListObjectsV2Request) throws -> S3Model.ListObjectsV2Output
+    typealias ListObjectsV2AsyncType = (
             _ input: S3Model.ListObjectsV2Request, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.ListObjectsV2Output, HTTPClientError>) -> ()) throws -> ()
-    typealias ListPartsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.ListPartsRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.ListPartsOutput
-    typealias ListPartsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias ListPartsSyncType = (
+            _ input: S3Model.ListPartsRequest) throws -> S3Model.ListPartsOutput
+    typealias ListPartsAsyncType = (
             _ input: S3Model.ListPartsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.ListPartsOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias PutBucketAccelerateConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketAccelerateConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketAccelerateConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketAccelerateConfigurationSyncType = (
+            _ input: S3Model.PutBucketAccelerateConfigurationRequest) throws -> ()
+    typealias PutBucketAccelerateConfigurationAsyncType = (
             _ input: S3Model.PutBucketAccelerateConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketAclSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketAclRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketAclAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketAclSyncType = (
+            _ input: S3Model.PutBucketAclRequest) throws -> ()
+    typealias PutBucketAclAsyncType = (
             _ input: S3Model.PutBucketAclRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketAnalyticsConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketAnalyticsConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketAnalyticsConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketAnalyticsConfigurationSyncType = (
+            _ input: S3Model.PutBucketAnalyticsConfigurationRequest) throws -> ()
+    typealias PutBucketAnalyticsConfigurationAsyncType = (
             _ input: S3Model.PutBucketAnalyticsConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketCorsSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketCorsRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketCorsAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketCorsSyncType = (
+            _ input: S3Model.PutBucketCorsRequest) throws -> ()
+    typealias PutBucketCorsAsyncType = (
             _ input: S3Model.PutBucketCorsRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketEncryptionSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketEncryptionRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketEncryptionAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketEncryptionSyncType = (
+            _ input: S3Model.PutBucketEncryptionRequest) throws -> ()
+    typealias PutBucketEncryptionAsyncType = (
             _ input: S3Model.PutBucketEncryptionRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketInventoryConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketInventoryConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketInventoryConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketInventoryConfigurationSyncType = (
+            _ input: S3Model.PutBucketInventoryConfigurationRequest) throws -> ()
+    typealias PutBucketInventoryConfigurationAsyncType = (
             _ input: S3Model.PutBucketInventoryConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketLifecycleSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketLifecycleRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketLifecycleAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketLifecycleSyncType = (
+            _ input: S3Model.PutBucketLifecycleRequest) throws -> ()
+    typealias PutBucketLifecycleAsyncType = (
             _ input: S3Model.PutBucketLifecycleRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketLifecycleConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketLifecycleConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketLifecycleConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketLifecycleConfigurationSyncType = (
+            _ input: S3Model.PutBucketLifecycleConfigurationRequest) throws -> ()
+    typealias PutBucketLifecycleConfigurationAsyncType = (
             _ input: S3Model.PutBucketLifecycleConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketLoggingSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketLoggingRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketLoggingAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketLoggingSyncType = (
+            _ input: S3Model.PutBucketLoggingRequest) throws -> ()
+    typealias PutBucketLoggingAsyncType = (
             _ input: S3Model.PutBucketLoggingRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketMetricsConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketMetricsConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketMetricsConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketMetricsConfigurationSyncType = (
+            _ input: S3Model.PutBucketMetricsConfigurationRequest) throws -> ()
+    typealias PutBucketMetricsConfigurationAsyncType = (
             _ input: S3Model.PutBucketMetricsConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketNotificationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketNotificationRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketNotificationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketNotificationSyncType = (
+            _ input: S3Model.PutBucketNotificationRequest) throws -> ()
+    typealias PutBucketNotificationAsyncType = (
             _ input: S3Model.PutBucketNotificationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketNotificationConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketNotificationConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketNotificationConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketNotificationConfigurationSyncType = (
+            _ input: S3Model.PutBucketNotificationConfigurationRequest) throws -> ()
+    typealias PutBucketNotificationConfigurationAsyncType = (
             _ input: S3Model.PutBucketNotificationConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketPolicySyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketPolicyRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketPolicyAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketPolicySyncType = (
+            _ input: S3Model.PutBucketPolicyRequest) throws -> ()
+    typealias PutBucketPolicyAsyncType = (
             _ input: S3Model.PutBucketPolicyRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketReplicationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketReplicationRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketReplicationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketReplicationSyncType = (
+            _ input: S3Model.PutBucketReplicationRequest) throws -> ()
+    typealias PutBucketReplicationAsyncType = (
             _ input: S3Model.PutBucketReplicationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketRequestPaymentSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketRequestPaymentRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketRequestPaymentAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketRequestPaymentSyncType = (
+            _ input: S3Model.PutBucketRequestPaymentRequest) throws -> ()
+    typealias PutBucketRequestPaymentAsyncType = (
             _ input: S3Model.PutBucketRequestPaymentRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketTaggingSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketTaggingRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketTaggingAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketTaggingSyncType = (
+            _ input: S3Model.PutBucketTaggingRequest) throws -> ()
+    typealias PutBucketTaggingAsyncType = (
             _ input: S3Model.PutBucketTaggingRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketVersioningSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketVersioningRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketVersioningAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketVersioningSyncType = (
+            _ input: S3Model.PutBucketVersioningRequest) throws -> ()
+    typealias PutBucketVersioningAsyncType = (
             _ input: S3Model.PutBucketVersioningRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutBucketWebsiteSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutBucketWebsiteRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutBucketWebsiteAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutBucketWebsiteSyncType = (
+            _ input: S3Model.PutBucketWebsiteRequest) throws -> ()
+    typealias PutBucketWebsiteAsyncType = (
             _ input: S3Model.PutBucketWebsiteRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias PutObjectSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutObjectRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.PutObjectOutput
-    typealias PutObjectAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutObjectSyncType = (
+            _ input: S3Model.PutObjectRequest) throws -> S3Model.PutObjectOutput
+    typealias PutObjectAsyncType = (
             _ input: S3Model.PutObjectRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.PutObjectOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias PutObjectAclSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutObjectAclRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.PutObjectAclOutput
-    typealias PutObjectAclAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutObjectAclSyncType = (
+            _ input: S3Model.PutObjectAclRequest) throws -> S3Model.PutObjectAclOutput
+    typealias PutObjectAclAsyncType = (
             _ input: S3Model.PutObjectAclRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.PutObjectAclOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias PutObjectLegalHoldSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutObjectLegalHoldRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.PutObjectLegalHoldOutput
-    typealias PutObjectLegalHoldAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutObjectLegalHoldSyncType = (
+            _ input: S3Model.PutObjectLegalHoldRequest) throws -> S3Model.PutObjectLegalHoldOutput
+    typealias PutObjectLegalHoldAsyncType = (
             _ input: S3Model.PutObjectLegalHoldRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias PutObjectLockConfigurationSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutObjectLockConfigurationRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.PutObjectLockConfigurationOutput
-    typealias PutObjectLockConfigurationAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutObjectLockConfigurationSyncType = (
+            _ input: S3Model.PutObjectLockConfigurationRequest) throws -> S3Model.PutObjectLockConfigurationOutput
+    typealias PutObjectLockConfigurationAsyncType = (
             _ input: S3Model.PutObjectLockConfigurationRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias PutObjectRetentionSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutObjectRetentionRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.PutObjectRetentionOutput
-    typealias PutObjectRetentionAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutObjectRetentionSyncType = (
+            _ input: S3Model.PutObjectRetentionRequest) throws -> S3Model.PutObjectRetentionOutput
+    typealias PutObjectRetentionAsyncType = (
             _ input: S3Model.PutObjectRetentionRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.PutObjectRetentionOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias PutObjectTaggingSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutObjectTaggingRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.PutObjectTaggingOutput
-    typealias PutObjectTaggingAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutObjectTaggingSyncType = (
+            _ input: S3Model.PutObjectTaggingRequest) throws -> S3Model.PutObjectTaggingOutput
+    typealias PutObjectTaggingAsyncType = (
             _ input: S3Model.PutObjectTaggingRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.PutObjectTaggingOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias PutPublicAccessBlockSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.PutPublicAccessBlockRequest,
-            _ reporting: InvocationReportingType) throws -> ()
-    typealias PutPublicAccessBlockAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias PutPublicAccessBlockSyncType = (
+            _ input: S3Model.PutPublicAccessBlockRequest) throws -> ()
+    typealias PutPublicAccessBlockAsyncType = (
             _ input: S3Model.PutPublicAccessBlockRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
-    typealias RestoreObjectSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.RestoreObjectRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.RestoreObjectOutput
-    typealias RestoreObjectAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias RestoreObjectSyncType = (
+            _ input: S3Model.RestoreObjectRequest) throws -> S3Model.RestoreObjectOutput
+    typealias RestoreObjectAsyncType = (
             _ input: S3Model.RestoreObjectRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.RestoreObjectOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias SelectObjectContentSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.SelectObjectContentRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.SelectObjectContentOutput
-    typealias SelectObjectContentAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias SelectObjectContentSyncType = (
+            _ input: S3Model.SelectObjectContentRequest) throws -> S3Model.SelectObjectContentOutput
+    typealias SelectObjectContentAsyncType = (
             _ input: S3Model.SelectObjectContentRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.SelectObjectContentOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias UploadPartSyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.UploadPartRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.UploadPartOutput
-    typealias UploadPartAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UploadPartSyncType = (
+            _ input: S3Model.UploadPartRequest) throws -> S3Model.UploadPartOutput
+    typealias UploadPartAsyncType = (
             _ input: S3Model.UploadPartRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.UploadPartOutput, HTTPClientError>) -> ()) throws -> ()
-    typealias UploadPartCopySyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
-            _ input: S3Model.UploadPartCopyRequest,
-            _ reporting: InvocationReportingType) throws -> S3Model.UploadPartCopyOutput
-    typealias UploadPartCopyAsyncType<InvocationReportingType: SmokeAWSInvocationReporting> = (
+    typealias UploadPartCopySyncType = (
+            _ input: S3Model.UploadPartCopyRequest) throws -> S3Model.UploadPartCopyOutput
+    typealias UploadPartCopyAsyncType = (
             _ input: S3Model.UploadPartCopyRequest, 
-            _ reporting: InvocationReportingType,
             _ completion: @escaping (Result<S3Model.UploadPartCopyOutput, HTTPClientError>) -> ()) throws -> ()
 
     /**
@@ -653,9 +477,8 @@ public protocol S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchUpload.
      */
-    func abortMultipartUploadAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func abortMultipartUploadAsync(
             input: S3Model.AbortMultipartUploadRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -667,9 +490,8 @@ public protocol S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchUpload.
      */
-    func abortMultipartUploadSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.AbortMultipartUploadRequest,
-            reporting: InvocationReportingType) throws -> S3Model.AbortMultipartUploadOutput
+    func abortMultipartUploadSync(
+            input: S3Model.AbortMultipartUploadRequest) throws -> S3Model.AbortMultipartUploadOutput
 
     /**
      Invokes the CompleteMultipartUpload operation returning immediately and passing the response to a callback.
@@ -680,9 +502,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The CompleteMultipartUploadOutput
            object will be validated before being returned to caller.
      */
-    func completeMultipartUploadAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func completeMultipartUploadAsync(
             input: S3Model.CompleteMultipartUploadRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -693,9 +514,8 @@ public protocol S3ClientProtocol {
      - Returns: The CompleteMultipartUploadOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func completeMultipartUploadSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.CompleteMultipartUploadRequest,
-            reporting: InvocationReportingType) throws -> S3Model.CompleteMultipartUploadOutput
+    func completeMultipartUploadSync(
+            input: S3Model.CompleteMultipartUploadRequest) throws -> S3Model.CompleteMultipartUploadOutput
 
     /**
      Invokes the CopyObject operation returning immediately and passing the response to a callback.
@@ -707,9 +527,8 @@ public protocol S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: objectNotInActiveTier.
      */
-    func copyObjectAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func copyObjectAsync(
             input: S3Model.CopyObjectRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.CopyObjectOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -721,9 +540,8 @@ public protocol S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: objectNotInActiveTier.
      */
-    func copyObjectSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.CopyObjectRequest,
-            reporting: InvocationReportingType) throws -> S3Model.CopyObjectOutput
+    func copyObjectSync(
+            input: S3Model.CopyObjectRequest) throws -> S3Model.CopyObjectOutput
 
     /**
      Invokes the CreateBucket operation returning immediately and passing the response to a callback.
@@ -735,9 +553,8 @@ public protocol S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: bucketAlreadyExists, bucketAlreadyOwnedByYou.
      */
-    func createBucketAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func createBucketAsync(
             input: S3Model.CreateBucketRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.CreateBucketOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -749,9 +566,8 @@ public protocol S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: bucketAlreadyExists, bucketAlreadyOwnedByYou.
      */
-    func createBucketSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.CreateBucketRequest,
-            reporting: InvocationReportingType) throws -> S3Model.CreateBucketOutput
+    func createBucketSync(
+            input: S3Model.CreateBucketRequest) throws -> S3Model.CreateBucketOutput
 
     /**
      Invokes the CreateMultipartUpload operation returning immediately and passing the response to a callback.
@@ -762,9 +578,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The CreateMultipartUploadOutput
            object will be validated before being returned to caller.
      */
-    func createMultipartUploadAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func createMultipartUploadAsync(
             input: S3Model.CreateMultipartUploadRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -775,9 +590,8 @@ public protocol S3ClientProtocol {
      - Returns: The CreateMultipartUploadOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func createMultipartUploadSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.CreateMultipartUploadRequest,
-            reporting: InvocationReportingType) throws -> S3Model.CreateMultipartUploadOutput
+    func createMultipartUploadSync(
+            input: S3Model.CreateMultipartUploadRequest) throws -> S3Model.CreateMultipartUploadOutput
 
     /**
      Invokes the DeleteBucket operation returning immediately and passing the response to a callback.
@@ -787,9 +601,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteBucketAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteBucketAsync(
             input: S3Model.DeleteBucketRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -798,9 +611,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketRequest object being passed to this operation.
      */
-    func deleteBucketSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteBucketRequest,
-            reporting: InvocationReportingType) throws
+    func deleteBucketSync(
+            input: S3Model.DeleteBucketRequest) throws
 
     /**
      Invokes the DeleteBucketAnalyticsConfiguration operation returning immediately and passing the response to a callback.
@@ -810,9 +622,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteBucketAnalyticsConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteBucketAnalyticsConfigurationAsync(
             input: S3Model.DeleteBucketAnalyticsConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -821,9 +632,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketAnalyticsConfigurationRequest object being passed to this operation.
      */
-    func deleteBucketAnalyticsConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteBucketAnalyticsConfigurationRequest,
-            reporting: InvocationReportingType) throws
+    func deleteBucketAnalyticsConfigurationSync(
+            input: S3Model.DeleteBucketAnalyticsConfigurationRequest) throws
 
     /**
      Invokes the DeleteBucketCors operation returning immediately and passing the response to a callback.
@@ -833,9 +643,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteBucketCorsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteBucketCorsAsync(
             input: S3Model.DeleteBucketCorsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -844,9 +653,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketCorsRequest object being passed to this operation.
      */
-    func deleteBucketCorsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteBucketCorsRequest,
-            reporting: InvocationReportingType) throws
+    func deleteBucketCorsSync(
+            input: S3Model.DeleteBucketCorsRequest) throws
 
     /**
      Invokes the DeleteBucketEncryption operation returning immediately and passing the response to a callback.
@@ -856,9 +664,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteBucketEncryptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteBucketEncryptionAsync(
             input: S3Model.DeleteBucketEncryptionRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -867,9 +674,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketEncryptionRequest object being passed to this operation.
      */
-    func deleteBucketEncryptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteBucketEncryptionRequest,
-            reporting: InvocationReportingType) throws
+    func deleteBucketEncryptionSync(
+            input: S3Model.DeleteBucketEncryptionRequest) throws
 
     /**
      Invokes the DeleteBucketInventoryConfiguration operation returning immediately and passing the response to a callback.
@@ -879,9 +685,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteBucketInventoryConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteBucketInventoryConfigurationAsync(
             input: S3Model.DeleteBucketInventoryConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -890,9 +695,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketInventoryConfigurationRequest object being passed to this operation.
      */
-    func deleteBucketInventoryConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteBucketInventoryConfigurationRequest,
-            reporting: InvocationReportingType) throws
+    func deleteBucketInventoryConfigurationSync(
+            input: S3Model.DeleteBucketInventoryConfigurationRequest) throws
 
     /**
      Invokes the DeleteBucketLifecycle operation returning immediately and passing the response to a callback.
@@ -902,9 +706,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteBucketLifecycleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteBucketLifecycleAsync(
             input: S3Model.DeleteBucketLifecycleRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -913,9 +716,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketLifecycleRequest object being passed to this operation.
      */
-    func deleteBucketLifecycleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteBucketLifecycleRequest,
-            reporting: InvocationReportingType) throws
+    func deleteBucketLifecycleSync(
+            input: S3Model.DeleteBucketLifecycleRequest) throws
 
     /**
      Invokes the DeleteBucketMetricsConfiguration operation returning immediately and passing the response to a callback.
@@ -925,9 +727,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteBucketMetricsConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteBucketMetricsConfigurationAsync(
             input: S3Model.DeleteBucketMetricsConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -936,9 +737,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketMetricsConfigurationRequest object being passed to this operation.
      */
-    func deleteBucketMetricsConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteBucketMetricsConfigurationRequest,
-            reporting: InvocationReportingType) throws
+    func deleteBucketMetricsConfigurationSync(
+            input: S3Model.DeleteBucketMetricsConfigurationRequest) throws
 
     /**
      Invokes the DeleteBucketPolicy operation returning immediately and passing the response to a callback.
@@ -948,9 +748,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteBucketPolicyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteBucketPolicyAsync(
             input: S3Model.DeleteBucketPolicyRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -959,9 +758,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketPolicyRequest object being passed to this operation.
      */
-    func deleteBucketPolicySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteBucketPolicyRequest,
-            reporting: InvocationReportingType) throws
+    func deleteBucketPolicySync(
+            input: S3Model.DeleteBucketPolicyRequest) throws
 
     /**
      Invokes the DeleteBucketReplication operation returning immediately and passing the response to a callback.
@@ -971,9 +769,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteBucketReplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteBucketReplicationAsync(
             input: S3Model.DeleteBucketReplicationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -982,9 +779,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketReplicationRequest object being passed to this operation.
      */
-    func deleteBucketReplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteBucketReplicationRequest,
-            reporting: InvocationReportingType) throws
+    func deleteBucketReplicationSync(
+            input: S3Model.DeleteBucketReplicationRequest) throws
 
     /**
      Invokes the DeleteBucketTagging operation returning immediately and passing the response to a callback.
@@ -994,9 +790,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteBucketTaggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteBucketTaggingAsync(
             input: S3Model.DeleteBucketTaggingRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -1005,9 +800,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketTaggingRequest object being passed to this operation.
      */
-    func deleteBucketTaggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteBucketTaggingRequest,
-            reporting: InvocationReportingType) throws
+    func deleteBucketTaggingSync(
+            input: S3Model.DeleteBucketTaggingRequest) throws
 
     /**
      Invokes the DeleteBucketWebsite operation returning immediately and passing the response to a callback.
@@ -1017,9 +811,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deleteBucketWebsiteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteBucketWebsiteAsync(
             input: S3Model.DeleteBucketWebsiteRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -1028,9 +821,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated DeleteBucketWebsiteRequest object being passed to this operation.
      */
-    func deleteBucketWebsiteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteBucketWebsiteRequest,
-            reporting: InvocationReportingType) throws
+    func deleteBucketWebsiteSync(
+            input: S3Model.DeleteBucketWebsiteRequest) throws
 
     /**
      Invokes the DeleteObject operation returning immediately and passing the response to a callback.
@@ -1041,9 +833,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The DeleteObjectOutput
            object will be validated before being returned to caller.
      */
-    func deleteObjectAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteObjectAsync(
             input: S3Model.DeleteObjectRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.DeleteObjectOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1054,9 +845,8 @@ public protocol S3ClientProtocol {
      - Returns: The DeleteObjectOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func deleteObjectSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteObjectRequest,
-            reporting: InvocationReportingType) throws -> S3Model.DeleteObjectOutput
+    func deleteObjectSync(
+            input: S3Model.DeleteObjectRequest) throws -> S3Model.DeleteObjectOutput
 
     /**
      Invokes the DeleteObjectTagging operation returning immediately and passing the response to a callback.
@@ -1067,9 +857,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The DeleteObjectTaggingOutput
            object will be validated before being returned to caller.
      */
-    func deleteObjectTaggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteObjectTaggingAsync(
             input: S3Model.DeleteObjectTaggingRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1080,9 +869,8 @@ public protocol S3ClientProtocol {
      - Returns: The DeleteObjectTaggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func deleteObjectTaggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteObjectTaggingRequest,
-            reporting: InvocationReportingType) throws -> S3Model.DeleteObjectTaggingOutput
+    func deleteObjectTaggingSync(
+            input: S3Model.DeleteObjectTaggingRequest) throws -> S3Model.DeleteObjectTaggingOutput
 
     /**
      Invokes the DeleteObjects operation returning immediately and passing the response to a callback.
@@ -1093,9 +881,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The DeleteObjectsOutput
            object will be validated before being returned to caller.
      */
-    func deleteObjectsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deleteObjectsAsync(
             input: S3Model.DeleteObjectsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.DeleteObjectsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1106,9 +893,8 @@ public protocol S3ClientProtocol {
      - Returns: The DeleteObjectsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func deleteObjectsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeleteObjectsRequest,
-            reporting: InvocationReportingType) throws -> S3Model.DeleteObjectsOutput
+    func deleteObjectsSync(
+            input: S3Model.DeleteObjectsRequest) throws -> S3Model.DeleteObjectsOutput
 
     /**
      Invokes the DeletePublicAccessBlock operation returning immediately and passing the response to a callback.
@@ -1118,9 +904,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func deletePublicAccessBlockAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func deletePublicAccessBlockAsync(
             input: S3Model.DeletePublicAccessBlockRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -1129,9 +914,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated DeletePublicAccessBlockRequest object being passed to this operation.
      */
-    func deletePublicAccessBlockSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.DeletePublicAccessBlockRequest,
-            reporting: InvocationReportingType) throws
+    func deletePublicAccessBlockSync(
+            input: S3Model.DeletePublicAccessBlockRequest) throws
 
     /**
      Invokes the GetBucketAccelerateConfiguration operation returning immediately and passing the response to a callback.
@@ -1142,9 +926,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketAccelerateConfigurationOutput
            object will be validated before being returned to caller.
      */
-    func getBucketAccelerateConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketAccelerateConfigurationAsync(
             input: S3Model.GetBucketAccelerateConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1155,9 +938,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketAccelerateConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketAccelerateConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketAccelerateConfigurationRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketAccelerateConfigurationOutput
+    func getBucketAccelerateConfigurationSync(
+            input: S3Model.GetBucketAccelerateConfigurationRequest) throws -> S3Model.GetBucketAccelerateConfigurationOutput
 
     /**
      Invokes the GetBucketAcl operation returning immediately and passing the response to a callback.
@@ -1168,9 +950,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketAclOutput
            object will be validated before being returned to caller.
      */
-    func getBucketAclAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketAclAsync(
             input: S3Model.GetBucketAclRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketAclOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1181,9 +962,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketAclOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketAclSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketAclRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketAclOutput
+    func getBucketAclSync(
+            input: S3Model.GetBucketAclRequest) throws -> S3Model.GetBucketAclOutput
 
     /**
      Invokes the GetBucketAnalyticsConfiguration operation returning immediately and passing the response to a callback.
@@ -1194,9 +974,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketAnalyticsConfigurationOutput
            object will be validated before being returned to caller.
      */
-    func getBucketAnalyticsConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketAnalyticsConfigurationAsync(
             input: S3Model.GetBucketAnalyticsConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1207,9 +986,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketAnalyticsConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketAnalyticsConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketAnalyticsConfigurationRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketAnalyticsConfigurationOutput
+    func getBucketAnalyticsConfigurationSync(
+            input: S3Model.GetBucketAnalyticsConfigurationRequest) throws -> S3Model.GetBucketAnalyticsConfigurationOutput
 
     /**
      Invokes the GetBucketCors operation returning immediately and passing the response to a callback.
@@ -1220,9 +998,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketCorsOutput
            object will be validated before being returned to caller.
      */
-    func getBucketCorsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketCorsAsync(
             input: S3Model.GetBucketCorsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketCorsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1233,9 +1010,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketCorsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketCorsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketCorsRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketCorsOutput
+    func getBucketCorsSync(
+            input: S3Model.GetBucketCorsRequest) throws -> S3Model.GetBucketCorsOutput
 
     /**
      Invokes the GetBucketEncryption operation returning immediately and passing the response to a callback.
@@ -1246,9 +1022,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketEncryptionOutput
            object will be validated before being returned to caller.
      */
-    func getBucketEncryptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketEncryptionAsync(
             input: S3Model.GetBucketEncryptionRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1259,9 +1034,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketEncryptionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketEncryptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketEncryptionRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketEncryptionOutput
+    func getBucketEncryptionSync(
+            input: S3Model.GetBucketEncryptionRequest) throws -> S3Model.GetBucketEncryptionOutput
 
     /**
      Invokes the GetBucketInventoryConfiguration operation returning immediately and passing the response to a callback.
@@ -1272,9 +1046,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketInventoryConfigurationOutput
            object will be validated before being returned to caller.
      */
-    func getBucketInventoryConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketInventoryConfigurationAsync(
             input: S3Model.GetBucketInventoryConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1285,9 +1058,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketInventoryConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketInventoryConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketInventoryConfigurationRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketInventoryConfigurationOutput
+    func getBucketInventoryConfigurationSync(
+            input: S3Model.GetBucketInventoryConfigurationRequest) throws -> S3Model.GetBucketInventoryConfigurationOutput
 
     /**
      Invokes the GetBucketLifecycle operation returning immediately and passing the response to a callback.
@@ -1298,9 +1070,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketLifecycleOutput
            object will be validated before being returned to caller.
      */
-    func getBucketLifecycleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketLifecycleAsync(
             input: S3Model.GetBucketLifecycleRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1311,9 +1082,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketLifecycleOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketLifecycleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketLifecycleRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketLifecycleOutput
+    func getBucketLifecycleSync(
+            input: S3Model.GetBucketLifecycleRequest) throws -> S3Model.GetBucketLifecycleOutput
 
     /**
      Invokes the GetBucketLifecycleConfiguration operation returning immediately and passing the response to a callback.
@@ -1324,9 +1094,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketLifecycleConfigurationOutput
            object will be validated before being returned to caller.
      */
-    func getBucketLifecycleConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketLifecycleConfigurationAsync(
             input: S3Model.GetBucketLifecycleConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1337,9 +1106,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketLifecycleConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketLifecycleConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketLifecycleConfigurationRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketLifecycleConfigurationOutput
+    func getBucketLifecycleConfigurationSync(
+            input: S3Model.GetBucketLifecycleConfigurationRequest) throws -> S3Model.GetBucketLifecycleConfigurationOutput
 
     /**
      Invokes the GetBucketLocation operation returning immediately and passing the response to a callback.
@@ -1350,9 +1118,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketLocationOutput
            object will be validated before being returned to caller.
      */
-    func getBucketLocationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketLocationAsync(
             input: S3Model.GetBucketLocationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketLocationOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1363,9 +1130,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketLocationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketLocationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketLocationRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketLocationOutput
+    func getBucketLocationSync(
+            input: S3Model.GetBucketLocationRequest) throws -> S3Model.GetBucketLocationOutput
 
     /**
      Invokes the GetBucketLogging operation returning immediately and passing the response to a callback.
@@ -1376,9 +1142,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketLoggingOutput
            object will be validated before being returned to caller.
      */
-    func getBucketLoggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketLoggingAsync(
             input: S3Model.GetBucketLoggingRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketLoggingOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1389,9 +1154,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketLoggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketLoggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketLoggingRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketLoggingOutput
+    func getBucketLoggingSync(
+            input: S3Model.GetBucketLoggingRequest) throws -> S3Model.GetBucketLoggingOutput
 
     /**
      Invokes the GetBucketMetricsConfiguration operation returning immediately and passing the response to a callback.
@@ -1402,9 +1166,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketMetricsConfigurationOutput
            object will be validated before being returned to caller.
      */
-    func getBucketMetricsConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketMetricsConfigurationAsync(
             input: S3Model.GetBucketMetricsConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1415,9 +1178,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketMetricsConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketMetricsConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketMetricsConfigurationRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketMetricsConfigurationOutput
+    func getBucketMetricsConfigurationSync(
+            input: S3Model.GetBucketMetricsConfigurationRequest) throws -> S3Model.GetBucketMetricsConfigurationOutput
 
     /**
      Invokes the GetBucketNotification operation returning immediately and passing the response to a callback.
@@ -1428,9 +1190,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The NotificationConfigurationDeprecated
            object will be validated before being returned to caller.
      */
-    func getBucketNotificationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketNotificationAsync(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, HTTPClientError>) -> ()) throws
 
     /**
@@ -1441,9 +1202,8 @@ public protocol S3ClientProtocol {
      - Returns: The NotificationConfigurationDeprecated object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketNotificationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketNotificationConfigurationRequest,
-            reporting: InvocationReportingType) throws -> S3Model.NotificationConfigurationDeprecated
+    func getBucketNotificationSync(
+            input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfigurationDeprecated
 
     /**
      Invokes the GetBucketNotificationConfiguration operation returning immediately and passing the response to a callback.
@@ -1454,9 +1214,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The NotificationConfiguration
            object will be validated before being returned to caller.
      */
-    func getBucketNotificationConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketNotificationConfigurationAsync(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.NotificationConfiguration, HTTPClientError>) -> ()) throws
 
     /**
@@ -1467,9 +1226,8 @@ public protocol S3ClientProtocol {
      - Returns: The NotificationConfiguration object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketNotificationConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketNotificationConfigurationRequest,
-            reporting: InvocationReportingType) throws -> S3Model.NotificationConfiguration
+    func getBucketNotificationConfigurationSync(
+            input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfiguration
 
     /**
      Invokes the GetBucketPolicy operation returning immediately and passing the response to a callback.
@@ -1480,9 +1238,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketPolicyOutput
            object will be validated before being returned to caller.
      */
-    func getBucketPolicyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketPolicyAsync(
             input: S3Model.GetBucketPolicyRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketPolicyOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1493,9 +1250,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketPolicyOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketPolicySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketPolicyRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketPolicyOutput
+    func getBucketPolicySync(
+            input: S3Model.GetBucketPolicyRequest) throws -> S3Model.GetBucketPolicyOutput
 
     /**
      Invokes the GetBucketPolicyStatus operation returning immediately and passing the response to a callback.
@@ -1506,9 +1262,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketPolicyStatusOutput
            object will be validated before being returned to caller.
      */
-    func getBucketPolicyStatusAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketPolicyStatusAsync(
             input: S3Model.GetBucketPolicyStatusRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1519,9 +1274,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketPolicyStatusOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketPolicyStatusSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketPolicyStatusRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketPolicyStatusOutput
+    func getBucketPolicyStatusSync(
+            input: S3Model.GetBucketPolicyStatusRequest) throws -> S3Model.GetBucketPolicyStatusOutput
 
     /**
      Invokes the GetBucketReplication operation returning immediately and passing the response to a callback.
@@ -1532,9 +1286,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketReplicationOutput
            object will be validated before being returned to caller.
      */
-    func getBucketReplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketReplicationAsync(
             input: S3Model.GetBucketReplicationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketReplicationOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1545,9 +1298,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketReplicationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketReplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketReplicationRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketReplicationOutput
+    func getBucketReplicationSync(
+            input: S3Model.GetBucketReplicationRequest) throws -> S3Model.GetBucketReplicationOutput
 
     /**
      Invokes the GetBucketRequestPayment operation returning immediately and passing the response to a callback.
@@ -1558,9 +1310,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketRequestPaymentOutput
            object will be validated before being returned to caller.
      */
-    func getBucketRequestPaymentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketRequestPaymentAsync(
             input: S3Model.GetBucketRequestPaymentRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1571,9 +1322,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketRequestPaymentOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketRequestPaymentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketRequestPaymentRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketRequestPaymentOutput
+    func getBucketRequestPaymentSync(
+            input: S3Model.GetBucketRequestPaymentRequest) throws -> S3Model.GetBucketRequestPaymentOutput
 
     /**
      Invokes the GetBucketTagging operation returning immediately and passing the response to a callback.
@@ -1584,9 +1334,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketTaggingOutput
            object will be validated before being returned to caller.
      */
-    func getBucketTaggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketTaggingAsync(
             input: S3Model.GetBucketTaggingRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketTaggingOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1597,9 +1346,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketTaggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketTaggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketTaggingRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketTaggingOutput
+    func getBucketTaggingSync(
+            input: S3Model.GetBucketTaggingRequest) throws -> S3Model.GetBucketTaggingOutput
 
     /**
      Invokes the GetBucketVersioning operation returning immediately and passing the response to a callback.
@@ -1610,9 +1358,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketVersioningOutput
            object will be validated before being returned to caller.
      */
-    func getBucketVersioningAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketVersioningAsync(
             input: S3Model.GetBucketVersioningRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketVersioningOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1623,9 +1370,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketVersioningOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketVersioningSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketVersioningRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketVersioningOutput
+    func getBucketVersioningSync(
+            input: S3Model.GetBucketVersioningRequest) throws -> S3Model.GetBucketVersioningOutput
 
     /**
      Invokes the GetBucketWebsite operation returning immediately and passing the response to a callback.
@@ -1636,9 +1382,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetBucketWebsiteOutput
            object will be validated before being returned to caller.
      */
-    func getBucketWebsiteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getBucketWebsiteAsync(
             input: S3Model.GetBucketWebsiteRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1649,9 +1394,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetBucketWebsiteOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getBucketWebsiteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetBucketWebsiteRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetBucketWebsiteOutput
+    func getBucketWebsiteSync(
+            input: S3Model.GetBucketWebsiteRequest) throws -> S3Model.GetBucketWebsiteOutput
 
     /**
      Invokes the GetObject operation returning immediately and passing the response to a callback.
@@ -1663,9 +1407,8 @@ public protocol S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchKey.
      */
-    func getObjectAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getObjectAsync(
             input: S3Model.GetObjectRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1677,9 +1420,8 @@ public protocol S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchKey.
      */
-    func getObjectSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetObjectRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetObjectOutput
+    func getObjectSync(
+            input: S3Model.GetObjectRequest) throws -> S3Model.GetObjectOutput
 
     /**
      Invokes the GetObjectAcl operation returning immediately and passing the response to a callback.
@@ -1691,9 +1433,8 @@ public protocol S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchKey.
      */
-    func getObjectAclAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getObjectAclAsync(
             input: S3Model.GetObjectAclRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectAclOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1705,9 +1446,8 @@ public protocol S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchKey.
      */
-    func getObjectAclSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetObjectAclRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetObjectAclOutput
+    func getObjectAclSync(
+            input: S3Model.GetObjectAclRequest) throws -> S3Model.GetObjectAclOutput
 
     /**
      Invokes the GetObjectLegalHold operation returning immediately and passing the response to a callback.
@@ -1718,9 +1458,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetObjectLegalHoldOutput
            object will be validated before being returned to caller.
      */
-    func getObjectLegalHoldAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getObjectLegalHoldAsync(
             input: S3Model.GetObjectLegalHoldRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1731,9 +1470,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetObjectLegalHoldOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getObjectLegalHoldSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetObjectLegalHoldRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetObjectLegalHoldOutput
+    func getObjectLegalHoldSync(
+            input: S3Model.GetObjectLegalHoldRequest) throws -> S3Model.GetObjectLegalHoldOutput
 
     /**
      Invokes the GetObjectLockConfiguration operation returning immediately and passing the response to a callback.
@@ -1744,9 +1482,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetObjectLockConfigurationOutput
            object will be validated before being returned to caller.
      */
-    func getObjectLockConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getObjectLockConfigurationAsync(
             input: S3Model.GetObjectLockConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1757,9 +1494,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetObjectLockConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getObjectLockConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetObjectLockConfigurationRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetObjectLockConfigurationOutput
+    func getObjectLockConfigurationSync(
+            input: S3Model.GetObjectLockConfigurationRequest) throws -> S3Model.GetObjectLockConfigurationOutput
 
     /**
      Invokes the GetObjectRetention operation returning immediately and passing the response to a callback.
@@ -1770,9 +1506,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetObjectRetentionOutput
            object will be validated before being returned to caller.
      */
-    func getObjectRetentionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getObjectRetentionAsync(
             input: S3Model.GetObjectRetentionRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectRetentionOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1783,9 +1518,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetObjectRetentionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getObjectRetentionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetObjectRetentionRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetObjectRetentionOutput
+    func getObjectRetentionSync(
+            input: S3Model.GetObjectRetentionRequest) throws -> S3Model.GetObjectRetentionOutput
 
     /**
      Invokes the GetObjectTagging operation returning immediately and passing the response to a callback.
@@ -1796,9 +1530,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetObjectTaggingOutput
            object will be validated before being returned to caller.
      */
-    func getObjectTaggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getObjectTaggingAsync(
             input: S3Model.GetObjectTaggingRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectTaggingOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1809,9 +1542,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetObjectTaggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getObjectTaggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetObjectTaggingRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetObjectTaggingOutput
+    func getObjectTaggingSync(
+            input: S3Model.GetObjectTaggingRequest) throws -> S3Model.GetObjectTaggingOutput
 
     /**
      Invokes the GetObjectTorrent operation returning immediately and passing the response to a callback.
@@ -1822,9 +1554,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetObjectTorrentOutput
            object will be validated before being returned to caller.
      */
-    func getObjectTorrentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getObjectTorrentAsync(
             input: S3Model.GetObjectTorrentRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetObjectTorrentOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1835,9 +1566,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetObjectTorrentOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getObjectTorrentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetObjectTorrentRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetObjectTorrentOutput
+    func getObjectTorrentSync(
+            input: S3Model.GetObjectTorrentRequest) throws -> S3Model.GetObjectTorrentOutput
 
     /**
      Invokes the GetPublicAccessBlock operation returning immediately and passing the response to a callback.
@@ -1848,9 +1578,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The GetPublicAccessBlockOutput
            object will be validated before being returned to caller.
      */
-    func getPublicAccessBlockAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getPublicAccessBlockAsync(
             input: S3Model.GetPublicAccessBlockRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1861,9 +1590,8 @@ public protocol S3ClientProtocol {
      - Returns: The GetPublicAccessBlockOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func getPublicAccessBlockSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.GetPublicAccessBlockRequest,
-            reporting: InvocationReportingType) throws -> S3Model.GetPublicAccessBlockOutput
+    func getPublicAccessBlockSync(
+            input: S3Model.GetPublicAccessBlockRequest) throws -> S3Model.GetPublicAccessBlockOutput
 
     /**
      Invokes the HeadBucket operation returning immediately and passing the response to a callback.
@@ -1874,9 +1602,8 @@ public protocol S3ClientProtocol {
            is complete.
            The possible errors are: noSuchBucket.
      */
-    func headBucketAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func headBucketAsync(
             input: S3Model.HeadBucketRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -1886,9 +1613,8 @@ public protocol S3ClientProtocol {
          - input: The validated HeadBucketRequest object being passed to this operation.
      - Throws: noSuchBucket.
      */
-    func headBucketSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.HeadBucketRequest,
-            reporting: InvocationReportingType) throws
+    func headBucketSync(
+            input: S3Model.HeadBucketRequest) throws
 
     /**
      Invokes the HeadObject operation returning immediately and passing the response to a callback.
@@ -1900,9 +1626,8 @@ public protocol S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchKey.
      */
-    func headObjectAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func headObjectAsync(
             input: S3Model.HeadObjectRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.HeadObjectOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1914,9 +1639,8 @@ public protocol S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchKey.
      */
-    func headObjectSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.HeadObjectRequest,
-            reporting: InvocationReportingType) throws -> S3Model.HeadObjectOutput
+    func headObjectSync(
+            input: S3Model.HeadObjectRequest) throws -> S3Model.HeadObjectOutput
 
     /**
      Invokes the ListBucketAnalyticsConfigurations operation returning immediately and passing the response to a callback.
@@ -1927,9 +1651,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The ListBucketAnalyticsConfigurationsOutput
            object will be validated before being returned to caller.
      */
-    func listBucketAnalyticsConfigurationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listBucketAnalyticsConfigurationsAsync(
             input: S3Model.ListBucketAnalyticsConfigurationsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1940,9 +1663,8 @@ public protocol S3ClientProtocol {
      - Returns: The ListBucketAnalyticsConfigurationsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func listBucketAnalyticsConfigurationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.ListBucketAnalyticsConfigurationsRequest,
-            reporting: InvocationReportingType) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput
+    func listBucketAnalyticsConfigurationsSync(
+            input: S3Model.ListBucketAnalyticsConfigurationsRequest) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput
 
     /**
      Invokes the ListBucketInventoryConfigurations operation returning immediately and passing the response to a callback.
@@ -1953,9 +1675,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The ListBucketInventoryConfigurationsOutput
            object will be validated before being returned to caller.
      */
-    func listBucketInventoryConfigurationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listBucketInventoryConfigurationsAsync(
             input: S3Model.ListBucketInventoryConfigurationsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1966,9 +1687,8 @@ public protocol S3ClientProtocol {
      - Returns: The ListBucketInventoryConfigurationsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func listBucketInventoryConfigurationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.ListBucketInventoryConfigurationsRequest,
-            reporting: InvocationReportingType) throws -> S3Model.ListBucketInventoryConfigurationsOutput
+    func listBucketInventoryConfigurationsSync(
+            input: S3Model.ListBucketInventoryConfigurationsRequest) throws -> S3Model.ListBucketInventoryConfigurationsOutput
 
     /**
      Invokes the ListBucketMetricsConfigurations operation returning immediately and passing the response to a callback.
@@ -1979,9 +1699,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The ListBucketMetricsConfigurationsOutput
            object will be validated before being returned to caller.
      */
-    func listBucketMetricsConfigurationsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listBucketMetricsConfigurationsAsync(
             input: S3Model.ListBucketMetricsConfigurationsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -1992,9 +1711,8 @@ public protocol S3ClientProtocol {
      - Returns: The ListBucketMetricsConfigurationsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func listBucketMetricsConfigurationsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.ListBucketMetricsConfigurationsRequest,
-            reporting: InvocationReportingType) throws -> S3Model.ListBucketMetricsConfigurationsOutput
+    func listBucketMetricsConfigurationsSync(
+            input: S3Model.ListBucketMetricsConfigurationsRequest) throws -> S3Model.ListBucketMetricsConfigurationsOutput
 
     /**
      Invokes the ListBuckets operation returning immediately and passing the response to a callback.
@@ -2002,8 +1720,7 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The ListBucketsOutput
            object will be validated before being returned to caller.
      */
-    func listBucketsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            reporting: InvocationReportingType,
+    func listBucketsAsync(
             completion: @escaping (Result<S3Model.ListBucketsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2011,8 +1728,7 @@ public protocol S3ClientProtocol {
      - Returns: The ListBucketsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func listBucketsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            reporting: InvocationReportingType) throws -> S3Model.ListBucketsOutput
+    func listBucketsSync() throws -> S3Model.ListBucketsOutput
 
     /**
      Invokes the ListMultipartUploads operation returning immediately and passing the response to a callback.
@@ -2023,9 +1739,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The ListMultipartUploadsOutput
            object will be validated before being returned to caller.
      */
-    func listMultipartUploadsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listMultipartUploadsAsync(
             input: S3Model.ListMultipartUploadsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2036,9 +1751,8 @@ public protocol S3ClientProtocol {
      - Returns: The ListMultipartUploadsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func listMultipartUploadsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.ListMultipartUploadsRequest,
-            reporting: InvocationReportingType) throws -> S3Model.ListMultipartUploadsOutput
+    func listMultipartUploadsSync(
+            input: S3Model.ListMultipartUploadsRequest) throws -> S3Model.ListMultipartUploadsOutput
 
     /**
      Invokes the ListObjectVersions operation returning immediately and passing the response to a callback.
@@ -2049,9 +1763,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The ListObjectVersionsOutput
            object will be validated before being returned to caller.
      */
-    func listObjectVersionsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listObjectVersionsAsync(
             input: S3Model.ListObjectVersionsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListObjectVersionsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2062,9 +1775,8 @@ public protocol S3ClientProtocol {
      - Returns: The ListObjectVersionsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func listObjectVersionsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.ListObjectVersionsRequest,
-            reporting: InvocationReportingType) throws -> S3Model.ListObjectVersionsOutput
+    func listObjectVersionsSync(
+            input: S3Model.ListObjectVersionsRequest) throws -> S3Model.ListObjectVersionsOutput
 
     /**
      Invokes the ListObjects operation returning immediately and passing the response to a callback.
@@ -2076,9 +1788,8 @@ public protocol S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchBucket.
      */
-    func listObjectsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listObjectsAsync(
             input: S3Model.ListObjectsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListObjectsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2090,9 +1801,8 @@ public protocol S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchBucket.
      */
-    func listObjectsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.ListObjectsRequest,
-            reporting: InvocationReportingType) throws -> S3Model.ListObjectsOutput
+    func listObjectsSync(
+            input: S3Model.ListObjectsRequest) throws -> S3Model.ListObjectsOutput
 
     /**
      Invokes the ListObjectsV2 operation returning immediately and passing the response to a callback.
@@ -2104,9 +1814,8 @@ public protocol S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchBucket.
      */
-    func listObjectsV2Async<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listObjectsV2Async(
             input: S3Model.ListObjectsV2Request, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListObjectsV2Output, HTTPClientError>) -> ()) throws
 
     /**
@@ -2118,9 +1827,8 @@ public protocol S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchBucket.
      */
-    func listObjectsV2Sync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.ListObjectsV2Request,
-            reporting: InvocationReportingType) throws -> S3Model.ListObjectsV2Output
+    func listObjectsV2Sync(
+            input: S3Model.ListObjectsV2Request) throws -> S3Model.ListObjectsV2Output
 
     /**
      Invokes the ListParts operation returning immediately and passing the response to a callback.
@@ -2131,9 +1839,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The ListPartsOutput
            object will be validated before being returned to caller.
      */
-    func listPartsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func listPartsAsync(
             input: S3Model.ListPartsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.ListPartsOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2144,9 +1851,8 @@ public protocol S3ClientProtocol {
      - Returns: The ListPartsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func listPartsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.ListPartsRequest,
-            reporting: InvocationReportingType) throws -> S3Model.ListPartsOutput
+    func listPartsSync(
+            input: S3Model.ListPartsRequest) throws -> S3Model.ListPartsOutput
 
     /**
      Invokes the PutBucketAccelerateConfiguration operation returning immediately and passing the response to a callback.
@@ -2156,9 +1862,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketAccelerateConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketAccelerateConfigurationAsync(
             input: S3Model.PutBucketAccelerateConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2167,9 +1872,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketAccelerateConfigurationRequest object being passed to this operation.
      */
-    func putBucketAccelerateConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketAccelerateConfigurationRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketAccelerateConfigurationSync(
+            input: S3Model.PutBucketAccelerateConfigurationRequest) throws
 
     /**
      Invokes the PutBucketAcl operation returning immediately and passing the response to a callback.
@@ -2179,9 +1883,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketAclAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketAclAsync(
             input: S3Model.PutBucketAclRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2190,9 +1893,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketAclRequest object being passed to this operation.
      */
-    func putBucketAclSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketAclRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketAclSync(
+            input: S3Model.PutBucketAclRequest) throws
 
     /**
      Invokes the PutBucketAnalyticsConfiguration operation returning immediately and passing the response to a callback.
@@ -2202,9 +1904,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketAnalyticsConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketAnalyticsConfigurationAsync(
             input: S3Model.PutBucketAnalyticsConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2213,9 +1914,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketAnalyticsConfigurationRequest object being passed to this operation.
      */
-    func putBucketAnalyticsConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketAnalyticsConfigurationRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketAnalyticsConfigurationSync(
+            input: S3Model.PutBucketAnalyticsConfigurationRequest) throws
 
     /**
      Invokes the PutBucketCors operation returning immediately and passing the response to a callback.
@@ -2225,9 +1925,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketCorsAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketCorsAsync(
             input: S3Model.PutBucketCorsRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2236,9 +1935,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketCorsRequest object being passed to this operation.
      */
-    func putBucketCorsSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketCorsRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketCorsSync(
+            input: S3Model.PutBucketCorsRequest) throws
 
     /**
      Invokes the PutBucketEncryption operation returning immediately and passing the response to a callback.
@@ -2248,9 +1946,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketEncryptionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketEncryptionAsync(
             input: S3Model.PutBucketEncryptionRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2259,9 +1956,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketEncryptionRequest object being passed to this operation.
      */
-    func putBucketEncryptionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketEncryptionRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketEncryptionSync(
+            input: S3Model.PutBucketEncryptionRequest) throws
 
     /**
      Invokes the PutBucketInventoryConfiguration operation returning immediately and passing the response to a callback.
@@ -2271,9 +1967,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketInventoryConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketInventoryConfigurationAsync(
             input: S3Model.PutBucketInventoryConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2282,9 +1977,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketInventoryConfigurationRequest object being passed to this operation.
      */
-    func putBucketInventoryConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketInventoryConfigurationRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketInventoryConfigurationSync(
+            input: S3Model.PutBucketInventoryConfigurationRequest) throws
 
     /**
      Invokes the PutBucketLifecycle operation returning immediately and passing the response to a callback.
@@ -2294,9 +1988,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketLifecycleAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketLifecycleAsync(
             input: S3Model.PutBucketLifecycleRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2305,9 +1998,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketLifecycleRequest object being passed to this operation.
      */
-    func putBucketLifecycleSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketLifecycleRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketLifecycleSync(
+            input: S3Model.PutBucketLifecycleRequest) throws
 
     /**
      Invokes the PutBucketLifecycleConfiguration operation returning immediately and passing the response to a callback.
@@ -2317,9 +2009,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketLifecycleConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketLifecycleConfigurationAsync(
             input: S3Model.PutBucketLifecycleConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2328,9 +2019,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketLifecycleConfigurationRequest object being passed to this operation.
      */
-    func putBucketLifecycleConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketLifecycleConfigurationRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketLifecycleConfigurationSync(
+            input: S3Model.PutBucketLifecycleConfigurationRequest) throws
 
     /**
      Invokes the PutBucketLogging operation returning immediately and passing the response to a callback.
@@ -2340,9 +2030,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketLoggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketLoggingAsync(
             input: S3Model.PutBucketLoggingRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2351,9 +2040,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketLoggingRequest object being passed to this operation.
      */
-    func putBucketLoggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketLoggingRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketLoggingSync(
+            input: S3Model.PutBucketLoggingRequest) throws
 
     /**
      Invokes the PutBucketMetricsConfiguration operation returning immediately and passing the response to a callback.
@@ -2363,9 +2051,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketMetricsConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketMetricsConfigurationAsync(
             input: S3Model.PutBucketMetricsConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2374,9 +2061,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketMetricsConfigurationRequest object being passed to this operation.
      */
-    func putBucketMetricsConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketMetricsConfigurationRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketMetricsConfigurationSync(
+            input: S3Model.PutBucketMetricsConfigurationRequest) throws
 
     /**
      Invokes the PutBucketNotification operation returning immediately and passing the response to a callback.
@@ -2386,9 +2072,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketNotificationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketNotificationAsync(
             input: S3Model.PutBucketNotificationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2397,9 +2082,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketNotificationRequest object being passed to this operation.
      */
-    func putBucketNotificationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketNotificationRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketNotificationSync(
+            input: S3Model.PutBucketNotificationRequest) throws
 
     /**
      Invokes the PutBucketNotificationConfiguration operation returning immediately and passing the response to a callback.
@@ -2409,9 +2093,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketNotificationConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketNotificationConfigurationAsync(
             input: S3Model.PutBucketNotificationConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2420,9 +2103,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketNotificationConfigurationRequest object being passed to this operation.
      */
-    func putBucketNotificationConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketNotificationConfigurationRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketNotificationConfigurationSync(
+            input: S3Model.PutBucketNotificationConfigurationRequest) throws
 
     /**
      Invokes the PutBucketPolicy operation returning immediately and passing the response to a callback.
@@ -2432,9 +2114,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketPolicyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketPolicyAsync(
             input: S3Model.PutBucketPolicyRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2443,9 +2124,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketPolicyRequest object being passed to this operation.
      */
-    func putBucketPolicySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketPolicyRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketPolicySync(
+            input: S3Model.PutBucketPolicyRequest) throws
 
     /**
      Invokes the PutBucketReplication operation returning immediately and passing the response to a callback.
@@ -2455,9 +2135,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketReplicationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketReplicationAsync(
             input: S3Model.PutBucketReplicationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2466,9 +2145,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketReplicationRequest object being passed to this operation.
      */
-    func putBucketReplicationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketReplicationRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketReplicationSync(
+            input: S3Model.PutBucketReplicationRequest) throws
 
     /**
      Invokes the PutBucketRequestPayment operation returning immediately and passing the response to a callback.
@@ -2478,9 +2156,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketRequestPaymentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketRequestPaymentAsync(
             input: S3Model.PutBucketRequestPaymentRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2489,9 +2166,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketRequestPaymentRequest object being passed to this operation.
      */
-    func putBucketRequestPaymentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketRequestPaymentRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketRequestPaymentSync(
+            input: S3Model.PutBucketRequestPaymentRequest) throws
 
     /**
      Invokes the PutBucketTagging operation returning immediately and passing the response to a callback.
@@ -2501,9 +2177,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketTaggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketTaggingAsync(
             input: S3Model.PutBucketTaggingRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2512,9 +2187,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketTaggingRequest object being passed to this operation.
      */
-    func putBucketTaggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketTaggingRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketTaggingSync(
+            input: S3Model.PutBucketTaggingRequest) throws
 
     /**
      Invokes the PutBucketVersioning operation returning immediately and passing the response to a callback.
@@ -2524,9 +2198,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketVersioningAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketVersioningAsync(
             input: S3Model.PutBucketVersioningRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2535,9 +2208,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketVersioningRequest object being passed to this operation.
      */
-    func putBucketVersioningSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketVersioningRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketVersioningSync(
+            input: S3Model.PutBucketVersioningRequest) throws
 
     /**
      Invokes the PutBucketWebsite operation returning immediately and passing the response to a callback.
@@ -2547,9 +2219,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putBucketWebsiteAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putBucketWebsiteAsync(
             input: S3Model.PutBucketWebsiteRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2558,9 +2229,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutBucketWebsiteRequest object being passed to this operation.
      */
-    func putBucketWebsiteSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutBucketWebsiteRequest,
-            reporting: InvocationReportingType) throws
+    func putBucketWebsiteSync(
+            input: S3Model.PutBucketWebsiteRequest) throws
 
     /**
      Invokes the PutObject operation returning immediately and passing the response to a callback.
@@ -2571,9 +2241,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The PutObjectOutput
            object will be validated before being returned to caller.
      */
-    func putObjectAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putObjectAsync(
             input: S3Model.PutObjectRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.PutObjectOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2584,9 +2253,8 @@ public protocol S3ClientProtocol {
      - Returns: The PutObjectOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func putObjectSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutObjectRequest,
-            reporting: InvocationReportingType) throws -> S3Model.PutObjectOutput
+    func putObjectSync(
+            input: S3Model.PutObjectRequest) throws -> S3Model.PutObjectOutput
 
     /**
      Invokes the PutObjectAcl operation returning immediately and passing the response to a callback.
@@ -2598,9 +2266,8 @@ public protocol S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: noSuchKey.
      */
-    func putObjectAclAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putObjectAclAsync(
             input: S3Model.PutObjectAclRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.PutObjectAclOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2612,9 +2279,8 @@ public protocol S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: noSuchKey.
      */
-    func putObjectAclSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutObjectAclRequest,
-            reporting: InvocationReportingType) throws -> S3Model.PutObjectAclOutput
+    func putObjectAclSync(
+            input: S3Model.PutObjectAclRequest) throws -> S3Model.PutObjectAclOutput
 
     /**
      Invokes the PutObjectLegalHold operation returning immediately and passing the response to a callback.
@@ -2625,9 +2291,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The PutObjectLegalHoldOutput
            object will be validated before being returned to caller.
      */
-    func putObjectLegalHoldAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putObjectLegalHoldAsync(
             input: S3Model.PutObjectLegalHoldRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2638,9 +2303,8 @@ public protocol S3ClientProtocol {
      - Returns: The PutObjectLegalHoldOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func putObjectLegalHoldSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutObjectLegalHoldRequest,
-            reporting: InvocationReportingType) throws -> S3Model.PutObjectLegalHoldOutput
+    func putObjectLegalHoldSync(
+            input: S3Model.PutObjectLegalHoldRequest) throws -> S3Model.PutObjectLegalHoldOutput
 
     /**
      Invokes the PutObjectLockConfiguration operation returning immediately and passing the response to a callback.
@@ -2651,9 +2315,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The PutObjectLockConfigurationOutput
            object will be validated before being returned to caller.
      */
-    func putObjectLockConfigurationAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putObjectLockConfigurationAsync(
             input: S3Model.PutObjectLockConfigurationRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2664,9 +2327,8 @@ public protocol S3ClientProtocol {
      - Returns: The PutObjectLockConfigurationOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func putObjectLockConfigurationSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutObjectLockConfigurationRequest,
-            reporting: InvocationReportingType) throws -> S3Model.PutObjectLockConfigurationOutput
+    func putObjectLockConfigurationSync(
+            input: S3Model.PutObjectLockConfigurationRequest) throws -> S3Model.PutObjectLockConfigurationOutput
 
     /**
      Invokes the PutObjectRetention operation returning immediately and passing the response to a callback.
@@ -2677,9 +2339,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The PutObjectRetentionOutput
            object will be validated before being returned to caller.
      */
-    func putObjectRetentionAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putObjectRetentionAsync(
             input: S3Model.PutObjectRetentionRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.PutObjectRetentionOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2690,9 +2351,8 @@ public protocol S3ClientProtocol {
      - Returns: The PutObjectRetentionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func putObjectRetentionSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutObjectRetentionRequest,
-            reporting: InvocationReportingType) throws -> S3Model.PutObjectRetentionOutput
+    func putObjectRetentionSync(
+            input: S3Model.PutObjectRetentionRequest) throws -> S3Model.PutObjectRetentionOutput
 
     /**
      Invokes the PutObjectTagging operation returning immediately and passing the response to a callback.
@@ -2703,9 +2363,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The PutObjectTaggingOutput
            object will be validated before being returned to caller.
      */
-    func putObjectTaggingAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putObjectTaggingAsync(
             input: S3Model.PutObjectTaggingRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.PutObjectTaggingOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2716,9 +2375,8 @@ public protocol S3ClientProtocol {
      - Returns: The PutObjectTaggingOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func putObjectTaggingSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutObjectTaggingRequest,
-            reporting: InvocationReportingType) throws -> S3Model.PutObjectTaggingOutput
+    func putObjectTaggingSync(
+            input: S3Model.PutObjectTaggingRequest) throws -> S3Model.PutObjectTaggingOutput
 
     /**
      Invokes the PutPublicAccessBlock operation returning immediately and passing the response to a callback.
@@ -2728,9 +2386,8 @@ public protocol S3ClientProtocol {
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
      */
-    func putPublicAccessBlockAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func putPublicAccessBlockAsync(
             input: S3Model.PutPublicAccessBlockRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Swift.Error?) -> ()) throws
 
     /**
@@ -2739,9 +2396,8 @@ public protocol S3ClientProtocol {
      - Parameters:
          - input: The validated PutPublicAccessBlockRequest object being passed to this operation.
      */
-    func putPublicAccessBlockSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.PutPublicAccessBlockRequest,
-            reporting: InvocationReportingType) throws
+    func putPublicAccessBlockSync(
+            input: S3Model.PutPublicAccessBlockRequest) throws
 
     /**
      Invokes the RestoreObject operation returning immediately and passing the response to a callback.
@@ -2753,9 +2409,8 @@ public protocol S3ClientProtocol {
            object will be validated before being returned to caller.
            The possible errors are: objectAlreadyInActiveTier.
      */
-    func restoreObjectAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func restoreObjectAsync(
             input: S3Model.RestoreObjectRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.RestoreObjectOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2767,9 +2422,8 @@ public protocol S3ClientProtocol {
          Will be validated before being returned to caller.
      - Throws: objectAlreadyInActiveTier.
      */
-    func restoreObjectSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.RestoreObjectRequest,
-            reporting: InvocationReportingType) throws -> S3Model.RestoreObjectOutput
+    func restoreObjectSync(
+            input: S3Model.RestoreObjectRequest) throws -> S3Model.RestoreObjectOutput
 
     /**
      Invokes the SelectObjectContent operation returning immediately and passing the response to a callback.
@@ -2780,9 +2434,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The SelectObjectContentOutput
            object will be validated before being returned to caller.
      */
-    func selectObjectContentAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func selectObjectContentAsync(
             input: S3Model.SelectObjectContentRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.SelectObjectContentOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2793,9 +2446,8 @@ public protocol S3ClientProtocol {
      - Returns: The SelectObjectContentOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func selectObjectContentSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.SelectObjectContentRequest,
-            reporting: InvocationReportingType) throws -> S3Model.SelectObjectContentOutput
+    func selectObjectContentSync(
+            input: S3Model.SelectObjectContentRequest) throws -> S3Model.SelectObjectContentOutput
 
     /**
      Invokes the UploadPart operation returning immediately and passing the response to a callback.
@@ -2806,9 +2458,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The UploadPartOutput
            object will be validated before being returned to caller.
      */
-    func uploadPartAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func uploadPartAsync(
             input: S3Model.UploadPartRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.UploadPartOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2819,9 +2470,8 @@ public protocol S3ClientProtocol {
      - Returns: The UploadPartOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func uploadPartSync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.UploadPartRequest,
-            reporting: InvocationReportingType) throws -> S3Model.UploadPartOutput
+    func uploadPartSync(
+            input: S3Model.UploadPartRequest) throws -> S3Model.UploadPartOutput
 
     /**
      Invokes the UploadPartCopy operation returning immediately and passing the response to a callback.
@@ -2832,9 +2482,8 @@ public protocol S3ClientProtocol {
            callback when the operation is complete. The UploadPartCopyOutput
            object will be validated before being returned to caller.
      */
-    func uploadPartCopyAsync<InvocationReportingType: SmokeAWSInvocationReporting>(
+    func uploadPartCopyAsync(
             input: S3Model.UploadPartCopyRequest, 
-            reporting: InvocationReportingType,
             completion: @escaping (Result<S3Model.UploadPartCopyOutput, HTTPClientError>) -> ()) throws
 
     /**
@@ -2845,7 +2494,6 @@ public protocol S3ClientProtocol {
      - Returns: The UploadPartCopyOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    func uploadPartCopySync<InvocationReportingType: SmokeAWSInvocationReporting>(
-            input: S3Model.UploadPartCopyRequest,
-            reporting: InvocationReportingType) throws -> S3Model.UploadPartCopyOutput
+    func uploadPartCopySync(
+            input: S3Model.UploadPartCopyRequest) throws -> S3Model.UploadPartCopyOutput
 }
