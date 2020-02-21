@@ -32,187 +32,187 @@ public protocol SimpleWorkflowClientProtocol {
             _ input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionCount
     typealias CountClosedWorkflowExecutionsAsyncType = (
             _ input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws -> ()
     typealias CountOpenWorkflowExecutionsSyncType = (
             _ input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionCount
     typealias CountOpenWorkflowExecutionsAsyncType = (
             _ input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws -> ()
     typealias CountPendingActivityTasksSyncType = (
             _ input: SimpleWorkflowModel.CountPendingActivityTasksInput) throws -> SimpleWorkflowModel.PendingTaskCount
     typealias CountPendingActivityTasksAsyncType = (
             _ input: SimpleWorkflowModel.CountPendingActivityTasksInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws -> ()
     typealias CountPendingDecisionTasksSyncType = (
             _ input: SimpleWorkflowModel.CountPendingDecisionTasksInput) throws -> SimpleWorkflowModel.PendingTaskCount
     typealias CountPendingDecisionTasksAsyncType = (
             _ input: SimpleWorkflowModel.CountPendingDecisionTasksInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws -> ()
     typealias DeprecateActivityTypeSyncType = (
             _ input: SimpleWorkflowModel.DeprecateActivityTypeInput) throws -> ()
     typealias DeprecateActivityTypeAsyncType = (
             _ input: SimpleWorkflowModel.DeprecateActivityTypeInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias DeprecateDomainSyncType = (
             _ input: SimpleWorkflowModel.DeprecateDomainInput) throws -> ()
     typealias DeprecateDomainAsyncType = (
             _ input: SimpleWorkflowModel.DeprecateDomainInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias DeprecateWorkflowTypeSyncType = (
             _ input: SimpleWorkflowModel.DeprecateWorkflowTypeInput) throws -> ()
     typealias DeprecateWorkflowTypeAsyncType = (
             _ input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias DescribeActivityTypeSyncType = (
             _ input: SimpleWorkflowModel.DescribeActivityTypeInput) throws -> SimpleWorkflowModel.ActivityTypeDetail
     typealias DescribeActivityTypeAsyncType = (
             _ input: SimpleWorkflowModel.DescribeActivityTypeInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, SimpleWorkflowError>) -> ()) throws -> ()
     typealias DescribeDomainSyncType = (
             _ input: SimpleWorkflowModel.DescribeDomainInput) throws -> SimpleWorkflowModel.DomainDetail
     typealias DescribeDomainAsyncType = (
             _ input: SimpleWorkflowModel.DescribeDomainInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, SimpleWorkflowError>) -> ()) throws -> ()
     typealias DescribeWorkflowExecutionSyncType = (
             _ input: SimpleWorkflowModel.DescribeWorkflowExecutionInput) throws -> SimpleWorkflowModel.WorkflowExecutionDetail
     typealias DescribeWorkflowExecutionAsyncType = (
             _ input: SimpleWorkflowModel.DescribeWorkflowExecutionInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, SimpleWorkflowError>) -> ()) throws -> ()
     typealias DescribeWorkflowTypeSyncType = (
             _ input: SimpleWorkflowModel.DescribeWorkflowTypeInput) throws -> SimpleWorkflowModel.WorkflowTypeDetail
     typealias DescribeWorkflowTypeAsyncType = (
             _ input: SimpleWorkflowModel.DescribeWorkflowTypeInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, SimpleWorkflowError>) -> ()) throws -> ()
     typealias GetWorkflowExecutionHistorySyncType = (
             _ input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput) throws -> SimpleWorkflowModel.History
     typealias GetWorkflowExecutionHistoryAsyncType = (
             _ input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.History, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.History, SimpleWorkflowError>) -> ()) throws -> ()
     typealias ListActivityTypesSyncType = (
             _ input: SimpleWorkflowModel.ListActivityTypesInput) throws -> SimpleWorkflowModel.ActivityTypeInfos
     typealias ListActivityTypesAsyncType = (
             _ input: SimpleWorkflowModel.ListActivityTypesInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, SimpleWorkflowError>) -> ()) throws -> ()
     typealias ListClosedWorkflowExecutionsSyncType = (
             _ input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos
     typealias ListClosedWorkflowExecutionsAsyncType = (
             _ input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws -> ()
     typealias ListDomainsSyncType = (
             _ input: SimpleWorkflowModel.ListDomainsInput) throws -> SimpleWorkflowModel.DomainInfos
     typealias ListDomainsAsyncType = (
             _ input: SimpleWorkflowModel.ListDomainsInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, SimpleWorkflowError>) -> ()) throws -> ()
     typealias ListOpenWorkflowExecutionsSyncType = (
             _ input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos
     typealias ListOpenWorkflowExecutionsAsyncType = (
             _ input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws -> ()
     typealias ListTagsForResourceSyncType = (
             _ input: SimpleWorkflowModel.ListTagsForResourceInput) throws -> SimpleWorkflowModel.ListTagsForResourceOutput
     typealias ListTagsForResourceAsyncType = (
             _ input: SimpleWorkflowModel.ListTagsForResourceInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, SimpleWorkflowError>) -> ()) throws -> ()
     typealias ListWorkflowTypesSyncType = (
             _ input: SimpleWorkflowModel.ListWorkflowTypesInput) throws -> SimpleWorkflowModel.WorkflowTypeInfos
     typealias ListWorkflowTypesAsyncType = (
             _ input: SimpleWorkflowModel.ListWorkflowTypesInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, SimpleWorkflowError>) -> ()) throws -> ()
     typealias PollForActivityTaskSyncType = (
             _ input: SimpleWorkflowModel.PollForActivityTaskInput) throws -> SimpleWorkflowModel.ActivityTask
     typealias PollForActivityTaskAsyncType = (
             _ input: SimpleWorkflowModel.PollForActivityTaskInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, SimpleWorkflowError>) -> ()) throws -> ()
     typealias PollForDecisionTaskSyncType = (
             _ input: SimpleWorkflowModel.PollForDecisionTaskInput) throws -> SimpleWorkflowModel.DecisionTask
     typealias PollForDecisionTaskAsyncType = (
             _ input: SimpleWorkflowModel.PollForDecisionTaskInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, SimpleWorkflowError>) -> ()) throws -> ()
     typealias RecordActivityTaskHeartbeatSyncType = (
             _ input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput) throws -> SimpleWorkflowModel.ActivityTaskStatus
     typealias RecordActivityTaskHeartbeatAsyncType = (
             _ input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, SimpleWorkflowError>) -> ()) throws -> ()
     typealias RegisterActivityTypeSyncType = (
             _ input: SimpleWorkflowModel.RegisterActivityTypeInput) throws -> ()
     typealias RegisterActivityTypeAsyncType = (
             _ input: SimpleWorkflowModel.RegisterActivityTypeInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RegisterDomainSyncType = (
             _ input: SimpleWorkflowModel.RegisterDomainInput) throws -> ()
     typealias RegisterDomainAsyncType = (
             _ input: SimpleWorkflowModel.RegisterDomainInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RegisterWorkflowTypeSyncType = (
             _ input: SimpleWorkflowModel.RegisterWorkflowTypeInput) throws -> ()
     typealias RegisterWorkflowTypeAsyncType = (
             _ input: SimpleWorkflowModel.RegisterWorkflowTypeInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RequestCancelWorkflowExecutionSyncType = (
             _ input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput) throws -> ()
     typealias RequestCancelWorkflowExecutionAsyncType = (
             _ input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RespondActivityTaskCanceledSyncType = (
             _ input: SimpleWorkflowModel.RespondActivityTaskCanceledInput) throws -> ()
     typealias RespondActivityTaskCanceledAsyncType = (
             _ input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RespondActivityTaskCompletedSyncType = (
             _ input: SimpleWorkflowModel.RespondActivityTaskCompletedInput) throws -> ()
     typealias RespondActivityTaskCompletedAsyncType = (
             _ input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RespondActivityTaskFailedSyncType = (
             _ input: SimpleWorkflowModel.RespondActivityTaskFailedInput) throws -> ()
     typealias RespondActivityTaskFailedAsyncType = (
             _ input: SimpleWorkflowModel.RespondActivityTaskFailedInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RespondDecisionTaskCompletedSyncType = (
             _ input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput) throws -> ()
     typealias RespondDecisionTaskCompletedAsyncType = (
             _ input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias SignalWorkflowExecutionSyncType = (
             _ input: SimpleWorkflowModel.SignalWorkflowExecutionInput) throws -> ()
     typealias SignalWorkflowExecutionAsyncType = (
             _ input: SimpleWorkflowModel.SignalWorkflowExecutionInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias StartWorkflowExecutionSyncType = (
             _ input: SimpleWorkflowModel.StartWorkflowExecutionInput) throws -> SimpleWorkflowModel.Run
     typealias StartWorkflowExecutionAsyncType = (
             _ input: SimpleWorkflowModel.StartWorkflowExecutionInput, 
-            _ completion: @escaping (Result<SimpleWorkflowModel.Run, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.Run, SimpleWorkflowError>) -> ()) throws -> ()
     typealias TagResourceSyncType = (
             _ input: SimpleWorkflowModel.TagResourceInput) throws -> ()
     typealias TagResourceAsyncType = (
             _ input: SimpleWorkflowModel.TagResourceInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias TerminateWorkflowExecutionSyncType = (
             _ input: SimpleWorkflowModel.TerminateWorkflowExecutionInput) throws -> ()
     typealias TerminateWorkflowExecutionAsyncType = (
             _ input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias UndeprecateActivityTypeSyncType = (
             _ input: SimpleWorkflowModel.UndeprecateActivityTypeInput) throws -> ()
     typealias UndeprecateActivityTypeAsyncType = (
             _ input: SimpleWorkflowModel.UndeprecateActivityTypeInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias UndeprecateDomainSyncType = (
             _ input: SimpleWorkflowModel.UndeprecateDomainInput) throws -> ()
     typealias UndeprecateDomainAsyncType = (
             _ input: SimpleWorkflowModel.UndeprecateDomainInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias UndeprecateWorkflowTypeSyncType = (
             _ input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput) throws -> ()
     typealias UndeprecateWorkflowTypeAsyncType = (
             _ input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias UntagResourceSyncType = (
             _ input: SimpleWorkflowModel.UntagResourceInput) throws -> ()
     typealias UntagResourceAsyncType = (
             _ input: SimpleWorkflowModel.UntagResourceInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
 
     /**
      Invokes the CountClosedWorkflowExecutions operation returning immediately and passing the response to a callback.
@@ -226,7 +226,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func countClosedWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the CountClosedWorkflowExecutions operation waiting for the response before returning.
@@ -252,7 +252,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func countOpenWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the CountOpenWorkflowExecutions operation waiting for the response before returning.
@@ -278,7 +278,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func countPendingActivityTasksAsync(
             input: SimpleWorkflowModel.CountPendingActivityTasksInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the CountPendingActivityTasks operation waiting for the response before returning.
@@ -304,7 +304,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func countPendingDecisionTasksAsync(
             input: SimpleWorkflowModel.CountPendingDecisionTasksInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the CountPendingDecisionTasks operation waiting for the response before returning.
@@ -329,7 +329,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func deprecateActivityTypeAsync(
             input: SimpleWorkflowModel.DeprecateActivityTypeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the DeprecateActivityType operation waiting for the response before returning.
@@ -352,7 +352,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func deprecateDomainAsync(
             input: SimpleWorkflowModel.DeprecateDomainInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the DeprecateDomain operation waiting for the response before returning.
@@ -375,7 +375,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func deprecateWorkflowTypeAsync(
             input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the DeprecateWorkflowType operation waiting for the response before returning.
@@ -399,7 +399,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func describeActivityTypeAsync(
             input: SimpleWorkflowModel.DescribeActivityTypeInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the DescribeActivityType operation waiting for the response before returning.
@@ -425,7 +425,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func describeDomainAsync(
             input: SimpleWorkflowModel.DescribeDomainInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the DescribeDomain operation waiting for the response before returning.
@@ -451,7 +451,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func describeWorkflowExecutionAsync(
             input: SimpleWorkflowModel.DescribeWorkflowExecutionInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the DescribeWorkflowExecution operation waiting for the response before returning.
@@ -477,7 +477,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func describeWorkflowTypeAsync(
             input: SimpleWorkflowModel.DescribeWorkflowTypeInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the DescribeWorkflowType operation waiting for the response before returning.
@@ -503,7 +503,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func getWorkflowExecutionHistoryAsync(
             input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.History, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.History, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the GetWorkflowExecutionHistory operation waiting for the response before returning.
@@ -529,7 +529,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func listActivityTypesAsync(
             input: SimpleWorkflowModel.ListActivityTypesInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the ListActivityTypes operation waiting for the response before returning.
@@ -555,7 +555,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func listClosedWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the ListClosedWorkflowExecutions operation waiting for the response before returning.
@@ -581,7 +581,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func listDomainsAsync(
             input: SimpleWorkflowModel.ListDomainsInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the ListDomains operation waiting for the response before returning.
@@ -607,7 +607,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func listOpenWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the ListOpenWorkflowExecutions operation waiting for the response before returning.
@@ -633,7 +633,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func listTagsForResourceAsync(
             input: SimpleWorkflowModel.ListTagsForResourceInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the ListTagsForResource operation waiting for the response before returning.
@@ -659,7 +659,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func listWorkflowTypesAsync(
             input: SimpleWorkflowModel.ListWorkflowTypesInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the ListWorkflowTypes operation waiting for the response before returning.
@@ -685,7 +685,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func pollForActivityTaskAsync(
             input: SimpleWorkflowModel.PollForActivityTaskInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the PollForActivityTask operation waiting for the response before returning.
@@ -711,7 +711,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func pollForDecisionTaskAsync(
             input: SimpleWorkflowModel.PollForDecisionTaskInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the PollForDecisionTask operation waiting for the response before returning.
@@ -737,7 +737,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func recordActivityTaskHeartbeatAsync(
             input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the RecordActivityTaskHeartbeat operation waiting for the response before returning.
@@ -762,7 +762,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func registerActivityTypeAsync(
             input: SimpleWorkflowModel.RegisterActivityTypeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RegisterActivityType operation waiting for the response before returning.
@@ -785,7 +785,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func registerDomainAsync(
             input: SimpleWorkflowModel.RegisterDomainInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RegisterDomain operation waiting for the response before returning.
@@ -808,7 +808,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func registerWorkflowTypeAsync(
             input: SimpleWorkflowModel.RegisterWorkflowTypeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RegisterWorkflowType operation waiting for the response before returning.
@@ -831,7 +831,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func requestCancelWorkflowExecutionAsync(
             input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RequestCancelWorkflowExecution operation waiting for the response before returning.
@@ -854,7 +854,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func respondActivityTaskCanceledAsync(
             input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RespondActivityTaskCanceled operation waiting for the response before returning.
@@ -877,7 +877,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func respondActivityTaskCompletedAsync(
             input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RespondActivityTaskCompleted operation waiting for the response before returning.
@@ -900,7 +900,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func respondActivityTaskFailedAsync(
             input: SimpleWorkflowModel.RespondActivityTaskFailedInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RespondActivityTaskFailed operation waiting for the response before returning.
@@ -923,7 +923,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func respondDecisionTaskCompletedAsync(
             input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RespondDecisionTaskCompleted operation waiting for the response before returning.
@@ -946,7 +946,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func signalWorkflowExecutionAsync(
             input: SimpleWorkflowModel.SignalWorkflowExecutionInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the SignalWorkflowExecution operation waiting for the response before returning.
@@ -970,7 +970,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func startWorkflowExecutionAsync(
             input: SimpleWorkflowModel.StartWorkflowExecutionInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.Run, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.Run, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the StartWorkflowExecution operation waiting for the response before returning.
@@ -995,7 +995,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func tagResourceAsync(
             input: SimpleWorkflowModel.TagResourceInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the TagResource operation waiting for the response before returning.
@@ -1018,7 +1018,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func terminateWorkflowExecutionAsync(
             input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the TerminateWorkflowExecution operation waiting for the response before returning.
@@ -1041,7 +1041,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func undeprecateActivityTypeAsync(
             input: SimpleWorkflowModel.UndeprecateActivityTypeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the UndeprecateActivityType operation waiting for the response before returning.
@@ -1064,7 +1064,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func undeprecateDomainAsync(
             input: SimpleWorkflowModel.UndeprecateDomainInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the UndeprecateDomain operation waiting for the response before returning.
@@ -1087,7 +1087,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func undeprecateWorkflowTypeAsync(
             input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the UndeprecateWorkflowType operation waiting for the response before returning.
@@ -1110,7 +1110,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func untagResourceAsync(
             input: SimpleWorkflowModel.UntagResourceInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the UntagResource operation waiting for the response before returning.

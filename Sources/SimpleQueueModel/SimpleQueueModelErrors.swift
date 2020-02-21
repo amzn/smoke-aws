@@ -22,6 +22,8 @@
 import Foundation
 import Logging
 
+public typealias SimpleQueueErrorResult<SuccessPayload> = Result<SuccessPayload, SimpleQueueError>
+
 private let batchEntryIdsNotDistinctIdentity = "AWS.SimpleQueueService.BatchEntryIdsNotDistinct"
 private let batchRequestTooLongIdentity = "AWS.SimpleQueueService.BatchRequestTooLong"
 private let emptyBatchRequestIdentity = "AWS.SimpleQueueService.EmptyBatchRequest"

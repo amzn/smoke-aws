@@ -157,7 +157,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func abortMultipartUploadAsync(
             input: S3Model.AbortMultipartUploadRequest, 
-            completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -170,11 +170,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = AbortMultipartUploadOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.AbortMultipartUploadOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -223,7 +238,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func completeMultipartUploadAsync(
             input: S3Model.CompleteMultipartUploadRequest, 
-            completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -236,11 +251,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CompleteMultipartUploadOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.CompleteMultipartUploadOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -289,7 +319,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func copyObjectAsync(
             input: S3Model.CopyObjectRequest, 
-            completion: @escaping (Result<S3Model.CopyObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.CopyObjectOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -302,11 +332,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CopyObjectOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.CopyObjectOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -356,7 +401,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func createBucketAsync(
             input: S3Model.CreateBucketRequest, 
-            completion: @escaping (Result<S3Model.CreateBucketOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.CreateBucketOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -369,11 +414,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateBucketOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.CreateBucketOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -422,7 +482,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func createMultipartUploadAsync(
             input: S3Model.CreateMultipartUploadRequest, 
-            completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -435,11 +495,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateMultipartUploadOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.CreateMultipartUploadOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?uploads",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -486,7 +561,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteBucketAsync(
             input: S3Model.DeleteBucketRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -499,11 +574,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -548,7 +637,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteBucketAnalyticsConfigurationAsync(
             input: S3Model.DeleteBucketAnalyticsConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -561,11 +650,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -610,7 +713,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteBucketCorsAsync(
             input: S3Model.DeleteBucketCorsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -623,11 +726,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketCorsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?cors",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -672,7 +789,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteBucketEncryptionAsync(
             input: S3Model.DeleteBucketEncryptionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -685,11 +802,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?encryption",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -734,7 +865,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteBucketInventoryConfigurationAsync(
             input: S3Model.DeleteBucketInventoryConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -747,11 +878,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -796,7 +941,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteBucketLifecycleAsync(
             input: S3Model.DeleteBucketLifecycleRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -809,11 +954,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -858,7 +1017,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteBucketMetricsConfigurationAsync(
             input: S3Model.DeleteBucketMetricsConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -871,11 +1030,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -920,7 +1093,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteBucketPolicyAsync(
             input: S3Model.DeleteBucketPolicyRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -933,11 +1106,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketPolicyOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?policy",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -982,7 +1169,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteBucketReplicationAsync(
             input: S3Model.DeleteBucketReplicationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -995,11 +1182,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketReplicationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?replication",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1044,7 +1245,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteBucketTaggingAsync(
             input: S3Model.DeleteBucketTaggingRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1057,11 +1258,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketTaggingOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?tagging",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1106,7 +1321,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteBucketWebsiteAsync(
             input: S3Model.DeleteBucketWebsiteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1119,11 +1334,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?website",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1169,7 +1398,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteObjectAsync(
             input: S3Model.DeleteObjectRequest, 
-            completion: @escaping (Result<S3Model.DeleteObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.DeleteObjectOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1182,11 +1411,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteObjectOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.DeleteObjectOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1234,7 +1478,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteObjectTaggingAsync(
             input: S3Model.DeleteObjectTaggingRequest, 
-            completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1247,11 +1491,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteObjectTaggingOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.DeleteObjectTaggingOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?tagging",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1299,7 +1558,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deleteObjectsAsync(
             input: S3Model.DeleteObjectsRequest, 
-            completion: @escaping (Result<S3Model.DeleteObjectsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.DeleteObjectsOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1312,11 +1571,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteObjectsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.DeleteObjectsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?delete",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1363,7 +1637,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func deletePublicAccessBlockAsync(
             input: S3Model.DeletePublicAccessBlockRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1376,11 +1650,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeletePublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?publicAccessBlock",
             httpMethod: .DELETE,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1426,7 +1714,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketAccelerateConfigurationAsync(
             input: S3Model.GetBucketAccelerateConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1439,11 +1727,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketAccelerateConfigurationOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?accelerate",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1491,7 +1794,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketAclAsync(
             input: S3Model.GetBucketAclRequest, 
-            completion: @escaping (Result<S3Model.GetBucketAclOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketAclOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1504,11 +1807,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketAclOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketAclOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?acl",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1556,7 +1874,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketAnalyticsConfigurationAsync(
             input: S3Model.GetBucketAnalyticsConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1569,11 +1887,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketAnalyticsConfigurationOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1621,7 +1954,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketCorsAsync(
             input: S3Model.GetBucketCorsRequest, 
-            completion: @escaping (Result<S3Model.GetBucketCorsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketCorsOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1634,11 +1967,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketCorsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketCorsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?cors",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1686,7 +2034,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketEncryptionAsync(
             input: S3Model.GetBucketEncryptionRequest, 
-            completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1699,11 +2047,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketEncryptionOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?encryption",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1751,7 +2114,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketInventoryConfigurationAsync(
             input: S3Model.GetBucketInventoryConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1764,11 +2127,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketInventoryConfigurationOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1816,7 +2194,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketLifecycleAsync(
             input: S3Model.GetBucketLifecycleRequest, 
-            completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1829,11 +2207,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketLifecycleOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1881,7 +2274,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketLifecycleConfigurationAsync(
             input: S3Model.GetBucketLifecycleConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1894,11 +2287,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketLifecycleConfigurationOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1946,7 +2354,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketLocationAsync(
             input: S3Model.GetBucketLocationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketLocationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketLocationOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1959,11 +2367,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLocationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketLocationOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?location",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2011,7 +2434,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketLoggingAsync(
             input: S3Model.GetBucketLoggingRequest, 
-            completion: @escaping (Result<S3Model.GetBucketLoggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketLoggingOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2024,11 +2447,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLoggingOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketLoggingOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?logging",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2076,7 +2514,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketMetricsConfigurationAsync(
             input: S3Model.GetBucketMetricsConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2089,11 +2527,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketMetricsConfigurationOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2141,7 +2594,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketNotificationAsync(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
-            completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2154,11 +2607,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketNotificationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.NotificationConfigurationDeprecated, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2206,7 +2674,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketNotificationConfigurationAsync(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
-            completion: @escaping (Result<S3Model.NotificationConfiguration, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.NotificationConfiguration, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2219,11 +2687,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.NotificationConfiguration, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2271,7 +2754,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketPolicyAsync(
             input: S3Model.GetBucketPolicyRequest, 
-            completion: @escaping (Result<S3Model.GetBucketPolicyOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketPolicyOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2284,11 +2767,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketPolicyOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketPolicyOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?policy",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2336,7 +2834,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketPolicyStatusAsync(
             input: S3Model.GetBucketPolicyStatusRequest, 
-            completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2349,11 +2847,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketPolicyStatusOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketPolicyStatusOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?policyStatus",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2401,7 +2914,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketReplicationAsync(
             input: S3Model.GetBucketReplicationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketReplicationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketReplicationOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2414,11 +2927,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketReplicationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketReplicationOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?replication",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2466,7 +2994,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketRequestPaymentAsync(
             input: S3Model.GetBucketRequestPaymentRequest, 
-            completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2479,11 +3007,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketRequestPaymentOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?requestPayment",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2531,7 +3074,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketTaggingAsync(
             input: S3Model.GetBucketTaggingRequest, 
-            completion: @escaping (Result<S3Model.GetBucketTaggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketTaggingOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2544,11 +3087,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketTaggingOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketTaggingOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?tagging",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2596,7 +3154,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketVersioningAsync(
             input: S3Model.GetBucketVersioningRequest, 
-            completion: @escaping (Result<S3Model.GetBucketVersioningOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketVersioningOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2609,11 +3167,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketVersioningOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketVersioningOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?versioning",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2661,7 +3234,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getBucketWebsiteAsync(
             input: S3Model.GetBucketWebsiteRequest, 
-            completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2674,11 +3247,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetBucketWebsiteOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?website",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2727,7 +3315,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getObjectAsync(
             input: S3Model.GetObjectRequest, 
-            completion: @escaping (Result<S3Model.GetObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2740,11 +3328,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetObjectOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try dataHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2794,7 +3397,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getObjectAclAsync(
             input: S3Model.GetObjectAclRequest, 
-            completion: @escaping (Result<S3Model.GetObjectAclOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectAclOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2807,11 +3410,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectAclOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetObjectAclOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?acl",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2860,7 +3478,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getObjectLegalHoldAsync(
             input: S3Model.GetObjectLegalHoldRequest, 
-            completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2873,11 +3491,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectLegalHoldOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetObjectLegalHoldOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?legal-hold",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2925,7 +3558,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getObjectLockConfigurationAsync(
             input: S3Model.GetObjectLockConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2938,11 +3571,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetObjectLockConfigurationOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?object-lock",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2990,7 +3638,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getObjectRetentionAsync(
             input: S3Model.GetObjectRetentionRequest, 
-            completion: @escaping (Result<S3Model.GetObjectRetentionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectRetentionOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3003,11 +3651,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectRetentionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetObjectRetentionOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?retention",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3055,7 +3718,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getObjectTaggingAsync(
             input: S3Model.GetObjectTaggingRequest, 
-            completion: @escaping (Result<S3Model.GetObjectTaggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectTaggingOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3068,11 +3731,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectTaggingOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetObjectTaggingOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?tagging",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3120,7 +3798,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getObjectTorrentAsync(
             input: S3Model.GetObjectTorrentRequest, 
-            completion: @escaping (Result<S3Model.GetObjectTorrentOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectTorrentOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3133,11 +3811,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectTorrentOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetObjectTorrentOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try dataHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?torrent",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3185,7 +3878,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func getPublicAccessBlockAsync(
             input: S3Model.GetPublicAccessBlockRequest, 
-            completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3198,11 +3891,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetPublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.GetPublicAccessBlockOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?publicAccessBlock",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3250,7 +3958,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func headBucketAsync(
             input: S3Model.HeadBucketRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3263,11 +3971,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = HeadBucketOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .HEAD,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3315,7 +4037,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func headObjectAsync(
             input: S3Model.HeadObjectRequest, 
-            completion: @escaping (Result<S3Model.HeadObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.HeadObjectOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3328,11 +4050,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = HeadObjectOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.HeadObjectOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .HEAD,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3381,7 +4118,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func listBucketAnalyticsConfigurationsAsync(
             input: S3Model.ListBucketAnalyticsConfigurationsRequest, 
-            completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3394,11 +4131,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListBucketAnalyticsConfigurationsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.ListBucketAnalyticsConfigurationsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3446,7 +4198,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func listBucketInventoryConfigurationsAsync(
             input: S3Model.ListBucketInventoryConfigurationsRequest, 
-            completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3459,11 +4211,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListBucketInventoryConfigurationsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.ListBucketInventoryConfigurationsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3511,7 +4278,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func listBucketMetricsConfigurationsAsync(
             input: S3Model.ListBucketMetricsConfigurationsRequest, 
-            completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3524,11 +4291,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListBucketMetricsConfigurationsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.ListBucketMetricsConfigurationsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3572,7 +4354,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
            object will be validated before being returned to caller.
      */
     public func listBucketsAsync(
-            completion: @escaping (Result<S3Model.ListBucketsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListBucketsOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3585,11 +4367,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = NoHTTPRequestInput()
 
+        func innerCompletion(result: Result<S3Model.ListBucketsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3633,7 +4430,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func listMultipartUploadsAsync(
             input: S3Model.ListMultipartUploadsRequest, 
-            completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3646,11 +4443,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListMultipartUploadsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.ListMultipartUploadsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?uploads",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3698,7 +4510,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func listObjectVersionsAsync(
             input: S3Model.ListObjectVersionsRequest, 
-            completion: @escaping (Result<S3Model.ListObjectVersionsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListObjectVersionsOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3711,11 +4523,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListObjectVersionsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.ListObjectVersionsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?versions",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3764,7 +4591,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func listObjectsAsync(
             input: S3Model.ListObjectsRequest, 
-            completion: @escaping (Result<S3Model.ListObjectsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListObjectsOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3777,11 +4604,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListObjectsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.ListObjectsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3831,7 +4673,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func listObjectsV2Async(
             input: S3Model.ListObjectsV2Request, 
-            completion: @escaping (Result<S3Model.ListObjectsV2Output, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListObjectsV2Output, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3844,11 +4686,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListObjectsV2OperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.ListObjectsV2Output, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?list-type=2",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3897,7 +4754,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func listPartsAsync(
             input: S3Model.ListPartsRequest, 
-            completion: @escaping (Result<S3Model.ListPartsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListPartsOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3910,11 +4767,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListPartsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.ListPartsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .GET,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3961,7 +4833,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketAccelerateConfigurationAsync(
             input: S3Model.PutBucketAccelerateConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3974,11 +4846,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?accelerate",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4023,7 +4909,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketAclAsync(
             input: S3Model.PutBucketAclRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4036,11 +4922,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketAclOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?acl",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4085,7 +4985,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketAnalyticsConfigurationAsync(
             input: S3Model.PutBucketAnalyticsConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4098,11 +4998,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?analytics",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4147,7 +5061,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketCorsAsync(
             input: S3Model.PutBucketCorsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4160,11 +5074,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketCorsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?cors",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4209,7 +5137,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketEncryptionAsync(
             input: S3Model.PutBucketEncryptionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4222,11 +5150,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?encryption",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4271,7 +5213,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketInventoryConfigurationAsync(
             input: S3Model.PutBucketInventoryConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4284,11 +5226,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?inventory",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4333,7 +5289,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketLifecycleAsync(
             input: S3Model.PutBucketLifecycleRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4346,11 +5302,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4395,7 +5365,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketLifecycleConfigurationAsync(
             input: S3Model.PutBucketLifecycleConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4408,11 +5378,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?lifecycle",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4457,7 +5441,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketLoggingAsync(
             input: S3Model.PutBucketLoggingRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4470,11 +5454,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketLoggingOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?logging",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4519,7 +5517,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketMetricsConfigurationAsync(
             input: S3Model.PutBucketMetricsConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4532,11 +5530,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?metrics",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4581,7 +5593,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketNotificationAsync(
             input: S3Model.PutBucketNotificationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4594,11 +5606,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketNotificationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4643,7 +5669,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketNotificationConfigurationAsync(
             input: S3Model.PutBucketNotificationConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4656,11 +5682,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?notification",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4705,7 +5745,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketPolicyAsync(
             input: S3Model.PutBucketPolicyRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4718,11 +5758,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketPolicyOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?policy",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4767,7 +5821,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketReplicationAsync(
             input: S3Model.PutBucketReplicationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4780,11 +5834,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketReplicationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?replication",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4829,7 +5897,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketRequestPaymentAsync(
             input: S3Model.PutBucketRequestPaymentRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4842,11 +5910,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?requestPayment",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4891,7 +5973,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketTaggingAsync(
             input: S3Model.PutBucketTaggingRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4904,11 +5986,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketTaggingOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?tagging",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4953,7 +6049,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketVersioningAsync(
             input: S3Model.PutBucketVersioningRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4966,11 +6062,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketVersioningOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?versioning",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5015,7 +6125,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putBucketWebsiteAsync(
             input: S3Model.PutBucketWebsiteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5028,11 +6138,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?website",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5078,7 +6202,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putObjectAsync(
             input: S3Model.PutObjectRequest, 
-            completion: @escaping (Result<S3Model.PutObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5091,11 +6215,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutObjectOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.PutObjectOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try dataHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5144,7 +6283,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putObjectAclAsync(
             input: S3Model.PutObjectAclRequest, 
-            completion: @escaping (Result<S3Model.PutObjectAclOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectAclOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5157,11 +6296,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutObjectAclOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.PutObjectAclOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?acl",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5210,7 +6364,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putObjectLegalHoldAsync(
             input: S3Model.PutObjectLegalHoldRequest, 
-            completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5223,11 +6377,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutObjectLegalHoldOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.PutObjectLegalHoldOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?legal-hold",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5275,7 +6444,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putObjectLockConfigurationAsync(
             input: S3Model.PutObjectLockConfigurationRequest, 
-            completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5288,11 +6457,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.PutObjectLockConfigurationOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}?object-lock",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5340,7 +6524,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putObjectRetentionAsync(
             input: S3Model.PutObjectRetentionRequest, 
-            completion: @escaping (Result<S3Model.PutObjectRetentionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectRetentionOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5353,11 +6537,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutObjectRetentionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.PutObjectRetentionOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?retention",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5405,7 +6604,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putObjectTaggingAsync(
             input: S3Model.PutObjectTaggingRequest, 
-            completion: @escaping (Result<S3Model.PutObjectTaggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectTaggingOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5418,11 +6617,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutObjectTaggingOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.PutObjectTaggingOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?tagging",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5469,7 +6683,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func putPublicAccessBlockAsync(
             input: S3Model.PutPublicAccessBlockRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5482,11 +6696,25 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutPublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? S3Error {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/{Bucket}?publicAccessBlock",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5533,7 +6761,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func restoreObjectAsync(
             input: S3Model.RestoreObjectRequest, 
-            completion: @escaping (Result<S3Model.RestoreObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.RestoreObjectOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5546,11 +6774,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RestoreObjectOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.RestoreObjectOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?restore",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5599,7 +6842,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func selectObjectContentAsync(
             input: S3Model.SelectObjectContentRequest, 
-            completion: @escaping (Result<S3Model.SelectObjectContentOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.SelectObjectContentOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5612,11 +6855,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = SelectObjectContentOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.SelectObjectContentOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}?select&select-type=2",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5664,7 +6922,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func uploadPartAsync(
             input: S3Model.UploadPartRequest, 
-            completion: @escaping (Result<S3Model.UploadPartOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.UploadPartOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5677,11 +6935,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UploadPartOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.UploadPartOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try dataHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5729,7 +7002,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
      */
     public func uploadPartCopyAsync(
             input: S3Model.UploadPartCopyRequest, 
-            completion: @escaping (Result<S3Model.UploadPartCopyOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.UploadPartCopyOutput, S3Error>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5742,11 +7015,26 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UploadPartCopyOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<S3Model.UploadPartCopyOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? S3Error {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/{Bucket}/{Key+}",
             httpMethod: .PUT,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)

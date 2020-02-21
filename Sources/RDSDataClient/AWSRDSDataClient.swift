@@ -145,7 +145,7 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
      */
     public func batchExecuteStatementAsync(
             input: RDSDataModel.BatchExecuteStatementRequest, 
-            completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, RDSDataError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -157,11 +157,26 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
                                                             handlerDelegate: handlerDelegate)
         let requestInput = BatchExecuteStatementOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<RDSDataModel.BatchExecuteStatementResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? RDSDataError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(RDSDataError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/BatchExecute",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -210,7 +225,7 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
      */
     public func beginTransactionAsync(
             input: RDSDataModel.BeginTransactionRequest, 
-            completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, RDSDataError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -222,11 +237,26 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
                                                             handlerDelegate: handlerDelegate)
         let requestInput = BeginTransactionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<RDSDataModel.BeginTransactionResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? RDSDataError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(RDSDataError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/BeginTransaction",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -275,7 +305,7 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
      */
     public func commitTransactionAsync(
             input: RDSDataModel.CommitTransactionRequest, 
-            completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, RDSDataError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -287,11 +317,26 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CommitTransactionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<RDSDataModel.CommitTransactionResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? RDSDataError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(RDSDataError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/CommitTransaction",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -340,7 +385,7 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
      */
     public func executeSqlAsync(
             input: RDSDataModel.ExecuteSqlRequest, 
-            completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, RDSDataError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -352,11 +397,26 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ExecuteSqlOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<RDSDataModel.ExecuteSqlResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? RDSDataError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(RDSDataError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/ExecuteSql",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -405,7 +465,7 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
      */
     public func executeStatementAsync(
             input: RDSDataModel.ExecuteStatementRequest, 
-            completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, RDSDataError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -417,11 +477,26 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ExecuteStatementOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<RDSDataModel.ExecuteStatementResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? RDSDataError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(RDSDataError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/Execute",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -470,7 +545,7 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
      */
     public func rollbackTransactionAsync(
             input: RDSDataModel.RollbackTransactionRequest, 
-            completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, RDSDataError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -482,11 +557,26 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RollbackTransactionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<RDSDataModel.RollbackTransactionResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? RDSDataError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(RDSDataError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/RollbackTransaction",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)

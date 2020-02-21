@@ -96,7 +96,7 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
      */
     public func assumeRoleAsync(
             input: SecurityTokenModel.AssumeRoleRequest, 
-            completion: @escaping (Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, SecurityTokenError>) -> ()) throws {
         if let assumeRoleAsyncOverride = assumeRoleAsyncOverride {
             return try assumeRoleAsyncOverride(input, completion)
         }
@@ -136,7 +136,7 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
      */
     public func assumeRoleWithSAMLAsync(
             input: SecurityTokenModel.AssumeRoleWithSAMLRequest, 
-            completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, SecurityTokenError>) -> ()) throws {
         if let assumeRoleWithSAMLAsyncOverride = assumeRoleWithSAMLAsyncOverride {
             return try assumeRoleWithSAMLAsyncOverride(input, completion)
         }
@@ -176,7 +176,7 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
      */
     public func assumeRoleWithWebIdentityAsync(
             input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest, 
-            completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, SecurityTokenError>) -> ()) throws {
         if let assumeRoleWithWebIdentityAsyncOverride = assumeRoleWithWebIdentityAsyncOverride {
             return try assumeRoleWithWebIdentityAsyncOverride(input, completion)
         }
@@ -216,7 +216,7 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
      */
     public func decodeAuthorizationMessageAsync(
             input: SecurityTokenModel.DecodeAuthorizationMessageRequest, 
-            completion: @escaping (Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, SecurityTokenError>) -> ()) throws {
         if let decodeAuthorizationMessageAsyncOverride = decodeAuthorizationMessageAsyncOverride {
             return try decodeAuthorizationMessageAsyncOverride(input, completion)
         }
@@ -255,7 +255,7 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
      */
     public func getAccessKeyInfoAsync(
             input: SecurityTokenModel.GetAccessKeyInfoRequest, 
-            completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, SecurityTokenError>) -> ()) throws {
         if let getAccessKeyInfoAsyncOverride = getAccessKeyInfoAsyncOverride {
             return try getAccessKeyInfoAsyncOverride(input, completion)
         }
@@ -293,7 +293,7 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
      */
     public func getCallerIdentityAsync(
             input: SecurityTokenModel.GetCallerIdentityRequest, 
-            completion: @escaping (Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, SecurityTokenError>) -> ()) throws {
         if let getCallerIdentityAsyncOverride = getCallerIdentityAsyncOverride {
             return try getCallerIdentityAsyncOverride(input, completion)
         }
@@ -332,7 +332,7 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
      */
     public func getFederationTokenAsync(
             input: SecurityTokenModel.GetFederationTokenRequest, 
-            completion: @escaping (Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, SecurityTokenError>) -> ()) throws {
         if let getFederationTokenAsyncOverride = getFederationTokenAsyncOverride {
             return try getFederationTokenAsyncOverride(input, completion)
         }
@@ -372,7 +372,7 @@ public struct MockSecurityTokenClient: SecurityTokenClientProtocol {
      */
     public func getSessionTokenAsync(
             input: SecurityTokenModel.GetSessionTokenRequest, 
-            completion: @escaping (Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, SecurityTokenError>) -> ()) throws {
         if let getSessionTokenAsyncOverride = getSessionTokenAsyncOverride {
             return try getSessionTokenAsyncOverride(input, completion)
         }

@@ -28,7 +28,7 @@ import SmokeHTTPClient
  Mock Client for the SimpleWorkflow service that by default always throws from its methods.
  */
 public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
-    let error: HTTPClientError
+    let error: SimpleWorkflowError
     let countClosedWorkflowExecutionsAsyncOverride: CountClosedWorkflowExecutionsAsyncType?
     let countClosedWorkflowExecutionsSyncOverride: CountClosedWorkflowExecutionsSyncType?
     let countOpenWorkflowExecutionsAsyncOverride: CountOpenWorkflowExecutionsAsyncType?
@@ -108,7 +108,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: HTTPClientError,
+    public init(error: SimpleWorkflowError,
             countClosedWorkflowExecutionsAsync: CountClosedWorkflowExecutionsAsyncType? = nil,
             countClosedWorkflowExecutionsSync: CountClosedWorkflowExecutionsSyncType? = nil,
             countOpenWorkflowExecutionsAsync: CountOpenWorkflowExecutionsAsyncType? = nil,
@@ -272,7 +272,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func countClosedWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws {
         if let countClosedWorkflowExecutionsAsyncOverride = countClosedWorkflowExecutionsAsyncOverride {
             return try countClosedWorkflowExecutionsAsyncOverride(input, completion)
         }
@@ -310,7 +310,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func countOpenWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws {
         if let countOpenWorkflowExecutionsAsyncOverride = countOpenWorkflowExecutionsAsyncOverride {
             return try countOpenWorkflowExecutionsAsyncOverride(input, completion)
         }
@@ -348,7 +348,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func countPendingActivityTasksAsync(
             input: SimpleWorkflowModel.CountPendingActivityTasksInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws {
         if let countPendingActivityTasksAsyncOverride = countPendingActivityTasksAsyncOverride {
             return try countPendingActivityTasksAsyncOverride(input, completion)
         }
@@ -386,7 +386,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func countPendingDecisionTasksAsync(
             input: SimpleWorkflowModel.CountPendingDecisionTasksInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws {
         if let countPendingDecisionTasksAsyncOverride = countPendingDecisionTasksAsyncOverride {
             return try countPendingDecisionTasksAsyncOverride(input, completion)
         }
@@ -423,7 +423,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func deprecateActivityTypeAsync(
             input: SimpleWorkflowModel.DeprecateActivityTypeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let deprecateActivityTypeAsyncOverride = deprecateActivityTypeAsyncOverride {
             return try deprecateActivityTypeAsyncOverride(input, completion)
         }
@@ -458,7 +458,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func deprecateDomainAsync(
             input: SimpleWorkflowModel.DeprecateDomainInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let deprecateDomainAsyncOverride = deprecateDomainAsyncOverride {
             return try deprecateDomainAsyncOverride(input, completion)
         }
@@ -493,7 +493,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func deprecateWorkflowTypeAsync(
             input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let deprecateWorkflowTypeAsyncOverride = deprecateWorkflowTypeAsyncOverride {
             return try deprecateWorkflowTypeAsyncOverride(input, completion)
         }
@@ -529,7 +529,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func describeActivityTypeAsync(
             input: SimpleWorkflowModel.DescribeActivityTypeInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, SimpleWorkflowError>) -> ()) throws {
         if let describeActivityTypeAsyncOverride = describeActivityTypeAsyncOverride {
             return try describeActivityTypeAsyncOverride(input, completion)
         }
@@ -567,7 +567,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func describeDomainAsync(
             input: SimpleWorkflowModel.DescribeDomainInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, SimpleWorkflowError>) -> ()) throws {
         if let describeDomainAsyncOverride = describeDomainAsyncOverride {
             return try describeDomainAsyncOverride(input, completion)
         }
@@ -605,7 +605,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func describeWorkflowExecutionAsync(
             input: SimpleWorkflowModel.DescribeWorkflowExecutionInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, SimpleWorkflowError>) -> ()) throws {
         if let describeWorkflowExecutionAsyncOverride = describeWorkflowExecutionAsyncOverride {
             return try describeWorkflowExecutionAsyncOverride(input, completion)
         }
@@ -643,7 +643,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func describeWorkflowTypeAsync(
             input: SimpleWorkflowModel.DescribeWorkflowTypeInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, SimpleWorkflowError>) -> ()) throws {
         if let describeWorkflowTypeAsyncOverride = describeWorkflowTypeAsyncOverride {
             return try describeWorkflowTypeAsyncOverride(input, completion)
         }
@@ -681,7 +681,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func getWorkflowExecutionHistoryAsync(
             input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.History, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.History, SimpleWorkflowError>) -> ()) throws {
         if let getWorkflowExecutionHistoryAsyncOverride = getWorkflowExecutionHistoryAsyncOverride {
             return try getWorkflowExecutionHistoryAsyncOverride(input, completion)
         }
@@ -719,7 +719,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func listActivityTypesAsync(
             input: SimpleWorkflowModel.ListActivityTypesInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, SimpleWorkflowError>) -> ()) throws {
         if let listActivityTypesAsyncOverride = listActivityTypesAsyncOverride {
             return try listActivityTypesAsyncOverride(input, completion)
         }
@@ -757,7 +757,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func listClosedWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws {
         if let listClosedWorkflowExecutionsAsyncOverride = listClosedWorkflowExecutionsAsyncOverride {
             return try listClosedWorkflowExecutionsAsyncOverride(input, completion)
         }
@@ -795,7 +795,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func listDomainsAsync(
             input: SimpleWorkflowModel.ListDomainsInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, SimpleWorkflowError>) -> ()) throws {
         if let listDomainsAsyncOverride = listDomainsAsyncOverride {
             return try listDomainsAsyncOverride(input, completion)
         }
@@ -833,7 +833,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func listOpenWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws {
         if let listOpenWorkflowExecutionsAsyncOverride = listOpenWorkflowExecutionsAsyncOverride {
             return try listOpenWorkflowExecutionsAsyncOverride(input, completion)
         }
@@ -871,7 +871,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func listTagsForResourceAsync(
             input: SimpleWorkflowModel.ListTagsForResourceInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, SimpleWorkflowError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
             return try listTagsForResourceAsyncOverride(input, completion)
         }
@@ -909,7 +909,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func listWorkflowTypesAsync(
             input: SimpleWorkflowModel.ListWorkflowTypesInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, SimpleWorkflowError>) -> ()) throws {
         if let listWorkflowTypesAsyncOverride = listWorkflowTypesAsyncOverride {
             return try listWorkflowTypesAsyncOverride(input, completion)
         }
@@ -947,7 +947,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func pollForActivityTaskAsync(
             input: SimpleWorkflowModel.PollForActivityTaskInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, SimpleWorkflowError>) -> ()) throws {
         if let pollForActivityTaskAsyncOverride = pollForActivityTaskAsyncOverride {
             return try pollForActivityTaskAsyncOverride(input, completion)
         }
@@ -985,7 +985,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func pollForDecisionTaskAsync(
             input: SimpleWorkflowModel.PollForDecisionTaskInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, SimpleWorkflowError>) -> ()) throws {
         if let pollForDecisionTaskAsyncOverride = pollForDecisionTaskAsyncOverride {
             return try pollForDecisionTaskAsyncOverride(input, completion)
         }
@@ -1023,7 +1023,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func recordActivityTaskHeartbeatAsync(
             input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, SimpleWorkflowError>) -> ()) throws {
         if let recordActivityTaskHeartbeatAsyncOverride = recordActivityTaskHeartbeatAsyncOverride {
             return try recordActivityTaskHeartbeatAsyncOverride(input, completion)
         }
@@ -1060,7 +1060,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func registerActivityTypeAsync(
             input: SimpleWorkflowModel.RegisterActivityTypeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let registerActivityTypeAsyncOverride = registerActivityTypeAsyncOverride {
             return try registerActivityTypeAsyncOverride(input, completion)
         }
@@ -1095,7 +1095,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func registerDomainAsync(
             input: SimpleWorkflowModel.RegisterDomainInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let registerDomainAsyncOverride = registerDomainAsyncOverride {
             return try registerDomainAsyncOverride(input, completion)
         }
@@ -1130,7 +1130,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func registerWorkflowTypeAsync(
             input: SimpleWorkflowModel.RegisterWorkflowTypeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let registerWorkflowTypeAsyncOverride = registerWorkflowTypeAsyncOverride {
             return try registerWorkflowTypeAsyncOverride(input, completion)
         }
@@ -1165,7 +1165,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func requestCancelWorkflowExecutionAsync(
             input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let requestCancelWorkflowExecutionAsyncOverride = requestCancelWorkflowExecutionAsyncOverride {
             return try requestCancelWorkflowExecutionAsyncOverride(input, completion)
         }
@@ -1200,7 +1200,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func respondActivityTaskCanceledAsync(
             input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let respondActivityTaskCanceledAsyncOverride = respondActivityTaskCanceledAsyncOverride {
             return try respondActivityTaskCanceledAsyncOverride(input, completion)
         }
@@ -1235,7 +1235,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func respondActivityTaskCompletedAsync(
             input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let respondActivityTaskCompletedAsyncOverride = respondActivityTaskCompletedAsyncOverride {
             return try respondActivityTaskCompletedAsyncOverride(input, completion)
         }
@@ -1270,7 +1270,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func respondActivityTaskFailedAsync(
             input: SimpleWorkflowModel.RespondActivityTaskFailedInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let respondActivityTaskFailedAsyncOverride = respondActivityTaskFailedAsyncOverride {
             return try respondActivityTaskFailedAsyncOverride(input, completion)
         }
@@ -1305,7 +1305,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func respondDecisionTaskCompletedAsync(
             input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let respondDecisionTaskCompletedAsyncOverride = respondDecisionTaskCompletedAsyncOverride {
             return try respondDecisionTaskCompletedAsyncOverride(input, completion)
         }
@@ -1340,7 +1340,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func signalWorkflowExecutionAsync(
             input: SimpleWorkflowModel.SignalWorkflowExecutionInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let signalWorkflowExecutionAsyncOverride = signalWorkflowExecutionAsyncOverride {
             return try signalWorkflowExecutionAsyncOverride(input, completion)
         }
@@ -1376,7 +1376,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func startWorkflowExecutionAsync(
             input: SimpleWorkflowModel.StartWorkflowExecutionInput, 
-            completion: @escaping (Result<SimpleWorkflowModel.Run, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.Run, SimpleWorkflowError>) -> ()) throws {
         if let startWorkflowExecutionAsyncOverride = startWorkflowExecutionAsyncOverride {
             return try startWorkflowExecutionAsyncOverride(input, completion)
         }
@@ -1413,7 +1413,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func tagResourceAsync(
             input: SimpleWorkflowModel.TagResourceInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
             return try tagResourceAsyncOverride(input, completion)
         }
@@ -1448,7 +1448,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func terminateWorkflowExecutionAsync(
             input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let terminateWorkflowExecutionAsyncOverride = terminateWorkflowExecutionAsyncOverride {
             return try terminateWorkflowExecutionAsyncOverride(input, completion)
         }
@@ -1483,7 +1483,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func undeprecateActivityTypeAsync(
             input: SimpleWorkflowModel.UndeprecateActivityTypeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let undeprecateActivityTypeAsyncOverride = undeprecateActivityTypeAsyncOverride {
             return try undeprecateActivityTypeAsyncOverride(input, completion)
         }
@@ -1518,7 +1518,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func undeprecateDomainAsync(
             input: SimpleWorkflowModel.UndeprecateDomainInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let undeprecateDomainAsyncOverride = undeprecateDomainAsyncOverride {
             return try undeprecateDomainAsyncOverride(input, completion)
         }
@@ -1553,7 +1553,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func undeprecateWorkflowTypeAsync(
             input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let undeprecateWorkflowTypeAsyncOverride = undeprecateWorkflowTypeAsyncOverride {
             return try undeprecateWorkflowTypeAsyncOverride(input, completion)
         }
@@ -1588,7 +1588,7 @@ public struct ThrowingSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func untagResourceAsync(
             input: SimpleWorkflowModel.UntagResourceInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
             return try untagResourceAsyncOverride(input, completion)
         }

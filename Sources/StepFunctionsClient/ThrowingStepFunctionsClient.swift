@@ -28,7 +28,7 @@ import SmokeHTTPClient
  Mock Client for the StepFunctions service that by default always throws from its methods.
  */
 public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
-    let error: HTTPClientError
+    let error: StepFunctionsError
     let createActivityAsyncOverride: CreateActivityAsyncType?
     let createActivitySyncOverride: CreateActivitySyncType?
     let createStateMachineAsyncOverride: CreateStateMachineAsyncType?
@@ -78,7 +78,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: HTTPClientError,
+    public init(error: StepFunctionsError,
             createActivityAsync: CreateActivityAsyncType? = nil,
             createActivitySync: CreateActivitySyncType? = nil,
             createStateMachineAsync: CreateStateMachineAsyncType? = nil,
@@ -182,7 +182,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func createActivityAsync(
             input: StepFunctionsModel.CreateActivityInput, 
-            completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, StepFunctionsError>) -> ()) throws {
         if let createActivityAsyncOverride = createActivityAsyncOverride {
             return try createActivityAsyncOverride(input, completion)
         }
@@ -220,7 +220,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func createStateMachineAsync(
             input: StepFunctionsModel.CreateStateMachineInput, 
-            completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, StepFunctionsError>) -> ()) throws {
         if let createStateMachineAsyncOverride = createStateMachineAsyncOverride {
             return try createStateMachineAsyncOverride(input, completion)
         }
@@ -258,7 +258,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func deleteActivityAsync(
             input: StepFunctionsModel.DeleteActivityInput, 
-            completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, StepFunctionsError>) -> ()) throws {
         if let deleteActivityAsyncOverride = deleteActivityAsyncOverride {
             return try deleteActivityAsyncOverride(input, completion)
         }
@@ -296,7 +296,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func deleteStateMachineAsync(
             input: StepFunctionsModel.DeleteStateMachineInput, 
-            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, StepFunctionsError>) -> ()) throws {
         if let deleteStateMachineAsyncOverride = deleteStateMachineAsyncOverride {
             return try deleteStateMachineAsyncOverride(input, completion)
         }
@@ -334,7 +334,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func describeActivityAsync(
             input: StepFunctionsModel.DescribeActivityInput, 
-            completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, StepFunctionsError>) -> ()) throws {
         if let describeActivityAsyncOverride = describeActivityAsyncOverride {
             return try describeActivityAsyncOverride(input, completion)
         }
@@ -372,7 +372,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func describeExecutionAsync(
             input: StepFunctionsModel.DescribeExecutionInput, 
-            completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, StepFunctionsError>) -> ()) throws {
         if let describeExecutionAsyncOverride = describeExecutionAsyncOverride {
             return try describeExecutionAsyncOverride(input, completion)
         }
@@ -410,7 +410,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func describeStateMachineAsync(
             input: StepFunctionsModel.DescribeStateMachineInput, 
-            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, StepFunctionsError>) -> ()) throws {
         if let describeStateMachineAsyncOverride = describeStateMachineAsyncOverride {
             return try describeStateMachineAsyncOverride(input, completion)
         }
@@ -448,7 +448,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func describeStateMachineForExecutionAsync(
             input: StepFunctionsModel.DescribeStateMachineForExecutionInput, 
-            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, StepFunctionsError>) -> ()) throws {
         if let describeStateMachineForExecutionAsyncOverride = describeStateMachineForExecutionAsyncOverride {
             return try describeStateMachineForExecutionAsyncOverride(input, completion)
         }
@@ -486,7 +486,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func getActivityTaskAsync(
             input: StepFunctionsModel.GetActivityTaskInput, 
-            completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, StepFunctionsError>) -> ()) throws {
         if let getActivityTaskAsyncOverride = getActivityTaskAsyncOverride {
             return try getActivityTaskAsyncOverride(input, completion)
         }
@@ -524,7 +524,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func getExecutionHistoryAsync(
             input: StepFunctionsModel.GetExecutionHistoryInput, 
-            completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, StepFunctionsError>) -> ()) throws {
         if let getExecutionHistoryAsyncOverride = getExecutionHistoryAsyncOverride {
             return try getExecutionHistoryAsyncOverride(input, completion)
         }
@@ -562,7 +562,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func listActivitiesAsync(
             input: StepFunctionsModel.ListActivitiesInput, 
-            completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, StepFunctionsError>) -> ()) throws {
         if let listActivitiesAsyncOverride = listActivitiesAsyncOverride {
             return try listActivitiesAsyncOverride(input, completion)
         }
@@ -600,7 +600,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func listExecutionsAsync(
             input: StepFunctionsModel.ListExecutionsInput, 
-            completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, StepFunctionsError>) -> ()) throws {
         if let listExecutionsAsyncOverride = listExecutionsAsyncOverride {
             return try listExecutionsAsyncOverride(input, completion)
         }
@@ -638,7 +638,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func listStateMachinesAsync(
             input: StepFunctionsModel.ListStateMachinesInput, 
-            completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, StepFunctionsError>) -> ()) throws {
         if let listStateMachinesAsyncOverride = listStateMachinesAsyncOverride {
             return try listStateMachinesAsyncOverride(input, completion)
         }
@@ -676,7 +676,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func listTagsForResourceAsync(
             input: StepFunctionsModel.ListTagsForResourceInput, 
-            completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, StepFunctionsError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
             return try listTagsForResourceAsyncOverride(input, completion)
         }
@@ -714,7 +714,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func sendTaskFailureAsync(
             input: StepFunctionsModel.SendTaskFailureInput, 
-            completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, StepFunctionsError>) -> ()) throws {
         if let sendTaskFailureAsyncOverride = sendTaskFailureAsyncOverride {
             return try sendTaskFailureAsyncOverride(input, completion)
         }
@@ -752,7 +752,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func sendTaskHeartbeatAsync(
             input: StepFunctionsModel.SendTaskHeartbeatInput, 
-            completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, StepFunctionsError>) -> ()) throws {
         if let sendTaskHeartbeatAsyncOverride = sendTaskHeartbeatAsyncOverride {
             return try sendTaskHeartbeatAsyncOverride(input, completion)
         }
@@ -790,7 +790,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func sendTaskSuccessAsync(
             input: StepFunctionsModel.SendTaskSuccessInput, 
-            completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, StepFunctionsError>) -> ()) throws {
         if let sendTaskSuccessAsyncOverride = sendTaskSuccessAsyncOverride {
             return try sendTaskSuccessAsyncOverride(input, completion)
         }
@@ -828,7 +828,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func startExecutionAsync(
             input: StepFunctionsModel.StartExecutionInput, 
-            completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, StepFunctionsError>) -> ()) throws {
         if let startExecutionAsyncOverride = startExecutionAsyncOverride {
             return try startExecutionAsyncOverride(input, completion)
         }
@@ -866,7 +866,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func stopExecutionAsync(
             input: StepFunctionsModel.StopExecutionInput, 
-            completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, StepFunctionsError>) -> ()) throws {
         if let stopExecutionAsyncOverride = stopExecutionAsyncOverride {
             return try stopExecutionAsyncOverride(input, completion)
         }
@@ -904,7 +904,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func tagResourceAsync(
             input: StepFunctionsModel.TagResourceInput, 
-            completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, StepFunctionsError>) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
             return try tagResourceAsyncOverride(input, completion)
         }
@@ -942,7 +942,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func untagResourceAsync(
             input: StepFunctionsModel.UntagResourceInput, 
-            completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, StepFunctionsError>) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
             return try untagResourceAsyncOverride(input, completion)
         }
@@ -980,7 +980,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func updateStateMachineAsync(
             input: StepFunctionsModel.UpdateStateMachineInput, 
-            completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, StepFunctionsError>) -> ()) throws {
         if let updateStateMachineAsyncOverride = updateStateMachineAsyncOverride {
             return try updateStateMachineAsyncOverride(input, completion)
         }

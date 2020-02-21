@@ -149,7 +149,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func acceptReservedInstancesExchangeQuoteAsync(
             input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -165,11 +165,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.acceptReservedInstancesExchangeQuote.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -220,7 +235,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func acceptTransitGatewayPeeringAttachmentAsync(
             input: ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -236,11 +251,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.acceptTransitGatewayPeeringAttachment.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -291,7 +321,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func acceptTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -307,11 +337,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.acceptTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -362,7 +407,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func acceptVpcEndpointConnectionsAsync(
             input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -378,11 +423,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.acceptVpcEndpointConnections.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -433,7 +493,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func acceptVpcPeeringConnectionAsync(
             input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -449,11 +509,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.acceptVpcPeeringConnection.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -504,7 +579,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func advertiseByoipCidrAsync(
             input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AdvertiseByoipCidrResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AdvertiseByoipCidrResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -520,11 +595,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.advertiseByoipCidr.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AdvertiseByoipCidrResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -575,7 +665,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func allocateAddressAsync(
             input: ElasticComputeCloudModel.AllocateAddressRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AllocateAddressResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AllocateAddressResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -591,11 +681,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.allocateAddress.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AllocateAddressResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -646,7 +751,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func allocateHostsAsync(
             input: ElasticComputeCloudModel.AllocateHostsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AllocateHostsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AllocateHostsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -662,11 +767,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.allocateHosts.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AllocateHostsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -717,7 +837,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func applySecurityGroupsToClientVpnTargetNetworkAsync(
             input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -733,11 +853,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.applySecurityGroupsToClientVpnTargetNetwork.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -788,7 +923,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func assignIpv6AddressesAsync(
             input: ElasticComputeCloudModel.AssignIpv6AddressesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssignIpv6AddressesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssignIpv6AddressesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -804,11 +939,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.assignIpv6Addresses.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssignIpv6AddressesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -859,7 +1009,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func assignPrivateIpAddressesAsync(
             input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssignPrivateIpAddressesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssignPrivateIpAddressesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -875,11 +1025,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.assignPrivateIpAddresses.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssignPrivateIpAddressesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -930,7 +1095,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func associateAddressAsync(
             input: ElasticComputeCloudModel.AssociateAddressRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateAddressResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateAddressResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -946,11 +1111,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.associateAddress.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateAddressResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1001,7 +1181,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func associateClientVpnTargetNetworkAsync(
             input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1017,11 +1197,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.associateClientVpnTargetNetwork.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1071,7 +1266,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func associateDhcpOptionsAsync(
             input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1087,11 +1282,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.associateDhcpOptions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1140,7 +1349,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func associateIamInstanceProfileAsync(
             input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateIamInstanceProfileResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateIamInstanceProfileResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1156,11 +1365,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.associateIamInstanceProfile.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateIamInstanceProfileResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1211,7 +1435,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func associateRouteTableAsync(
             input: ElasticComputeCloudModel.AssociateRouteTableRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateRouteTableResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1227,11 +1451,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.associateRouteTable.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateRouteTableResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1282,7 +1521,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func associateSubnetCidrBlockAsync(
             input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateSubnetCidrBlockResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateSubnetCidrBlockResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1298,11 +1537,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.associateSubnetCidrBlock.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateSubnetCidrBlockResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1353,7 +1607,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func associateTransitGatewayMulticastDomainAsync(
             input: ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1369,11 +1623,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.associateTransitGatewayMulticastDomain.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1424,7 +1693,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func associateTransitGatewayRouteTableAsync(
             input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1440,11 +1709,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.associateTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1495,7 +1779,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func associateVpcCidrBlockAsync(
             input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateVpcCidrBlockResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateVpcCidrBlockResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1511,11 +1795,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.associateVpcCidrBlock.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateVpcCidrBlockResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1566,7 +1865,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func attachClassicLinkVpcAsync(
             input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AttachClassicLinkVpcResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AttachClassicLinkVpcResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1582,11 +1881,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.attachClassicLinkVpc.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AttachClassicLinkVpcResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1636,7 +1950,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func attachInternetGatewayAsync(
             input: ElasticComputeCloudModel.AttachInternetGatewayRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1652,11 +1966,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.attachInternetGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1705,7 +2033,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func attachNetworkInterfaceAsync(
             input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AttachNetworkInterfaceResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AttachNetworkInterfaceResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1721,11 +2049,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.attachNetworkInterface.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AttachNetworkInterfaceResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1776,7 +2119,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func attachVolumeAsync(
             input: ElasticComputeCloudModel.AttachVolumeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1792,11 +2135,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.attachVolume.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.VolumeAttachment, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1847,7 +2205,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func attachVpnGatewayAsync(
             input: ElasticComputeCloudModel.AttachVpnGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AttachVpnGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AttachVpnGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1863,11 +2221,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.attachVpnGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AttachVpnGatewayResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1918,7 +2291,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func authorizeClientVpnIngressAsync(
             input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1934,11 +2307,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.authorizeClientVpnIngress.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1988,7 +2376,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func authorizeSecurityGroupEgressAsync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2004,11 +2392,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.authorizeSecurityGroupEgress.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2056,7 +2458,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func authorizeSecurityGroupIngressAsync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2072,11 +2474,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.authorizeSecurityGroupIngress.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2125,7 +2541,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func bundleInstanceAsync(
             input: ElasticComputeCloudModel.BundleInstanceRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.BundleInstanceResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.BundleInstanceResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2141,11 +2557,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.bundleInstance.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.BundleInstanceResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2196,7 +2627,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func cancelBundleTaskAsync(
             input: ElasticComputeCloudModel.CancelBundleTaskRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CancelBundleTaskResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelBundleTaskResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2212,11 +2643,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.cancelBundleTask.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelBundleTaskResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2267,7 +2713,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func cancelCapacityReservationAsync(
             input: ElasticComputeCloudModel.CancelCapacityReservationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CancelCapacityReservationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2283,11 +2729,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.cancelCapacityReservation.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelCapacityReservationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2337,7 +2798,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func cancelConversionTaskAsync(
             input: ElasticComputeCloudModel.CancelConversionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2353,11 +2814,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.cancelConversionTask.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2405,7 +2880,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func cancelExportTaskAsync(
             input: ElasticComputeCloudModel.CancelExportTaskRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2421,11 +2896,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.cancelExportTask.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2474,7 +2963,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func cancelImportTaskAsync(
             input: ElasticComputeCloudModel.CancelImportTaskRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CancelImportTaskResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelImportTaskResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2490,11 +2979,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.cancelImportTask.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelImportTaskResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2545,7 +3049,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func cancelReservedInstancesListingAsync(
             input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CancelReservedInstancesListingResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelReservedInstancesListingResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2561,11 +3065,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.cancelReservedInstancesListing.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelReservedInstancesListingResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2616,7 +3135,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func cancelSpotFleetRequestsAsync(
             input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotFleetRequestsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotFleetRequestsResponse, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2632,11 +3151,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.cancelSpotFleetRequests.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelSpotFleetRequestsResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2687,7 +3221,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func cancelSpotInstanceRequestsAsync(
             input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotInstanceRequestsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotInstanceRequestsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2703,11 +3237,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.cancelSpotInstanceRequests.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelSpotInstanceRequestsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2758,7 +3307,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func confirmProductInstanceAsync(
             input: ElasticComputeCloudModel.ConfirmProductInstanceRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ConfirmProductInstanceResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ConfirmProductInstanceResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2774,11 +3323,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.confirmProductInstance.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ConfirmProductInstanceResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2829,7 +3393,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func copyFpgaImageAsync(
             input: ElasticComputeCloudModel.CopyFpgaImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CopyFpgaImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CopyFpgaImageResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2845,11 +3409,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.copyFpgaImage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CopyFpgaImageResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2900,7 +3479,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func copyImageAsync(
             input: ElasticComputeCloudModel.CopyImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CopyImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CopyImageResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2916,11 +3495,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.copyImage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CopyImageResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2971,7 +3565,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func copySnapshotAsync(
             input: ElasticComputeCloudModel.CopySnapshotRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CopySnapshotResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CopySnapshotResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2987,11 +3581,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.copySnapshot.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CopySnapshotResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3042,7 +3651,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createCapacityReservationAsync(
             input: ElasticComputeCloudModel.CreateCapacityReservationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateCapacityReservationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3058,11 +3667,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createCapacityReservation.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateCapacityReservationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3113,7 +3737,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createClientVpnEndpointAsync(
             input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnEndpointResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnEndpointResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3129,11 +3753,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createClientVpnEndpoint.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateClientVpnEndpointResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3184,7 +3823,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createClientVpnRouteAsync(
             input: ElasticComputeCloudModel.CreateClientVpnRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnRouteResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3200,11 +3839,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createClientVpnRoute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateClientVpnRouteResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3255,7 +3909,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createCustomerGatewayAsync(
             input: ElasticComputeCloudModel.CreateCustomerGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateCustomerGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateCustomerGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3271,11 +3925,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createCustomerGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateCustomerGatewayResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3326,7 +3995,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createDefaultSubnetAsync(
             input: ElasticComputeCloudModel.CreateDefaultSubnetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultSubnetResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultSubnetResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3342,11 +4011,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createDefaultSubnet.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateDefaultSubnetResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3397,7 +4081,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createDefaultVpcAsync(
             input: ElasticComputeCloudModel.CreateDefaultVpcRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultVpcResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultVpcResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3413,11 +4097,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createDefaultVpc.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateDefaultVpcResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3468,7 +4167,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createDhcpOptionsAsync(
             input: ElasticComputeCloudModel.CreateDhcpOptionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateDhcpOptionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateDhcpOptionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3484,11 +4183,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createDhcpOptions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateDhcpOptionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3539,7 +4253,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createEgressOnlyInternetGatewayAsync(
             input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3555,11 +4269,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createEgressOnlyInternetGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3610,7 +4339,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createFleetAsync(
             input: ElasticComputeCloudModel.CreateFleetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateFleetResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateFleetResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3626,11 +4355,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createFleet.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateFleetResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3681,7 +4425,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createFlowLogsAsync(
             input: ElasticComputeCloudModel.CreateFlowLogsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateFlowLogsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateFlowLogsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3697,11 +4441,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createFlowLogs.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateFlowLogsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3752,7 +4511,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createFpgaImageAsync(
             input: ElasticComputeCloudModel.CreateFpgaImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateFpgaImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateFpgaImageResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3768,11 +4527,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createFpgaImage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateFpgaImageResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3823,7 +4597,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createImageAsync(
             input: ElasticComputeCloudModel.CreateImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateImageResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3839,11 +4613,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createImage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateImageResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3894,7 +4683,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createInstanceExportTaskAsync(
             input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceExportTaskResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceExportTaskResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3910,11 +4699,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createInstanceExportTask.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateInstanceExportTaskResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3965,7 +4769,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createInternetGatewayAsync(
             input: ElasticComputeCloudModel.CreateInternetGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateInternetGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateInternetGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3981,11 +4785,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createInternetGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateInternetGatewayResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4036,7 +4855,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createKeyPairAsync(
             input: ElasticComputeCloudModel.CreateKeyPairRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.KeyPair, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.KeyPair, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4052,11 +4871,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createKeyPair.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.KeyPair, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4107,7 +4941,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createLaunchTemplateAsync(
             input: ElasticComputeCloudModel.CreateLaunchTemplateRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4123,11 +4957,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createLaunchTemplate.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateLaunchTemplateResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4178,7 +5027,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createLaunchTemplateVersionAsync(
             input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateVersionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateVersionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4194,11 +5043,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createLaunchTemplateVersion.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateLaunchTemplateVersionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4249,7 +5113,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createLocalGatewayRouteAsync(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4265,11 +5129,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createLocalGatewayRoute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateLocalGatewayRouteResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4320,7 +5199,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createLocalGatewayRouteTableVpcAssociationAsync(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4336,11 +5215,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createLocalGatewayRouteTableVpcAssociation.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4391,7 +5285,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createNatGatewayAsync(
             input: ElasticComputeCloudModel.CreateNatGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateNatGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNatGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4407,11 +5301,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createNatGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateNatGatewayResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4462,7 +5371,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createNetworkAclAsync(
             input: ElasticComputeCloudModel.CreateNetworkAclRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkAclResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkAclResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4478,11 +5387,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createNetworkAcl.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateNetworkAclResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4532,7 +5456,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createNetworkAclEntryAsync(
             input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4548,11 +5472,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createNetworkAclEntry.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4601,7 +5539,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createNetworkInterfaceAsync(
             input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfaceResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfaceResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4617,11 +5555,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createNetworkInterface.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateNetworkInterfaceResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4672,7 +5625,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createNetworkInterfacePermissionAsync(
             input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4688,11 +5641,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createNetworkInterfacePermission.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4742,7 +5710,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createPlacementGroupAsync(
             input: ElasticComputeCloudModel.CreatePlacementGroupRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4758,11 +5726,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createPlacementGroup.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4811,7 +5793,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createReservedInstancesListingAsync(
             input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateReservedInstancesListingResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateReservedInstancesListingResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4827,11 +5809,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createReservedInstancesListing.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateReservedInstancesListingResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4882,7 +5879,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createRouteAsync(
             input: ElasticComputeCloudModel.CreateRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4898,11 +5895,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createRoute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateRouteResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4953,7 +5965,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createRouteTableAsync(
             input: ElasticComputeCloudModel.CreateRouteTableRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteTableResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -4969,11 +5981,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createRouteTable.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateRouteTableResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5024,7 +6051,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createSecurityGroupAsync(
             input: ElasticComputeCloudModel.CreateSecurityGroupRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateSecurityGroupResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSecurityGroupResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5040,11 +6067,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createSecurityGroup.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateSecurityGroupResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5095,7 +6137,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createSnapshotAsync(
             input: ElasticComputeCloudModel.CreateSnapshotRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.Snapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.Snapshot, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5111,11 +6153,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createSnapshot.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.Snapshot, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5166,7 +6223,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createSnapshotsAsync(
             input: ElasticComputeCloudModel.CreateSnapshotsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateSnapshotsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSnapshotsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5182,11 +6239,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createSnapshots.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateSnapshotsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5237,7 +6309,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createSpotDatafeedSubscriptionAsync(
             input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5253,11 +6325,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createSpotDatafeedSubscription.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5308,7 +6395,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createSubnetAsync(
             input: ElasticComputeCloudModel.CreateSubnetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateSubnetResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSubnetResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5324,11 +6411,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createSubnet.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateSubnetResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5378,7 +6480,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createTagsAsync(
             input: ElasticComputeCloudModel.CreateTagsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5394,11 +6496,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createTags.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5447,7 +6563,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createTrafficMirrorFilterAsync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5463,11 +6579,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createTrafficMirrorFilter.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5518,7 +6649,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createTrafficMirrorFilterRuleAsync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5534,11 +6665,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createTrafficMirrorFilterRule.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5589,7 +6735,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createTrafficMirrorSessionAsync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorSessionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorSessionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5605,11 +6751,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createTrafficMirrorSession.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTrafficMirrorSessionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5660,7 +6821,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createTrafficMirrorTargetAsync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorTargetResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorTargetResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5676,11 +6837,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createTrafficMirrorTarget.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTrafficMirrorTargetResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5731,7 +6907,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createTransitGatewayAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5747,11 +6923,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createTransitGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5802,7 +6993,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createTransitGatewayMulticastDomainAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5818,11 +7009,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createTransitGatewayMulticastDomain.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5873,7 +7079,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createTransitGatewayPeeringAttachmentAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5889,11 +7095,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createTransitGatewayPeeringAttachment.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5944,7 +7165,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createTransitGatewayRouteAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -5960,11 +7181,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createTransitGatewayRoute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayRouteResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6015,7 +7251,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createTransitGatewayRouteTableAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6031,11 +7267,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6086,7 +7337,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6102,11 +7353,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6157,7 +7423,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createVolumeAsync(
             input: ElasticComputeCloudModel.CreateVolumeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.Volume, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.Volume, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6173,11 +7439,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createVolume.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.Volume, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6228,7 +7509,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createVpcAsync(
             input: ElasticComputeCloudModel.CreateVpcRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6244,11 +7525,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createVpc.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6299,7 +7595,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createVpcEndpointAsync(
             input: ElasticComputeCloudModel.CreateVpcEndpointRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6315,11 +7611,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createVpcEndpoint.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcEndpointResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6370,7 +7681,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createVpcEndpointConnectionNotificationAsync(
             input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6386,11 +7697,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createVpcEndpointConnectionNotification.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6441,7 +7767,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createVpcEndpointServiceConfigurationAsync(
             input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6457,11 +7783,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createVpcEndpointServiceConfiguration.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6512,7 +7853,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createVpcPeeringConnectionAsync(
             input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcPeeringConnectionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6528,11 +7869,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createVpcPeeringConnection.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcPeeringConnectionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6583,7 +7939,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createVpnConnectionAsync(
             input: ElasticComputeCloudModel.CreateVpnConnectionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnConnectionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnConnectionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6599,11 +7955,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createVpnConnection.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpnConnectionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6653,7 +8024,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createVpnConnectionRouteAsync(
             input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6669,11 +8040,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createVpnConnectionRoute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6722,7 +8107,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func createVpnGatewayAsync(
             input: ElasticComputeCloudModel.CreateVpnGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6738,11 +8123,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.createVpnGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpnGatewayResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6793,7 +8193,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteClientVpnEndpointAsync(
             input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnEndpointResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnEndpointResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6809,11 +8209,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteClientVpnEndpoint.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteClientVpnEndpointResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6864,7 +8279,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteClientVpnRouteAsync(
             input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnRouteResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6880,11 +8295,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteClientVpnRoute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteClientVpnRouteResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6934,7 +8364,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteCustomerGatewayAsync(
             input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -6950,11 +8380,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteCustomerGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7002,7 +8446,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteDhcpOptionsAsync(
             input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7018,11 +8462,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteDhcpOptions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7071,7 +8529,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteEgressOnlyInternetGatewayAsync(
             input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7087,11 +8545,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteEgressOnlyInternetGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7142,7 +8615,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteFleetsAsync(
             input: ElasticComputeCloudModel.DeleteFleetsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFleetsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFleetsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7158,11 +8631,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteFleets.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteFleetsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7213,7 +8701,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteFlowLogsAsync(
             input: ElasticComputeCloudModel.DeleteFlowLogsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFlowLogsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFlowLogsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7229,11 +8717,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteFlowLogs.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteFlowLogsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7284,7 +8787,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteFpgaImageAsync(
             input: ElasticComputeCloudModel.DeleteFpgaImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFpgaImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFpgaImageResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7300,11 +8803,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteFpgaImage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteFpgaImageResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7354,7 +8872,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteInternetGatewayAsync(
             input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7370,11 +8888,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteInternetGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7422,7 +8954,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteKeyPairAsync(
             input: ElasticComputeCloudModel.DeleteKeyPairRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7438,11 +8970,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteKeyPair.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7491,7 +9037,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteLaunchTemplateAsync(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7507,11 +9053,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteLaunchTemplate.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteLaunchTemplateResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7562,7 +9123,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteLaunchTemplateVersionsAsync(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7578,11 +9139,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteLaunchTemplateVersions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7633,7 +9209,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteLocalGatewayRouteAsync(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7649,11 +9225,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteLocalGatewayRoute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7704,7 +9295,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteLocalGatewayRouteTableVpcAssociationAsync(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7720,11 +9311,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteLocalGatewayRouteTableVpcAssociation.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7775,7 +9381,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteNatGatewayAsync(
             input: ElasticComputeCloudModel.DeleteNatGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNatGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNatGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7791,11 +9397,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteNatGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteNatGatewayResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7845,7 +9466,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteNetworkAclAsync(
             input: ElasticComputeCloudModel.DeleteNetworkAclRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7861,11 +9482,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteNetworkAcl.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7913,7 +9548,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteNetworkAclEntryAsync(
             input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7929,11 +9564,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteNetworkAclEntry.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7981,7 +9630,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteNetworkInterfaceAsync(
             input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -7997,11 +9646,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteNetworkInterface.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8050,7 +9713,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteNetworkInterfacePermissionAsync(
             input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8066,11 +9729,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteNetworkInterfacePermission.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8120,7 +9798,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deletePlacementGroupAsync(
             input: ElasticComputeCloudModel.DeletePlacementGroupRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8136,11 +9814,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deletePlacementGroup.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8189,7 +9881,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteQueuedReservedInstancesAsync(
             input: ElasticComputeCloudModel.DeleteQueuedReservedInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8205,11 +9897,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteQueuedReservedInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8259,7 +9966,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteRouteAsync(
             input: ElasticComputeCloudModel.DeleteRouteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8275,11 +9982,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteRoute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8327,7 +10048,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteRouteTableAsync(
             input: ElasticComputeCloudModel.DeleteRouteTableRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8343,11 +10064,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteRouteTable.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8395,7 +10130,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteSecurityGroupAsync(
             input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8411,11 +10146,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteSecurityGroup.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8463,7 +10212,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteSnapshotAsync(
             input: ElasticComputeCloudModel.DeleteSnapshotRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8479,11 +10228,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteSnapshot.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8531,7 +10294,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteSpotDatafeedSubscriptionAsync(
             input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8547,11 +10310,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteSpotDatafeedSubscription.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8599,7 +10376,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteSubnetAsync(
             input: ElasticComputeCloudModel.DeleteSubnetRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8615,11 +10392,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteSubnet.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8667,7 +10458,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteTagsAsync(
             input: ElasticComputeCloudModel.DeleteTagsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8683,11 +10474,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteTags.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8736,7 +10541,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteTrafficMirrorFilterAsync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8752,11 +10557,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteTrafficMirrorFilter.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8807,7 +10627,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteTrafficMirrorFilterRuleAsync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8823,11 +10643,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteTrafficMirrorFilterRule.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8878,7 +10713,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteTrafficMirrorSessionAsync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8894,11 +10729,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteTrafficMirrorSession.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8949,7 +10799,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteTrafficMirrorTargetAsync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -8965,11 +10815,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteTrafficMirrorTarget.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9020,7 +10885,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteTransitGatewayAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9036,11 +10901,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteTransitGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9091,7 +10971,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteTransitGatewayMulticastDomainAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9107,11 +10987,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayMulticastDomain.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9162,7 +11057,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteTransitGatewayPeeringAttachmentAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9178,11 +11073,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayPeeringAttachment.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9233,7 +11143,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteTransitGatewayRouteAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9249,11 +11159,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayRoute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9304,7 +11229,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteTransitGatewayRouteTableAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9320,11 +11245,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9375,7 +11315,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9391,11 +11331,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9445,7 +11400,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteVolumeAsync(
             input: ElasticComputeCloudModel.DeleteVolumeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9461,11 +11416,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteVolume.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9513,7 +11482,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteVpcAsync(
             input: ElasticComputeCloudModel.DeleteVpcRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9529,11 +11498,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteVpc.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9582,7 +11565,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteVpcEndpointConnectionNotificationsAsync(
             input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9598,11 +11581,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteVpcEndpointConnectionNotifications.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9653,7 +11651,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteVpcEndpointServiceConfigurationsAsync(
             input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9669,11 +11667,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteVpcEndpointServiceConfigurations.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9724,7 +11737,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteVpcEndpointsAsync(
             input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9740,11 +11753,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteVpcEndpoints.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteVpcEndpointsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9795,7 +11823,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteVpcPeeringConnectionAsync(
             input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9811,11 +11839,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteVpcPeeringConnection.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9865,7 +11908,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteVpnConnectionAsync(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9881,11 +11924,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteVpnConnection.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9933,7 +11990,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteVpnConnectionRouteAsync(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -9949,11 +12006,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteVpnConnectionRoute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10001,7 +12072,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deleteVpnGatewayAsync(
             input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10017,11 +12088,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deleteVpnGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10070,7 +12155,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deprovisionByoipCidrAsync(
             input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeprovisionByoipCidrResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeprovisionByoipCidrResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10086,11 +12171,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deprovisionByoipCidr.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeprovisionByoipCidrResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10140,7 +12240,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deregisterImageAsync(
             input: ElasticComputeCloudModel.DeregisterImageRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10156,11 +12256,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deregisterImage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10209,7 +12323,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deregisterTransitGatewayMulticastGroupMembersAsync(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10225,11 +12339,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deregisterTransitGatewayMulticastGroupMembers.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10280,7 +12409,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func deregisterTransitGatewayMulticastGroupSourcesAsync(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10296,11 +12425,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.deregisterTransitGatewayMulticastGroupSources.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10351,7 +12495,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeAccountAttributesAsync(
             input: ElasticComputeCloudModel.DescribeAccountAttributesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAccountAttributesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAccountAttributesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10367,11 +12511,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeAccountAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeAccountAttributesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10422,7 +12581,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeAddressesAsync(
             input: ElasticComputeCloudModel.DescribeAddressesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10438,11 +12597,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeAddresses.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeAddressesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10493,7 +12667,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeAggregateIdFormatAsync(
             input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAggregateIdFormatResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAggregateIdFormatResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10509,11 +12683,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeAggregateIdFormat.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeAggregateIdFormatResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10564,7 +12753,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeAvailabilityZonesAsync(
             input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAvailabilityZonesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAvailabilityZonesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10580,11 +12769,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeAvailabilityZones.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeAvailabilityZonesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10635,7 +12839,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeBundleTasksAsync(
             input: ElasticComputeCloudModel.DescribeBundleTasksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeBundleTasksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeBundleTasksResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10651,11 +12855,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeBundleTasks.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeBundleTasksResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10706,7 +12925,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeByoipCidrsAsync(
             input: ElasticComputeCloudModel.DescribeByoipCidrsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeByoipCidrsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeByoipCidrsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10722,11 +12941,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeByoipCidrs.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeByoipCidrsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10777,7 +13011,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeCapacityReservationsAsync(
             input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCapacityReservationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCapacityReservationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10793,11 +13027,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeCapacityReservations.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeCapacityReservationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10848,7 +13097,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeClassicLinkInstancesAsync(
             input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClassicLinkInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClassicLinkInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10864,11 +13113,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeClassicLinkInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClassicLinkInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10919,7 +13183,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeClientVpnAuthorizationRulesAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -10935,11 +13199,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeClientVpnAuthorizationRules.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10990,7 +13269,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeClientVpnConnectionsAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11006,11 +13285,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeClientVpnConnections.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11061,7 +13355,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeClientVpnEndpointsAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11077,11 +13371,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeClientVpnEndpoints.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11132,7 +13441,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeClientVpnRoutesAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnRoutesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnRoutesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11148,11 +13457,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeClientVpnRoutes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnRoutesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11203,7 +13527,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeClientVpnTargetNetworksAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11219,11 +13543,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeClientVpnTargetNetworks.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11274,7 +13613,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeCoipPoolsAsync(
             input: ElasticComputeCloudModel.DescribeCoipPoolsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCoipPoolsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCoipPoolsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11290,11 +13629,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeCoipPools.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeCoipPoolsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11345,7 +13699,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeConversionTasksAsync(
             input: ElasticComputeCloudModel.DescribeConversionTasksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeConversionTasksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeConversionTasksResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11361,11 +13715,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeConversionTasks.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeConversionTasksResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11416,7 +13785,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeCustomerGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCustomerGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCustomerGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11432,11 +13801,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeCustomerGateways.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeCustomerGatewaysResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11487,7 +13871,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeDhcpOptionsAsync(
             input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeDhcpOptionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeDhcpOptionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11503,11 +13887,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeDhcpOptions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeDhcpOptionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11558,7 +13957,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeEgressOnlyInternetGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11574,11 +13973,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeEgressOnlyInternetGateways.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11629,7 +14043,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeElasticGpusAsync(
             input: ElasticComputeCloudModel.DescribeElasticGpusRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeElasticGpusResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeElasticGpusResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11645,11 +14059,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeElasticGpus.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeElasticGpusResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11700,7 +14129,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeExportImageTasksAsync(
             input: ElasticComputeCloudModel.DescribeExportImageTasksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportImageTasksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportImageTasksResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11716,11 +14145,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeExportImageTasks.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeExportImageTasksResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11771,7 +14215,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeExportTasksAsync(
             input: ElasticComputeCloudModel.DescribeExportTasksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportTasksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportTasksResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11787,11 +14231,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeExportTasks.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeExportTasksResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11842,7 +14301,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeFastSnapshotRestoresAsync(
             input: ElasticComputeCloudModel.DescribeFastSnapshotRestoresRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11858,11 +14317,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeFastSnapshotRestores.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11913,7 +14387,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeFleetHistoryAsync(
             input: ElasticComputeCloudModel.DescribeFleetHistoryRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetHistoryResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetHistoryResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11929,11 +14403,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeFleetHistory.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFleetHistoryResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11984,7 +14473,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeFleetInstancesAsync(
             input: ElasticComputeCloudModel.DescribeFleetInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12000,11 +14489,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeFleetInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFleetInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12055,7 +14559,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeFleetsAsync(
             input: ElasticComputeCloudModel.DescribeFleetsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12071,11 +14575,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeFleets.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFleetsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12126,7 +14645,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeFlowLogsAsync(
             input: ElasticComputeCloudModel.DescribeFlowLogsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFlowLogsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFlowLogsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12142,11 +14661,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeFlowLogs.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFlowLogsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12197,7 +14731,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeFpgaImageAttributeAsync(
             input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImageAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImageAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12213,11 +14747,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeFpgaImageAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFpgaImageAttributeResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12268,7 +14817,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeFpgaImagesAsync(
             input: ElasticComputeCloudModel.DescribeFpgaImagesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImagesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImagesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12284,11 +14833,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeFpgaImages.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFpgaImagesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12339,7 +14903,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeHostReservationOfferingsAsync(
             input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationOfferingsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationOfferingsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12355,11 +14919,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeHostReservationOfferings.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeHostReservationOfferingsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12410,7 +14989,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeHostReservationsAsync(
             input: ElasticComputeCloudModel.DescribeHostReservationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12426,11 +15005,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeHostReservations.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeHostReservationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12481,7 +15075,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeHostsAsync(
             input: ElasticComputeCloudModel.DescribeHostsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12497,11 +15091,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeHosts.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeHostsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12552,7 +15161,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeIamInstanceProfileAssociationsAsync(
             input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12568,11 +15177,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeIamInstanceProfileAssociations.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12623,7 +15247,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeIdFormatAsync(
             input: ElasticComputeCloudModel.DescribeIdFormatRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdFormatResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdFormatResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12639,11 +15263,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeIdFormat.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeIdFormatResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12694,7 +15333,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeIdentityIdFormatAsync(
             input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdentityIdFormatResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdentityIdFormatResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12710,11 +15349,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeIdentityIdFormat.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeIdentityIdFormatResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12765,7 +15419,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeImageAttributeAsync(
             input: ElasticComputeCloudModel.DescribeImageAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImageAttribute, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImageAttribute, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12781,11 +15435,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeImageAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImageAttribute, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12836,7 +15505,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeImagesAsync(
             input: ElasticComputeCloudModel.DescribeImagesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImagesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImagesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12852,11 +15521,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeImages.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeImagesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12907,7 +15591,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeImportImageTasksAsync(
             input: ElasticComputeCloudModel.DescribeImportImageTasksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportImageTasksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportImageTasksResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12923,11 +15607,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeImportImageTasks.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeImportImageTasksResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -12978,7 +15677,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeImportSnapshotTasksAsync(
             input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportSnapshotTasksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportSnapshotTasksResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -12994,11 +15693,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeImportSnapshotTasks.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeImportSnapshotTasksResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13049,7 +15763,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeInstanceAttributeAsync(
             input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.InstanceAttribute, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.InstanceAttribute, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13065,11 +15779,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeInstanceAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.InstanceAttribute, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13120,7 +15849,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeInstanceCreditSpecificationsAsync(
             input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13136,11 +15865,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeInstanceCreditSpecifications.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13191,7 +15935,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeInstanceStatusAsync(
             input: ElasticComputeCloudModel.DescribeInstanceStatusRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceStatusResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceStatusResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13207,11 +15951,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeInstanceStatus.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstanceStatusResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13262,7 +16021,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeInstanceTypeOfferingsAsync(
             input: ElasticComputeCloudModel.DescribeInstanceTypeOfferingsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13278,11 +16037,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeInstanceTypeOfferings.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13333,7 +16107,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeInstanceTypesAsync(
             input: ElasticComputeCloudModel.DescribeInstanceTypesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13349,11 +16123,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeInstanceTypes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstanceTypesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13404,7 +16193,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeInstancesAsync(
             input: ElasticComputeCloudModel.DescribeInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13420,11 +16209,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13475,7 +16279,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeInternetGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInternetGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInternetGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13491,11 +16295,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeInternetGateways.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInternetGatewaysResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13546,7 +16365,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeIpv6PoolsAsync(
             input: ElasticComputeCloudModel.DescribeIpv6PoolsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpv6PoolsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpv6PoolsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13562,11 +16381,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeIpv6Pools.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeIpv6PoolsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13617,7 +16451,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeKeyPairsAsync(
             input: ElasticComputeCloudModel.DescribeKeyPairsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeKeyPairsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeKeyPairsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13633,11 +16467,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeKeyPairs.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeKeyPairsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13688,7 +16537,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeLaunchTemplateVersionsAsync(
             input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13704,11 +16553,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeLaunchTemplateVersions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13759,7 +16623,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeLaunchTemplatesAsync(
             input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplatesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplatesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13775,11 +16639,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeLaunchTemplates.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLaunchTemplatesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13830,7 +16709,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13846,11 +16725,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13901,7 +16795,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeLocalGatewayRouteTableVpcAssociationsAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13917,11 +16811,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeLocalGatewayRouteTableVpcAssociations.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -13972,7 +16881,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeLocalGatewayRouteTablesAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -13988,11 +16897,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeLocalGatewayRouteTables.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14043,7 +16967,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeLocalGatewayVirtualInterfaceGroupsAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14059,11 +16983,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeLocalGatewayVirtualInterfaceGroups.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14114,7 +17053,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeLocalGatewayVirtualInterfacesAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14130,11 +17069,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeLocalGatewayVirtualInterfaces.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14185,7 +17139,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeLocalGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14201,11 +17155,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeLocalGateways.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewaysResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14256,7 +17225,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeMovingAddressesAsync(
             input: ElasticComputeCloudModel.DescribeMovingAddressesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeMovingAddressesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeMovingAddressesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14272,11 +17241,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeMovingAddresses.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeMovingAddressesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14327,7 +17311,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeNatGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeNatGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNatGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNatGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14343,11 +17327,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeNatGateways.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNatGatewaysResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14398,7 +17397,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeNetworkAclsAsync(
             input: ElasticComputeCloudModel.DescribeNetworkAclsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkAclsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkAclsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14414,11 +17413,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeNetworkAcls.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNetworkAclsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14469,7 +17483,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeNetworkInterfaceAttributeAsync(
             input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14485,11 +17499,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeNetworkInterfaceAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14540,7 +17569,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeNetworkInterfacePermissionsAsync(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14556,11 +17585,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeNetworkInterfacePermissions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14611,7 +17655,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeNetworkInterfacesAsync(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14627,11 +17671,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeNetworkInterfaces.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNetworkInterfacesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14682,7 +17741,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describePlacementGroupsAsync(
             input: ElasticComputeCloudModel.DescribePlacementGroupsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribePlacementGroupsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribePlacementGroupsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14698,11 +17757,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describePlacementGroups.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribePlacementGroupsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14753,7 +17827,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describePrefixListsAsync(
             input: ElasticComputeCloudModel.DescribePrefixListsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribePrefixListsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribePrefixListsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14769,11 +17843,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describePrefixLists.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribePrefixListsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14824,7 +17913,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describePrincipalIdFormatAsync(
             input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribePrincipalIdFormatResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribePrincipalIdFormatResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14840,11 +17929,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describePrincipalIdFormat.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribePrincipalIdFormatResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14895,7 +17999,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describePublicIpv4PoolsAsync(
             input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribePublicIpv4PoolsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribePublicIpv4PoolsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14911,11 +18015,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describePublicIpv4Pools.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribePublicIpv4PoolsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -14966,7 +18085,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeRegionsAsync(
             input: ElasticComputeCloudModel.DescribeRegionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeRegionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeRegionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -14982,11 +18101,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeRegions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeRegionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15037,7 +18171,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeReservedInstancesAsync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15053,11 +18187,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeReservedInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeReservedInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15108,7 +18257,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeReservedInstancesListingsAsync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesListingsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesListingsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15124,11 +18273,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeReservedInstancesListings.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeReservedInstancesListingsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15179,7 +18343,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeReservedInstancesModificationsAsync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15195,11 +18359,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeReservedInstancesModifications.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15250,7 +18429,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeReservedInstancesOfferingsAsync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15266,11 +18445,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeReservedInstancesOfferings.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15321,7 +18515,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeRouteTablesAsync(
             input: ElasticComputeCloudModel.DescribeRouteTablesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeRouteTablesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeRouteTablesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15337,11 +18531,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeRouteTables.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeRouteTablesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15392,7 +18601,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeScheduledInstanceAvailabilityAsync(
             input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15408,11 +18617,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeScheduledInstanceAvailability.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15463,7 +18687,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeScheduledInstancesAsync(
             input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15479,11 +18703,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeScheduledInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeScheduledInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15534,7 +18773,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeSecurityGroupReferencesAsync(
             input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15550,11 +18789,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeSecurityGroupReferences.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15605,7 +18859,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeSecurityGroupsAsync(
             input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15621,11 +18875,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeSecurityGroups.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSecurityGroupsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15676,7 +18945,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeSnapshotAttributeAsync(
             input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15692,11 +18961,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeSnapshotAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSnapshotAttributeResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15747,7 +19031,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeSnapshotsAsync(
             input: ElasticComputeCloudModel.DescribeSnapshotsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15763,11 +19047,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeSnapshots.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSnapshotsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15818,7 +19117,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeSpotDatafeedSubscriptionAsync(
             input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15834,11 +19133,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeSpotDatafeedSubscription.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15889,7 +19203,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeSpotFleetInstancesAsync(
             input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15905,11 +19219,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeSpotFleetInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -15960,7 +19289,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeSpotFleetRequestHistoryAsync(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -15976,11 +19305,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeSpotFleetRequestHistory.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16031,7 +19375,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeSpotFleetRequestsAsync(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16047,11 +19391,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeSpotFleetRequests.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16102,7 +19461,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeSpotInstanceRequestsAsync(
             input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16118,11 +19477,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeSpotInstanceRequests.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16173,7 +19547,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeSpotPriceHistoryAsync(
             input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotPriceHistoryResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotPriceHistoryResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16189,11 +19563,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeSpotPriceHistory.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotPriceHistoryResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16244,7 +19633,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeStaleSecurityGroupsAsync(
             input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16260,11 +19649,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeStaleSecurityGroups.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16315,7 +19719,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeSubnetsAsync(
             input: ElasticComputeCloudModel.DescribeSubnetsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSubnetsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSubnetsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16331,11 +19735,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeSubnets.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSubnetsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16386,7 +19805,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeTagsAsync(
             input: ElasticComputeCloudModel.DescribeTagsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTagsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTagsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16402,11 +19821,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeTags.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTagsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16457,7 +19891,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeTrafficMirrorFiltersAsync(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16473,11 +19907,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeTrafficMirrorFilters.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16528,7 +19977,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeTrafficMirrorSessionsAsync(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16544,11 +19993,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeTrafficMirrorSessions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16599,7 +20063,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeTrafficMirrorTargetsAsync(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16615,11 +20079,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeTrafficMirrorTargets.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16670,7 +20149,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeTransitGatewayAttachmentsAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16686,11 +20165,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeTransitGatewayAttachments.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16741,7 +20235,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeTransitGatewayMulticastDomainsAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16757,11 +20251,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeTransitGatewayMulticastDomains.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16812,7 +20321,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeTransitGatewayPeeringAttachmentsAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16828,11 +20337,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeTransitGatewayPeeringAttachments.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16883,7 +20407,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeTransitGatewayRouteTablesAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16899,11 +20423,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeTransitGatewayRouteTables.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -16954,7 +20493,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeTransitGatewayVpcAttachmentsAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -16970,11 +20509,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeTransitGatewayVpcAttachments.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17025,7 +20579,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeTransitGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17041,11 +20595,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeTransitGateways.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewaysResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17096,7 +20665,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVolumeAttributeAsync(
             input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17112,11 +20681,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVolumeAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVolumeAttributeResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17167,7 +20751,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVolumeStatusAsync(
             input: ElasticComputeCloudModel.DescribeVolumeStatusRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeStatusResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeStatusResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17183,11 +20767,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVolumeStatus.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVolumeStatusResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17238,7 +20837,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVolumesAsync(
             input: ElasticComputeCloudModel.DescribeVolumesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17254,11 +20853,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVolumes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVolumesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17309,7 +20923,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVolumesModificationsAsync(
             input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesModificationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesModificationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17325,11 +20939,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVolumesModifications.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVolumesModificationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17380,7 +21009,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVpcAttributeAsync(
             input: ElasticComputeCloudModel.DescribeVpcAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17396,11 +21025,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVpcAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcAttributeResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17451,7 +21095,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVpcClassicLinkAsync(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17467,11 +21111,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVpcClassicLink.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcClassicLinkResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17522,7 +21181,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVpcClassicLinkDnsSupportAsync(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17538,11 +21197,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVpcClassicLinkDnsSupport.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17593,7 +21267,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVpcEndpointConnectionNotificationsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17609,11 +21283,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVpcEndpointConnectionNotifications.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17664,7 +21353,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVpcEndpointConnectionsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17680,11 +21369,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVpcEndpointConnections.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17735,7 +21439,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVpcEndpointServiceConfigurationsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17751,11 +21455,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVpcEndpointServiceConfigurations.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17806,7 +21525,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVpcEndpointServicePermissionsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17822,11 +21541,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVpcEndpointServicePermissions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17877,7 +21611,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVpcEndpointServicesAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17893,11 +21627,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVpcEndpointServices.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointServicesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -17948,7 +21697,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVpcEndpointsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -17964,11 +21713,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVpcEndpoints.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18019,7 +21783,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVpcPeeringConnectionsAsync(
             input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18035,11 +21799,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVpcPeeringConnections.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18090,7 +21869,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVpcsAsync(
             input: ElasticComputeCloudModel.DescribeVpcsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18106,11 +21885,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVpcs.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18161,7 +21955,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVpnConnectionsAsync(
             input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18177,11 +21971,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVpnConnections.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpnConnectionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18232,7 +22041,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func describeVpnGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18248,11 +22057,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.describeVpnGateways.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpnGatewaysResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18303,7 +22127,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func detachClassicLinkVpcAsync(
             input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DetachClassicLinkVpcResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DetachClassicLinkVpcResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18319,11 +22143,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.detachClassicLinkVpc.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DetachClassicLinkVpcResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18373,7 +22212,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func detachInternetGatewayAsync(
             input: ElasticComputeCloudModel.DetachInternetGatewayRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18389,11 +22228,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.detachInternetGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18441,7 +22294,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func detachNetworkInterfaceAsync(
             input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18457,11 +22310,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.detachNetworkInterface.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18510,7 +22377,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func detachVolumeAsync(
             input: ElasticComputeCloudModel.DetachVolumeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18526,11 +22393,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.detachVolume.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.VolumeAttachment, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18580,7 +22462,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func detachVpnGatewayAsync(
             input: ElasticComputeCloudModel.DetachVpnGatewayRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18596,11 +22478,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.detachVpnGateway.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18649,7 +22545,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disableEbsEncryptionByDefaultAsync(
             input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18665,11 +22561,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disableEbsEncryptionByDefault.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18720,7 +22631,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disableFastSnapshotRestoresAsync(
             input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisableFastSnapshotRestoresResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableFastSnapshotRestoresResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18736,11 +22647,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disableFastSnapshotRestores.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableFastSnapshotRestoresResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18791,7 +22717,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disableTransitGatewayRouteTablePropagationAsync(
             input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18807,11 +22733,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disableTransitGatewayRouteTablePropagation.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18861,7 +22802,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disableVgwRoutePropagationAsync(
             input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18877,11 +22818,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disableVgwRoutePropagation.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -18930,7 +22885,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disableVpcClassicLinkAsync(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -18946,11 +22901,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disableVpcClassicLink.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableVpcClassicLinkResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19001,7 +22971,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disableVpcClassicLinkDnsSupportAsync(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19017,11 +22987,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disableVpcClassicLinkDnsSupport.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19071,7 +23056,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disassociateAddressAsync(
             input: ElasticComputeCloudModel.DisassociateAddressRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19087,11 +23072,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disassociateAddress.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19140,7 +23139,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disassociateClientVpnTargetNetworkAsync(
             input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19156,11 +23155,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disassociateClientVpnTargetNetwork.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19211,7 +23225,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disassociateIamInstanceProfileAsync(
             input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19227,11 +23241,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disassociateIamInstanceProfile.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19281,7 +23310,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disassociateRouteTableAsync(
             input: ElasticComputeCloudModel.DisassociateRouteTableRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19297,11 +23326,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disassociateRouteTable.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19350,7 +23393,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disassociateSubnetCidrBlockAsync(
             input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19366,11 +23409,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disassociateSubnetCidrBlock.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19421,7 +23479,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disassociateTransitGatewayMulticastDomainAsync(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19437,11 +23495,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disassociateTransitGatewayMulticastDomain.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19492,7 +23565,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disassociateTransitGatewayRouteTableAsync(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19508,11 +23581,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disassociateTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19563,7 +23651,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func disassociateVpcCidrBlockAsync(
             input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19579,11 +23667,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.disassociateVpcCidrBlock.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19634,7 +23737,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func enableEbsEncryptionByDefaultAsync(
             input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19650,11 +23753,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.enableEbsEncryptionByDefault.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19705,7 +23823,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func enableFastSnapshotRestoresAsync(
             input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.EnableFastSnapshotRestoresResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableFastSnapshotRestoresResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19721,11 +23839,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.enableFastSnapshotRestores.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableFastSnapshotRestoresResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19776,7 +23909,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func enableTransitGatewayRouteTablePropagationAsync(
             input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19792,11 +23925,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.enableTransitGatewayRouteTablePropagation.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19846,7 +23994,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func enableVgwRoutePropagationAsync(
             input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19862,11 +24010,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.enableVgwRoutePropagation.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19914,7 +24076,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func enableVolumeIOAsync(
             input: ElasticComputeCloudModel.EnableVolumeIORequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19930,11 +24092,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.enableVolumeIO.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -19983,7 +24159,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func enableVpcClassicLinkAsync(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -19999,11 +24175,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.enableVpcClassicLink.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableVpcClassicLinkResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20054,7 +24245,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func enableVpcClassicLinkDnsSupportAsync(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20070,11 +24261,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.enableVpcClassicLinkDnsSupport.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20125,7 +24331,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func exportClientVpnClientCertificateRevocationListAsync(
             input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20141,11 +24347,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.exportClientVpnClientCertificateRevocationList.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20196,7 +24417,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func exportClientVpnClientConfigurationAsync(
             input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20212,11 +24433,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.exportClientVpnClientConfiguration.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20267,7 +24503,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func exportImageAsync(
             input: ElasticComputeCloudModel.ExportImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ExportImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ExportImageResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20283,11 +24519,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.exportImage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ExportImageResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20338,7 +24589,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func exportTransitGatewayRoutesAsync(
             input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20354,11 +24605,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.exportTransitGatewayRoutes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20409,7 +24675,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getAssociatedIpv6PoolCidrsAsync(
             input: ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20425,11 +24691,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getAssociatedIpv6PoolCidrs.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20480,7 +24761,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getCapacityReservationUsageAsync(
             input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetCapacityReservationUsageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetCapacityReservationUsageResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20496,11 +24777,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getCapacityReservationUsage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetCapacityReservationUsageResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20551,7 +24847,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getCoipPoolUsageAsync(
             input: ElasticComputeCloudModel.GetCoipPoolUsageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetCoipPoolUsageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetCoipPoolUsageResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20567,11 +24863,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getCoipPoolUsage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetCoipPoolUsageResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20622,7 +24933,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getConsoleOutputAsync(
             input: ElasticComputeCloudModel.GetConsoleOutputRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleOutputResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleOutputResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20638,11 +24949,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getConsoleOutput.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetConsoleOutputResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20693,7 +25019,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getConsoleScreenshotAsync(
             input: ElasticComputeCloudModel.GetConsoleScreenshotRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleScreenshotResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleScreenshotResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20709,11 +25035,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getConsoleScreenshot.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetConsoleScreenshotResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20764,7 +25105,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getDefaultCreditSpecificationAsync(
             input: ElasticComputeCloudModel.GetDefaultCreditSpecificationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetDefaultCreditSpecificationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetDefaultCreditSpecificationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20780,11 +25121,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getDefaultCreditSpecification.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetDefaultCreditSpecificationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20835,7 +25191,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getEbsDefaultKmsKeyIdAsync(
             input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20851,11 +25207,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getEbsDefaultKmsKeyId.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20906,7 +25277,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getEbsEncryptionByDefaultAsync(
             input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20922,11 +25293,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getEbsEncryptionByDefault.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -20977,7 +25363,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getHostReservationPurchasePreviewAsync(
             input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -20993,11 +25379,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getHostReservationPurchasePreview.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21048,7 +25449,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getLaunchTemplateDataAsync(
             input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetLaunchTemplateDataResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetLaunchTemplateDataResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21064,11 +25465,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getLaunchTemplateData.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetLaunchTemplateDataResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21119,7 +25535,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getPasswordDataAsync(
             input: ElasticComputeCloudModel.GetPasswordDataRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetPasswordDataResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetPasswordDataResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21135,11 +25551,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getPasswordData.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetPasswordDataResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21190,7 +25621,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getReservedInstancesExchangeQuoteAsync(
             input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21206,11 +25637,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getReservedInstancesExchangeQuote.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21261,7 +25707,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getTransitGatewayAttachmentPropagationsAsync(
             input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21277,11 +25723,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getTransitGatewayAttachmentPropagations.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21332,7 +25793,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getTransitGatewayMulticastDomainAssociationsAsync(
             input: ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21348,11 +25809,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getTransitGatewayMulticastDomainAssociations.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21403,7 +25879,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getTransitGatewayRouteTableAssociationsAsync(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21419,11 +25895,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getTransitGatewayRouteTableAssociations.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21474,7 +25965,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func getTransitGatewayRouteTablePropagationsAsync(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21490,11 +25981,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.getTransitGatewayRouteTablePropagations.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21545,7 +26051,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func importClientVpnClientCertificateRevocationListAsync(
             input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21561,11 +26067,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.importClientVpnClientCertificateRevocationList.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21616,7 +26137,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func importImageAsync(
             input: ElasticComputeCloudModel.ImportImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImportImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportImageResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21632,11 +26153,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.importImage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportImageResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21687,7 +26223,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func importInstanceAsync(
             input: ElasticComputeCloudModel.ImportInstanceRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImportInstanceResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportInstanceResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21703,11 +26239,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.importInstance.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportInstanceResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21758,7 +26309,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func importKeyPairAsync(
             input: ElasticComputeCloudModel.ImportKeyPairRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImportKeyPairResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportKeyPairResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21774,11 +26325,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.importKeyPair.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportKeyPairResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21829,7 +26395,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func importSnapshotAsync(
             input: ElasticComputeCloudModel.ImportSnapshotRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImportSnapshotResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportSnapshotResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21845,11 +26411,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.importSnapshot.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportSnapshotResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21900,7 +26481,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func importVolumeAsync(
             input: ElasticComputeCloudModel.ImportVolumeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImportVolumeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportVolumeResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21916,11 +26497,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.importVolume.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportVolumeResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -21971,7 +26567,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyCapacityReservationAsync(
             input: ElasticComputeCloudModel.ModifyCapacityReservationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyCapacityReservationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -21987,11 +26583,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyCapacityReservation.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyCapacityReservationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22042,7 +26653,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyClientVpnEndpointAsync(
             input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyClientVpnEndpointResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyClientVpnEndpointResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22058,11 +26669,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyClientVpnEndpoint.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyClientVpnEndpointResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22113,7 +26739,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyDefaultCreditSpecificationAsync(
             input: ElasticComputeCloudModel.ModifyDefaultCreditSpecificationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22129,11 +26755,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyDefaultCreditSpecification.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22184,7 +26825,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyEbsDefaultKmsKeyIdAsync(
             input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22200,11 +26841,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyEbsDefaultKmsKeyId.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22255,7 +26911,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyFleetAsync(
             input: ElasticComputeCloudModel.ModifyFleetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyFleetResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyFleetResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22271,11 +26927,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyFleet.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyFleetResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22326,7 +26997,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyFpgaImageAttributeAsync(
             input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyFpgaImageAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyFpgaImageAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22342,11 +27013,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyFpgaImageAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyFpgaImageAttributeResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22397,7 +27083,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyHostsAsync(
             input: ElasticComputeCloudModel.ModifyHostsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyHostsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyHostsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22413,11 +27099,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyHosts.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyHostsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22467,7 +27168,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyIdFormatAsync(
             input: ElasticComputeCloudModel.ModifyIdFormatRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22483,11 +27184,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyIdFormat.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22535,7 +27250,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyIdentityIdFormatAsync(
             input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22551,11 +27266,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyIdentityIdFormat.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22603,7 +27332,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyImageAttributeAsync(
             input: ElasticComputeCloudModel.ModifyImageAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22619,11 +27348,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyImageAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22671,7 +27414,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyInstanceAttributeAsync(
             input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22687,11 +27430,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyInstanceAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22740,7 +27497,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyInstanceCapacityReservationAttributesAsync(
             input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22756,11 +27513,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyInstanceCapacityReservationAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22811,7 +27583,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyInstanceCreditSpecificationAsync(
             input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22827,11 +27599,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyInstanceCreditSpecification.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22882,7 +27669,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyInstanceEventStartTimeAsync(
             input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22898,11 +27685,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyInstanceEventStartTime.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -22953,7 +27755,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyInstanceMetadataOptionsAsync(
             input: ElasticComputeCloudModel.ModifyInstanceMetadataOptionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -22969,11 +27771,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyInstanceMetadataOptions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23024,7 +27841,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyInstancePlacementAsync(
             input: ElasticComputeCloudModel.ModifyInstancePlacementRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstancePlacementResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstancePlacementResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23040,11 +27857,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyInstancePlacement.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstancePlacementResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23095,7 +27927,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyLaunchTemplateAsync(
             input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyLaunchTemplateResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyLaunchTemplateResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23111,11 +27943,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyLaunchTemplate.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyLaunchTemplateResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23165,7 +28012,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyNetworkInterfaceAttributeAsync(
             input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23181,11 +28028,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyNetworkInterfaceAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23234,7 +28095,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyReservedInstancesAsync(
             input: ElasticComputeCloudModel.ModifyReservedInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyReservedInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyReservedInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23250,11 +28111,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyReservedInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyReservedInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23304,7 +28180,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifySnapshotAttributeAsync(
             input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23320,11 +28196,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifySnapshotAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23373,7 +28263,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifySpotFleetRequestAsync(
             input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifySpotFleetRequestResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifySpotFleetRequestResponse, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23389,11 +28279,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifySpotFleetRequest.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifySpotFleetRequestResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23443,7 +28348,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifySubnetAttributeAsync(
             input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23459,11 +28364,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifySubnetAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23512,7 +28431,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyTrafficMirrorFilterNetworkServicesAsync(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23528,11 +28447,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyTrafficMirrorFilterNetworkServices.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23583,7 +28517,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyTrafficMirrorFilterRuleAsync(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23599,11 +28533,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyTrafficMirrorFilterRule.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23654,7 +28603,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyTrafficMirrorSessionAsync(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23670,11 +28619,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyTrafficMirrorSession.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23725,7 +28689,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23741,11 +28705,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23796,7 +28775,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyVolumeAsync(
             input: ElasticComputeCloudModel.ModifyVolumeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVolumeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVolumeResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23812,11 +28791,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyVolume.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVolumeResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23866,7 +28860,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyVolumeAttributeAsync(
             input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23882,11 +28876,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyVolumeAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -23934,7 +28942,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyVpcAttributeAsync(
             input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -23950,11 +28958,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyVpcAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24003,7 +29025,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyVpcEndpointAsync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24019,11 +29041,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyVpcEndpoint.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcEndpointResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24074,7 +29111,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyVpcEndpointConnectionNotificationAsync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24090,11 +29127,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyVpcEndpointConnectionNotification.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24145,7 +29197,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyVpcEndpointServiceConfigurationAsync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24161,11 +29213,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyVpcEndpointServiceConfiguration.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24216,7 +29283,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyVpcEndpointServicePermissionsAsync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24232,11 +29299,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyVpcEndpointServicePermissions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24287,7 +29369,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyVpcPeeringConnectionOptionsAsync(
             input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24303,11 +29385,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyVpcPeeringConnectionOptions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24358,7 +29455,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyVpcTenancyAsync(
             input: ElasticComputeCloudModel.ModifyVpcTenancyRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcTenancyResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcTenancyResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24374,11 +29471,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyVpcTenancy.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcTenancyResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24429,7 +29541,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyVpnConnectionAsync(
             input: ElasticComputeCloudModel.ModifyVpnConnectionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnConnectionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnConnectionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24445,11 +29557,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyVpnConnection.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpnConnectionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24500,7 +29627,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyVpnTunnelCertificateAsync(
             input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24516,11 +29643,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyVpnTunnelCertificate.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24571,7 +29713,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func modifyVpnTunnelOptionsAsync(
             input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24587,11 +29729,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.modifyVpnTunnelOptions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24642,7 +29799,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func monitorInstancesAsync(
             input: ElasticComputeCloudModel.MonitorInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.MonitorInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.MonitorInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24658,11 +29815,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.monitorInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.MonitorInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24713,7 +29885,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func moveAddressToVpcAsync(
             input: ElasticComputeCloudModel.MoveAddressToVpcRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.MoveAddressToVpcResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.MoveAddressToVpcResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24729,11 +29901,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.moveAddressToVpc.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.MoveAddressToVpcResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24784,7 +29971,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func provisionByoipCidrAsync(
             input: ElasticComputeCloudModel.ProvisionByoipCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ProvisionByoipCidrResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ProvisionByoipCidrResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24800,11 +29987,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.provisionByoipCidr.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ProvisionByoipCidrResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24855,7 +30057,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func purchaseHostReservationAsync(
             input: ElasticComputeCloudModel.PurchaseHostReservationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseHostReservationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseHostReservationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24871,11 +30073,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.purchaseHostReservation.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.PurchaseHostReservationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24926,7 +30143,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func purchaseReservedInstancesOfferingAsync(
             input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -24942,11 +30159,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.purchaseReservedInstancesOffering.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -24997,7 +30229,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func purchaseScheduledInstancesAsync(
             input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseScheduledInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseScheduledInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25013,11 +30245,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.purchaseScheduledInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.PurchaseScheduledInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25067,7 +30314,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func rebootInstancesAsync(
             input: ElasticComputeCloudModel.RebootInstancesRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25083,11 +30330,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.rebootInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25136,7 +30397,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func registerImageAsync(
             input: ElasticComputeCloudModel.RegisterImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RegisterImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RegisterImageResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25152,11 +30413,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.registerImage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RegisterImageResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25207,7 +30483,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func registerTransitGatewayMulticastGroupMembersAsync(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25223,11 +30499,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.registerTransitGatewayMulticastGroupMembers.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25278,7 +30569,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func registerTransitGatewayMulticastGroupSourcesAsync(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25294,11 +30585,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.registerTransitGatewayMulticastGroupSources.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25349,7 +30655,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func rejectTransitGatewayPeeringAttachmentAsync(
             input: ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25365,11 +30671,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.rejectTransitGatewayPeeringAttachment.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25420,7 +30741,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func rejectTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25436,11 +30757,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.rejectTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25491,7 +30827,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func rejectVpcEndpointConnectionsAsync(
             input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25507,11 +30843,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.rejectVpcEndpointConnections.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25562,7 +30913,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func rejectVpcPeeringConnectionAsync(
             input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcPeeringConnectionResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25578,11 +30929,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.rejectVpcPeeringConnection.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RejectVpcPeeringConnectionResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25632,7 +30998,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func releaseAddressAsync(
             input: ElasticComputeCloudModel.ReleaseAddressRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25648,11 +31014,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.releaseAddress.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25701,7 +31081,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func releaseHostsAsync(
             input: ElasticComputeCloudModel.ReleaseHostsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ReleaseHostsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ReleaseHostsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25717,11 +31097,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.releaseHosts.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ReleaseHostsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25772,7 +31167,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func replaceIamInstanceProfileAssociationAsync(
             input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25788,11 +31183,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.replaceIamInstanceProfileAssociation.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25843,7 +31253,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func replaceNetworkAclAssociationAsync(
             input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25859,11 +31269,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.replaceNetworkAclAssociation.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25913,7 +31338,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func replaceNetworkAclEntryAsync(
             input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25929,11 +31354,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.replaceNetworkAclEntry.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -25981,7 +31420,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func replaceRouteAsync(
             input: ElasticComputeCloudModel.ReplaceRouteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -25997,11 +31436,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.replaceRoute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26050,7 +31503,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func replaceRouteTableAssociationAsync(
             input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26066,11 +31519,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.replaceRouteTableAssociation.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26121,7 +31589,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func replaceTransitGatewayRouteAsync(
             input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26137,11 +31605,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.replaceTransitGatewayRoute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26191,7 +31674,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func reportInstanceStatusAsync(
             input: ElasticComputeCloudModel.ReportInstanceStatusRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26207,11 +31690,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.reportInstanceStatus.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26260,7 +31757,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func requestSpotFleetAsync(
             input: ElasticComputeCloudModel.RequestSpotFleetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotFleetResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotFleetResponse, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26276,11 +31773,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.requestSpotFleet.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RequestSpotFleetResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26331,7 +31843,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func requestSpotInstancesAsync(
             input: ElasticComputeCloudModel.RequestSpotInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26347,11 +31859,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.requestSpotInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RequestSpotInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26402,7 +31929,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func resetEbsDefaultKmsKeyIdAsync(
             input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26418,11 +31945,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.resetEbsDefaultKmsKeyId.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26473,7 +32015,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func resetFpgaImageAttributeAsync(
             input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ResetFpgaImageAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ResetFpgaImageAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26489,11 +32031,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.resetFpgaImageAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ResetFpgaImageAttributeResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26543,7 +32100,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func resetImageAttributeAsync(
             input: ElasticComputeCloudModel.ResetImageAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26559,11 +32116,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.resetImageAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26611,7 +32182,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func resetInstanceAttributeAsync(
             input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26627,11 +32198,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.resetInstanceAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26679,7 +32264,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func resetNetworkInterfaceAttributeAsync(
             input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26695,11 +32280,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.resetNetworkInterfaceAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26747,7 +32346,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func resetSnapshotAttributeAsync(
             input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26763,11 +32362,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.resetSnapshotAttribute.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26816,7 +32429,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func restoreAddressToClassicAsync(
             input: ElasticComputeCloudModel.RestoreAddressToClassicRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RestoreAddressToClassicResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RestoreAddressToClassicResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26832,11 +32445,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.restoreAddressToClassic.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RestoreAddressToClassicResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26887,7 +32515,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func revokeClientVpnIngressAsync(
             input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RevokeClientVpnIngressResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RevokeClientVpnIngressResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26903,11 +32531,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.revokeClientVpnIngress.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RevokeClientVpnIngressResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -26957,7 +32600,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func revokeSecurityGroupEgressAsync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -26973,11 +32616,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.revokeSecurityGroupEgress.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27025,7 +32682,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func revokeSecurityGroupIngressAsync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27041,11 +32698,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.revokeSecurityGroupIngress.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27094,7 +32765,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func runInstancesAsync(
             input: ElasticComputeCloudModel.RunInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.Reservation, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.Reservation, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27110,11 +32781,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.runInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.Reservation, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27165,7 +32851,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func runScheduledInstancesAsync(
             input: ElasticComputeCloudModel.RunScheduledInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RunScheduledInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RunScheduledInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27181,11 +32867,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.runScheduledInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RunScheduledInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27236,7 +32937,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func searchLocalGatewayRoutesAsync(
             input: ElasticComputeCloudModel.SearchLocalGatewayRoutesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.SearchLocalGatewayRoutesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.SearchLocalGatewayRoutesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27252,11 +32953,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.searchLocalGatewayRoutes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.SearchLocalGatewayRoutesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27307,7 +33023,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func searchTransitGatewayMulticastGroupsAsync(
             input: ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27323,11 +33039,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.searchTransitGatewayMulticastGroups.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27378,7 +33109,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func searchTransitGatewayRoutesAsync(
             input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27394,11 +33125,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.searchTransitGatewayRoutes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27448,7 +33194,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func sendDiagnosticInterruptAsync(
             input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27464,11 +33210,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.sendDiagnosticInterrupt.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27517,7 +33277,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func startInstancesAsync(
             input: ElasticComputeCloudModel.StartInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.StartInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.StartInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27533,11 +33293,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.startInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.StartInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27588,7 +33363,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func startVpcEndpointServicePrivateDnsVerificationAsync(
             input: ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27604,11 +33379,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.startVpcEndpointServicePrivateDnsVerification.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27659,7 +33449,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func stopInstancesAsync(
             input: ElasticComputeCloudModel.StopInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.StopInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.StopInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27675,11 +33465,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.stopInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.StopInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27730,7 +33535,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func terminateClientVpnConnectionsAsync(
             input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27746,11 +33551,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.terminateClientVpnConnections.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27801,7 +33621,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func terminateInstancesAsync(
             input: ElasticComputeCloudModel.TerminateInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.TerminateInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.TerminateInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27817,11 +33637,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.terminateInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.TerminateInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27872,7 +33707,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func unassignIpv6AddressesAsync(
             input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.UnassignIpv6AddressesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.UnassignIpv6AddressesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27888,11 +33723,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.unassignIpv6Addresses.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.UnassignIpv6AddressesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -27942,7 +33792,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func unassignPrivateIpAddressesAsync(
             input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -27958,11 +33808,25 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.unassignPrivateIpAddresses.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -28011,7 +33875,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func unmonitorInstancesAsync(
             input: ElasticComputeCloudModel.UnmonitorInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.UnmonitorInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.UnmonitorInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28027,11 +33891,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.unmonitorInstances.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.UnmonitorInstancesResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -28082,7 +33961,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func updateSecurityGroupRuleDescriptionsEgressAsync(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28098,11 +33977,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.updateSecurityGroupRuleDescriptionsEgress.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -28153,7 +34047,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func updateSecurityGroupRuleDescriptionsIngressAsync(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28169,11 +34063,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.updateSecurityGroupRuleDescriptionsIngress.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -28224,7 +34133,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
      */
     public func withdrawByoipCidrAsync(
             input: ElasticComputeCloudModel.WithdrawByoipCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.WithdrawByoipCidrResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.WithdrawByoipCidrResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -28240,11 +34149,26 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
             action: ElasticComputeCloudModelOperations.withdrawByoipCidr.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<ElasticComputeCloudModel.WithdrawByoipCidrResult, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)

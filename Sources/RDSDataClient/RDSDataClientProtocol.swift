@@ -32,32 +32,32 @@ public protocol RDSDataClientProtocol {
             _ input: RDSDataModel.BatchExecuteStatementRequest) throws -> RDSDataModel.BatchExecuteStatementResponse
     typealias BatchExecuteStatementAsyncType = (
             _ input: RDSDataModel.BatchExecuteStatementRequest, 
-            _ completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, RDSDataError>) -> ()) throws -> ()
     typealias BeginTransactionSyncType = (
             _ input: RDSDataModel.BeginTransactionRequest) throws -> RDSDataModel.BeginTransactionResponse
     typealias BeginTransactionAsyncType = (
             _ input: RDSDataModel.BeginTransactionRequest, 
-            _ completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, RDSDataError>) -> ()) throws -> ()
     typealias CommitTransactionSyncType = (
             _ input: RDSDataModel.CommitTransactionRequest) throws -> RDSDataModel.CommitTransactionResponse
     typealias CommitTransactionAsyncType = (
             _ input: RDSDataModel.CommitTransactionRequest, 
-            _ completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, RDSDataError>) -> ()) throws -> ()
     typealias ExecuteSqlSyncType = (
             _ input: RDSDataModel.ExecuteSqlRequest) throws -> RDSDataModel.ExecuteSqlResponse
     typealias ExecuteSqlAsyncType = (
             _ input: RDSDataModel.ExecuteSqlRequest, 
-            _ completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, RDSDataError>) -> ()) throws -> ()
     typealias ExecuteStatementSyncType = (
             _ input: RDSDataModel.ExecuteStatementRequest) throws -> RDSDataModel.ExecuteStatementResponse
     typealias ExecuteStatementAsyncType = (
             _ input: RDSDataModel.ExecuteStatementRequest, 
-            _ completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, RDSDataError>) -> ()) throws -> ()
     typealias RollbackTransactionSyncType = (
             _ input: RDSDataModel.RollbackTransactionRequest) throws -> RDSDataModel.RollbackTransactionResponse
     typealias RollbackTransactionAsyncType = (
             _ input: RDSDataModel.RollbackTransactionRequest, 
-            _ completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, RDSDataError>) -> ()) throws -> ()
 
     /**
      Invokes the BatchExecuteStatement operation returning immediately and passing the response to a callback.
@@ -71,7 +71,7 @@ public protocol RDSDataClientProtocol {
      */
     func batchExecuteStatementAsync(
             input: RDSDataModel.BatchExecuteStatementRequest, 
-            completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, RDSDataError>) -> ()) throws
 
     /**
      Invokes the BatchExecuteStatement operation waiting for the response before returning.
@@ -97,7 +97,7 @@ public protocol RDSDataClientProtocol {
      */
     func beginTransactionAsync(
             input: RDSDataModel.BeginTransactionRequest, 
-            completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, RDSDataError>) -> ()) throws
 
     /**
      Invokes the BeginTransaction operation waiting for the response before returning.
@@ -123,7 +123,7 @@ public protocol RDSDataClientProtocol {
      */
     func commitTransactionAsync(
             input: RDSDataModel.CommitTransactionRequest, 
-            completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, RDSDataError>) -> ()) throws
 
     /**
      Invokes the CommitTransaction operation waiting for the response before returning.
@@ -149,7 +149,7 @@ public protocol RDSDataClientProtocol {
      */
     func executeSqlAsync(
             input: RDSDataModel.ExecuteSqlRequest, 
-            completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, RDSDataError>) -> ()) throws
 
     /**
      Invokes the ExecuteSql operation waiting for the response before returning.
@@ -175,7 +175,7 @@ public protocol RDSDataClientProtocol {
      */
     func executeStatementAsync(
             input: RDSDataModel.ExecuteStatementRequest, 
-            completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, RDSDataError>) -> ()) throws
 
     /**
      Invokes the ExecuteStatement operation waiting for the response before returning.
@@ -201,7 +201,7 @@ public protocol RDSDataClientProtocol {
      */
     func rollbackTransactionAsync(
             input: RDSDataModel.RollbackTransactionRequest, 
-            completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, RDSDataError>) -> ()) throws
 
     /**
      Invokes the RollbackTransaction operation waiting for the response before returning.

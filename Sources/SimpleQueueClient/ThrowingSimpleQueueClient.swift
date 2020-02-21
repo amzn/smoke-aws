@@ -28,7 +28,7 @@ import SmokeHTTPClient
  Mock Client for the SimpleQueue service that by default always throws from its methods.
  */
 public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
-    let error: HTTPClientError
+    let error: SimpleQueueError
     let addPermissionAsyncOverride: AddPermissionAsyncType?
     let addPermissionSyncOverride: AddPermissionSyncType?
     let changeMessageVisibilityAsyncOverride: ChangeMessageVisibilityAsyncType?
@@ -74,7 +74,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: HTTPClientError,
+    public init(error: SimpleQueueError,
             addPermissionAsync: AddPermissionAsyncType? = nil,
             addPermissionSync: AddPermissionSyncType? = nil,
             changeMessageVisibilityAsync: ChangeMessageVisibilityAsyncType? = nil,
@@ -169,7 +169,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func addPermissionAsync(
             input: SimpleQueueModel.AddPermissionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         if let addPermissionAsyncOverride = addPermissionAsyncOverride {
             return try addPermissionAsyncOverride(input, completion)
         }
@@ -204,7 +204,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func changeMessageVisibilityAsync(
             input: SimpleQueueModel.ChangeMessageVisibilityRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         if let changeMessageVisibilityAsyncOverride = changeMessageVisibilityAsyncOverride {
             return try changeMessageVisibilityAsyncOverride(input, completion)
         }
@@ -240,7 +240,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func changeMessageVisibilityBatchAsync(
             input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, SimpleQueueError>) -> ()) throws {
         if let changeMessageVisibilityBatchAsyncOverride = changeMessageVisibilityBatchAsyncOverride {
             return try changeMessageVisibilityBatchAsyncOverride(input, completion)
         }
@@ -278,7 +278,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func createQueueAsync(
             input: SimpleQueueModel.CreateQueueRequest, 
-            completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, SimpleQueueError>) -> ()) throws {
         if let createQueueAsyncOverride = createQueueAsyncOverride {
             return try createQueueAsyncOverride(input, completion)
         }
@@ -315,7 +315,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func deleteMessageAsync(
             input: SimpleQueueModel.DeleteMessageRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         if let deleteMessageAsyncOverride = deleteMessageAsyncOverride {
             return try deleteMessageAsyncOverride(input, completion)
         }
@@ -351,7 +351,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func deleteMessageBatchAsync(
             input: SimpleQueueModel.DeleteMessageBatchRequest, 
-            completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, SimpleQueueError>) -> ()) throws {
         if let deleteMessageBatchAsyncOverride = deleteMessageBatchAsyncOverride {
             return try deleteMessageBatchAsyncOverride(input, completion)
         }
@@ -387,7 +387,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func deleteQueueAsync(
             input: SimpleQueueModel.DeleteQueueRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         if let deleteQueueAsyncOverride = deleteQueueAsyncOverride {
             return try deleteQueueAsyncOverride(input, completion)
         }
@@ -422,7 +422,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func getQueueAttributesAsync(
             input: SimpleQueueModel.GetQueueAttributesRequest, 
-            completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, SimpleQueueError>) -> ()) throws {
         if let getQueueAttributesAsyncOverride = getQueueAttributesAsyncOverride {
             return try getQueueAttributesAsyncOverride(input, completion)
         }
@@ -460,7 +460,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func getQueueUrlAsync(
             input: SimpleQueueModel.GetQueueUrlRequest, 
-            completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, SimpleQueueError>) -> ()) throws {
         if let getQueueUrlAsyncOverride = getQueueUrlAsyncOverride {
             return try getQueueUrlAsyncOverride(input, completion)
         }
@@ -498,7 +498,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func listDeadLetterSourceQueuesAsync(
             input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, SimpleQueueError>) -> ()) throws {
         if let listDeadLetterSourceQueuesAsyncOverride = listDeadLetterSourceQueuesAsyncOverride {
             return try listDeadLetterSourceQueuesAsyncOverride(input, completion)
         }
@@ -535,7 +535,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func listQueueTagsAsync(
             input: SimpleQueueModel.ListQueueTagsRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, SimpleQueueError>) -> ()) throws {
         if let listQueueTagsAsyncOverride = listQueueTagsAsyncOverride {
             return try listQueueTagsAsyncOverride(input, completion)
         }
@@ -571,7 +571,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func listQueuesAsync(
             input: SimpleQueueModel.ListQueuesRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, SimpleQueueError>) -> ()) throws {
         if let listQueuesAsyncOverride = listQueuesAsyncOverride {
             return try listQueuesAsyncOverride(input, completion)
         }
@@ -607,7 +607,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func purgeQueueAsync(
             input: SimpleQueueModel.PurgeQueueRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         if let purgeQueueAsyncOverride = purgeQueueAsyncOverride {
             return try purgeQueueAsyncOverride(input, completion)
         }
@@ -643,7 +643,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func receiveMessageAsync(
             input: SimpleQueueModel.ReceiveMessageRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, SimpleQueueError>) -> ()) throws {
         if let receiveMessageAsyncOverride = receiveMessageAsyncOverride {
             return try receiveMessageAsyncOverride(input, completion)
         }
@@ -679,7 +679,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func removePermissionAsync(
             input: SimpleQueueModel.RemovePermissionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         if let removePermissionAsyncOverride = removePermissionAsyncOverride {
             return try removePermissionAsyncOverride(input, completion)
         }
@@ -714,7 +714,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func sendMessageAsync(
             input: SimpleQueueModel.SendMessageRequest, 
-            completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, SimpleQueueError>) -> ()) throws {
         if let sendMessageAsyncOverride = sendMessageAsyncOverride {
             return try sendMessageAsyncOverride(input, completion)
         }
@@ -752,7 +752,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func sendMessageBatchAsync(
             input: SimpleQueueModel.SendMessageBatchRequest, 
-            completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, SimpleQueueError>) -> ()) throws {
         if let sendMessageBatchAsyncOverride = sendMessageBatchAsyncOverride {
             return try sendMessageBatchAsyncOverride(input, completion)
         }
@@ -789,7 +789,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func setQueueAttributesAsync(
             input: SimpleQueueModel.SetQueueAttributesRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         if let setQueueAttributesAsyncOverride = setQueueAttributesAsyncOverride {
             return try setQueueAttributesAsyncOverride(input, completion)
         }
@@ -823,7 +823,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func tagQueueAsync(
             input: SimpleQueueModel.TagQueueRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         if let tagQueueAsyncOverride = tagQueueAsyncOverride {
             return try tagQueueAsyncOverride(input, completion)
         }
@@ -856,7 +856,7 @@ public struct ThrowingSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func untagQueueAsync(
             input: SimpleQueueModel.UntagQueueRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         if let untagQueueAsyncOverride = untagQueueAsyncOverride {
             return try untagQueueAsyncOverride(input, completion)
         }

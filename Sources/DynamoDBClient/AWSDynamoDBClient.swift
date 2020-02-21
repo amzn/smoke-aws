@@ -150,7 +150,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func batchGetItemAsync(
             input: DynamoDBModel.BatchGetItemInput, 
-            completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -162,11 +162,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = BatchGetItemOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.BatchGetItemOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -215,7 +230,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func batchWriteItemAsync(
             input: DynamoDBModel.BatchWriteItemInput, 
-            completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -227,11 +242,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = BatchWriteItemOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.BatchWriteItemOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -280,7 +310,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func createBackupAsync(
             input: DynamoDBModel.CreateBackupInput, 
-            completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -292,11 +322,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateBackupOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.CreateBackupOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -345,7 +390,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func createGlobalTableAsync(
             input: DynamoDBModel.CreateGlobalTableInput, 
-            completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -357,11 +402,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateGlobalTableOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.CreateGlobalTableOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -410,7 +470,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func createTableAsync(
             input: DynamoDBModel.CreateTableInput, 
-            completion: @escaping (Result<DynamoDBModel.CreateTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.CreateTableOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -422,11 +482,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateTableOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.CreateTableOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -475,7 +550,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func deleteBackupAsync(
             input: DynamoDBModel.DeleteBackupInput, 
-            completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -487,11 +562,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBackupOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.DeleteBackupOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -540,7 +630,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func deleteItemAsync(
             input: DynamoDBModel.DeleteItemInput, 
-            completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -552,11 +642,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteItemOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.DeleteItemOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -605,7 +710,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func deleteTableAsync(
             input: DynamoDBModel.DeleteTableInput, 
-            completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -617,11 +722,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteTableOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.DeleteTableOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -670,7 +790,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func describeBackupAsync(
             input: DynamoDBModel.DescribeBackupInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -682,11 +802,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeBackupOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.DescribeBackupOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -735,7 +870,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func describeContinuousBackupsAsync(
             input: DynamoDBModel.DescribeContinuousBackupsInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -747,11 +882,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.DescribeContinuousBackupsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -800,7 +950,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func describeContributorInsightsAsync(
             input: DynamoDBModel.DescribeContributorInsightsInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -812,11 +962,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeContributorInsightsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -864,7 +1029,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func describeEndpointsAsync(
             input: DynamoDBModel.DescribeEndpointsRequest, 
-            completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -876,11 +1041,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeEndpointsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.DescribeEndpointsResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -928,7 +1108,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func describeGlobalTableAsync(
             input: DynamoDBModel.DescribeGlobalTableInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -940,11 +1120,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeGlobalTableOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.DescribeGlobalTableOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -993,7 +1188,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func describeGlobalTableSettingsAsync(
             input: DynamoDBModel.DescribeGlobalTableSettingsInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1005,11 +1200,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1058,7 +1268,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func describeLimitsAsync(
             input: DynamoDBModel.DescribeLimitsInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1070,11 +1280,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeLimitsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.DescribeLimitsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1123,7 +1348,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func describeTableAsync(
             input: DynamoDBModel.DescribeTableInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1135,11 +1360,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeTableOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.DescribeTableOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1188,7 +1428,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func describeTableReplicaAutoScalingAsync(
             input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1200,11 +1440,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1253,7 +1508,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func describeTimeToLiveAsync(
             input: DynamoDBModel.DescribeTimeToLiveInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1265,11 +1520,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeTimeToLiveOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.DescribeTimeToLiveOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1318,7 +1588,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func getItemAsync(
             input: DynamoDBModel.GetItemInput, 
-            completion: @escaping (Result<DynamoDBModel.GetItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.GetItemOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1330,11 +1600,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetItemOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.GetItemOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1383,7 +1668,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func listBackupsAsync(
             input: DynamoDBModel.ListBackupsInput, 
-            completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1395,11 +1680,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListBackupsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.ListBackupsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1448,7 +1748,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func listContributorInsightsAsync(
             input: DynamoDBModel.ListContributorInsightsInput, 
-            completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1460,11 +1760,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListContributorInsightsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1513,7 +1828,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func listGlobalTablesAsync(
             input: DynamoDBModel.ListGlobalTablesInput, 
-            completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1525,11 +1840,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListGlobalTablesOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.ListGlobalTablesOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1578,7 +1908,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func listTablesAsync(
             input: DynamoDBModel.ListTablesInput, 
-            completion: @escaping (Result<DynamoDBModel.ListTablesOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListTablesOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1590,11 +1920,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTablesOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.ListTablesOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1643,7 +1988,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func listTagsOfResourceAsync(
             input: DynamoDBModel.ListTagsOfResourceInput, 
-            completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1655,11 +2000,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTagsOfResourceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.ListTagsOfResourceOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1708,7 +2068,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func putItemAsync(
             input: DynamoDBModel.PutItemInput, 
-            completion: @escaping (Result<DynamoDBModel.PutItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.PutItemOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1720,11 +2080,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutItemOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.PutItemOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1773,7 +2148,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func queryAsync(
             input: DynamoDBModel.QueryInput, 
-            completion: @escaping (Result<DynamoDBModel.QueryOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.QueryOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1785,11 +2160,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = QueryOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.QueryOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1838,7 +2228,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func restoreTableFromBackupAsync(
             input: DynamoDBModel.RestoreTableFromBackupInput, 
-            completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1850,11 +2240,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RestoreTableFromBackupOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.RestoreTableFromBackupOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1903,7 +2308,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func restoreTableToPointInTimeAsync(
             input: DynamoDBModel.RestoreTableToPointInTimeInput, 
-            completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1915,11 +2320,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RestoreTableToPointInTimeOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.RestoreTableToPointInTimeOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1968,7 +2388,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func scanAsync(
             input: DynamoDBModel.ScanInput, 
-            completion: @escaping (Result<DynamoDBModel.ScanOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ScanOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1980,11 +2400,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ScanOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.ScanOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2032,7 +2467,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func tagResourceAsync(
             input: DynamoDBModel.TagResourceInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (DynamoDBError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2044,11 +2479,25 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(DynamoDBError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2095,7 +2544,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func transactGetItemsAsync(
             input: DynamoDBModel.TransactGetItemsInput, 
-            completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2107,11 +2556,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = TransactGetItemsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.TransactGetItemsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2160,7 +2624,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func transactWriteItemsAsync(
             input: DynamoDBModel.TransactWriteItemsInput, 
-            completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2172,11 +2636,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = TransactWriteItemsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.TransactWriteItemsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2224,7 +2703,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func untagResourceAsync(
             input: DynamoDBModel.UntagResourceInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (DynamoDBError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2236,11 +2715,25 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(DynamoDBError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2287,7 +2780,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func updateContinuousBackupsAsync(
             input: DynamoDBModel.UpdateContinuousBackupsInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2299,11 +2792,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.UpdateContinuousBackupsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2352,7 +2860,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func updateContributorInsightsAsync(
             input: DynamoDBModel.UpdateContributorInsightsInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2364,11 +2872,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateContributorInsightsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2417,7 +2940,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func updateGlobalTableAsync(
             input: DynamoDBModel.UpdateGlobalTableInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2429,11 +2952,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateGlobalTableOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.UpdateGlobalTableOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2482,7 +3020,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func updateGlobalTableSettingsAsync(
             input: DynamoDBModel.UpdateGlobalTableSettingsInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2494,11 +3032,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2547,7 +3100,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func updateItemAsync(
             input: DynamoDBModel.UpdateItemInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2559,11 +3112,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateItemOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.UpdateItemOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2612,7 +3180,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func updateTableAsync(
             input: DynamoDBModel.UpdateTableInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2624,11 +3192,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateTableOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.UpdateTableOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2677,7 +3260,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func updateTableReplicaAutoScalingAsync(
             input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2689,11 +3272,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2742,7 +3340,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
      */
     public func updateTimeToLiveAsync(
             input: DynamoDBModel.UpdateTimeToLiveInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, DynamoDBError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2754,11 +3352,26 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateTimeToLiveOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<DynamoDBModel.UpdateTimeToLiveOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? DynamoDBError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)

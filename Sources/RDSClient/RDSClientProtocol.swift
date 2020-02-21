@@ -32,652 +32,652 @@ public protocol RDSClientProtocol {
             _ input: RDSModel.AddRoleToDBClusterMessage) throws -> ()
     typealias AddRoleToDBClusterAsyncType = (
             _ input: RDSModel.AddRoleToDBClusterMessage, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias AddRoleToDBInstanceSyncType = (
             _ input: RDSModel.AddRoleToDBInstanceMessage) throws -> ()
     typealias AddRoleToDBInstanceAsyncType = (
             _ input: RDSModel.AddRoleToDBInstanceMessage, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias AddSourceIdentifierToSubscriptionSyncType = (
             _ input: RDSModel.AddSourceIdentifierToSubscriptionMessage) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription
     typealias AddSourceIdentifierToSubscriptionAsyncType = (
             _ input: RDSModel.AddSourceIdentifierToSubscriptionMessage, 
-            _ completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, RDSError>) -> ()) throws -> ()
     typealias AddTagsToResourceSyncType = (
             _ input: RDSModel.AddTagsToResourceMessage) throws -> ()
     typealias AddTagsToResourceAsyncType = (
             _ input: RDSModel.AddTagsToResourceMessage, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias ApplyPendingMaintenanceActionSyncType = (
             _ input: RDSModel.ApplyPendingMaintenanceActionMessage) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction
     typealias ApplyPendingMaintenanceActionAsyncType = (
             _ input: RDSModel.ApplyPendingMaintenanceActionMessage, 
-            _ completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, RDSError>) -> ()) throws -> ()
     typealias AuthorizeDBSecurityGroupIngressSyncType = (
             _ input: RDSModel.AuthorizeDBSecurityGroupIngressMessage) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress
     typealias AuthorizeDBSecurityGroupIngressAsyncType = (
             _ input: RDSModel.AuthorizeDBSecurityGroupIngressMessage, 
-            _ completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, RDSError>) -> ()) throws -> ()
     typealias BacktrackDBClusterSyncType = (
             _ input: RDSModel.BacktrackDBClusterMessage) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster
     typealias BacktrackDBClusterAsyncType = (
             _ input: RDSModel.BacktrackDBClusterMessage, 
-            _ completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, RDSError>) -> ()) throws -> ()
     typealias CancelExportTaskSyncType = (
             _ input: RDSModel.CancelExportTaskMessage) throws -> RDSModel.ExportTaskForCancelExportTask
     typealias CancelExportTaskAsyncType = (
             _ input: RDSModel.CancelExportTaskMessage, 
-            _ completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, RDSError>) -> ()) throws -> ()
     typealias CopyDBClusterParameterGroupSyncType = (
             _ input: RDSModel.CopyDBClusterParameterGroupMessage) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup
     typealias CopyDBClusterParameterGroupAsyncType = (
             _ input: RDSModel.CopyDBClusterParameterGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, RDSError>) -> ()) throws -> ()
     typealias CopyDBClusterSnapshotSyncType = (
             _ input: RDSModel.CopyDBClusterSnapshotMessage) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot
     typealias CopyDBClusterSnapshotAsyncType = (
             _ input: RDSModel.CopyDBClusterSnapshotMessage, 
-            _ completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, RDSError>) -> ()) throws -> ()
     typealias CopyDBParameterGroupSyncType = (
             _ input: RDSModel.CopyDBParameterGroupMessage) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup
     typealias CopyDBParameterGroupAsyncType = (
             _ input: RDSModel.CopyDBParameterGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, RDSError>) -> ()) throws -> ()
     typealias CopyDBSnapshotSyncType = (
             _ input: RDSModel.CopyDBSnapshotMessage) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot
     typealias CopyDBSnapshotAsyncType = (
             _ input: RDSModel.CopyDBSnapshotMessage, 
-            _ completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, RDSError>) -> ()) throws -> ()
     typealias CopyOptionGroupSyncType = (
             _ input: RDSModel.CopyOptionGroupMessage) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup
     typealias CopyOptionGroupAsyncType = (
             _ input: RDSModel.CopyOptionGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, RDSError>) -> ()) throws -> ()
     typealias CreateCustomAvailabilityZoneSyncType = (
             _ input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
     typealias CreateCustomAvailabilityZoneAsyncType = (
             _ input: RDSModel.CreateCustomAvailabilityZoneMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, RDSError>) -> ()) throws -> ()
     typealias CreateDBClusterSyncType = (
             _ input: RDSModel.CreateDBClusterMessage) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster
     typealias CreateDBClusterAsyncType = (
             _ input: RDSModel.CreateDBClusterMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, RDSError>) -> ()) throws -> ()
     typealias CreateDBClusterEndpointSyncType = (
             _ input: RDSModel.CreateDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint
     typealias CreateDBClusterEndpointAsyncType = (
             _ input: RDSModel.CreateDBClusterEndpointMessage, 
-            _ completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, RDSError>) -> ()) throws -> ()
     typealias CreateDBClusterParameterGroupSyncType = (
             _ input: RDSModel.CreateDBClusterParameterGroupMessage) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup
     typealias CreateDBClusterParameterGroupAsyncType = (
             _ input: RDSModel.CreateDBClusterParameterGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, RDSError>) -> ()) throws -> ()
     typealias CreateDBClusterSnapshotSyncType = (
             _ input: RDSModel.CreateDBClusterSnapshotMessage) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot
     typealias CreateDBClusterSnapshotAsyncType = (
             _ input: RDSModel.CreateDBClusterSnapshotMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, RDSError>) -> ()) throws -> ()
     typealias CreateDBInstanceSyncType = (
             _ input: RDSModel.CreateDBInstanceMessage) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance
     typealias CreateDBInstanceAsyncType = (
             _ input: RDSModel.CreateDBInstanceMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, RDSError>) -> ()) throws -> ()
     typealias CreateDBInstanceReadReplicaSyncType = (
             _ input: RDSModel.CreateDBInstanceReadReplicaMessage) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica
     typealias CreateDBInstanceReadReplicaAsyncType = (
             _ input: RDSModel.CreateDBInstanceReadReplicaMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, RDSError>) -> ()) throws -> ()
     typealias CreateDBParameterGroupSyncType = (
             _ input: RDSModel.CreateDBParameterGroupMessage) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup
     typealias CreateDBParameterGroupAsyncType = (
             _ input: RDSModel.CreateDBParameterGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, RDSError>) -> ()) throws -> ()
     typealias CreateDBProxySyncType = (
             _ input: RDSModel.CreateDBProxyRequest) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy
     typealias CreateDBProxyAsyncType = (
             _ input: RDSModel.CreateDBProxyRequest, 
-            _ completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, RDSError>) -> ()) throws -> ()
     typealias CreateDBSecurityGroupSyncType = (
             _ input: RDSModel.CreateDBSecurityGroupMessage) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup
     typealias CreateDBSecurityGroupAsyncType = (
             _ input: RDSModel.CreateDBSecurityGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, RDSError>) -> ()) throws -> ()
     typealias CreateDBSnapshotSyncType = (
             _ input: RDSModel.CreateDBSnapshotMessage) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot
     typealias CreateDBSnapshotAsyncType = (
             _ input: RDSModel.CreateDBSnapshotMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, RDSError>) -> ()) throws -> ()
     typealias CreateDBSubnetGroupSyncType = (
             _ input: RDSModel.CreateDBSubnetGroupMessage) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup
     typealias CreateDBSubnetGroupAsyncType = (
             _ input: RDSModel.CreateDBSubnetGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, RDSError>) -> ()) throws -> ()
     typealias CreateEventSubscriptionSyncType = (
             _ input: RDSModel.CreateEventSubscriptionMessage) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription
     typealias CreateEventSubscriptionAsyncType = (
             _ input: RDSModel.CreateEventSubscriptionMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, RDSError>) -> ()) throws -> ()
     typealias CreateGlobalClusterSyncType = (
             _ input: RDSModel.CreateGlobalClusterMessage) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster
     typealias CreateGlobalClusterAsyncType = (
             _ input: RDSModel.CreateGlobalClusterMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, RDSError>) -> ()) throws -> ()
     typealias CreateOptionGroupSyncType = (
             _ input: RDSModel.CreateOptionGroupMessage) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup
     typealias CreateOptionGroupAsyncType = (
             _ input: RDSModel.CreateOptionGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, RDSError>) -> ()) throws -> ()
     typealias DeleteCustomAvailabilityZoneSyncType = (
             _ input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
     typealias DeleteCustomAvailabilityZoneAsyncType = (
             _ input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
-            _ completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, RDSError>) -> ()) throws -> ()
     typealias DeleteDBClusterSyncType = (
             _ input: RDSModel.DeleteDBClusterMessage) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster
     typealias DeleteDBClusterAsyncType = (
             _ input: RDSModel.DeleteDBClusterMessage, 
-            _ completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, RDSError>) -> ()) throws -> ()
     typealias DeleteDBClusterEndpointSyncType = (
             _ input: RDSModel.DeleteDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint
     typealias DeleteDBClusterEndpointAsyncType = (
             _ input: RDSModel.DeleteDBClusterEndpointMessage, 
-            _ completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, RDSError>) -> ()) throws -> ()
     typealias DeleteDBClusterParameterGroupSyncType = (
             _ input: RDSModel.DeleteDBClusterParameterGroupMessage) throws -> ()
     typealias DeleteDBClusterParameterGroupAsyncType = (
             _ input: RDSModel.DeleteDBClusterParameterGroupMessage, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias DeleteDBClusterSnapshotSyncType = (
             _ input: RDSModel.DeleteDBClusterSnapshotMessage) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot
     typealias DeleteDBClusterSnapshotAsyncType = (
             _ input: RDSModel.DeleteDBClusterSnapshotMessage, 
-            _ completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, RDSError>) -> ()) throws -> ()
     typealias DeleteDBInstanceSyncType = (
             _ input: RDSModel.DeleteDBInstanceMessage) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance
     typealias DeleteDBInstanceAsyncType = (
             _ input: RDSModel.DeleteDBInstanceMessage, 
-            _ completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, RDSError>) -> ()) throws -> ()
     typealias DeleteDBInstanceAutomatedBackupSyncType = (
             _ input: RDSModel.DeleteDBInstanceAutomatedBackupMessage) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup
     typealias DeleteDBInstanceAutomatedBackupAsyncType = (
             _ input: RDSModel.DeleteDBInstanceAutomatedBackupMessage, 
-            _ completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, RDSError>) -> ()) throws -> ()
     typealias DeleteDBParameterGroupSyncType = (
             _ input: RDSModel.DeleteDBParameterGroupMessage) throws -> ()
     typealias DeleteDBParameterGroupAsyncType = (
             _ input: RDSModel.DeleteDBParameterGroupMessage, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias DeleteDBProxySyncType = (
             _ input: RDSModel.DeleteDBProxyRequest) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy
     typealias DeleteDBProxyAsyncType = (
             _ input: RDSModel.DeleteDBProxyRequest, 
-            _ completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, RDSError>) -> ()) throws -> ()
     typealias DeleteDBSecurityGroupSyncType = (
             _ input: RDSModel.DeleteDBSecurityGroupMessage) throws -> ()
     typealias DeleteDBSecurityGroupAsyncType = (
             _ input: RDSModel.DeleteDBSecurityGroupMessage, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias DeleteDBSnapshotSyncType = (
             _ input: RDSModel.DeleteDBSnapshotMessage) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot
     typealias DeleteDBSnapshotAsyncType = (
             _ input: RDSModel.DeleteDBSnapshotMessage, 
-            _ completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, RDSError>) -> ()) throws -> ()
     typealias DeleteDBSubnetGroupSyncType = (
             _ input: RDSModel.DeleteDBSubnetGroupMessage) throws -> ()
     typealias DeleteDBSubnetGroupAsyncType = (
             _ input: RDSModel.DeleteDBSubnetGroupMessage, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias DeleteEventSubscriptionSyncType = (
             _ input: RDSModel.DeleteEventSubscriptionMessage) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription
     typealias DeleteEventSubscriptionAsyncType = (
             _ input: RDSModel.DeleteEventSubscriptionMessage, 
-            _ completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, RDSError>) -> ()) throws -> ()
     typealias DeleteGlobalClusterSyncType = (
             _ input: RDSModel.DeleteGlobalClusterMessage) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster
     typealias DeleteGlobalClusterAsyncType = (
             _ input: RDSModel.DeleteGlobalClusterMessage, 
-            _ completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, RDSError>) -> ()) throws -> ()
     typealias DeleteInstallationMediaSyncType = (
             _ input: RDSModel.DeleteInstallationMediaMessage) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia
     typealias DeleteInstallationMediaAsyncType = (
             _ input: RDSModel.DeleteInstallationMediaMessage, 
-            _ completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, RDSError>) -> ()) throws -> ()
     typealias DeleteOptionGroupSyncType = (
             _ input: RDSModel.DeleteOptionGroupMessage) throws -> ()
     typealias DeleteOptionGroupAsyncType = (
             _ input: RDSModel.DeleteOptionGroupMessage, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias DeregisterDBProxyTargetsSyncType = (
             _ input: RDSModel.DeregisterDBProxyTargetsRequest) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
     typealias DeregisterDBProxyTargetsAsyncType = (
             _ input: RDSModel.DeregisterDBProxyTargetsRequest, 
-            _ completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, RDSError>) -> ()) throws -> ()
     typealias DescribeAccountAttributesSyncType = (
             _ input: RDSModel.DescribeAccountAttributesMessage) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes
     typealias DescribeAccountAttributesAsyncType = (
             _ input: RDSModel.DescribeAccountAttributesMessage, 
-            _ completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, RDSError>) -> ()) throws -> ()
     typealias DescribeCertificatesSyncType = (
             _ input: RDSModel.DescribeCertificatesMessage) throws -> RDSModel.CertificateMessageForDescribeCertificates
     typealias DescribeCertificatesAsyncType = (
             _ input: RDSModel.DescribeCertificatesMessage, 
-            _ completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, RDSError>) -> ()) throws -> ()
     typealias DescribeCustomAvailabilityZonesSyncType = (
             _ input: RDSModel.DescribeCustomAvailabilityZonesMessage) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
     typealias DescribeCustomAvailabilityZonesAsyncType = (
             _ input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
-            _ completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClusterBacktracksSyncType = (
             _ input: RDSModel.DescribeDBClusterBacktracksMessage) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks
     typealias DescribeDBClusterBacktracksAsyncType = (
             _ input: RDSModel.DescribeDBClusterBacktracksMessage, 
-            _ completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClusterEndpointsSyncType = (
             _ input: RDSModel.DescribeDBClusterEndpointsMessage) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints
     typealias DescribeDBClusterEndpointsAsyncType = (
             _ input: RDSModel.DescribeDBClusterEndpointsMessage, 
-            _ completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClusterParameterGroupsSyncType = (
             _ input: RDSModel.DescribeDBClusterParameterGroupsMessage) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups
     typealias DescribeDBClusterParameterGroupsAsyncType = (
             _ input: RDSModel.DescribeDBClusterParameterGroupsMessage, 
-            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClusterParametersSyncType = (
             _ input: RDSModel.DescribeDBClusterParametersMessage) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters
     typealias DescribeDBClusterParametersAsyncType = (
             _ input: RDSModel.DescribeDBClusterParametersMessage, 
-            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClusterSnapshotAttributesSyncType = (
             _ input: RDSModel.DescribeDBClusterSnapshotAttributesMessage) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes
     typealias DescribeDBClusterSnapshotAttributesAsyncType = (
             _ input: RDSModel.DescribeDBClusterSnapshotAttributesMessage, 
-            _ completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClusterSnapshotsSyncType = (
             _ input: RDSModel.DescribeDBClusterSnapshotsMessage) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots
     typealias DescribeDBClusterSnapshotsAsyncType = (
             _ input: RDSModel.DescribeDBClusterSnapshotsMessage, 
-            _ completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClustersSyncType = (
             _ input: RDSModel.DescribeDBClustersMessage) throws -> RDSModel.DBClusterMessageForDescribeDBClusters
     typealias DescribeDBClustersAsyncType = (
             _ input: RDSModel.DescribeDBClustersMessage, 
-            _ completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, RDSError>) -> ()) throws -> ()
     typealias DescribeDBEngineVersionsSyncType = (
             _ input: RDSModel.DescribeDBEngineVersionsMessage) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions
     typealias DescribeDBEngineVersionsAsyncType = (
             _ input: RDSModel.DescribeDBEngineVersionsMessage, 
-            _ completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, RDSError>) -> ()) throws -> ()
     typealias DescribeDBInstanceAutomatedBackupsSyncType = (
             _ input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups
     typealias DescribeDBInstanceAutomatedBackupsAsyncType = (
             _ input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage, 
-            _ completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, RDSError>) -> ()) throws -> ()
     typealias DescribeDBInstancesSyncType = (
             _ input: RDSModel.DescribeDBInstancesMessage) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances
     typealias DescribeDBInstancesAsyncType = (
             _ input: RDSModel.DescribeDBInstancesMessage, 
-            _ completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, RDSError>) -> ()) throws -> ()
     typealias DescribeDBLogFilesSyncType = (
             _ input: RDSModel.DescribeDBLogFilesMessage) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles
     typealias DescribeDBLogFilesAsyncType = (
             _ input: RDSModel.DescribeDBLogFilesMessage, 
-            _ completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, RDSError>) -> ()) throws -> ()
     typealias DescribeDBParameterGroupsSyncType = (
             _ input: RDSModel.DescribeDBParameterGroupsMessage) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups
     typealias DescribeDBParameterGroupsAsyncType = (
             _ input: RDSModel.DescribeDBParameterGroupsMessage, 
-            _ completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, RDSError>) -> ()) throws -> ()
     typealias DescribeDBParametersSyncType = (
             _ input: RDSModel.DescribeDBParametersMessage) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters
     typealias DescribeDBParametersAsyncType = (
             _ input: RDSModel.DescribeDBParametersMessage, 
-            _ completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, RDSError>) -> ()) throws -> ()
     typealias DescribeDBProxiesSyncType = (
             _ input: RDSModel.DescribeDBProxiesRequest) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies
     typealias DescribeDBProxiesAsyncType = (
             _ input: RDSModel.DescribeDBProxiesRequest, 
-            _ completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, RDSError>) -> ()) throws -> ()
     typealias DescribeDBProxyTargetGroupsSyncType = (
             _ input: RDSModel.DescribeDBProxyTargetGroupsRequest) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
     typealias DescribeDBProxyTargetGroupsAsyncType = (
             _ input: RDSModel.DescribeDBProxyTargetGroupsRequest, 
-            _ completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, RDSError>) -> ()) throws -> ()
     typealias DescribeDBProxyTargetsSyncType = (
             _ input: RDSModel.DescribeDBProxyTargetsRequest) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
     typealias DescribeDBProxyTargetsAsyncType = (
             _ input: RDSModel.DescribeDBProxyTargetsRequest, 
-            _ completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, RDSError>) -> ()) throws -> ()
     typealias DescribeDBSecurityGroupsSyncType = (
             _ input: RDSModel.DescribeDBSecurityGroupsMessage) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups
     typealias DescribeDBSecurityGroupsAsyncType = (
             _ input: RDSModel.DescribeDBSecurityGroupsMessage, 
-            _ completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, RDSError>) -> ()) throws -> ()
     typealias DescribeDBSnapshotAttributesSyncType = (
             _ input: RDSModel.DescribeDBSnapshotAttributesMessage) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes
     typealias DescribeDBSnapshotAttributesAsyncType = (
             _ input: RDSModel.DescribeDBSnapshotAttributesMessage, 
-            _ completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, RDSError>) -> ()) throws -> ()
     typealias DescribeDBSnapshotsSyncType = (
             _ input: RDSModel.DescribeDBSnapshotsMessage) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots
     typealias DescribeDBSnapshotsAsyncType = (
             _ input: RDSModel.DescribeDBSnapshotsMessage, 
-            _ completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, RDSError>) -> ()) throws -> ()
     typealias DescribeDBSubnetGroupsSyncType = (
             _ input: RDSModel.DescribeDBSubnetGroupsMessage) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups
     typealias DescribeDBSubnetGroupsAsyncType = (
             _ input: RDSModel.DescribeDBSubnetGroupsMessage, 
-            _ completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, RDSError>) -> ()) throws -> ()
     typealias DescribeEngineDefaultClusterParametersSyncType = (
             _ input: RDSModel.DescribeEngineDefaultClusterParametersMessage) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters
     typealias DescribeEngineDefaultClusterParametersAsyncType = (
             _ input: RDSModel.DescribeEngineDefaultClusterParametersMessage, 
-            _ completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, RDSError>) -> ()) throws -> ()
     typealias DescribeEngineDefaultParametersSyncType = (
             _ input: RDSModel.DescribeEngineDefaultParametersMessage) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters
     typealias DescribeEngineDefaultParametersAsyncType = (
             _ input: RDSModel.DescribeEngineDefaultParametersMessage, 
-            _ completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, RDSError>) -> ()) throws -> ()
     typealias DescribeEventCategoriesSyncType = (
             _ input: RDSModel.DescribeEventCategoriesMessage) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories
     typealias DescribeEventCategoriesAsyncType = (
             _ input: RDSModel.DescribeEventCategoriesMessage, 
-            _ completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, RDSError>) -> ()) throws -> ()
     typealias DescribeEventSubscriptionsSyncType = (
             _ input: RDSModel.DescribeEventSubscriptionsMessage) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions
     typealias DescribeEventSubscriptionsAsyncType = (
             _ input: RDSModel.DescribeEventSubscriptionsMessage, 
-            _ completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, RDSError>) -> ()) throws -> ()
     typealias DescribeEventsSyncType = (
             _ input: RDSModel.DescribeEventsMessage) throws -> RDSModel.EventsMessageForDescribeEvents
     typealias DescribeEventsAsyncType = (
             _ input: RDSModel.DescribeEventsMessage, 
-            _ completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, RDSError>) -> ()) throws -> ()
     typealias DescribeExportTasksSyncType = (
             _ input: RDSModel.DescribeExportTasksMessage) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks
     typealias DescribeExportTasksAsyncType = (
             _ input: RDSModel.DescribeExportTasksMessage, 
-            _ completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, RDSError>) -> ()) throws -> ()
     typealias DescribeGlobalClustersSyncType = (
             _ input: RDSModel.DescribeGlobalClustersMessage) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters
     typealias DescribeGlobalClustersAsyncType = (
             _ input: RDSModel.DescribeGlobalClustersMessage, 
-            _ completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, RDSError>) -> ()) throws -> ()
     typealias DescribeInstallationMediaSyncType = (
             _ input: RDSModel.DescribeInstallationMediaMessage) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia
     typealias DescribeInstallationMediaAsyncType = (
             _ input: RDSModel.DescribeInstallationMediaMessage, 
-            _ completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, RDSError>) -> ()) throws -> ()
     typealias DescribeOptionGroupOptionsSyncType = (
             _ input: RDSModel.DescribeOptionGroupOptionsMessage) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions
     typealias DescribeOptionGroupOptionsAsyncType = (
             _ input: RDSModel.DescribeOptionGroupOptionsMessage, 
-            _ completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, RDSError>) -> ()) throws -> ()
     typealias DescribeOptionGroupsSyncType = (
             _ input: RDSModel.DescribeOptionGroupsMessage) throws -> RDSModel.OptionGroupsForDescribeOptionGroups
     typealias DescribeOptionGroupsAsyncType = (
             _ input: RDSModel.DescribeOptionGroupsMessage, 
-            _ completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, RDSError>) -> ()) throws -> ()
     typealias DescribeOrderableDBInstanceOptionsSyncType = (
             _ input: RDSModel.DescribeOrderableDBInstanceOptionsMessage) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions
     typealias DescribeOrderableDBInstanceOptionsAsyncType = (
             _ input: RDSModel.DescribeOrderableDBInstanceOptionsMessage, 
-            _ completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, RDSError>) -> ()) throws -> ()
     typealias DescribePendingMaintenanceActionsSyncType = (
             _ input: RDSModel.DescribePendingMaintenanceActionsMessage) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions
     typealias DescribePendingMaintenanceActionsAsyncType = (
             _ input: RDSModel.DescribePendingMaintenanceActionsMessage, 
-            _ completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, RDSError>) -> ()) throws -> ()
     typealias DescribeReservedDBInstancesSyncType = (
             _ input: RDSModel.DescribeReservedDBInstancesMessage) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances
     typealias DescribeReservedDBInstancesAsyncType = (
             _ input: RDSModel.DescribeReservedDBInstancesMessage, 
-            _ completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, RDSError>) -> ()) throws -> ()
     typealias DescribeReservedDBInstancesOfferingsSyncType = (
             _ input: RDSModel.DescribeReservedDBInstancesOfferingsMessage) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings
     typealias DescribeReservedDBInstancesOfferingsAsyncType = (
             _ input: RDSModel.DescribeReservedDBInstancesOfferingsMessage, 
-            _ completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, RDSError>) -> ()) throws -> ()
     typealias DescribeSourceRegionsSyncType = (
             _ input: RDSModel.DescribeSourceRegionsMessage) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions
     typealias DescribeSourceRegionsAsyncType = (
             _ input: RDSModel.DescribeSourceRegionsMessage, 
-            _ completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, RDSError>) -> ()) throws -> ()
     typealias DescribeValidDBInstanceModificationsSyncType = (
             _ input: RDSModel.DescribeValidDBInstanceModificationsMessage) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications
     typealias DescribeValidDBInstanceModificationsAsyncType = (
             _ input: RDSModel.DescribeValidDBInstanceModificationsMessage, 
-            _ completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, RDSError>) -> ()) throws -> ()
     typealias DownloadDBLogFilePortionSyncType = (
             _ input: RDSModel.DownloadDBLogFilePortionMessage) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion
     typealias DownloadDBLogFilePortionAsyncType = (
             _ input: RDSModel.DownloadDBLogFilePortionMessage, 
-            _ completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, RDSError>) -> ()) throws -> ()
     typealias FailoverDBClusterSyncType = (
             _ input: RDSModel.FailoverDBClusterMessage) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster
     typealias FailoverDBClusterAsyncType = (
             _ input: RDSModel.FailoverDBClusterMessage, 
-            _ completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, RDSError>) -> ()) throws -> ()
     typealias ImportInstallationMediaSyncType = (
             _ input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia
     typealias ImportInstallationMediaAsyncType = (
             _ input: RDSModel.ImportInstallationMediaMessage, 
-            _ completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, RDSError>) -> ()) throws -> ()
     typealias ListTagsForResourceSyncType = (
             _ input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource
     typealias ListTagsForResourceAsyncType = (
             _ input: RDSModel.ListTagsForResourceMessage, 
-            _ completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, RDSError>) -> ()) throws -> ()
     typealias ModifyCertificatesSyncType = (
             _ input: RDSModel.ModifyCertificatesMessage) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates
     typealias ModifyCertificatesAsyncType = (
             _ input: RDSModel.ModifyCertificatesMessage, 
-            _ completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, RDSError>) -> ()) throws -> ()
     typealias ModifyCurrentDBClusterCapacitySyncType = (
             _ input: RDSModel.ModifyCurrentDBClusterCapacityMessage) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity
     typealias ModifyCurrentDBClusterCapacityAsyncType = (
             _ input: RDSModel.ModifyCurrentDBClusterCapacityMessage, 
-            _ completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, RDSError>) -> ()) throws -> ()
     typealias ModifyDBClusterSyncType = (
             _ input: RDSModel.ModifyDBClusterMessage) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster
     typealias ModifyDBClusterAsyncType = (
             _ input: RDSModel.ModifyDBClusterMessage, 
-            _ completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, RDSError>) -> ()) throws -> ()
     typealias ModifyDBClusterEndpointSyncType = (
             _ input: RDSModel.ModifyDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint
     typealias ModifyDBClusterEndpointAsyncType = (
             _ input: RDSModel.ModifyDBClusterEndpointMessage, 
-            _ completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, RDSError>) -> ()) throws -> ()
     typealias ModifyDBClusterParameterGroupSyncType = (
             _ input: RDSModel.ModifyDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup
     typealias ModifyDBClusterParameterGroupAsyncType = (
             _ input: RDSModel.ModifyDBClusterParameterGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, RDSError>) -> ()) throws -> ()
     typealias ModifyDBClusterSnapshotAttributeSyncType = (
             _ input: RDSModel.ModifyDBClusterSnapshotAttributeMessage) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute
     typealias ModifyDBClusterSnapshotAttributeAsyncType = (
             _ input: RDSModel.ModifyDBClusterSnapshotAttributeMessage, 
-            _ completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, RDSError>) -> ()) throws -> ()
     typealias ModifyDBInstanceSyncType = (
             _ input: RDSModel.ModifyDBInstanceMessage) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance
     typealias ModifyDBInstanceAsyncType = (
             _ input: RDSModel.ModifyDBInstanceMessage, 
-            _ completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, RDSError>) -> ()) throws -> ()
     typealias ModifyDBParameterGroupSyncType = (
             _ input: RDSModel.ModifyDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup
     typealias ModifyDBParameterGroupAsyncType = (
             _ input: RDSModel.ModifyDBParameterGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, RDSError>) -> ()) throws -> ()
     typealias ModifyDBProxySyncType = (
             _ input: RDSModel.ModifyDBProxyRequest) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy
     typealias ModifyDBProxyAsyncType = (
             _ input: RDSModel.ModifyDBProxyRequest, 
-            _ completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, RDSError>) -> ()) throws -> ()
     typealias ModifyDBProxyTargetGroupSyncType = (
             _ input: RDSModel.ModifyDBProxyTargetGroupRequest) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
     typealias ModifyDBProxyTargetGroupAsyncType = (
             _ input: RDSModel.ModifyDBProxyTargetGroupRequest, 
-            _ completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, RDSError>) -> ()) throws -> ()
     typealias ModifyDBSnapshotSyncType = (
             _ input: RDSModel.ModifyDBSnapshotMessage) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot
     typealias ModifyDBSnapshotAsyncType = (
             _ input: RDSModel.ModifyDBSnapshotMessage, 
-            _ completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, RDSError>) -> ()) throws -> ()
     typealias ModifyDBSnapshotAttributeSyncType = (
             _ input: RDSModel.ModifyDBSnapshotAttributeMessage) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute
     typealias ModifyDBSnapshotAttributeAsyncType = (
             _ input: RDSModel.ModifyDBSnapshotAttributeMessage, 
-            _ completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, RDSError>) -> ()) throws -> ()
     typealias ModifyDBSubnetGroupSyncType = (
             _ input: RDSModel.ModifyDBSubnetGroupMessage) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup
     typealias ModifyDBSubnetGroupAsyncType = (
             _ input: RDSModel.ModifyDBSubnetGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, RDSError>) -> ()) throws -> ()
     typealias ModifyEventSubscriptionSyncType = (
             _ input: RDSModel.ModifyEventSubscriptionMessage) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription
     typealias ModifyEventSubscriptionAsyncType = (
             _ input: RDSModel.ModifyEventSubscriptionMessage, 
-            _ completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, RDSError>) -> ()) throws -> ()
     typealias ModifyGlobalClusterSyncType = (
             _ input: RDSModel.ModifyGlobalClusterMessage) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster
     typealias ModifyGlobalClusterAsyncType = (
             _ input: RDSModel.ModifyGlobalClusterMessage, 
-            _ completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, RDSError>) -> ()) throws -> ()
     typealias ModifyOptionGroupSyncType = (
             _ input: RDSModel.ModifyOptionGroupMessage) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup
     typealias ModifyOptionGroupAsyncType = (
             _ input: RDSModel.ModifyOptionGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, RDSError>) -> ()) throws -> ()
     typealias PromoteReadReplicaSyncType = (
             _ input: RDSModel.PromoteReadReplicaMessage) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica
     typealias PromoteReadReplicaAsyncType = (
             _ input: RDSModel.PromoteReadReplicaMessage, 
-            _ completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, RDSError>) -> ()) throws -> ()
     typealias PromoteReadReplicaDBClusterSyncType = (
             _ input: RDSModel.PromoteReadReplicaDBClusterMessage) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster
     typealias PromoteReadReplicaDBClusterAsyncType = (
             _ input: RDSModel.PromoteReadReplicaDBClusterMessage, 
-            _ completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, RDSError>) -> ()) throws -> ()
     typealias PurchaseReservedDBInstancesOfferingSyncType = (
             _ input: RDSModel.PurchaseReservedDBInstancesOfferingMessage) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering
     typealias PurchaseReservedDBInstancesOfferingAsyncType = (
             _ input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, 
-            _ completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, RDSError>) -> ()) throws -> ()
     typealias RebootDBInstanceSyncType = (
             _ input: RDSModel.RebootDBInstanceMessage) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance
     typealias RebootDBInstanceAsyncType = (
             _ input: RDSModel.RebootDBInstanceMessage, 
-            _ completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, RDSError>) -> ()) throws -> ()
     typealias RegisterDBProxyTargetsSyncType = (
             _ input: RDSModel.RegisterDBProxyTargetsRequest) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
     typealias RegisterDBProxyTargetsAsyncType = (
             _ input: RDSModel.RegisterDBProxyTargetsRequest, 
-            _ completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, RDSError>) -> ()) throws -> ()
     typealias RemoveFromGlobalClusterSyncType = (
             _ input: RDSModel.RemoveFromGlobalClusterMessage) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster
     typealias RemoveFromGlobalClusterAsyncType = (
             _ input: RDSModel.RemoveFromGlobalClusterMessage, 
-            _ completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, RDSError>) -> ()) throws -> ()
     typealias RemoveRoleFromDBClusterSyncType = (
             _ input: RDSModel.RemoveRoleFromDBClusterMessage) throws -> ()
     typealias RemoveRoleFromDBClusterAsyncType = (
             _ input: RDSModel.RemoveRoleFromDBClusterMessage, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias RemoveRoleFromDBInstanceSyncType = (
             _ input: RDSModel.RemoveRoleFromDBInstanceMessage) throws -> ()
     typealias RemoveRoleFromDBInstanceAsyncType = (
             _ input: RDSModel.RemoveRoleFromDBInstanceMessage, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias RemoveSourceIdentifierFromSubscriptionSyncType = (
             _ input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription
     typealias RemoveSourceIdentifierFromSubscriptionAsyncType = (
             _ input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage, 
-            _ completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, RDSError>) -> ()) throws -> ()
     typealias RemoveTagsFromResourceSyncType = (
             _ input: RDSModel.RemoveTagsFromResourceMessage) throws -> ()
     typealias RemoveTagsFromResourceAsyncType = (
             _ input: RDSModel.RemoveTagsFromResourceMessage, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias ResetDBClusterParameterGroupSyncType = (
             _ input: RDSModel.ResetDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup
     typealias ResetDBClusterParameterGroupAsyncType = (
             _ input: RDSModel.ResetDBClusterParameterGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, RDSError>) -> ()) throws -> ()
     typealias ResetDBParameterGroupSyncType = (
             _ input: RDSModel.ResetDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup
     typealias ResetDBParameterGroupAsyncType = (
             _ input: RDSModel.ResetDBParameterGroupMessage, 
-            _ completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, RDSError>) -> ()) throws -> ()
     typealias RestoreDBClusterFromS3SyncType = (
             _ input: RDSModel.RestoreDBClusterFromS3Message) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3
     typealias RestoreDBClusterFromS3AsyncType = (
             _ input: RDSModel.RestoreDBClusterFromS3Message, 
-            _ completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, RDSError>) -> ()) throws -> ()
     typealias RestoreDBClusterFromSnapshotSyncType = (
             _ input: RDSModel.RestoreDBClusterFromSnapshotMessage) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot
     typealias RestoreDBClusterFromSnapshotAsyncType = (
             _ input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
-            _ completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, RDSError>) -> ()) throws -> ()
     typealias RestoreDBClusterToPointInTimeSyncType = (
             _ input: RDSModel.RestoreDBClusterToPointInTimeMessage) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime
     typealias RestoreDBClusterToPointInTimeAsyncType = (
             _ input: RDSModel.RestoreDBClusterToPointInTimeMessage, 
-            _ completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, RDSError>) -> ()) throws -> ()
     typealias RestoreDBInstanceFromDBSnapshotSyncType = (
             _ input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot
     typealias RestoreDBInstanceFromDBSnapshotAsyncType = (
             _ input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
-            _ completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, RDSError>) -> ()) throws -> ()
     typealias RestoreDBInstanceFromS3SyncType = (
             _ input: RDSModel.RestoreDBInstanceFromS3Message) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3
     typealias RestoreDBInstanceFromS3AsyncType = (
             _ input: RDSModel.RestoreDBInstanceFromS3Message, 
-            _ completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, RDSError>) -> ()) throws -> ()
     typealias RestoreDBInstanceToPointInTimeSyncType = (
             _ input: RDSModel.RestoreDBInstanceToPointInTimeMessage) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime
     typealias RestoreDBInstanceToPointInTimeAsyncType = (
             _ input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
-            _ completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, RDSError>) -> ()) throws -> ()
     typealias RevokeDBSecurityGroupIngressSyncType = (
             _ input: RDSModel.RevokeDBSecurityGroupIngressMessage) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress
     typealias RevokeDBSecurityGroupIngressAsyncType = (
             _ input: RDSModel.RevokeDBSecurityGroupIngressMessage, 
-            _ completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, RDSError>) -> ()) throws -> ()
     typealias StartActivityStreamSyncType = (
             _ input: RDSModel.StartActivityStreamRequest) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream
     typealias StartActivityStreamAsyncType = (
             _ input: RDSModel.StartActivityStreamRequest, 
-            _ completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, RDSError>) -> ()) throws -> ()
     typealias StartDBClusterSyncType = (
             _ input: RDSModel.StartDBClusterMessage) throws -> RDSModel.StartDBClusterResultForStartDBCluster
     typealias StartDBClusterAsyncType = (
             _ input: RDSModel.StartDBClusterMessage, 
-            _ completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, RDSError>) -> ()) throws -> ()
     typealias StartDBInstanceSyncType = (
             _ input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance
     typealias StartDBInstanceAsyncType = (
             _ input: RDSModel.StartDBInstanceMessage, 
-            _ completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, RDSError>) -> ()) throws -> ()
     typealias StartExportTaskSyncType = (
             _ input: RDSModel.StartExportTaskMessage) throws -> RDSModel.ExportTaskForStartExportTask
     typealias StartExportTaskAsyncType = (
             _ input: RDSModel.StartExportTaskMessage, 
-            _ completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, RDSError>) -> ()) throws -> ()
     typealias StopActivityStreamSyncType = (
             _ input: RDSModel.StopActivityStreamRequest) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream
     typealias StopActivityStreamAsyncType = (
             _ input: RDSModel.StopActivityStreamRequest, 
-            _ completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, RDSError>) -> ()) throws -> ()
     typealias StopDBClusterSyncType = (
             _ input: RDSModel.StopDBClusterMessage) throws -> RDSModel.StopDBClusterResultForStopDBCluster
     typealias StopDBClusterAsyncType = (
             _ input: RDSModel.StopDBClusterMessage, 
-            _ completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, RDSError>) -> ()) throws -> ()
     typealias StopDBInstanceSyncType = (
             _ input: RDSModel.StopDBInstanceMessage) throws -> RDSModel.StopDBInstanceResultForStopDBInstance
     typealias StopDBInstanceAsyncType = (
             _ input: RDSModel.StopDBInstanceMessage, 
-            _ completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, RDSError>) -> ()) throws -> ()
 
     /**
      Invokes the AddRoleToDBCluster operation returning immediately and passing the response to a callback.
@@ -690,7 +690,7 @@ public protocol RDSClientProtocol {
      */
     func addRoleToDBClusterAsync(
             input: RDSModel.AddRoleToDBClusterMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the AddRoleToDBCluster operation waiting for the response before returning.
@@ -713,7 +713,7 @@ public protocol RDSClientProtocol {
      */
     func addRoleToDBInstanceAsync(
             input: RDSModel.AddRoleToDBInstanceMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the AddRoleToDBInstance operation waiting for the response before returning.
@@ -737,7 +737,7 @@ public protocol RDSClientProtocol {
      */
     func addSourceIdentifierToSubscriptionAsync(
             input: RDSModel.AddSourceIdentifierToSubscriptionMessage, 
-            completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, RDSError>) -> ()) throws
 
     /**
      Invokes the AddSourceIdentifierToSubscription operation waiting for the response before returning.
@@ -762,7 +762,7 @@ public protocol RDSClientProtocol {
      */
     func addTagsToResourceAsync(
             input: RDSModel.AddTagsToResourceMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the AddTagsToResource operation waiting for the response before returning.
@@ -786,7 +786,7 @@ public protocol RDSClientProtocol {
      */
     func applyPendingMaintenanceActionAsync(
             input: RDSModel.ApplyPendingMaintenanceActionMessage, 
-            completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, RDSError>) -> ()) throws
 
     /**
      Invokes the ApplyPendingMaintenanceAction operation waiting for the response before returning.
@@ -812,7 +812,7 @@ public protocol RDSClientProtocol {
      */
     func authorizeDBSecurityGroupIngressAsync(
             input: RDSModel.AuthorizeDBSecurityGroupIngressMessage, 
-            completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, RDSError>) -> ()) throws
 
     /**
      Invokes the AuthorizeDBSecurityGroupIngress operation waiting for the response before returning.
@@ -838,7 +838,7 @@ public protocol RDSClientProtocol {
      */
     func backtrackDBClusterAsync(
             input: RDSModel.BacktrackDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the BacktrackDBCluster operation waiting for the response before returning.
@@ -864,7 +864,7 @@ public protocol RDSClientProtocol {
      */
     func cancelExportTaskAsync(
             input: RDSModel.CancelExportTaskMessage, 
-            completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, RDSError>) -> ()) throws
 
     /**
      Invokes the CancelExportTask operation waiting for the response before returning.
@@ -890,7 +890,7 @@ public protocol RDSClientProtocol {
      */
     func copyDBClusterParameterGroupAsync(
             input: RDSModel.CopyDBClusterParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CopyDBClusterParameterGroup operation waiting for the response before returning.
@@ -916,7 +916,7 @@ public protocol RDSClientProtocol {
      */
     func copyDBClusterSnapshotAsync(
             input: RDSModel.CopyDBClusterSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the CopyDBClusterSnapshot operation waiting for the response before returning.
@@ -942,7 +942,7 @@ public protocol RDSClientProtocol {
      */
     func copyDBParameterGroupAsync(
             input: RDSModel.CopyDBParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CopyDBParameterGroup operation waiting for the response before returning.
@@ -968,7 +968,7 @@ public protocol RDSClientProtocol {
      */
     func copyDBSnapshotAsync(
             input: RDSModel.CopyDBSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the CopyDBSnapshot operation waiting for the response before returning.
@@ -994,7 +994,7 @@ public protocol RDSClientProtocol {
      */
     func copyOptionGroupAsync(
             input: RDSModel.CopyOptionGroupMessage, 
-            completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CopyOptionGroup operation waiting for the response before returning.
@@ -1020,7 +1020,7 @@ public protocol RDSClientProtocol {
      */
     func createCustomAvailabilityZoneAsync(
             input: RDSModel.CreateCustomAvailabilityZoneMessage, 
-            completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateCustomAvailabilityZone operation waiting for the response before returning.
@@ -1046,7 +1046,7 @@ public protocol RDSClientProtocol {
      */
     func createDBClusterAsync(
             input: RDSModel.CreateDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBCluster operation waiting for the response before returning.
@@ -1072,7 +1072,7 @@ public protocol RDSClientProtocol {
      */
     func createDBClusterEndpointAsync(
             input: RDSModel.CreateDBClusterEndpointMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBClusterEndpoint operation waiting for the response before returning.
@@ -1098,7 +1098,7 @@ public protocol RDSClientProtocol {
      */
     func createDBClusterParameterGroupAsync(
             input: RDSModel.CreateDBClusterParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBClusterParameterGroup operation waiting for the response before returning.
@@ -1124,7 +1124,7 @@ public protocol RDSClientProtocol {
      */
     func createDBClusterSnapshotAsync(
             input: RDSModel.CreateDBClusterSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBClusterSnapshot operation waiting for the response before returning.
@@ -1150,7 +1150,7 @@ public protocol RDSClientProtocol {
      */
     func createDBInstanceAsync(
             input: RDSModel.CreateDBInstanceMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBInstance operation waiting for the response before returning.
@@ -1176,7 +1176,7 @@ public protocol RDSClientProtocol {
      */
     func createDBInstanceReadReplicaAsync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBInstanceReadReplica operation waiting for the response before returning.
@@ -1202,7 +1202,7 @@ public protocol RDSClientProtocol {
      */
     func createDBParameterGroupAsync(
             input: RDSModel.CreateDBParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBParameterGroup operation waiting for the response before returning.
@@ -1228,7 +1228,7 @@ public protocol RDSClientProtocol {
      */
     func createDBProxyAsync(
             input: RDSModel.CreateDBProxyRequest, 
-            completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBProxy operation waiting for the response before returning.
@@ -1254,7 +1254,7 @@ public protocol RDSClientProtocol {
      */
     func createDBSecurityGroupAsync(
             input: RDSModel.CreateDBSecurityGroupMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBSecurityGroup operation waiting for the response before returning.
@@ -1280,7 +1280,7 @@ public protocol RDSClientProtocol {
      */
     func createDBSnapshotAsync(
             input: RDSModel.CreateDBSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBSnapshot operation waiting for the response before returning.
@@ -1306,7 +1306,7 @@ public protocol RDSClientProtocol {
      */
     func createDBSubnetGroupAsync(
             input: RDSModel.CreateDBSubnetGroupMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBSubnetGroup operation waiting for the response before returning.
@@ -1332,7 +1332,7 @@ public protocol RDSClientProtocol {
      */
     func createEventSubscriptionAsync(
             input: RDSModel.CreateEventSubscriptionMessage, 
-            completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateEventSubscription operation waiting for the response before returning.
@@ -1358,7 +1358,7 @@ public protocol RDSClientProtocol {
      */
     func createGlobalClusterAsync(
             input: RDSModel.CreateGlobalClusterMessage, 
-            completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateGlobalCluster operation waiting for the response before returning.
@@ -1384,7 +1384,7 @@ public protocol RDSClientProtocol {
      */
     func createOptionGroupAsync(
             input: RDSModel.CreateOptionGroupMessage, 
-            completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateOptionGroup operation waiting for the response before returning.
@@ -1410,7 +1410,7 @@ public protocol RDSClientProtocol {
      */
     func deleteCustomAvailabilityZoneAsync(
             input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
-            completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteCustomAvailabilityZone operation waiting for the response before returning.
@@ -1436,7 +1436,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBClusterAsync(
             input: RDSModel.DeleteDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBCluster operation waiting for the response before returning.
@@ -1462,7 +1462,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBClusterEndpointAsync(
             input: RDSModel.DeleteDBClusterEndpointMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBClusterEndpoint operation waiting for the response before returning.
@@ -1487,7 +1487,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBClusterParameterGroupAsync(
             input: RDSModel.DeleteDBClusterParameterGroupMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the DeleteDBClusterParameterGroup operation waiting for the response before returning.
@@ -1511,7 +1511,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBClusterSnapshotAsync(
             input: RDSModel.DeleteDBClusterSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBClusterSnapshot operation waiting for the response before returning.
@@ -1537,7 +1537,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBInstanceAsync(
             input: RDSModel.DeleteDBInstanceMessage, 
-            completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBInstance operation waiting for the response before returning.
@@ -1563,7 +1563,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBInstanceAutomatedBackupAsync(
             input: RDSModel.DeleteDBInstanceAutomatedBackupMessage, 
-            completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBInstanceAutomatedBackup operation waiting for the response before returning.
@@ -1588,7 +1588,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBParameterGroupAsync(
             input: RDSModel.DeleteDBParameterGroupMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the DeleteDBParameterGroup operation waiting for the response before returning.
@@ -1612,7 +1612,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBProxyAsync(
             input: RDSModel.DeleteDBProxyRequest, 
-            completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBProxy operation waiting for the response before returning.
@@ -1637,7 +1637,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBSecurityGroupAsync(
             input: RDSModel.DeleteDBSecurityGroupMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the DeleteDBSecurityGroup operation waiting for the response before returning.
@@ -1661,7 +1661,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBSnapshotAsync(
             input: RDSModel.DeleteDBSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBSnapshot operation waiting for the response before returning.
@@ -1686,7 +1686,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBSubnetGroupAsync(
             input: RDSModel.DeleteDBSubnetGroupMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the DeleteDBSubnetGroup operation waiting for the response before returning.
@@ -1710,7 +1710,7 @@ public protocol RDSClientProtocol {
      */
     func deleteEventSubscriptionAsync(
             input: RDSModel.DeleteEventSubscriptionMessage, 
-            completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteEventSubscription operation waiting for the response before returning.
@@ -1736,7 +1736,7 @@ public protocol RDSClientProtocol {
      */
     func deleteGlobalClusterAsync(
             input: RDSModel.DeleteGlobalClusterMessage, 
-            completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteGlobalCluster operation waiting for the response before returning.
@@ -1762,7 +1762,7 @@ public protocol RDSClientProtocol {
      */
     func deleteInstallationMediaAsync(
             input: RDSModel.DeleteInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteInstallationMedia operation waiting for the response before returning.
@@ -1787,7 +1787,7 @@ public protocol RDSClientProtocol {
      */
     func deleteOptionGroupAsync(
             input: RDSModel.DeleteOptionGroupMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the DeleteOptionGroup operation waiting for the response before returning.
@@ -1811,7 +1811,7 @@ public protocol RDSClientProtocol {
      */
     func deregisterDBProxyTargetsAsync(
             input: RDSModel.DeregisterDBProxyTargetsRequest, 
-            completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, RDSError>) -> ()) throws
 
     /**
      Invokes the DeregisterDBProxyTargets operation waiting for the response before returning.
@@ -1836,7 +1836,7 @@ public protocol RDSClientProtocol {
      */
     func describeAccountAttributesAsync(
             input: RDSModel.DescribeAccountAttributesMessage, 
-            completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeAccountAttributes operation waiting for the response before returning.
@@ -1861,7 +1861,7 @@ public protocol RDSClientProtocol {
      */
     func describeCertificatesAsync(
             input: RDSModel.DescribeCertificatesMessage, 
-            completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeCertificates operation waiting for the response before returning.
@@ -1887,7 +1887,7 @@ public protocol RDSClientProtocol {
      */
     func describeCustomAvailabilityZonesAsync(
             input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
-            completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeCustomAvailabilityZones operation waiting for the response before returning.
@@ -1913,7 +1913,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClusterBacktracksAsync(
             input: RDSModel.DescribeDBClusterBacktracksMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusterBacktracks operation waiting for the response before returning.
@@ -1939,7 +1939,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClusterEndpointsAsync(
             input: RDSModel.DescribeDBClusterEndpointsMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusterEndpoints operation waiting for the response before returning.
@@ -1965,7 +1965,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClusterParameterGroupsAsync(
             input: RDSModel.DescribeDBClusterParameterGroupsMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusterParameterGroups operation waiting for the response before returning.
@@ -1991,7 +1991,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClusterParametersAsync(
             input: RDSModel.DescribeDBClusterParametersMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusterParameters operation waiting for the response before returning.
@@ -2017,7 +2017,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClusterSnapshotAttributesAsync(
             input: RDSModel.DescribeDBClusterSnapshotAttributesMessage, 
-            completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusterSnapshotAttributes operation waiting for the response before returning.
@@ -2043,7 +2043,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClusterSnapshotsAsync(
             input: RDSModel.DescribeDBClusterSnapshotsMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusterSnapshots operation waiting for the response before returning.
@@ -2069,7 +2069,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClustersAsync(
             input: RDSModel.DescribeDBClustersMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusters operation waiting for the response before returning.
@@ -2094,7 +2094,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBEngineVersionsAsync(
             input: RDSModel.DescribeDBEngineVersionsMessage, 
-            completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBEngineVersions operation waiting for the response before returning.
@@ -2119,7 +2119,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBInstanceAutomatedBackupsAsync(
             input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage, 
-            completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBInstanceAutomatedBackups operation waiting for the response before returning.
@@ -2145,7 +2145,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBInstancesAsync(
             input: RDSModel.DescribeDBInstancesMessage, 
-            completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBInstances operation waiting for the response before returning.
@@ -2171,7 +2171,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBLogFilesAsync(
             input: RDSModel.DescribeDBLogFilesMessage, 
-            completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBLogFiles operation waiting for the response before returning.
@@ -2197,7 +2197,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBParameterGroupsAsync(
             input: RDSModel.DescribeDBParameterGroupsMessage, 
-            completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBParameterGroups operation waiting for the response before returning.
@@ -2223,7 +2223,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBParametersAsync(
             input: RDSModel.DescribeDBParametersMessage, 
-            completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBParameters operation waiting for the response before returning.
@@ -2249,7 +2249,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBProxiesAsync(
             input: RDSModel.DescribeDBProxiesRequest, 
-            completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBProxies operation waiting for the response before returning.
@@ -2275,7 +2275,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBProxyTargetGroupsAsync(
             input: RDSModel.DescribeDBProxyTargetGroupsRequest, 
-            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBProxyTargetGroups operation waiting for the response before returning.
@@ -2301,7 +2301,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBProxyTargetsAsync(
             input: RDSModel.DescribeDBProxyTargetsRequest, 
-            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBProxyTargets operation waiting for the response before returning.
@@ -2327,7 +2327,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBSecurityGroupsAsync(
             input: RDSModel.DescribeDBSecurityGroupsMessage, 
-            completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBSecurityGroups operation waiting for the response before returning.
@@ -2353,7 +2353,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBSnapshotAttributesAsync(
             input: RDSModel.DescribeDBSnapshotAttributesMessage, 
-            completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBSnapshotAttributes operation waiting for the response before returning.
@@ -2379,7 +2379,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBSnapshotsAsync(
             input: RDSModel.DescribeDBSnapshotsMessage, 
-            completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBSnapshots operation waiting for the response before returning.
@@ -2405,7 +2405,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBSubnetGroupsAsync(
             input: RDSModel.DescribeDBSubnetGroupsMessage, 
-            completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBSubnetGroups operation waiting for the response before returning.
@@ -2430,7 +2430,7 @@ public protocol RDSClientProtocol {
      */
     func describeEngineDefaultClusterParametersAsync(
             input: RDSModel.DescribeEngineDefaultClusterParametersMessage, 
-            completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeEngineDefaultClusterParameters operation waiting for the response before returning.
@@ -2454,7 +2454,7 @@ public protocol RDSClientProtocol {
      */
     func describeEngineDefaultParametersAsync(
             input: RDSModel.DescribeEngineDefaultParametersMessage, 
-            completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeEngineDefaultParameters operation waiting for the response before returning.
@@ -2478,7 +2478,7 @@ public protocol RDSClientProtocol {
      */
     func describeEventCategoriesAsync(
             input: RDSModel.DescribeEventCategoriesMessage, 
-            completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeEventCategories operation waiting for the response before returning.
@@ -2503,7 +2503,7 @@ public protocol RDSClientProtocol {
      */
     func describeEventSubscriptionsAsync(
             input: RDSModel.DescribeEventSubscriptionsMessage, 
-            completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeEventSubscriptions operation waiting for the response before returning.
@@ -2528,7 +2528,7 @@ public protocol RDSClientProtocol {
      */
     func describeEventsAsync(
             input: RDSModel.DescribeEventsMessage, 
-            completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeEvents operation waiting for the response before returning.
@@ -2553,7 +2553,7 @@ public protocol RDSClientProtocol {
      */
     func describeExportTasksAsync(
             input: RDSModel.DescribeExportTasksMessage, 
-            completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeExportTasks operation waiting for the response before returning.
@@ -2579,7 +2579,7 @@ public protocol RDSClientProtocol {
      */
     func describeGlobalClustersAsync(
             input: RDSModel.DescribeGlobalClustersMessage, 
-            completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeGlobalClusters operation waiting for the response before returning.
@@ -2605,7 +2605,7 @@ public protocol RDSClientProtocol {
      */
     func describeInstallationMediaAsync(
             input: RDSModel.DescribeInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeInstallationMedia operation waiting for the response before returning.
@@ -2630,7 +2630,7 @@ public protocol RDSClientProtocol {
      */
     func describeOptionGroupOptionsAsync(
             input: RDSModel.DescribeOptionGroupOptionsMessage, 
-            completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeOptionGroupOptions operation waiting for the response before returning.
@@ -2655,7 +2655,7 @@ public protocol RDSClientProtocol {
      */
     func describeOptionGroupsAsync(
             input: RDSModel.DescribeOptionGroupsMessage, 
-            completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeOptionGroups operation waiting for the response before returning.
@@ -2680,7 +2680,7 @@ public protocol RDSClientProtocol {
      */
     func describeOrderableDBInstanceOptionsAsync(
             input: RDSModel.DescribeOrderableDBInstanceOptionsMessage, 
-            completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeOrderableDBInstanceOptions operation waiting for the response before returning.
@@ -2705,7 +2705,7 @@ public protocol RDSClientProtocol {
      */
     func describePendingMaintenanceActionsAsync(
             input: RDSModel.DescribePendingMaintenanceActionsMessage, 
-            completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribePendingMaintenanceActions operation waiting for the response before returning.
@@ -2731,7 +2731,7 @@ public protocol RDSClientProtocol {
      */
     func describeReservedDBInstancesAsync(
             input: RDSModel.DescribeReservedDBInstancesMessage, 
-            completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeReservedDBInstances operation waiting for the response before returning.
@@ -2757,7 +2757,7 @@ public protocol RDSClientProtocol {
      */
     func describeReservedDBInstancesOfferingsAsync(
             input: RDSModel.DescribeReservedDBInstancesOfferingsMessage, 
-            completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeReservedDBInstancesOfferings operation waiting for the response before returning.
@@ -2782,7 +2782,7 @@ public protocol RDSClientProtocol {
      */
     func describeSourceRegionsAsync(
             input: RDSModel.DescribeSourceRegionsMessage, 
-            completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeSourceRegions operation waiting for the response before returning.
@@ -2807,7 +2807,7 @@ public protocol RDSClientProtocol {
      */
     func describeValidDBInstanceModificationsAsync(
             input: RDSModel.DescribeValidDBInstanceModificationsMessage, 
-            completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeValidDBInstanceModifications operation waiting for the response before returning.
@@ -2833,7 +2833,7 @@ public protocol RDSClientProtocol {
      */
     func downloadDBLogFilePortionAsync(
             input: RDSModel.DownloadDBLogFilePortionMessage, 
-            completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, RDSError>) -> ()) throws
 
     /**
      Invokes the DownloadDBLogFilePortion operation waiting for the response before returning.
@@ -2859,7 +2859,7 @@ public protocol RDSClientProtocol {
      */
     func failoverDBClusterAsync(
             input: RDSModel.FailoverDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the FailoverDBCluster operation waiting for the response before returning.
@@ -2885,7 +2885,7 @@ public protocol RDSClientProtocol {
      */
     func importInstallationMediaAsync(
             input: RDSModel.ImportInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, RDSError>) -> ()) throws
 
     /**
      Invokes the ImportInstallationMedia operation waiting for the response before returning.
@@ -2911,7 +2911,7 @@ public protocol RDSClientProtocol {
      */
     func listTagsForResourceAsync(
             input: RDSModel.ListTagsForResourceMessage, 
-            completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, RDSError>) -> ()) throws
 
     /**
      Invokes the ListTagsForResource operation waiting for the response before returning.
@@ -2937,7 +2937,7 @@ public protocol RDSClientProtocol {
      */
     func modifyCertificatesAsync(
             input: RDSModel.ModifyCertificatesMessage, 
-            completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyCertificates operation waiting for the response before returning.
@@ -2963,7 +2963,7 @@ public protocol RDSClientProtocol {
      */
     func modifyCurrentDBClusterCapacityAsync(
             input: RDSModel.ModifyCurrentDBClusterCapacityMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyCurrentDBClusterCapacity operation waiting for the response before returning.
@@ -2989,7 +2989,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBClusterAsync(
             input: RDSModel.ModifyDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBCluster operation waiting for the response before returning.
@@ -3015,7 +3015,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBClusterEndpointAsync(
             input: RDSModel.ModifyDBClusterEndpointMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBClusterEndpoint operation waiting for the response before returning.
@@ -3041,7 +3041,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBClusterParameterGroupAsync(
             input: RDSModel.ModifyDBClusterParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBClusterParameterGroup operation waiting for the response before returning.
@@ -3067,7 +3067,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBClusterSnapshotAttributeAsync(
             input: RDSModel.ModifyDBClusterSnapshotAttributeMessage, 
-            completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBClusterSnapshotAttribute operation waiting for the response before returning.
@@ -3093,7 +3093,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBInstanceAsync(
             input: RDSModel.ModifyDBInstanceMessage, 
-            completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBInstance operation waiting for the response before returning.
@@ -3119,7 +3119,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBParameterGroupAsync(
             input: RDSModel.ModifyDBParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBParameterGroup operation waiting for the response before returning.
@@ -3145,7 +3145,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBProxyAsync(
             input: RDSModel.ModifyDBProxyRequest, 
-            completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBProxy operation waiting for the response before returning.
@@ -3171,7 +3171,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBProxyTargetGroupAsync(
             input: RDSModel.ModifyDBProxyTargetGroupRequest, 
-            completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBProxyTargetGroup operation waiting for the response before returning.
@@ -3197,7 +3197,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBSnapshotAsync(
             input: RDSModel.ModifyDBSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBSnapshot operation waiting for the response before returning.
@@ -3223,7 +3223,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBSnapshotAttributeAsync(
             input: RDSModel.ModifyDBSnapshotAttributeMessage, 
-            completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBSnapshotAttribute operation waiting for the response before returning.
@@ -3249,7 +3249,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBSubnetGroupAsync(
             input: RDSModel.ModifyDBSubnetGroupMessage, 
-            completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBSubnetGroup operation waiting for the response before returning.
@@ -3275,7 +3275,7 @@ public protocol RDSClientProtocol {
      */
     func modifyEventSubscriptionAsync(
             input: RDSModel.ModifyEventSubscriptionMessage, 
-            completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyEventSubscription operation waiting for the response before returning.
@@ -3301,7 +3301,7 @@ public protocol RDSClientProtocol {
      */
     func modifyGlobalClusterAsync(
             input: RDSModel.ModifyGlobalClusterMessage, 
-            completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyGlobalCluster operation waiting for the response before returning.
@@ -3327,7 +3327,7 @@ public protocol RDSClientProtocol {
      */
     func modifyOptionGroupAsync(
             input: RDSModel.ModifyOptionGroupMessage, 
-            completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyOptionGroup operation waiting for the response before returning.
@@ -3353,7 +3353,7 @@ public protocol RDSClientProtocol {
      */
     func promoteReadReplicaAsync(
             input: RDSModel.PromoteReadReplicaMessage, 
-            completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, RDSError>) -> ()) throws
 
     /**
      Invokes the PromoteReadReplica operation waiting for the response before returning.
@@ -3379,7 +3379,7 @@ public protocol RDSClientProtocol {
      */
     func promoteReadReplicaDBClusterAsync(
             input: RDSModel.PromoteReadReplicaDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the PromoteReadReplicaDBCluster operation waiting for the response before returning.
@@ -3405,7 +3405,7 @@ public protocol RDSClientProtocol {
      */
     func purchaseReservedDBInstancesOfferingAsync(
             input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, 
-            completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, RDSError>) -> ()) throws
 
     /**
      Invokes the PurchaseReservedDBInstancesOffering operation waiting for the response before returning.
@@ -3431,7 +3431,7 @@ public protocol RDSClientProtocol {
      */
     func rebootDBInstanceAsync(
             input: RDSModel.RebootDBInstanceMessage, 
-            completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, RDSError>) -> ()) throws
 
     /**
      Invokes the RebootDBInstance operation waiting for the response before returning.
@@ -3457,7 +3457,7 @@ public protocol RDSClientProtocol {
      */
     func registerDBProxyTargetsAsync(
             input: RDSModel.RegisterDBProxyTargetsRequest, 
-            completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, RDSError>) -> ()) throws
 
     /**
      Invokes the RegisterDBProxyTargets operation waiting for the response before returning.
@@ -3483,7 +3483,7 @@ public protocol RDSClientProtocol {
      */
     func removeFromGlobalClusterAsync(
             input: RDSModel.RemoveFromGlobalClusterMessage, 
-            completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the RemoveFromGlobalCluster operation waiting for the response before returning.
@@ -3508,7 +3508,7 @@ public protocol RDSClientProtocol {
      */
     func removeRoleFromDBClusterAsync(
             input: RDSModel.RemoveRoleFromDBClusterMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the RemoveRoleFromDBCluster operation waiting for the response before returning.
@@ -3531,7 +3531,7 @@ public protocol RDSClientProtocol {
      */
     func removeRoleFromDBInstanceAsync(
             input: RDSModel.RemoveRoleFromDBInstanceMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the RemoveRoleFromDBInstance operation waiting for the response before returning.
@@ -3555,7 +3555,7 @@ public protocol RDSClientProtocol {
      */
     func removeSourceIdentifierFromSubscriptionAsync(
             input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage, 
-            completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, RDSError>) -> ()) throws
 
     /**
      Invokes the RemoveSourceIdentifierFromSubscription operation waiting for the response before returning.
@@ -3580,7 +3580,7 @@ public protocol RDSClientProtocol {
      */
     func removeTagsFromResourceAsync(
             input: RDSModel.RemoveTagsFromResourceMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the RemoveTagsFromResource operation waiting for the response before returning.
@@ -3604,7 +3604,7 @@ public protocol RDSClientProtocol {
      */
     func resetDBClusterParameterGroupAsync(
             input: RDSModel.ResetDBClusterParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ResetDBClusterParameterGroup operation waiting for the response before returning.
@@ -3630,7 +3630,7 @@ public protocol RDSClientProtocol {
      */
     func resetDBParameterGroupAsync(
             input: RDSModel.ResetDBParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ResetDBParameterGroup operation waiting for the response before returning.
@@ -3656,7 +3656,7 @@ public protocol RDSClientProtocol {
      */
     func restoreDBClusterFromS3Async(
             input: RDSModel.RestoreDBClusterFromS3Message, 
-            completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, RDSError>) -> ()) throws
 
     /**
      Invokes the RestoreDBClusterFromS3 operation waiting for the response before returning.
@@ -3682,7 +3682,7 @@ public protocol RDSClientProtocol {
      */
     func restoreDBClusterFromSnapshotAsync(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the RestoreDBClusterFromSnapshot operation waiting for the response before returning.
@@ -3708,7 +3708,7 @@ public protocol RDSClientProtocol {
      */
     func restoreDBClusterToPointInTimeAsync(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage, 
-            completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, RDSError>) -> ()) throws
 
     /**
      Invokes the RestoreDBClusterToPointInTime operation waiting for the response before returning.
@@ -3734,7 +3734,7 @@ public protocol RDSClientProtocol {
      */
     func restoreDBInstanceFromDBSnapshotAsync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the RestoreDBInstanceFromDBSnapshot operation waiting for the response before returning.
@@ -3760,7 +3760,7 @@ public protocol RDSClientProtocol {
      */
     func restoreDBInstanceFromS3Async(
             input: RDSModel.RestoreDBInstanceFromS3Message, 
-            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, RDSError>) -> ()) throws
 
     /**
      Invokes the RestoreDBInstanceFromS3 operation waiting for the response before returning.
@@ -3786,7 +3786,7 @@ public protocol RDSClientProtocol {
      */
     func restoreDBInstanceToPointInTimeAsync(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
-            completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, RDSError>) -> ()) throws
 
     /**
      Invokes the RestoreDBInstanceToPointInTime operation waiting for the response before returning.
@@ -3812,7 +3812,7 @@ public protocol RDSClientProtocol {
      */
     func revokeDBSecurityGroupIngressAsync(
             input: RDSModel.RevokeDBSecurityGroupIngressMessage, 
-            completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, RDSError>) -> ()) throws
 
     /**
      Invokes the RevokeDBSecurityGroupIngress operation waiting for the response before returning.
@@ -3838,7 +3838,7 @@ public protocol RDSClientProtocol {
      */
     func startActivityStreamAsync(
             input: RDSModel.StartActivityStreamRequest, 
-            completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, RDSError>) -> ()) throws
 
     /**
      Invokes the StartActivityStream operation waiting for the response before returning.
@@ -3864,7 +3864,7 @@ public protocol RDSClientProtocol {
      */
     func startDBClusterAsync(
             input: RDSModel.StartDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the StartDBCluster operation waiting for the response before returning.
@@ -3890,7 +3890,7 @@ public protocol RDSClientProtocol {
      */
     func startDBInstanceAsync(
             input: RDSModel.StartDBInstanceMessage, 
-            completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, RDSError>) -> ()) throws
 
     /**
      Invokes the StartDBInstance operation waiting for the response before returning.
@@ -3916,7 +3916,7 @@ public protocol RDSClientProtocol {
      */
     func startExportTaskAsync(
             input: RDSModel.StartExportTaskMessage, 
-            completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, RDSError>) -> ()) throws
 
     /**
      Invokes the StartExportTask operation waiting for the response before returning.
@@ -3942,7 +3942,7 @@ public protocol RDSClientProtocol {
      */
     func stopActivityStreamAsync(
             input: RDSModel.StopActivityStreamRequest, 
-            completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, RDSError>) -> ()) throws
 
     /**
      Invokes the StopActivityStream operation waiting for the response before returning.
@@ -3968,7 +3968,7 @@ public protocol RDSClientProtocol {
      */
     func stopDBClusterAsync(
             input: RDSModel.StopDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the StopDBCluster operation waiting for the response before returning.
@@ -3994,7 +3994,7 @@ public protocol RDSClientProtocol {
      */
     func stopDBInstanceAsync(
             input: RDSModel.StopDBInstanceMessage, 
-            completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, RDSError>) -> ()) throws
 
     /**
      Invokes the StopDBInstance operation waiting for the response before returning.

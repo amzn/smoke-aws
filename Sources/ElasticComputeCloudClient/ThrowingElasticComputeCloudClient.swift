@@ -28,7 +28,7 @@ import SmokeHTTPClient
  Mock Client for the ElasticComputeCloud service that by default always throws from its methods.
  */
 public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
-    let error: HTTPClientError
+    let error: ElasticComputeCloudError
     let acceptReservedInstancesExchangeQuoteAsyncOverride: AcceptReservedInstancesExchangeQuoteAsyncType?
     let acceptReservedInstancesExchangeQuoteSyncOverride: AcceptReservedInstancesExchangeQuoteSyncType?
     let acceptTransitGatewayPeeringAttachmentAsyncOverride: AcceptTransitGatewayPeeringAttachmentAsyncType?
@@ -832,7 +832,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: HTTPClientError,
+    public init(error: ElasticComputeCloudError,
             acceptReservedInstancesExchangeQuoteAsync: AcceptReservedInstancesExchangeQuoteAsyncType? = nil,
             acceptReservedInstancesExchangeQuoteSync: AcceptReservedInstancesExchangeQuoteSyncType? = nil,
             acceptTransitGatewayPeeringAttachmentAsync: AcceptTransitGatewayPeeringAttachmentAsyncType? = nil,
@@ -2443,7 +2443,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func acceptReservedInstancesExchangeQuoteAsync(
             input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult, ElasticComputeCloudError>) -> ()) throws {
         if let acceptReservedInstancesExchangeQuoteAsyncOverride = acceptReservedInstancesExchangeQuoteAsyncOverride {
             return try acceptReservedInstancesExchangeQuoteAsyncOverride(input, completion)
         }
@@ -2479,7 +2479,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func acceptTransitGatewayPeeringAttachmentAsync(
             input: ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         if let acceptTransitGatewayPeeringAttachmentAsyncOverride = acceptTransitGatewayPeeringAttachmentAsyncOverride {
             return try acceptTransitGatewayPeeringAttachmentAsyncOverride(input, completion)
         }
@@ -2515,7 +2515,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func acceptTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         if let acceptTransitGatewayVpcAttachmentAsyncOverride = acceptTransitGatewayVpcAttachmentAsyncOverride {
             return try acceptTransitGatewayVpcAttachmentAsyncOverride(input, completion)
         }
@@ -2551,7 +2551,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func acceptVpcEndpointConnectionsAsync(
             input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let acceptVpcEndpointConnectionsAsyncOverride = acceptVpcEndpointConnectionsAsyncOverride {
             return try acceptVpcEndpointConnectionsAsyncOverride(input, completion)
         }
@@ -2587,7 +2587,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func acceptVpcPeeringConnectionAsync(
             input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult, ElasticComputeCloudError>) -> ()) throws {
         if let acceptVpcPeeringConnectionAsyncOverride = acceptVpcPeeringConnectionAsyncOverride {
             return try acceptVpcPeeringConnectionAsyncOverride(input, completion)
         }
@@ -2623,7 +2623,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func advertiseByoipCidrAsync(
             input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AdvertiseByoipCidrResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AdvertiseByoipCidrResult, ElasticComputeCloudError>) -> ()) throws {
         if let advertiseByoipCidrAsyncOverride = advertiseByoipCidrAsyncOverride {
             return try advertiseByoipCidrAsyncOverride(input, completion)
         }
@@ -2659,7 +2659,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func allocateAddressAsync(
             input: ElasticComputeCloudModel.AllocateAddressRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AllocateAddressResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AllocateAddressResult, ElasticComputeCloudError>) -> ()) throws {
         if let allocateAddressAsyncOverride = allocateAddressAsyncOverride {
             return try allocateAddressAsyncOverride(input, completion)
         }
@@ -2695,7 +2695,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func allocateHostsAsync(
             input: ElasticComputeCloudModel.AllocateHostsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AllocateHostsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AllocateHostsResult, ElasticComputeCloudError>) -> ()) throws {
         if let allocateHostsAsyncOverride = allocateHostsAsyncOverride {
             return try allocateHostsAsyncOverride(input, completion)
         }
@@ -2731,7 +2731,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func applySecurityGroupsToClientVpnTargetNetworkAsync(
             input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult, ElasticComputeCloudError>) -> ()) throws {
         if let applySecurityGroupsToClientVpnTargetNetworkAsyncOverride = applySecurityGroupsToClientVpnTargetNetworkAsyncOverride {
             return try applySecurityGroupsToClientVpnTargetNetworkAsyncOverride(input, completion)
         }
@@ -2767,7 +2767,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func assignIpv6AddressesAsync(
             input: ElasticComputeCloudModel.AssignIpv6AddressesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssignIpv6AddressesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssignIpv6AddressesResult, ElasticComputeCloudError>) -> ()) throws {
         if let assignIpv6AddressesAsyncOverride = assignIpv6AddressesAsyncOverride {
             return try assignIpv6AddressesAsyncOverride(input, completion)
         }
@@ -2803,7 +2803,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func assignPrivateIpAddressesAsync(
             input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssignPrivateIpAddressesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssignPrivateIpAddressesResult, ElasticComputeCloudError>) -> ()) throws {
         if let assignPrivateIpAddressesAsyncOverride = assignPrivateIpAddressesAsyncOverride {
             return try assignPrivateIpAddressesAsyncOverride(input, completion)
         }
@@ -2839,7 +2839,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func associateAddressAsync(
             input: ElasticComputeCloudModel.AssociateAddressRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateAddressResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateAddressResult, ElasticComputeCloudError>) -> ()) throws {
         if let associateAddressAsyncOverride = associateAddressAsyncOverride {
             return try associateAddressAsyncOverride(input, completion)
         }
@@ -2875,7 +2875,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func associateClientVpnTargetNetworkAsync(
             input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult, ElasticComputeCloudError>) -> ()) throws {
         if let associateClientVpnTargetNetworkAsyncOverride = associateClientVpnTargetNetworkAsyncOverride {
             return try associateClientVpnTargetNetworkAsyncOverride(input, completion)
         }
@@ -2910,7 +2910,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func associateDhcpOptionsAsync(
             input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let associateDhcpOptionsAsyncOverride = associateDhcpOptionsAsyncOverride {
             return try associateDhcpOptionsAsyncOverride(input, completion)
         }
@@ -2944,7 +2944,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func associateIamInstanceProfileAsync(
             input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateIamInstanceProfileResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateIamInstanceProfileResult, ElasticComputeCloudError>) -> ()) throws {
         if let associateIamInstanceProfileAsyncOverride = associateIamInstanceProfileAsyncOverride {
             return try associateIamInstanceProfileAsyncOverride(input, completion)
         }
@@ -2980,7 +2980,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func associateRouteTableAsync(
             input: ElasticComputeCloudModel.AssociateRouteTableRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateRouteTableResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
         if let associateRouteTableAsyncOverride = associateRouteTableAsyncOverride {
             return try associateRouteTableAsyncOverride(input, completion)
         }
@@ -3016,7 +3016,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func associateSubnetCidrBlockAsync(
             input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateSubnetCidrBlockResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateSubnetCidrBlockResult, ElasticComputeCloudError>) -> ()) throws {
         if let associateSubnetCidrBlockAsyncOverride = associateSubnetCidrBlockAsyncOverride {
             return try associateSubnetCidrBlockAsyncOverride(input, completion)
         }
@@ -3052,7 +3052,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func associateTransitGatewayMulticastDomainAsync(
             input: ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult, ElasticComputeCloudError>) -> ()) throws {
         if let associateTransitGatewayMulticastDomainAsyncOverride = associateTransitGatewayMulticastDomainAsyncOverride {
             return try associateTransitGatewayMulticastDomainAsyncOverride(input, completion)
         }
@@ -3088,7 +3088,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func associateTransitGatewayRouteTableAsync(
             input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
         if let associateTransitGatewayRouteTableAsyncOverride = associateTransitGatewayRouteTableAsyncOverride {
             return try associateTransitGatewayRouteTableAsyncOverride(input, completion)
         }
@@ -3124,7 +3124,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func associateVpcCidrBlockAsync(
             input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AssociateVpcCidrBlockResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateVpcCidrBlockResult, ElasticComputeCloudError>) -> ()) throws {
         if let associateVpcCidrBlockAsyncOverride = associateVpcCidrBlockAsyncOverride {
             return try associateVpcCidrBlockAsyncOverride(input, completion)
         }
@@ -3160,7 +3160,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func attachClassicLinkVpcAsync(
             input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AttachClassicLinkVpcResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AttachClassicLinkVpcResult, ElasticComputeCloudError>) -> ()) throws {
         if let attachClassicLinkVpcAsyncOverride = attachClassicLinkVpcAsyncOverride {
             return try attachClassicLinkVpcAsyncOverride(input, completion)
         }
@@ -3195,7 +3195,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func attachInternetGatewayAsync(
             input: ElasticComputeCloudModel.AttachInternetGatewayRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let attachInternetGatewayAsyncOverride = attachInternetGatewayAsyncOverride {
             return try attachInternetGatewayAsyncOverride(input, completion)
         }
@@ -3229,7 +3229,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func attachNetworkInterfaceAsync(
             input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AttachNetworkInterfaceResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AttachNetworkInterfaceResult, ElasticComputeCloudError>) -> ()) throws {
         if let attachNetworkInterfaceAsyncOverride = attachNetworkInterfaceAsyncOverride {
             return try attachNetworkInterfaceAsyncOverride(input, completion)
         }
@@ -3265,7 +3265,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func attachVolumeAsync(
             input: ElasticComputeCloudModel.AttachVolumeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, ElasticComputeCloudError>) -> ()) throws {
         if let attachVolumeAsyncOverride = attachVolumeAsyncOverride {
             return try attachVolumeAsyncOverride(input, completion)
         }
@@ -3301,7 +3301,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func attachVpnGatewayAsync(
             input: ElasticComputeCloudModel.AttachVpnGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AttachVpnGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AttachVpnGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         if let attachVpnGatewayAsyncOverride = attachVpnGatewayAsyncOverride {
             return try attachVpnGatewayAsyncOverride(input, completion)
         }
@@ -3337,7 +3337,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func authorizeClientVpnIngressAsync(
             input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult, ElasticComputeCloudError>) -> ()) throws {
         if let authorizeClientVpnIngressAsyncOverride = authorizeClientVpnIngressAsyncOverride {
             return try authorizeClientVpnIngressAsyncOverride(input, completion)
         }
@@ -3372,7 +3372,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func authorizeSecurityGroupEgressAsync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let authorizeSecurityGroupEgressAsyncOverride = authorizeSecurityGroupEgressAsyncOverride {
             return try authorizeSecurityGroupEgressAsyncOverride(input, completion)
         }
@@ -3405,7 +3405,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func authorizeSecurityGroupIngressAsync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let authorizeSecurityGroupIngressAsyncOverride = authorizeSecurityGroupIngressAsyncOverride {
             return try authorizeSecurityGroupIngressAsyncOverride(input, completion)
         }
@@ -3439,7 +3439,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func bundleInstanceAsync(
             input: ElasticComputeCloudModel.BundleInstanceRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.BundleInstanceResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.BundleInstanceResult, ElasticComputeCloudError>) -> ()) throws {
         if let bundleInstanceAsyncOverride = bundleInstanceAsyncOverride {
             return try bundleInstanceAsyncOverride(input, completion)
         }
@@ -3475,7 +3475,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func cancelBundleTaskAsync(
             input: ElasticComputeCloudModel.CancelBundleTaskRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CancelBundleTaskResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelBundleTaskResult, ElasticComputeCloudError>) -> ()) throws {
         if let cancelBundleTaskAsyncOverride = cancelBundleTaskAsyncOverride {
             return try cancelBundleTaskAsyncOverride(input, completion)
         }
@@ -3511,7 +3511,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func cancelCapacityReservationAsync(
             input: ElasticComputeCloudModel.CancelCapacityReservationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CancelCapacityReservationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws {
         if let cancelCapacityReservationAsyncOverride = cancelCapacityReservationAsyncOverride {
             return try cancelCapacityReservationAsyncOverride(input, completion)
         }
@@ -3546,7 +3546,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func cancelConversionTaskAsync(
             input: ElasticComputeCloudModel.CancelConversionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let cancelConversionTaskAsyncOverride = cancelConversionTaskAsyncOverride {
             return try cancelConversionTaskAsyncOverride(input, completion)
         }
@@ -3579,7 +3579,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func cancelExportTaskAsync(
             input: ElasticComputeCloudModel.CancelExportTaskRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let cancelExportTaskAsyncOverride = cancelExportTaskAsyncOverride {
             return try cancelExportTaskAsyncOverride(input, completion)
         }
@@ -3613,7 +3613,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func cancelImportTaskAsync(
             input: ElasticComputeCloudModel.CancelImportTaskRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CancelImportTaskResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelImportTaskResult, ElasticComputeCloudError>) -> ()) throws {
         if let cancelImportTaskAsyncOverride = cancelImportTaskAsyncOverride {
             return try cancelImportTaskAsyncOverride(input, completion)
         }
@@ -3649,7 +3649,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func cancelReservedInstancesListingAsync(
             input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CancelReservedInstancesListingResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelReservedInstancesListingResult, ElasticComputeCloudError>) -> ()) throws {
         if let cancelReservedInstancesListingAsyncOverride = cancelReservedInstancesListingAsyncOverride {
             return try cancelReservedInstancesListingAsyncOverride(input, completion)
         }
@@ -3685,7 +3685,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func cancelSpotFleetRequestsAsync(
             input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotFleetRequestsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotFleetRequestsResponse, ElasticComputeCloudError>) -> ()) throws {
         if let cancelSpotFleetRequestsAsyncOverride = cancelSpotFleetRequestsAsyncOverride {
             return try cancelSpotFleetRequestsAsyncOverride(input, completion)
         }
@@ -3721,7 +3721,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func cancelSpotInstanceRequestsAsync(
             input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotInstanceRequestsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotInstanceRequestsResult, ElasticComputeCloudError>) -> ()) throws {
         if let cancelSpotInstanceRequestsAsyncOverride = cancelSpotInstanceRequestsAsyncOverride {
             return try cancelSpotInstanceRequestsAsyncOverride(input, completion)
         }
@@ -3757,7 +3757,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func confirmProductInstanceAsync(
             input: ElasticComputeCloudModel.ConfirmProductInstanceRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ConfirmProductInstanceResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ConfirmProductInstanceResult, ElasticComputeCloudError>) -> ()) throws {
         if let confirmProductInstanceAsyncOverride = confirmProductInstanceAsyncOverride {
             return try confirmProductInstanceAsyncOverride(input, completion)
         }
@@ -3793,7 +3793,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func copyFpgaImageAsync(
             input: ElasticComputeCloudModel.CopyFpgaImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CopyFpgaImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CopyFpgaImageResult, ElasticComputeCloudError>) -> ()) throws {
         if let copyFpgaImageAsyncOverride = copyFpgaImageAsyncOverride {
             return try copyFpgaImageAsyncOverride(input, completion)
         }
@@ -3829,7 +3829,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func copyImageAsync(
             input: ElasticComputeCloudModel.CopyImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CopyImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CopyImageResult, ElasticComputeCloudError>) -> ()) throws {
         if let copyImageAsyncOverride = copyImageAsyncOverride {
             return try copyImageAsyncOverride(input, completion)
         }
@@ -3865,7 +3865,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func copySnapshotAsync(
             input: ElasticComputeCloudModel.CopySnapshotRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CopySnapshotResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CopySnapshotResult, ElasticComputeCloudError>) -> ()) throws {
         if let copySnapshotAsyncOverride = copySnapshotAsyncOverride {
             return try copySnapshotAsyncOverride(input, completion)
         }
@@ -3901,7 +3901,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createCapacityReservationAsync(
             input: ElasticComputeCloudModel.CreateCapacityReservationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateCapacityReservationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws {
         if let createCapacityReservationAsyncOverride = createCapacityReservationAsyncOverride {
             return try createCapacityReservationAsyncOverride(input, completion)
         }
@@ -3937,7 +3937,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createClientVpnEndpointAsync(
             input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnEndpointResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnEndpointResult, ElasticComputeCloudError>) -> ()) throws {
         if let createClientVpnEndpointAsyncOverride = createClientVpnEndpointAsyncOverride {
             return try createClientVpnEndpointAsyncOverride(input, completion)
         }
@@ -3973,7 +3973,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createClientVpnRouteAsync(
             input: ElasticComputeCloudModel.CreateClientVpnRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnRouteResult, ElasticComputeCloudError>) -> ()) throws {
         if let createClientVpnRouteAsyncOverride = createClientVpnRouteAsyncOverride {
             return try createClientVpnRouteAsyncOverride(input, completion)
         }
@@ -4009,7 +4009,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createCustomerGatewayAsync(
             input: ElasticComputeCloudModel.CreateCustomerGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateCustomerGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateCustomerGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         if let createCustomerGatewayAsyncOverride = createCustomerGatewayAsyncOverride {
             return try createCustomerGatewayAsyncOverride(input, completion)
         }
@@ -4045,7 +4045,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createDefaultSubnetAsync(
             input: ElasticComputeCloudModel.CreateDefaultSubnetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultSubnetResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultSubnetResult, ElasticComputeCloudError>) -> ()) throws {
         if let createDefaultSubnetAsyncOverride = createDefaultSubnetAsyncOverride {
             return try createDefaultSubnetAsyncOverride(input, completion)
         }
@@ -4081,7 +4081,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createDefaultVpcAsync(
             input: ElasticComputeCloudModel.CreateDefaultVpcRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultVpcResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultVpcResult, ElasticComputeCloudError>) -> ()) throws {
         if let createDefaultVpcAsyncOverride = createDefaultVpcAsyncOverride {
             return try createDefaultVpcAsyncOverride(input, completion)
         }
@@ -4117,7 +4117,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createDhcpOptionsAsync(
             input: ElasticComputeCloudModel.CreateDhcpOptionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateDhcpOptionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateDhcpOptionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let createDhcpOptionsAsyncOverride = createDhcpOptionsAsyncOverride {
             return try createDhcpOptionsAsyncOverride(input, completion)
         }
@@ -4153,7 +4153,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createEgressOnlyInternetGatewayAsync(
             input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         if let createEgressOnlyInternetGatewayAsyncOverride = createEgressOnlyInternetGatewayAsyncOverride {
             return try createEgressOnlyInternetGatewayAsyncOverride(input, completion)
         }
@@ -4189,7 +4189,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createFleetAsync(
             input: ElasticComputeCloudModel.CreateFleetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateFleetResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateFleetResult, ElasticComputeCloudError>) -> ()) throws {
         if let createFleetAsyncOverride = createFleetAsyncOverride {
             return try createFleetAsyncOverride(input, completion)
         }
@@ -4225,7 +4225,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createFlowLogsAsync(
             input: ElasticComputeCloudModel.CreateFlowLogsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateFlowLogsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateFlowLogsResult, ElasticComputeCloudError>) -> ()) throws {
         if let createFlowLogsAsyncOverride = createFlowLogsAsyncOverride {
             return try createFlowLogsAsyncOverride(input, completion)
         }
@@ -4261,7 +4261,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createFpgaImageAsync(
             input: ElasticComputeCloudModel.CreateFpgaImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateFpgaImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateFpgaImageResult, ElasticComputeCloudError>) -> ()) throws {
         if let createFpgaImageAsyncOverride = createFpgaImageAsyncOverride {
             return try createFpgaImageAsyncOverride(input, completion)
         }
@@ -4297,7 +4297,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createImageAsync(
             input: ElasticComputeCloudModel.CreateImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateImageResult, ElasticComputeCloudError>) -> ()) throws {
         if let createImageAsyncOverride = createImageAsyncOverride {
             return try createImageAsyncOverride(input, completion)
         }
@@ -4333,7 +4333,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createInstanceExportTaskAsync(
             input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceExportTaskResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceExportTaskResult, ElasticComputeCloudError>) -> ()) throws {
         if let createInstanceExportTaskAsyncOverride = createInstanceExportTaskAsyncOverride {
             return try createInstanceExportTaskAsyncOverride(input, completion)
         }
@@ -4369,7 +4369,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createInternetGatewayAsync(
             input: ElasticComputeCloudModel.CreateInternetGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateInternetGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateInternetGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         if let createInternetGatewayAsyncOverride = createInternetGatewayAsyncOverride {
             return try createInternetGatewayAsyncOverride(input, completion)
         }
@@ -4405,7 +4405,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createKeyPairAsync(
             input: ElasticComputeCloudModel.CreateKeyPairRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.KeyPair, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.KeyPair, ElasticComputeCloudError>) -> ()) throws {
         if let createKeyPairAsyncOverride = createKeyPairAsyncOverride {
             return try createKeyPairAsyncOverride(input, completion)
         }
@@ -4441,7 +4441,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createLaunchTemplateAsync(
             input: ElasticComputeCloudModel.CreateLaunchTemplateRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateResult, ElasticComputeCloudError>) -> ()) throws {
         if let createLaunchTemplateAsyncOverride = createLaunchTemplateAsyncOverride {
             return try createLaunchTemplateAsyncOverride(input, completion)
         }
@@ -4477,7 +4477,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createLaunchTemplateVersionAsync(
             input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateVersionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateVersionResult, ElasticComputeCloudError>) -> ()) throws {
         if let createLaunchTemplateVersionAsyncOverride = createLaunchTemplateVersionAsyncOverride {
             return try createLaunchTemplateVersionAsyncOverride(input, completion)
         }
@@ -4513,7 +4513,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createLocalGatewayRouteAsync(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
         if let createLocalGatewayRouteAsyncOverride = createLocalGatewayRouteAsyncOverride {
             return try createLocalGatewayRouteAsyncOverride(input, completion)
         }
@@ -4549,7 +4549,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createLocalGatewayRouteTableVpcAssociationAsync(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult, ElasticComputeCloudError>) -> ()) throws {
         if let createLocalGatewayRouteTableVpcAssociationAsyncOverride = createLocalGatewayRouteTableVpcAssociationAsyncOverride {
             return try createLocalGatewayRouteTableVpcAssociationAsyncOverride(input, completion)
         }
@@ -4585,7 +4585,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createNatGatewayAsync(
             input: ElasticComputeCloudModel.CreateNatGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateNatGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNatGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         if let createNatGatewayAsyncOverride = createNatGatewayAsyncOverride {
             return try createNatGatewayAsyncOverride(input, completion)
         }
@@ -4621,7 +4621,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createNetworkAclAsync(
             input: ElasticComputeCloudModel.CreateNetworkAclRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkAclResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkAclResult, ElasticComputeCloudError>) -> ()) throws {
         if let createNetworkAclAsyncOverride = createNetworkAclAsyncOverride {
             return try createNetworkAclAsyncOverride(input, completion)
         }
@@ -4656,7 +4656,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createNetworkAclEntryAsync(
             input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let createNetworkAclEntryAsyncOverride = createNetworkAclEntryAsyncOverride {
             return try createNetworkAclEntryAsyncOverride(input, completion)
         }
@@ -4690,7 +4690,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createNetworkInterfaceAsync(
             input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfaceResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfaceResult, ElasticComputeCloudError>) -> ()) throws {
         if let createNetworkInterfaceAsyncOverride = createNetworkInterfaceAsyncOverride {
             return try createNetworkInterfaceAsyncOverride(input, completion)
         }
@@ -4726,7 +4726,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createNetworkInterfacePermissionAsync(
             input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult, ElasticComputeCloudError>) -> ()) throws {
         if let createNetworkInterfacePermissionAsyncOverride = createNetworkInterfacePermissionAsyncOverride {
             return try createNetworkInterfacePermissionAsyncOverride(input, completion)
         }
@@ -4761,7 +4761,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createPlacementGroupAsync(
             input: ElasticComputeCloudModel.CreatePlacementGroupRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let createPlacementGroupAsyncOverride = createPlacementGroupAsyncOverride {
             return try createPlacementGroupAsyncOverride(input, completion)
         }
@@ -4795,7 +4795,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createReservedInstancesListingAsync(
             input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateReservedInstancesListingResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateReservedInstancesListingResult, ElasticComputeCloudError>) -> ()) throws {
         if let createReservedInstancesListingAsyncOverride = createReservedInstancesListingAsyncOverride {
             return try createReservedInstancesListingAsyncOverride(input, completion)
         }
@@ -4831,7 +4831,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createRouteAsync(
             input: ElasticComputeCloudModel.CreateRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteResult, ElasticComputeCloudError>) -> ()) throws {
         if let createRouteAsyncOverride = createRouteAsyncOverride {
             return try createRouteAsyncOverride(input, completion)
         }
@@ -4867,7 +4867,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createRouteTableAsync(
             input: ElasticComputeCloudModel.CreateRouteTableRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteTableResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
         if let createRouteTableAsyncOverride = createRouteTableAsyncOverride {
             return try createRouteTableAsyncOverride(input, completion)
         }
@@ -4903,7 +4903,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createSecurityGroupAsync(
             input: ElasticComputeCloudModel.CreateSecurityGroupRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateSecurityGroupResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSecurityGroupResult, ElasticComputeCloudError>) -> ()) throws {
         if let createSecurityGroupAsyncOverride = createSecurityGroupAsyncOverride {
             return try createSecurityGroupAsyncOverride(input, completion)
         }
@@ -4939,7 +4939,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createSnapshotAsync(
             input: ElasticComputeCloudModel.CreateSnapshotRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.Snapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.Snapshot, ElasticComputeCloudError>) -> ()) throws {
         if let createSnapshotAsyncOverride = createSnapshotAsyncOverride {
             return try createSnapshotAsyncOverride(input, completion)
         }
@@ -4975,7 +4975,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createSnapshotsAsync(
             input: ElasticComputeCloudModel.CreateSnapshotsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateSnapshotsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSnapshotsResult, ElasticComputeCloudError>) -> ()) throws {
         if let createSnapshotsAsyncOverride = createSnapshotsAsyncOverride {
             return try createSnapshotsAsyncOverride(input, completion)
         }
@@ -5011,7 +5011,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createSpotDatafeedSubscriptionAsync(
             input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult, ElasticComputeCloudError>) -> ()) throws {
         if let createSpotDatafeedSubscriptionAsyncOverride = createSpotDatafeedSubscriptionAsyncOverride {
             return try createSpotDatafeedSubscriptionAsyncOverride(input, completion)
         }
@@ -5047,7 +5047,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createSubnetAsync(
             input: ElasticComputeCloudModel.CreateSubnetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateSubnetResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSubnetResult, ElasticComputeCloudError>) -> ()) throws {
         if let createSubnetAsyncOverride = createSubnetAsyncOverride {
             return try createSubnetAsyncOverride(input, completion)
         }
@@ -5082,7 +5082,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createTagsAsync(
             input: ElasticComputeCloudModel.CreateTagsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let createTagsAsyncOverride = createTagsAsyncOverride {
             return try createTagsAsyncOverride(input, completion)
         }
@@ -5116,7 +5116,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createTrafficMirrorFilterAsync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterResult, ElasticComputeCloudError>) -> ()) throws {
         if let createTrafficMirrorFilterAsyncOverride = createTrafficMirrorFilterAsyncOverride {
             return try createTrafficMirrorFilterAsyncOverride(input, completion)
         }
@@ -5152,7 +5152,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createTrafficMirrorFilterRuleAsync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult, ElasticComputeCloudError>) -> ()) throws {
         if let createTrafficMirrorFilterRuleAsyncOverride = createTrafficMirrorFilterRuleAsyncOverride {
             return try createTrafficMirrorFilterRuleAsyncOverride(input, completion)
         }
@@ -5188,7 +5188,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createTrafficMirrorSessionAsync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorSessionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorSessionResult, ElasticComputeCloudError>) -> ()) throws {
         if let createTrafficMirrorSessionAsyncOverride = createTrafficMirrorSessionAsyncOverride {
             return try createTrafficMirrorSessionAsyncOverride(input, completion)
         }
@@ -5224,7 +5224,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createTrafficMirrorTargetAsync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorTargetResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorTargetResult, ElasticComputeCloudError>) -> ()) throws {
         if let createTrafficMirrorTargetAsyncOverride = createTrafficMirrorTargetAsyncOverride {
             return try createTrafficMirrorTargetAsyncOverride(input, completion)
         }
@@ -5260,7 +5260,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createTransitGatewayAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         if let createTransitGatewayAsyncOverride = createTransitGatewayAsyncOverride {
             return try createTransitGatewayAsyncOverride(input, completion)
         }
@@ -5296,7 +5296,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createTransitGatewayMulticastDomainAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult, ElasticComputeCloudError>) -> ()) throws {
         if let createTransitGatewayMulticastDomainAsyncOverride = createTransitGatewayMulticastDomainAsyncOverride {
             return try createTransitGatewayMulticastDomainAsyncOverride(input, completion)
         }
@@ -5332,7 +5332,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createTransitGatewayPeeringAttachmentAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         if let createTransitGatewayPeeringAttachmentAsyncOverride = createTransitGatewayPeeringAttachmentAsyncOverride {
             return try createTransitGatewayPeeringAttachmentAsyncOverride(input, completion)
         }
@@ -5368,7 +5368,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createTransitGatewayRouteAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
         if let createTransitGatewayRouteAsyncOverride = createTransitGatewayRouteAsyncOverride {
             return try createTransitGatewayRouteAsyncOverride(input, completion)
         }
@@ -5404,7 +5404,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createTransitGatewayRouteTableAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
         if let createTransitGatewayRouteTableAsyncOverride = createTransitGatewayRouteTableAsyncOverride {
             return try createTransitGatewayRouteTableAsyncOverride(input, completion)
         }
@@ -5440,7 +5440,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         if let createTransitGatewayVpcAttachmentAsyncOverride = createTransitGatewayVpcAttachmentAsyncOverride {
             return try createTransitGatewayVpcAttachmentAsyncOverride(input, completion)
         }
@@ -5476,7 +5476,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createVolumeAsync(
             input: ElasticComputeCloudModel.CreateVolumeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.Volume, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.Volume, ElasticComputeCloudError>) -> ()) throws {
         if let createVolumeAsyncOverride = createVolumeAsyncOverride {
             return try createVolumeAsyncOverride(input, completion)
         }
@@ -5512,7 +5512,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createVpcAsync(
             input: ElasticComputeCloudModel.CreateVpcRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcResult, ElasticComputeCloudError>) -> ()) throws {
         if let createVpcAsyncOverride = createVpcAsyncOverride {
             return try createVpcAsyncOverride(input, completion)
         }
@@ -5548,7 +5548,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createVpcEndpointAsync(
             input: ElasticComputeCloudModel.CreateVpcEndpointRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointResult, ElasticComputeCloudError>) -> ()) throws {
         if let createVpcEndpointAsyncOverride = createVpcEndpointAsyncOverride {
             return try createVpcEndpointAsyncOverride(input, completion)
         }
@@ -5584,7 +5584,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createVpcEndpointConnectionNotificationAsync(
             input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult, ElasticComputeCloudError>) -> ()) throws {
         if let createVpcEndpointConnectionNotificationAsyncOverride = createVpcEndpointConnectionNotificationAsyncOverride {
             return try createVpcEndpointConnectionNotificationAsyncOverride(input, completion)
         }
@@ -5620,7 +5620,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createVpcEndpointServiceConfigurationAsync(
             input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult, ElasticComputeCloudError>) -> ()) throws {
         if let createVpcEndpointServiceConfigurationAsyncOverride = createVpcEndpointServiceConfigurationAsyncOverride {
             return try createVpcEndpointServiceConfigurationAsyncOverride(input, completion)
         }
@@ -5656,7 +5656,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createVpcPeeringConnectionAsync(
             input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcPeeringConnectionResult, ElasticComputeCloudError>) -> ()) throws {
         if let createVpcPeeringConnectionAsyncOverride = createVpcPeeringConnectionAsyncOverride {
             return try createVpcPeeringConnectionAsyncOverride(input, completion)
         }
@@ -5692,7 +5692,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createVpnConnectionAsync(
             input: ElasticComputeCloudModel.CreateVpnConnectionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnConnectionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnConnectionResult, ElasticComputeCloudError>) -> ()) throws {
         if let createVpnConnectionAsyncOverride = createVpnConnectionAsyncOverride {
             return try createVpnConnectionAsyncOverride(input, completion)
         }
@@ -5727,7 +5727,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createVpnConnectionRouteAsync(
             input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let createVpnConnectionRouteAsyncOverride = createVpnConnectionRouteAsyncOverride {
             return try createVpnConnectionRouteAsyncOverride(input, completion)
         }
@@ -5761,7 +5761,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func createVpnGatewayAsync(
             input: ElasticComputeCloudModel.CreateVpnGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         if let createVpnGatewayAsyncOverride = createVpnGatewayAsyncOverride {
             return try createVpnGatewayAsyncOverride(input, completion)
         }
@@ -5797,7 +5797,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteClientVpnEndpointAsync(
             input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnEndpointResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnEndpointResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteClientVpnEndpointAsyncOverride = deleteClientVpnEndpointAsyncOverride {
             return try deleteClientVpnEndpointAsyncOverride(input, completion)
         }
@@ -5833,7 +5833,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteClientVpnRouteAsync(
             input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnRouteResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteClientVpnRouteAsyncOverride = deleteClientVpnRouteAsyncOverride {
             return try deleteClientVpnRouteAsyncOverride(input, completion)
         }
@@ -5868,7 +5868,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteCustomerGatewayAsync(
             input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteCustomerGatewayAsyncOverride = deleteCustomerGatewayAsyncOverride {
             return try deleteCustomerGatewayAsyncOverride(input, completion)
         }
@@ -5901,7 +5901,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteDhcpOptionsAsync(
             input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteDhcpOptionsAsyncOverride = deleteDhcpOptionsAsyncOverride {
             return try deleteDhcpOptionsAsyncOverride(input, completion)
         }
@@ -5935,7 +5935,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteEgressOnlyInternetGatewayAsync(
             input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteEgressOnlyInternetGatewayAsyncOverride = deleteEgressOnlyInternetGatewayAsyncOverride {
             return try deleteEgressOnlyInternetGatewayAsyncOverride(input, completion)
         }
@@ -5971,7 +5971,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteFleetsAsync(
             input: ElasticComputeCloudModel.DeleteFleetsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFleetsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFleetsResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteFleetsAsyncOverride = deleteFleetsAsyncOverride {
             return try deleteFleetsAsyncOverride(input, completion)
         }
@@ -6007,7 +6007,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteFlowLogsAsync(
             input: ElasticComputeCloudModel.DeleteFlowLogsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFlowLogsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFlowLogsResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteFlowLogsAsyncOverride = deleteFlowLogsAsyncOverride {
             return try deleteFlowLogsAsyncOverride(input, completion)
         }
@@ -6043,7 +6043,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteFpgaImageAsync(
             input: ElasticComputeCloudModel.DeleteFpgaImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFpgaImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteFpgaImageResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteFpgaImageAsyncOverride = deleteFpgaImageAsyncOverride {
             return try deleteFpgaImageAsyncOverride(input, completion)
         }
@@ -6078,7 +6078,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteInternetGatewayAsync(
             input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteInternetGatewayAsyncOverride = deleteInternetGatewayAsyncOverride {
             return try deleteInternetGatewayAsyncOverride(input, completion)
         }
@@ -6111,7 +6111,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteKeyPairAsync(
             input: ElasticComputeCloudModel.DeleteKeyPairRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteKeyPairAsyncOverride = deleteKeyPairAsyncOverride {
             return try deleteKeyPairAsyncOverride(input, completion)
         }
@@ -6145,7 +6145,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteLaunchTemplateAsync(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteLaunchTemplateAsyncOverride = deleteLaunchTemplateAsyncOverride {
             return try deleteLaunchTemplateAsyncOverride(input, completion)
         }
@@ -6181,7 +6181,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteLaunchTemplateVersionsAsync(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteLaunchTemplateVersionsAsyncOverride = deleteLaunchTemplateVersionsAsyncOverride {
             return try deleteLaunchTemplateVersionsAsyncOverride(input, completion)
         }
@@ -6217,7 +6217,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteLocalGatewayRouteAsync(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteLocalGatewayRouteAsyncOverride = deleteLocalGatewayRouteAsyncOverride {
             return try deleteLocalGatewayRouteAsyncOverride(input, completion)
         }
@@ -6253,7 +6253,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteLocalGatewayRouteTableVpcAssociationAsync(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteLocalGatewayRouteTableVpcAssociationAsyncOverride = deleteLocalGatewayRouteTableVpcAssociationAsyncOverride {
             return try deleteLocalGatewayRouteTableVpcAssociationAsyncOverride(input, completion)
         }
@@ -6289,7 +6289,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteNatGatewayAsync(
             input: ElasticComputeCloudModel.DeleteNatGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNatGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNatGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteNatGatewayAsyncOverride = deleteNatGatewayAsyncOverride {
             return try deleteNatGatewayAsyncOverride(input, completion)
         }
@@ -6324,7 +6324,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteNetworkAclAsync(
             input: ElasticComputeCloudModel.DeleteNetworkAclRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteNetworkAclAsyncOverride = deleteNetworkAclAsyncOverride {
             return try deleteNetworkAclAsyncOverride(input, completion)
         }
@@ -6357,7 +6357,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteNetworkAclEntryAsync(
             input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteNetworkAclEntryAsyncOverride = deleteNetworkAclEntryAsyncOverride {
             return try deleteNetworkAclEntryAsyncOverride(input, completion)
         }
@@ -6390,7 +6390,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteNetworkInterfaceAsync(
             input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteNetworkInterfaceAsyncOverride = deleteNetworkInterfaceAsyncOverride {
             return try deleteNetworkInterfaceAsyncOverride(input, completion)
         }
@@ -6424,7 +6424,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteNetworkInterfacePermissionAsync(
             input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteNetworkInterfacePermissionAsyncOverride = deleteNetworkInterfacePermissionAsyncOverride {
             return try deleteNetworkInterfacePermissionAsyncOverride(input, completion)
         }
@@ -6459,7 +6459,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deletePlacementGroupAsync(
             input: ElasticComputeCloudModel.DeletePlacementGroupRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deletePlacementGroupAsyncOverride = deletePlacementGroupAsyncOverride {
             return try deletePlacementGroupAsyncOverride(input, completion)
         }
@@ -6493,7 +6493,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteQueuedReservedInstancesAsync(
             input: ElasticComputeCloudModel.DeleteQueuedReservedInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteQueuedReservedInstancesAsyncOverride = deleteQueuedReservedInstancesAsyncOverride {
             return try deleteQueuedReservedInstancesAsyncOverride(input, completion)
         }
@@ -6528,7 +6528,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteRouteAsync(
             input: ElasticComputeCloudModel.DeleteRouteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteRouteAsyncOverride = deleteRouteAsyncOverride {
             return try deleteRouteAsyncOverride(input, completion)
         }
@@ -6561,7 +6561,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteRouteTableAsync(
             input: ElasticComputeCloudModel.DeleteRouteTableRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteRouteTableAsyncOverride = deleteRouteTableAsyncOverride {
             return try deleteRouteTableAsyncOverride(input, completion)
         }
@@ -6594,7 +6594,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteSecurityGroupAsync(
             input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteSecurityGroupAsyncOverride = deleteSecurityGroupAsyncOverride {
             return try deleteSecurityGroupAsyncOverride(input, completion)
         }
@@ -6627,7 +6627,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteSnapshotAsync(
             input: ElasticComputeCloudModel.DeleteSnapshotRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteSnapshotAsyncOverride = deleteSnapshotAsyncOverride {
             return try deleteSnapshotAsyncOverride(input, completion)
         }
@@ -6660,7 +6660,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteSpotDatafeedSubscriptionAsync(
             input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteSpotDatafeedSubscriptionAsyncOverride = deleteSpotDatafeedSubscriptionAsyncOverride {
             return try deleteSpotDatafeedSubscriptionAsyncOverride(input, completion)
         }
@@ -6693,7 +6693,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteSubnetAsync(
             input: ElasticComputeCloudModel.DeleteSubnetRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteSubnetAsyncOverride = deleteSubnetAsyncOverride {
             return try deleteSubnetAsyncOverride(input, completion)
         }
@@ -6726,7 +6726,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteTagsAsync(
             input: ElasticComputeCloudModel.DeleteTagsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteTagsAsyncOverride = deleteTagsAsyncOverride {
             return try deleteTagsAsyncOverride(input, completion)
         }
@@ -6760,7 +6760,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteTrafficMirrorFilterAsync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteTrafficMirrorFilterAsyncOverride = deleteTrafficMirrorFilterAsyncOverride {
             return try deleteTrafficMirrorFilterAsyncOverride(input, completion)
         }
@@ -6796,7 +6796,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteTrafficMirrorFilterRuleAsync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteTrafficMirrorFilterRuleAsyncOverride = deleteTrafficMirrorFilterRuleAsyncOverride {
             return try deleteTrafficMirrorFilterRuleAsyncOverride(input, completion)
         }
@@ -6832,7 +6832,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteTrafficMirrorSessionAsync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteTrafficMirrorSessionAsyncOverride = deleteTrafficMirrorSessionAsyncOverride {
             return try deleteTrafficMirrorSessionAsyncOverride(input, completion)
         }
@@ -6868,7 +6868,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteTrafficMirrorTargetAsync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteTrafficMirrorTargetAsyncOverride = deleteTrafficMirrorTargetAsyncOverride {
             return try deleteTrafficMirrorTargetAsyncOverride(input, completion)
         }
@@ -6904,7 +6904,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteTransitGatewayAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteTransitGatewayAsyncOverride = deleteTransitGatewayAsyncOverride {
             return try deleteTransitGatewayAsyncOverride(input, completion)
         }
@@ -6940,7 +6940,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteTransitGatewayMulticastDomainAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteTransitGatewayMulticastDomainAsyncOverride = deleteTransitGatewayMulticastDomainAsyncOverride {
             return try deleteTransitGatewayMulticastDomainAsyncOverride(input, completion)
         }
@@ -6976,7 +6976,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteTransitGatewayPeeringAttachmentAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteTransitGatewayPeeringAttachmentAsyncOverride = deleteTransitGatewayPeeringAttachmentAsyncOverride {
             return try deleteTransitGatewayPeeringAttachmentAsyncOverride(input, completion)
         }
@@ -7012,7 +7012,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteTransitGatewayRouteAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteTransitGatewayRouteAsyncOverride = deleteTransitGatewayRouteAsyncOverride {
             return try deleteTransitGatewayRouteAsyncOverride(input, completion)
         }
@@ -7048,7 +7048,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteTransitGatewayRouteTableAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteTransitGatewayRouteTableAsyncOverride = deleteTransitGatewayRouteTableAsyncOverride {
             return try deleteTransitGatewayRouteTableAsyncOverride(input, completion)
         }
@@ -7084,7 +7084,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteTransitGatewayVpcAttachmentAsyncOverride = deleteTransitGatewayVpcAttachmentAsyncOverride {
             return try deleteTransitGatewayVpcAttachmentAsyncOverride(input, completion)
         }
@@ -7119,7 +7119,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteVolumeAsync(
             input: ElasticComputeCloudModel.DeleteVolumeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteVolumeAsyncOverride = deleteVolumeAsyncOverride {
             return try deleteVolumeAsyncOverride(input, completion)
         }
@@ -7152,7 +7152,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteVpcAsync(
             input: ElasticComputeCloudModel.DeleteVpcRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteVpcAsyncOverride = deleteVpcAsyncOverride {
             return try deleteVpcAsyncOverride(input, completion)
         }
@@ -7186,7 +7186,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteVpcEndpointConnectionNotificationsAsync(
             input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteVpcEndpointConnectionNotificationsAsyncOverride = deleteVpcEndpointConnectionNotificationsAsyncOverride {
             return try deleteVpcEndpointConnectionNotificationsAsyncOverride(input, completion)
         }
@@ -7222,7 +7222,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteVpcEndpointServiceConfigurationsAsync(
             input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteVpcEndpointServiceConfigurationsAsyncOverride = deleteVpcEndpointServiceConfigurationsAsyncOverride {
             return try deleteVpcEndpointServiceConfigurationsAsyncOverride(input, completion)
         }
@@ -7258,7 +7258,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteVpcEndpointsAsync(
             input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointsResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteVpcEndpointsAsyncOverride = deleteVpcEndpointsAsyncOverride {
             return try deleteVpcEndpointsAsyncOverride(input, completion)
         }
@@ -7294,7 +7294,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteVpcPeeringConnectionAsync(
             input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteVpcPeeringConnectionAsyncOverride = deleteVpcPeeringConnectionAsyncOverride {
             return try deleteVpcPeeringConnectionAsyncOverride(input, completion)
         }
@@ -7329,7 +7329,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteVpnConnectionAsync(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteVpnConnectionAsyncOverride = deleteVpnConnectionAsyncOverride {
             return try deleteVpnConnectionAsyncOverride(input, completion)
         }
@@ -7362,7 +7362,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteVpnConnectionRouteAsync(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteVpnConnectionRouteAsyncOverride = deleteVpnConnectionRouteAsyncOverride {
             return try deleteVpnConnectionRouteAsyncOverride(input, completion)
         }
@@ -7395,7 +7395,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deleteVpnGatewayAsync(
             input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deleteVpnGatewayAsyncOverride = deleteVpnGatewayAsyncOverride {
             return try deleteVpnGatewayAsyncOverride(input, completion)
         }
@@ -7429,7 +7429,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deprovisionByoipCidrAsync(
             input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeprovisionByoipCidrResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeprovisionByoipCidrResult, ElasticComputeCloudError>) -> ()) throws {
         if let deprovisionByoipCidrAsyncOverride = deprovisionByoipCidrAsyncOverride {
             return try deprovisionByoipCidrAsyncOverride(input, completion)
         }
@@ -7464,7 +7464,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deregisterImageAsync(
             input: ElasticComputeCloudModel.DeregisterImageRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let deregisterImageAsyncOverride = deregisterImageAsyncOverride {
             return try deregisterImageAsyncOverride(input, completion)
         }
@@ -7498,7 +7498,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deregisterTransitGatewayMulticastGroupMembersAsync(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult, ElasticComputeCloudError>) -> ()) throws {
         if let deregisterTransitGatewayMulticastGroupMembersAsyncOverride = deregisterTransitGatewayMulticastGroupMembersAsyncOverride {
             return try deregisterTransitGatewayMulticastGroupMembersAsyncOverride(input, completion)
         }
@@ -7534,7 +7534,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func deregisterTransitGatewayMulticastGroupSourcesAsync(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult, ElasticComputeCloudError>) -> ()) throws {
         if let deregisterTransitGatewayMulticastGroupSourcesAsyncOverride = deregisterTransitGatewayMulticastGroupSourcesAsyncOverride {
             return try deregisterTransitGatewayMulticastGroupSourcesAsyncOverride(input, completion)
         }
@@ -7570,7 +7570,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeAccountAttributesAsync(
             input: ElasticComputeCloudModel.DescribeAccountAttributesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAccountAttributesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAccountAttributesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeAccountAttributesAsyncOverride = describeAccountAttributesAsyncOverride {
             return try describeAccountAttributesAsyncOverride(input, completion)
         }
@@ -7606,7 +7606,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeAddressesAsync(
             input: ElasticComputeCloudModel.DescribeAddressesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeAddressesAsyncOverride = describeAddressesAsyncOverride {
             return try describeAddressesAsyncOverride(input, completion)
         }
@@ -7642,7 +7642,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeAggregateIdFormatAsync(
             input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAggregateIdFormatResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAggregateIdFormatResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeAggregateIdFormatAsyncOverride = describeAggregateIdFormatAsyncOverride {
             return try describeAggregateIdFormatAsyncOverride(input, completion)
         }
@@ -7678,7 +7678,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeAvailabilityZonesAsync(
             input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAvailabilityZonesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAvailabilityZonesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeAvailabilityZonesAsyncOverride = describeAvailabilityZonesAsyncOverride {
             return try describeAvailabilityZonesAsyncOverride(input, completion)
         }
@@ -7714,7 +7714,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeBundleTasksAsync(
             input: ElasticComputeCloudModel.DescribeBundleTasksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeBundleTasksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeBundleTasksResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeBundleTasksAsyncOverride = describeBundleTasksAsyncOverride {
             return try describeBundleTasksAsyncOverride(input, completion)
         }
@@ -7750,7 +7750,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeByoipCidrsAsync(
             input: ElasticComputeCloudModel.DescribeByoipCidrsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeByoipCidrsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeByoipCidrsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeByoipCidrsAsyncOverride = describeByoipCidrsAsyncOverride {
             return try describeByoipCidrsAsyncOverride(input, completion)
         }
@@ -7786,7 +7786,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeCapacityReservationsAsync(
             input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCapacityReservationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCapacityReservationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeCapacityReservationsAsyncOverride = describeCapacityReservationsAsyncOverride {
             return try describeCapacityReservationsAsyncOverride(input, completion)
         }
@@ -7822,7 +7822,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeClassicLinkInstancesAsync(
             input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClassicLinkInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClassicLinkInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeClassicLinkInstancesAsyncOverride = describeClassicLinkInstancesAsyncOverride {
             return try describeClassicLinkInstancesAsyncOverride(input, completion)
         }
@@ -7858,7 +7858,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeClientVpnAuthorizationRulesAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeClientVpnAuthorizationRulesAsyncOverride = describeClientVpnAuthorizationRulesAsyncOverride {
             return try describeClientVpnAuthorizationRulesAsyncOverride(input, completion)
         }
@@ -7894,7 +7894,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeClientVpnConnectionsAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeClientVpnConnectionsAsyncOverride = describeClientVpnConnectionsAsyncOverride {
             return try describeClientVpnConnectionsAsyncOverride(input, completion)
         }
@@ -7930,7 +7930,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeClientVpnEndpointsAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeClientVpnEndpointsAsyncOverride = describeClientVpnEndpointsAsyncOverride {
             return try describeClientVpnEndpointsAsyncOverride(input, completion)
         }
@@ -7966,7 +7966,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeClientVpnRoutesAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnRoutesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnRoutesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeClientVpnRoutesAsyncOverride = describeClientVpnRoutesAsyncOverride {
             return try describeClientVpnRoutesAsyncOverride(input, completion)
         }
@@ -8002,7 +8002,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeClientVpnTargetNetworksAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeClientVpnTargetNetworksAsyncOverride = describeClientVpnTargetNetworksAsyncOverride {
             return try describeClientVpnTargetNetworksAsyncOverride(input, completion)
         }
@@ -8038,7 +8038,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeCoipPoolsAsync(
             input: ElasticComputeCloudModel.DescribeCoipPoolsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCoipPoolsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCoipPoolsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeCoipPoolsAsyncOverride = describeCoipPoolsAsyncOverride {
             return try describeCoipPoolsAsyncOverride(input, completion)
         }
@@ -8074,7 +8074,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeConversionTasksAsync(
             input: ElasticComputeCloudModel.DescribeConversionTasksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeConversionTasksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeConversionTasksResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeConversionTasksAsyncOverride = describeConversionTasksAsyncOverride {
             return try describeConversionTasksAsyncOverride(input, completion)
         }
@@ -8110,7 +8110,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeCustomerGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCustomerGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCustomerGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeCustomerGatewaysAsyncOverride = describeCustomerGatewaysAsyncOverride {
             return try describeCustomerGatewaysAsyncOverride(input, completion)
         }
@@ -8146,7 +8146,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeDhcpOptionsAsync(
             input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeDhcpOptionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeDhcpOptionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeDhcpOptionsAsyncOverride = describeDhcpOptionsAsyncOverride {
             return try describeDhcpOptionsAsyncOverride(input, completion)
         }
@@ -8182,7 +8182,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeEgressOnlyInternetGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeEgressOnlyInternetGatewaysAsyncOverride = describeEgressOnlyInternetGatewaysAsyncOverride {
             return try describeEgressOnlyInternetGatewaysAsyncOverride(input, completion)
         }
@@ -8218,7 +8218,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeElasticGpusAsync(
             input: ElasticComputeCloudModel.DescribeElasticGpusRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeElasticGpusResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeElasticGpusResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeElasticGpusAsyncOverride = describeElasticGpusAsyncOverride {
             return try describeElasticGpusAsyncOverride(input, completion)
         }
@@ -8254,7 +8254,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeExportImageTasksAsync(
             input: ElasticComputeCloudModel.DescribeExportImageTasksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportImageTasksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportImageTasksResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeExportImageTasksAsyncOverride = describeExportImageTasksAsyncOverride {
             return try describeExportImageTasksAsyncOverride(input, completion)
         }
@@ -8290,7 +8290,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeExportTasksAsync(
             input: ElasticComputeCloudModel.DescribeExportTasksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportTasksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportTasksResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeExportTasksAsyncOverride = describeExportTasksAsyncOverride {
             return try describeExportTasksAsyncOverride(input, completion)
         }
@@ -8326,7 +8326,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeFastSnapshotRestoresAsync(
             input: ElasticComputeCloudModel.DescribeFastSnapshotRestoresRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeFastSnapshotRestoresAsyncOverride = describeFastSnapshotRestoresAsyncOverride {
             return try describeFastSnapshotRestoresAsyncOverride(input, completion)
         }
@@ -8362,7 +8362,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeFleetHistoryAsync(
             input: ElasticComputeCloudModel.DescribeFleetHistoryRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetHistoryResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetHistoryResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeFleetHistoryAsyncOverride = describeFleetHistoryAsyncOverride {
             return try describeFleetHistoryAsyncOverride(input, completion)
         }
@@ -8398,7 +8398,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeFleetInstancesAsync(
             input: ElasticComputeCloudModel.DescribeFleetInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeFleetInstancesAsyncOverride = describeFleetInstancesAsyncOverride {
             return try describeFleetInstancesAsyncOverride(input, completion)
         }
@@ -8434,7 +8434,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeFleetsAsync(
             input: ElasticComputeCloudModel.DescribeFleetsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeFleetsAsyncOverride = describeFleetsAsyncOverride {
             return try describeFleetsAsyncOverride(input, completion)
         }
@@ -8470,7 +8470,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeFlowLogsAsync(
             input: ElasticComputeCloudModel.DescribeFlowLogsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFlowLogsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFlowLogsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeFlowLogsAsyncOverride = describeFlowLogsAsyncOverride {
             return try describeFlowLogsAsyncOverride(input, completion)
         }
@@ -8506,7 +8506,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeFpgaImageAttributeAsync(
             input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImageAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImageAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeFpgaImageAttributeAsyncOverride = describeFpgaImageAttributeAsyncOverride {
             return try describeFpgaImageAttributeAsyncOverride(input, completion)
         }
@@ -8542,7 +8542,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeFpgaImagesAsync(
             input: ElasticComputeCloudModel.DescribeFpgaImagesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImagesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImagesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeFpgaImagesAsyncOverride = describeFpgaImagesAsyncOverride {
             return try describeFpgaImagesAsyncOverride(input, completion)
         }
@@ -8578,7 +8578,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeHostReservationOfferingsAsync(
             input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationOfferingsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationOfferingsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeHostReservationOfferingsAsyncOverride = describeHostReservationOfferingsAsyncOverride {
             return try describeHostReservationOfferingsAsyncOverride(input, completion)
         }
@@ -8614,7 +8614,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeHostReservationsAsync(
             input: ElasticComputeCloudModel.DescribeHostReservationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeHostReservationsAsyncOverride = describeHostReservationsAsyncOverride {
             return try describeHostReservationsAsyncOverride(input, completion)
         }
@@ -8650,7 +8650,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeHostsAsync(
             input: ElasticComputeCloudModel.DescribeHostsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeHostsAsyncOverride = describeHostsAsyncOverride {
             return try describeHostsAsyncOverride(input, completion)
         }
@@ -8686,7 +8686,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeIamInstanceProfileAssociationsAsync(
             input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeIamInstanceProfileAssociationsAsyncOverride = describeIamInstanceProfileAssociationsAsyncOverride {
             return try describeIamInstanceProfileAssociationsAsyncOverride(input, completion)
         }
@@ -8722,7 +8722,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeIdFormatAsync(
             input: ElasticComputeCloudModel.DescribeIdFormatRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdFormatResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdFormatResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeIdFormatAsyncOverride = describeIdFormatAsyncOverride {
             return try describeIdFormatAsyncOverride(input, completion)
         }
@@ -8758,7 +8758,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeIdentityIdFormatAsync(
             input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdentityIdFormatResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdentityIdFormatResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeIdentityIdFormatAsyncOverride = describeIdentityIdFormatAsyncOverride {
             return try describeIdentityIdFormatAsyncOverride(input, completion)
         }
@@ -8794,7 +8794,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeImageAttributeAsync(
             input: ElasticComputeCloudModel.DescribeImageAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImageAttribute, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImageAttribute, ElasticComputeCloudError>) -> ()) throws {
         if let describeImageAttributeAsyncOverride = describeImageAttributeAsyncOverride {
             return try describeImageAttributeAsyncOverride(input, completion)
         }
@@ -8830,7 +8830,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeImagesAsync(
             input: ElasticComputeCloudModel.DescribeImagesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImagesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImagesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeImagesAsyncOverride = describeImagesAsyncOverride {
             return try describeImagesAsyncOverride(input, completion)
         }
@@ -8866,7 +8866,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeImportImageTasksAsync(
             input: ElasticComputeCloudModel.DescribeImportImageTasksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportImageTasksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportImageTasksResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeImportImageTasksAsyncOverride = describeImportImageTasksAsyncOverride {
             return try describeImportImageTasksAsyncOverride(input, completion)
         }
@@ -8902,7 +8902,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeImportSnapshotTasksAsync(
             input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportSnapshotTasksResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportSnapshotTasksResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeImportSnapshotTasksAsyncOverride = describeImportSnapshotTasksAsyncOverride {
             return try describeImportSnapshotTasksAsyncOverride(input, completion)
         }
@@ -8938,7 +8938,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeInstanceAttributeAsync(
             input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.InstanceAttribute, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.InstanceAttribute, ElasticComputeCloudError>) -> ()) throws {
         if let describeInstanceAttributeAsyncOverride = describeInstanceAttributeAsyncOverride {
             return try describeInstanceAttributeAsyncOverride(input, completion)
         }
@@ -8974,7 +8974,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeInstanceCreditSpecificationsAsync(
             input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeInstanceCreditSpecificationsAsyncOverride = describeInstanceCreditSpecificationsAsyncOverride {
             return try describeInstanceCreditSpecificationsAsyncOverride(input, completion)
         }
@@ -9010,7 +9010,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeInstanceStatusAsync(
             input: ElasticComputeCloudModel.DescribeInstanceStatusRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceStatusResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceStatusResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeInstanceStatusAsyncOverride = describeInstanceStatusAsyncOverride {
             return try describeInstanceStatusAsyncOverride(input, completion)
         }
@@ -9046,7 +9046,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeInstanceTypeOfferingsAsync(
             input: ElasticComputeCloudModel.DescribeInstanceTypeOfferingsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeInstanceTypeOfferingsAsyncOverride = describeInstanceTypeOfferingsAsyncOverride {
             return try describeInstanceTypeOfferingsAsyncOverride(input, completion)
         }
@@ -9082,7 +9082,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeInstanceTypesAsync(
             input: ElasticComputeCloudModel.DescribeInstanceTypesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeInstanceTypesAsyncOverride = describeInstanceTypesAsyncOverride {
             return try describeInstanceTypesAsyncOverride(input, completion)
         }
@@ -9118,7 +9118,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeInstancesAsync(
             input: ElasticComputeCloudModel.DescribeInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeInstancesAsyncOverride = describeInstancesAsyncOverride {
             return try describeInstancesAsyncOverride(input, completion)
         }
@@ -9154,7 +9154,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeInternetGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInternetGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInternetGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeInternetGatewaysAsyncOverride = describeInternetGatewaysAsyncOverride {
             return try describeInternetGatewaysAsyncOverride(input, completion)
         }
@@ -9190,7 +9190,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeIpv6PoolsAsync(
             input: ElasticComputeCloudModel.DescribeIpv6PoolsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpv6PoolsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpv6PoolsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeIpv6PoolsAsyncOverride = describeIpv6PoolsAsyncOverride {
             return try describeIpv6PoolsAsyncOverride(input, completion)
         }
@@ -9226,7 +9226,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeKeyPairsAsync(
             input: ElasticComputeCloudModel.DescribeKeyPairsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeKeyPairsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeKeyPairsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeKeyPairsAsyncOverride = describeKeyPairsAsyncOverride {
             return try describeKeyPairsAsyncOverride(input, completion)
         }
@@ -9262,7 +9262,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeLaunchTemplateVersionsAsync(
             input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeLaunchTemplateVersionsAsyncOverride = describeLaunchTemplateVersionsAsyncOverride {
             return try describeLaunchTemplateVersionsAsyncOverride(input, completion)
         }
@@ -9298,7 +9298,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeLaunchTemplatesAsync(
             input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplatesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplatesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeLaunchTemplatesAsyncOverride = describeLaunchTemplatesAsyncOverride {
             return try describeLaunchTemplatesAsyncOverride(input, completion)
         }
@@ -9334,7 +9334,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsAsyncOverride = describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsAsyncOverride {
             return try describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsAsyncOverride(input, completion)
         }
@@ -9370,7 +9370,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeLocalGatewayRouteTableVpcAssociationsAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeLocalGatewayRouteTableVpcAssociationsAsyncOverride = describeLocalGatewayRouteTableVpcAssociationsAsyncOverride {
             return try describeLocalGatewayRouteTableVpcAssociationsAsyncOverride(input, completion)
         }
@@ -9406,7 +9406,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeLocalGatewayRouteTablesAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeLocalGatewayRouteTablesAsyncOverride = describeLocalGatewayRouteTablesAsyncOverride {
             return try describeLocalGatewayRouteTablesAsyncOverride(input, completion)
         }
@@ -9442,7 +9442,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeLocalGatewayVirtualInterfaceGroupsAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeLocalGatewayVirtualInterfaceGroupsAsyncOverride = describeLocalGatewayVirtualInterfaceGroupsAsyncOverride {
             return try describeLocalGatewayVirtualInterfaceGroupsAsyncOverride(input, completion)
         }
@@ -9478,7 +9478,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeLocalGatewayVirtualInterfacesAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeLocalGatewayVirtualInterfacesAsyncOverride = describeLocalGatewayVirtualInterfacesAsyncOverride {
             return try describeLocalGatewayVirtualInterfacesAsyncOverride(input, completion)
         }
@@ -9514,7 +9514,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeLocalGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeLocalGatewaysAsyncOverride = describeLocalGatewaysAsyncOverride {
             return try describeLocalGatewaysAsyncOverride(input, completion)
         }
@@ -9550,7 +9550,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeMovingAddressesAsync(
             input: ElasticComputeCloudModel.DescribeMovingAddressesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeMovingAddressesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeMovingAddressesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeMovingAddressesAsyncOverride = describeMovingAddressesAsyncOverride {
             return try describeMovingAddressesAsyncOverride(input, completion)
         }
@@ -9586,7 +9586,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeNatGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeNatGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNatGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNatGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeNatGatewaysAsyncOverride = describeNatGatewaysAsyncOverride {
             return try describeNatGatewaysAsyncOverride(input, completion)
         }
@@ -9622,7 +9622,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeNetworkAclsAsync(
             input: ElasticComputeCloudModel.DescribeNetworkAclsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkAclsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkAclsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeNetworkAclsAsyncOverride = describeNetworkAclsAsyncOverride {
             return try describeNetworkAclsAsyncOverride(input, completion)
         }
@@ -9658,7 +9658,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeNetworkInterfaceAttributeAsync(
             input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeNetworkInterfaceAttributeAsyncOverride = describeNetworkInterfaceAttributeAsyncOverride {
             return try describeNetworkInterfaceAttributeAsyncOverride(input, completion)
         }
@@ -9694,7 +9694,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeNetworkInterfacePermissionsAsync(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeNetworkInterfacePermissionsAsyncOverride = describeNetworkInterfacePermissionsAsyncOverride {
             return try describeNetworkInterfacePermissionsAsyncOverride(input, completion)
         }
@@ -9730,7 +9730,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeNetworkInterfacesAsync(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeNetworkInterfacesAsyncOverride = describeNetworkInterfacesAsyncOverride {
             return try describeNetworkInterfacesAsyncOverride(input, completion)
         }
@@ -9766,7 +9766,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describePlacementGroupsAsync(
             input: ElasticComputeCloudModel.DescribePlacementGroupsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribePlacementGroupsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribePlacementGroupsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describePlacementGroupsAsyncOverride = describePlacementGroupsAsyncOverride {
             return try describePlacementGroupsAsyncOverride(input, completion)
         }
@@ -9802,7 +9802,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describePrefixListsAsync(
             input: ElasticComputeCloudModel.DescribePrefixListsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribePrefixListsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribePrefixListsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describePrefixListsAsyncOverride = describePrefixListsAsyncOverride {
             return try describePrefixListsAsyncOverride(input, completion)
         }
@@ -9838,7 +9838,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describePrincipalIdFormatAsync(
             input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribePrincipalIdFormatResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribePrincipalIdFormatResult, ElasticComputeCloudError>) -> ()) throws {
         if let describePrincipalIdFormatAsyncOverride = describePrincipalIdFormatAsyncOverride {
             return try describePrincipalIdFormatAsyncOverride(input, completion)
         }
@@ -9874,7 +9874,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describePublicIpv4PoolsAsync(
             input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribePublicIpv4PoolsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribePublicIpv4PoolsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describePublicIpv4PoolsAsyncOverride = describePublicIpv4PoolsAsyncOverride {
             return try describePublicIpv4PoolsAsyncOverride(input, completion)
         }
@@ -9910,7 +9910,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeRegionsAsync(
             input: ElasticComputeCloudModel.DescribeRegionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeRegionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeRegionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeRegionsAsyncOverride = describeRegionsAsyncOverride {
             return try describeRegionsAsyncOverride(input, completion)
         }
@@ -9946,7 +9946,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeReservedInstancesAsync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeReservedInstancesAsyncOverride = describeReservedInstancesAsyncOverride {
             return try describeReservedInstancesAsyncOverride(input, completion)
         }
@@ -9982,7 +9982,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeReservedInstancesListingsAsync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesListingsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesListingsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeReservedInstancesListingsAsyncOverride = describeReservedInstancesListingsAsyncOverride {
             return try describeReservedInstancesListingsAsyncOverride(input, completion)
         }
@@ -10018,7 +10018,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeReservedInstancesModificationsAsync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeReservedInstancesModificationsAsyncOverride = describeReservedInstancesModificationsAsyncOverride {
             return try describeReservedInstancesModificationsAsyncOverride(input, completion)
         }
@@ -10054,7 +10054,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeReservedInstancesOfferingsAsync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeReservedInstancesOfferingsAsyncOverride = describeReservedInstancesOfferingsAsyncOverride {
             return try describeReservedInstancesOfferingsAsyncOverride(input, completion)
         }
@@ -10090,7 +10090,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeRouteTablesAsync(
             input: ElasticComputeCloudModel.DescribeRouteTablesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeRouteTablesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeRouteTablesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeRouteTablesAsyncOverride = describeRouteTablesAsyncOverride {
             return try describeRouteTablesAsyncOverride(input, completion)
         }
@@ -10126,7 +10126,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeScheduledInstanceAvailabilityAsync(
             input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeScheduledInstanceAvailabilityAsyncOverride = describeScheduledInstanceAvailabilityAsyncOverride {
             return try describeScheduledInstanceAvailabilityAsyncOverride(input, completion)
         }
@@ -10162,7 +10162,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeScheduledInstancesAsync(
             input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeScheduledInstancesAsyncOverride = describeScheduledInstancesAsyncOverride {
             return try describeScheduledInstancesAsyncOverride(input, completion)
         }
@@ -10198,7 +10198,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeSecurityGroupReferencesAsync(
             input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeSecurityGroupReferencesAsyncOverride = describeSecurityGroupReferencesAsyncOverride {
             return try describeSecurityGroupReferencesAsyncOverride(input, completion)
         }
@@ -10234,7 +10234,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeSecurityGroupsAsync(
             input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeSecurityGroupsAsyncOverride = describeSecurityGroupsAsyncOverride {
             return try describeSecurityGroupsAsyncOverride(input, completion)
         }
@@ -10270,7 +10270,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeSnapshotAttributeAsync(
             input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeSnapshotAttributeAsyncOverride = describeSnapshotAttributeAsyncOverride {
             return try describeSnapshotAttributeAsyncOverride(input, completion)
         }
@@ -10306,7 +10306,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeSnapshotsAsync(
             input: ElasticComputeCloudModel.DescribeSnapshotsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeSnapshotsAsyncOverride = describeSnapshotsAsyncOverride {
             return try describeSnapshotsAsyncOverride(input, completion)
         }
@@ -10342,7 +10342,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeSpotDatafeedSubscriptionAsync(
             input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeSpotDatafeedSubscriptionAsyncOverride = describeSpotDatafeedSubscriptionAsyncOverride {
             return try describeSpotDatafeedSubscriptionAsyncOverride(input, completion)
         }
@@ -10378,7 +10378,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeSpotFleetInstancesAsync(
             input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse, ElasticComputeCloudError>) -> ()) throws {
         if let describeSpotFleetInstancesAsyncOverride = describeSpotFleetInstancesAsyncOverride {
             return try describeSpotFleetInstancesAsyncOverride(input, completion)
         }
@@ -10414,7 +10414,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeSpotFleetRequestHistoryAsync(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse, ElasticComputeCloudError>) -> ()) throws {
         if let describeSpotFleetRequestHistoryAsyncOverride = describeSpotFleetRequestHistoryAsyncOverride {
             return try describeSpotFleetRequestHistoryAsyncOverride(input, completion)
         }
@@ -10450,7 +10450,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeSpotFleetRequestsAsync(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse, ElasticComputeCloudError>) -> ()) throws {
         if let describeSpotFleetRequestsAsyncOverride = describeSpotFleetRequestsAsyncOverride {
             return try describeSpotFleetRequestsAsyncOverride(input, completion)
         }
@@ -10486,7 +10486,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeSpotInstanceRequestsAsync(
             input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeSpotInstanceRequestsAsyncOverride = describeSpotInstanceRequestsAsyncOverride {
             return try describeSpotInstanceRequestsAsyncOverride(input, completion)
         }
@@ -10522,7 +10522,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeSpotPriceHistoryAsync(
             input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotPriceHistoryResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotPriceHistoryResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeSpotPriceHistoryAsyncOverride = describeSpotPriceHistoryAsyncOverride {
             return try describeSpotPriceHistoryAsyncOverride(input, completion)
         }
@@ -10558,7 +10558,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeStaleSecurityGroupsAsync(
             input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeStaleSecurityGroupsAsyncOverride = describeStaleSecurityGroupsAsyncOverride {
             return try describeStaleSecurityGroupsAsyncOverride(input, completion)
         }
@@ -10594,7 +10594,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeSubnetsAsync(
             input: ElasticComputeCloudModel.DescribeSubnetsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSubnetsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSubnetsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeSubnetsAsyncOverride = describeSubnetsAsyncOverride {
             return try describeSubnetsAsyncOverride(input, completion)
         }
@@ -10630,7 +10630,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeTagsAsync(
             input: ElasticComputeCloudModel.DescribeTagsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTagsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTagsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeTagsAsyncOverride = describeTagsAsyncOverride {
             return try describeTagsAsyncOverride(input, completion)
         }
@@ -10666,7 +10666,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeTrafficMirrorFiltersAsync(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeTrafficMirrorFiltersAsyncOverride = describeTrafficMirrorFiltersAsyncOverride {
             return try describeTrafficMirrorFiltersAsyncOverride(input, completion)
         }
@@ -10702,7 +10702,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeTrafficMirrorSessionsAsync(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeTrafficMirrorSessionsAsyncOverride = describeTrafficMirrorSessionsAsyncOverride {
             return try describeTrafficMirrorSessionsAsyncOverride(input, completion)
         }
@@ -10738,7 +10738,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeTrafficMirrorTargetsAsync(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeTrafficMirrorTargetsAsyncOverride = describeTrafficMirrorTargetsAsyncOverride {
             return try describeTrafficMirrorTargetsAsyncOverride(input, completion)
         }
@@ -10774,7 +10774,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeTransitGatewayAttachmentsAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeTransitGatewayAttachmentsAsyncOverride = describeTransitGatewayAttachmentsAsyncOverride {
             return try describeTransitGatewayAttachmentsAsyncOverride(input, completion)
         }
@@ -10810,7 +10810,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeTransitGatewayMulticastDomainsAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeTransitGatewayMulticastDomainsAsyncOverride = describeTransitGatewayMulticastDomainsAsyncOverride {
             return try describeTransitGatewayMulticastDomainsAsyncOverride(input, completion)
         }
@@ -10846,7 +10846,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeTransitGatewayPeeringAttachmentsAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeTransitGatewayPeeringAttachmentsAsyncOverride = describeTransitGatewayPeeringAttachmentsAsyncOverride {
             return try describeTransitGatewayPeeringAttachmentsAsyncOverride(input, completion)
         }
@@ -10882,7 +10882,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeTransitGatewayRouteTablesAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeTransitGatewayRouteTablesAsyncOverride = describeTransitGatewayRouteTablesAsyncOverride {
             return try describeTransitGatewayRouteTablesAsyncOverride(input, completion)
         }
@@ -10918,7 +10918,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeTransitGatewayVpcAttachmentsAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeTransitGatewayVpcAttachmentsAsyncOverride = describeTransitGatewayVpcAttachmentsAsyncOverride {
             return try describeTransitGatewayVpcAttachmentsAsyncOverride(input, completion)
         }
@@ -10954,7 +10954,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeTransitGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeTransitGatewaysAsyncOverride = describeTransitGatewaysAsyncOverride {
             return try describeTransitGatewaysAsyncOverride(input, completion)
         }
@@ -10990,7 +10990,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVolumeAttributeAsync(
             input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVolumeAttributeAsyncOverride = describeVolumeAttributeAsyncOverride {
             return try describeVolumeAttributeAsyncOverride(input, completion)
         }
@@ -11026,7 +11026,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVolumeStatusAsync(
             input: ElasticComputeCloudModel.DescribeVolumeStatusRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeStatusResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeStatusResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVolumeStatusAsyncOverride = describeVolumeStatusAsyncOverride {
             return try describeVolumeStatusAsyncOverride(input, completion)
         }
@@ -11062,7 +11062,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVolumesAsync(
             input: ElasticComputeCloudModel.DescribeVolumesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVolumesAsyncOverride = describeVolumesAsyncOverride {
             return try describeVolumesAsyncOverride(input, completion)
         }
@@ -11098,7 +11098,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVolumesModificationsAsync(
             input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesModificationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesModificationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVolumesModificationsAsyncOverride = describeVolumesModificationsAsyncOverride {
             return try describeVolumesModificationsAsyncOverride(input, completion)
         }
@@ -11134,7 +11134,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVpcAttributeAsync(
             input: ElasticComputeCloudModel.DescribeVpcAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVpcAttributeAsyncOverride = describeVpcAttributeAsyncOverride {
             return try describeVpcAttributeAsyncOverride(input, completion)
         }
@@ -11170,7 +11170,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVpcClassicLinkAsync(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVpcClassicLinkAsyncOverride = describeVpcClassicLinkAsyncOverride {
             return try describeVpcClassicLinkAsyncOverride(input, completion)
         }
@@ -11206,7 +11206,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVpcClassicLinkDnsSupportAsync(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVpcClassicLinkDnsSupportAsyncOverride = describeVpcClassicLinkDnsSupportAsyncOverride {
             return try describeVpcClassicLinkDnsSupportAsyncOverride(input, completion)
         }
@@ -11242,7 +11242,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVpcEndpointConnectionNotificationsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVpcEndpointConnectionNotificationsAsyncOverride = describeVpcEndpointConnectionNotificationsAsyncOverride {
             return try describeVpcEndpointConnectionNotificationsAsyncOverride(input, completion)
         }
@@ -11278,7 +11278,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVpcEndpointConnectionsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVpcEndpointConnectionsAsyncOverride = describeVpcEndpointConnectionsAsyncOverride {
             return try describeVpcEndpointConnectionsAsyncOverride(input, completion)
         }
@@ -11314,7 +11314,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVpcEndpointServiceConfigurationsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVpcEndpointServiceConfigurationsAsyncOverride = describeVpcEndpointServiceConfigurationsAsyncOverride {
             return try describeVpcEndpointServiceConfigurationsAsyncOverride(input, completion)
         }
@@ -11350,7 +11350,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVpcEndpointServicePermissionsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVpcEndpointServicePermissionsAsyncOverride = describeVpcEndpointServicePermissionsAsyncOverride {
             return try describeVpcEndpointServicePermissionsAsyncOverride(input, completion)
         }
@@ -11386,7 +11386,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVpcEndpointServicesAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicesResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVpcEndpointServicesAsyncOverride = describeVpcEndpointServicesAsyncOverride {
             return try describeVpcEndpointServicesAsyncOverride(input, completion)
         }
@@ -11422,7 +11422,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVpcEndpointsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVpcEndpointsAsyncOverride = describeVpcEndpointsAsyncOverride {
             return try describeVpcEndpointsAsyncOverride(input, completion)
         }
@@ -11458,7 +11458,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVpcPeeringConnectionsAsync(
             input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVpcPeeringConnectionsAsyncOverride = describeVpcPeeringConnectionsAsyncOverride {
             return try describeVpcPeeringConnectionsAsyncOverride(input, completion)
         }
@@ -11494,7 +11494,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVpcsAsync(
             input: ElasticComputeCloudModel.DescribeVpcsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVpcsAsyncOverride = describeVpcsAsyncOverride {
             return try describeVpcsAsyncOverride(input, completion)
         }
@@ -11530,7 +11530,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVpnConnectionsAsync(
             input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVpnConnectionsAsyncOverride = describeVpnConnectionsAsyncOverride {
             return try describeVpnConnectionsAsyncOverride(input, completion)
         }
@@ -11566,7 +11566,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func describeVpnGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnGatewaysResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
         if let describeVpnGatewaysAsyncOverride = describeVpnGatewaysAsyncOverride {
             return try describeVpnGatewaysAsyncOverride(input, completion)
         }
@@ -11602,7 +11602,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func detachClassicLinkVpcAsync(
             input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DetachClassicLinkVpcResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DetachClassicLinkVpcResult, ElasticComputeCloudError>) -> ()) throws {
         if let detachClassicLinkVpcAsyncOverride = detachClassicLinkVpcAsyncOverride {
             return try detachClassicLinkVpcAsyncOverride(input, completion)
         }
@@ -11637,7 +11637,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func detachInternetGatewayAsync(
             input: ElasticComputeCloudModel.DetachInternetGatewayRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let detachInternetGatewayAsyncOverride = detachInternetGatewayAsyncOverride {
             return try detachInternetGatewayAsyncOverride(input, completion)
         }
@@ -11670,7 +11670,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func detachNetworkInterfaceAsync(
             input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let detachNetworkInterfaceAsyncOverride = detachNetworkInterfaceAsyncOverride {
             return try detachNetworkInterfaceAsyncOverride(input, completion)
         }
@@ -11704,7 +11704,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func detachVolumeAsync(
             input: ElasticComputeCloudModel.DetachVolumeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, ElasticComputeCloudError>) -> ()) throws {
         if let detachVolumeAsyncOverride = detachVolumeAsyncOverride {
             return try detachVolumeAsyncOverride(input, completion)
         }
@@ -11739,7 +11739,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func detachVpnGatewayAsync(
             input: ElasticComputeCloudModel.DetachVpnGatewayRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let detachVpnGatewayAsyncOverride = detachVpnGatewayAsyncOverride {
             return try detachVpnGatewayAsyncOverride(input, completion)
         }
@@ -11773,7 +11773,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disableEbsEncryptionByDefaultAsync(
             input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult, ElasticComputeCloudError>) -> ()) throws {
         if let disableEbsEncryptionByDefaultAsyncOverride = disableEbsEncryptionByDefaultAsyncOverride {
             return try disableEbsEncryptionByDefaultAsyncOverride(input, completion)
         }
@@ -11809,7 +11809,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disableFastSnapshotRestoresAsync(
             input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisableFastSnapshotRestoresResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableFastSnapshotRestoresResult, ElasticComputeCloudError>) -> ()) throws {
         if let disableFastSnapshotRestoresAsyncOverride = disableFastSnapshotRestoresAsyncOverride {
             return try disableFastSnapshotRestoresAsyncOverride(input, completion)
         }
@@ -11845,7 +11845,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disableTransitGatewayRouteTablePropagationAsync(
             input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult, ElasticComputeCloudError>) -> ()) throws {
         if let disableTransitGatewayRouteTablePropagationAsyncOverride = disableTransitGatewayRouteTablePropagationAsyncOverride {
             return try disableTransitGatewayRouteTablePropagationAsyncOverride(input, completion)
         }
@@ -11880,7 +11880,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disableVgwRoutePropagationAsync(
             input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let disableVgwRoutePropagationAsyncOverride = disableVgwRoutePropagationAsyncOverride {
             return try disableVgwRoutePropagationAsyncOverride(input, completion)
         }
@@ -11914,7 +11914,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disableVpcClassicLinkAsync(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkResult, ElasticComputeCloudError>) -> ()) throws {
         if let disableVpcClassicLinkAsyncOverride = disableVpcClassicLinkAsyncOverride {
             return try disableVpcClassicLinkAsyncOverride(input, completion)
         }
@@ -11950,7 +11950,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disableVpcClassicLinkDnsSupportAsync(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult, ElasticComputeCloudError>) -> ()) throws {
         if let disableVpcClassicLinkDnsSupportAsyncOverride = disableVpcClassicLinkDnsSupportAsyncOverride {
             return try disableVpcClassicLinkDnsSupportAsyncOverride(input, completion)
         }
@@ -11985,7 +11985,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disassociateAddressAsync(
             input: ElasticComputeCloudModel.DisassociateAddressRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let disassociateAddressAsyncOverride = disassociateAddressAsyncOverride {
             return try disassociateAddressAsyncOverride(input, completion)
         }
@@ -12019,7 +12019,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disassociateClientVpnTargetNetworkAsync(
             input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult, ElasticComputeCloudError>) -> ()) throws {
         if let disassociateClientVpnTargetNetworkAsyncOverride = disassociateClientVpnTargetNetworkAsyncOverride {
             return try disassociateClientVpnTargetNetworkAsyncOverride(input, completion)
         }
@@ -12055,7 +12055,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disassociateIamInstanceProfileAsync(
             input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult, ElasticComputeCloudError>) -> ()) throws {
         if let disassociateIamInstanceProfileAsyncOverride = disassociateIamInstanceProfileAsyncOverride {
             return try disassociateIamInstanceProfileAsyncOverride(input, completion)
         }
@@ -12090,7 +12090,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disassociateRouteTableAsync(
             input: ElasticComputeCloudModel.DisassociateRouteTableRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let disassociateRouteTableAsyncOverride = disassociateRouteTableAsyncOverride {
             return try disassociateRouteTableAsyncOverride(input, completion)
         }
@@ -12124,7 +12124,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disassociateSubnetCidrBlockAsync(
             input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult, ElasticComputeCloudError>) -> ()) throws {
         if let disassociateSubnetCidrBlockAsyncOverride = disassociateSubnetCidrBlockAsyncOverride {
             return try disassociateSubnetCidrBlockAsyncOverride(input, completion)
         }
@@ -12160,7 +12160,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disassociateTransitGatewayMulticastDomainAsync(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult, ElasticComputeCloudError>) -> ()) throws {
         if let disassociateTransitGatewayMulticastDomainAsyncOverride = disassociateTransitGatewayMulticastDomainAsyncOverride {
             return try disassociateTransitGatewayMulticastDomainAsyncOverride(input, completion)
         }
@@ -12196,7 +12196,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disassociateTransitGatewayRouteTableAsync(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
         if let disassociateTransitGatewayRouteTableAsyncOverride = disassociateTransitGatewayRouteTableAsyncOverride {
             return try disassociateTransitGatewayRouteTableAsyncOverride(input, completion)
         }
@@ -12232,7 +12232,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func disassociateVpcCidrBlockAsync(
             input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult, ElasticComputeCloudError>) -> ()) throws {
         if let disassociateVpcCidrBlockAsyncOverride = disassociateVpcCidrBlockAsyncOverride {
             return try disassociateVpcCidrBlockAsyncOverride(input, completion)
         }
@@ -12268,7 +12268,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func enableEbsEncryptionByDefaultAsync(
             input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult, ElasticComputeCloudError>) -> ()) throws {
         if let enableEbsEncryptionByDefaultAsyncOverride = enableEbsEncryptionByDefaultAsyncOverride {
             return try enableEbsEncryptionByDefaultAsyncOverride(input, completion)
         }
@@ -12304,7 +12304,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func enableFastSnapshotRestoresAsync(
             input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.EnableFastSnapshotRestoresResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableFastSnapshotRestoresResult, ElasticComputeCloudError>) -> ()) throws {
         if let enableFastSnapshotRestoresAsyncOverride = enableFastSnapshotRestoresAsyncOverride {
             return try enableFastSnapshotRestoresAsyncOverride(input, completion)
         }
@@ -12340,7 +12340,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func enableTransitGatewayRouteTablePropagationAsync(
             input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult, ElasticComputeCloudError>) -> ()) throws {
         if let enableTransitGatewayRouteTablePropagationAsyncOverride = enableTransitGatewayRouteTablePropagationAsyncOverride {
             return try enableTransitGatewayRouteTablePropagationAsyncOverride(input, completion)
         }
@@ -12375,7 +12375,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func enableVgwRoutePropagationAsync(
             input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let enableVgwRoutePropagationAsyncOverride = enableVgwRoutePropagationAsyncOverride {
             return try enableVgwRoutePropagationAsyncOverride(input, completion)
         }
@@ -12408,7 +12408,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func enableVolumeIOAsync(
             input: ElasticComputeCloudModel.EnableVolumeIORequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let enableVolumeIOAsyncOverride = enableVolumeIOAsyncOverride {
             return try enableVolumeIOAsyncOverride(input, completion)
         }
@@ -12442,7 +12442,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func enableVpcClassicLinkAsync(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkResult, ElasticComputeCloudError>) -> ()) throws {
         if let enableVpcClassicLinkAsyncOverride = enableVpcClassicLinkAsyncOverride {
             return try enableVpcClassicLinkAsyncOverride(input, completion)
         }
@@ -12478,7 +12478,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func enableVpcClassicLinkDnsSupportAsync(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult, ElasticComputeCloudError>) -> ()) throws {
         if let enableVpcClassicLinkDnsSupportAsyncOverride = enableVpcClassicLinkDnsSupportAsyncOverride {
             return try enableVpcClassicLinkDnsSupportAsyncOverride(input, completion)
         }
@@ -12514,7 +12514,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func exportClientVpnClientCertificateRevocationListAsync(
             input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult, ElasticComputeCloudError>) -> ()) throws {
         if let exportClientVpnClientCertificateRevocationListAsyncOverride = exportClientVpnClientCertificateRevocationListAsyncOverride {
             return try exportClientVpnClientCertificateRevocationListAsyncOverride(input, completion)
         }
@@ -12550,7 +12550,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func exportClientVpnClientConfigurationAsync(
             input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult, ElasticComputeCloudError>) -> ()) throws {
         if let exportClientVpnClientConfigurationAsyncOverride = exportClientVpnClientConfigurationAsyncOverride {
             return try exportClientVpnClientConfigurationAsyncOverride(input, completion)
         }
@@ -12586,7 +12586,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func exportImageAsync(
             input: ElasticComputeCloudModel.ExportImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ExportImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ExportImageResult, ElasticComputeCloudError>) -> ()) throws {
         if let exportImageAsyncOverride = exportImageAsyncOverride {
             return try exportImageAsyncOverride(input, completion)
         }
@@ -12622,7 +12622,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func exportTransitGatewayRoutesAsync(
             input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult, ElasticComputeCloudError>) -> ()) throws {
         if let exportTransitGatewayRoutesAsyncOverride = exportTransitGatewayRoutesAsyncOverride {
             return try exportTransitGatewayRoutesAsyncOverride(input, completion)
         }
@@ -12658,7 +12658,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getAssociatedIpv6PoolCidrsAsync(
             input: ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult, ElasticComputeCloudError>) -> ()) throws {
         if let getAssociatedIpv6PoolCidrsAsyncOverride = getAssociatedIpv6PoolCidrsAsyncOverride {
             return try getAssociatedIpv6PoolCidrsAsyncOverride(input, completion)
         }
@@ -12694,7 +12694,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getCapacityReservationUsageAsync(
             input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetCapacityReservationUsageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetCapacityReservationUsageResult, ElasticComputeCloudError>) -> ()) throws {
         if let getCapacityReservationUsageAsyncOverride = getCapacityReservationUsageAsyncOverride {
             return try getCapacityReservationUsageAsyncOverride(input, completion)
         }
@@ -12730,7 +12730,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getCoipPoolUsageAsync(
             input: ElasticComputeCloudModel.GetCoipPoolUsageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetCoipPoolUsageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetCoipPoolUsageResult, ElasticComputeCloudError>) -> ()) throws {
         if let getCoipPoolUsageAsyncOverride = getCoipPoolUsageAsyncOverride {
             return try getCoipPoolUsageAsyncOverride(input, completion)
         }
@@ -12766,7 +12766,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getConsoleOutputAsync(
             input: ElasticComputeCloudModel.GetConsoleOutputRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleOutputResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleOutputResult, ElasticComputeCloudError>) -> ()) throws {
         if let getConsoleOutputAsyncOverride = getConsoleOutputAsyncOverride {
             return try getConsoleOutputAsyncOverride(input, completion)
         }
@@ -12802,7 +12802,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getConsoleScreenshotAsync(
             input: ElasticComputeCloudModel.GetConsoleScreenshotRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleScreenshotResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleScreenshotResult, ElasticComputeCloudError>) -> ()) throws {
         if let getConsoleScreenshotAsyncOverride = getConsoleScreenshotAsyncOverride {
             return try getConsoleScreenshotAsyncOverride(input, completion)
         }
@@ -12838,7 +12838,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getDefaultCreditSpecificationAsync(
             input: ElasticComputeCloudModel.GetDefaultCreditSpecificationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetDefaultCreditSpecificationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetDefaultCreditSpecificationResult, ElasticComputeCloudError>) -> ()) throws {
         if let getDefaultCreditSpecificationAsyncOverride = getDefaultCreditSpecificationAsyncOverride {
             return try getDefaultCreditSpecificationAsyncOverride(input, completion)
         }
@@ -12874,7 +12874,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getEbsDefaultKmsKeyIdAsync(
             input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult, ElasticComputeCloudError>) -> ()) throws {
         if let getEbsDefaultKmsKeyIdAsyncOverride = getEbsDefaultKmsKeyIdAsyncOverride {
             return try getEbsDefaultKmsKeyIdAsyncOverride(input, completion)
         }
@@ -12910,7 +12910,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getEbsEncryptionByDefaultAsync(
             input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult, ElasticComputeCloudError>) -> ()) throws {
         if let getEbsEncryptionByDefaultAsyncOverride = getEbsEncryptionByDefaultAsyncOverride {
             return try getEbsEncryptionByDefaultAsyncOverride(input, completion)
         }
@@ -12946,7 +12946,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getHostReservationPurchasePreviewAsync(
             input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult, ElasticComputeCloudError>) -> ()) throws {
         if let getHostReservationPurchasePreviewAsyncOverride = getHostReservationPurchasePreviewAsyncOverride {
             return try getHostReservationPurchasePreviewAsyncOverride(input, completion)
         }
@@ -12982,7 +12982,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getLaunchTemplateDataAsync(
             input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetLaunchTemplateDataResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetLaunchTemplateDataResult, ElasticComputeCloudError>) -> ()) throws {
         if let getLaunchTemplateDataAsyncOverride = getLaunchTemplateDataAsyncOverride {
             return try getLaunchTemplateDataAsyncOverride(input, completion)
         }
@@ -13018,7 +13018,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getPasswordDataAsync(
             input: ElasticComputeCloudModel.GetPasswordDataRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetPasswordDataResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetPasswordDataResult, ElasticComputeCloudError>) -> ()) throws {
         if let getPasswordDataAsyncOverride = getPasswordDataAsyncOverride {
             return try getPasswordDataAsyncOverride(input, completion)
         }
@@ -13054,7 +13054,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getReservedInstancesExchangeQuoteAsync(
             input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult, ElasticComputeCloudError>) -> ()) throws {
         if let getReservedInstancesExchangeQuoteAsyncOverride = getReservedInstancesExchangeQuoteAsyncOverride {
             return try getReservedInstancesExchangeQuoteAsyncOverride(input, completion)
         }
@@ -13090,7 +13090,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getTransitGatewayAttachmentPropagationsAsync(
             input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let getTransitGatewayAttachmentPropagationsAsyncOverride = getTransitGatewayAttachmentPropagationsAsyncOverride {
             return try getTransitGatewayAttachmentPropagationsAsyncOverride(input, completion)
         }
@@ -13126,7 +13126,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getTransitGatewayMulticastDomainAssociationsAsync(
             input: ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let getTransitGatewayMulticastDomainAssociationsAsyncOverride = getTransitGatewayMulticastDomainAssociationsAsyncOverride {
             return try getTransitGatewayMulticastDomainAssociationsAsyncOverride(input, completion)
         }
@@ -13162,7 +13162,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getTransitGatewayRouteTableAssociationsAsync(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let getTransitGatewayRouteTableAssociationsAsyncOverride = getTransitGatewayRouteTableAssociationsAsyncOverride {
             return try getTransitGatewayRouteTableAssociationsAsyncOverride(input, completion)
         }
@@ -13198,7 +13198,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func getTransitGatewayRouteTablePropagationsAsync(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult, ElasticComputeCloudError>) -> ()) throws {
         if let getTransitGatewayRouteTablePropagationsAsyncOverride = getTransitGatewayRouteTablePropagationsAsyncOverride {
             return try getTransitGatewayRouteTablePropagationsAsyncOverride(input, completion)
         }
@@ -13234,7 +13234,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func importClientVpnClientCertificateRevocationListAsync(
             input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult, ElasticComputeCloudError>) -> ()) throws {
         if let importClientVpnClientCertificateRevocationListAsyncOverride = importClientVpnClientCertificateRevocationListAsyncOverride {
             return try importClientVpnClientCertificateRevocationListAsyncOverride(input, completion)
         }
@@ -13270,7 +13270,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func importImageAsync(
             input: ElasticComputeCloudModel.ImportImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImportImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportImageResult, ElasticComputeCloudError>) -> ()) throws {
         if let importImageAsyncOverride = importImageAsyncOverride {
             return try importImageAsyncOverride(input, completion)
         }
@@ -13306,7 +13306,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func importInstanceAsync(
             input: ElasticComputeCloudModel.ImportInstanceRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImportInstanceResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportInstanceResult, ElasticComputeCloudError>) -> ()) throws {
         if let importInstanceAsyncOverride = importInstanceAsyncOverride {
             return try importInstanceAsyncOverride(input, completion)
         }
@@ -13342,7 +13342,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func importKeyPairAsync(
             input: ElasticComputeCloudModel.ImportKeyPairRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImportKeyPairResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportKeyPairResult, ElasticComputeCloudError>) -> ()) throws {
         if let importKeyPairAsyncOverride = importKeyPairAsyncOverride {
             return try importKeyPairAsyncOverride(input, completion)
         }
@@ -13378,7 +13378,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func importSnapshotAsync(
             input: ElasticComputeCloudModel.ImportSnapshotRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImportSnapshotResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportSnapshotResult, ElasticComputeCloudError>) -> ()) throws {
         if let importSnapshotAsyncOverride = importSnapshotAsyncOverride {
             return try importSnapshotAsyncOverride(input, completion)
         }
@@ -13414,7 +13414,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func importVolumeAsync(
             input: ElasticComputeCloudModel.ImportVolumeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ImportVolumeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ImportVolumeResult, ElasticComputeCloudError>) -> ()) throws {
         if let importVolumeAsyncOverride = importVolumeAsyncOverride {
             return try importVolumeAsyncOverride(input, completion)
         }
@@ -13450,7 +13450,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyCapacityReservationAsync(
             input: ElasticComputeCloudModel.ModifyCapacityReservationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyCapacityReservationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyCapacityReservationAsyncOverride = modifyCapacityReservationAsyncOverride {
             return try modifyCapacityReservationAsyncOverride(input, completion)
         }
@@ -13486,7 +13486,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyClientVpnEndpointAsync(
             input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyClientVpnEndpointResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyClientVpnEndpointResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyClientVpnEndpointAsyncOverride = modifyClientVpnEndpointAsyncOverride {
             return try modifyClientVpnEndpointAsyncOverride(input, completion)
         }
@@ -13522,7 +13522,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyDefaultCreditSpecificationAsync(
             input: ElasticComputeCloudModel.ModifyDefaultCreditSpecificationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyDefaultCreditSpecificationAsyncOverride = modifyDefaultCreditSpecificationAsyncOverride {
             return try modifyDefaultCreditSpecificationAsyncOverride(input, completion)
         }
@@ -13558,7 +13558,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyEbsDefaultKmsKeyIdAsync(
             input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyEbsDefaultKmsKeyIdAsyncOverride = modifyEbsDefaultKmsKeyIdAsyncOverride {
             return try modifyEbsDefaultKmsKeyIdAsyncOverride(input, completion)
         }
@@ -13594,7 +13594,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyFleetAsync(
             input: ElasticComputeCloudModel.ModifyFleetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyFleetResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyFleetResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyFleetAsyncOverride = modifyFleetAsyncOverride {
             return try modifyFleetAsyncOverride(input, completion)
         }
@@ -13630,7 +13630,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyFpgaImageAttributeAsync(
             input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyFpgaImageAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyFpgaImageAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyFpgaImageAttributeAsyncOverride = modifyFpgaImageAttributeAsyncOverride {
             return try modifyFpgaImageAttributeAsyncOverride(input, completion)
         }
@@ -13666,7 +13666,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyHostsAsync(
             input: ElasticComputeCloudModel.ModifyHostsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyHostsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyHostsResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyHostsAsyncOverride = modifyHostsAsyncOverride {
             return try modifyHostsAsyncOverride(input, completion)
         }
@@ -13701,7 +13701,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyIdFormatAsync(
             input: ElasticComputeCloudModel.ModifyIdFormatRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let modifyIdFormatAsyncOverride = modifyIdFormatAsyncOverride {
             return try modifyIdFormatAsyncOverride(input, completion)
         }
@@ -13734,7 +13734,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyIdentityIdFormatAsync(
             input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let modifyIdentityIdFormatAsyncOverride = modifyIdentityIdFormatAsyncOverride {
             return try modifyIdentityIdFormatAsyncOverride(input, completion)
         }
@@ -13767,7 +13767,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyImageAttributeAsync(
             input: ElasticComputeCloudModel.ModifyImageAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let modifyImageAttributeAsyncOverride = modifyImageAttributeAsyncOverride {
             return try modifyImageAttributeAsyncOverride(input, completion)
         }
@@ -13800,7 +13800,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyInstanceAttributeAsync(
             input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let modifyInstanceAttributeAsyncOverride = modifyInstanceAttributeAsyncOverride {
             return try modifyInstanceAttributeAsyncOverride(input, completion)
         }
@@ -13834,7 +13834,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyInstanceCapacityReservationAttributesAsync(
             input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyInstanceCapacityReservationAttributesAsyncOverride = modifyInstanceCapacityReservationAttributesAsyncOverride {
             return try modifyInstanceCapacityReservationAttributesAsyncOverride(input, completion)
         }
@@ -13870,7 +13870,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyInstanceCreditSpecificationAsync(
             input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyInstanceCreditSpecificationAsyncOverride = modifyInstanceCreditSpecificationAsyncOverride {
             return try modifyInstanceCreditSpecificationAsyncOverride(input, completion)
         }
@@ -13906,7 +13906,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyInstanceEventStartTimeAsync(
             input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyInstanceEventStartTimeAsyncOverride = modifyInstanceEventStartTimeAsyncOverride {
             return try modifyInstanceEventStartTimeAsyncOverride(input, completion)
         }
@@ -13942,7 +13942,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyInstanceMetadataOptionsAsync(
             input: ElasticComputeCloudModel.ModifyInstanceMetadataOptionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyInstanceMetadataOptionsAsyncOverride = modifyInstanceMetadataOptionsAsyncOverride {
             return try modifyInstanceMetadataOptionsAsyncOverride(input, completion)
         }
@@ -13978,7 +13978,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyInstancePlacementAsync(
             input: ElasticComputeCloudModel.ModifyInstancePlacementRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstancePlacementResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstancePlacementResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyInstancePlacementAsyncOverride = modifyInstancePlacementAsyncOverride {
             return try modifyInstancePlacementAsyncOverride(input, completion)
         }
@@ -14014,7 +14014,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyLaunchTemplateAsync(
             input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyLaunchTemplateResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyLaunchTemplateResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyLaunchTemplateAsyncOverride = modifyLaunchTemplateAsyncOverride {
             return try modifyLaunchTemplateAsyncOverride(input, completion)
         }
@@ -14049,7 +14049,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyNetworkInterfaceAttributeAsync(
             input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let modifyNetworkInterfaceAttributeAsyncOverride = modifyNetworkInterfaceAttributeAsyncOverride {
             return try modifyNetworkInterfaceAttributeAsyncOverride(input, completion)
         }
@@ -14083,7 +14083,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyReservedInstancesAsync(
             input: ElasticComputeCloudModel.ModifyReservedInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyReservedInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyReservedInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyReservedInstancesAsyncOverride = modifyReservedInstancesAsyncOverride {
             return try modifyReservedInstancesAsyncOverride(input, completion)
         }
@@ -14118,7 +14118,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifySnapshotAttributeAsync(
             input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let modifySnapshotAttributeAsyncOverride = modifySnapshotAttributeAsyncOverride {
             return try modifySnapshotAttributeAsyncOverride(input, completion)
         }
@@ -14152,7 +14152,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifySpotFleetRequestAsync(
             input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifySpotFleetRequestResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifySpotFleetRequestResponse, ElasticComputeCloudError>) -> ()) throws {
         if let modifySpotFleetRequestAsyncOverride = modifySpotFleetRequestAsyncOverride {
             return try modifySpotFleetRequestAsyncOverride(input, completion)
         }
@@ -14187,7 +14187,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifySubnetAttributeAsync(
             input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let modifySubnetAttributeAsyncOverride = modifySubnetAttributeAsyncOverride {
             return try modifySubnetAttributeAsyncOverride(input, completion)
         }
@@ -14221,7 +14221,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyTrafficMirrorFilterNetworkServicesAsync(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyTrafficMirrorFilterNetworkServicesAsyncOverride = modifyTrafficMirrorFilterNetworkServicesAsyncOverride {
             return try modifyTrafficMirrorFilterNetworkServicesAsyncOverride(input, completion)
         }
@@ -14257,7 +14257,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyTrafficMirrorFilterRuleAsync(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyTrafficMirrorFilterRuleAsyncOverride = modifyTrafficMirrorFilterRuleAsyncOverride {
             return try modifyTrafficMirrorFilterRuleAsyncOverride(input, completion)
         }
@@ -14293,7 +14293,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyTrafficMirrorSessionAsync(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyTrafficMirrorSessionAsyncOverride = modifyTrafficMirrorSessionAsyncOverride {
             return try modifyTrafficMirrorSessionAsyncOverride(input, completion)
         }
@@ -14329,7 +14329,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyTransitGatewayVpcAttachmentAsyncOverride = modifyTransitGatewayVpcAttachmentAsyncOverride {
             return try modifyTransitGatewayVpcAttachmentAsyncOverride(input, completion)
         }
@@ -14365,7 +14365,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyVolumeAsync(
             input: ElasticComputeCloudModel.ModifyVolumeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVolumeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVolumeResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyVolumeAsyncOverride = modifyVolumeAsyncOverride {
             return try modifyVolumeAsyncOverride(input, completion)
         }
@@ -14400,7 +14400,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyVolumeAttributeAsync(
             input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let modifyVolumeAttributeAsyncOverride = modifyVolumeAttributeAsyncOverride {
             return try modifyVolumeAttributeAsyncOverride(input, completion)
         }
@@ -14433,7 +14433,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyVpcAttributeAsync(
             input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let modifyVpcAttributeAsyncOverride = modifyVpcAttributeAsyncOverride {
             return try modifyVpcAttributeAsyncOverride(input, completion)
         }
@@ -14467,7 +14467,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyVpcEndpointAsync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyVpcEndpointAsyncOverride = modifyVpcEndpointAsyncOverride {
             return try modifyVpcEndpointAsyncOverride(input, completion)
         }
@@ -14503,7 +14503,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyVpcEndpointConnectionNotificationAsync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyVpcEndpointConnectionNotificationAsyncOverride = modifyVpcEndpointConnectionNotificationAsyncOverride {
             return try modifyVpcEndpointConnectionNotificationAsyncOverride(input, completion)
         }
@@ -14539,7 +14539,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyVpcEndpointServiceConfigurationAsync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyVpcEndpointServiceConfigurationAsyncOverride = modifyVpcEndpointServiceConfigurationAsyncOverride {
             return try modifyVpcEndpointServiceConfigurationAsyncOverride(input, completion)
         }
@@ -14575,7 +14575,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyVpcEndpointServicePermissionsAsync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyVpcEndpointServicePermissionsAsyncOverride = modifyVpcEndpointServicePermissionsAsyncOverride {
             return try modifyVpcEndpointServicePermissionsAsyncOverride(input, completion)
         }
@@ -14611,7 +14611,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyVpcPeeringConnectionOptionsAsync(
             input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyVpcPeeringConnectionOptionsAsyncOverride = modifyVpcPeeringConnectionOptionsAsyncOverride {
             return try modifyVpcPeeringConnectionOptionsAsyncOverride(input, completion)
         }
@@ -14647,7 +14647,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyVpcTenancyAsync(
             input: ElasticComputeCloudModel.ModifyVpcTenancyRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcTenancyResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcTenancyResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyVpcTenancyAsyncOverride = modifyVpcTenancyAsyncOverride {
             return try modifyVpcTenancyAsyncOverride(input, completion)
         }
@@ -14683,7 +14683,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyVpnConnectionAsync(
             input: ElasticComputeCloudModel.ModifyVpnConnectionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnConnectionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnConnectionResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyVpnConnectionAsyncOverride = modifyVpnConnectionAsyncOverride {
             return try modifyVpnConnectionAsyncOverride(input, completion)
         }
@@ -14719,7 +14719,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyVpnTunnelCertificateAsync(
             input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyVpnTunnelCertificateAsyncOverride = modifyVpnTunnelCertificateAsyncOverride {
             return try modifyVpnTunnelCertificateAsyncOverride(input, completion)
         }
@@ -14755,7 +14755,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func modifyVpnTunnelOptionsAsync(
             input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let modifyVpnTunnelOptionsAsyncOverride = modifyVpnTunnelOptionsAsyncOverride {
             return try modifyVpnTunnelOptionsAsyncOverride(input, completion)
         }
@@ -14791,7 +14791,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func monitorInstancesAsync(
             input: ElasticComputeCloudModel.MonitorInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.MonitorInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.MonitorInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let monitorInstancesAsyncOverride = monitorInstancesAsyncOverride {
             return try monitorInstancesAsyncOverride(input, completion)
         }
@@ -14827,7 +14827,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func moveAddressToVpcAsync(
             input: ElasticComputeCloudModel.MoveAddressToVpcRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.MoveAddressToVpcResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.MoveAddressToVpcResult, ElasticComputeCloudError>) -> ()) throws {
         if let moveAddressToVpcAsyncOverride = moveAddressToVpcAsyncOverride {
             return try moveAddressToVpcAsyncOverride(input, completion)
         }
@@ -14863,7 +14863,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func provisionByoipCidrAsync(
             input: ElasticComputeCloudModel.ProvisionByoipCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ProvisionByoipCidrResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ProvisionByoipCidrResult, ElasticComputeCloudError>) -> ()) throws {
         if let provisionByoipCidrAsyncOverride = provisionByoipCidrAsyncOverride {
             return try provisionByoipCidrAsyncOverride(input, completion)
         }
@@ -14899,7 +14899,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func purchaseHostReservationAsync(
             input: ElasticComputeCloudModel.PurchaseHostReservationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseHostReservationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseHostReservationResult, ElasticComputeCloudError>) -> ()) throws {
         if let purchaseHostReservationAsyncOverride = purchaseHostReservationAsyncOverride {
             return try purchaseHostReservationAsyncOverride(input, completion)
         }
@@ -14935,7 +14935,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func purchaseReservedInstancesOfferingAsync(
             input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult, ElasticComputeCloudError>) -> ()) throws {
         if let purchaseReservedInstancesOfferingAsyncOverride = purchaseReservedInstancesOfferingAsyncOverride {
             return try purchaseReservedInstancesOfferingAsyncOverride(input, completion)
         }
@@ -14971,7 +14971,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func purchaseScheduledInstancesAsync(
             input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseScheduledInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.PurchaseScheduledInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let purchaseScheduledInstancesAsyncOverride = purchaseScheduledInstancesAsyncOverride {
             return try purchaseScheduledInstancesAsyncOverride(input, completion)
         }
@@ -15006,7 +15006,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func rebootInstancesAsync(
             input: ElasticComputeCloudModel.RebootInstancesRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let rebootInstancesAsyncOverride = rebootInstancesAsyncOverride {
             return try rebootInstancesAsyncOverride(input, completion)
         }
@@ -15040,7 +15040,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func registerImageAsync(
             input: ElasticComputeCloudModel.RegisterImageRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RegisterImageResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RegisterImageResult, ElasticComputeCloudError>) -> ()) throws {
         if let registerImageAsyncOverride = registerImageAsyncOverride {
             return try registerImageAsyncOverride(input, completion)
         }
@@ -15076,7 +15076,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func registerTransitGatewayMulticastGroupMembersAsync(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult, ElasticComputeCloudError>) -> ()) throws {
         if let registerTransitGatewayMulticastGroupMembersAsyncOverride = registerTransitGatewayMulticastGroupMembersAsyncOverride {
             return try registerTransitGatewayMulticastGroupMembersAsyncOverride(input, completion)
         }
@@ -15112,7 +15112,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func registerTransitGatewayMulticastGroupSourcesAsync(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult, ElasticComputeCloudError>) -> ()) throws {
         if let registerTransitGatewayMulticastGroupSourcesAsyncOverride = registerTransitGatewayMulticastGroupSourcesAsyncOverride {
             return try registerTransitGatewayMulticastGroupSourcesAsyncOverride(input, completion)
         }
@@ -15148,7 +15148,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func rejectTransitGatewayPeeringAttachmentAsync(
             input: ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         if let rejectTransitGatewayPeeringAttachmentAsyncOverride = rejectTransitGatewayPeeringAttachmentAsyncOverride {
             return try rejectTransitGatewayPeeringAttachmentAsyncOverride(input, completion)
         }
@@ -15184,7 +15184,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func rejectTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
         if let rejectTransitGatewayVpcAttachmentAsyncOverride = rejectTransitGatewayVpcAttachmentAsyncOverride {
             return try rejectTransitGatewayVpcAttachmentAsyncOverride(input, completion)
         }
@@ -15220,7 +15220,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func rejectVpcEndpointConnectionsAsync(
             input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let rejectVpcEndpointConnectionsAsyncOverride = rejectVpcEndpointConnectionsAsyncOverride {
             return try rejectVpcEndpointConnectionsAsyncOverride(input, completion)
         }
@@ -15256,7 +15256,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func rejectVpcPeeringConnectionAsync(
             input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcPeeringConnectionResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcPeeringConnectionResult, ElasticComputeCloudError>) -> ()) throws {
         if let rejectVpcPeeringConnectionAsyncOverride = rejectVpcPeeringConnectionAsyncOverride {
             return try rejectVpcPeeringConnectionAsyncOverride(input, completion)
         }
@@ -15291,7 +15291,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func releaseAddressAsync(
             input: ElasticComputeCloudModel.ReleaseAddressRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let releaseAddressAsyncOverride = releaseAddressAsyncOverride {
             return try releaseAddressAsyncOverride(input, completion)
         }
@@ -15325,7 +15325,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func releaseHostsAsync(
             input: ElasticComputeCloudModel.ReleaseHostsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ReleaseHostsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ReleaseHostsResult, ElasticComputeCloudError>) -> ()) throws {
         if let releaseHostsAsyncOverride = releaseHostsAsyncOverride {
             return try releaseHostsAsyncOverride(input, completion)
         }
@@ -15361,7 +15361,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func replaceIamInstanceProfileAssociationAsync(
             input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult, ElasticComputeCloudError>) -> ()) throws {
         if let replaceIamInstanceProfileAssociationAsyncOverride = replaceIamInstanceProfileAssociationAsyncOverride {
             return try replaceIamInstanceProfileAssociationAsyncOverride(input, completion)
         }
@@ -15397,7 +15397,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func replaceNetworkAclAssociationAsync(
             input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult, ElasticComputeCloudError>) -> ()) throws {
         if let replaceNetworkAclAssociationAsyncOverride = replaceNetworkAclAssociationAsyncOverride {
             return try replaceNetworkAclAssociationAsyncOverride(input, completion)
         }
@@ -15432,7 +15432,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func replaceNetworkAclEntryAsync(
             input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let replaceNetworkAclEntryAsyncOverride = replaceNetworkAclEntryAsyncOverride {
             return try replaceNetworkAclEntryAsyncOverride(input, completion)
         }
@@ -15465,7 +15465,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func replaceRouteAsync(
             input: ElasticComputeCloudModel.ReplaceRouteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let replaceRouteAsyncOverride = replaceRouteAsyncOverride {
             return try replaceRouteAsyncOverride(input, completion)
         }
@@ -15499,7 +15499,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func replaceRouteTableAssociationAsync(
             input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult, ElasticComputeCloudError>) -> ()) throws {
         if let replaceRouteTableAssociationAsyncOverride = replaceRouteTableAssociationAsyncOverride {
             return try replaceRouteTableAssociationAsyncOverride(input, completion)
         }
@@ -15535,7 +15535,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func replaceTransitGatewayRouteAsync(
             input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
         if let replaceTransitGatewayRouteAsyncOverride = replaceTransitGatewayRouteAsyncOverride {
             return try replaceTransitGatewayRouteAsyncOverride(input, completion)
         }
@@ -15570,7 +15570,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func reportInstanceStatusAsync(
             input: ElasticComputeCloudModel.ReportInstanceStatusRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let reportInstanceStatusAsyncOverride = reportInstanceStatusAsyncOverride {
             return try reportInstanceStatusAsyncOverride(input, completion)
         }
@@ -15604,7 +15604,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func requestSpotFleetAsync(
             input: ElasticComputeCloudModel.RequestSpotFleetRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotFleetResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotFleetResponse, ElasticComputeCloudError>) -> ()) throws {
         if let requestSpotFleetAsyncOverride = requestSpotFleetAsyncOverride {
             return try requestSpotFleetAsyncOverride(input, completion)
         }
@@ -15640,7 +15640,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func requestSpotInstancesAsync(
             input: ElasticComputeCloudModel.RequestSpotInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let requestSpotInstancesAsyncOverride = requestSpotInstancesAsyncOverride {
             return try requestSpotInstancesAsyncOverride(input, completion)
         }
@@ -15676,7 +15676,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func resetEbsDefaultKmsKeyIdAsync(
             input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult, ElasticComputeCloudError>) -> ()) throws {
         if let resetEbsDefaultKmsKeyIdAsyncOverride = resetEbsDefaultKmsKeyIdAsyncOverride {
             return try resetEbsDefaultKmsKeyIdAsyncOverride(input, completion)
         }
@@ -15712,7 +15712,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func resetFpgaImageAttributeAsync(
             input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ResetFpgaImageAttributeResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.ResetFpgaImageAttributeResult, ElasticComputeCloudError>) -> ()) throws {
         if let resetFpgaImageAttributeAsyncOverride = resetFpgaImageAttributeAsyncOverride {
             return try resetFpgaImageAttributeAsyncOverride(input, completion)
         }
@@ -15747,7 +15747,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func resetImageAttributeAsync(
             input: ElasticComputeCloudModel.ResetImageAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let resetImageAttributeAsyncOverride = resetImageAttributeAsyncOverride {
             return try resetImageAttributeAsyncOverride(input, completion)
         }
@@ -15780,7 +15780,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func resetInstanceAttributeAsync(
             input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let resetInstanceAttributeAsyncOverride = resetInstanceAttributeAsyncOverride {
             return try resetInstanceAttributeAsyncOverride(input, completion)
         }
@@ -15813,7 +15813,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func resetNetworkInterfaceAttributeAsync(
             input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let resetNetworkInterfaceAttributeAsyncOverride = resetNetworkInterfaceAttributeAsyncOverride {
             return try resetNetworkInterfaceAttributeAsyncOverride(input, completion)
         }
@@ -15846,7 +15846,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func resetSnapshotAttributeAsync(
             input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let resetSnapshotAttributeAsyncOverride = resetSnapshotAttributeAsyncOverride {
             return try resetSnapshotAttributeAsyncOverride(input, completion)
         }
@@ -15880,7 +15880,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func restoreAddressToClassicAsync(
             input: ElasticComputeCloudModel.RestoreAddressToClassicRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RestoreAddressToClassicResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RestoreAddressToClassicResult, ElasticComputeCloudError>) -> ()) throws {
         if let restoreAddressToClassicAsyncOverride = restoreAddressToClassicAsyncOverride {
             return try restoreAddressToClassicAsyncOverride(input, completion)
         }
@@ -15916,7 +15916,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func revokeClientVpnIngressAsync(
             input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RevokeClientVpnIngressResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RevokeClientVpnIngressResult, ElasticComputeCloudError>) -> ()) throws {
         if let revokeClientVpnIngressAsyncOverride = revokeClientVpnIngressAsyncOverride {
             return try revokeClientVpnIngressAsyncOverride(input, completion)
         }
@@ -15951,7 +15951,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func revokeSecurityGroupEgressAsync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let revokeSecurityGroupEgressAsyncOverride = revokeSecurityGroupEgressAsyncOverride {
             return try revokeSecurityGroupEgressAsyncOverride(input, completion)
         }
@@ -15984,7 +15984,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func revokeSecurityGroupIngressAsync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let revokeSecurityGroupIngressAsyncOverride = revokeSecurityGroupIngressAsyncOverride {
             return try revokeSecurityGroupIngressAsyncOverride(input, completion)
         }
@@ -16018,7 +16018,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func runInstancesAsync(
             input: ElasticComputeCloudModel.RunInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.Reservation, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.Reservation, ElasticComputeCloudError>) -> ()) throws {
         if let runInstancesAsyncOverride = runInstancesAsyncOverride {
             return try runInstancesAsyncOverride(input, completion)
         }
@@ -16054,7 +16054,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func runScheduledInstancesAsync(
             input: ElasticComputeCloudModel.RunScheduledInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RunScheduledInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RunScheduledInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let runScheduledInstancesAsyncOverride = runScheduledInstancesAsyncOverride {
             return try runScheduledInstancesAsyncOverride(input, completion)
         }
@@ -16090,7 +16090,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func searchLocalGatewayRoutesAsync(
             input: ElasticComputeCloudModel.SearchLocalGatewayRoutesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.SearchLocalGatewayRoutesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.SearchLocalGatewayRoutesResult, ElasticComputeCloudError>) -> ()) throws {
         if let searchLocalGatewayRoutesAsyncOverride = searchLocalGatewayRoutesAsyncOverride {
             return try searchLocalGatewayRoutesAsyncOverride(input, completion)
         }
@@ -16126,7 +16126,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func searchTransitGatewayMulticastGroupsAsync(
             input: ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult, ElasticComputeCloudError>) -> ()) throws {
         if let searchTransitGatewayMulticastGroupsAsyncOverride = searchTransitGatewayMulticastGroupsAsyncOverride {
             return try searchTransitGatewayMulticastGroupsAsyncOverride(input, completion)
         }
@@ -16162,7 +16162,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func searchTransitGatewayRoutesAsync(
             input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult, ElasticComputeCloudError>) -> ()) throws {
         if let searchTransitGatewayRoutesAsyncOverride = searchTransitGatewayRoutesAsyncOverride {
             return try searchTransitGatewayRoutesAsyncOverride(input, completion)
         }
@@ -16197,7 +16197,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func sendDiagnosticInterruptAsync(
             input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let sendDiagnosticInterruptAsyncOverride = sendDiagnosticInterruptAsyncOverride {
             return try sendDiagnosticInterruptAsyncOverride(input, completion)
         }
@@ -16231,7 +16231,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func startInstancesAsync(
             input: ElasticComputeCloudModel.StartInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.StartInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.StartInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let startInstancesAsyncOverride = startInstancesAsyncOverride {
             return try startInstancesAsyncOverride(input, completion)
         }
@@ -16267,7 +16267,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func startVpcEndpointServicePrivateDnsVerificationAsync(
             input: ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult, ElasticComputeCloudError>) -> ()) throws {
         if let startVpcEndpointServicePrivateDnsVerificationAsyncOverride = startVpcEndpointServicePrivateDnsVerificationAsyncOverride {
             return try startVpcEndpointServicePrivateDnsVerificationAsyncOverride(input, completion)
         }
@@ -16303,7 +16303,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func stopInstancesAsync(
             input: ElasticComputeCloudModel.StopInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.StopInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.StopInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let stopInstancesAsyncOverride = stopInstancesAsyncOverride {
             return try stopInstancesAsyncOverride(input, completion)
         }
@@ -16339,7 +16339,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func terminateClientVpnConnectionsAsync(
             input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
         if let terminateClientVpnConnectionsAsyncOverride = terminateClientVpnConnectionsAsyncOverride {
             return try terminateClientVpnConnectionsAsyncOverride(input, completion)
         }
@@ -16375,7 +16375,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func terminateInstancesAsync(
             input: ElasticComputeCloudModel.TerminateInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.TerminateInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.TerminateInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let terminateInstancesAsyncOverride = terminateInstancesAsyncOverride {
             return try terminateInstancesAsyncOverride(input, completion)
         }
@@ -16411,7 +16411,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func unassignIpv6AddressesAsync(
             input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.UnassignIpv6AddressesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.UnassignIpv6AddressesResult, ElasticComputeCloudError>) -> ()) throws {
         if let unassignIpv6AddressesAsyncOverride = unassignIpv6AddressesAsyncOverride {
             return try unassignIpv6AddressesAsyncOverride(input, completion)
         }
@@ -16446,7 +16446,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func unassignPrivateIpAddressesAsync(
             input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
         if let unassignPrivateIpAddressesAsyncOverride = unassignPrivateIpAddressesAsyncOverride {
             return try unassignPrivateIpAddressesAsyncOverride(input, completion)
         }
@@ -16480,7 +16480,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func unmonitorInstancesAsync(
             input: ElasticComputeCloudModel.UnmonitorInstancesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.UnmonitorInstancesResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.UnmonitorInstancesResult, ElasticComputeCloudError>) -> ()) throws {
         if let unmonitorInstancesAsyncOverride = unmonitorInstancesAsyncOverride {
             return try unmonitorInstancesAsyncOverride(input, completion)
         }
@@ -16516,7 +16516,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func updateSecurityGroupRuleDescriptionsEgressAsync(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult, ElasticComputeCloudError>) -> ()) throws {
         if let updateSecurityGroupRuleDescriptionsEgressAsyncOverride = updateSecurityGroupRuleDescriptionsEgressAsyncOverride {
             return try updateSecurityGroupRuleDescriptionsEgressAsyncOverride(input, completion)
         }
@@ -16552,7 +16552,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func updateSecurityGroupRuleDescriptionsIngressAsync(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult, ElasticComputeCloudError>) -> ()) throws {
         if let updateSecurityGroupRuleDescriptionsIngressAsyncOverride = updateSecurityGroupRuleDescriptionsIngressAsyncOverride {
             return try updateSecurityGroupRuleDescriptionsIngressAsyncOverride(input, completion)
         }
@@ -16588,7 +16588,7 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
      */
     public func withdrawByoipCidrAsync(
             input: ElasticComputeCloudModel.WithdrawByoipCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.WithdrawByoipCidrResult, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.WithdrawByoipCidrResult, ElasticComputeCloudError>) -> ()) throws {
         if let withdrawByoipCidrAsyncOverride = withdrawByoipCidrAsyncOverride {
             return try withdrawByoipCidrAsyncOverride(input, completion)
         }

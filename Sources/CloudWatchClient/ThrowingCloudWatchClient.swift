@@ -28,7 +28,7 @@ import SmokeHTTPClient
  Mock Client for the CloudWatch service that by default always throws from its methods.
  */
 public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
-    let error: HTTPClientError
+    let error: CloudWatchError
     let deleteAlarmsAsyncOverride: DeleteAlarmsAsyncType?
     let deleteAlarmsSyncOverride: DeleteAlarmsSyncType?
     let deleteAnomalyDetectorAsyncOverride: DeleteAnomalyDetectorAsyncType?
@@ -92,7 +92,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: HTTPClientError,
+    public init(error: CloudWatchError,
             deleteAlarmsAsync: DeleteAlarmsAsyncType? = nil,
             deleteAlarmsSync: DeleteAlarmsSyncType? = nil,
             deleteAnomalyDetectorAsync: DeleteAnomalyDetectorAsyncType? = nil,
@@ -223,7 +223,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func deleteAlarmsAsync(
             input: CloudWatchModel.DeleteAlarmsInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (CloudWatchError?) -> ()) throws {
         if let deleteAlarmsAsyncOverride = deleteAlarmsAsyncOverride {
             return try deleteAlarmsAsyncOverride(input, completion)
         }
@@ -259,7 +259,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func deleteAnomalyDetectorAsync(
             input: CloudWatchModel.DeleteAnomalyDetectorInput, 
-            completion: @escaping (Result<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector, CloudWatchError>) -> ()) throws {
         if let deleteAnomalyDetectorAsyncOverride = deleteAnomalyDetectorAsyncOverride {
             return try deleteAnomalyDetectorAsyncOverride(input, completion)
         }
@@ -297,7 +297,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func deleteDashboardsAsync(
             input: CloudWatchModel.DeleteDashboardsInput, 
-            completion: @escaping (Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, CloudWatchError>) -> ()) throws {
         if let deleteDashboardsAsyncOverride = deleteDashboardsAsyncOverride {
             return try deleteDashboardsAsyncOverride(input, completion)
         }
@@ -335,7 +335,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func deleteInsightRulesAsync(
             input: CloudWatchModel.DeleteInsightRulesInput, 
-            completion: @escaping (Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, CloudWatchError>) -> ()) throws {
         if let deleteInsightRulesAsyncOverride = deleteInsightRulesAsyncOverride {
             return try deleteInsightRulesAsyncOverride(input, completion)
         }
@@ -373,7 +373,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func describeAlarmHistoryAsync(
             input: CloudWatchModel.DescribeAlarmHistoryInput, 
-            completion: @escaping (Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, CloudWatchError>) -> ()) throws {
         if let describeAlarmHistoryAsyncOverride = describeAlarmHistoryAsyncOverride {
             return try describeAlarmHistoryAsyncOverride(input, completion)
         }
@@ -411,7 +411,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func describeAlarmsAsync(
             input: CloudWatchModel.DescribeAlarmsInput, 
-            completion: @escaping (Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, CloudWatchError>) -> ()) throws {
         if let describeAlarmsAsyncOverride = describeAlarmsAsyncOverride {
             return try describeAlarmsAsyncOverride(input, completion)
         }
@@ -448,7 +448,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func describeAlarmsForMetricAsync(
             input: CloudWatchModel.DescribeAlarmsForMetricInput, 
-            completion: @escaping (Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, CloudWatchError>) -> ()) throws {
         if let describeAlarmsForMetricAsyncOverride = describeAlarmsForMetricAsyncOverride {
             return try describeAlarmsForMetricAsyncOverride(input, completion)
         }
@@ -485,7 +485,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func describeAnomalyDetectorsAsync(
             input: CloudWatchModel.DescribeAnomalyDetectorsInput, 
-            completion: @escaping (Result<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors, CloudWatchError>) -> ()) throws {
         if let describeAnomalyDetectorsAsyncOverride = describeAnomalyDetectorsAsyncOverride {
             return try describeAnomalyDetectorsAsyncOverride(input, completion)
         }
@@ -523,7 +523,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func describeInsightRulesAsync(
             input: CloudWatchModel.DescribeInsightRulesInput, 
-            completion: @escaping (Result<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules, CloudWatchError>) -> ()) throws {
         if let describeInsightRulesAsyncOverride = describeInsightRulesAsyncOverride {
             return try describeInsightRulesAsyncOverride(input, completion)
         }
@@ -559,7 +559,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func disableAlarmActionsAsync(
             input: CloudWatchModel.DisableAlarmActionsInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (CloudWatchError?) -> ()) throws {
         if let disableAlarmActionsAsyncOverride = disableAlarmActionsAsyncOverride {
             return try disableAlarmActionsAsyncOverride(input, completion)
         }
@@ -594,7 +594,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func disableInsightRulesAsync(
             input: CloudWatchModel.DisableInsightRulesInput, 
-            completion: @escaping (Result<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules, CloudWatchError>) -> ()) throws {
         if let disableInsightRulesAsyncOverride = disableInsightRulesAsyncOverride {
             return try disableInsightRulesAsyncOverride(input, completion)
         }
@@ -630,7 +630,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func enableAlarmActionsAsync(
             input: CloudWatchModel.EnableAlarmActionsInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (CloudWatchError?) -> ()) throws {
         if let enableAlarmActionsAsyncOverride = enableAlarmActionsAsyncOverride {
             return try enableAlarmActionsAsyncOverride(input, completion)
         }
@@ -665,7 +665,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func enableInsightRulesAsync(
             input: CloudWatchModel.EnableInsightRulesInput, 
-            completion: @escaping (Result<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules, CloudWatchError>) -> ()) throws {
         if let enableInsightRulesAsyncOverride = enableInsightRulesAsyncOverride {
             return try enableInsightRulesAsyncOverride(input, completion)
         }
@@ -703,7 +703,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func getDashboardAsync(
             input: CloudWatchModel.GetDashboardInput, 
-            completion: @escaping (Result<CloudWatchModel.GetDashboardOutputForGetDashboard, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.GetDashboardOutputForGetDashboard, CloudWatchError>) -> ()) throws {
         if let getDashboardAsyncOverride = getDashboardAsyncOverride {
             return try getDashboardAsyncOverride(input, completion)
         }
@@ -741,7 +741,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func getInsightRuleReportAsync(
             input: CloudWatchModel.GetInsightRuleReportInput, 
-            completion: @escaping (Result<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport, CloudWatchError>) -> ()) throws {
         if let getInsightRuleReportAsyncOverride = getInsightRuleReportAsyncOverride {
             return try getInsightRuleReportAsyncOverride(input, completion)
         }
@@ -779,7 +779,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func getMetricDataAsync(
             input: CloudWatchModel.GetMetricDataInput, 
-            completion: @escaping (Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, CloudWatchError>) -> ()) throws {
         if let getMetricDataAsyncOverride = getMetricDataAsyncOverride {
             return try getMetricDataAsyncOverride(input, completion)
         }
@@ -817,7 +817,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func getMetricStatisticsAsync(
             input: CloudWatchModel.GetMetricStatisticsInput, 
-            completion: @escaping (Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, CloudWatchError>) -> ()) throws {
         if let getMetricStatisticsAsyncOverride = getMetricStatisticsAsyncOverride {
             return try getMetricStatisticsAsyncOverride(input, completion)
         }
@@ -854,7 +854,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func getMetricWidgetImageAsync(
             input: CloudWatchModel.GetMetricWidgetImageInput, 
-            completion: @escaping (Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, CloudWatchError>) -> ()) throws {
         if let getMetricWidgetImageAsyncOverride = getMetricWidgetImageAsyncOverride {
             return try getMetricWidgetImageAsyncOverride(input, completion)
         }
@@ -891,7 +891,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func listDashboardsAsync(
             input: CloudWatchModel.ListDashboardsInput, 
-            completion: @escaping (Result<CloudWatchModel.ListDashboardsOutputForListDashboards, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.ListDashboardsOutputForListDashboards, CloudWatchError>) -> ()) throws {
         if let listDashboardsAsyncOverride = listDashboardsAsyncOverride {
             return try listDashboardsAsyncOverride(input, completion)
         }
@@ -929,7 +929,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func listMetricsAsync(
             input: CloudWatchModel.ListMetricsInput, 
-            completion: @escaping (Result<CloudWatchModel.ListMetricsOutputForListMetrics, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.ListMetricsOutputForListMetrics, CloudWatchError>) -> ()) throws {
         if let listMetricsAsyncOverride = listMetricsAsyncOverride {
             return try listMetricsAsyncOverride(input, completion)
         }
@@ -967,7 +967,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func listTagsForResourceAsync(
             input: CloudWatchModel.ListTagsForResourceInput, 
-            completion: @escaping (Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, CloudWatchError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
             return try listTagsForResourceAsyncOverride(input, completion)
         }
@@ -1005,7 +1005,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func putAnomalyDetectorAsync(
             input: CloudWatchModel.PutAnomalyDetectorInput, 
-            completion: @escaping (Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, CloudWatchError>) -> ()) throws {
         if let putAnomalyDetectorAsyncOverride = putAnomalyDetectorAsyncOverride {
             return try putAnomalyDetectorAsyncOverride(input, completion)
         }
@@ -1043,7 +1043,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func putDashboardAsync(
             input: CloudWatchModel.PutDashboardInput, 
-            completion: @escaping (Result<CloudWatchModel.PutDashboardOutputForPutDashboard, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.PutDashboardOutputForPutDashboard, CloudWatchError>) -> ()) throws {
         if let putDashboardAsyncOverride = putDashboardAsyncOverride {
             return try putDashboardAsyncOverride(input, completion)
         }
@@ -1081,7 +1081,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func putInsightRuleAsync(
             input: CloudWatchModel.PutInsightRuleInput, 
-            completion: @escaping (Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, CloudWatchError>) -> ()) throws {
         if let putInsightRuleAsyncOverride = putInsightRuleAsyncOverride {
             return try putInsightRuleAsyncOverride(input, completion)
         }
@@ -1118,7 +1118,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func putMetricAlarmAsync(
             input: CloudWatchModel.PutMetricAlarmInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (CloudWatchError?) -> ()) throws {
         if let putMetricAlarmAsyncOverride = putMetricAlarmAsyncOverride {
             return try putMetricAlarmAsyncOverride(input, completion)
         }
@@ -1153,7 +1153,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func putMetricDataAsync(
             input: CloudWatchModel.PutMetricDataInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (CloudWatchError?) -> ()) throws {
         if let putMetricDataAsyncOverride = putMetricDataAsyncOverride {
             return try putMetricDataAsyncOverride(input, completion)
         }
@@ -1188,7 +1188,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func setAlarmStateAsync(
             input: CloudWatchModel.SetAlarmStateInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (CloudWatchError?) -> ()) throws {
         if let setAlarmStateAsyncOverride = setAlarmStateAsyncOverride {
             return try setAlarmStateAsyncOverride(input, completion)
         }
@@ -1224,7 +1224,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func tagResourceAsync(
             input: CloudWatchModel.TagResourceInput, 
-            completion: @escaping (Result<CloudWatchModel.TagResourceOutputForTagResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.TagResourceOutputForTagResource, CloudWatchError>) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
             return try tagResourceAsyncOverride(input, completion)
         }
@@ -1262,7 +1262,7 @@ public struct ThrowingCloudWatchClient: CloudWatchClientProtocol {
      */
     public func untagResourceAsync(
             input: CloudWatchModel.UntagResourceInput, 
-            completion: @escaping (Result<CloudWatchModel.UntagResourceOutputForUntagResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.UntagResourceOutputForUntagResource, CloudWatchError>) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
             return try untagResourceAsyncOverride(input, completion)
         }

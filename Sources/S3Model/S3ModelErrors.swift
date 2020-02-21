@@ -22,6 +22,8 @@
 import Foundation
 import Logging
 
+public typealias S3ErrorResult<SuccessPayload> = Result<SuccessPayload, S3Error>
+
 private let bucketAlreadyExistsIdentity = "BucketAlreadyExists"
 private let bucketAlreadyOwnedByYouIdentity = "BucketAlreadyOwnedByYou"
 private let noSuchBucketIdentity = "NoSuchBucket"

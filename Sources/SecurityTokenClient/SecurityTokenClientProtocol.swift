@@ -32,42 +32,42 @@ public protocol SecurityTokenClientProtocol {
             _ input: SecurityTokenModel.AssumeRoleRequest) throws -> SecurityTokenModel.AssumeRoleResponseForAssumeRole
     typealias AssumeRoleAsyncType = (
             _ input: SecurityTokenModel.AssumeRoleRequest, 
-            _ completion: @escaping (Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, SecurityTokenError>) -> ()) throws -> ()
     typealias AssumeRoleWithSAMLSyncType = (
             _ input: SecurityTokenModel.AssumeRoleWithSAMLRequest) throws -> SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML
     typealias AssumeRoleWithSAMLAsyncType = (
             _ input: SecurityTokenModel.AssumeRoleWithSAMLRequest, 
-            _ completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, SecurityTokenError>) -> ()) throws -> ()
     typealias AssumeRoleWithWebIdentitySyncType = (
             _ input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest) throws -> SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity
     typealias AssumeRoleWithWebIdentityAsyncType = (
             _ input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest, 
-            _ completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, SecurityTokenError>) -> ()) throws -> ()
     typealias DecodeAuthorizationMessageSyncType = (
             _ input: SecurityTokenModel.DecodeAuthorizationMessageRequest) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage
     typealias DecodeAuthorizationMessageAsyncType = (
             _ input: SecurityTokenModel.DecodeAuthorizationMessageRequest, 
-            _ completion: @escaping (Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, SecurityTokenError>) -> ()) throws -> ()
     typealias GetAccessKeyInfoSyncType = (
             _ input: SecurityTokenModel.GetAccessKeyInfoRequest) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo
     typealias GetAccessKeyInfoAsyncType = (
             _ input: SecurityTokenModel.GetAccessKeyInfoRequest, 
-            _ completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, SecurityTokenError>) -> ()) throws -> ()
     typealias GetCallerIdentitySyncType = (
             _ input: SecurityTokenModel.GetCallerIdentityRequest) throws -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity
     typealias GetCallerIdentityAsyncType = (
             _ input: SecurityTokenModel.GetCallerIdentityRequest, 
-            _ completion: @escaping (Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, SecurityTokenError>) -> ()) throws -> ()
     typealias GetFederationTokenSyncType = (
             _ input: SecurityTokenModel.GetFederationTokenRequest) throws -> SecurityTokenModel.GetFederationTokenResponseForGetFederationToken
     typealias GetFederationTokenAsyncType = (
             _ input: SecurityTokenModel.GetFederationTokenRequest, 
-            _ completion: @escaping (Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, SecurityTokenError>) -> ()) throws -> ()
     typealias GetSessionTokenSyncType = (
             _ input: SecurityTokenModel.GetSessionTokenRequest) throws -> SecurityTokenModel.GetSessionTokenResponseForGetSessionToken
     typealias GetSessionTokenAsyncType = (
             _ input: SecurityTokenModel.GetSessionTokenRequest, 
-            _ completion: @escaping (Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, SecurityTokenError>) -> ()) throws -> ()
 
     /**
      Invokes the AssumeRole operation returning immediately and passing the response to a callback.
@@ -81,7 +81,7 @@ public protocol SecurityTokenClientProtocol {
      */
     func assumeRoleAsync(
             input: SecurityTokenModel.AssumeRoleRequest, 
-            completion: @escaping (Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, SecurityTokenError>) -> ()) throws
 
     /**
      Invokes the AssumeRole operation waiting for the response before returning.
@@ -107,7 +107,7 @@ public protocol SecurityTokenClientProtocol {
      */
     func assumeRoleWithSAMLAsync(
             input: SecurityTokenModel.AssumeRoleWithSAMLRequest, 
-            completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, SecurityTokenError>) -> ()) throws
 
     /**
      Invokes the AssumeRoleWithSAML operation waiting for the response before returning.
@@ -133,7 +133,7 @@ public protocol SecurityTokenClientProtocol {
      */
     func assumeRoleWithWebIdentityAsync(
             input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest, 
-            completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, SecurityTokenError>) -> ()) throws
 
     /**
      Invokes the AssumeRoleWithWebIdentity operation waiting for the response before returning.
@@ -159,7 +159,7 @@ public protocol SecurityTokenClientProtocol {
      */
     func decodeAuthorizationMessageAsync(
             input: SecurityTokenModel.DecodeAuthorizationMessageRequest, 
-            completion: @escaping (Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, SecurityTokenError>) -> ()) throws
 
     /**
      Invokes the DecodeAuthorizationMessage operation waiting for the response before returning.
@@ -184,7 +184,7 @@ public protocol SecurityTokenClientProtocol {
      */
     func getAccessKeyInfoAsync(
             input: SecurityTokenModel.GetAccessKeyInfoRequest, 
-            completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, SecurityTokenError>) -> ()) throws
 
     /**
      Invokes the GetAccessKeyInfo operation waiting for the response before returning.
@@ -208,7 +208,7 @@ public protocol SecurityTokenClientProtocol {
      */
     func getCallerIdentityAsync(
             input: SecurityTokenModel.GetCallerIdentityRequest, 
-            completion: @escaping (Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, SecurityTokenError>) -> ()) throws
 
     /**
      Invokes the GetCallerIdentity operation waiting for the response before returning.
@@ -233,7 +233,7 @@ public protocol SecurityTokenClientProtocol {
      */
     func getFederationTokenAsync(
             input: SecurityTokenModel.GetFederationTokenRequest, 
-            completion: @escaping (Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, SecurityTokenError>) -> ()) throws
 
     /**
      Invokes the GetFederationToken operation waiting for the response before returning.
@@ -259,7 +259,7 @@ public protocol SecurityTokenClientProtocol {
      */
     func getSessionTokenAsync(
             input: SecurityTokenModel.GetSessionTokenRequest, 
-            completion: @escaping (Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, SecurityTokenError>) -> ()) throws
 
     /**
      Invokes the GetSessionToken operation waiting for the response before returning.

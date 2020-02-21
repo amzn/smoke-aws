@@ -32,102 +32,102 @@ public protocol SimpleQueueClientProtocol {
             _ input: SimpleQueueModel.AddPermissionRequest) throws -> ()
     typealias AddPermissionAsyncType = (
             _ input: SimpleQueueModel.AddPermissionRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleQueueError?) -> ()) throws -> ()
     typealias ChangeMessageVisibilitySyncType = (
             _ input: SimpleQueueModel.ChangeMessageVisibilityRequest) throws -> ()
     typealias ChangeMessageVisibilityAsyncType = (
             _ input: SimpleQueueModel.ChangeMessageVisibilityRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleQueueError?) -> ()) throws -> ()
     typealias ChangeMessageVisibilityBatchSyncType = (
             _ input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest) throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch
     typealias ChangeMessageVisibilityBatchAsyncType = (
             _ input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest, 
-            _ completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, SimpleQueueError>) -> ()) throws -> ()
     typealias CreateQueueSyncType = (
             _ input: SimpleQueueModel.CreateQueueRequest) throws -> SimpleQueueModel.CreateQueueResultForCreateQueue
     typealias CreateQueueAsyncType = (
             _ input: SimpleQueueModel.CreateQueueRequest, 
-            _ completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, SimpleQueueError>) -> ()) throws -> ()
     typealias DeleteMessageSyncType = (
             _ input: SimpleQueueModel.DeleteMessageRequest) throws -> ()
     typealias DeleteMessageAsyncType = (
             _ input: SimpleQueueModel.DeleteMessageRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleQueueError?) -> ()) throws -> ()
     typealias DeleteMessageBatchSyncType = (
             _ input: SimpleQueueModel.DeleteMessageBatchRequest) throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch
     typealias DeleteMessageBatchAsyncType = (
             _ input: SimpleQueueModel.DeleteMessageBatchRequest, 
-            _ completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, SimpleQueueError>) -> ()) throws -> ()
     typealias DeleteQueueSyncType = (
             _ input: SimpleQueueModel.DeleteQueueRequest) throws -> ()
     typealias DeleteQueueAsyncType = (
             _ input: SimpleQueueModel.DeleteQueueRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleQueueError?) -> ()) throws -> ()
     typealias GetQueueAttributesSyncType = (
             _ input: SimpleQueueModel.GetQueueAttributesRequest) throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes
     typealias GetQueueAttributesAsyncType = (
             _ input: SimpleQueueModel.GetQueueAttributesRequest, 
-            _ completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, SimpleQueueError>) -> ()) throws -> ()
     typealias GetQueueUrlSyncType = (
             _ input: SimpleQueueModel.GetQueueUrlRequest) throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl
     typealias GetQueueUrlAsyncType = (
             _ input: SimpleQueueModel.GetQueueUrlRequest, 
-            _ completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, SimpleQueueError>) -> ()) throws -> ()
     typealias ListDeadLetterSourceQueuesSyncType = (
             _ input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest) throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues
     typealias ListDeadLetterSourceQueuesAsyncType = (
             _ input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest, 
-            _ completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, SimpleQueueError>) -> ()) throws -> ()
     typealias ListQueueTagsSyncType = (
             _ input: SimpleQueueModel.ListQueueTagsRequest) throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags
     typealias ListQueueTagsAsyncType = (
             _ input: SimpleQueueModel.ListQueueTagsRequest, 
-            _ completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, SimpleQueueError>) -> ()) throws -> ()
     typealias ListQueuesSyncType = (
             _ input: SimpleQueueModel.ListQueuesRequest) throws -> SimpleQueueModel.ListQueuesResultForListQueues
     typealias ListQueuesAsyncType = (
             _ input: SimpleQueueModel.ListQueuesRequest, 
-            _ completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, SimpleQueueError>) -> ()) throws -> ()
     typealias PurgeQueueSyncType = (
             _ input: SimpleQueueModel.PurgeQueueRequest) throws -> ()
     typealias PurgeQueueAsyncType = (
             _ input: SimpleQueueModel.PurgeQueueRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleQueueError?) -> ()) throws -> ()
     typealias ReceiveMessageSyncType = (
             _ input: SimpleQueueModel.ReceiveMessageRequest) throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage
     typealias ReceiveMessageAsyncType = (
             _ input: SimpleQueueModel.ReceiveMessageRequest, 
-            _ completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, SimpleQueueError>) -> ()) throws -> ()
     typealias RemovePermissionSyncType = (
             _ input: SimpleQueueModel.RemovePermissionRequest) throws -> ()
     typealias RemovePermissionAsyncType = (
             _ input: SimpleQueueModel.RemovePermissionRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleQueueError?) -> ()) throws -> ()
     typealias SendMessageSyncType = (
             _ input: SimpleQueueModel.SendMessageRequest) throws -> SimpleQueueModel.SendMessageResultForSendMessage
     typealias SendMessageAsyncType = (
             _ input: SimpleQueueModel.SendMessageRequest, 
-            _ completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, SimpleQueueError>) -> ()) throws -> ()
     typealias SendMessageBatchSyncType = (
             _ input: SimpleQueueModel.SendMessageBatchRequest) throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch
     typealias SendMessageBatchAsyncType = (
             _ input: SimpleQueueModel.SendMessageBatchRequest, 
-            _ completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, SimpleQueueError>) -> ()) throws -> ()
     typealias SetQueueAttributesSyncType = (
             _ input: SimpleQueueModel.SetQueueAttributesRequest) throws -> ()
     typealias SetQueueAttributesAsyncType = (
             _ input: SimpleQueueModel.SetQueueAttributesRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleQueueError?) -> ()) throws -> ()
     typealias TagQueueSyncType = (
             _ input: SimpleQueueModel.TagQueueRequest) throws -> ()
     typealias TagQueueAsyncType = (
             _ input: SimpleQueueModel.TagQueueRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleQueueError?) -> ()) throws -> ()
     typealias UntagQueueSyncType = (
             _ input: SimpleQueueModel.UntagQueueRequest) throws -> ()
     typealias UntagQueueAsyncType = (
             _ input: SimpleQueueModel.UntagQueueRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleQueueError?) -> ()) throws -> ()
 
     /**
      Invokes the AddPermission operation returning immediately and passing the response to a callback.
@@ -140,7 +140,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func addPermissionAsync(
             input: SimpleQueueModel.AddPermissionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleQueueError?) -> ()) throws
 
     /**
      Invokes the AddPermission operation waiting for the response before returning.
@@ -163,7 +163,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func changeMessageVisibilityAsync(
             input: SimpleQueueModel.ChangeMessageVisibilityRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleQueueError?) -> ()) throws
 
     /**
      Invokes the ChangeMessageVisibility operation waiting for the response before returning.
@@ -187,7 +187,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func changeMessageVisibilityBatchAsync(
             input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, SimpleQueueError>) -> ()) throws
 
     /**
      Invokes the ChangeMessageVisibilityBatch operation waiting for the response before returning.
@@ -213,7 +213,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func createQueueAsync(
             input: SimpleQueueModel.CreateQueueRequest, 
-            completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, SimpleQueueError>) -> ()) throws
 
     /**
      Invokes the CreateQueue operation waiting for the response before returning.
@@ -238,7 +238,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func deleteMessageAsync(
             input: SimpleQueueModel.DeleteMessageRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleQueueError?) -> ()) throws
 
     /**
      Invokes the DeleteMessage operation waiting for the response before returning.
@@ -262,7 +262,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func deleteMessageBatchAsync(
             input: SimpleQueueModel.DeleteMessageBatchRequest, 
-            completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, SimpleQueueError>) -> ()) throws
 
     /**
      Invokes the DeleteMessageBatch operation waiting for the response before returning.
@@ -286,7 +286,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func deleteQueueAsync(
             input: SimpleQueueModel.DeleteQueueRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleQueueError?) -> ()) throws
 
     /**
      Invokes the DeleteQueue operation waiting for the response before returning.
@@ -309,7 +309,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func getQueueAttributesAsync(
             input: SimpleQueueModel.GetQueueAttributesRequest, 
-            completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, SimpleQueueError>) -> ()) throws
 
     /**
      Invokes the GetQueueAttributes operation waiting for the response before returning.
@@ -335,7 +335,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func getQueueUrlAsync(
             input: SimpleQueueModel.GetQueueUrlRequest, 
-            completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, SimpleQueueError>) -> ()) throws
 
     /**
      Invokes the GetQueueUrl operation waiting for the response before returning.
@@ -361,7 +361,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func listDeadLetterSourceQueuesAsync(
             input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, SimpleQueueError>) -> ()) throws
 
     /**
      Invokes the ListDeadLetterSourceQueues operation waiting for the response before returning.
@@ -386,7 +386,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func listQueueTagsAsync(
             input: SimpleQueueModel.ListQueueTagsRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, SimpleQueueError>) -> ()) throws
 
     /**
      Invokes the ListQueueTags operation waiting for the response before returning.
@@ -410,7 +410,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func listQueuesAsync(
             input: SimpleQueueModel.ListQueuesRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, SimpleQueueError>) -> ()) throws
 
     /**
      Invokes the ListQueues operation waiting for the response before returning.
@@ -434,7 +434,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func purgeQueueAsync(
             input: SimpleQueueModel.PurgeQueueRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleQueueError?) -> ()) throws
 
     /**
      Invokes the PurgeQueue operation waiting for the response before returning.
@@ -458,7 +458,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func receiveMessageAsync(
             input: SimpleQueueModel.ReceiveMessageRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, SimpleQueueError>) -> ()) throws
 
     /**
      Invokes the ReceiveMessage operation waiting for the response before returning.
@@ -482,7 +482,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func removePermissionAsync(
             input: SimpleQueueModel.RemovePermissionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleQueueError?) -> ()) throws
 
     /**
      Invokes the RemovePermission operation waiting for the response before returning.
@@ -505,7 +505,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func sendMessageAsync(
             input: SimpleQueueModel.SendMessageRequest, 
-            completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, SimpleQueueError>) -> ()) throws
 
     /**
      Invokes the SendMessage operation waiting for the response before returning.
@@ -531,7 +531,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func sendMessageBatchAsync(
             input: SimpleQueueModel.SendMessageBatchRequest, 
-            completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, SimpleQueueError>) -> ()) throws
 
     /**
      Invokes the SendMessageBatch operation waiting for the response before returning.
@@ -556,7 +556,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func setQueueAttributesAsync(
             input: SimpleQueueModel.SetQueueAttributesRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleQueueError?) -> ()) throws
 
     /**
      Invokes the SetQueueAttributes operation waiting for the response before returning.
@@ -578,7 +578,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func tagQueueAsync(
             input: SimpleQueueModel.TagQueueRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleQueueError?) -> ()) throws
 
     /**
      Invokes the TagQueue operation waiting for the response before returning.
@@ -599,7 +599,7 @@ public protocol SimpleQueueClientProtocol {
      */
     func untagQueueAsync(
             input: SimpleQueueModel.UntagQueueRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleQueueError?) -> ()) throws
 
     /**
      Invokes the UntagQueue operation waiting for the response before returning.

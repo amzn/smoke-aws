@@ -32,440 +32,440 @@ public protocol S3ClientProtocol {
             _ input: S3Model.AbortMultipartUploadRequest) throws -> S3Model.AbortMultipartUploadOutput
     typealias AbortMultipartUploadAsyncType = (
             _ input: S3Model.AbortMultipartUploadRequest, 
-            _ completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, S3Error>) -> ()) throws -> ()
     typealias CompleteMultipartUploadSyncType = (
             _ input: S3Model.CompleteMultipartUploadRequest) throws -> S3Model.CompleteMultipartUploadOutput
     typealias CompleteMultipartUploadAsyncType = (
             _ input: S3Model.CompleteMultipartUploadRequest, 
-            _ completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, S3Error>) -> ()) throws -> ()
     typealias CopyObjectSyncType = (
             _ input: S3Model.CopyObjectRequest) throws -> S3Model.CopyObjectOutput
     typealias CopyObjectAsyncType = (
             _ input: S3Model.CopyObjectRequest, 
-            _ completion: @escaping (Result<S3Model.CopyObjectOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.CopyObjectOutput, S3Error>) -> ()) throws -> ()
     typealias CreateBucketSyncType = (
             _ input: S3Model.CreateBucketRequest) throws -> S3Model.CreateBucketOutput
     typealias CreateBucketAsyncType = (
             _ input: S3Model.CreateBucketRequest, 
-            _ completion: @escaping (Result<S3Model.CreateBucketOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.CreateBucketOutput, S3Error>) -> ()) throws -> ()
     typealias CreateMultipartUploadSyncType = (
             _ input: S3Model.CreateMultipartUploadRequest) throws -> S3Model.CreateMultipartUploadOutput
     typealias CreateMultipartUploadAsyncType = (
             _ input: S3Model.CreateMultipartUploadRequest, 
-            _ completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, S3Error>) -> ()) throws -> ()
     typealias DeleteBucketSyncType = (
             _ input: S3Model.DeleteBucketRequest) throws -> ()
     typealias DeleteBucketAsyncType = (
             _ input: S3Model.DeleteBucketRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias DeleteBucketAnalyticsConfigurationSyncType = (
             _ input: S3Model.DeleteBucketAnalyticsConfigurationRequest) throws -> ()
     typealias DeleteBucketAnalyticsConfigurationAsyncType = (
             _ input: S3Model.DeleteBucketAnalyticsConfigurationRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias DeleteBucketCorsSyncType = (
             _ input: S3Model.DeleteBucketCorsRequest) throws -> ()
     typealias DeleteBucketCorsAsyncType = (
             _ input: S3Model.DeleteBucketCorsRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias DeleteBucketEncryptionSyncType = (
             _ input: S3Model.DeleteBucketEncryptionRequest) throws -> ()
     typealias DeleteBucketEncryptionAsyncType = (
             _ input: S3Model.DeleteBucketEncryptionRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias DeleteBucketInventoryConfigurationSyncType = (
             _ input: S3Model.DeleteBucketInventoryConfigurationRequest) throws -> ()
     typealias DeleteBucketInventoryConfigurationAsyncType = (
             _ input: S3Model.DeleteBucketInventoryConfigurationRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias DeleteBucketLifecycleSyncType = (
             _ input: S3Model.DeleteBucketLifecycleRequest) throws -> ()
     typealias DeleteBucketLifecycleAsyncType = (
             _ input: S3Model.DeleteBucketLifecycleRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias DeleteBucketMetricsConfigurationSyncType = (
             _ input: S3Model.DeleteBucketMetricsConfigurationRequest) throws -> ()
     typealias DeleteBucketMetricsConfigurationAsyncType = (
             _ input: S3Model.DeleteBucketMetricsConfigurationRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias DeleteBucketPolicySyncType = (
             _ input: S3Model.DeleteBucketPolicyRequest) throws -> ()
     typealias DeleteBucketPolicyAsyncType = (
             _ input: S3Model.DeleteBucketPolicyRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias DeleteBucketReplicationSyncType = (
             _ input: S3Model.DeleteBucketReplicationRequest) throws -> ()
     typealias DeleteBucketReplicationAsyncType = (
             _ input: S3Model.DeleteBucketReplicationRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias DeleteBucketTaggingSyncType = (
             _ input: S3Model.DeleteBucketTaggingRequest) throws -> ()
     typealias DeleteBucketTaggingAsyncType = (
             _ input: S3Model.DeleteBucketTaggingRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias DeleteBucketWebsiteSyncType = (
             _ input: S3Model.DeleteBucketWebsiteRequest) throws -> ()
     typealias DeleteBucketWebsiteAsyncType = (
             _ input: S3Model.DeleteBucketWebsiteRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias DeleteObjectSyncType = (
             _ input: S3Model.DeleteObjectRequest) throws -> S3Model.DeleteObjectOutput
     typealias DeleteObjectAsyncType = (
             _ input: S3Model.DeleteObjectRequest, 
-            _ completion: @escaping (Result<S3Model.DeleteObjectOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.DeleteObjectOutput, S3Error>) -> ()) throws -> ()
     typealias DeleteObjectTaggingSyncType = (
             _ input: S3Model.DeleteObjectTaggingRequest) throws -> S3Model.DeleteObjectTaggingOutput
     typealias DeleteObjectTaggingAsyncType = (
             _ input: S3Model.DeleteObjectTaggingRequest, 
-            _ completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, S3Error>) -> ()) throws -> ()
     typealias DeleteObjectsSyncType = (
             _ input: S3Model.DeleteObjectsRequest) throws -> S3Model.DeleteObjectsOutput
     typealias DeleteObjectsAsyncType = (
             _ input: S3Model.DeleteObjectsRequest, 
-            _ completion: @escaping (Result<S3Model.DeleteObjectsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.DeleteObjectsOutput, S3Error>) -> ()) throws -> ()
     typealias DeletePublicAccessBlockSyncType = (
             _ input: S3Model.DeletePublicAccessBlockRequest) throws -> ()
     typealias DeletePublicAccessBlockAsyncType = (
             _ input: S3Model.DeletePublicAccessBlockRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias GetBucketAccelerateConfigurationSyncType = (
             _ input: S3Model.GetBucketAccelerateConfigurationRequest) throws -> S3Model.GetBucketAccelerateConfigurationOutput
     typealias GetBucketAccelerateConfigurationAsyncType = (
             _ input: S3Model.GetBucketAccelerateConfigurationRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketAclSyncType = (
             _ input: S3Model.GetBucketAclRequest) throws -> S3Model.GetBucketAclOutput
     typealias GetBucketAclAsyncType = (
             _ input: S3Model.GetBucketAclRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketAclOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketAclOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketAnalyticsConfigurationSyncType = (
             _ input: S3Model.GetBucketAnalyticsConfigurationRequest) throws -> S3Model.GetBucketAnalyticsConfigurationOutput
     typealias GetBucketAnalyticsConfigurationAsyncType = (
             _ input: S3Model.GetBucketAnalyticsConfigurationRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketCorsSyncType = (
             _ input: S3Model.GetBucketCorsRequest) throws -> S3Model.GetBucketCorsOutput
     typealias GetBucketCorsAsyncType = (
             _ input: S3Model.GetBucketCorsRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketCorsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketCorsOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketEncryptionSyncType = (
             _ input: S3Model.GetBucketEncryptionRequest) throws -> S3Model.GetBucketEncryptionOutput
     typealias GetBucketEncryptionAsyncType = (
             _ input: S3Model.GetBucketEncryptionRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketInventoryConfigurationSyncType = (
             _ input: S3Model.GetBucketInventoryConfigurationRequest) throws -> S3Model.GetBucketInventoryConfigurationOutput
     typealias GetBucketInventoryConfigurationAsyncType = (
             _ input: S3Model.GetBucketInventoryConfigurationRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketLifecycleSyncType = (
             _ input: S3Model.GetBucketLifecycleRequest) throws -> S3Model.GetBucketLifecycleOutput
     typealias GetBucketLifecycleAsyncType = (
             _ input: S3Model.GetBucketLifecycleRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketLifecycleConfigurationSyncType = (
             _ input: S3Model.GetBucketLifecycleConfigurationRequest) throws -> S3Model.GetBucketLifecycleConfigurationOutput
     typealias GetBucketLifecycleConfigurationAsyncType = (
             _ input: S3Model.GetBucketLifecycleConfigurationRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketLocationSyncType = (
             _ input: S3Model.GetBucketLocationRequest) throws -> S3Model.GetBucketLocationOutput
     typealias GetBucketLocationAsyncType = (
             _ input: S3Model.GetBucketLocationRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketLocationOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketLocationOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketLoggingSyncType = (
             _ input: S3Model.GetBucketLoggingRequest) throws -> S3Model.GetBucketLoggingOutput
     typealias GetBucketLoggingAsyncType = (
             _ input: S3Model.GetBucketLoggingRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketLoggingOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketLoggingOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketMetricsConfigurationSyncType = (
             _ input: S3Model.GetBucketMetricsConfigurationRequest) throws -> S3Model.GetBucketMetricsConfigurationOutput
     typealias GetBucketMetricsConfigurationAsyncType = (
             _ input: S3Model.GetBucketMetricsConfigurationRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketNotificationSyncType = (
             _ input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfigurationDeprecated
     typealias GetBucketNotificationAsyncType = (
             _ input: S3Model.GetBucketNotificationConfigurationRequest, 
-            _ completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, S3Error>) -> ()) throws -> ()
     typealias GetBucketNotificationConfigurationSyncType = (
             _ input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfiguration
     typealias GetBucketNotificationConfigurationAsyncType = (
             _ input: S3Model.GetBucketNotificationConfigurationRequest, 
-            _ completion: @escaping (Result<S3Model.NotificationConfiguration, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.NotificationConfiguration, S3Error>) -> ()) throws -> ()
     typealias GetBucketPolicySyncType = (
             _ input: S3Model.GetBucketPolicyRequest) throws -> S3Model.GetBucketPolicyOutput
     typealias GetBucketPolicyAsyncType = (
             _ input: S3Model.GetBucketPolicyRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketPolicyOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketPolicyOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketPolicyStatusSyncType = (
             _ input: S3Model.GetBucketPolicyStatusRequest) throws -> S3Model.GetBucketPolicyStatusOutput
     typealias GetBucketPolicyStatusAsyncType = (
             _ input: S3Model.GetBucketPolicyStatusRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketReplicationSyncType = (
             _ input: S3Model.GetBucketReplicationRequest) throws -> S3Model.GetBucketReplicationOutput
     typealias GetBucketReplicationAsyncType = (
             _ input: S3Model.GetBucketReplicationRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketReplicationOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketReplicationOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketRequestPaymentSyncType = (
             _ input: S3Model.GetBucketRequestPaymentRequest) throws -> S3Model.GetBucketRequestPaymentOutput
     typealias GetBucketRequestPaymentAsyncType = (
             _ input: S3Model.GetBucketRequestPaymentRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketTaggingSyncType = (
             _ input: S3Model.GetBucketTaggingRequest) throws -> S3Model.GetBucketTaggingOutput
     typealias GetBucketTaggingAsyncType = (
             _ input: S3Model.GetBucketTaggingRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketTaggingOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketTaggingOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketVersioningSyncType = (
             _ input: S3Model.GetBucketVersioningRequest) throws -> S3Model.GetBucketVersioningOutput
     typealias GetBucketVersioningAsyncType = (
             _ input: S3Model.GetBucketVersioningRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketVersioningOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketVersioningOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketWebsiteSyncType = (
             _ input: S3Model.GetBucketWebsiteRequest) throws -> S3Model.GetBucketWebsiteOutput
     typealias GetBucketWebsiteAsyncType = (
             _ input: S3Model.GetBucketWebsiteRequest, 
-            _ completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, S3Error>) -> ()) throws -> ()
     typealias GetObjectSyncType = (
             _ input: S3Model.GetObjectRequest) throws -> S3Model.GetObjectOutput
     typealias GetObjectAsyncType = (
             _ input: S3Model.GetObjectRequest, 
-            _ completion: @escaping (Result<S3Model.GetObjectOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetObjectOutput, S3Error>) -> ()) throws -> ()
     typealias GetObjectAclSyncType = (
             _ input: S3Model.GetObjectAclRequest) throws -> S3Model.GetObjectAclOutput
     typealias GetObjectAclAsyncType = (
             _ input: S3Model.GetObjectAclRequest, 
-            _ completion: @escaping (Result<S3Model.GetObjectAclOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetObjectAclOutput, S3Error>) -> ()) throws -> ()
     typealias GetObjectLegalHoldSyncType = (
             _ input: S3Model.GetObjectLegalHoldRequest) throws -> S3Model.GetObjectLegalHoldOutput
     typealias GetObjectLegalHoldAsyncType = (
             _ input: S3Model.GetObjectLegalHoldRequest, 
-            _ completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, S3Error>) -> ()) throws -> ()
     typealias GetObjectLockConfigurationSyncType = (
             _ input: S3Model.GetObjectLockConfigurationRequest) throws -> S3Model.GetObjectLockConfigurationOutput
     typealias GetObjectLockConfigurationAsyncType = (
             _ input: S3Model.GetObjectLockConfigurationRequest, 
-            _ completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, S3Error>) -> ()) throws -> ()
     typealias GetObjectRetentionSyncType = (
             _ input: S3Model.GetObjectRetentionRequest) throws -> S3Model.GetObjectRetentionOutput
     typealias GetObjectRetentionAsyncType = (
             _ input: S3Model.GetObjectRetentionRequest, 
-            _ completion: @escaping (Result<S3Model.GetObjectRetentionOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetObjectRetentionOutput, S3Error>) -> ()) throws -> ()
     typealias GetObjectTaggingSyncType = (
             _ input: S3Model.GetObjectTaggingRequest) throws -> S3Model.GetObjectTaggingOutput
     typealias GetObjectTaggingAsyncType = (
             _ input: S3Model.GetObjectTaggingRequest, 
-            _ completion: @escaping (Result<S3Model.GetObjectTaggingOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetObjectTaggingOutput, S3Error>) -> ()) throws -> ()
     typealias GetObjectTorrentSyncType = (
             _ input: S3Model.GetObjectTorrentRequest) throws -> S3Model.GetObjectTorrentOutput
     typealias GetObjectTorrentAsyncType = (
             _ input: S3Model.GetObjectTorrentRequest, 
-            _ completion: @escaping (Result<S3Model.GetObjectTorrentOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetObjectTorrentOutput, S3Error>) -> ()) throws -> ()
     typealias GetPublicAccessBlockSyncType = (
             _ input: S3Model.GetPublicAccessBlockRequest) throws -> S3Model.GetPublicAccessBlockOutput
     typealias GetPublicAccessBlockAsyncType = (
             _ input: S3Model.GetPublicAccessBlockRequest, 
-            _ completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, S3Error>) -> ()) throws -> ()
     typealias HeadBucketSyncType = (
             _ input: S3Model.HeadBucketRequest) throws -> ()
     typealias HeadBucketAsyncType = (
             _ input: S3Model.HeadBucketRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias HeadObjectSyncType = (
             _ input: S3Model.HeadObjectRequest) throws -> S3Model.HeadObjectOutput
     typealias HeadObjectAsyncType = (
             _ input: S3Model.HeadObjectRequest, 
-            _ completion: @escaping (Result<S3Model.HeadObjectOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.HeadObjectOutput, S3Error>) -> ()) throws -> ()
     typealias ListBucketAnalyticsConfigurationsSyncType = (
             _ input: S3Model.ListBucketAnalyticsConfigurationsRequest) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput
     typealias ListBucketAnalyticsConfigurationsAsyncType = (
             _ input: S3Model.ListBucketAnalyticsConfigurationsRequest, 
-            _ completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, S3Error>) -> ()) throws -> ()
     typealias ListBucketInventoryConfigurationsSyncType = (
             _ input: S3Model.ListBucketInventoryConfigurationsRequest) throws -> S3Model.ListBucketInventoryConfigurationsOutput
     typealias ListBucketInventoryConfigurationsAsyncType = (
             _ input: S3Model.ListBucketInventoryConfigurationsRequest, 
-            _ completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, S3Error>) -> ()) throws -> ()
     typealias ListBucketMetricsConfigurationsSyncType = (
             _ input: S3Model.ListBucketMetricsConfigurationsRequest) throws -> S3Model.ListBucketMetricsConfigurationsOutput
     typealias ListBucketMetricsConfigurationsAsyncType = (
             _ input: S3Model.ListBucketMetricsConfigurationsRequest, 
-            _ completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, S3Error>) -> ()) throws -> ()
     typealias ListBucketsSyncType = () throws -> S3Model.ListBucketsOutput
     typealias ListBucketsAsyncType = (
-            _ completion: @escaping (Result<S3Model.ListBucketsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.ListBucketsOutput, S3Error>) -> ()) throws -> ()
     typealias ListMultipartUploadsSyncType = (
             _ input: S3Model.ListMultipartUploadsRequest) throws -> S3Model.ListMultipartUploadsOutput
     typealias ListMultipartUploadsAsyncType = (
             _ input: S3Model.ListMultipartUploadsRequest, 
-            _ completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, S3Error>) -> ()) throws -> ()
     typealias ListObjectVersionsSyncType = (
             _ input: S3Model.ListObjectVersionsRequest) throws -> S3Model.ListObjectVersionsOutput
     typealias ListObjectVersionsAsyncType = (
             _ input: S3Model.ListObjectVersionsRequest, 
-            _ completion: @escaping (Result<S3Model.ListObjectVersionsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.ListObjectVersionsOutput, S3Error>) -> ()) throws -> ()
     typealias ListObjectsSyncType = (
             _ input: S3Model.ListObjectsRequest) throws -> S3Model.ListObjectsOutput
     typealias ListObjectsAsyncType = (
             _ input: S3Model.ListObjectsRequest, 
-            _ completion: @escaping (Result<S3Model.ListObjectsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.ListObjectsOutput, S3Error>) -> ()) throws -> ()
     typealias ListObjectsV2SyncType = (
             _ input: S3Model.ListObjectsV2Request) throws -> S3Model.ListObjectsV2Output
     typealias ListObjectsV2AsyncType = (
             _ input: S3Model.ListObjectsV2Request, 
-            _ completion: @escaping (Result<S3Model.ListObjectsV2Output, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.ListObjectsV2Output, S3Error>) -> ()) throws -> ()
     typealias ListPartsSyncType = (
             _ input: S3Model.ListPartsRequest) throws -> S3Model.ListPartsOutput
     typealias ListPartsAsyncType = (
             _ input: S3Model.ListPartsRequest, 
-            _ completion: @escaping (Result<S3Model.ListPartsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.ListPartsOutput, S3Error>) -> ()) throws -> ()
     typealias PutBucketAccelerateConfigurationSyncType = (
             _ input: S3Model.PutBucketAccelerateConfigurationRequest) throws -> ()
     typealias PutBucketAccelerateConfigurationAsyncType = (
             _ input: S3Model.PutBucketAccelerateConfigurationRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketAclSyncType = (
             _ input: S3Model.PutBucketAclRequest) throws -> ()
     typealias PutBucketAclAsyncType = (
             _ input: S3Model.PutBucketAclRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketAnalyticsConfigurationSyncType = (
             _ input: S3Model.PutBucketAnalyticsConfigurationRequest) throws -> ()
     typealias PutBucketAnalyticsConfigurationAsyncType = (
             _ input: S3Model.PutBucketAnalyticsConfigurationRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketCorsSyncType = (
             _ input: S3Model.PutBucketCorsRequest) throws -> ()
     typealias PutBucketCorsAsyncType = (
             _ input: S3Model.PutBucketCorsRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketEncryptionSyncType = (
             _ input: S3Model.PutBucketEncryptionRequest) throws -> ()
     typealias PutBucketEncryptionAsyncType = (
             _ input: S3Model.PutBucketEncryptionRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketInventoryConfigurationSyncType = (
             _ input: S3Model.PutBucketInventoryConfigurationRequest) throws -> ()
     typealias PutBucketInventoryConfigurationAsyncType = (
             _ input: S3Model.PutBucketInventoryConfigurationRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketLifecycleSyncType = (
             _ input: S3Model.PutBucketLifecycleRequest) throws -> ()
     typealias PutBucketLifecycleAsyncType = (
             _ input: S3Model.PutBucketLifecycleRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketLifecycleConfigurationSyncType = (
             _ input: S3Model.PutBucketLifecycleConfigurationRequest) throws -> ()
     typealias PutBucketLifecycleConfigurationAsyncType = (
             _ input: S3Model.PutBucketLifecycleConfigurationRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketLoggingSyncType = (
             _ input: S3Model.PutBucketLoggingRequest) throws -> ()
     typealias PutBucketLoggingAsyncType = (
             _ input: S3Model.PutBucketLoggingRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketMetricsConfigurationSyncType = (
             _ input: S3Model.PutBucketMetricsConfigurationRequest) throws -> ()
     typealias PutBucketMetricsConfigurationAsyncType = (
             _ input: S3Model.PutBucketMetricsConfigurationRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketNotificationSyncType = (
             _ input: S3Model.PutBucketNotificationRequest) throws -> ()
     typealias PutBucketNotificationAsyncType = (
             _ input: S3Model.PutBucketNotificationRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketNotificationConfigurationSyncType = (
             _ input: S3Model.PutBucketNotificationConfigurationRequest) throws -> ()
     typealias PutBucketNotificationConfigurationAsyncType = (
             _ input: S3Model.PutBucketNotificationConfigurationRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketPolicySyncType = (
             _ input: S3Model.PutBucketPolicyRequest) throws -> ()
     typealias PutBucketPolicyAsyncType = (
             _ input: S3Model.PutBucketPolicyRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketReplicationSyncType = (
             _ input: S3Model.PutBucketReplicationRequest) throws -> ()
     typealias PutBucketReplicationAsyncType = (
             _ input: S3Model.PutBucketReplicationRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketRequestPaymentSyncType = (
             _ input: S3Model.PutBucketRequestPaymentRequest) throws -> ()
     typealias PutBucketRequestPaymentAsyncType = (
             _ input: S3Model.PutBucketRequestPaymentRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketTaggingSyncType = (
             _ input: S3Model.PutBucketTaggingRequest) throws -> ()
     typealias PutBucketTaggingAsyncType = (
             _ input: S3Model.PutBucketTaggingRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketVersioningSyncType = (
             _ input: S3Model.PutBucketVersioningRequest) throws -> ()
     typealias PutBucketVersioningAsyncType = (
             _ input: S3Model.PutBucketVersioningRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketWebsiteSyncType = (
             _ input: S3Model.PutBucketWebsiteRequest) throws -> ()
     typealias PutBucketWebsiteAsyncType = (
             _ input: S3Model.PutBucketWebsiteRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutObjectSyncType = (
             _ input: S3Model.PutObjectRequest) throws -> S3Model.PutObjectOutput
     typealias PutObjectAsyncType = (
             _ input: S3Model.PutObjectRequest, 
-            _ completion: @escaping (Result<S3Model.PutObjectOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.PutObjectOutput, S3Error>) -> ()) throws -> ()
     typealias PutObjectAclSyncType = (
             _ input: S3Model.PutObjectAclRequest) throws -> S3Model.PutObjectAclOutput
     typealias PutObjectAclAsyncType = (
             _ input: S3Model.PutObjectAclRequest, 
-            _ completion: @escaping (Result<S3Model.PutObjectAclOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.PutObjectAclOutput, S3Error>) -> ()) throws -> ()
     typealias PutObjectLegalHoldSyncType = (
             _ input: S3Model.PutObjectLegalHoldRequest) throws -> S3Model.PutObjectLegalHoldOutput
     typealias PutObjectLegalHoldAsyncType = (
             _ input: S3Model.PutObjectLegalHoldRequest, 
-            _ completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, S3Error>) -> ()) throws -> ()
     typealias PutObjectLockConfigurationSyncType = (
             _ input: S3Model.PutObjectLockConfigurationRequest) throws -> S3Model.PutObjectLockConfigurationOutput
     typealias PutObjectLockConfigurationAsyncType = (
             _ input: S3Model.PutObjectLockConfigurationRequest, 
-            _ completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, S3Error>) -> ()) throws -> ()
     typealias PutObjectRetentionSyncType = (
             _ input: S3Model.PutObjectRetentionRequest) throws -> S3Model.PutObjectRetentionOutput
     typealias PutObjectRetentionAsyncType = (
             _ input: S3Model.PutObjectRetentionRequest, 
-            _ completion: @escaping (Result<S3Model.PutObjectRetentionOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.PutObjectRetentionOutput, S3Error>) -> ()) throws -> ()
     typealias PutObjectTaggingSyncType = (
             _ input: S3Model.PutObjectTaggingRequest) throws -> S3Model.PutObjectTaggingOutput
     typealias PutObjectTaggingAsyncType = (
             _ input: S3Model.PutObjectTaggingRequest, 
-            _ completion: @escaping (Result<S3Model.PutObjectTaggingOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.PutObjectTaggingOutput, S3Error>) -> ()) throws -> ()
     typealias PutPublicAccessBlockSyncType = (
             _ input: S3Model.PutPublicAccessBlockRequest) throws -> ()
     typealias PutPublicAccessBlockAsyncType = (
             _ input: S3Model.PutPublicAccessBlockRequest, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias RestoreObjectSyncType = (
             _ input: S3Model.RestoreObjectRequest) throws -> S3Model.RestoreObjectOutput
     typealias RestoreObjectAsyncType = (
             _ input: S3Model.RestoreObjectRequest, 
-            _ completion: @escaping (Result<S3Model.RestoreObjectOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.RestoreObjectOutput, S3Error>) -> ()) throws -> ()
     typealias SelectObjectContentSyncType = (
             _ input: S3Model.SelectObjectContentRequest) throws -> S3Model.SelectObjectContentOutput
     typealias SelectObjectContentAsyncType = (
             _ input: S3Model.SelectObjectContentRequest, 
-            _ completion: @escaping (Result<S3Model.SelectObjectContentOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.SelectObjectContentOutput, S3Error>) -> ()) throws -> ()
     typealias UploadPartSyncType = (
             _ input: S3Model.UploadPartRequest) throws -> S3Model.UploadPartOutput
     typealias UploadPartAsyncType = (
             _ input: S3Model.UploadPartRequest, 
-            _ completion: @escaping (Result<S3Model.UploadPartOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.UploadPartOutput, S3Error>) -> ()) throws -> ()
     typealias UploadPartCopySyncType = (
             _ input: S3Model.UploadPartCopyRequest) throws -> S3Model.UploadPartCopyOutput
     typealias UploadPartCopyAsyncType = (
             _ input: S3Model.UploadPartCopyRequest, 
-            _ completion: @escaping (Result<S3Model.UploadPartCopyOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<S3Model.UploadPartCopyOutput, S3Error>) -> ()) throws -> ()
 
     /**
      Invokes the AbortMultipartUpload operation returning immediately and passing the response to a callback.
@@ -479,7 +479,7 @@ public protocol S3ClientProtocol {
      */
     func abortMultipartUploadAsync(
             input: S3Model.AbortMultipartUploadRequest, 
-            completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the AbortMultipartUpload operation waiting for the response before returning.
@@ -504,7 +504,7 @@ public protocol S3ClientProtocol {
      */
     func completeMultipartUploadAsync(
             input: S3Model.CompleteMultipartUploadRequest, 
-            completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the CompleteMultipartUpload operation waiting for the response before returning.
@@ -529,7 +529,7 @@ public protocol S3ClientProtocol {
      */
     func copyObjectAsync(
             input: S3Model.CopyObjectRequest, 
-            completion: @escaping (Result<S3Model.CopyObjectOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.CopyObjectOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the CopyObject operation waiting for the response before returning.
@@ -555,7 +555,7 @@ public protocol S3ClientProtocol {
      */
     func createBucketAsync(
             input: S3Model.CreateBucketRequest, 
-            completion: @escaping (Result<S3Model.CreateBucketOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.CreateBucketOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the CreateBucket operation waiting for the response before returning.
@@ -580,7 +580,7 @@ public protocol S3ClientProtocol {
      */
     func createMultipartUploadAsync(
             input: S3Model.CreateMultipartUploadRequest, 
-            completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the CreateMultipartUpload operation waiting for the response before returning.
@@ -603,7 +603,7 @@ public protocol S3ClientProtocol {
      */
     func deleteBucketAsync(
             input: S3Model.DeleteBucketRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the DeleteBucket operation waiting for the response before returning.
@@ -624,7 +624,7 @@ public protocol S3ClientProtocol {
      */
     func deleteBucketAnalyticsConfigurationAsync(
             input: S3Model.DeleteBucketAnalyticsConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the DeleteBucketAnalyticsConfiguration operation waiting for the response before returning.
@@ -645,7 +645,7 @@ public protocol S3ClientProtocol {
      */
     func deleteBucketCorsAsync(
             input: S3Model.DeleteBucketCorsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the DeleteBucketCors operation waiting for the response before returning.
@@ -666,7 +666,7 @@ public protocol S3ClientProtocol {
      */
     func deleteBucketEncryptionAsync(
             input: S3Model.DeleteBucketEncryptionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the DeleteBucketEncryption operation waiting for the response before returning.
@@ -687,7 +687,7 @@ public protocol S3ClientProtocol {
      */
     func deleteBucketInventoryConfigurationAsync(
             input: S3Model.DeleteBucketInventoryConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the DeleteBucketInventoryConfiguration operation waiting for the response before returning.
@@ -708,7 +708,7 @@ public protocol S3ClientProtocol {
      */
     func deleteBucketLifecycleAsync(
             input: S3Model.DeleteBucketLifecycleRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the DeleteBucketLifecycle operation waiting for the response before returning.
@@ -729,7 +729,7 @@ public protocol S3ClientProtocol {
      */
     func deleteBucketMetricsConfigurationAsync(
             input: S3Model.DeleteBucketMetricsConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the DeleteBucketMetricsConfiguration operation waiting for the response before returning.
@@ -750,7 +750,7 @@ public protocol S3ClientProtocol {
      */
     func deleteBucketPolicyAsync(
             input: S3Model.DeleteBucketPolicyRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the DeleteBucketPolicy operation waiting for the response before returning.
@@ -771,7 +771,7 @@ public protocol S3ClientProtocol {
      */
     func deleteBucketReplicationAsync(
             input: S3Model.DeleteBucketReplicationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the DeleteBucketReplication operation waiting for the response before returning.
@@ -792,7 +792,7 @@ public protocol S3ClientProtocol {
      */
     func deleteBucketTaggingAsync(
             input: S3Model.DeleteBucketTaggingRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the DeleteBucketTagging operation waiting for the response before returning.
@@ -813,7 +813,7 @@ public protocol S3ClientProtocol {
      */
     func deleteBucketWebsiteAsync(
             input: S3Model.DeleteBucketWebsiteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the DeleteBucketWebsite operation waiting for the response before returning.
@@ -835,7 +835,7 @@ public protocol S3ClientProtocol {
      */
     func deleteObjectAsync(
             input: S3Model.DeleteObjectRequest, 
-            completion: @escaping (Result<S3Model.DeleteObjectOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.DeleteObjectOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the DeleteObject operation waiting for the response before returning.
@@ -859,7 +859,7 @@ public protocol S3ClientProtocol {
      */
     func deleteObjectTaggingAsync(
             input: S3Model.DeleteObjectTaggingRequest, 
-            completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the DeleteObjectTagging operation waiting for the response before returning.
@@ -883,7 +883,7 @@ public protocol S3ClientProtocol {
      */
     func deleteObjectsAsync(
             input: S3Model.DeleteObjectsRequest, 
-            completion: @escaping (Result<S3Model.DeleteObjectsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.DeleteObjectsOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the DeleteObjects operation waiting for the response before returning.
@@ -906,7 +906,7 @@ public protocol S3ClientProtocol {
      */
     func deletePublicAccessBlockAsync(
             input: S3Model.DeletePublicAccessBlockRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the DeletePublicAccessBlock operation waiting for the response before returning.
@@ -928,7 +928,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketAccelerateConfigurationAsync(
             input: S3Model.GetBucketAccelerateConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketAccelerateConfiguration operation waiting for the response before returning.
@@ -952,7 +952,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketAclAsync(
             input: S3Model.GetBucketAclRequest, 
-            completion: @escaping (Result<S3Model.GetBucketAclOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketAclOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketAcl operation waiting for the response before returning.
@@ -976,7 +976,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketAnalyticsConfigurationAsync(
             input: S3Model.GetBucketAnalyticsConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketAnalyticsConfiguration operation waiting for the response before returning.
@@ -1000,7 +1000,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketCorsAsync(
             input: S3Model.GetBucketCorsRequest, 
-            completion: @escaping (Result<S3Model.GetBucketCorsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketCorsOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketCors operation waiting for the response before returning.
@@ -1024,7 +1024,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketEncryptionAsync(
             input: S3Model.GetBucketEncryptionRequest, 
-            completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketEncryption operation waiting for the response before returning.
@@ -1048,7 +1048,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketInventoryConfigurationAsync(
             input: S3Model.GetBucketInventoryConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketInventoryConfiguration operation waiting for the response before returning.
@@ -1072,7 +1072,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketLifecycleAsync(
             input: S3Model.GetBucketLifecycleRequest, 
-            completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketLifecycle operation waiting for the response before returning.
@@ -1096,7 +1096,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketLifecycleConfigurationAsync(
             input: S3Model.GetBucketLifecycleConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketLifecycleConfiguration operation waiting for the response before returning.
@@ -1120,7 +1120,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketLocationAsync(
             input: S3Model.GetBucketLocationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketLocationOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketLocationOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketLocation operation waiting for the response before returning.
@@ -1144,7 +1144,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketLoggingAsync(
             input: S3Model.GetBucketLoggingRequest, 
-            completion: @escaping (Result<S3Model.GetBucketLoggingOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketLoggingOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketLogging operation waiting for the response before returning.
@@ -1168,7 +1168,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketMetricsConfigurationAsync(
             input: S3Model.GetBucketMetricsConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketMetricsConfiguration operation waiting for the response before returning.
@@ -1192,7 +1192,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketNotificationAsync(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
-            completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketNotification operation waiting for the response before returning.
@@ -1216,7 +1216,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketNotificationConfigurationAsync(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
-            completion: @escaping (Result<S3Model.NotificationConfiguration, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.NotificationConfiguration, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketNotificationConfiguration operation waiting for the response before returning.
@@ -1240,7 +1240,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketPolicyAsync(
             input: S3Model.GetBucketPolicyRequest, 
-            completion: @escaping (Result<S3Model.GetBucketPolicyOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketPolicyOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketPolicy operation waiting for the response before returning.
@@ -1264,7 +1264,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketPolicyStatusAsync(
             input: S3Model.GetBucketPolicyStatusRequest, 
-            completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketPolicyStatus operation waiting for the response before returning.
@@ -1288,7 +1288,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketReplicationAsync(
             input: S3Model.GetBucketReplicationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketReplicationOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketReplicationOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketReplication operation waiting for the response before returning.
@@ -1312,7 +1312,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketRequestPaymentAsync(
             input: S3Model.GetBucketRequestPaymentRequest, 
-            completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketRequestPayment operation waiting for the response before returning.
@@ -1336,7 +1336,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketTaggingAsync(
             input: S3Model.GetBucketTaggingRequest, 
-            completion: @escaping (Result<S3Model.GetBucketTaggingOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketTaggingOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketTagging operation waiting for the response before returning.
@@ -1360,7 +1360,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketVersioningAsync(
             input: S3Model.GetBucketVersioningRequest, 
-            completion: @escaping (Result<S3Model.GetBucketVersioningOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketVersioningOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketVersioning operation waiting for the response before returning.
@@ -1384,7 +1384,7 @@ public protocol S3ClientProtocol {
      */
     func getBucketWebsiteAsync(
             input: S3Model.GetBucketWebsiteRequest, 
-            completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetBucketWebsite operation waiting for the response before returning.
@@ -1409,7 +1409,7 @@ public protocol S3ClientProtocol {
      */
     func getObjectAsync(
             input: S3Model.GetObjectRequest, 
-            completion: @escaping (Result<S3Model.GetObjectOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetObjectOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetObject operation waiting for the response before returning.
@@ -1435,7 +1435,7 @@ public protocol S3ClientProtocol {
      */
     func getObjectAclAsync(
             input: S3Model.GetObjectAclRequest, 
-            completion: @escaping (Result<S3Model.GetObjectAclOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetObjectAclOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetObjectAcl operation waiting for the response before returning.
@@ -1460,7 +1460,7 @@ public protocol S3ClientProtocol {
      */
     func getObjectLegalHoldAsync(
             input: S3Model.GetObjectLegalHoldRequest, 
-            completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetObjectLegalHold operation waiting for the response before returning.
@@ -1484,7 +1484,7 @@ public protocol S3ClientProtocol {
      */
     func getObjectLockConfigurationAsync(
             input: S3Model.GetObjectLockConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetObjectLockConfiguration operation waiting for the response before returning.
@@ -1508,7 +1508,7 @@ public protocol S3ClientProtocol {
      */
     func getObjectRetentionAsync(
             input: S3Model.GetObjectRetentionRequest, 
-            completion: @escaping (Result<S3Model.GetObjectRetentionOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetObjectRetentionOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetObjectRetention operation waiting for the response before returning.
@@ -1532,7 +1532,7 @@ public protocol S3ClientProtocol {
      */
     func getObjectTaggingAsync(
             input: S3Model.GetObjectTaggingRequest, 
-            completion: @escaping (Result<S3Model.GetObjectTaggingOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetObjectTaggingOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetObjectTagging operation waiting for the response before returning.
@@ -1556,7 +1556,7 @@ public protocol S3ClientProtocol {
      */
     func getObjectTorrentAsync(
             input: S3Model.GetObjectTorrentRequest, 
-            completion: @escaping (Result<S3Model.GetObjectTorrentOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetObjectTorrentOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetObjectTorrent operation waiting for the response before returning.
@@ -1580,7 +1580,7 @@ public protocol S3ClientProtocol {
      */
     func getPublicAccessBlockAsync(
             input: S3Model.GetPublicAccessBlockRequest, 
-            completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the GetPublicAccessBlock operation waiting for the response before returning.
@@ -1604,7 +1604,7 @@ public protocol S3ClientProtocol {
      */
     func headBucketAsync(
             input: S3Model.HeadBucketRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the HeadBucket operation waiting for the response before returning.
@@ -1628,7 +1628,7 @@ public protocol S3ClientProtocol {
      */
     func headObjectAsync(
             input: S3Model.HeadObjectRequest, 
-            completion: @escaping (Result<S3Model.HeadObjectOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.HeadObjectOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the HeadObject operation waiting for the response before returning.
@@ -1653,7 +1653,7 @@ public protocol S3ClientProtocol {
      */
     func listBucketAnalyticsConfigurationsAsync(
             input: S3Model.ListBucketAnalyticsConfigurationsRequest, 
-            completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the ListBucketAnalyticsConfigurations operation waiting for the response before returning.
@@ -1677,7 +1677,7 @@ public protocol S3ClientProtocol {
      */
     func listBucketInventoryConfigurationsAsync(
             input: S3Model.ListBucketInventoryConfigurationsRequest, 
-            completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the ListBucketInventoryConfigurations operation waiting for the response before returning.
@@ -1701,7 +1701,7 @@ public protocol S3ClientProtocol {
      */
     func listBucketMetricsConfigurationsAsync(
             input: S3Model.ListBucketMetricsConfigurationsRequest, 
-            completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the ListBucketMetricsConfigurations operation waiting for the response before returning.
@@ -1721,7 +1721,7 @@ public protocol S3ClientProtocol {
            object will be validated before being returned to caller.
      */
     func listBucketsAsync(
-            completion: @escaping (Result<S3Model.ListBucketsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.ListBucketsOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the ListBuckets operation waiting for the response before returning.
@@ -1741,7 +1741,7 @@ public protocol S3ClientProtocol {
      */
     func listMultipartUploadsAsync(
             input: S3Model.ListMultipartUploadsRequest, 
-            completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the ListMultipartUploads operation waiting for the response before returning.
@@ -1765,7 +1765,7 @@ public protocol S3ClientProtocol {
      */
     func listObjectVersionsAsync(
             input: S3Model.ListObjectVersionsRequest, 
-            completion: @escaping (Result<S3Model.ListObjectVersionsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.ListObjectVersionsOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the ListObjectVersions operation waiting for the response before returning.
@@ -1790,7 +1790,7 @@ public protocol S3ClientProtocol {
      */
     func listObjectsAsync(
             input: S3Model.ListObjectsRequest, 
-            completion: @escaping (Result<S3Model.ListObjectsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.ListObjectsOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the ListObjects operation waiting for the response before returning.
@@ -1816,7 +1816,7 @@ public protocol S3ClientProtocol {
      */
     func listObjectsV2Async(
             input: S3Model.ListObjectsV2Request, 
-            completion: @escaping (Result<S3Model.ListObjectsV2Output, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.ListObjectsV2Output, S3Error>) -> ()) throws
 
     /**
      Invokes the ListObjectsV2 operation waiting for the response before returning.
@@ -1841,7 +1841,7 @@ public protocol S3ClientProtocol {
      */
     func listPartsAsync(
             input: S3Model.ListPartsRequest, 
-            completion: @escaping (Result<S3Model.ListPartsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.ListPartsOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the ListParts operation waiting for the response before returning.
@@ -1864,7 +1864,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketAccelerateConfigurationAsync(
             input: S3Model.PutBucketAccelerateConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketAccelerateConfiguration operation waiting for the response before returning.
@@ -1885,7 +1885,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketAclAsync(
             input: S3Model.PutBucketAclRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketAcl operation waiting for the response before returning.
@@ -1906,7 +1906,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketAnalyticsConfigurationAsync(
             input: S3Model.PutBucketAnalyticsConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketAnalyticsConfiguration operation waiting for the response before returning.
@@ -1927,7 +1927,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketCorsAsync(
             input: S3Model.PutBucketCorsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketCors operation waiting for the response before returning.
@@ -1948,7 +1948,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketEncryptionAsync(
             input: S3Model.PutBucketEncryptionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketEncryption operation waiting for the response before returning.
@@ -1969,7 +1969,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketInventoryConfigurationAsync(
             input: S3Model.PutBucketInventoryConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketInventoryConfiguration operation waiting for the response before returning.
@@ -1990,7 +1990,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketLifecycleAsync(
             input: S3Model.PutBucketLifecycleRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketLifecycle operation waiting for the response before returning.
@@ -2011,7 +2011,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketLifecycleConfigurationAsync(
             input: S3Model.PutBucketLifecycleConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketLifecycleConfiguration operation waiting for the response before returning.
@@ -2032,7 +2032,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketLoggingAsync(
             input: S3Model.PutBucketLoggingRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketLogging operation waiting for the response before returning.
@@ -2053,7 +2053,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketMetricsConfigurationAsync(
             input: S3Model.PutBucketMetricsConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketMetricsConfiguration operation waiting for the response before returning.
@@ -2074,7 +2074,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketNotificationAsync(
             input: S3Model.PutBucketNotificationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketNotification operation waiting for the response before returning.
@@ -2095,7 +2095,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketNotificationConfigurationAsync(
             input: S3Model.PutBucketNotificationConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketNotificationConfiguration operation waiting for the response before returning.
@@ -2116,7 +2116,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketPolicyAsync(
             input: S3Model.PutBucketPolicyRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketPolicy operation waiting for the response before returning.
@@ -2137,7 +2137,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketReplicationAsync(
             input: S3Model.PutBucketReplicationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketReplication operation waiting for the response before returning.
@@ -2158,7 +2158,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketRequestPaymentAsync(
             input: S3Model.PutBucketRequestPaymentRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketRequestPayment operation waiting for the response before returning.
@@ -2179,7 +2179,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketTaggingAsync(
             input: S3Model.PutBucketTaggingRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketTagging operation waiting for the response before returning.
@@ -2200,7 +2200,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketVersioningAsync(
             input: S3Model.PutBucketVersioningRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketVersioning operation waiting for the response before returning.
@@ -2221,7 +2221,7 @@ public protocol S3ClientProtocol {
      */
     func putBucketWebsiteAsync(
             input: S3Model.PutBucketWebsiteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutBucketWebsite operation waiting for the response before returning.
@@ -2243,7 +2243,7 @@ public protocol S3ClientProtocol {
      */
     func putObjectAsync(
             input: S3Model.PutObjectRequest, 
-            completion: @escaping (Result<S3Model.PutObjectOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.PutObjectOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the PutObject operation waiting for the response before returning.
@@ -2268,7 +2268,7 @@ public protocol S3ClientProtocol {
      */
     func putObjectAclAsync(
             input: S3Model.PutObjectAclRequest, 
-            completion: @escaping (Result<S3Model.PutObjectAclOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.PutObjectAclOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the PutObjectAcl operation waiting for the response before returning.
@@ -2293,7 +2293,7 @@ public protocol S3ClientProtocol {
      */
     func putObjectLegalHoldAsync(
             input: S3Model.PutObjectLegalHoldRequest, 
-            completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the PutObjectLegalHold operation waiting for the response before returning.
@@ -2317,7 +2317,7 @@ public protocol S3ClientProtocol {
      */
     func putObjectLockConfigurationAsync(
             input: S3Model.PutObjectLockConfigurationRequest, 
-            completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the PutObjectLockConfiguration operation waiting for the response before returning.
@@ -2341,7 +2341,7 @@ public protocol S3ClientProtocol {
      */
     func putObjectRetentionAsync(
             input: S3Model.PutObjectRetentionRequest, 
-            completion: @escaping (Result<S3Model.PutObjectRetentionOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.PutObjectRetentionOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the PutObjectRetention operation waiting for the response before returning.
@@ -2365,7 +2365,7 @@ public protocol S3ClientProtocol {
      */
     func putObjectTaggingAsync(
             input: S3Model.PutObjectTaggingRequest, 
-            completion: @escaping (Result<S3Model.PutObjectTaggingOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.PutObjectTaggingOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the PutObjectTagging operation waiting for the response before returning.
@@ -2388,7 +2388,7 @@ public protocol S3ClientProtocol {
      */
     func putPublicAccessBlockAsync(
             input: S3Model.PutPublicAccessBlockRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (S3Error?) -> ()) throws
 
     /**
      Invokes the PutPublicAccessBlock operation waiting for the response before returning.
@@ -2411,7 +2411,7 @@ public protocol S3ClientProtocol {
      */
     func restoreObjectAsync(
             input: S3Model.RestoreObjectRequest, 
-            completion: @escaping (Result<S3Model.RestoreObjectOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.RestoreObjectOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the RestoreObject operation waiting for the response before returning.
@@ -2436,7 +2436,7 @@ public protocol S3ClientProtocol {
      */
     func selectObjectContentAsync(
             input: S3Model.SelectObjectContentRequest, 
-            completion: @escaping (Result<S3Model.SelectObjectContentOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.SelectObjectContentOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the SelectObjectContent operation waiting for the response before returning.
@@ -2460,7 +2460,7 @@ public protocol S3ClientProtocol {
      */
     func uploadPartAsync(
             input: S3Model.UploadPartRequest, 
-            completion: @escaping (Result<S3Model.UploadPartOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.UploadPartOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the UploadPart operation waiting for the response before returning.
@@ -2484,7 +2484,7 @@ public protocol S3ClientProtocol {
      */
     func uploadPartCopyAsync(
             input: S3Model.UploadPartCopyRequest, 
-            completion: @escaping (Result<S3Model.UploadPartCopyOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<S3Model.UploadPartCopyOutput, S3Error>) -> ()) throws
 
     /**
      Invokes the UploadPartCopy operation waiting for the response before returning.

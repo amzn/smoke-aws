@@ -84,7 +84,7 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
      */
     public func batchExecuteStatementAsync(
             input: RDSDataModel.BatchExecuteStatementRequest, 
-            completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, RDSDataError>) -> ()) throws {
         if let batchExecuteStatementAsyncOverride = batchExecuteStatementAsyncOverride {
             return try batchExecuteStatementAsyncOverride(input, completion)
         }
@@ -124,7 +124,7 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
      */
     public func beginTransactionAsync(
             input: RDSDataModel.BeginTransactionRequest, 
-            completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, RDSDataError>) -> ()) throws {
         if let beginTransactionAsyncOverride = beginTransactionAsyncOverride {
             return try beginTransactionAsyncOverride(input, completion)
         }
@@ -164,7 +164,7 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
      */
     public func commitTransactionAsync(
             input: RDSDataModel.CommitTransactionRequest, 
-            completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, RDSDataError>) -> ()) throws {
         if let commitTransactionAsyncOverride = commitTransactionAsyncOverride {
             return try commitTransactionAsyncOverride(input, completion)
         }
@@ -204,7 +204,7 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
      */
     public func executeSqlAsync(
             input: RDSDataModel.ExecuteSqlRequest, 
-            completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, RDSDataError>) -> ()) throws {
         if let executeSqlAsyncOverride = executeSqlAsyncOverride {
             return try executeSqlAsyncOverride(input, completion)
         }
@@ -244,7 +244,7 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
      */
     public func executeStatementAsync(
             input: RDSDataModel.ExecuteStatementRequest, 
-            completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, RDSDataError>) -> ()) throws {
         if let executeStatementAsyncOverride = executeStatementAsyncOverride {
             return try executeStatementAsyncOverride(input, completion)
         }
@@ -284,7 +284,7 @@ public struct MockRDSDataClient: RDSDataClientProtocol {
      */
     public func rollbackTransactionAsync(
             input: RDSDataModel.RollbackTransactionRequest, 
-            completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, RDSDataError>) -> ()) throws {
         if let rollbackTransactionAsyncOverride = rollbackTransactionAsyncOverride {
             return try rollbackTransactionAsyncOverride(input, completion)
         }

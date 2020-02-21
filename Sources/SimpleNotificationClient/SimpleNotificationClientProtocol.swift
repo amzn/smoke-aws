@@ -32,167 +32,167 @@ public protocol SimpleNotificationClientProtocol {
             _ input: SimpleNotificationModel.AddPermissionInput) throws -> ()
     typealias AddPermissionAsyncType = (
             _ input: SimpleNotificationModel.AddPermissionInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleNotificationError?) -> ()) throws -> ()
     typealias CheckIfPhoneNumberIsOptedOutSyncType = (
             _ input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut
     typealias CheckIfPhoneNumberIsOptedOutAsyncType = (
             _ input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, SimpleNotificationError>) -> ()) throws -> ()
     typealias ConfirmSubscriptionSyncType = (
             _ input: SimpleNotificationModel.ConfirmSubscriptionInput) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription
     typealias ConfirmSubscriptionAsyncType = (
             _ input: SimpleNotificationModel.ConfirmSubscriptionInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, SimpleNotificationError>) -> ()) throws -> ()
     typealias CreatePlatformApplicationSyncType = (
             _ input: SimpleNotificationModel.CreatePlatformApplicationInput) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication
     typealias CreatePlatformApplicationAsyncType = (
             _ input: SimpleNotificationModel.CreatePlatformApplicationInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, SimpleNotificationError>) -> ()) throws -> ()
     typealias CreatePlatformEndpointSyncType = (
             _ input: SimpleNotificationModel.CreatePlatformEndpointInput) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint
     typealias CreatePlatformEndpointAsyncType = (
             _ input: SimpleNotificationModel.CreatePlatformEndpointInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, SimpleNotificationError>) -> ()) throws -> ()
     typealias CreateTopicSyncType = (
             _ input: SimpleNotificationModel.CreateTopicInput) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic
     typealias CreateTopicAsyncType = (
             _ input: SimpleNotificationModel.CreateTopicInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, SimpleNotificationError>) -> ()) throws -> ()
     typealias DeleteEndpointSyncType = (
             _ input: SimpleNotificationModel.DeleteEndpointInput) throws -> ()
     typealias DeleteEndpointAsyncType = (
             _ input: SimpleNotificationModel.DeleteEndpointInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleNotificationError?) -> ()) throws -> ()
     typealias DeletePlatformApplicationSyncType = (
             _ input: SimpleNotificationModel.DeletePlatformApplicationInput) throws -> ()
     typealias DeletePlatformApplicationAsyncType = (
             _ input: SimpleNotificationModel.DeletePlatformApplicationInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleNotificationError?) -> ()) throws -> ()
     typealias DeleteTopicSyncType = (
             _ input: SimpleNotificationModel.DeleteTopicInput) throws -> ()
     typealias DeleteTopicAsyncType = (
             _ input: SimpleNotificationModel.DeleteTopicInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleNotificationError?) -> ()) throws -> ()
     typealias GetEndpointAttributesSyncType = (
             _ input: SimpleNotificationModel.GetEndpointAttributesInput) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes
     typealias GetEndpointAttributesAsyncType = (
             _ input: SimpleNotificationModel.GetEndpointAttributesInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, SimpleNotificationError>) -> ()) throws -> ()
     typealias GetPlatformApplicationAttributesSyncType = (
             _ input: SimpleNotificationModel.GetPlatformApplicationAttributesInput) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes
     typealias GetPlatformApplicationAttributesAsyncType = (
             _ input: SimpleNotificationModel.GetPlatformApplicationAttributesInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, SimpleNotificationError>) -> ()) throws -> ()
     typealias GetSMSAttributesSyncType = (
             _ input: SimpleNotificationModel.GetSMSAttributesInput) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes
     typealias GetSMSAttributesAsyncType = (
             _ input: SimpleNotificationModel.GetSMSAttributesInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, SimpleNotificationError>) -> ()) throws -> ()
     typealias GetSubscriptionAttributesSyncType = (
             _ input: SimpleNotificationModel.GetSubscriptionAttributesInput) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes
     typealias GetSubscriptionAttributesAsyncType = (
             _ input: SimpleNotificationModel.GetSubscriptionAttributesInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, SimpleNotificationError>) -> ()) throws -> ()
     typealias GetTopicAttributesSyncType = (
             _ input: SimpleNotificationModel.GetTopicAttributesInput) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes
     typealias GetTopicAttributesAsyncType = (
             _ input: SimpleNotificationModel.GetTopicAttributesInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, SimpleNotificationError>) -> ()) throws -> ()
     typealias ListEndpointsByPlatformApplicationSyncType = (
             _ input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication
     typealias ListEndpointsByPlatformApplicationAsyncType = (
             _ input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, SimpleNotificationError>) -> ()) throws -> ()
     typealias ListPhoneNumbersOptedOutSyncType = (
             _ input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut
     typealias ListPhoneNumbersOptedOutAsyncType = (
             _ input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, SimpleNotificationError>) -> ()) throws -> ()
     typealias ListPlatformApplicationsSyncType = (
             _ input: SimpleNotificationModel.ListPlatformApplicationsInput) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications
     typealias ListPlatformApplicationsAsyncType = (
             _ input: SimpleNotificationModel.ListPlatformApplicationsInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, SimpleNotificationError>) -> ()) throws -> ()
     typealias ListSubscriptionsSyncType = (
             _ input: SimpleNotificationModel.ListSubscriptionsInput) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions
     typealias ListSubscriptionsAsyncType = (
             _ input: SimpleNotificationModel.ListSubscriptionsInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, SimpleNotificationError>) -> ()) throws -> ()
     typealias ListSubscriptionsByTopicSyncType = (
             _ input: SimpleNotificationModel.ListSubscriptionsByTopicInput) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic
     typealias ListSubscriptionsByTopicAsyncType = (
             _ input: SimpleNotificationModel.ListSubscriptionsByTopicInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, SimpleNotificationError>) -> ()) throws -> ()
     typealias ListTagsForResourceSyncType = (
             _ input: SimpleNotificationModel.ListTagsForResourceRequest) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource
     typealias ListTagsForResourceAsyncType = (
             _ input: SimpleNotificationModel.ListTagsForResourceRequest, 
-            _ completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, SimpleNotificationError>) -> ()) throws -> ()
     typealias ListTopicsSyncType = (
             _ input: SimpleNotificationModel.ListTopicsInput) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics
     typealias ListTopicsAsyncType = (
             _ input: SimpleNotificationModel.ListTopicsInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, SimpleNotificationError>) -> ()) throws -> ()
     typealias OptInPhoneNumberSyncType = (
             _ input: SimpleNotificationModel.OptInPhoneNumberInput) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber
     typealias OptInPhoneNumberAsyncType = (
             _ input: SimpleNotificationModel.OptInPhoneNumberInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, SimpleNotificationError>) -> ()) throws -> ()
     typealias PublishSyncType = (
             _ input: SimpleNotificationModel.PublishInput) throws -> SimpleNotificationModel.PublishResponseForPublish
     typealias PublishAsyncType = (
             _ input: SimpleNotificationModel.PublishInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, SimpleNotificationError>) -> ()) throws -> ()
     typealias RemovePermissionSyncType = (
             _ input: SimpleNotificationModel.RemovePermissionInput) throws -> ()
     typealias RemovePermissionAsyncType = (
             _ input: SimpleNotificationModel.RemovePermissionInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleNotificationError?) -> ()) throws -> ()
     typealias SetEndpointAttributesSyncType = (
             _ input: SimpleNotificationModel.SetEndpointAttributesInput) throws -> ()
     typealias SetEndpointAttributesAsyncType = (
             _ input: SimpleNotificationModel.SetEndpointAttributesInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleNotificationError?) -> ()) throws -> ()
     typealias SetPlatformApplicationAttributesSyncType = (
             _ input: SimpleNotificationModel.SetPlatformApplicationAttributesInput) throws -> ()
     typealias SetPlatformApplicationAttributesAsyncType = (
             _ input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleNotificationError?) -> ()) throws -> ()
     typealias SetSMSAttributesSyncType = (
             _ input: SimpleNotificationModel.SetSMSAttributesInput) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes
     typealias SetSMSAttributesAsyncType = (
             _ input: SimpleNotificationModel.SetSMSAttributesInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, SimpleNotificationError>) -> ()) throws -> ()
     typealias SetSubscriptionAttributesSyncType = (
             _ input: SimpleNotificationModel.SetSubscriptionAttributesInput) throws -> ()
     typealias SetSubscriptionAttributesAsyncType = (
             _ input: SimpleNotificationModel.SetSubscriptionAttributesInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleNotificationError?) -> ()) throws -> ()
     typealias SetTopicAttributesSyncType = (
             _ input: SimpleNotificationModel.SetTopicAttributesInput) throws -> ()
     typealias SetTopicAttributesAsyncType = (
             _ input: SimpleNotificationModel.SetTopicAttributesInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleNotificationError?) -> ()) throws -> ()
     typealias SubscribeSyncType = (
             _ input: SimpleNotificationModel.SubscribeInput) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe
     typealias SubscribeAsyncType = (
             _ input: SimpleNotificationModel.SubscribeInput, 
-            _ completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, SimpleNotificationError>) -> ()) throws -> ()
     typealias TagResourceSyncType = (
             _ input: SimpleNotificationModel.TagResourceRequest) throws -> SimpleNotificationModel.TagResourceResponseForTagResource
     typealias TagResourceAsyncType = (
             _ input: SimpleNotificationModel.TagResourceRequest, 
-            _ completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, SimpleNotificationError>) -> ()) throws -> ()
     typealias UnsubscribeSyncType = (
             _ input: SimpleNotificationModel.UnsubscribeInput) throws -> ()
     typealias UnsubscribeAsyncType = (
             _ input: SimpleNotificationModel.UnsubscribeInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleNotificationError?) -> ()) throws -> ()
     typealias UntagResourceSyncType = (
             _ input: SimpleNotificationModel.UntagResourceRequest) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource
     typealias UntagResourceAsyncType = (
             _ input: SimpleNotificationModel.UntagResourceRequest, 
-            _ completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, SimpleNotificationError>) -> ()) throws -> ()
 
     /**
      Invokes the AddPermission operation returning immediately and passing the response to a callback.
@@ -205,7 +205,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func addPermissionAsync(
             input: SimpleNotificationModel.AddPermissionInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleNotificationError?) -> ()) throws
 
     /**
      Invokes the AddPermission operation waiting for the response before returning.
@@ -229,7 +229,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func checkIfPhoneNumberIsOptedOutAsync(
             input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput, 
-            completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the CheckIfPhoneNumberIsOptedOut operation waiting for the response before returning.
@@ -255,7 +255,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func confirmSubscriptionAsync(
             input: SimpleNotificationModel.ConfirmSubscriptionInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the ConfirmSubscription operation waiting for the response before returning.
@@ -281,7 +281,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func createPlatformApplicationAsync(
             input: SimpleNotificationModel.CreatePlatformApplicationInput, 
-            completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the CreatePlatformApplication operation waiting for the response before returning.
@@ -307,7 +307,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func createPlatformEndpointAsync(
             input: SimpleNotificationModel.CreatePlatformEndpointInput, 
-            completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the CreatePlatformEndpoint operation waiting for the response before returning.
@@ -333,7 +333,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func createTopicAsync(
             input: SimpleNotificationModel.CreateTopicInput, 
-            completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the CreateTopic operation waiting for the response before returning.
@@ -358,7 +358,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func deleteEndpointAsync(
             input: SimpleNotificationModel.DeleteEndpointInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleNotificationError?) -> ()) throws
 
     /**
      Invokes the DeleteEndpoint operation waiting for the response before returning.
@@ -381,7 +381,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func deletePlatformApplicationAsync(
             input: SimpleNotificationModel.DeletePlatformApplicationInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleNotificationError?) -> ()) throws
 
     /**
      Invokes the DeletePlatformApplication operation waiting for the response before returning.
@@ -404,7 +404,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func deleteTopicAsync(
             input: SimpleNotificationModel.DeleteTopicInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleNotificationError?) -> ()) throws
 
     /**
      Invokes the DeleteTopic operation waiting for the response before returning.
@@ -428,7 +428,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func getEndpointAttributesAsync(
             input: SimpleNotificationModel.GetEndpointAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the GetEndpointAttributes operation waiting for the response before returning.
@@ -454,7 +454,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func getPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.GetPlatformApplicationAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the GetPlatformApplicationAttributes operation waiting for the response before returning.
@@ -480,7 +480,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func getSMSAttributesAsync(
             input: SimpleNotificationModel.GetSMSAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the GetSMSAttributes operation waiting for the response before returning.
@@ -506,7 +506,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func getSubscriptionAttributesAsync(
             input: SimpleNotificationModel.GetSubscriptionAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the GetSubscriptionAttributes operation waiting for the response before returning.
@@ -532,7 +532,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func getTopicAttributesAsync(
             input: SimpleNotificationModel.GetTopicAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the GetTopicAttributes operation waiting for the response before returning.
@@ -558,7 +558,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func listEndpointsByPlatformApplicationAsync(
             input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the ListEndpointsByPlatformApplication operation waiting for the response before returning.
@@ -584,7 +584,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func listPhoneNumbersOptedOutAsync(
             input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the ListPhoneNumbersOptedOut operation waiting for the response before returning.
@@ -610,7 +610,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func listPlatformApplicationsAsync(
             input: SimpleNotificationModel.ListPlatformApplicationsInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the ListPlatformApplications operation waiting for the response before returning.
@@ -636,7 +636,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func listSubscriptionsAsync(
             input: SimpleNotificationModel.ListSubscriptionsInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the ListSubscriptions operation waiting for the response before returning.
@@ -662,7 +662,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func listSubscriptionsByTopicAsync(
             input: SimpleNotificationModel.ListSubscriptionsByTopicInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the ListSubscriptionsByTopic operation waiting for the response before returning.
@@ -688,7 +688,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func listTagsForResourceAsync(
             input: SimpleNotificationModel.ListTagsForResourceRequest, 
-            completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the ListTagsForResource operation waiting for the response before returning.
@@ -714,7 +714,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func listTopicsAsync(
             input: SimpleNotificationModel.ListTopicsInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the ListTopics operation waiting for the response before returning.
@@ -740,7 +740,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func optInPhoneNumberAsync(
             input: SimpleNotificationModel.OptInPhoneNumberInput, 
-            completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the OptInPhoneNumber operation waiting for the response before returning.
@@ -766,7 +766,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func publishAsync(
             input: SimpleNotificationModel.PublishInput, 
-            completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the Publish operation waiting for the response before returning.
@@ -791,7 +791,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func removePermissionAsync(
             input: SimpleNotificationModel.RemovePermissionInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleNotificationError?) -> ()) throws
 
     /**
      Invokes the RemovePermission operation waiting for the response before returning.
@@ -814,7 +814,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func setEndpointAttributesAsync(
             input: SimpleNotificationModel.SetEndpointAttributesInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleNotificationError?) -> ()) throws
 
     /**
      Invokes the SetEndpointAttributes operation waiting for the response before returning.
@@ -837,7 +837,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func setPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleNotificationError?) -> ()) throws
 
     /**
      Invokes the SetPlatformApplicationAttributes operation waiting for the response before returning.
@@ -861,7 +861,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func setSMSAttributesAsync(
             input: SimpleNotificationModel.SetSMSAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the SetSMSAttributes operation waiting for the response before returning.
@@ -886,7 +886,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func setSubscriptionAttributesAsync(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleNotificationError?) -> ()) throws
 
     /**
      Invokes the SetSubscriptionAttributes operation waiting for the response before returning.
@@ -909,7 +909,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func setTopicAttributesAsync(
             input: SimpleNotificationModel.SetTopicAttributesInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleNotificationError?) -> ()) throws
 
     /**
      Invokes the SetTopicAttributes operation waiting for the response before returning.
@@ -933,7 +933,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func subscribeAsync(
             input: SimpleNotificationModel.SubscribeInput, 
-            completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the Subscribe operation waiting for the response before returning.
@@ -959,7 +959,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func tagResourceAsync(
             input: SimpleNotificationModel.TagResourceRequest, 
-            completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the TagResource operation waiting for the response before returning.
@@ -984,7 +984,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func unsubscribeAsync(
             input: SimpleNotificationModel.UnsubscribeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleNotificationError?) -> ()) throws
 
     /**
      Invokes the Unsubscribe operation waiting for the response before returning.
@@ -1008,7 +1008,7 @@ public protocol SimpleNotificationClientProtocol {
      */
     func untagResourceAsync(
             input: SimpleNotificationModel.UntagResourceRequest, 
-            completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, SimpleNotificationError>) -> ()) throws
 
     /**
      Invokes the UntagResource operation waiting for the response before returning.

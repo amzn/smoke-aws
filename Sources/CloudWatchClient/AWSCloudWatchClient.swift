@@ -152,7 +152,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func deleteAlarmsAsync(
             input: CloudWatchModel.DeleteAlarmsInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (CloudWatchError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -168,11 +168,25 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.deleteAlarms.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(CloudWatchError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -223,7 +237,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func deleteAnomalyDetectorAsync(
             input: CloudWatchModel.DeleteAnomalyDetectorInput, 
-            completion: @escaping (Result<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -239,11 +253,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.deleteAnomalyDetector.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -296,7 +325,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func deleteDashboardsAsync(
             input: CloudWatchModel.DeleteDashboardsInput, 
-            completion: @escaping (Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -312,11 +341,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.deleteDashboards.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -369,7 +413,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func deleteInsightRulesAsync(
             input: CloudWatchModel.DeleteInsightRulesInput, 
-            completion: @escaping (Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -385,11 +429,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.deleteInsightRules.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -442,7 +501,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func describeAlarmHistoryAsync(
             input: CloudWatchModel.DescribeAlarmHistoryInput, 
-            completion: @escaping (Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -458,11 +517,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.describeAlarmHistory.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -515,7 +589,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func describeAlarmsAsync(
             input: CloudWatchModel.DescribeAlarmsInput, 
-            completion: @escaping (Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -531,11 +605,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.describeAlarms.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -587,7 +676,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func describeAlarmsForMetricAsync(
             input: CloudWatchModel.DescribeAlarmsForMetricInput, 
-            completion: @escaping (Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -603,11 +692,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.describeAlarmsForMetric.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -659,7 +763,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func describeAnomalyDetectorsAsync(
             input: CloudWatchModel.DescribeAnomalyDetectorsInput, 
-            completion: @escaping (Result<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -675,11 +779,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.describeAnomalyDetectors.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -732,7 +851,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func describeInsightRulesAsync(
             input: CloudWatchModel.DescribeInsightRulesInput, 
-            completion: @escaping (Result<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -748,11 +867,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.describeInsightRules.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -803,7 +937,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func disableAlarmActionsAsync(
             input: CloudWatchModel.DisableAlarmActionsInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (CloudWatchError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -819,11 +953,25 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.disableAlarmActions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(CloudWatchError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -873,7 +1021,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func disableInsightRulesAsync(
             input: CloudWatchModel.DisableInsightRulesInput, 
-            completion: @escaping (Result<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -889,11 +1037,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.disableInsightRules.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -944,7 +1107,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func enableAlarmActionsAsync(
             input: CloudWatchModel.EnableAlarmActionsInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (CloudWatchError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -960,11 +1123,25 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.enableAlarmActions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(CloudWatchError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1014,7 +1191,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func enableInsightRulesAsync(
             input: CloudWatchModel.EnableInsightRulesInput, 
-            completion: @escaping (Result<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1030,11 +1207,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.enableInsightRules.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1087,7 +1279,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func getDashboardAsync(
             input: CloudWatchModel.GetDashboardInput, 
-            completion: @escaping (Result<CloudWatchModel.GetDashboardOutputForGetDashboard, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.GetDashboardOutputForGetDashboard, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1103,11 +1295,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.getDashboard.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.GetDashboardOutputForGetDashboard, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1160,7 +1367,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func getInsightRuleReportAsync(
             input: CloudWatchModel.GetInsightRuleReportInput, 
-            completion: @escaping (Result<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1176,11 +1383,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.getInsightRuleReport.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1233,7 +1455,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func getMetricDataAsync(
             input: CloudWatchModel.GetMetricDataInput, 
-            completion: @escaping (Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1249,11 +1471,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.getMetricData.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1306,7 +1543,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func getMetricStatisticsAsync(
             input: CloudWatchModel.GetMetricStatisticsInput, 
-            completion: @escaping (Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1322,11 +1559,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.getMetricStatistics.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1378,7 +1630,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func getMetricWidgetImageAsync(
             input: CloudWatchModel.GetMetricWidgetImageInput, 
-            completion: @escaping (Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1394,11 +1646,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.getMetricWidgetImage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1450,7 +1717,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func listDashboardsAsync(
             input: CloudWatchModel.ListDashboardsInput, 
-            completion: @escaping (Result<CloudWatchModel.ListDashboardsOutputForListDashboards, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.ListDashboardsOutputForListDashboards, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1466,11 +1733,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.listDashboards.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.ListDashboardsOutputForListDashboards, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1523,7 +1805,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func listMetricsAsync(
             input: CloudWatchModel.ListMetricsInput, 
-            completion: @escaping (Result<CloudWatchModel.ListMetricsOutputForListMetrics, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.ListMetricsOutputForListMetrics, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1539,11 +1821,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.listMetrics.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.ListMetricsOutputForListMetrics, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1596,7 +1893,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func listTagsForResourceAsync(
             input: CloudWatchModel.ListTagsForResourceInput, 
-            completion: @escaping (Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1612,11 +1909,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.listTagsForResource.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1669,7 +1981,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func putAnomalyDetectorAsync(
             input: CloudWatchModel.PutAnomalyDetectorInput, 
-            completion: @escaping (Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1685,11 +1997,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.putAnomalyDetector.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1742,7 +2069,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func putDashboardAsync(
             input: CloudWatchModel.PutDashboardInput, 
-            completion: @escaping (Result<CloudWatchModel.PutDashboardOutputForPutDashboard, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.PutDashboardOutputForPutDashboard, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1758,11 +2085,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.putDashboard.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.PutDashboardOutputForPutDashboard, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1815,7 +2157,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func putInsightRuleAsync(
             input: CloudWatchModel.PutInsightRuleInput, 
-            completion: @escaping (Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1831,11 +2173,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.putInsightRule.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1887,7 +2244,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func putMetricAlarmAsync(
             input: CloudWatchModel.PutMetricAlarmInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (CloudWatchError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1903,11 +2260,25 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.putMetricAlarm.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(CloudWatchError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1957,7 +2328,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func putMetricDataAsync(
             input: CloudWatchModel.PutMetricDataInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (CloudWatchError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1973,11 +2344,25 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.putMetricData.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(CloudWatchError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2027,7 +2412,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func setAlarmStateAsync(
             input: CloudWatchModel.SetAlarmStateInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (CloudWatchError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2043,11 +2428,25 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.setAlarmState.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(CloudWatchError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2098,7 +2497,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func tagResourceAsync(
             input: CloudWatchModel.TagResourceInput, 
-            completion: @escaping (Result<CloudWatchModel.TagResourceOutputForTagResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.TagResourceOutputForTagResource, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2114,11 +2513,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.tagResource.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.TagResourceOutputForTagResource, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2171,7 +2585,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
      */
     public func untagResourceAsync(
             input: CloudWatchModel.UntagResourceInput, 
-            completion: @escaping (Result<CloudWatchModel.UntagResourceOutputForUntagResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<CloudWatchModel.UntagResourceOutputForUntagResource, CloudWatchError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2187,11 +2601,26 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
             action: CloudWatchModelOperations.untagResource.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<CloudWatchModel.UntagResourceOutputForUntagResource, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)

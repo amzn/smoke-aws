@@ -22,6 +22,8 @@
 import Foundation
 import Logging
 
+public typealias DynamoDBErrorResult<SuccessPayload> = Result<SuccessPayload, DynamoDBError>
+
 private let backupInUseIdentity = "BackupInUseException"
 private let backupNotFoundIdentity = "BackupNotFoundException"
 private let conditionalCheckFailedIdentity = "ConditionalCheckFailedException"

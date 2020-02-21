@@ -22,6 +22,8 @@
 import Foundation
 import Logging
 
+public typealias RDSDataErrorResult<SuccessPayload> = Result<SuccessPayload, RDSDataError>
+
 private let badRequestIdentity = "BadRequestException"
 private let forbiddenIdentity = "ForbiddenException"
 private let internalServerErrorIdentity = "InternalServerErrorException"

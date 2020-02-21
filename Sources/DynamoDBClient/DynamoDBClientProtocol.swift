@@ -32,207 +32,207 @@ public protocol DynamoDBClientProtocol {
             _ input: DynamoDBModel.BatchGetItemInput) throws -> DynamoDBModel.BatchGetItemOutput
     typealias BatchGetItemAsyncType = (
             _ input: DynamoDBModel.BatchGetItemInput, 
-            _ completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, DynamoDBError>) -> ()) throws -> ()
     typealias BatchWriteItemSyncType = (
             _ input: DynamoDBModel.BatchWriteItemInput) throws -> DynamoDBModel.BatchWriteItemOutput
     typealias BatchWriteItemAsyncType = (
             _ input: DynamoDBModel.BatchWriteItemInput, 
-            _ completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, DynamoDBError>) -> ()) throws -> ()
     typealias CreateBackupSyncType = (
             _ input: DynamoDBModel.CreateBackupInput) throws -> DynamoDBModel.CreateBackupOutput
     typealias CreateBackupAsyncType = (
             _ input: DynamoDBModel.CreateBackupInput, 
-            _ completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, DynamoDBError>) -> ()) throws -> ()
     typealias CreateGlobalTableSyncType = (
             _ input: DynamoDBModel.CreateGlobalTableInput) throws -> DynamoDBModel.CreateGlobalTableOutput
     typealias CreateGlobalTableAsyncType = (
             _ input: DynamoDBModel.CreateGlobalTableInput, 
-            _ completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, DynamoDBError>) -> ()) throws -> ()
     typealias CreateTableSyncType = (
             _ input: DynamoDBModel.CreateTableInput) throws -> DynamoDBModel.CreateTableOutput
     typealias CreateTableAsyncType = (
             _ input: DynamoDBModel.CreateTableInput, 
-            _ completion: @escaping (Result<DynamoDBModel.CreateTableOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.CreateTableOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DeleteBackupSyncType = (
             _ input: DynamoDBModel.DeleteBackupInput) throws -> DynamoDBModel.DeleteBackupOutput
     typealias DeleteBackupAsyncType = (
             _ input: DynamoDBModel.DeleteBackupInput, 
-            _ completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DeleteItemSyncType = (
             _ input: DynamoDBModel.DeleteItemInput) throws -> DynamoDBModel.DeleteItemOutput
     typealias DeleteItemAsyncType = (
             _ input: DynamoDBModel.DeleteItemInput, 
-            _ completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DeleteTableSyncType = (
             _ input: DynamoDBModel.DeleteTableInput) throws -> DynamoDBModel.DeleteTableOutput
     typealias DeleteTableAsyncType = (
             _ input: DynamoDBModel.DeleteTableInput, 
-            _ completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DescribeBackupSyncType = (
             _ input: DynamoDBModel.DescribeBackupInput) throws -> DynamoDBModel.DescribeBackupOutput
     typealias DescribeBackupAsyncType = (
             _ input: DynamoDBModel.DescribeBackupInput, 
-            _ completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DescribeContinuousBackupsSyncType = (
             _ input: DynamoDBModel.DescribeContinuousBackupsInput) throws -> DynamoDBModel.DescribeContinuousBackupsOutput
     typealias DescribeContinuousBackupsAsyncType = (
             _ input: DynamoDBModel.DescribeContinuousBackupsInput, 
-            _ completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DescribeContributorInsightsSyncType = (
             _ input: DynamoDBModel.DescribeContributorInsightsInput) throws -> DynamoDBModel.DescribeContributorInsightsOutput
     typealias DescribeContributorInsightsAsyncType = (
             _ input: DynamoDBModel.DescribeContributorInsightsInput, 
-            _ completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DescribeEndpointsSyncType = (
             _ input: DynamoDBModel.DescribeEndpointsRequest) throws -> DynamoDBModel.DescribeEndpointsResponse
     typealias DescribeEndpointsAsyncType = (
             _ input: DynamoDBModel.DescribeEndpointsRequest, 
-            _ completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, DynamoDBError>) -> ()) throws -> ()
     typealias DescribeGlobalTableSyncType = (
             _ input: DynamoDBModel.DescribeGlobalTableInput) throws -> DynamoDBModel.DescribeGlobalTableOutput
     typealias DescribeGlobalTableAsyncType = (
             _ input: DynamoDBModel.DescribeGlobalTableInput, 
-            _ completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DescribeGlobalTableSettingsSyncType = (
             _ input: DynamoDBModel.DescribeGlobalTableSettingsInput) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput
     typealias DescribeGlobalTableSettingsAsyncType = (
             _ input: DynamoDBModel.DescribeGlobalTableSettingsInput, 
-            _ completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DescribeLimitsSyncType = (
             _ input: DynamoDBModel.DescribeLimitsInput) throws -> DynamoDBModel.DescribeLimitsOutput
     typealias DescribeLimitsAsyncType = (
             _ input: DynamoDBModel.DescribeLimitsInput, 
-            _ completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DescribeTableSyncType = (
             _ input: DynamoDBModel.DescribeTableInput) throws -> DynamoDBModel.DescribeTableOutput
     typealias DescribeTableAsyncType = (
             _ input: DynamoDBModel.DescribeTableInput, 
-            _ completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DescribeTableReplicaAutoScalingSyncType = (
             _ input: DynamoDBModel.DescribeTableReplicaAutoScalingInput) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput
     typealias DescribeTableReplicaAutoScalingAsyncType = (
             _ input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
-            _ completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DescribeTimeToLiveSyncType = (
             _ input: DynamoDBModel.DescribeTimeToLiveInput) throws -> DynamoDBModel.DescribeTimeToLiveOutput
     typealias DescribeTimeToLiveAsyncType = (
             _ input: DynamoDBModel.DescribeTimeToLiveInput, 
-            _ completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, DynamoDBError>) -> ()) throws -> ()
     typealias GetItemSyncType = (
             _ input: DynamoDBModel.GetItemInput) throws -> DynamoDBModel.GetItemOutput
     typealias GetItemAsyncType = (
             _ input: DynamoDBModel.GetItemInput, 
-            _ completion: @escaping (Result<DynamoDBModel.GetItemOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.GetItemOutput, DynamoDBError>) -> ()) throws -> ()
     typealias ListBackupsSyncType = (
             _ input: DynamoDBModel.ListBackupsInput) throws -> DynamoDBModel.ListBackupsOutput
     typealias ListBackupsAsyncType = (
             _ input: DynamoDBModel.ListBackupsInput, 
-            _ completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, DynamoDBError>) -> ()) throws -> ()
     typealias ListContributorInsightsSyncType = (
             _ input: DynamoDBModel.ListContributorInsightsInput) throws -> DynamoDBModel.ListContributorInsightsOutput
     typealias ListContributorInsightsAsyncType = (
             _ input: DynamoDBModel.ListContributorInsightsInput, 
-            _ completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, DynamoDBError>) -> ()) throws -> ()
     typealias ListGlobalTablesSyncType = (
             _ input: DynamoDBModel.ListGlobalTablesInput) throws -> DynamoDBModel.ListGlobalTablesOutput
     typealias ListGlobalTablesAsyncType = (
             _ input: DynamoDBModel.ListGlobalTablesInput, 
-            _ completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, DynamoDBError>) -> ()) throws -> ()
     typealias ListTablesSyncType = (
             _ input: DynamoDBModel.ListTablesInput) throws -> DynamoDBModel.ListTablesOutput
     typealias ListTablesAsyncType = (
             _ input: DynamoDBModel.ListTablesInput, 
-            _ completion: @escaping (Result<DynamoDBModel.ListTablesOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.ListTablesOutput, DynamoDBError>) -> ()) throws -> ()
     typealias ListTagsOfResourceSyncType = (
             _ input: DynamoDBModel.ListTagsOfResourceInput) throws -> DynamoDBModel.ListTagsOfResourceOutput
     typealias ListTagsOfResourceAsyncType = (
             _ input: DynamoDBModel.ListTagsOfResourceInput, 
-            _ completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, DynamoDBError>) -> ()) throws -> ()
     typealias PutItemSyncType = (
             _ input: DynamoDBModel.PutItemInput) throws -> DynamoDBModel.PutItemOutput
     typealias PutItemAsyncType = (
             _ input: DynamoDBModel.PutItemInput, 
-            _ completion: @escaping (Result<DynamoDBModel.PutItemOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.PutItemOutput, DynamoDBError>) -> ()) throws -> ()
     typealias QuerySyncType = (
             _ input: DynamoDBModel.QueryInput) throws -> DynamoDBModel.QueryOutput
     typealias QueryAsyncType = (
             _ input: DynamoDBModel.QueryInput, 
-            _ completion: @escaping (Result<DynamoDBModel.QueryOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.QueryOutput, DynamoDBError>) -> ()) throws -> ()
     typealias RestoreTableFromBackupSyncType = (
             _ input: DynamoDBModel.RestoreTableFromBackupInput) throws -> DynamoDBModel.RestoreTableFromBackupOutput
     typealias RestoreTableFromBackupAsyncType = (
             _ input: DynamoDBModel.RestoreTableFromBackupInput, 
-            _ completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, DynamoDBError>) -> ()) throws -> ()
     typealias RestoreTableToPointInTimeSyncType = (
             _ input: DynamoDBModel.RestoreTableToPointInTimeInput) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput
     typealias RestoreTableToPointInTimeAsyncType = (
             _ input: DynamoDBModel.RestoreTableToPointInTimeInput, 
-            _ completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, DynamoDBError>) -> ()) throws -> ()
     typealias ScanSyncType = (
             _ input: DynamoDBModel.ScanInput) throws -> DynamoDBModel.ScanOutput
     typealias ScanAsyncType = (
             _ input: DynamoDBModel.ScanInput, 
-            _ completion: @escaping (Result<DynamoDBModel.ScanOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.ScanOutput, DynamoDBError>) -> ()) throws -> ()
     typealias TagResourceSyncType = (
             _ input: DynamoDBModel.TagResourceInput) throws -> ()
     typealias TagResourceAsyncType = (
             _ input: DynamoDBModel.TagResourceInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (DynamoDBError?) -> ()) throws -> ()
     typealias TransactGetItemsSyncType = (
             _ input: DynamoDBModel.TransactGetItemsInput) throws -> DynamoDBModel.TransactGetItemsOutput
     typealias TransactGetItemsAsyncType = (
             _ input: DynamoDBModel.TransactGetItemsInput, 
-            _ completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, DynamoDBError>) -> ()) throws -> ()
     typealias TransactWriteItemsSyncType = (
             _ input: DynamoDBModel.TransactWriteItemsInput) throws -> DynamoDBModel.TransactWriteItemsOutput
     typealias TransactWriteItemsAsyncType = (
             _ input: DynamoDBModel.TransactWriteItemsInput, 
-            _ completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, DynamoDBError>) -> ()) throws -> ()
     typealias UntagResourceSyncType = (
             _ input: DynamoDBModel.UntagResourceInput) throws -> ()
     typealias UntagResourceAsyncType = (
             _ input: DynamoDBModel.UntagResourceInput, 
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (DynamoDBError?) -> ()) throws -> ()
     typealias UpdateContinuousBackupsSyncType = (
             _ input: DynamoDBModel.UpdateContinuousBackupsInput) throws -> DynamoDBModel.UpdateContinuousBackupsOutput
     typealias UpdateContinuousBackupsAsyncType = (
             _ input: DynamoDBModel.UpdateContinuousBackupsInput, 
-            _ completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, DynamoDBError>) -> ()) throws -> ()
     typealias UpdateContributorInsightsSyncType = (
             _ input: DynamoDBModel.UpdateContributorInsightsInput) throws -> DynamoDBModel.UpdateContributorInsightsOutput
     typealias UpdateContributorInsightsAsyncType = (
             _ input: DynamoDBModel.UpdateContributorInsightsInput, 
-            _ completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, DynamoDBError>) -> ()) throws -> ()
     typealias UpdateGlobalTableSyncType = (
             _ input: DynamoDBModel.UpdateGlobalTableInput) throws -> DynamoDBModel.UpdateGlobalTableOutput
     typealias UpdateGlobalTableAsyncType = (
             _ input: DynamoDBModel.UpdateGlobalTableInput, 
-            _ completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, DynamoDBError>) -> ()) throws -> ()
     typealias UpdateGlobalTableSettingsSyncType = (
             _ input: DynamoDBModel.UpdateGlobalTableSettingsInput) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput
     typealias UpdateGlobalTableSettingsAsyncType = (
             _ input: DynamoDBModel.UpdateGlobalTableSettingsInput, 
-            _ completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws -> ()
     typealias UpdateItemSyncType = (
             _ input: DynamoDBModel.UpdateItemInput) throws -> DynamoDBModel.UpdateItemOutput
     typealias UpdateItemAsyncType = (
             _ input: DynamoDBModel.UpdateItemInput, 
-            _ completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, DynamoDBError>) -> ()) throws -> ()
     typealias UpdateTableSyncType = (
             _ input: DynamoDBModel.UpdateTableInput) throws -> DynamoDBModel.UpdateTableOutput
     typealias UpdateTableAsyncType = (
             _ input: DynamoDBModel.UpdateTableInput, 
-            _ completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, DynamoDBError>) -> ()) throws -> ()
     typealias UpdateTableReplicaAutoScalingSyncType = (
             _ input: DynamoDBModel.UpdateTableReplicaAutoScalingInput) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput
     typealias UpdateTableReplicaAutoScalingAsyncType = (
             _ input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
-            _ completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, DynamoDBError>) -> ()) throws -> ()
     typealias UpdateTimeToLiveSyncType = (
             _ input: DynamoDBModel.UpdateTimeToLiveInput) throws -> DynamoDBModel.UpdateTimeToLiveOutput
     typealias UpdateTimeToLiveAsyncType = (
             _ input: DynamoDBModel.UpdateTimeToLiveInput, 
-            _ completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, DynamoDBError>) -> ()) throws -> ()
 
     /**
      Invokes the BatchGetItem operation returning immediately and passing the response to a callback.
@@ -246,7 +246,7 @@ public protocol DynamoDBClientProtocol {
      */
     func batchGetItemAsync(
             input: DynamoDBModel.BatchGetItemInput, 
-            completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the BatchGetItem operation waiting for the response before returning.
@@ -272,7 +272,7 @@ public protocol DynamoDBClientProtocol {
      */
     func batchWriteItemAsync(
             input: DynamoDBModel.BatchWriteItemInput, 
-            completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the BatchWriteItem operation waiting for the response before returning.
@@ -298,7 +298,7 @@ public protocol DynamoDBClientProtocol {
      */
     func createBackupAsync(
             input: DynamoDBModel.CreateBackupInput, 
-            completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the CreateBackup operation waiting for the response before returning.
@@ -324,7 +324,7 @@ public protocol DynamoDBClientProtocol {
      */
     func createGlobalTableAsync(
             input: DynamoDBModel.CreateGlobalTableInput, 
-            completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the CreateGlobalTable operation waiting for the response before returning.
@@ -350,7 +350,7 @@ public protocol DynamoDBClientProtocol {
      */
     func createTableAsync(
             input: DynamoDBModel.CreateTableInput, 
-            completion: @escaping (Result<DynamoDBModel.CreateTableOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.CreateTableOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the CreateTable operation waiting for the response before returning.
@@ -376,7 +376,7 @@ public protocol DynamoDBClientProtocol {
      */
     func deleteBackupAsync(
             input: DynamoDBModel.DeleteBackupInput, 
-            completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the DeleteBackup operation waiting for the response before returning.
@@ -402,7 +402,7 @@ public protocol DynamoDBClientProtocol {
      */
     func deleteItemAsync(
             input: DynamoDBModel.DeleteItemInput, 
-            completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the DeleteItem operation waiting for the response before returning.
@@ -428,7 +428,7 @@ public protocol DynamoDBClientProtocol {
      */
     func deleteTableAsync(
             input: DynamoDBModel.DeleteTableInput, 
-            completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the DeleteTable operation waiting for the response before returning.
@@ -454,7 +454,7 @@ public protocol DynamoDBClientProtocol {
      */
     func describeBackupAsync(
             input: DynamoDBModel.DescribeBackupInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the DescribeBackup operation waiting for the response before returning.
@@ -480,7 +480,7 @@ public protocol DynamoDBClientProtocol {
      */
     func describeContinuousBackupsAsync(
             input: DynamoDBModel.DescribeContinuousBackupsInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the DescribeContinuousBackups operation waiting for the response before returning.
@@ -506,7 +506,7 @@ public protocol DynamoDBClientProtocol {
      */
     func describeContributorInsightsAsync(
             input: DynamoDBModel.DescribeContributorInsightsInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the DescribeContributorInsights operation waiting for the response before returning.
@@ -531,7 +531,7 @@ public protocol DynamoDBClientProtocol {
      */
     func describeEndpointsAsync(
             input: DynamoDBModel.DescribeEndpointsRequest, 
-            completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the DescribeEndpoints operation waiting for the response before returning.
@@ -556,7 +556,7 @@ public protocol DynamoDBClientProtocol {
      */
     func describeGlobalTableAsync(
             input: DynamoDBModel.DescribeGlobalTableInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the DescribeGlobalTable operation waiting for the response before returning.
@@ -582,7 +582,7 @@ public protocol DynamoDBClientProtocol {
      */
     func describeGlobalTableSettingsAsync(
             input: DynamoDBModel.DescribeGlobalTableSettingsInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the DescribeGlobalTableSettings operation waiting for the response before returning.
@@ -608,7 +608,7 @@ public protocol DynamoDBClientProtocol {
      */
     func describeLimitsAsync(
             input: DynamoDBModel.DescribeLimitsInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the DescribeLimits operation waiting for the response before returning.
@@ -634,7 +634,7 @@ public protocol DynamoDBClientProtocol {
      */
     func describeTableAsync(
             input: DynamoDBModel.DescribeTableInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the DescribeTable operation waiting for the response before returning.
@@ -660,7 +660,7 @@ public protocol DynamoDBClientProtocol {
      */
     func describeTableReplicaAutoScalingAsync(
             input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the DescribeTableReplicaAutoScaling operation waiting for the response before returning.
@@ -686,7 +686,7 @@ public protocol DynamoDBClientProtocol {
      */
     func describeTimeToLiveAsync(
             input: DynamoDBModel.DescribeTimeToLiveInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the DescribeTimeToLive operation waiting for the response before returning.
@@ -712,7 +712,7 @@ public protocol DynamoDBClientProtocol {
      */
     func getItemAsync(
             input: DynamoDBModel.GetItemInput, 
-            completion: @escaping (Result<DynamoDBModel.GetItemOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.GetItemOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the GetItem operation waiting for the response before returning.
@@ -738,7 +738,7 @@ public protocol DynamoDBClientProtocol {
      */
     func listBackupsAsync(
             input: DynamoDBModel.ListBackupsInput, 
-            completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the ListBackups operation waiting for the response before returning.
@@ -764,7 +764,7 @@ public protocol DynamoDBClientProtocol {
      */
     func listContributorInsightsAsync(
             input: DynamoDBModel.ListContributorInsightsInput, 
-            completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the ListContributorInsights operation waiting for the response before returning.
@@ -790,7 +790,7 @@ public protocol DynamoDBClientProtocol {
      */
     func listGlobalTablesAsync(
             input: DynamoDBModel.ListGlobalTablesInput, 
-            completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the ListGlobalTables operation waiting for the response before returning.
@@ -816,7 +816,7 @@ public protocol DynamoDBClientProtocol {
      */
     func listTablesAsync(
             input: DynamoDBModel.ListTablesInput, 
-            completion: @escaping (Result<DynamoDBModel.ListTablesOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.ListTablesOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the ListTables operation waiting for the response before returning.
@@ -842,7 +842,7 @@ public protocol DynamoDBClientProtocol {
      */
     func listTagsOfResourceAsync(
             input: DynamoDBModel.ListTagsOfResourceInput, 
-            completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the ListTagsOfResource operation waiting for the response before returning.
@@ -868,7 +868,7 @@ public protocol DynamoDBClientProtocol {
      */
     func putItemAsync(
             input: DynamoDBModel.PutItemInput, 
-            completion: @escaping (Result<DynamoDBModel.PutItemOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.PutItemOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the PutItem operation waiting for the response before returning.
@@ -894,7 +894,7 @@ public protocol DynamoDBClientProtocol {
      */
     func queryAsync(
             input: DynamoDBModel.QueryInput, 
-            completion: @escaping (Result<DynamoDBModel.QueryOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.QueryOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the Query operation waiting for the response before returning.
@@ -920,7 +920,7 @@ public protocol DynamoDBClientProtocol {
      */
     func restoreTableFromBackupAsync(
             input: DynamoDBModel.RestoreTableFromBackupInput, 
-            completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the RestoreTableFromBackup operation waiting for the response before returning.
@@ -946,7 +946,7 @@ public protocol DynamoDBClientProtocol {
      */
     func restoreTableToPointInTimeAsync(
             input: DynamoDBModel.RestoreTableToPointInTimeInput, 
-            completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the RestoreTableToPointInTime operation waiting for the response before returning.
@@ -972,7 +972,7 @@ public protocol DynamoDBClientProtocol {
      */
     func scanAsync(
             input: DynamoDBModel.ScanInput, 
-            completion: @escaping (Result<DynamoDBModel.ScanOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.ScanOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the Scan operation waiting for the response before returning.
@@ -997,7 +997,7 @@ public protocol DynamoDBClientProtocol {
      */
     func tagResourceAsync(
             input: DynamoDBModel.TagResourceInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (DynamoDBError?) -> ()) throws
 
     /**
      Invokes the TagResource operation waiting for the response before returning.
@@ -1021,7 +1021,7 @@ public protocol DynamoDBClientProtocol {
      */
     func transactGetItemsAsync(
             input: DynamoDBModel.TransactGetItemsInput, 
-            completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the TransactGetItems operation waiting for the response before returning.
@@ -1047,7 +1047,7 @@ public protocol DynamoDBClientProtocol {
      */
     func transactWriteItemsAsync(
             input: DynamoDBModel.TransactWriteItemsInput, 
-            completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the TransactWriteItems operation waiting for the response before returning.
@@ -1072,7 +1072,7 @@ public protocol DynamoDBClientProtocol {
      */
     func untagResourceAsync(
             input: DynamoDBModel.UntagResourceInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (DynamoDBError?) -> ()) throws
 
     /**
      Invokes the UntagResource operation waiting for the response before returning.
@@ -1096,7 +1096,7 @@ public protocol DynamoDBClientProtocol {
      */
     func updateContinuousBackupsAsync(
             input: DynamoDBModel.UpdateContinuousBackupsInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the UpdateContinuousBackups operation waiting for the response before returning.
@@ -1122,7 +1122,7 @@ public protocol DynamoDBClientProtocol {
      */
     func updateContributorInsightsAsync(
             input: DynamoDBModel.UpdateContributorInsightsInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the UpdateContributorInsights operation waiting for the response before returning.
@@ -1148,7 +1148,7 @@ public protocol DynamoDBClientProtocol {
      */
     func updateGlobalTableAsync(
             input: DynamoDBModel.UpdateGlobalTableInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the UpdateGlobalTable operation waiting for the response before returning.
@@ -1174,7 +1174,7 @@ public protocol DynamoDBClientProtocol {
      */
     func updateGlobalTableSettingsAsync(
             input: DynamoDBModel.UpdateGlobalTableSettingsInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the UpdateGlobalTableSettings operation waiting for the response before returning.
@@ -1200,7 +1200,7 @@ public protocol DynamoDBClientProtocol {
      */
     func updateItemAsync(
             input: DynamoDBModel.UpdateItemInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the UpdateItem operation waiting for the response before returning.
@@ -1226,7 +1226,7 @@ public protocol DynamoDBClientProtocol {
      */
     func updateTableAsync(
             input: DynamoDBModel.UpdateTableInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the UpdateTable operation waiting for the response before returning.
@@ -1252,7 +1252,7 @@ public protocol DynamoDBClientProtocol {
      */
     func updateTableReplicaAutoScalingAsync(
             input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the UpdateTableReplicaAutoScaling operation waiting for the response before returning.
@@ -1278,7 +1278,7 @@ public protocol DynamoDBClientProtocol {
      */
     func updateTimeToLiveAsync(
             input: DynamoDBModel.UpdateTimeToLiveInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, DynamoDBError>) -> ()) throws
 
     /**
      Invokes the UpdateTimeToLive operation waiting for the response before returning.

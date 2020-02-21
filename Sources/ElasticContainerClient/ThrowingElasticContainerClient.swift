@@ -28,7 +28,7 @@ import SmokeHTTPClient
  Mock Client for the ElasticContainer service that by default always throws from its methods.
  */
 public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
-    let error: HTTPClientError
+    let error: ElasticContainerError
     let createCapacityProviderAsyncOverride: CreateCapacityProviderAsyncType?
     let createCapacityProviderSyncOverride: CreateCapacityProviderSyncType?
     let createClusterAsyncOverride: CreateClusterAsyncType?
@@ -130,7 +130,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: HTTPClientError,
+    public init(error: ElasticContainerError,
             createCapacityProviderAsync: CreateCapacityProviderAsyncType? = nil,
             createCapacityProviderSync: CreateCapacityProviderSyncType? = nil,
             createClusterAsync: CreateClusterAsyncType? = nil,
@@ -338,7 +338,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func createCapacityProviderAsync(
             input: ElasticContainerModel.CreateCapacityProviderRequest, 
-            completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, ElasticContainerError>) -> ()) throws {
         if let createCapacityProviderAsyncOverride = createCapacityProviderAsyncOverride {
             return try createCapacityProviderAsyncOverride(input, completion)
         }
@@ -376,7 +376,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func createClusterAsync(
             input: ElasticContainerModel.CreateClusterRequest, 
-            completion: @escaping (Result<ElasticContainerModel.CreateClusterResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.CreateClusterResponse, ElasticContainerError>) -> ()) throws {
         if let createClusterAsyncOverride = createClusterAsyncOverride {
             return try createClusterAsyncOverride(input, completion)
         }
@@ -414,7 +414,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func createServiceAsync(
             input: ElasticContainerModel.CreateServiceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.CreateServiceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.CreateServiceResponse, ElasticContainerError>) -> ()) throws {
         if let createServiceAsyncOverride = createServiceAsyncOverride {
             return try createServiceAsyncOverride(input, completion)
         }
@@ -452,7 +452,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func createTaskSetAsync(
             input: ElasticContainerModel.CreateTaskSetRequest, 
-            completion: @escaping (Result<ElasticContainerModel.CreateTaskSetResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.CreateTaskSetResponse, ElasticContainerError>) -> ()) throws {
         if let createTaskSetAsyncOverride = createTaskSetAsyncOverride {
             return try createTaskSetAsyncOverride(input, completion)
         }
@@ -490,7 +490,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deleteAccountSettingAsync(
             input: ElasticContainerModel.DeleteAccountSettingRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeleteAccountSettingResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeleteAccountSettingResponse, ElasticContainerError>) -> ()) throws {
         if let deleteAccountSettingAsyncOverride = deleteAccountSettingAsyncOverride {
             return try deleteAccountSettingAsyncOverride(input, completion)
         }
@@ -528,7 +528,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deleteAttributesAsync(
             input: ElasticContainerModel.DeleteAttributesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, ElasticContainerError>) -> ()) throws {
         if let deleteAttributesAsyncOverride = deleteAttributesAsyncOverride {
             return try deleteAttributesAsyncOverride(input, completion)
         }
@@ -566,7 +566,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deleteClusterAsync(
             input: ElasticContainerModel.DeleteClusterRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeleteClusterResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeleteClusterResponse, ElasticContainerError>) -> ()) throws {
         if let deleteClusterAsyncOverride = deleteClusterAsyncOverride {
             return try deleteClusterAsyncOverride(input, completion)
         }
@@ -604,7 +604,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deleteServiceAsync(
             input: ElasticContainerModel.DeleteServiceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, ElasticContainerError>) -> ()) throws {
         if let deleteServiceAsyncOverride = deleteServiceAsyncOverride {
             return try deleteServiceAsyncOverride(input, completion)
         }
@@ -642,7 +642,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deleteTaskSetAsync(
             input: ElasticContainerModel.DeleteTaskSetRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeleteTaskSetResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeleteTaskSetResponse, ElasticContainerError>) -> ()) throws {
         if let deleteTaskSetAsyncOverride = deleteTaskSetAsyncOverride {
             return try deleteTaskSetAsyncOverride(input, completion)
         }
@@ -680,7 +680,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deregisterContainerInstanceAsync(
             input: ElasticContainerModel.DeregisterContainerInstanceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeregisterContainerInstanceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeregisterContainerInstanceResponse, ElasticContainerError>) -> ()) throws {
         if let deregisterContainerInstanceAsyncOverride = deregisterContainerInstanceAsyncOverride {
             return try deregisterContainerInstanceAsyncOverride(input, completion)
         }
@@ -718,7 +718,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deregisterTaskDefinitionAsync(
             input: ElasticContainerModel.DeregisterTaskDefinitionRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, ElasticContainerError>) -> ()) throws {
         if let deregisterTaskDefinitionAsyncOverride = deregisterTaskDefinitionAsyncOverride {
             return try deregisterTaskDefinitionAsyncOverride(input, completion)
         }
@@ -756,7 +756,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeCapacityProvidersAsync(
             input: ElasticContainerModel.DescribeCapacityProvidersRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, ElasticContainerError>) -> ()) throws {
         if let describeCapacityProvidersAsyncOverride = describeCapacityProvidersAsyncOverride {
             return try describeCapacityProvidersAsyncOverride(input, completion)
         }
@@ -794,7 +794,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeClustersAsync(
             input: ElasticContainerModel.DescribeClustersRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeClustersResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeClustersResponse, ElasticContainerError>) -> ()) throws {
         if let describeClustersAsyncOverride = describeClustersAsyncOverride {
             return try describeClustersAsyncOverride(input, completion)
         }
@@ -832,7 +832,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeContainerInstancesAsync(
             input: ElasticContainerModel.DescribeContainerInstancesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeContainerInstancesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeContainerInstancesResponse, ElasticContainerError>) -> ()) throws {
         if let describeContainerInstancesAsyncOverride = describeContainerInstancesAsyncOverride {
             return try describeContainerInstancesAsyncOverride(input, completion)
         }
@@ -870,7 +870,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeServicesAsync(
             input: ElasticContainerModel.DescribeServicesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeServicesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeServicesResponse, ElasticContainerError>) -> ()) throws {
         if let describeServicesAsyncOverride = describeServicesAsyncOverride {
             return try describeServicesAsyncOverride(input, completion)
         }
@@ -908,7 +908,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeTaskDefinitionAsync(
             input: ElasticContainerModel.DescribeTaskDefinitionRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeTaskDefinitionResponse, ElasticContainerError>) -> ()) throws {
         if let describeTaskDefinitionAsyncOverride = describeTaskDefinitionAsyncOverride {
             return try describeTaskDefinitionAsyncOverride(input, completion)
         }
@@ -946,7 +946,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeTaskSetsAsync(
             input: ElasticContainerModel.DescribeTaskSetsRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeTaskSetsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeTaskSetsResponse, ElasticContainerError>) -> ()) throws {
         if let describeTaskSetsAsyncOverride = describeTaskSetsAsyncOverride {
             return try describeTaskSetsAsyncOverride(input, completion)
         }
@@ -984,7 +984,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeTasksAsync(
             input: ElasticContainerModel.DescribeTasksRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeTasksResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeTasksResponse, ElasticContainerError>) -> ()) throws {
         if let describeTasksAsyncOverride = describeTasksAsyncOverride {
             return try describeTasksAsyncOverride(input, completion)
         }
@@ -1022,7 +1022,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func discoverPollEndpointAsync(
             input: ElasticContainerModel.DiscoverPollEndpointRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, ElasticContainerError>) -> ()) throws {
         if let discoverPollEndpointAsyncOverride = discoverPollEndpointAsyncOverride {
             return try discoverPollEndpointAsyncOverride(input, completion)
         }
@@ -1060,7 +1060,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listAccountSettingsAsync(
             input: ElasticContainerModel.ListAccountSettingsRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListAccountSettingsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListAccountSettingsResponse, ElasticContainerError>) -> ()) throws {
         if let listAccountSettingsAsyncOverride = listAccountSettingsAsyncOverride {
             return try listAccountSettingsAsyncOverride(input, completion)
         }
@@ -1098,7 +1098,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listAttributesAsync(
             input: ElasticContainerModel.ListAttributesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListAttributesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListAttributesResponse, ElasticContainerError>) -> ()) throws {
         if let listAttributesAsyncOverride = listAttributesAsyncOverride {
             return try listAttributesAsyncOverride(input, completion)
         }
@@ -1136,7 +1136,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listClustersAsync(
             input: ElasticContainerModel.ListClustersRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListClustersResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListClustersResponse, ElasticContainerError>) -> ()) throws {
         if let listClustersAsyncOverride = listClustersAsyncOverride {
             return try listClustersAsyncOverride(input, completion)
         }
@@ -1174,7 +1174,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listContainerInstancesAsync(
             input: ElasticContainerModel.ListContainerInstancesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListContainerInstancesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListContainerInstancesResponse, ElasticContainerError>) -> ()) throws {
         if let listContainerInstancesAsyncOverride = listContainerInstancesAsyncOverride {
             return try listContainerInstancesAsyncOverride(input, completion)
         }
@@ -1212,7 +1212,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listServicesAsync(
             input: ElasticContainerModel.ListServicesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, ElasticContainerError>) -> ()) throws {
         if let listServicesAsyncOverride = listServicesAsyncOverride {
             return try listServicesAsyncOverride(input, completion)
         }
@@ -1250,7 +1250,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listTagsForResourceAsync(
             input: ElasticContainerModel.ListTagsForResourceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListTagsForResourceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListTagsForResourceResponse, ElasticContainerError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
             return try listTagsForResourceAsyncOverride(input, completion)
         }
@@ -1288,7 +1288,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listTaskDefinitionFamiliesAsync(
             input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, ElasticContainerError>) -> ()) throws {
         if let listTaskDefinitionFamiliesAsyncOverride = listTaskDefinitionFamiliesAsyncOverride {
             return try listTaskDefinitionFamiliesAsyncOverride(input, completion)
         }
@@ -1326,7 +1326,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listTaskDefinitionsAsync(
             input: ElasticContainerModel.ListTaskDefinitionsRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionsResponse, ElasticContainerError>) -> ()) throws {
         if let listTaskDefinitionsAsyncOverride = listTaskDefinitionsAsyncOverride {
             return try listTaskDefinitionsAsyncOverride(input, completion)
         }
@@ -1364,7 +1364,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listTasksAsync(
             input: ElasticContainerModel.ListTasksRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListTasksResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListTasksResponse, ElasticContainerError>) -> ()) throws {
         if let listTasksAsyncOverride = listTasksAsyncOverride {
             return try listTasksAsyncOverride(input, completion)
         }
@@ -1402,7 +1402,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func putAccountSettingAsync(
             input: ElasticContainerModel.PutAccountSettingRequest, 
-            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingResponse, ElasticContainerError>) -> ()) throws {
         if let putAccountSettingAsyncOverride = putAccountSettingAsyncOverride {
             return try putAccountSettingAsyncOverride(input, completion)
         }
@@ -1440,7 +1440,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func putAccountSettingDefaultAsync(
             input: ElasticContainerModel.PutAccountSettingDefaultRequest, 
-            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingDefaultResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingDefaultResponse, ElasticContainerError>) -> ()) throws {
         if let putAccountSettingDefaultAsyncOverride = putAccountSettingDefaultAsyncOverride {
             return try putAccountSettingDefaultAsyncOverride(input, completion)
         }
@@ -1478,7 +1478,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func putAttributesAsync(
             input: ElasticContainerModel.PutAttributesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.PutAttributesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.PutAttributesResponse, ElasticContainerError>) -> ()) throws {
         if let putAttributesAsyncOverride = putAttributesAsyncOverride {
             return try putAttributesAsyncOverride(input, completion)
         }
@@ -1516,7 +1516,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func putClusterCapacityProvidersAsync(
             input: ElasticContainerModel.PutClusterCapacityProvidersRequest, 
-            completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, ElasticContainerError>) -> ()) throws {
         if let putClusterCapacityProvidersAsyncOverride = putClusterCapacityProvidersAsyncOverride {
             return try putClusterCapacityProvidersAsyncOverride(input, completion)
         }
@@ -1554,7 +1554,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func registerContainerInstanceAsync(
             input: ElasticContainerModel.RegisterContainerInstanceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.RegisterContainerInstanceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.RegisterContainerInstanceResponse, ElasticContainerError>) -> ()) throws {
         if let registerContainerInstanceAsyncOverride = registerContainerInstanceAsyncOverride {
             return try registerContainerInstanceAsyncOverride(input, completion)
         }
@@ -1592,7 +1592,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func registerTaskDefinitionAsync(
             input: ElasticContainerModel.RegisterTaskDefinitionRequest, 
-            completion: @escaping (Result<ElasticContainerModel.RegisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.RegisterTaskDefinitionResponse, ElasticContainerError>) -> ()) throws {
         if let registerTaskDefinitionAsyncOverride = registerTaskDefinitionAsyncOverride {
             return try registerTaskDefinitionAsyncOverride(input, completion)
         }
@@ -1630,7 +1630,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func runTaskAsync(
             input: ElasticContainerModel.RunTaskRequest, 
-            completion: @escaping (Result<ElasticContainerModel.RunTaskResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.RunTaskResponse, ElasticContainerError>) -> ()) throws {
         if let runTaskAsyncOverride = runTaskAsyncOverride {
             return try runTaskAsyncOverride(input, completion)
         }
@@ -1668,7 +1668,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func startTaskAsync(
             input: ElasticContainerModel.StartTaskRequest, 
-            completion: @escaping (Result<ElasticContainerModel.StartTaskResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.StartTaskResponse, ElasticContainerError>) -> ()) throws {
         if let startTaskAsyncOverride = startTaskAsyncOverride {
             return try startTaskAsyncOverride(input, completion)
         }
@@ -1706,7 +1706,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func stopTaskAsync(
             input: ElasticContainerModel.StopTaskRequest, 
-            completion: @escaping (Result<ElasticContainerModel.StopTaskResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.StopTaskResponse, ElasticContainerError>) -> ()) throws {
         if let stopTaskAsyncOverride = stopTaskAsyncOverride {
             return try stopTaskAsyncOverride(input, completion)
         }
@@ -1744,7 +1744,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func submitAttachmentStateChangesAsync(
             input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, ElasticContainerError>) -> ()) throws {
         if let submitAttachmentStateChangesAsyncOverride = submitAttachmentStateChangesAsyncOverride {
             return try submitAttachmentStateChangesAsyncOverride(input, completion)
         }
@@ -1782,7 +1782,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func submitContainerStateChangeAsync(
             input: ElasticContainerModel.SubmitContainerStateChangeRequest, 
-            completion: @escaping (Result<ElasticContainerModel.SubmitContainerStateChangeResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.SubmitContainerStateChangeResponse, ElasticContainerError>) -> ()) throws {
         if let submitContainerStateChangeAsyncOverride = submitContainerStateChangeAsyncOverride {
             return try submitContainerStateChangeAsyncOverride(input, completion)
         }
@@ -1820,7 +1820,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func submitTaskStateChangeAsync(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest, 
-            completion: @escaping (Result<ElasticContainerModel.SubmitTaskStateChangeResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.SubmitTaskStateChangeResponse, ElasticContainerError>) -> ()) throws {
         if let submitTaskStateChangeAsyncOverride = submitTaskStateChangeAsyncOverride {
             return try submitTaskStateChangeAsyncOverride(input, completion)
         }
@@ -1858,7 +1858,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func tagResourceAsync(
             input: ElasticContainerModel.TagResourceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.TagResourceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.TagResourceResponse, ElasticContainerError>) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
             return try tagResourceAsyncOverride(input, completion)
         }
@@ -1896,7 +1896,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func untagResourceAsync(
             input: ElasticContainerModel.UntagResourceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, ElasticContainerError>) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
             return try untagResourceAsyncOverride(input, completion)
         }
@@ -1934,7 +1934,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func updateClusterSettingsAsync(
             input: ElasticContainerModel.UpdateClusterSettingsRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, ElasticContainerError>) -> ()) throws {
         if let updateClusterSettingsAsyncOverride = updateClusterSettingsAsyncOverride {
             return try updateClusterSettingsAsyncOverride(input, completion)
         }
@@ -1972,7 +1972,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func updateContainerAgentAsync(
             input: ElasticContainerModel.UpdateContainerAgentRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UpdateContainerAgentResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UpdateContainerAgentResponse, ElasticContainerError>) -> ()) throws {
         if let updateContainerAgentAsyncOverride = updateContainerAgentAsyncOverride {
             return try updateContainerAgentAsyncOverride(input, completion)
         }
@@ -2010,7 +2010,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func updateContainerInstancesStateAsync(
             input: ElasticContainerModel.UpdateContainerInstancesStateRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, ElasticContainerError>) -> ()) throws {
         if let updateContainerInstancesStateAsyncOverride = updateContainerInstancesStateAsyncOverride {
             return try updateContainerInstancesStateAsyncOverride(input, completion)
         }
@@ -2048,7 +2048,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func updateServiceAsync(
             input: ElasticContainerModel.UpdateServiceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UpdateServiceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UpdateServiceResponse, ElasticContainerError>) -> ()) throws {
         if let updateServiceAsyncOverride = updateServiceAsyncOverride {
             return try updateServiceAsyncOverride(input, completion)
         }
@@ -2086,7 +2086,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func updateServicePrimaryTaskSetAsync(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, ElasticContainerError>) -> ()) throws {
         if let updateServicePrimaryTaskSetAsyncOverride = updateServicePrimaryTaskSetAsyncOverride {
             return try updateServicePrimaryTaskSetAsyncOverride(input, completion)
         }
@@ -2124,7 +2124,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func updateTaskSetAsync(
             input: ElasticContainerModel.UpdateTaskSetRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UpdateTaskSetResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UpdateTaskSetResponse, ElasticContainerError>) -> ()) throws {
         if let updateTaskSetAsyncOverride = updateTaskSetAsyncOverride {
             return try updateTaskSetAsyncOverride(input, completion)
         }

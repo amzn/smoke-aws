@@ -32,112 +32,112 @@ public protocol StepFunctionsClientProtocol {
             _ input: StepFunctionsModel.CreateActivityInput) throws -> StepFunctionsModel.CreateActivityOutput
     typealias CreateActivityAsyncType = (
             _ input: StepFunctionsModel.CreateActivityInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias CreateStateMachineSyncType = (
             _ input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput
     typealias CreateStateMachineAsyncType = (
             _ input: StepFunctionsModel.CreateStateMachineInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias DeleteActivitySyncType = (
             _ input: StepFunctionsModel.DeleteActivityInput) throws -> StepFunctionsModel.DeleteActivityOutput
     typealias DeleteActivityAsyncType = (
             _ input: StepFunctionsModel.DeleteActivityInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias DeleteStateMachineSyncType = (
             _ input: StepFunctionsModel.DeleteStateMachineInput) throws -> StepFunctionsModel.DeleteStateMachineOutput
     typealias DeleteStateMachineAsyncType = (
             _ input: StepFunctionsModel.DeleteStateMachineInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias DescribeActivitySyncType = (
             _ input: StepFunctionsModel.DescribeActivityInput) throws -> StepFunctionsModel.DescribeActivityOutput
     typealias DescribeActivityAsyncType = (
             _ input: StepFunctionsModel.DescribeActivityInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias DescribeExecutionSyncType = (
             _ input: StepFunctionsModel.DescribeExecutionInput) throws -> StepFunctionsModel.DescribeExecutionOutput
     typealias DescribeExecutionAsyncType = (
             _ input: StepFunctionsModel.DescribeExecutionInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias DescribeStateMachineSyncType = (
             _ input: StepFunctionsModel.DescribeStateMachineInput) throws -> StepFunctionsModel.DescribeStateMachineOutput
     typealias DescribeStateMachineAsyncType = (
             _ input: StepFunctionsModel.DescribeStateMachineInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias DescribeStateMachineForExecutionSyncType = (
             _ input: StepFunctionsModel.DescribeStateMachineForExecutionInput) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput
     typealias DescribeStateMachineForExecutionAsyncType = (
             _ input: StepFunctionsModel.DescribeStateMachineForExecutionInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias GetActivityTaskSyncType = (
             _ input: StepFunctionsModel.GetActivityTaskInput) throws -> StepFunctionsModel.GetActivityTaskOutput
     typealias GetActivityTaskAsyncType = (
             _ input: StepFunctionsModel.GetActivityTaskInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias GetExecutionHistorySyncType = (
             _ input: StepFunctionsModel.GetExecutionHistoryInput) throws -> StepFunctionsModel.GetExecutionHistoryOutput
     typealias GetExecutionHistoryAsyncType = (
             _ input: StepFunctionsModel.GetExecutionHistoryInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias ListActivitiesSyncType = (
             _ input: StepFunctionsModel.ListActivitiesInput) throws -> StepFunctionsModel.ListActivitiesOutput
     typealias ListActivitiesAsyncType = (
             _ input: StepFunctionsModel.ListActivitiesInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias ListExecutionsSyncType = (
             _ input: StepFunctionsModel.ListExecutionsInput) throws -> StepFunctionsModel.ListExecutionsOutput
     typealias ListExecutionsAsyncType = (
             _ input: StepFunctionsModel.ListExecutionsInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias ListStateMachinesSyncType = (
             _ input: StepFunctionsModel.ListStateMachinesInput) throws -> StepFunctionsModel.ListStateMachinesOutput
     typealias ListStateMachinesAsyncType = (
             _ input: StepFunctionsModel.ListStateMachinesInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias ListTagsForResourceSyncType = (
             _ input: StepFunctionsModel.ListTagsForResourceInput) throws -> StepFunctionsModel.ListTagsForResourceOutput
     typealias ListTagsForResourceAsyncType = (
             _ input: StepFunctionsModel.ListTagsForResourceInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias SendTaskFailureSyncType = (
             _ input: StepFunctionsModel.SendTaskFailureInput) throws -> StepFunctionsModel.SendTaskFailureOutput
     typealias SendTaskFailureAsyncType = (
             _ input: StepFunctionsModel.SendTaskFailureInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias SendTaskHeartbeatSyncType = (
             _ input: StepFunctionsModel.SendTaskHeartbeatInput) throws -> StepFunctionsModel.SendTaskHeartbeatOutput
     typealias SendTaskHeartbeatAsyncType = (
             _ input: StepFunctionsModel.SendTaskHeartbeatInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias SendTaskSuccessSyncType = (
             _ input: StepFunctionsModel.SendTaskSuccessInput) throws -> StepFunctionsModel.SendTaskSuccessOutput
     typealias SendTaskSuccessAsyncType = (
             _ input: StepFunctionsModel.SendTaskSuccessInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias StartExecutionSyncType = (
             _ input: StepFunctionsModel.StartExecutionInput) throws -> StepFunctionsModel.StartExecutionOutput
     typealias StartExecutionAsyncType = (
             _ input: StepFunctionsModel.StartExecutionInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias StopExecutionSyncType = (
             _ input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput
     typealias StopExecutionAsyncType = (
             _ input: StepFunctionsModel.StopExecutionInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias TagResourceSyncType = (
             _ input: StepFunctionsModel.TagResourceInput) throws -> StepFunctionsModel.TagResourceOutput
     typealias TagResourceAsyncType = (
             _ input: StepFunctionsModel.TagResourceInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias UntagResourceSyncType = (
             _ input: StepFunctionsModel.UntagResourceInput) throws -> StepFunctionsModel.UntagResourceOutput
     typealias UntagResourceAsyncType = (
             _ input: StepFunctionsModel.UntagResourceInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias UpdateStateMachineSyncType = (
             _ input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput
     typealias UpdateStateMachineAsyncType = (
             _ input: StepFunctionsModel.UpdateStateMachineInput, 
-            _ completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, StepFunctionsError>) -> ()) throws -> ()
 
     /**
      Invokes the CreateActivity operation returning immediately and passing the response to a callback.
@@ -151,7 +151,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func createActivityAsync(
             input: StepFunctionsModel.CreateActivityInput, 
-            completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the CreateActivity operation waiting for the response before returning.
@@ -177,7 +177,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func createStateMachineAsync(
             input: StepFunctionsModel.CreateStateMachineInput, 
-            completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the CreateStateMachine operation waiting for the response before returning.
@@ -203,7 +203,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func deleteActivityAsync(
             input: StepFunctionsModel.DeleteActivityInput, 
-            completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the DeleteActivity operation waiting for the response before returning.
@@ -229,7 +229,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func deleteStateMachineAsync(
             input: StepFunctionsModel.DeleteStateMachineInput, 
-            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the DeleteStateMachine operation waiting for the response before returning.
@@ -255,7 +255,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func describeActivityAsync(
             input: StepFunctionsModel.DescribeActivityInput, 
-            completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the DescribeActivity operation waiting for the response before returning.
@@ -281,7 +281,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func describeExecutionAsync(
             input: StepFunctionsModel.DescribeExecutionInput, 
-            completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the DescribeExecution operation waiting for the response before returning.
@@ -307,7 +307,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func describeStateMachineAsync(
             input: StepFunctionsModel.DescribeStateMachineInput, 
-            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the DescribeStateMachine operation waiting for the response before returning.
@@ -333,7 +333,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func describeStateMachineForExecutionAsync(
             input: StepFunctionsModel.DescribeStateMachineForExecutionInput, 
-            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the DescribeStateMachineForExecution operation waiting for the response before returning.
@@ -359,7 +359,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func getActivityTaskAsync(
             input: StepFunctionsModel.GetActivityTaskInput, 
-            completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the GetActivityTask operation waiting for the response before returning.
@@ -385,7 +385,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func getExecutionHistoryAsync(
             input: StepFunctionsModel.GetExecutionHistoryInput, 
-            completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the GetExecutionHistory operation waiting for the response before returning.
@@ -411,7 +411,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func listActivitiesAsync(
             input: StepFunctionsModel.ListActivitiesInput, 
-            completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the ListActivities operation waiting for the response before returning.
@@ -437,7 +437,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func listExecutionsAsync(
             input: StepFunctionsModel.ListExecutionsInput, 
-            completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the ListExecutions operation waiting for the response before returning.
@@ -463,7 +463,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func listStateMachinesAsync(
             input: StepFunctionsModel.ListStateMachinesInput, 
-            completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the ListStateMachines operation waiting for the response before returning.
@@ -489,7 +489,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func listTagsForResourceAsync(
             input: StepFunctionsModel.ListTagsForResourceInput, 
-            completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the ListTagsForResource operation waiting for the response before returning.
@@ -515,7 +515,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func sendTaskFailureAsync(
             input: StepFunctionsModel.SendTaskFailureInput, 
-            completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the SendTaskFailure operation waiting for the response before returning.
@@ -541,7 +541,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func sendTaskHeartbeatAsync(
             input: StepFunctionsModel.SendTaskHeartbeatInput, 
-            completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the SendTaskHeartbeat operation waiting for the response before returning.
@@ -567,7 +567,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func sendTaskSuccessAsync(
             input: StepFunctionsModel.SendTaskSuccessInput, 
-            completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the SendTaskSuccess operation waiting for the response before returning.
@@ -593,7 +593,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func startExecutionAsync(
             input: StepFunctionsModel.StartExecutionInput, 
-            completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the StartExecution operation waiting for the response before returning.
@@ -619,7 +619,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func stopExecutionAsync(
             input: StepFunctionsModel.StopExecutionInput, 
-            completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the StopExecution operation waiting for the response before returning.
@@ -645,7 +645,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func tagResourceAsync(
             input: StepFunctionsModel.TagResourceInput, 
-            completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the TagResource operation waiting for the response before returning.
@@ -671,7 +671,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func untagResourceAsync(
             input: StepFunctionsModel.UntagResourceInput, 
-            completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the UntagResource operation waiting for the response before returning.
@@ -697,7 +697,7 @@ public protocol StepFunctionsClientProtocol {
      */
     func updateStateMachineAsync(
             input: StepFunctionsModel.UpdateStateMachineInput, 
-            completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, StepFunctionsError>) -> ()) throws
 
     /**
      Invokes the UpdateStateMachine operation waiting for the response before returning.

@@ -28,7 +28,7 @@ import SmokeHTTPClient
  Mock Client for the S3 service that by default always throws from its methods.
  */
 public struct ThrowingS3Client: S3ClientProtocol {
-    let error: HTTPClientError
+    let error: S3Error
     let abortMultipartUploadAsyncOverride: AbortMultipartUploadAsyncType?
     let abortMultipartUploadSyncOverride: AbortMultipartUploadSyncType?
     let completeMultipartUploadAsyncOverride: CompleteMultipartUploadAsyncType?
@@ -210,7 +210,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: HTTPClientError,
+    public init(error: S3Error,
             abortMultipartUploadAsync: AbortMultipartUploadAsyncType? = nil,
             abortMultipartUploadSync: AbortMultipartUploadSyncType? = nil,
             completeMultipartUploadAsync: CompleteMultipartUploadAsyncType? = nil,
@@ -578,7 +578,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func abortMultipartUploadAsync(
             input: S3Model.AbortMultipartUploadRequest, 
-            completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, S3Error>) -> ()) throws {
         if let abortMultipartUploadAsyncOverride = abortMultipartUploadAsyncOverride {
             return try abortMultipartUploadAsyncOverride(input, completion)
         }
@@ -615,7 +615,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func completeMultipartUploadAsync(
             input: S3Model.CompleteMultipartUploadRequest, 
-            completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, S3Error>) -> ()) throws {
         if let completeMultipartUploadAsyncOverride = completeMultipartUploadAsyncOverride {
             return try completeMultipartUploadAsyncOverride(input, completion)
         }
@@ -652,7 +652,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func copyObjectAsync(
             input: S3Model.CopyObjectRequest, 
-            completion: @escaping (Result<S3Model.CopyObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.CopyObjectOutput, S3Error>) -> ()) throws {
         if let copyObjectAsyncOverride = copyObjectAsyncOverride {
             return try copyObjectAsyncOverride(input, completion)
         }
@@ -690,7 +690,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func createBucketAsync(
             input: S3Model.CreateBucketRequest, 
-            completion: @escaping (Result<S3Model.CreateBucketOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.CreateBucketOutput, S3Error>) -> ()) throws {
         if let createBucketAsyncOverride = createBucketAsyncOverride {
             return try createBucketAsyncOverride(input, completion)
         }
@@ -727,7 +727,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func createMultipartUploadAsync(
             input: S3Model.CreateMultipartUploadRequest, 
-            completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, S3Error>) -> ()) throws {
         if let createMultipartUploadAsyncOverride = createMultipartUploadAsyncOverride {
             return try createMultipartUploadAsyncOverride(input, completion)
         }
@@ -762,7 +762,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteBucketAsync(
             input: S3Model.DeleteBucketRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketAsyncOverride = deleteBucketAsyncOverride {
             return try deleteBucketAsyncOverride(input, completion)
         }
@@ -795,7 +795,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteBucketAnalyticsConfigurationAsync(
             input: S3Model.DeleteBucketAnalyticsConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketAnalyticsConfigurationAsyncOverride = deleteBucketAnalyticsConfigurationAsyncOverride {
             return try deleteBucketAnalyticsConfigurationAsyncOverride(input, completion)
         }
@@ -828,7 +828,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteBucketCorsAsync(
             input: S3Model.DeleteBucketCorsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketCorsAsyncOverride = deleteBucketCorsAsyncOverride {
             return try deleteBucketCorsAsyncOverride(input, completion)
         }
@@ -861,7 +861,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteBucketEncryptionAsync(
             input: S3Model.DeleteBucketEncryptionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketEncryptionAsyncOverride = deleteBucketEncryptionAsyncOverride {
             return try deleteBucketEncryptionAsyncOverride(input, completion)
         }
@@ -894,7 +894,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteBucketInventoryConfigurationAsync(
             input: S3Model.DeleteBucketInventoryConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketInventoryConfigurationAsyncOverride = deleteBucketInventoryConfigurationAsyncOverride {
             return try deleteBucketInventoryConfigurationAsyncOverride(input, completion)
         }
@@ -927,7 +927,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteBucketLifecycleAsync(
             input: S3Model.DeleteBucketLifecycleRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketLifecycleAsyncOverride = deleteBucketLifecycleAsyncOverride {
             return try deleteBucketLifecycleAsyncOverride(input, completion)
         }
@@ -960,7 +960,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteBucketMetricsConfigurationAsync(
             input: S3Model.DeleteBucketMetricsConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketMetricsConfigurationAsyncOverride = deleteBucketMetricsConfigurationAsyncOverride {
             return try deleteBucketMetricsConfigurationAsyncOverride(input, completion)
         }
@@ -993,7 +993,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteBucketPolicyAsync(
             input: S3Model.DeleteBucketPolicyRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketPolicyAsyncOverride = deleteBucketPolicyAsyncOverride {
             return try deleteBucketPolicyAsyncOverride(input, completion)
         }
@@ -1026,7 +1026,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteBucketReplicationAsync(
             input: S3Model.DeleteBucketReplicationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketReplicationAsyncOverride = deleteBucketReplicationAsyncOverride {
             return try deleteBucketReplicationAsyncOverride(input, completion)
         }
@@ -1059,7 +1059,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteBucketTaggingAsync(
             input: S3Model.DeleteBucketTaggingRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketTaggingAsyncOverride = deleteBucketTaggingAsyncOverride {
             return try deleteBucketTaggingAsyncOverride(input, completion)
         }
@@ -1092,7 +1092,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteBucketWebsiteAsync(
             input: S3Model.DeleteBucketWebsiteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketWebsiteAsyncOverride = deleteBucketWebsiteAsyncOverride {
             return try deleteBucketWebsiteAsyncOverride(input, completion)
         }
@@ -1126,7 +1126,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteObjectAsync(
             input: S3Model.DeleteObjectRequest, 
-            completion: @escaping (Result<S3Model.DeleteObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.DeleteObjectOutput, S3Error>) -> ()) throws {
         if let deleteObjectAsyncOverride = deleteObjectAsyncOverride {
             return try deleteObjectAsyncOverride(input, completion)
         }
@@ -1162,7 +1162,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteObjectTaggingAsync(
             input: S3Model.DeleteObjectTaggingRequest, 
-            completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, S3Error>) -> ()) throws {
         if let deleteObjectTaggingAsyncOverride = deleteObjectTaggingAsyncOverride {
             return try deleteObjectTaggingAsyncOverride(input, completion)
         }
@@ -1198,7 +1198,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deleteObjectsAsync(
             input: S3Model.DeleteObjectsRequest, 
-            completion: @escaping (Result<S3Model.DeleteObjectsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.DeleteObjectsOutput, S3Error>) -> ()) throws {
         if let deleteObjectsAsyncOverride = deleteObjectsAsyncOverride {
             return try deleteObjectsAsyncOverride(input, completion)
         }
@@ -1233,7 +1233,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func deletePublicAccessBlockAsync(
             input: S3Model.DeletePublicAccessBlockRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deletePublicAccessBlockAsyncOverride = deletePublicAccessBlockAsyncOverride {
             return try deletePublicAccessBlockAsyncOverride(input, completion)
         }
@@ -1267,7 +1267,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketAccelerateConfigurationAsync(
             input: S3Model.GetBucketAccelerateConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, S3Error>) -> ()) throws {
         if let getBucketAccelerateConfigurationAsyncOverride = getBucketAccelerateConfigurationAsyncOverride {
             return try getBucketAccelerateConfigurationAsyncOverride(input, completion)
         }
@@ -1303,7 +1303,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketAclAsync(
             input: S3Model.GetBucketAclRequest, 
-            completion: @escaping (Result<S3Model.GetBucketAclOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketAclOutput, S3Error>) -> ()) throws {
         if let getBucketAclAsyncOverride = getBucketAclAsyncOverride {
             return try getBucketAclAsyncOverride(input, completion)
         }
@@ -1339,7 +1339,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketAnalyticsConfigurationAsync(
             input: S3Model.GetBucketAnalyticsConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, S3Error>) -> ()) throws {
         if let getBucketAnalyticsConfigurationAsyncOverride = getBucketAnalyticsConfigurationAsyncOverride {
             return try getBucketAnalyticsConfigurationAsyncOverride(input, completion)
         }
@@ -1375,7 +1375,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketCorsAsync(
             input: S3Model.GetBucketCorsRequest, 
-            completion: @escaping (Result<S3Model.GetBucketCorsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketCorsOutput, S3Error>) -> ()) throws {
         if let getBucketCorsAsyncOverride = getBucketCorsAsyncOverride {
             return try getBucketCorsAsyncOverride(input, completion)
         }
@@ -1411,7 +1411,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketEncryptionAsync(
             input: S3Model.GetBucketEncryptionRequest, 
-            completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, S3Error>) -> ()) throws {
         if let getBucketEncryptionAsyncOverride = getBucketEncryptionAsyncOverride {
             return try getBucketEncryptionAsyncOverride(input, completion)
         }
@@ -1447,7 +1447,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketInventoryConfigurationAsync(
             input: S3Model.GetBucketInventoryConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, S3Error>) -> ()) throws {
         if let getBucketInventoryConfigurationAsyncOverride = getBucketInventoryConfigurationAsyncOverride {
             return try getBucketInventoryConfigurationAsyncOverride(input, completion)
         }
@@ -1483,7 +1483,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketLifecycleAsync(
             input: S3Model.GetBucketLifecycleRequest, 
-            completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, S3Error>) -> ()) throws {
         if let getBucketLifecycleAsyncOverride = getBucketLifecycleAsyncOverride {
             return try getBucketLifecycleAsyncOverride(input, completion)
         }
@@ -1519,7 +1519,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketLifecycleConfigurationAsync(
             input: S3Model.GetBucketLifecycleConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, S3Error>) -> ()) throws {
         if let getBucketLifecycleConfigurationAsyncOverride = getBucketLifecycleConfigurationAsyncOverride {
             return try getBucketLifecycleConfigurationAsyncOverride(input, completion)
         }
@@ -1555,7 +1555,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketLocationAsync(
             input: S3Model.GetBucketLocationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketLocationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketLocationOutput, S3Error>) -> ()) throws {
         if let getBucketLocationAsyncOverride = getBucketLocationAsyncOverride {
             return try getBucketLocationAsyncOverride(input, completion)
         }
@@ -1591,7 +1591,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketLoggingAsync(
             input: S3Model.GetBucketLoggingRequest, 
-            completion: @escaping (Result<S3Model.GetBucketLoggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketLoggingOutput, S3Error>) -> ()) throws {
         if let getBucketLoggingAsyncOverride = getBucketLoggingAsyncOverride {
             return try getBucketLoggingAsyncOverride(input, completion)
         }
@@ -1627,7 +1627,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketMetricsConfigurationAsync(
             input: S3Model.GetBucketMetricsConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, S3Error>) -> ()) throws {
         if let getBucketMetricsConfigurationAsyncOverride = getBucketMetricsConfigurationAsyncOverride {
             return try getBucketMetricsConfigurationAsyncOverride(input, completion)
         }
@@ -1663,7 +1663,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketNotificationAsync(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
-            completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, S3Error>) -> ()) throws {
         if let getBucketNotificationAsyncOverride = getBucketNotificationAsyncOverride {
             return try getBucketNotificationAsyncOverride(input, completion)
         }
@@ -1699,7 +1699,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketNotificationConfigurationAsync(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
-            completion: @escaping (Result<S3Model.NotificationConfiguration, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.NotificationConfiguration, S3Error>) -> ()) throws {
         if let getBucketNotificationConfigurationAsyncOverride = getBucketNotificationConfigurationAsyncOverride {
             return try getBucketNotificationConfigurationAsyncOverride(input, completion)
         }
@@ -1735,7 +1735,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketPolicyAsync(
             input: S3Model.GetBucketPolicyRequest, 
-            completion: @escaping (Result<S3Model.GetBucketPolicyOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketPolicyOutput, S3Error>) -> ()) throws {
         if let getBucketPolicyAsyncOverride = getBucketPolicyAsyncOverride {
             return try getBucketPolicyAsyncOverride(input, completion)
         }
@@ -1771,7 +1771,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketPolicyStatusAsync(
             input: S3Model.GetBucketPolicyStatusRequest, 
-            completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, S3Error>) -> ()) throws {
         if let getBucketPolicyStatusAsyncOverride = getBucketPolicyStatusAsyncOverride {
             return try getBucketPolicyStatusAsyncOverride(input, completion)
         }
@@ -1807,7 +1807,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketReplicationAsync(
             input: S3Model.GetBucketReplicationRequest, 
-            completion: @escaping (Result<S3Model.GetBucketReplicationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketReplicationOutput, S3Error>) -> ()) throws {
         if let getBucketReplicationAsyncOverride = getBucketReplicationAsyncOverride {
             return try getBucketReplicationAsyncOverride(input, completion)
         }
@@ -1843,7 +1843,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketRequestPaymentAsync(
             input: S3Model.GetBucketRequestPaymentRequest, 
-            completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, S3Error>) -> ()) throws {
         if let getBucketRequestPaymentAsyncOverride = getBucketRequestPaymentAsyncOverride {
             return try getBucketRequestPaymentAsyncOverride(input, completion)
         }
@@ -1879,7 +1879,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketTaggingAsync(
             input: S3Model.GetBucketTaggingRequest, 
-            completion: @escaping (Result<S3Model.GetBucketTaggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketTaggingOutput, S3Error>) -> ()) throws {
         if let getBucketTaggingAsyncOverride = getBucketTaggingAsyncOverride {
             return try getBucketTaggingAsyncOverride(input, completion)
         }
@@ -1915,7 +1915,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketVersioningAsync(
             input: S3Model.GetBucketVersioningRequest, 
-            completion: @escaping (Result<S3Model.GetBucketVersioningOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketVersioningOutput, S3Error>) -> ()) throws {
         if let getBucketVersioningAsyncOverride = getBucketVersioningAsyncOverride {
             return try getBucketVersioningAsyncOverride(input, completion)
         }
@@ -1951,7 +1951,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getBucketWebsiteAsync(
             input: S3Model.GetBucketWebsiteRequest, 
-            completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, S3Error>) -> ()) throws {
         if let getBucketWebsiteAsyncOverride = getBucketWebsiteAsyncOverride {
             return try getBucketWebsiteAsyncOverride(input, completion)
         }
@@ -1988,7 +1988,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getObjectAsync(
             input: S3Model.GetObjectRequest, 
-            completion: @escaping (Result<S3Model.GetObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectOutput, S3Error>) -> ()) throws {
         if let getObjectAsyncOverride = getObjectAsyncOverride {
             return try getObjectAsyncOverride(input, completion)
         }
@@ -2026,7 +2026,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getObjectAclAsync(
             input: S3Model.GetObjectAclRequest, 
-            completion: @escaping (Result<S3Model.GetObjectAclOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectAclOutput, S3Error>) -> ()) throws {
         if let getObjectAclAsyncOverride = getObjectAclAsyncOverride {
             return try getObjectAclAsyncOverride(input, completion)
         }
@@ -2063,7 +2063,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getObjectLegalHoldAsync(
             input: S3Model.GetObjectLegalHoldRequest, 
-            completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, S3Error>) -> ()) throws {
         if let getObjectLegalHoldAsyncOverride = getObjectLegalHoldAsyncOverride {
             return try getObjectLegalHoldAsyncOverride(input, completion)
         }
@@ -2099,7 +2099,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getObjectLockConfigurationAsync(
             input: S3Model.GetObjectLockConfigurationRequest, 
-            completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, S3Error>) -> ()) throws {
         if let getObjectLockConfigurationAsyncOverride = getObjectLockConfigurationAsyncOverride {
             return try getObjectLockConfigurationAsyncOverride(input, completion)
         }
@@ -2135,7 +2135,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getObjectRetentionAsync(
             input: S3Model.GetObjectRetentionRequest, 
-            completion: @escaping (Result<S3Model.GetObjectRetentionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectRetentionOutput, S3Error>) -> ()) throws {
         if let getObjectRetentionAsyncOverride = getObjectRetentionAsyncOverride {
             return try getObjectRetentionAsyncOverride(input, completion)
         }
@@ -2171,7 +2171,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getObjectTaggingAsync(
             input: S3Model.GetObjectTaggingRequest, 
-            completion: @escaping (Result<S3Model.GetObjectTaggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectTaggingOutput, S3Error>) -> ()) throws {
         if let getObjectTaggingAsyncOverride = getObjectTaggingAsyncOverride {
             return try getObjectTaggingAsyncOverride(input, completion)
         }
@@ -2207,7 +2207,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getObjectTorrentAsync(
             input: S3Model.GetObjectTorrentRequest, 
-            completion: @escaping (Result<S3Model.GetObjectTorrentOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectTorrentOutput, S3Error>) -> ()) throws {
         if let getObjectTorrentAsyncOverride = getObjectTorrentAsyncOverride {
             return try getObjectTorrentAsyncOverride(input, completion)
         }
@@ -2243,7 +2243,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func getPublicAccessBlockAsync(
             input: S3Model.GetPublicAccessBlockRequest, 
-            completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, S3Error>) -> ()) throws {
         if let getPublicAccessBlockAsyncOverride = getPublicAccessBlockAsyncOverride {
             return try getPublicAccessBlockAsyncOverride(input, completion)
         }
@@ -2279,7 +2279,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func headBucketAsync(
             input: S3Model.HeadBucketRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let headBucketAsyncOverride = headBucketAsyncOverride {
             return try headBucketAsyncOverride(input, completion)
         }
@@ -2315,7 +2315,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func headObjectAsync(
             input: S3Model.HeadObjectRequest, 
-            completion: @escaping (Result<S3Model.HeadObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.HeadObjectOutput, S3Error>) -> ()) throws {
         if let headObjectAsyncOverride = headObjectAsyncOverride {
             return try headObjectAsyncOverride(input, completion)
         }
@@ -2352,7 +2352,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func listBucketAnalyticsConfigurationsAsync(
             input: S3Model.ListBucketAnalyticsConfigurationsRequest, 
-            completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, S3Error>) -> ()) throws {
         if let listBucketAnalyticsConfigurationsAsyncOverride = listBucketAnalyticsConfigurationsAsyncOverride {
             return try listBucketAnalyticsConfigurationsAsyncOverride(input, completion)
         }
@@ -2388,7 +2388,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func listBucketInventoryConfigurationsAsync(
             input: S3Model.ListBucketInventoryConfigurationsRequest, 
-            completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, S3Error>) -> ()) throws {
         if let listBucketInventoryConfigurationsAsyncOverride = listBucketInventoryConfigurationsAsyncOverride {
             return try listBucketInventoryConfigurationsAsyncOverride(input, completion)
         }
@@ -2424,7 +2424,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func listBucketMetricsConfigurationsAsync(
             input: S3Model.ListBucketMetricsConfigurationsRequest, 
-            completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, S3Error>) -> ()) throws {
         if let listBucketMetricsConfigurationsAsyncOverride = listBucketMetricsConfigurationsAsyncOverride {
             return try listBucketMetricsConfigurationsAsyncOverride(input, completion)
         }
@@ -2456,7 +2456,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
      */
     public func listBucketsAsync(
-            completion: @escaping (Result<S3Model.ListBucketsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListBucketsOutput, S3Error>) -> ()) throws {
         if let listBucketsAsyncOverride = listBucketsAsyncOverride {
             return try listBucketsAsyncOverride(completion)
         }
@@ -2488,7 +2488,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func listMultipartUploadsAsync(
             input: S3Model.ListMultipartUploadsRequest, 
-            completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, S3Error>) -> ()) throws {
         if let listMultipartUploadsAsyncOverride = listMultipartUploadsAsyncOverride {
             return try listMultipartUploadsAsyncOverride(input, completion)
         }
@@ -2524,7 +2524,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func listObjectVersionsAsync(
             input: S3Model.ListObjectVersionsRequest, 
-            completion: @escaping (Result<S3Model.ListObjectVersionsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListObjectVersionsOutput, S3Error>) -> ()) throws {
         if let listObjectVersionsAsyncOverride = listObjectVersionsAsyncOverride {
             return try listObjectVersionsAsyncOverride(input, completion)
         }
@@ -2561,7 +2561,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func listObjectsAsync(
             input: S3Model.ListObjectsRequest, 
-            completion: @escaping (Result<S3Model.ListObjectsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListObjectsOutput, S3Error>) -> ()) throws {
         if let listObjectsAsyncOverride = listObjectsAsyncOverride {
             return try listObjectsAsyncOverride(input, completion)
         }
@@ -2599,7 +2599,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func listObjectsV2Async(
             input: S3Model.ListObjectsV2Request, 
-            completion: @escaping (Result<S3Model.ListObjectsV2Output, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListObjectsV2Output, S3Error>) -> ()) throws {
         if let listObjectsV2AsyncOverride = listObjectsV2AsyncOverride {
             return try listObjectsV2AsyncOverride(input, completion)
         }
@@ -2636,7 +2636,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func listPartsAsync(
             input: S3Model.ListPartsRequest, 
-            completion: @escaping (Result<S3Model.ListPartsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListPartsOutput, S3Error>) -> ()) throws {
         if let listPartsAsyncOverride = listPartsAsyncOverride {
             return try listPartsAsyncOverride(input, completion)
         }
@@ -2671,7 +2671,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketAccelerateConfigurationAsync(
             input: S3Model.PutBucketAccelerateConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketAccelerateConfigurationAsyncOverride = putBucketAccelerateConfigurationAsyncOverride {
             return try putBucketAccelerateConfigurationAsyncOverride(input, completion)
         }
@@ -2704,7 +2704,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketAclAsync(
             input: S3Model.PutBucketAclRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketAclAsyncOverride = putBucketAclAsyncOverride {
             return try putBucketAclAsyncOverride(input, completion)
         }
@@ -2737,7 +2737,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketAnalyticsConfigurationAsync(
             input: S3Model.PutBucketAnalyticsConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketAnalyticsConfigurationAsyncOverride = putBucketAnalyticsConfigurationAsyncOverride {
             return try putBucketAnalyticsConfigurationAsyncOverride(input, completion)
         }
@@ -2770,7 +2770,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketCorsAsync(
             input: S3Model.PutBucketCorsRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketCorsAsyncOverride = putBucketCorsAsyncOverride {
             return try putBucketCorsAsyncOverride(input, completion)
         }
@@ -2803,7 +2803,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketEncryptionAsync(
             input: S3Model.PutBucketEncryptionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketEncryptionAsyncOverride = putBucketEncryptionAsyncOverride {
             return try putBucketEncryptionAsyncOverride(input, completion)
         }
@@ -2836,7 +2836,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketInventoryConfigurationAsync(
             input: S3Model.PutBucketInventoryConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketInventoryConfigurationAsyncOverride = putBucketInventoryConfigurationAsyncOverride {
             return try putBucketInventoryConfigurationAsyncOverride(input, completion)
         }
@@ -2869,7 +2869,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketLifecycleAsync(
             input: S3Model.PutBucketLifecycleRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketLifecycleAsyncOverride = putBucketLifecycleAsyncOverride {
             return try putBucketLifecycleAsyncOverride(input, completion)
         }
@@ -2902,7 +2902,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketLifecycleConfigurationAsync(
             input: S3Model.PutBucketLifecycleConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketLifecycleConfigurationAsyncOverride = putBucketLifecycleConfigurationAsyncOverride {
             return try putBucketLifecycleConfigurationAsyncOverride(input, completion)
         }
@@ -2935,7 +2935,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketLoggingAsync(
             input: S3Model.PutBucketLoggingRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketLoggingAsyncOverride = putBucketLoggingAsyncOverride {
             return try putBucketLoggingAsyncOverride(input, completion)
         }
@@ -2968,7 +2968,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketMetricsConfigurationAsync(
             input: S3Model.PutBucketMetricsConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketMetricsConfigurationAsyncOverride = putBucketMetricsConfigurationAsyncOverride {
             return try putBucketMetricsConfigurationAsyncOverride(input, completion)
         }
@@ -3001,7 +3001,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketNotificationAsync(
             input: S3Model.PutBucketNotificationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketNotificationAsyncOverride = putBucketNotificationAsyncOverride {
             return try putBucketNotificationAsyncOverride(input, completion)
         }
@@ -3034,7 +3034,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketNotificationConfigurationAsync(
             input: S3Model.PutBucketNotificationConfigurationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketNotificationConfigurationAsyncOverride = putBucketNotificationConfigurationAsyncOverride {
             return try putBucketNotificationConfigurationAsyncOverride(input, completion)
         }
@@ -3067,7 +3067,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketPolicyAsync(
             input: S3Model.PutBucketPolicyRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketPolicyAsyncOverride = putBucketPolicyAsyncOverride {
             return try putBucketPolicyAsyncOverride(input, completion)
         }
@@ -3100,7 +3100,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketReplicationAsync(
             input: S3Model.PutBucketReplicationRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketReplicationAsyncOverride = putBucketReplicationAsyncOverride {
             return try putBucketReplicationAsyncOverride(input, completion)
         }
@@ -3133,7 +3133,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketRequestPaymentAsync(
             input: S3Model.PutBucketRequestPaymentRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketRequestPaymentAsyncOverride = putBucketRequestPaymentAsyncOverride {
             return try putBucketRequestPaymentAsyncOverride(input, completion)
         }
@@ -3166,7 +3166,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketTaggingAsync(
             input: S3Model.PutBucketTaggingRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketTaggingAsyncOverride = putBucketTaggingAsyncOverride {
             return try putBucketTaggingAsyncOverride(input, completion)
         }
@@ -3199,7 +3199,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketVersioningAsync(
             input: S3Model.PutBucketVersioningRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketVersioningAsyncOverride = putBucketVersioningAsyncOverride {
             return try putBucketVersioningAsyncOverride(input, completion)
         }
@@ -3232,7 +3232,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putBucketWebsiteAsync(
             input: S3Model.PutBucketWebsiteRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketWebsiteAsyncOverride = putBucketWebsiteAsyncOverride {
             return try putBucketWebsiteAsyncOverride(input, completion)
         }
@@ -3266,7 +3266,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putObjectAsync(
             input: S3Model.PutObjectRequest, 
-            completion: @escaping (Result<S3Model.PutObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectOutput, S3Error>) -> ()) throws {
         if let putObjectAsyncOverride = putObjectAsyncOverride {
             return try putObjectAsyncOverride(input, completion)
         }
@@ -3303,7 +3303,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putObjectAclAsync(
             input: S3Model.PutObjectAclRequest, 
-            completion: @escaping (Result<S3Model.PutObjectAclOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectAclOutput, S3Error>) -> ()) throws {
         if let putObjectAclAsyncOverride = putObjectAclAsyncOverride {
             return try putObjectAclAsyncOverride(input, completion)
         }
@@ -3340,7 +3340,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putObjectLegalHoldAsync(
             input: S3Model.PutObjectLegalHoldRequest, 
-            completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, S3Error>) -> ()) throws {
         if let putObjectLegalHoldAsyncOverride = putObjectLegalHoldAsyncOverride {
             return try putObjectLegalHoldAsyncOverride(input, completion)
         }
@@ -3376,7 +3376,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putObjectLockConfigurationAsync(
             input: S3Model.PutObjectLockConfigurationRequest, 
-            completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, S3Error>) -> ()) throws {
         if let putObjectLockConfigurationAsyncOverride = putObjectLockConfigurationAsyncOverride {
             return try putObjectLockConfigurationAsyncOverride(input, completion)
         }
@@ -3412,7 +3412,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putObjectRetentionAsync(
             input: S3Model.PutObjectRetentionRequest, 
-            completion: @escaping (Result<S3Model.PutObjectRetentionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectRetentionOutput, S3Error>) -> ()) throws {
         if let putObjectRetentionAsyncOverride = putObjectRetentionAsyncOverride {
             return try putObjectRetentionAsyncOverride(input, completion)
         }
@@ -3448,7 +3448,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putObjectTaggingAsync(
             input: S3Model.PutObjectTaggingRequest, 
-            completion: @escaping (Result<S3Model.PutObjectTaggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectTaggingOutput, S3Error>) -> ()) throws {
         if let putObjectTaggingAsyncOverride = putObjectTaggingAsyncOverride {
             return try putObjectTaggingAsyncOverride(input, completion)
         }
@@ -3483,7 +3483,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func putPublicAccessBlockAsync(
             input: S3Model.PutPublicAccessBlockRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putPublicAccessBlockAsyncOverride = putPublicAccessBlockAsyncOverride {
             return try putPublicAccessBlockAsyncOverride(input, completion)
         }
@@ -3518,7 +3518,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func restoreObjectAsync(
             input: S3Model.RestoreObjectRequest, 
-            completion: @escaping (Result<S3Model.RestoreObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.RestoreObjectOutput, S3Error>) -> ()) throws {
         if let restoreObjectAsyncOverride = restoreObjectAsyncOverride {
             return try restoreObjectAsyncOverride(input, completion)
         }
@@ -3555,7 +3555,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func selectObjectContentAsync(
             input: S3Model.SelectObjectContentRequest, 
-            completion: @escaping (Result<S3Model.SelectObjectContentOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.SelectObjectContentOutput, S3Error>) -> ()) throws {
         if let selectObjectContentAsyncOverride = selectObjectContentAsyncOverride {
             return try selectObjectContentAsyncOverride(input, completion)
         }
@@ -3591,7 +3591,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func uploadPartAsync(
             input: S3Model.UploadPartRequest, 
-            completion: @escaping (Result<S3Model.UploadPartOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.UploadPartOutput, S3Error>) -> ()) throws {
         if let uploadPartAsyncOverride = uploadPartAsyncOverride {
             return try uploadPartAsyncOverride(input, completion)
         }
@@ -3627,7 +3627,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
      */
     public func uploadPartCopyAsync(
             input: S3Model.UploadPartCopyRequest, 
-            completion: @escaping (Result<S3Model.UploadPartCopyOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.UploadPartCopyOutput, S3Error>) -> ()) throws {
         if let uploadPartCopyAsyncOverride = uploadPartCopyAsyncOverride {
             return try uploadPartCopyAsyncOverride(input, completion)
         }

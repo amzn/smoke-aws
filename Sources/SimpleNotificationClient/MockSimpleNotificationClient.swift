@@ -245,7 +245,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func addPermissionAsync(
             input: SimpleNotificationModel.AddPermissionInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let addPermissionAsyncOverride = addPermissionAsyncOverride {
             return try addPermissionAsyncOverride(input, completion)
         }
@@ -280,7 +280,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func checkIfPhoneNumberIsOptedOutAsync(
             input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput, 
-            completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, SimpleNotificationError>) -> ()) throws {
         if let checkIfPhoneNumberIsOptedOutAsyncOverride = checkIfPhoneNumberIsOptedOutAsyncOverride {
             return try checkIfPhoneNumberIsOptedOutAsyncOverride(input, completion)
         }
@@ -320,7 +320,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func confirmSubscriptionAsync(
             input: SimpleNotificationModel.ConfirmSubscriptionInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, SimpleNotificationError>) -> ()) throws {
         if let confirmSubscriptionAsyncOverride = confirmSubscriptionAsyncOverride {
             return try confirmSubscriptionAsyncOverride(input, completion)
         }
@@ -360,7 +360,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func createPlatformApplicationAsync(
             input: SimpleNotificationModel.CreatePlatformApplicationInput, 
-            completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, SimpleNotificationError>) -> ()) throws {
         if let createPlatformApplicationAsyncOverride = createPlatformApplicationAsyncOverride {
             return try createPlatformApplicationAsyncOverride(input, completion)
         }
@@ -400,7 +400,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func createPlatformEndpointAsync(
             input: SimpleNotificationModel.CreatePlatformEndpointInput, 
-            completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, SimpleNotificationError>) -> ()) throws {
         if let createPlatformEndpointAsyncOverride = createPlatformEndpointAsyncOverride {
             return try createPlatformEndpointAsyncOverride(input, completion)
         }
@@ -440,7 +440,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func createTopicAsync(
             input: SimpleNotificationModel.CreateTopicInput, 
-            completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, SimpleNotificationError>) -> ()) throws {
         if let createTopicAsyncOverride = createTopicAsyncOverride {
             return try createTopicAsyncOverride(input, completion)
         }
@@ -479,7 +479,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func deleteEndpointAsync(
             input: SimpleNotificationModel.DeleteEndpointInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let deleteEndpointAsyncOverride = deleteEndpointAsyncOverride {
             return try deleteEndpointAsyncOverride(input, completion)
         }
@@ -513,7 +513,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func deletePlatformApplicationAsync(
             input: SimpleNotificationModel.DeletePlatformApplicationInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let deletePlatformApplicationAsyncOverride = deletePlatformApplicationAsyncOverride {
             return try deletePlatformApplicationAsyncOverride(input, completion)
         }
@@ -547,7 +547,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func deleteTopicAsync(
             input: SimpleNotificationModel.DeleteTopicInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let deleteTopicAsyncOverride = deleteTopicAsyncOverride {
             return try deleteTopicAsyncOverride(input, completion)
         }
@@ -582,7 +582,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func getEndpointAttributesAsync(
             input: SimpleNotificationModel.GetEndpointAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, SimpleNotificationError>) -> ()) throws {
         if let getEndpointAttributesAsyncOverride = getEndpointAttributesAsyncOverride {
             return try getEndpointAttributesAsyncOverride(input, completion)
         }
@@ -622,7 +622,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func getPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.GetPlatformApplicationAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, SimpleNotificationError>) -> ()) throws {
         if let getPlatformApplicationAttributesAsyncOverride = getPlatformApplicationAttributesAsyncOverride {
             return try getPlatformApplicationAttributesAsyncOverride(input, completion)
         }
@@ -662,7 +662,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func getSMSAttributesAsync(
             input: SimpleNotificationModel.GetSMSAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, SimpleNotificationError>) -> ()) throws {
         if let getSMSAttributesAsyncOverride = getSMSAttributesAsyncOverride {
             return try getSMSAttributesAsyncOverride(input, completion)
         }
@@ -702,7 +702,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func getSubscriptionAttributesAsync(
             input: SimpleNotificationModel.GetSubscriptionAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, SimpleNotificationError>) -> ()) throws {
         if let getSubscriptionAttributesAsyncOverride = getSubscriptionAttributesAsyncOverride {
             return try getSubscriptionAttributesAsyncOverride(input, completion)
         }
@@ -742,7 +742,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func getTopicAttributesAsync(
             input: SimpleNotificationModel.GetTopicAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, SimpleNotificationError>) -> ()) throws {
         if let getTopicAttributesAsyncOverride = getTopicAttributesAsyncOverride {
             return try getTopicAttributesAsyncOverride(input, completion)
         }
@@ -782,7 +782,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listEndpointsByPlatformApplicationAsync(
             input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, SimpleNotificationError>) -> ()) throws {
         if let listEndpointsByPlatformApplicationAsyncOverride = listEndpointsByPlatformApplicationAsyncOverride {
             return try listEndpointsByPlatformApplicationAsyncOverride(input, completion)
         }
@@ -822,7 +822,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listPhoneNumbersOptedOutAsync(
             input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, SimpleNotificationError>) -> ()) throws {
         if let listPhoneNumbersOptedOutAsyncOverride = listPhoneNumbersOptedOutAsyncOverride {
             return try listPhoneNumbersOptedOutAsyncOverride(input, completion)
         }
@@ -862,7 +862,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listPlatformApplicationsAsync(
             input: SimpleNotificationModel.ListPlatformApplicationsInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, SimpleNotificationError>) -> ()) throws {
         if let listPlatformApplicationsAsyncOverride = listPlatformApplicationsAsyncOverride {
             return try listPlatformApplicationsAsyncOverride(input, completion)
         }
@@ -902,7 +902,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listSubscriptionsAsync(
             input: SimpleNotificationModel.ListSubscriptionsInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, SimpleNotificationError>) -> ()) throws {
         if let listSubscriptionsAsyncOverride = listSubscriptionsAsyncOverride {
             return try listSubscriptionsAsyncOverride(input, completion)
         }
@@ -942,7 +942,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listSubscriptionsByTopicAsync(
             input: SimpleNotificationModel.ListSubscriptionsByTopicInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, SimpleNotificationError>) -> ()) throws {
         if let listSubscriptionsByTopicAsyncOverride = listSubscriptionsByTopicAsyncOverride {
             return try listSubscriptionsByTopicAsyncOverride(input, completion)
         }
@@ -982,7 +982,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listTagsForResourceAsync(
             input: SimpleNotificationModel.ListTagsForResourceRequest, 
-            completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, SimpleNotificationError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
             return try listTagsForResourceAsyncOverride(input, completion)
         }
@@ -1022,7 +1022,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listTopicsAsync(
             input: SimpleNotificationModel.ListTopicsInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, SimpleNotificationError>) -> ()) throws {
         if let listTopicsAsyncOverride = listTopicsAsyncOverride {
             return try listTopicsAsyncOverride(input, completion)
         }
@@ -1062,7 +1062,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func optInPhoneNumberAsync(
             input: SimpleNotificationModel.OptInPhoneNumberInput, 
-            completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, SimpleNotificationError>) -> ()) throws {
         if let optInPhoneNumberAsyncOverride = optInPhoneNumberAsyncOverride {
             return try optInPhoneNumberAsyncOverride(input, completion)
         }
@@ -1102,7 +1102,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func publishAsync(
             input: SimpleNotificationModel.PublishInput, 
-            completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, SimpleNotificationError>) -> ()) throws {
         if let publishAsyncOverride = publishAsyncOverride {
             return try publishAsyncOverride(input, completion)
         }
@@ -1141,7 +1141,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func removePermissionAsync(
             input: SimpleNotificationModel.RemovePermissionInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let removePermissionAsyncOverride = removePermissionAsyncOverride {
             return try removePermissionAsyncOverride(input, completion)
         }
@@ -1175,7 +1175,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func setEndpointAttributesAsync(
             input: SimpleNotificationModel.SetEndpointAttributesInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let setEndpointAttributesAsyncOverride = setEndpointAttributesAsyncOverride {
             return try setEndpointAttributesAsyncOverride(input, completion)
         }
@@ -1209,7 +1209,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func setPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let setPlatformApplicationAttributesAsyncOverride = setPlatformApplicationAttributesAsyncOverride {
             return try setPlatformApplicationAttributesAsyncOverride(input, completion)
         }
@@ -1244,7 +1244,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func setSMSAttributesAsync(
             input: SimpleNotificationModel.SetSMSAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, SimpleNotificationError>) -> ()) throws {
         if let setSMSAttributesAsyncOverride = setSMSAttributesAsyncOverride {
             return try setSMSAttributesAsyncOverride(input, completion)
         }
@@ -1283,7 +1283,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func setSubscriptionAttributesAsync(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let setSubscriptionAttributesAsyncOverride = setSubscriptionAttributesAsyncOverride {
             return try setSubscriptionAttributesAsyncOverride(input, completion)
         }
@@ -1317,7 +1317,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func setTopicAttributesAsync(
             input: SimpleNotificationModel.SetTopicAttributesInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let setTopicAttributesAsyncOverride = setTopicAttributesAsyncOverride {
             return try setTopicAttributesAsyncOverride(input, completion)
         }
@@ -1352,7 +1352,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func subscribeAsync(
             input: SimpleNotificationModel.SubscribeInput, 
-            completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, SimpleNotificationError>) -> ()) throws {
         if let subscribeAsyncOverride = subscribeAsyncOverride {
             return try subscribeAsyncOverride(input, completion)
         }
@@ -1392,7 +1392,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func tagResourceAsync(
             input: SimpleNotificationModel.TagResourceRequest, 
-            completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, SimpleNotificationError>) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
             return try tagResourceAsyncOverride(input, completion)
         }
@@ -1431,7 +1431,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func unsubscribeAsync(
             input: SimpleNotificationModel.UnsubscribeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let unsubscribeAsyncOverride = unsubscribeAsyncOverride {
             return try unsubscribeAsyncOverride(input, completion)
         }
@@ -1466,7 +1466,7 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func untagResourceAsync(
             input: SimpleNotificationModel.UntagResourceRequest, 
-            completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, SimpleNotificationError>) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
             return try untagResourceAsyncOverride(input, completion)
         }

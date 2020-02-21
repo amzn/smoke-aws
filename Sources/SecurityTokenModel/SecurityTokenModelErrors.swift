@@ -22,6 +22,8 @@
 import Foundation
 import Logging
 
+public typealias SecurityTokenErrorResult<SuccessPayload> = Result<SuccessPayload, SecurityTokenError>
+
 private let expiredTokenIdentity = "ExpiredTokenException"
 private let iDPCommunicationErrorIdentity = "IDPCommunicationError"
 private let iDPRejectedClaimIdentity = "IDPRejectedClaim"

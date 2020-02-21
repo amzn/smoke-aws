@@ -827,7 +827,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func addRoleToDBClusterAsync(
             input: RDSModel.AddRoleToDBClusterMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let addRoleToDBClusterAsyncOverride = addRoleToDBClusterAsyncOverride {
             return try addRoleToDBClusterAsyncOverride(input, completion)
         }
@@ -861,7 +861,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func addRoleToDBInstanceAsync(
             input: RDSModel.AddRoleToDBInstanceMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let addRoleToDBInstanceAsyncOverride = addRoleToDBInstanceAsyncOverride {
             return try addRoleToDBInstanceAsyncOverride(input, completion)
         }
@@ -896,7 +896,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func addSourceIdentifierToSubscriptionAsync(
             input: RDSModel.AddSourceIdentifierToSubscriptionMessage, 
-            completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, RDSError>) -> ()) throws {
         if let addSourceIdentifierToSubscriptionAsyncOverride = addSourceIdentifierToSubscriptionAsyncOverride {
             return try addSourceIdentifierToSubscriptionAsyncOverride(input, completion)
         }
@@ -935,7 +935,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func addTagsToResourceAsync(
             input: RDSModel.AddTagsToResourceMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let addTagsToResourceAsyncOverride = addTagsToResourceAsyncOverride {
             return try addTagsToResourceAsyncOverride(input, completion)
         }
@@ -970,7 +970,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func applyPendingMaintenanceActionAsync(
             input: RDSModel.ApplyPendingMaintenanceActionMessage, 
-            completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, RDSError>) -> ()) throws {
         if let applyPendingMaintenanceActionAsyncOverride = applyPendingMaintenanceActionAsyncOverride {
             return try applyPendingMaintenanceActionAsyncOverride(input, completion)
         }
@@ -1010,7 +1010,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func authorizeDBSecurityGroupIngressAsync(
             input: RDSModel.AuthorizeDBSecurityGroupIngressMessage, 
-            completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, RDSError>) -> ()) throws {
         if let authorizeDBSecurityGroupIngressAsyncOverride = authorizeDBSecurityGroupIngressAsyncOverride {
             return try authorizeDBSecurityGroupIngressAsyncOverride(input, completion)
         }
@@ -1050,7 +1050,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func backtrackDBClusterAsync(
             input: RDSModel.BacktrackDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, RDSError>) -> ()) throws {
         if let backtrackDBClusterAsyncOverride = backtrackDBClusterAsyncOverride {
             return try backtrackDBClusterAsyncOverride(input, completion)
         }
@@ -1090,7 +1090,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func cancelExportTaskAsync(
             input: RDSModel.CancelExportTaskMessage, 
-            completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, RDSError>) -> ()) throws {
         if let cancelExportTaskAsyncOverride = cancelExportTaskAsyncOverride {
             return try cancelExportTaskAsyncOverride(input, completion)
         }
@@ -1130,7 +1130,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func copyDBClusterParameterGroupAsync(
             input: RDSModel.CopyDBClusterParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, RDSError>) -> ()) throws {
         if let copyDBClusterParameterGroupAsyncOverride = copyDBClusterParameterGroupAsyncOverride {
             return try copyDBClusterParameterGroupAsyncOverride(input, completion)
         }
@@ -1170,7 +1170,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func copyDBClusterSnapshotAsync(
             input: RDSModel.CopyDBClusterSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, RDSError>) -> ()) throws {
         if let copyDBClusterSnapshotAsyncOverride = copyDBClusterSnapshotAsyncOverride {
             return try copyDBClusterSnapshotAsyncOverride(input, completion)
         }
@@ -1210,7 +1210,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func copyDBParameterGroupAsync(
             input: RDSModel.CopyDBParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, RDSError>) -> ()) throws {
         if let copyDBParameterGroupAsyncOverride = copyDBParameterGroupAsyncOverride {
             return try copyDBParameterGroupAsyncOverride(input, completion)
         }
@@ -1250,7 +1250,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func copyDBSnapshotAsync(
             input: RDSModel.CopyDBSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, RDSError>) -> ()) throws {
         if let copyDBSnapshotAsyncOverride = copyDBSnapshotAsyncOverride {
             return try copyDBSnapshotAsyncOverride(input, completion)
         }
@@ -1290,7 +1290,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func copyOptionGroupAsync(
             input: RDSModel.CopyOptionGroupMessage, 
-            completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, RDSError>) -> ()) throws {
         if let copyOptionGroupAsyncOverride = copyOptionGroupAsyncOverride {
             return try copyOptionGroupAsyncOverride(input, completion)
         }
@@ -1330,7 +1330,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createCustomAvailabilityZoneAsync(
             input: RDSModel.CreateCustomAvailabilityZoneMessage, 
-            completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, RDSError>) -> ()) throws {
         if let createCustomAvailabilityZoneAsyncOverride = createCustomAvailabilityZoneAsyncOverride {
             return try createCustomAvailabilityZoneAsyncOverride(input, completion)
         }
@@ -1370,7 +1370,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBClusterAsync(
             input: RDSModel.CreateDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, RDSError>) -> ()) throws {
         if let createDBClusterAsyncOverride = createDBClusterAsyncOverride {
             return try createDBClusterAsyncOverride(input, completion)
         }
@@ -1410,7 +1410,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBClusterEndpointAsync(
             input: RDSModel.CreateDBClusterEndpointMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, RDSError>) -> ()) throws {
         if let createDBClusterEndpointAsyncOverride = createDBClusterEndpointAsyncOverride {
             return try createDBClusterEndpointAsyncOverride(input, completion)
         }
@@ -1450,7 +1450,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBClusterParameterGroupAsync(
             input: RDSModel.CreateDBClusterParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, RDSError>) -> ()) throws {
         if let createDBClusterParameterGroupAsyncOverride = createDBClusterParameterGroupAsyncOverride {
             return try createDBClusterParameterGroupAsyncOverride(input, completion)
         }
@@ -1490,7 +1490,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBClusterSnapshotAsync(
             input: RDSModel.CreateDBClusterSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, RDSError>) -> ()) throws {
         if let createDBClusterSnapshotAsyncOverride = createDBClusterSnapshotAsyncOverride {
             return try createDBClusterSnapshotAsyncOverride(input, completion)
         }
@@ -1530,7 +1530,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBInstanceAsync(
             input: RDSModel.CreateDBInstanceMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, RDSError>) -> ()) throws {
         if let createDBInstanceAsyncOverride = createDBInstanceAsyncOverride {
             return try createDBInstanceAsyncOverride(input, completion)
         }
@@ -1570,7 +1570,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBInstanceReadReplicaAsync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, RDSError>) -> ()) throws {
         if let createDBInstanceReadReplicaAsyncOverride = createDBInstanceReadReplicaAsyncOverride {
             return try createDBInstanceReadReplicaAsyncOverride(input, completion)
         }
@@ -1610,7 +1610,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBParameterGroupAsync(
             input: RDSModel.CreateDBParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, RDSError>) -> ()) throws {
         if let createDBParameterGroupAsyncOverride = createDBParameterGroupAsyncOverride {
             return try createDBParameterGroupAsyncOverride(input, completion)
         }
@@ -1650,7 +1650,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBProxyAsync(
             input: RDSModel.CreateDBProxyRequest, 
-            completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, RDSError>) -> ()) throws {
         if let createDBProxyAsyncOverride = createDBProxyAsyncOverride {
             return try createDBProxyAsyncOverride(input, completion)
         }
@@ -1690,7 +1690,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBSecurityGroupAsync(
             input: RDSModel.CreateDBSecurityGroupMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, RDSError>) -> ()) throws {
         if let createDBSecurityGroupAsyncOverride = createDBSecurityGroupAsyncOverride {
             return try createDBSecurityGroupAsyncOverride(input, completion)
         }
@@ -1730,7 +1730,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBSnapshotAsync(
             input: RDSModel.CreateDBSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, RDSError>) -> ()) throws {
         if let createDBSnapshotAsyncOverride = createDBSnapshotAsyncOverride {
             return try createDBSnapshotAsyncOverride(input, completion)
         }
@@ -1770,7 +1770,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBSubnetGroupAsync(
             input: RDSModel.CreateDBSubnetGroupMessage, 
-            completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, RDSError>) -> ()) throws {
         if let createDBSubnetGroupAsyncOverride = createDBSubnetGroupAsyncOverride {
             return try createDBSubnetGroupAsyncOverride(input, completion)
         }
@@ -1810,7 +1810,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createEventSubscriptionAsync(
             input: RDSModel.CreateEventSubscriptionMessage, 
-            completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, RDSError>) -> ()) throws {
         if let createEventSubscriptionAsyncOverride = createEventSubscriptionAsyncOverride {
             return try createEventSubscriptionAsyncOverride(input, completion)
         }
@@ -1850,7 +1850,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createGlobalClusterAsync(
             input: RDSModel.CreateGlobalClusterMessage, 
-            completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, RDSError>) -> ()) throws {
         if let createGlobalClusterAsyncOverride = createGlobalClusterAsyncOverride {
             return try createGlobalClusterAsyncOverride(input, completion)
         }
@@ -1890,7 +1890,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createOptionGroupAsync(
             input: RDSModel.CreateOptionGroupMessage, 
-            completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, RDSError>) -> ()) throws {
         if let createOptionGroupAsyncOverride = createOptionGroupAsyncOverride {
             return try createOptionGroupAsyncOverride(input, completion)
         }
@@ -1930,7 +1930,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteCustomAvailabilityZoneAsync(
             input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
-            completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, RDSError>) -> ()) throws {
         if let deleteCustomAvailabilityZoneAsyncOverride = deleteCustomAvailabilityZoneAsyncOverride {
             return try deleteCustomAvailabilityZoneAsyncOverride(input, completion)
         }
@@ -1970,7 +1970,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBClusterAsync(
             input: RDSModel.DeleteDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, RDSError>) -> ()) throws {
         if let deleteDBClusterAsyncOverride = deleteDBClusterAsyncOverride {
             return try deleteDBClusterAsyncOverride(input, completion)
         }
@@ -2010,7 +2010,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBClusterEndpointAsync(
             input: RDSModel.DeleteDBClusterEndpointMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, RDSError>) -> ()) throws {
         if let deleteDBClusterEndpointAsyncOverride = deleteDBClusterEndpointAsyncOverride {
             return try deleteDBClusterEndpointAsyncOverride(input, completion)
         }
@@ -2049,7 +2049,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBClusterParameterGroupAsync(
             input: RDSModel.DeleteDBClusterParameterGroupMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let deleteDBClusterParameterGroupAsyncOverride = deleteDBClusterParameterGroupAsyncOverride {
             return try deleteDBClusterParameterGroupAsyncOverride(input, completion)
         }
@@ -2084,7 +2084,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBClusterSnapshotAsync(
             input: RDSModel.DeleteDBClusterSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, RDSError>) -> ()) throws {
         if let deleteDBClusterSnapshotAsyncOverride = deleteDBClusterSnapshotAsyncOverride {
             return try deleteDBClusterSnapshotAsyncOverride(input, completion)
         }
@@ -2124,7 +2124,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBInstanceAsync(
             input: RDSModel.DeleteDBInstanceMessage, 
-            completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, RDSError>) -> ()) throws {
         if let deleteDBInstanceAsyncOverride = deleteDBInstanceAsyncOverride {
             return try deleteDBInstanceAsyncOverride(input, completion)
         }
@@ -2164,7 +2164,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBInstanceAutomatedBackupAsync(
             input: RDSModel.DeleteDBInstanceAutomatedBackupMessage, 
-            completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, RDSError>) -> ()) throws {
         if let deleteDBInstanceAutomatedBackupAsyncOverride = deleteDBInstanceAutomatedBackupAsyncOverride {
             return try deleteDBInstanceAutomatedBackupAsyncOverride(input, completion)
         }
@@ -2203,7 +2203,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBParameterGroupAsync(
             input: RDSModel.DeleteDBParameterGroupMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let deleteDBParameterGroupAsyncOverride = deleteDBParameterGroupAsyncOverride {
             return try deleteDBParameterGroupAsyncOverride(input, completion)
         }
@@ -2238,7 +2238,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBProxyAsync(
             input: RDSModel.DeleteDBProxyRequest, 
-            completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, RDSError>) -> ()) throws {
         if let deleteDBProxyAsyncOverride = deleteDBProxyAsyncOverride {
             return try deleteDBProxyAsyncOverride(input, completion)
         }
@@ -2277,7 +2277,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBSecurityGroupAsync(
             input: RDSModel.DeleteDBSecurityGroupMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let deleteDBSecurityGroupAsyncOverride = deleteDBSecurityGroupAsyncOverride {
             return try deleteDBSecurityGroupAsyncOverride(input, completion)
         }
@@ -2312,7 +2312,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBSnapshotAsync(
             input: RDSModel.DeleteDBSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, RDSError>) -> ()) throws {
         if let deleteDBSnapshotAsyncOverride = deleteDBSnapshotAsyncOverride {
             return try deleteDBSnapshotAsyncOverride(input, completion)
         }
@@ -2351,7 +2351,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBSubnetGroupAsync(
             input: RDSModel.DeleteDBSubnetGroupMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let deleteDBSubnetGroupAsyncOverride = deleteDBSubnetGroupAsyncOverride {
             return try deleteDBSubnetGroupAsyncOverride(input, completion)
         }
@@ -2386,7 +2386,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteEventSubscriptionAsync(
             input: RDSModel.DeleteEventSubscriptionMessage, 
-            completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, RDSError>) -> ()) throws {
         if let deleteEventSubscriptionAsyncOverride = deleteEventSubscriptionAsyncOverride {
             return try deleteEventSubscriptionAsyncOverride(input, completion)
         }
@@ -2426,7 +2426,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteGlobalClusterAsync(
             input: RDSModel.DeleteGlobalClusterMessage, 
-            completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, RDSError>) -> ()) throws {
         if let deleteGlobalClusterAsyncOverride = deleteGlobalClusterAsyncOverride {
             return try deleteGlobalClusterAsyncOverride(input, completion)
         }
@@ -2466,7 +2466,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteInstallationMediaAsync(
             input: RDSModel.DeleteInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, RDSError>) -> ()) throws {
         if let deleteInstallationMediaAsyncOverride = deleteInstallationMediaAsyncOverride {
             return try deleteInstallationMediaAsyncOverride(input, completion)
         }
@@ -2505,7 +2505,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteOptionGroupAsync(
             input: RDSModel.DeleteOptionGroupMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let deleteOptionGroupAsyncOverride = deleteOptionGroupAsyncOverride {
             return try deleteOptionGroupAsyncOverride(input, completion)
         }
@@ -2540,7 +2540,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deregisterDBProxyTargetsAsync(
             input: RDSModel.DeregisterDBProxyTargetsRequest, 
-            completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, RDSError>) -> ()) throws {
         if let deregisterDBProxyTargetsAsyncOverride = deregisterDBProxyTargetsAsyncOverride {
             return try deregisterDBProxyTargetsAsyncOverride(input, completion)
         }
@@ -2579,7 +2579,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeAccountAttributesAsync(
             input: RDSModel.DescribeAccountAttributesMessage, 
-            completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, RDSError>) -> ()) throws {
         if let describeAccountAttributesAsyncOverride = describeAccountAttributesAsyncOverride {
             return try describeAccountAttributesAsyncOverride(input, completion)
         }
@@ -2618,7 +2618,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeCertificatesAsync(
             input: RDSModel.DescribeCertificatesMessage, 
-            completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, RDSError>) -> ()) throws {
         if let describeCertificatesAsyncOverride = describeCertificatesAsyncOverride {
             return try describeCertificatesAsyncOverride(input, completion)
         }
@@ -2658,7 +2658,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeCustomAvailabilityZonesAsync(
             input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
-            completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, RDSError>) -> ()) throws {
         if let describeCustomAvailabilityZonesAsyncOverride = describeCustomAvailabilityZonesAsyncOverride {
             return try describeCustomAvailabilityZonesAsyncOverride(input, completion)
         }
@@ -2698,7 +2698,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClusterBacktracksAsync(
             input: RDSModel.DescribeDBClusterBacktracksMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, RDSError>) -> ()) throws {
         if let describeDBClusterBacktracksAsyncOverride = describeDBClusterBacktracksAsyncOverride {
             return try describeDBClusterBacktracksAsyncOverride(input, completion)
         }
@@ -2738,7 +2738,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClusterEndpointsAsync(
             input: RDSModel.DescribeDBClusterEndpointsMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, RDSError>) -> ()) throws {
         if let describeDBClusterEndpointsAsyncOverride = describeDBClusterEndpointsAsyncOverride {
             return try describeDBClusterEndpointsAsyncOverride(input, completion)
         }
@@ -2778,7 +2778,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClusterParameterGroupsAsync(
             input: RDSModel.DescribeDBClusterParameterGroupsMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, RDSError>) -> ()) throws {
         if let describeDBClusterParameterGroupsAsyncOverride = describeDBClusterParameterGroupsAsyncOverride {
             return try describeDBClusterParameterGroupsAsyncOverride(input, completion)
         }
@@ -2818,7 +2818,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClusterParametersAsync(
             input: RDSModel.DescribeDBClusterParametersMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, RDSError>) -> ()) throws {
         if let describeDBClusterParametersAsyncOverride = describeDBClusterParametersAsyncOverride {
             return try describeDBClusterParametersAsyncOverride(input, completion)
         }
@@ -2858,7 +2858,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClusterSnapshotAttributesAsync(
             input: RDSModel.DescribeDBClusterSnapshotAttributesMessage, 
-            completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, RDSError>) -> ()) throws {
         if let describeDBClusterSnapshotAttributesAsyncOverride = describeDBClusterSnapshotAttributesAsyncOverride {
             return try describeDBClusterSnapshotAttributesAsyncOverride(input, completion)
         }
@@ -2898,7 +2898,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClusterSnapshotsAsync(
             input: RDSModel.DescribeDBClusterSnapshotsMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, RDSError>) -> ()) throws {
         if let describeDBClusterSnapshotsAsyncOverride = describeDBClusterSnapshotsAsyncOverride {
             return try describeDBClusterSnapshotsAsyncOverride(input, completion)
         }
@@ -2938,7 +2938,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClustersAsync(
             input: RDSModel.DescribeDBClustersMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, RDSError>) -> ()) throws {
         if let describeDBClustersAsyncOverride = describeDBClustersAsyncOverride {
             return try describeDBClustersAsyncOverride(input, completion)
         }
@@ -2977,7 +2977,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBEngineVersionsAsync(
             input: RDSModel.DescribeDBEngineVersionsMessage, 
-            completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, RDSError>) -> ()) throws {
         if let describeDBEngineVersionsAsyncOverride = describeDBEngineVersionsAsyncOverride {
             return try describeDBEngineVersionsAsyncOverride(input, completion)
         }
@@ -3016,7 +3016,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBInstanceAutomatedBackupsAsync(
             input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage, 
-            completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, RDSError>) -> ()) throws {
         if let describeDBInstanceAutomatedBackupsAsyncOverride = describeDBInstanceAutomatedBackupsAsyncOverride {
             return try describeDBInstanceAutomatedBackupsAsyncOverride(input, completion)
         }
@@ -3056,7 +3056,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBInstancesAsync(
             input: RDSModel.DescribeDBInstancesMessage, 
-            completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, RDSError>) -> ()) throws {
         if let describeDBInstancesAsyncOverride = describeDBInstancesAsyncOverride {
             return try describeDBInstancesAsyncOverride(input, completion)
         }
@@ -3096,7 +3096,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBLogFilesAsync(
             input: RDSModel.DescribeDBLogFilesMessage, 
-            completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, RDSError>) -> ()) throws {
         if let describeDBLogFilesAsyncOverride = describeDBLogFilesAsyncOverride {
             return try describeDBLogFilesAsyncOverride(input, completion)
         }
@@ -3136,7 +3136,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBParameterGroupsAsync(
             input: RDSModel.DescribeDBParameterGroupsMessage, 
-            completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, RDSError>) -> ()) throws {
         if let describeDBParameterGroupsAsyncOverride = describeDBParameterGroupsAsyncOverride {
             return try describeDBParameterGroupsAsyncOverride(input, completion)
         }
@@ -3176,7 +3176,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBParametersAsync(
             input: RDSModel.DescribeDBParametersMessage, 
-            completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, RDSError>) -> ()) throws {
         if let describeDBParametersAsyncOverride = describeDBParametersAsyncOverride {
             return try describeDBParametersAsyncOverride(input, completion)
         }
@@ -3216,7 +3216,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBProxiesAsync(
             input: RDSModel.DescribeDBProxiesRequest, 
-            completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, RDSError>) -> ()) throws {
         if let describeDBProxiesAsyncOverride = describeDBProxiesAsyncOverride {
             return try describeDBProxiesAsyncOverride(input, completion)
         }
@@ -3256,7 +3256,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBProxyTargetGroupsAsync(
             input: RDSModel.DescribeDBProxyTargetGroupsRequest, 
-            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, RDSError>) -> ()) throws {
         if let describeDBProxyTargetGroupsAsyncOverride = describeDBProxyTargetGroupsAsyncOverride {
             return try describeDBProxyTargetGroupsAsyncOverride(input, completion)
         }
@@ -3296,7 +3296,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBProxyTargetsAsync(
             input: RDSModel.DescribeDBProxyTargetsRequest, 
-            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, RDSError>) -> ()) throws {
         if let describeDBProxyTargetsAsyncOverride = describeDBProxyTargetsAsyncOverride {
             return try describeDBProxyTargetsAsyncOverride(input, completion)
         }
@@ -3336,7 +3336,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBSecurityGroupsAsync(
             input: RDSModel.DescribeDBSecurityGroupsMessage, 
-            completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, RDSError>) -> ()) throws {
         if let describeDBSecurityGroupsAsyncOverride = describeDBSecurityGroupsAsyncOverride {
             return try describeDBSecurityGroupsAsyncOverride(input, completion)
         }
@@ -3376,7 +3376,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBSnapshotAttributesAsync(
             input: RDSModel.DescribeDBSnapshotAttributesMessage, 
-            completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, RDSError>) -> ()) throws {
         if let describeDBSnapshotAttributesAsyncOverride = describeDBSnapshotAttributesAsyncOverride {
             return try describeDBSnapshotAttributesAsyncOverride(input, completion)
         }
@@ -3416,7 +3416,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBSnapshotsAsync(
             input: RDSModel.DescribeDBSnapshotsMessage, 
-            completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, RDSError>) -> ()) throws {
         if let describeDBSnapshotsAsyncOverride = describeDBSnapshotsAsyncOverride {
             return try describeDBSnapshotsAsyncOverride(input, completion)
         }
@@ -3456,7 +3456,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBSubnetGroupsAsync(
             input: RDSModel.DescribeDBSubnetGroupsMessage, 
-            completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, RDSError>) -> ()) throws {
         if let describeDBSubnetGroupsAsyncOverride = describeDBSubnetGroupsAsyncOverride {
             return try describeDBSubnetGroupsAsyncOverride(input, completion)
         }
@@ -3495,7 +3495,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeEngineDefaultClusterParametersAsync(
             input: RDSModel.DescribeEngineDefaultClusterParametersMessage, 
-            completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, RDSError>) -> ()) throws {
         if let describeEngineDefaultClusterParametersAsyncOverride = describeEngineDefaultClusterParametersAsyncOverride {
             return try describeEngineDefaultClusterParametersAsyncOverride(input, completion)
         }
@@ -3533,7 +3533,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeEngineDefaultParametersAsync(
             input: RDSModel.DescribeEngineDefaultParametersMessage, 
-            completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, RDSError>) -> ()) throws {
         if let describeEngineDefaultParametersAsyncOverride = describeEngineDefaultParametersAsyncOverride {
             return try describeEngineDefaultParametersAsyncOverride(input, completion)
         }
@@ -3571,7 +3571,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeEventCategoriesAsync(
             input: RDSModel.DescribeEventCategoriesMessage, 
-            completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, RDSError>) -> ()) throws {
         if let describeEventCategoriesAsyncOverride = describeEventCategoriesAsyncOverride {
             return try describeEventCategoriesAsyncOverride(input, completion)
         }
@@ -3610,7 +3610,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeEventSubscriptionsAsync(
             input: RDSModel.DescribeEventSubscriptionsMessage, 
-            completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, RDSError>) -> ()) throws {
         if let describeEventSubscriptionsAsyncOverride = describeEventSubscriptionsAsyncOverride {
             return try describeEventSubscriptionsAsyncOverride(input, completion)
         }
@@ -3649,7 +3649,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeEventsAsync(
             input: RDSModel.DescribeEventsMessage, 
-            completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, RDSError>) -> ()) throws {
         if let describeEventsAsyncOverride = describeEventsAsyncOverride {
             return try describeEventsAsyncOverride(input, completion)
         }
@@ -3688,7 +3688,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeExportTasksAsync(
             input: RDSModel.DescribeExportTasksMessage, 
-            completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, RDSError>) -> ()) throws {
         if let describeExportTasksAsyncOverride = describeExportTasksAsyncOverride {
             return try describeExportTasksAsyncOverride(input, completion)
         }
@@ -3728,7 +3728,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeGlobalClustersAsync(
             input: RDSModel.DescribeGlobalClustersMessage, 
-            completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, RDSError>) -> ()) throws {
         if let describeGlobalClustersAsyncOverride = describeGlobalClustersAsyncOverride {
             return try describeGlobalClustersAsyncOverride(input, completion)
         }
@@ -3768,7 +3768,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeInstallationMediaAsync(
             input: RDSModel.DescribeInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, RDSError>) -> ()) throws {
         if let describeInstallationMediaAsyncOverride = describeInstallationMediaAsyncOverride {
             return try describeInstallationMediaAsyncOverride(input, completion)
         }
@@ -3807,7 +3807,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeOptionGroupOptionsAsync(
             input: RDSModel.DescribeOptionGroupOptionsMessage, 
-            completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, RDSError>) -> ()) throws {
         if let describeOptionGroupOptionsAsyncOverride = describeOptionGroupOptionsAsyncOverride {
             return try describeOptionGroupOptionsAsyncOverride(input, completion)
         }
@@ -3846,7 +3846,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeOptionGroupsAsync(
             input: RDSModel.DescribeOptionGroupsMessage, 
-            completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, RDSError>) -> ()) throws {
         if let describeOptionGroupsAsyncOverride = describeOptionGroupsAsyncOverride {
             return try describeOptionGroupsAsyncOverride(input, completion)
         }
@@ -3885,7 +3885,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeOrderableDBInstanceOptionsAsync(
             input: RDSModel.DescribeOrderableDBInstanceOptionsMessage, 
-            completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, RDSError>) -> ()) throws {
         if let describeOrderableDBInstanceOptionsAsyncOverride = describeOrderableDBInstanceOptionsAsyncOverride {
             return try describeOrderableDBInstanceOptionsAsyncOverride(input, completion)
         }
@@ -3924,7 +3924,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describePendingMaintenanceActionsAsync(
             input: RDSModel.DescribePendingMaintenanceActionsMessage, 
-            completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, RDSError>) -> ()) throws {
         if let describePendingMaintenanceActionsAsyncOverride = describePendingMaintenanceActionsAsyncOverride {
             return try describePendingMaintenanceActionsAsyncOverride(input, completion)
         }
@@ -3964,7 +3964,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeReservedDBInstancesAsync(
             input: RDSModel.DescribeReservedDBInstancesMessage, 
-            completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, RDSError>) -> ()) throws {
         if let describeReservedDBInstancesAsyncOverride = describeReservedDBInstancesAsyncOverride {
             return try describeReservedDBInstancesAsyncOverride(input, completion)
         }
@@ -4004,7 +4004,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeReservedDBInstancesOfferingsAsync(
             input: RDSModel.DescribeReservedDBInstancesOfferingsMessage, 
-            completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, RDSError>) -> ()) throws {
         if let describeReservedDBInstancesOfferingsAsyncOverride = describeReservedDBInstancesOfferingsAsyncOverride {
             return try describeReservedDBInstancesOfferingsAsyncOverride(input, completion)
         }
@@ -4043,7 +4043,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeSourceRegionsAsync(
             input: RDSModel.DescribeSourceRegionsMessage, 
-            completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, RDSError>) -> ()) throws {
         if let describeSourceRegionsAsyncOverride = describeSourceRegionsAsyncOverride {
             return try describeSourceRegionsAsyncOverride(input, completion)
         }
@@ -4082,7 +4082,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeValidDBInstanceModificationsAsync(
             input: RDSModel.DescribeValidDBInstanceModificationsMessage, 
-            completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, RDSError>) -> ()) throws {
         if let describeValidDBInstanceModificationsAsyncOverride = describeValidDBInstanceModificationsAsyncOverride {
             return try describeValidDBInstanceModificationsAsyncOverride(input, completion)
         }
@@ -4122,7 +4122,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func downloadDBLogFilePortionAsync(
             input: RDSModel.DownloadDBLogFilePortionMessage, 
-            completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, RDSError>) -> ()) throws {
         if let downloadDBLogFilePortionAsyncOverride = downloadDBLogFilePortionAsyncOverride {
             return try downloadDBLogFilePortionAsyncOverride(input, completion)
         }
@@ -4162,7 +4162,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func failoverDBClusterAsync(
             input: RDSModel.FailoverDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, RDSError>) -> ()) throws {
         if let failoverDBClusterAsyncOverride = failoverDBClusterAsyncOverride {
             return try failoverDBClusterAsyncOverride(input, completion)
         }
@@ -4202,7 +4202,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func importInstallationMediaAsync(
             input: RDSModel.ImportInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, RDSError>) -> ()) throws {
         if let importInstallationMediaAsyncOverride = importInstallationMediaAsyncOverride {
             return try importInstallationMediaAsyncOverride(input, completion)
         }
@@ -4242,7 +4242,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func listTagsForResourceAsync(
             input: RDSModel.ListTagsForResourceMessage, 
-            completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, RDSError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
             return try listTagsForResourceAsyncOverride(input, completion)
         }
@@ -4282,7 +4282,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyCertificatesAsync(
             input: RDSModel.ModifyCertificatesMessage, 
-            completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, RDSError>) -> ()) throws {
         if let modifyCertificatesAsyncOverride = modifyCertificatesAsyncOverride {
             return try modifyCertificatesAsyncOverride(input, completion)
         }
@@ -4322,7 +4322,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyCurrentDBClusterCapacityAsync(
             input: RDSModel.ModifyCurrentDBClusterCapacityMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, RDSError>) -> ()) throws {
         if let modifyCurrentDBClusterCapacityAsyncOverride = modifyCurrentDBClusterCapacityAsyncOverride {
             return try modifyCurrentDBClusterCapacityAsyncOverride(input, completion)
         }
@@ -4362,7 +4362,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBClusterAsync(
             input: RDSModel.ModifyDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, RDSError>) -> ()) throws {
         if let modifyDBClusterAsyncOverride = modifyDBClusterAsyncOverride {
             return try modifyDBClusterAsyncOverride(input, completion)
         }
@@ -4402,7 +4402,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBClusterEndpointAsync(
             input: RDSModel.ModifyDBClusterEndpointMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, RDSError>) -> ()) throws {
         if let modifyDBClusterEndpointAsyncOverride = modifyDBClusterEndpointAsyncOverride {
             return try modifyDBClusterEndpointAsyncOverride(input, completion)
         }
@@ -4442,7 +4442,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBClusterParameterGroupAsync(
             input: RDSModel.ModifyDBClusterParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, RDSError>) -> ()) throws {
         if let modifyDBClusterParameterGroupAsyncOverride = modifyDBClusterParameterGroupAsyncOverride {
             return try modifyDBClusterParameterGroupAsyncOverride(input, completion)
         }
@@ -4482,7 +4482,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBClusterSnapshotAttributeAsync(
             input: RDSModel.ModifyDBClusterSnapshotAttributeMessage, 
-            completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, RDSError>) -> ()) throws {
         if let modifyDBClusterSnapshotAttributeAsyncOverride = modifyDBClusterSnapshotAttributeAsyncOverride {
             return try modifyDBClusterSnapshotAttributeAsyncOverride(input, completion)
         }
@@ -4522,7 +4522,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBInstanceAsync(
             input: RDSModel.ModifyDBInstanceMessage, 
-            completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, RDSError>) -> ()) throws {
         if let modifyDBInstanceAsyncOverride = modifyDBInstanceAsyncOverride {
             return try modifyDBInstanceAsyncOverride(input, completion)
         }
@@ -4562,7 +4562,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBParameterGroupAsync(
             input: RDSModel.ModifyDBParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, RDSError>) -> ()) throws {
         if let modifyDBParameterGroupAsyncOverride = modifyDBParameterGroupAsyncOverride {
             return try modifyDBParameterGroupAsyncOverride(input, completion)
         }
@@ -4602,7 +4602,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBProxyAsync(
             input: RDSModel.ModifyDBProxyRequest, 
-            completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, RDSError>) -> ()) throws {
         if let modifyDBProxyAsyncOverride = modifyDBProxyAsyncOverride {
             return try modifyDBProxyAsyncOverride(input, completion)
         }
@@ -4642,7 +4642,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBProxyTargetGroupAsync(
             input: RDSModel.ModifyDBProxyTargetGroupRequest, 
-            completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, RDSError>) -> ()) throws {
         if let modifyDBProxyTargetGroupAsyncOverride = modifyDBProxyTargetGroupAsyncOverride {
             return try modifyDBProxyTargetGroupAsyncOverride(input, completion)
         }
@@ -4682,7 +4682,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBSnapshotAsync(
             input: RDSModel.ModifyDBSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, RDSError>) -> ()) throws {
         if let modifyDBSnapshotAsyncOverride = modifyDBSnapshotAsyncOverride {
             return try modifyDBSnapshotAsyncOverride(input, completion)
         }
@@ -4722,7 +4722,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBSnapshotAttributeAsync(
             input: RDSModel.ModifyDBSnapshotAttributeMessage, 
-            completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, RDSError>) -> ()) throws {
         if let modifyDBSnapshotAttributeAsyncOverride = modifyDBSnapshotAttributeAsyncOverride {
             return try modifyDBSnapshotAttributeAsyncOverride(input, completion)
         }
@@ -4762,7 +4762,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBSubnetGroupAsync(
             input: RDSModel.ModifyDBSubnetGroupMessage, 
-            completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, RDSError>) -> ()) throws {
         if let modifyDBSubnetGroupAsyncOverride = modifyDBSubnetGroupAsyncOverride {
             return try modifyDBSubnetGroupAsyncOverride(input, completion)
         }
@@ -4802,7 +4802,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyEventSubscriptionAsync(
             input: RDSModel.ModifyEventSubscriptionMessage, 
-            completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, RDSError>) -> ()) throws {
         if let modifyEventSubscriptionAsyncOverride = modifyEventSubscriptionAsyncOverride {
             return try modifyEventSubscriptionAsyncOverride(input, completion)
         }
@@ -4842,7 +4842,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyGlobalClusterAsync(
             input: RDSModel.ModifyGlobalClusterMessage, 
-            completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, RDSError>) -> ()) throws {
         if let modifyGlobalClusterAsyncOverride = modifyGlobalClusterAsyncOverride {
             return try modifyGlobalClusterAsyncOverride(input, completion)
         }
@@ -4882,7 +4882,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyOptionGroupAsync(
             input: RDSModel.ModifyOptionGroupMessage, 
-            completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, RDSError>) -> ()) throws {
         if let modifyOptionGroupAsyncOverride = modifyOptionGroupAsyncOverride {
             return try modifyOptionGroupAsyncOverride(input, completion)
         }
@@ -4922,7 +4922,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func promoteReadReplicaAsync(
             input: RDSModel.PromoteReadReplicaMessage, 
-            completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, RDSError>) -> ()) throws {
         if let promoteReadReplicaAsyncOverride = promoteReadReplicaAsyncOverride {
             return try promoteReadReplicaAsyncOverride(input, completion)
         }
@@ -4962,7 +4962,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func promoteReadReplicaDBClusterAsync(
             input: RDSModel.PromoteReadReplicaDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, RDSError>) -> ()) throws {
         if let promoteReadReplicaDBClusterAsyncOverride = promoteReadReplicaDBClusterAsyncOverride {
             return try promoteReadReplicaDBClusterAsyncOverride(input, completion)
         }
@@ -5002,7 +5002,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func purchaseReservedDBInstancesOfferingAsync(
             input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, 
-            completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, RDSError>) -> ()) throws {
         if let purchaseReservedDBInstancesOfferingAsyncOverride = purchaseReservedDBInstancesOfferingAsyncOverride {
             return try purchaseReservedDBInstancesOfferingAsyncOverride(input, completion)
         }
@@ -5042,7 +5042,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func rebootDBInstanceAsync(
             input: RDSModel.RebootDBInstanceMessage, 
-            completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, RDSError>) -> ()) throws {
         if let rebootDBInstanceAsyncOverride = rebootDBInstanceAsyncOverride {
             return try rebootDBInstanceAsyncOverride(input, completion)
         }
@@ -5082,7 +5082,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func registerDBProxyTargetsAsync(
             input: RDSModel.RegisterDBProxyTargetsRequest, 
-            completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, RDSError>) -> ()) throws {
         if let registerDBProxyTargetsAsyncOverride = registerDBProxyTargetsAsyncOverride {
             return try registerDBProxyTargetsAsyncOverride(input, completion)
         }
@@ -5122,7 +5122,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func removeFromGlobalClusterAsync(
             input: RDSModel.RemoveFromGlobalClusterMessage, 
-            completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, RDSError>) -> ()) throws {
         if let removeFromGlobalClusterAsyncOverride = removeFromGlobalClusterAsyncOverride {
             return try removeFromGlobalClusterAsyncOverride(input, completion)
         }
@@ -5161,7 +5161,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func removeRoleFromDBClusterAsync(
             input: RDSModel.RemoveRoleFromDBClusterMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let removeRoleFromDBClusterAsyncOverride = removeRoleFromDBClusterAsyncOverride {
             return try removeRoleFromDBClusterAsyncOverride(input, completion)
         }
@@ -5195,7 +5195,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func removeRoleFromDBInstanceAsync(
             input: RDSModel.RemoveRoleFromDBInstanceMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let removeRoleFromDBInstanceAsyncOverride = removeRoleFromDBInstanceAsyncOverride {
             return try removeRoleFromDBInstanceAsyncOverride(input, completion)
         }
@@ -5230,7 +5230,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func removeSourceIdentifierFromSubscriptionAsync(
             input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage, 
-            completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, RDSError>) -> ()) throws {
         if let removeSourceIdentifierFromSubscriptionAsyncOverride = removeSourceIdentifierFromSubscriptionAsyncOverride {
             return try removeSourceIdentifierFromSubscriptionAsyncOverride(input, completion)
         }
@@ -5269,7 +5269,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func removeTagsFromResourceAsync(
             input: RDSModel.RemoveTagsFromResourceMessage, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let removeTagsFromResourceAsyncOverride = removeTagsFromResourceAsyncOverride {
             return try removeTagsFromResourceAsyncOverride(input, completion)
         }
@@ -5304,7 +5304,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func resetDBClusterParameterGroupAsync(
             input: RDSModel.ResetDBClusterParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, RDSError>) -> ()) throws {
         if let resetDBClusterParameterGroupAsyncOverride = resetDBClusterParameterGroupAsyncOverride {
             return try resetDBClusterParameterGroupAsyncOverride(input, completion)
         }
@@ -5344,7 +5344,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func resetDBParameterGroupAsync(
             input: RDSModel.ResetDBParameterGroupMessage, 
-            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, RDSError>) -> ()) throws {
         if let resetDBParameterGroupAsyncOverride = resetDBParameterGroupAsyncOverride {
             return try resetDBParameterGroupAsyncOverride(input, completion)
         }
@@ -5384,7 +5384,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func restoreDBClusterFromS3Async(
             input: RDSModel.RestoreDBClusterFromS3Message, 
-            completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, RDSError>) -> ()) throws {
         if let restoreDBClusterFromS3AsyncOverride = restoreDBClusterFromS3AsyncOverride {
             return try restoreDBClusterFromS3AsyncOverride(input, completion)
         }
@@ -5424,7 +5424,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func restoreDBClusterFromSnapshotAsync(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, RDSError>) -> ()) throws {
         if let restoreDBClusterFromSnapshotAsyncOverride = restoreDBClusterFromSnapshotAsyncOverride {
             return try restoreDBClusterFromSnapshotAsyncOverride(input, completion)
         }
@@ -5464,7 +5464,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func restoreDBClusterToPointInTimeAsync(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage, 
-            completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, RDSError>) -> ()) throws {
         if let restoreDBClusterToPointInTimeAsyncOverride = restoreDBClusterToPointInTimeAsyncOverride {
             return try restoreDBClusterToPointInTimeAsyncOverride(input, completion)
         }
@@ -5504,7 +5504,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func restoreDBInstanceFromDBSnapshotAsync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
-            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, RDSError>) -> ()) throws {
         if let restoreDBInstanceFromDBSnapshotAsyncOverride = restoreDBInstanceFromDBSnapshotAsyncOverride {
             return try restoreDBInstanceFromDBSnapshotAsyncOverride(input, completion)
         }
@@ -5544,7 +5544,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func restoreDBInstanceFromS3Async(
             input: RDSModel.RestoreDBInstanceFromS3Message, 
-            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, RDSError>) -> ()) throws {
         if let restoreDBInstanceFromS3AsyncOverride = restoreDBInstanceFromS3AsyncOverride {
             return try restoreDBInstanceFromS3AsyncOverride(input, completion)
         }
@@ -5584,7 +5584,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func restoreDBInstanceToPointInTimeAsync(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
-            completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, RDSError>) -> ()) throws {
         if let restoreDBInstanceToPointInTimeAsyncOverride = restoreDBInstanceToPointInTimeAsyncOverride {
             return try restoreDBInstanceToPointInTimeAsyncOverride(input, completion)
         }
@@ -5624,7 +5624,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func revokeDBSecurityGroupIngressAsync(
             input: RDSModel.RevokeDBSecurityGroupIngressMessage, 
-            completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, RDSError>) -> ()) throws {
         if let revokeDBSecurityGroupIngressAsyncOverride = revokeDBSecurityGroupIngressAsyncOverride {
             return try revokeDBSecurityGroupIngressAsyncOverride(input, completion)
         }
@@ -5664,7 +5664,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func startActivityStreamAsync(
             input: RDSModel.StartActivityStreamRequest, 
-            completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, RDSError>) -> ()) throws {
         if let startActivityStreamAsyncOverride = startActivityStreamAsyncOverride {
             return try startActivityStreamAsyncOverride(input, completion)
         }
@@ -5704,7 +5704,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func startDBClusterAsync(
             input: RDSModel.StartDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, RDSError>) -> ()) throws {
         if let startDBClusterAsyncOverride = startDBClusterAsyncOverride {
             return try startDBClusterAsyncOverride(input, completion)
         }
@@ -5744,7 +5744,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func startDBInstanceAsync(
             input: RDSModel.StartDBInstanceMessage, 
-            completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, RDSError>) -> ()) throws {
         if let startDBInstanceAsyncOverride = startDBInstanceAsyncOverride {
             return try startDBInstanceAsyncOverride(input, completion)
         }
@@ -5784,7 +5784,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func startExportTaskAsync(
             input: RDSModel.StartExportTaskMessage, 
-            completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, RDSError>) -> ()) throws {
         if let startExportTaskAsyncOverride = startExportTaskAsyncOverride {
             return try startExportTaskAsyncOverride(input, completion)
         }
@@ -5824,7 +5824,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func stopActivityStreamAsync(
             input: RDSModel.StopActivityStreamRequest, 
-            completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, RDSError>) -> ()) throws {
         if let stopActivityStreamAsyncOverride = stopActivityStreamAsyncOverride {
             return try stopActivityStreamAsyncOverride(input, completion)
         }
@@ -5864,7 +5864,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func stopDBClusterAsync(
             input: RDSModel.StopDBClusterMessage, 
-            completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, RDSError>) -> ()) throws {
         if let stopDBClusterAsyncOverride = stopDBClusterAsyncOverride {
             return try stopDBClusterAsyncOverride(input, completion)
         }
@@ -5904,7 +5904,7 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func stopDBInstanceAsync(
             input: RDSModel.StopDBInstanceMessage, 
-            completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, RDSError>) -> ()) throws {
         if let stopDBInstanceAsyncOverride = stopDBInstanceAsyncOverride {
             return try stopDBInstanceAsyncOverride(input, completion)
         }

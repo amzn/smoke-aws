@@ -152,7 +152,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func addPermissionAsync(
             input: SimpleNotificationModel.AddPermissionInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -168,11 +168,25 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.addPermission.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -223,7 +237,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func checkIfPhoneNumberIsOptedOutAsync(
             input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput, 
-            completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -239,11 +253,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.checkIfPhoneNumberIsOptedOut.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -296,7 +325,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func confirmSubscriptionAsync(
             input: SimpleNotificationModel.ConfirmSubscriptionInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -312,11 +341,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.confirmSubscription.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -369,7 +413,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func createPlatformApplicationAsync(
             input: SimpleNotificationModel.CreatePlatformApplicationInput, 
-            completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -385,11 +429,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.createPlatformApplication.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -442,7 +501,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func createPlatformEndpointAsync(
             input: SimpleNotificationModel.CreatePlatformEndpointInput, 
-            completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -458,11 +517,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.createPlatformEndpoint.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -515,7 +589,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func createTopicAsync(
             input: SimpleNotificationModel.CreateTopicInput, 
-            completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -531,11 +605,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.createTopic.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -587,7 +676,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func deleteEndpointAsync(
             input: SimpleNotificationModel.DeleteEndpointInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -603,11 +692,25 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.deleteEndpoint.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -657,7 +760,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func deletePlatformApplicationAsync(
             input: SimpleNotificationModel.DeletePlatformApplicationInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -673,11 +776,25 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.deletePlatformApplication.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -727,7 +844,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func deleteTopicAsync(
             input: SimpleNotificationModel.DeleteTopicInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -743,11 +860,25 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.deleteTopic.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -798,7 +929,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func getEndpointAttributesAsync(
             input: SimpleNotificationModel.GetEndpointAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -814,11 +945,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.getEndpointAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -871,7 +1017,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func getPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.GetPlatformApplicationAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -887,11 +1033,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.getPlatformApplicationAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -944,7 +1105,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func getSMSAttributesAsync(
             input: SimpleNotificationModel.GetSMSAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -960,11 +1121,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.getSMSAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1017,7 +1193,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func getSubscriptionAttributesAsync(
             input: SimpleNotificationModel.GetSubscriptionAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1033,11 +1209,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.getSubscriptionAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1090,7 +1281,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func getTopicAttributesAsync(
             input: SimpleNotificationModel.GetTopicAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1106,11 +1297,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.getTopicAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1163,7 +1369,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func listEndpointsByPlatformApplicationAsync(
             input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1179,11 +1385,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.listEndpointsByPlatformApplication.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1236,7 +1457,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func listPhoneNumbersOptedOutAsync(
             input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1252,11 +1473,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.listPhoneNumbersOptedOut.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1309,7 +1545,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func listPlatformApplicationsAsync(
             input: SimpleNotificationModel.ListPlatformApplicationsInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1325,11 +1561,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.listPlatformApplications.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1382,7 +1633,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func listSubscriptionsAsync(
             input: SimpleNotificationModel.ListSubscriptionsInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1398,11 +1649,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.listSubscriptions.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1455,7 +1721,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func listSubscriptionsByTopicAsync(
             input: SimpleNotificationModel.ListSubscriptionsByTopicInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1471,11 +1737,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.listSubscriptionsByTopic.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1528,7 +1809,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func listTagsForResourceAsync(
             input: SimpleNotificationModel.ListTagsForResourceRequest, 
-            completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1544,11 +1825,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.listTagsForResource.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1601,7 +1897,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func listTopicsAsync(
             input: SimpleNotificationModel.ListTopicsInput, 
-            completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1617,11 +1913,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.listTopics.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.ListTopicsResponseForListTopics, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1674,7 +1985,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func optInPhoneNumberAsync(
             input: SimpleNotificationModel.OptInPhoneNumberInput, 
-            completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1690,11 +2001,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.optInPhoneNumber.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1747,7 +2073,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func publishAsync(
             input: SimpleNotificationModel.PublishInput, 
-            completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1763,11 +2089,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.publish.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.PublishResponseForPublish, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1819,7 +2160,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func removePermissionAsync(
             input: SimpleNotificationModel.RemovePermissionInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1835,11 +2176,25 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.removePermission.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1889,7 +2244,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func setEndpointAttributesAsync(
             input: SimpleNotificationModel.SetEndpointAttributesInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1905,11 +2260,25 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.setEndpointAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1959,7 +2328,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func setPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1975,11 +2344,25 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.setPlatformApplicationAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2030,7 +2413,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func setSMSAttributesAsync(
             input: SimpleNotificationModel.SetSMSAttributesInput, 
-            completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2046,11 +2429,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.setSMSAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2102,7 +2500,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func setSubscriptionAttributesAsync(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2118,11 +2516,25 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.setSubscriptionAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2172,7 +2584,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func setTopicAttributesAsync(
             input: SimpleNotificationModel.SetTopicAttributesInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2188,11 +2600,25 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.setTopicAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2243,7 +2669,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func subscribeAsync(
             input: SimpleNotificationModel.SubscribeInput, 
-            completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2259,11 +2685,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.subscribe.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.SubscribeResponseForSubscribe, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2316,7 +2757,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func tagResourceAsync(
             input: SimpleNotificationModel.TagResourceRequest, 
-            completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2332,11 +2773,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.tagResource.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.TagResourceResponseForTagResource, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2388,7 +2844,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func unsubscribeAsync(
             input: SimpleNotificationModel.UnsubscribeInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2404,11 +2860,25 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.unsubscribe.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2459,7 +2929,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
      */
     public func untagResourceAsync(
             input: SimpleNotificationModel.UntagResourceRequest, 
-            completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, SimpleNotificationError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2475,11 +2945,26 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
             action: SimpleNotificationModelOperations.untagResource.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleNotificationError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)

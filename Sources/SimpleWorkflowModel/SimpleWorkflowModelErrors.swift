@@ -22,6 +22,8 @@
 import Foundation
 import Logging
 
+public typealias SimpleWorkflowErrorResult<SuccessPayload> = Result<SuccessPayload, SimpleWorkflowError>
+
 private let defaultUndefinedIdentity = "DefaultUndefinedFault"
 private let domainAlreadyExistsIdentity = "DomainAlreadyExistsFault"
 private let domainDeprecatedIdentity = "DomainDeprecatedFault"

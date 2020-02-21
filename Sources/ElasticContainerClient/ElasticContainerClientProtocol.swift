@@ -32,242 +32,242 @@ public protocol ElasticContainerClientProtocol {
             _ input: ElasticContainerModel.CreateCapacityProviderRequest) throws -> ElasticContainerModel.CreateCapacityProviderResponse
     typealias CreateCapacityProviderAsyncType = (
             _ input: ElasticContainerModel.CreateCapacityProviderRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias CreateClusterSyncType = (
             _ input: ElasticContainerModel.CreateClusterRequest) throws -> ElasticContainerModel.CreateClusterResponse
     typealias CreateClusterAsyncType = (
             _ input: ElasticContainerModel.CreateClusterRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.CreateClusterResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.CreateClusterResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias CreateServiceSyncType = (
             _ input: ElasticContainerModel.CreateServiceRequest) throws -> ElasticContainerModel.CreateServiceResponse
     typealias CreateServiceAsyncType = (
             _ input: ElasticContainerModel.CreateServiceRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.CreateServiceResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.CreateServiceResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias CreateTaskSetSyncType = (
             _ input: ElasticContainerModel.CreateTaskSetRequest) throws -> ElasticContainerModel.CreateTaskSetResponse
     typealias CreateTaskSetAsyncType = (
             _ input: ElasticContainerModel.CreateTaskSetRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.CreateTaskSetResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.CreateTaskSetResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DeleteAccountSettingSyncType = (
             _ input: ElasticContainerModel.DeleteAccountSettingRequest) throws -> ElasticContainerModel.DeleteAccountSettingResponse
     typealias DeleteAccountSettingAsyncType = (
             _ input: ElasticContainerModel.DeleteAccountSettingRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DeleteAccountSettingResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DeleteAccountSettingResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DeleteAttributesSyncType = (
             _ input: ElasticContainerModel.DeleteAttributesRequest) throws -> ElasticContainerModel.DeleteAttributesResponse
     typealias DeleteAttributesAsyncType = (
             _ input: ElasticContainerModel.DeleteAttributesRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DeleteClusterSyncType = (
             _ input: ElasticContainerModel.DeleteClusterRequest) throws -> ElasticContainerModel.DeleteClusterResponse
     typealias DeleteClusterAsyncType = (
             _ input: ElasticContainerModel.DeleteClusterRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DeleteClusterResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DeleteClusterResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DeleteServiceSyncType = (
             _ input: ElasticContainerModel.DeleteServiceRequest) throws -> ElasticContainerModel.DeleteServiceResponse
     typealias DeleteServiceAsyncType = (
             _ input: ElasticContainerModel.DeleteServiceRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DeleteTaskSetSyncType = (
             _ input: ElasticContainerModel.DeleteTaskSetRequest) throws -> ElasticContainerModel.DeleteTaskSetResponse
     typealias DeleteTaskSetAsyncType = (
             _ input: ElasticContainerModel.DeleteTaskSetRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DeleteTaskSetResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DeleteTaskSetResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DeregisterContainerInstanceSyncType = (
             _ input: ElasticContainerModel.DeregisterContainerInstanceRequest) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse
     typealias DeregisterContainerInstanceAsyncType = (
             _ input: ElasticContainerModel.DeregisterContainerInstanceRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DeregisterContainerInstanceResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DeregisterContainerInstanceResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DeregisterTaskDefinitionSyncType = (
             _ input: ElasticContainerModel.DeregisterTaskDefinitionRequest) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse
     typealias DeregisterTaskDefinitionAsyncType = (
             _ input: ElasticContainerModel.DeregisterTaskDefinitionRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DescribeCapacityProvidersSyncType = (
             _ input: ElasticContainerModel.DescribeCapacityProvidersRequest) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse
     typealias DescribeCapacityProvidersAsyncType = (
             _ input: ElasticContainerModel.DescribeCapacityProvidersRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DescribeClustersSyncType = (
             _ input: ElasticContainerModel.DescribeClustersRequest) throws -> ElasticContainerModel.DescribeClustersResponse
     typealias DescribeClustersAsyncType = (
             _ input: ElasticContainerModel.DescribeClustersRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DescribeClustersResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DescribeClustersResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DescribeContainerInstancesSyncType = (
             _ input: ElasticContainerModel.DescribeContainerInstancesRequest) throws -> ElasticContainerModel.DescribeContainerInstancesResponse
     typealias DescribeContainerInstancesAsyncType = (
             _ input: ElasticContainerModel.DescribeContainerInstancesRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DescribeContainerInstancesResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DescribeContainerInstancesResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DescribeServicesSyncType = (
             _ input: ElasticContainerModel.DescribeServicesRequest) throws -> ElasticContainerModel.DescribeServicesResponse
     typealias DescribeServicesAsyncType = (
             _ input: ElasticContainerModel.DescribeServicesRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DescribeServicesResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DescribeServicesResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DescribeTaskDefinitionSyncType = (
             _ input: ElasticContainerModel.DescribeTaskDefinitionRequest) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse
     typealias DescribeTaskDefinitionAsyncType = (
             _ input: ElasticContainerModel.DescribeTaskDefinitionRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DescribeTaskDefinitionResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DescribeTaskDefinitionResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DescribeTaskSetsSyncType = (
             _ input: ElasticContainerModel.DescribeTaskSetsRequest) throws -> ElasticContainerModel.DescribeTaskSetsResponse
     typealias DescribeTaskSetsAsyncType = (
             _ input: ElasticContainerModel.DescribeTaskSetsRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DescribeTaskSetsResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DescribeTaskSetsResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DescribeTasksSyncType = (
             _ input: ElasticContainerModel.DescribeTasksRequest) throws -> ElasticContainerModel.DescribeTasksResponse
     typealias DescribeTasksAsyncType = (
             _ input: ElasticContainerModel.DescribeTasksRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DescribeTasksResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DescribeTasksResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DiscoverPollEndpointSyncType = (
             _ input: ElasticContainerModel.DiscoverPollEndpointRequest) throws -> ElasticContainerModel.DiscoverPollEndpointResponse
     typealias DiscoverPollEndpointAsyncType = (
             _ input: ElasticContainerModel.DiscoverPollEndpointRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias ListAccountSettingsSyncType = (
             _ input: ElasticContainerModel.ListAccountSettingsRequest) throws -> ElasticContainerModel.ListAccountSettingsResponse
     typealias ListAccountSettingsAsyncType = (
             _ input: ElasticContainerModel.ListAccountSettingsRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.ListAccountSettingsResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.ListAccountSettingsResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias ListAttributesSyncType = (
             _ input: ElasticContainerModel.ListAttributesRequest) throws -> ElasticContainerModel.ListAttributesResponse
     typealias ListAttributesAsyncType = (
             _ input: ElasticContainerModel.ListAttributesRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.ListAttributesResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.ListAttributesResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias ListClustersSyncType = (
             _ input: ElasticContainerModel.ListClustersRequest) throws -> ElasticContainerModel.ListClustersResponse
     typealias ListClustersAsyncType = (
             _ input: ElasticContainerModel.ListClustersRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.ListClustersResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.ListClustersResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias ListContainerInstancesSyncType = (
             _ input: ElasticContainerModel.ListContainerInstancesRequest) throws -> ElasticContainerModel.ListContainerInstancesResponse
     typealias ListContainerInstancesAsyncType = (
             _ input: ElasticContainerModel.ListContainerInstancesRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.ListContainerInstancesResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.ListContainerInstancesResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias ListServicesSyncType = (
             _ input: ElasticContainerModel.ListServicesRequest) throws -> ElasticContainerModel.ListServicesResponse
     typealias ListServicesAsyncType = (
             _ input: ElasticContainerModel.ListServicesRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias ListTagsForResourceSyncType = (
             _ input: ElasticContainerModel.ListTagsForResourceRequest) throws -> ElasticContainerModel.ListTagsForResourceResponse
     typealias ListTagsForResourceAsyncType = (
             _ input: ElasticContainerModel.ListTagsForResourceRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.ListTagsForResourceResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.ListTagsForResourceResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias ListTaskDefinitionFamiliesSyncType = (
             _ input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse
     typealias ListTaskDefinitionFamiliesAsyncType = (
             _ input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias ListTaskDefinitionsSyncType = (
             _ input: ElasticContainerModel.ListTaskDefinitionsRequest) throws -> ElasticContainerModel.ListTaskDefinitionsResponse
     typealias ListTaskDefinitionsAsyncType = (
             _ input: ElasticContainerModel.ListTaskDefinitionsRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionsResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionsResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias ListTasksSyncType = (
             _ input: ElasticContainerModel.ListTasksRequest) throws -> ElasticContainerModel.ListTasksResponse
     typealias ListTasksAsyncType = (
             _ input: ElasticContainerModel.ListTasksRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.ListTasksResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.ListTasksResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias PutAccountSettingSyncType = (
             _ input: ElasticContainerModel.PutAccountSettingRequest) throws -> ElasticContainerModel.PutAccountSettingResponse
     typealias PutAccountSettingAsyncType = (
             _ input: ElasticContainerModel.PutAccountSettingRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.PutAccountSettingResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.PutAccountSettingResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias PutAccountSettingDefaultSyncType = (
             _ input: ElasticContainerModel.PutAccountSettingDefaultRequest) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse
     typealias PutAccountSettingDefaultAsyncType = (
             _ input: ElasticContainerModel.PutAccountSettingDefaultRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.PutAccountSettingDefaultResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.PutAccountSettingDefaultResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias PutAttributesSyncType = (
             _ input: ElasticContainerModel.PutAttributesRequest) throws -> ElasticContainerModel.PutAttributesResponse
     typealias PutAttributesAsyncType = (
             _ input: ElasticContainerModel.PutAttributesRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.PutAttributesResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.PutAttributesResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias PutClusterCapacityProvidersSyncType = (
             _ input: ElasticContainerModel.PutClusterCapacityProvidersRequest) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse
     typealias PutClusterCapacityProvidersAsyncType = (
             _ input: ElasticContainerModel.PutClusterCapacityProvidersRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias RegisterContainerInstanceSyncType = (
             _ input: ElasticContainerModel.RegisterContainerInstanceRequest) throws -> ElasticContainerModel.RegisterContainerInstanceResponse
     typealias RegisterContainerInstanceAsyncType = (
             _ input: ElasticContainerModel.RegisterContainerInstanceRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.RegisterContainerInstanceResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.RegisterContainerInstanceResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias RegisterTaskDefinitionSyncType = (
             _ input: ElasticContainerModel.RegisterTaskDefinitionRequest) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse
     typealias RegisterTaskDefinitionAsyncType = (
             _ input: ElasticContainerModel.RegisterTaskDefinitionRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.RegisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.RegisterTaskDefinitionResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias RunTaskSyncType = (
             _ input: ElasticContainerModel.RunTaskRequest) throws -> ElasticContainerModel.RunTaskResponse
     typealias RunTaskAsyncType = (
             _ input: ElasticContainerModel.RunTaskRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.RunTaskResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.RunTaskResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias StartTaskSyncType = (
             _ input: ElasticContainerModel.StartTaskRequest) throws -> ElasticContainerModel.StartTaskResponse
     typealias StartTaskAsyncType = (
             _ input: ElasticContainerModel.StartTaskRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.StartTaskResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.StartTaskResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias StopTaskSyncType = (
             _ input: ElasticContainerModel.StopTaskRequest) throws -> ElasticContainerModel.StopTaskResponse
     typealias StopTaskAsyncType = (
             _ input: ElasticContainerModel.StopTaskRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.StopTaskResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.StopTaskResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias SubmitAttachmentStateChangesSyncType = (
             _ input: ElasticContainerModel.SubmitAttachmentStateChangesRequest) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse
     typealias SubmitAttachmentStateChangesAsyncType = (
             _ input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias SubmitContainerStateChangeSyncType = (
             _ input: ElasticContainerModel.SubmitContainerStateChangeRequest) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse
     typealias SubmitContainerStateChangeAsyncType = (
             _ input: ElasticContainerModel.SubmitContainerStateChangeRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.SubmitContainerStateChangeResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.SubmitContainerStateChangeResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias SubmitTaskStateChangeSyncType = (
             _ input: ElasticContainerModel.SubmitTaskStateChangeRequest) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse
     typealias SubmitTaskStateChangeAsyncType = (
             _ input: ElasticContainerModel.SubmitTaskStateChangeRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.SubmitTaskStateChangeResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.SubmitTaskStateChangeResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias TagResourceSyncType = (
             _ input: ElasticContainerModel.TagResourceRequest) throws -> ElasticContainerModel.TagResourceResponse
     typealias TagResourceAsyncType = (
             _ input: ElasticContainerModel.TagResourceRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.TagResourceResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.TagResourceResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias UntagResourceSyncType = (
             _ input: ElasticContainerModel.UntagResourceRequest) throws -> ElasticContainerModel.UntagResourceResponse
     typealias UntagResourceAsyncType = (
             _ input: ElasticContainerModel.UntagResourceRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias UpdateClusterSettingsSyncType = (
             _ input: ElasticContainerModel.UpdateClusterSettingsRequest) throws -> ElasticContainerModel.UpdateClusterSettingsResponse
     typealias UpdateClusterSettingsAsyncType = (
             _ input: ElasticContainerModel.UpdateClusterSettingsRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias UpdateContainerAgentSyncType = (
             _ input: ElasticContainerModel.UpdateContainerAgentRequest) throws -> ElasticContainerModel.UpdateContainerAgentResponse
     typealias UpdateContainerAgentAsyncType = (
             _ input: ElasticContainerModel.UpdateContainerAgentRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.UpdateContainerAgentResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.UpdateContainerAgentResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias UpdateContainerInstancesStateSyncType = (
             _ input: ElasticContainerModel.UpdateContainerInstancesStateRequest) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse
     typealias UpdateContainerInstancesStateAsyncType = (
             _ input: ElasticContainerModel.UpdateContainerInstancesStateRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias UpdateServiceSyncType = (
             _ input: ElasticContainerModel.UpdateServiceRequest) throws -> ElasticContainerModel.UpdateServiceResponse
     typealias UpdateServiceAsyncType = (
             _ input: ElasticContainerModel.UpdateServiceRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.UpdateServiceResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.UpdateServiceResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias UpdateServicePrimaryTaskSetSyncType = (
             _ input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse
     typealias UpdateServicePrimaryTaskSetAsyncType = (
             _ input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias UpdateTaskSetSyncType = (
             _ input: ElasticContainerModel.UpdateTaskSetRequest) throws -> ElasticContainerModel.UpdateTaskSetResponse
     typealias UpdateTaskSetAsyncType = (
             _ input: ElasticContainerModel.UpdateTaskSetRequest, 
-            _ completion: @escaping (Result<ElasticContainerModel.UpdateTaskSetResponse, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticContainerModel.UpdateTaskSetResponse, ElasticContainerError>) -> ()) throws -> ()
 
     /**
      Invokes the CreateCapacityProvider operation returning immediately and passing the response to a callback.
@@ -281,7 +281,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func createCapacityProviderAsync(
             input: ElasticContainerModel.CreateCapacityProviderRequest, 
-            completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the CreateCapacityProvider operation waiting for the response before returning.
@@ -307,7 +307,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func createClusterAsync(
             input: ElasticContainerModel.CreateClusterRequest, 
-            completion: @escaping (Result<ElasticContainerModel.CreateClusterResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.CreateClusterResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the CreateCluster operation waiting for the response before returning.
@@ -333,7 +333,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func createServiceAsync(
             input: ElasticContainerModel.CreateServiceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.CreateServiceResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.CreateServiceResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the CreateService operation waiting for the response before returning.
@@ -359,7 +359,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func createTaskSetAsync(
             input: ElasticContainerModel.CreateTaskSetRequest, 
-            completion: @escaping (Result<ElasticContainerModel.CreateTaskSetResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.CreateTaskSetResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the CreateTaskSet operation waiting for the response before returning.
@@ -385,7 +385,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func deleteAccountSettingAsync(
             input: ElasticContainerModel.DeleteAccountSettingRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeleteAccountSettingResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DeleteAccountSettingResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DeleteAccountSetting operation waiting for the response before returning.
@@ -411,7 +411,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func deleteAttributesAsync(
             input: ElasticContainerModel.DeleteAttributesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DeleteAttributes operation waiting for the response before returning.
@@ -437,7 +437,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func deleteClusterAsync(
             input: ElasticContainerModel.DeleteClusterRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeleteClusterResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DeleteClusterResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DeleteCluster operation waiting for the response before returning.
@@ -463,7 +463,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func deleteServiceAsync(
             input: ElasticContainerModel.DeleteServiceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DeleteService operation waiting for the response before returning.
@@ -489,7 +489,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func deleteTaskSetAsync(
             input: ElasticContainerModel.DeleteTaskSetRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeleteTaskSetResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DeleteTaskSetResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DeleteTaskSet operation waiting for the response before returning.
@@ -515,7 +515,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func deregisterContainerInstanceAsync(
             input: ElasticContainerModel.DeregisterContainerInstanceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeregisterContainerInstanceResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DeregisterContainerInstanceResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DeregisterContainerInstance operation waiting for the response before returning.
@@ -541,7 +541,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func deregisterTaskDefinitionAsync(
             input: ElasticContainerModel.DeregisterTaskDefinitionRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DeregisterTaskDefinition operation waiting for the response before returning.
@@ -567,7 +567,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func describeCapacityProvidersAsync(
             input: ElasticContainerModel.DescribeCapacityProvidersRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DescribeCapacityProviders operation waiting for the response before returning.
@@ -593,7 +593,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func describeClustersAsync(
             input: ElasticContainerModel.DescribeClustersRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeClustersResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DescribeClustersResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DescribeClusters operation waiting for the response before returning.
@@ -619,7 +619,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func describeContainerInstancesAsync(
             input: ElasticContainerModel.DescribeContainerInstancesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeContainerInstancesResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DescribeContainerInstancesResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DescribeContainerInstances operation waiting for the response before returning.
@@ -645,7 +645,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func describeServicesAsync(
             input: ElasticContainerModel.DescribeServicesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeServicesResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DescribeServicesResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DescribeServices operation waiting for the response before returning.
@@ -671,7 +671,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func describeTaskDefinitionAsync(
             input: ElasticContainerModel.DescribeTaskDefinitionRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeTaskDefinitionResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DescribeTaskDefinitionResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DescribeTaskDefinition operation waiting for the response before returning.
@@ -697,7 +697,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func describeTaskSetsAsync(
             input: ElasticContainerModel.DescribeTaskSetsRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeTaskSetsResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DescribeTaskSetsResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DescribeTaskSets operation waiting for the response before returning.
@@ -723,7 +723,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func describeTasksAsync(
             input: ElasticContainerModel.DescribeTasksRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DescribeTasksResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DescribeTasksResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DescribeTasks operation waiting for the response before returning.
@@ -749,7 +749,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func discoverPollEndpointAsync(
             input: ElasticContainerModel.DiscoverPollEndpointRequest, 
-            completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the DiscoverPollEndpoint operation waiting for the response before returning.
@@ -775,7 +775,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func listAccountSettingsAsync(
             input: ElasticContainerModel.ListAccountSettingsRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListAccountSettingsResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.ListAccountSettingsResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the ListAccountSettings operation waiting for the response before returning.
@@ -801,7 +801,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func listAttributesAsync(
             input: ElasticContainerModel.ListAttributesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListAttributesResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.ListAttributesResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the ListAttributes operation waiting for the response before returning.
@@ -827,7 +827,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func listClustersAsync(
             input: ElasticContainerModel.ListClustersRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListClustersResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.ListClustersResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the ListClusters operation waiting for the response before returning.
@@ -853,7 +853,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func listContainerInstancesAsync(
             input: ElasticContainerModel.ListContainerInstancesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListContainerInstancesResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.ListContainerInstancesResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the ListContainerInstances operation waiting for the response before returning.
@@ -879,7 +879,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func listServicesAsync(
             input: ElasticContainerModel.ListServicesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the ListServices operation waiting for the response before returning.
@@ -905,7 +905,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func listTagsForResourceAsync(
             input: ElasticContainerModel.ListTagsForResourceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListTagsForResourceResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.ListTagsForResourceResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the ListTagsForResource operation waiting for the response before returning.
@@ -931,7 +931,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func listTaskDefinitionFamiliesAsync(
             input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the ListTaskDefinitionFamilies operation waiting for the response before returning.
@@ -957,7 +957,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func listTaskDefinitionsAsync(
             input: ElasticContainerModel.ListTaskDefinitionsRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionsResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionsResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the ListTaskDefinitions operation waiting for the response before returning.
@@ -983,7 +983,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func listTasksAsync(
             input: ElasticContainerModel.ListTasksRequest, 
-            completion: @escaping (Result<ElasticContainerModel.ListTasksResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.ListTasksResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the ListTasks operation waiting for the response before returning.
@@ -1009,7 +1009,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func putAccountSettingAsync(
             input: ElasticContainerModel.PutAccountSettingRequest, 
-            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the PutAccountSetting operation waiting for the response before returning.
@@ -1035,7 +1035,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func putAccountSettingDefaultAsync(
             input: ElasticContainerModel.PutAccountSettingDefaultRequest, 
-            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingDefaultResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingDefaultResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the PutAccountSettingDefault operation waiting for the response before returning.
@@ -1061,7 +1061,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func putAttributesAsync(
             input: ElasticContainerModel.PutAttributesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.PutAttributesResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.PutAttributesResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the PutAttributes operation waiting for the response before returning.
@@ -1087,7 +1087,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func putClusterCapacityProvidersAsync(
             input: ElasticContainerModel.PutClusterCapacityProvidersRequest, 
-            completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the PutClusterCapacityProviders operation waiting for the response before returning.
@@ -1113,7 +1113,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func registerContainerInstanceAsync(
             input: ElasticContainerModel.RegisterContainerInstanceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.RegisterContainerInstanceResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.RegisterContainerInstanceResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the RegisterContainerInstance operation waiting for the response before returning.
@@ -1139,7 +1139,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func registerTaskDefinitionAsync(
             input: ElasticContainerModel.RegisterTaskDefinitionRequest, 
-            completion: @escaping (Result<ElasticContainerModel.RegisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.RegisterTaskDefinitionResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the RegisterTaskDefinition operation waiting for the response before returning.
@@ -1165,7 +1165,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func runTaskAsync(
             input: ElasticContainerModel.RunTaskRequest, 
-            completion: @escaping (Result<ElasticContainerModel.RunTaskResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.RunTaskResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the RunTask operation waiting for the response before returning.
@@ -1191,7 +1191,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func startTaskAsync(
             input: ElasticContainerModel.StartTaskRequest, 
-            completion: @escaping (Result<ElasticContainerModel.StartTaskResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.StartTaskResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the StartTask operation waiting for the response before returning.
@@ -1217,7 +1217,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func stopTaskAsync(
             input: ElasticContainerModel.StopTaskRequest, 
-            completion: @escaping (Result<ElasticContainerModel.StopTaskResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.StopTaskResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the StopTask operation waiting for the response before returning.
@@ -1243,7 +1243,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func submitAttachmentStateChangesAsync(
             input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, 
-            completion: @escaping (Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the SubmitAttachmentStateChanges operation waiting for the response before returning.
@@ -1269,7 +1269,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func submitContainerStateChangeAsync(
             input: ElasticContainerModel.SubmitContainerStateChangeRequest, 
-            completion: @escaping (Result<ElasticContainerModel.SubmitContainerStateChangeResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.SubmitContainerStateChangeResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the SubmitContainerStateChange operation waiting for the response before returning.
@@ -1295,7 +1295,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func submitTaskStateChangeAsync(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest, 
-            completion: @escaping (Result<ElasticContainerModel.SubmitTaskStateChangeResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.SubmitTaskStateChangeResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the SubmitTaskStateChange operation waiting for the response before returning.
@@ -1321,7 +1321,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func tagResourceAsync(
             input: ElasticContainerModel.TagResourceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.TagResourceResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.TagResourceResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the TagResource operation waiting for the response before returning.
@@ -1347,7 +1347,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func untagResourceAsync(
             input: ElasticContainerModel.UntagResourceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the UntagResource operation waiting for the response before returning.
@@ -1373,7 +1373,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func updateClusterSettingsAsync(
             input: ElasticContainerModel.UpdateClusterSettingsRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the UpdateClusterSettings operation waiting for the response before returning.
@@ -1399,7 +1399,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func updateContainerAgentAsync(
             input: ElasticContainerModel.UpdateContainerAgentRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UpdateContainerAgentResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.UpdateContainerAgentResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the UpdateContainerAgent operation waiting for the response before returning.
@@ -1425,7 +1425,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func updateContainerInstancesStateAsync(
             input: ElasticContainerModel.UpdateContainerInstancesStateRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the UpdateContainerInstancesState operation waiting for the response before returning.
@@ -1451,7 +1451,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func updateServiceAsync(
             input: ElasticContainerModel.UpdateServiceRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UpdateServiceResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.UpdateServiceResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the UpdateService operation waiting for the response before returning.
@@ -1477,7 +1477,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func updateServicePrimaryTaskSetAsync(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the UpdateServicePrimaryTaskSet operation waiting for the response before returning.
@@ -1503,7 +1503,7 @@ public protocol ElasticContainerClientProtocol {
      */
     func updateTaskSetAsync(
             input: ElasticContainerModel.UpdateTaskSetRequest, 
-            completion: @escaping (Result<ElasticContainerModel.UpdateTaskSetResponse, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<ElasticContainerModel.UpdateTaskSetResponse, ElasticContainerError>) -> ()) throws
 
     /**
      Invokes the UpdateTaskSet operation waiting for the response before returning.

@@ -22,6 +22,8 @@
 import Foundation
 import Logging
 
+public typealias RDSErrorResult<SuccessPayload> = Result<SuccessPayload, RDSError>
+
 private let authorizationAlreadyExistsIdentity = "AuthorizationAlreadyExists"
 private let authorizationNotFoundIdentity = "AuthorizationNotFound"
 private let authorizationQuotaExceededIdentity = "AuthorizationQuotaExceeded"

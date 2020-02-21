@@ -22,6 +22,8 @@
 import Foundation
 import Logging
 
+public typealias ElasticContainerErrorResult<SuccessPayload> = Result<SuccessPayload, ElasticContainerError>
+
 private let accessDeniedIdentity = "AccessDeniedException"
 private let attributeLimitExceededIdentity = "AttributeLimitExceededException"
 private let blockedIdentity = "BlockedException"

@@ -22,6 +22,8 @@
 import Foundation
 import Logging
 
+public typealias CloudWatchErrorResult<SuccessPayload> = Result<SuccessPayload, CloudWatchError>
+
 private let concurrentModificationIdentity = "ConcurrentModificationException"
 private let dashboardInvalidInputIdentity = "InvalidParameterInput"
 private let dashboardNotFoundIdentity = "ResourceNotFound"

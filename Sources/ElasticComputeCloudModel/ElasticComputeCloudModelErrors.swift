@@ -22,6 +22,8 @@
 import Foundation
 import Logging
 
+public typealias ElasticComputeCloudErrorResult<SuccessPayload> = Result<SuccessPayload, ElasticComputeCloudError>
+
 private let activeVpcPeeringConnectionPerVpcLimitExceededIdentity = "ActiveVpcPeeringConnectionPerVpcLimitExceeded"
 private let addressLimitExceededIdentity = "AddressLimitExceeded"
 private let asnConflictIdentity = "AsnConflict"

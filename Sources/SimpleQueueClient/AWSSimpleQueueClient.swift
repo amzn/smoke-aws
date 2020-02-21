@@ -166,7 +166,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func addPermissionAsync(
             input: SimpleQueueModel.AddPermissionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -182,11 +182,25 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.addPermission.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -236,7 +250,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func changeMessageVisibilityAsync(
             input: SimpleQueueModel.ChangeMessageVisibilityRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -252,11 +266,25 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.changeMessageVisibility.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -307,7 +335,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func changeMessageVisibilityBatchAsync(
             input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -323,11 +351,26 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.changeMessageVisibilityBatch.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -380,7 +423,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func createQueueAsync(
             input: SimpleQueueModel.CreateQueueRequest, 
-            completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -396,11 +439,26 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.createQueue.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.CreateQueueResultForCreateQueue, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -452,7 +510,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func deleteMessageAsync(
             input: SimpleQueueModel.DeleteMessageRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -468,11 +526,25 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.deleteMessage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -523,7 +595,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func deleteMessageBatchAsync(
             input: SimpleQueueModel.DeleteMessageBatchRequest, 
-            completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -539,11 +611,26 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.deleteMessageBatch.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -594,7 +681,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func deleteQueueAsync(
             input: SimpleQueueModel.DeleteQueueRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -610,11 +697,25 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.deleteQueue.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -664,7 +765,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func getQueueAttributesAsync(
             input: SimpleQueueModel.GetQueueAttributesRequest, 
-            completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -680,11 +781,26 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.getQueueAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try listHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -737,7 +853,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func getQueueUrlAsync(
             input: SimpleQueueModel.GetQueueUrlRequest, 
-            completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -753,11 +869,26 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.getQueueUrl.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -810,7 +941,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func listDeadLetterSourceQueuesAsync(
             input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -826,11 +957,26 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.listDeadLetterSourceQueues.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -882,7 +1028,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func listQueueTagsAsync(
             input: SimpleQueueModel.ListQueueTagsRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -898,11 +1044,26 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.listQueueTags.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try listHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -953,7 +1114,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func listQueuesAsync(
             input: SimpleQueueModel.ListQueuesRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -969,11 +1130,26 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.listQueues.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.ListQueuesResultForListQueues, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1024,7 +1200,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func purgeQueueAsync(
             input: SimpleQueueModel.PurgeQueueRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1040,11 +1216,25 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.purgeQueue.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1095,7 +1285,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func receiveMessageAsync(
             input: SimpleQueueModel.ReceiveMessageRequest, 
-            completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1111,11 +1301,26 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.receiveMessage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1166,7 +1371,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func removePermissionAsync(
             input: SimpleQueueModel.RemovePermissionRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1182,11 +1387,25 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.removePermission.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1236,7 +1455,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func sendMessageAsync(
             input: SimpleQueueModel.SendMessageRequest, 
-            completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1252,11 +1471,26 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.sendMessage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.SendMessageResultForSendMessage, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1309,7 +1543,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func sendMessageBatchAsync(
             input: SimpleQueueModel.SendMessageBatchRequest, 
-            completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1325,11 +1559,26 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.sendMessageBatch.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1381,7 +1630,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func setQueueAttributesAsync(
             input: SimpleQueueModel.SetQueueAttributesRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1397,11 +1646,25 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.setQueueAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try listHttpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1450,7 +1713,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func tagQueueAsync(
             input: SimpleQueueModel.TagQueueRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1466,11 +1729,25 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.tagQueue.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try listHttpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1518,7 +1795,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
      */
     public func untagQueueAsync(
             input: SimpleQueueModel.UntagQueueRequest, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1534,11 +1811,25 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
             action: SimpleQueueModelOperations.untagQueue.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    let errorType = String(describing: type(of: error.cause))
+                    let errorDescription = String(describing: error.cause)
+                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)

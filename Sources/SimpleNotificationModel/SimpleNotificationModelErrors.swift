@@ -22,6 +22,8 @@
 import Foundation
 import Logging
 
+public typealias SimpleNotificationErrorResult<SuccessPayload> = Result<SuccessPayload, SimpleNotificationError>
+
 private let authorizationErrorIdentity = "AuthorizationError"
 private let concurrentAccessIdentity = "ConcurrentAccess"
 private let endpointDisabledIdentity = "EndpointDisabled"

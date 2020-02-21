@@ -22,6 +22,8 @@
 import Foundation
 import Logging
 
+public typealias StepFunctionsErrorResult<SuccessPayload> = Result<SuccessPayload, StepFunctionsError>
+
 private let activityDoesNotExistIdentity = "ActivityDoesNotExist"
 private let activityLimitExceededIdentity = "ActivityLimitExceeded"
 private let activityWorkerLimitExceededIdentity = "ActivityWorkerLimitExceeded"

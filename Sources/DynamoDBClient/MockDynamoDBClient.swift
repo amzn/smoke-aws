@@ -294,7 +294,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func batchGetItemAsync(
             input: DynamoDBModel.BatchGetItemInput, 
-            completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, DynamoDBError>) -> ()) throws {
         if let batchGetItemAsyncOverride = batchGetItemAsyncOverride {
             return try batchGetItemAsyncOverride(input, completion)
         }
@@ -334,7 +334,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func batchWriteItemAsync(
             input: DynamoDBModel.BatchWriteItemInput, 
-            completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, DynamoDBError>) -> ()) throws {
         if let batchWriteItemAsyncOverride = batchWriteItemAsyncOverride {
             return try batchWriteItemAsyncOverride(input, completion)
         }
@@ -374,7 +374,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func createBackupAsync(
             input: DynamoDBModel.CreateBackupInput, 
-            completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, DynamoDBError>) -> ()) throws {
         if let createBackupAsyncOverride = createBackupAsyncOverride {
             return try createBackupAsyncOverride(input, completion)
         }
@@ -414,7 +414,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func createGlobalTableAsync(
             input: DynamoDBModel.CreateGlobalTableInput, 
-            completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, DynamoDBError>) -> ()) throws {
         if let createGlobalTableAsyncOverride = createGlobalTableAsyncOverride {
             return try createGlobalTableAsyncOverride(input, completion)
         }
@@ -454,7 +454,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func createTableAsync(
             input: DynamoDBModel.CreateTableInput, 
-            completion: @escaping (Result<DynamoDBModel.CreateTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.CreateTableOutput, DynamoDBError>) -> ()) throws {
         if let createTableAsyncOverride = createTableAsyncOverride {
             return try createTableAsyncOverride(input, completion)
         }
@@ -494,7 +494,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func deleteBackupAsync(
             input: DynamoDBModel.DeleteBackupInput, 
-            completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, DynamoDBError>) -> ()) throws {
         if let deleteBackupAsyncOverride = deleteBackupAsyncOverride {
             return try deleteBackupAsyncOverride(input, completion)
         }
@@ -534,7 +534,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func deleteItemAsync(
             input: DynamoDBModel.DeleteItemInput, 
-            completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, DynamoDBError>) -> ()) throws {
         if let deleteItemAsyncOverride = deleteItemAsyncOverride {
             return try deleteItemAsyncOverride(input, completion)
         }
@@ -574,7 +574,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func deleteTableAsync(
             input: DynamoDBModel.DeleteTableInput, 
-            completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, DynamoDBError>) -> ()) throws {
         if let deleteTableAsyncOverride = deleteTableAsyncOverride {
             return try deleteTableAsyncOverride(input, completion)
         }
@@ -614,7 +614,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeBackupAsync(
             input: DynamoDBModel.DescribeBackupInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, DynamoDBError>) -> ()) throws {
         if let describeBackupAsyncOverride = describeBackupAsyncOverride {
             return try describeBackupAsyncOverride(input, completion)
         }
@@ -654,7 +654,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeContinuousBackupsAsync(
             input: DynamoDBModel.DescribeContinuousBackupsInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, DynamoDBError>) -> ()) throws {
         if let describeContinuousBackupsAsyncOverride = describeContinuousBackupsAsyncOverride {
             return try describeContinuousBackupsAsyncOverride(input, completion)
         }
@@ -694,7 +694,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeContributorInsightsAsync(
             input: DynamoDBModel.DescribeContributorInsightsInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, DynamoDBError>) -> ()) throws {
         if let describeContributorInsightsAsyncOverride = describeContributorInsightsAsyncOverride {
             return try describeContributorInsightsAsyncOverride(input, completion)
         }
@@ -733,7 +733,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeEndpointsAsync(
             input: DynamoDBModel.DescribeEndpointsRequest, 
-            completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, DynamoDBError>) -> ()) throws {
         if let describeEndpointsAsyncOverride = describeEndpointsAsyncOverride {
             return try describeEndpointsAsyncOverride(input, completion)
         }
@@ -772,7 +772,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeGlobalTableAsync(
             input: DynamoDBModel.DescribeGlobalTableInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, DynamoDBError>) -> ()) throws {
         if let describeGlobalTableAsyncOverride = describeGlobalTableAsyncOverride {
             return try describeGlobalTableAsyncOverride(input, completion)
         }
@@ -812,7 +812,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeGlobalTableSettingsAsync(
             input: DynamoDBModel.DescribeGlobalTableSettingsInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws {
         if let describeGlobalTableSettingsAsyncOverride = describeGlobalTableSettingsAsyncOverride {
             return try describeGlobalTableSettingsAsyncOverride(input, completion)
         }
@@ -852,7 +852,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeLimitsAsync(
             input: DynamoDBModel.DescribeLimitsInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, DynamoDBError>) -> ()) throws {
         if let describeLimitsAsyncOverride = describeLimitsAsyncOverride {
             return try describeLimitsAsyncOverride(input, completion)
         }
@@ -892,7 +892,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeTableAsync(
             input: DynamoDBModel.DescribeTableInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, DynamoDBError>) -> ()) throws {
         if let describeTableAsyncOverride = describeTableAsyncOverride {
             return try describeTableAsyncOverride(input, completion)
         }
@@ -932,7 +932,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeTableReplicaAutoScalingAsync(
             input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, DynamoDBError>) -> ()) throws {
         if let describeTableReplicaAutoScalingAsyncOverride = describeTableReplicaAutoScalingAsyncOverride {
             return try describeTableReplicaAutoScalingAsyncOverride(input, completion)
         }
@@ -972,7 +972,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeTimeToLiveAsync(
             input: DynamoDBModel.DescribeTimeToLiveInput, 
-            completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, DynamoDBError>) -> ()) throws {
         if let describeTimeToLiveAsyncOverride = describeTimeToLiveAsyncOverride {
             return try describeTimeToLiveAsyncOverride(input, completion)
         }
@@ -1012,7 +1012,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func getItemAsync(
             input: DynamoDBModel.GetItemInput, 
-            completion: @escaping (Result<DynamoDBModel.GetItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.GetItemOutput, DynamoDBError>) -> ()) throws {
         if let getItemAsyncOverride = getItemAsyncOverride {
             return try getItemAsyncOverride(input, completion)
         }
@@ -1052,7 +1052,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func listBackupsAsync(
             input: DynamoDBModel.ListBackupsInput, 
-            completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, DynamoDBError>) -> ()) throws {
         if let listBackupsAsyncOverride = listBackupsAsyncOverride {
             return try listBackupsAsyncOverride(input, completion)
         }
@@ -1092,7 +1092,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func listContributorInsightsAsync(
             input: DynamoDBModel.ListContributorInsightsInput, 
-            completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, DynamoDBError>) -> ()) throws {
         if let listContributorInsightsAsyncOverride = listContributorInsightsAsyncOverride {
             return try listContributorInsightsAsyncOverride(input, completion)
         }
@@ -1132,7 +1132,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func listGlobalTablesAsync(
             input: DynamoDBModel.ListGlobalTablesInput, 
-            completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, DynamoDBError>) -> ()) throws {
         if let listGlobalTablesAsyncOverride = listGlobalTablesAsyncOverride {
             return try listGlobalTablesAsyncOverride(input, completion)
         }
@@ -1172,7 +1172,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func listTablesAsync(
             input: DynamoDBModel.ListTablesInput, 
-            completion: @escaping (Result<DynamoDBModel.ListTablesOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListTablesOutput, DynamoDBError>) -> ()) throws {
         if let listTablesAsyncOverride = listTablesAsyncOverride {
             return try listTablesAsyncOverride(input, completion)
         }
@@ -1212,7 +1212,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func listTagsOfResourceAsync(
             input: DynamoDBModel.ListTagsOfResourceInput, 
-            completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, DynamoDBError>) -> ()) throws {
         if let listTagsOfResourceAsyncOverride = listTagsOfResourceAsyncOverride {
             return try listTagsOfResourceAsyncOverride(input, completion)
         }
@@ -1252,7 +1252,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func putItemAsync(
             input: DynamoDBModel.PutItemInput, 
-            completion: @escaping (Result<DynamoDBModel.PutItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.PutItemOutput, DynamoDBError>) -> ()) throws {
         if let putItemAsyncOverride = putItemAsyncOverride {
             return try putItemAsyncOverride(input, completion)
         }
@@ -1292,7 +1292,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func queryAsync(
             input: DynamoDBModel.QueryInput, 
-            completion: @escaping (Result<DynamoDBModel.QueryOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.QueryOutput, DynamoDBError>) -> ()) throws {
         if let queryAsyncOverride = queryAsyncOverride {
             return try queryAsyncOverride(input, completion)
         }
@@ -1332,7 +1332,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func restoreTableFromBackupAsync(
             input: DynamoDBModel.RestoreTableFromBackupInput, 
-            completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, DynamoDBError>) -> ()) throws {
         if let restoreTableFromBackupAsyncOverride = restoreTableFromBackupAsyncOverride {
             return try restoreTableFromBackupAsyncOverride(input, completion)
         }
@@ -1372,7 +1372,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func restoreTableToPointInTimeAsync(
             input: DynamoDBModel.RestoreTableToPointInTimeInput, 
-            completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, DynamoDBError>) -> ()) throws {
         if let restoreTableToPointInTimeAsyncOverride = restoreTableToPointInTimeAsyncOverride {
             return try restoreTableToPointInTimeAsyncOverride(input, completion)
         }
@@ -1412,7 +1412,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func scanAsync(
             input: DynamoDBModel.ScanInput, 
-            completion: @escaping (Result<DynamoDBModel.ScanOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ScanOutput, DynamoDBError>) -> ()) throws {
         if let scanAsyncOverride = scanAsyncOverride {
             return try scanAsyncOverride(input, completion)
         }
@@ -1451,7 +1451,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func tagResourceAsync(
             input: DynamoDBModel.TagResourceInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (DynamoDBError?) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
             return try tagResourceAsyncOverride(input, completion)
         }
@@ -1486,7 +1486,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func transactGetItemsAsync(
             input: DynamoDBModel.TransactGetItemsInput, 
-            completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, DynamoDBError>) -> ()) throws {
         if let transactGetItemsAsyncOverride = transactGetItemsAsyncOverride {
             return try transactGetItemsAsyncOverride(input, completion)
         }
@@ -1526,7 +1526,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func transactWriteItemsAsync(
             input: DynamoDBModel.TransactWriteItemsInput, 
-            completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, DynamoDBError>) -> ()) throws {
         if let transactWriteItemsAsyncOverride = transactWriteItemsAsyncOverride {
             return try transactWriteItemsAsyncOverride(input, completion)
         }
@@ -1565,7 +1565,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func untagResourceAsync(
             input: DynamoDBModel.UntagResourceInput, 
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (DynamoDBError?) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
             return try untagResourceAsyncOverride(input, completion)
         }
@@ -1600,7 +1600,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateContinuousBackupsAsync(
             input: DynamoDBModel.UpdateContinuousBackupsInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, DynamoDBError>) -> ()) throws {
         if let updateContinuousBackupsAsyncOverride = updateContinuousBackupsAsyncOverride {
             return try updateContinuousBackupsAsyncOverride(input, completion)
         }
@@ -1640,7 +1640,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateContributorInsightsAsync(
             input: DynamoDBModel.UpdateContributorInsightsInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, DynamoDBError>) -> ()) throws {
         if let updateContributorInsightsAsyncOverride = updateContributorInsightsAsyncOverride {
             return try updateContributorInsightsAsyncOverride(input, completion)
         }
@@ -1680,7 +1680,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateGlobalTableAsync(
             input: DynamoDBModel.UpdateGlobalTableInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, DynamoDBError>) -> ()) throws {
         if let updateGlobalTableAsyncOverride = updateGlobalTableAsyncOverride {
             return try updateGlobalTableAsyncOverride(input, completion)
         }
@@ -1720,7 +1720,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateGlobalTableSettingsAsync(
             input: DynamoDBModel.UpdateGlobalTableSettingsInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws {
         if let updateGlobalTableSettingsAsyncOverride = updateGlobalTableSettingsAsyncOverride {
             return try updateGlobalTableSettingsAsyncOverride(input, completion)
         }
@@ -1760,7 +1760,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateItemAsync(
             input: DynamoDBModel.UpdateItemInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, DynamoDBError>) -> ()) throws {
         if let updateItemAsyncOverride = updateItemAsyncOverride {
             return try updateItemAsyncOverride(input, completion)
         }
@@ -1800,7 +1800,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateTableAsync(
             input: DynamoDBModel.UpdateTableInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, DynamoDBError>) -> ()) throws {
         if let updateTableAsyncOverride = updateTableAsyncOverride {
             return try updateTableAsyncOverride(input, completion)
         }
@@ -1840,7 +1840,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateTableReplicaAutoScalingAsync(
             input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, DynamoDBError>) -> ()) throws {
         if let updateTableReplicaAutoScalingAsyncOverride = updateTableReplicaAutoScalingAsyncOverride {
             return try updateTableReplicaAutoScalingAsyncOverride(input, completion)
         }
@@ -1880,7 +1880,7 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateTimeToLiveAsync(
             input: DynamoDBModel.UpdateTimeToLiveInput, 
-            completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, DynamoDBError>) -> ()) throws {
         if let updateTimeToLiveAsyncOverride = updateTimeToLiveAsyncOverride {
             return try updateTimeToLiveAsyncOverride(input, completion)
         }
