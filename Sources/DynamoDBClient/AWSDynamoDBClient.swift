@@ -65,7 +65,8 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
-    let reporting: InvocationReportingType
+    
+    public let reporting: InvocationReportingType
 
     let operationsReporting: DynamoDBOperationsReporting
     let invocationsReporting: DynamoDBInvocationsReporting<InvocationReportingType>

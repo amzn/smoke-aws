@@ -66,7 +66,8 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
-    let reporting: InvocationReportingType
+    
+    public let reporting: InvocationReportingType
 
     let operationsReporting: CloudWatchOperationsReporting
     let invocationsReporting: CloudWatchInvocationsReporting<InvocationReportingType>

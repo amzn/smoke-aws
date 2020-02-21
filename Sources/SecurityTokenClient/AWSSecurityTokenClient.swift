@@ -61,7 +61,8 @@ public struct AWSSecurityTokenClient<InvocationReportingType: SmokeAWSInvocation
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
-    let reporting: InvocationReportingType
+    
+    public let reporting: InvocationReportingType
 
     let operationsReporting: SecurityTokenOperationsReporting
     let invocationsReporting: SecurityTokenInvocationsReporting<InvocationReportingType>

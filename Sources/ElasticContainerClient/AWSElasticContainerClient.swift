@@ -65,7 +65,8 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
-    let reporting: InvocationReportingType
+    
+    public let reporting: InvocationReportingType
 
     let operationsReporting: ElasticContainerOperationsReporting
     let invocationsReporting: ElasticContainerInvocationsReporting<InvocationReportingType>

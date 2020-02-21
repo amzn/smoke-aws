@@ -67,7 +67,8 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
-    let reporting: InvocationReportingType
+    
+    public let reporting: InvocationReportingType
 
     let operationsReporting: SimpleQueueOperationsReporting
     let invocationsReporting: SimpleQueueInvocationsReporting<InvocationReportingType>
