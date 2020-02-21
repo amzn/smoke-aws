@@ -173,9 +173,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(CloudWatchError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedCloudWatchError())
                 }
             } else {
                 completion(nil)
@@ -261,9 +259,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -349,9 +345,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -437,9 +431,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -525,9 +517,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -613,9 +603,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -700,9 +688,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -787,9 +773,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -875,9 +859,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -958,9 +940,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(CloudWatchError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedCloudWatchError())
                 }
             } else {
                 completion(nil)
@@ -1045,9 +1025,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -1128,9 +1106,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(CloudWatchError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedCloudWatchError())
                 }
             } else {
                 completion(nil)
@@ -1215,9 +1191,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -1303,9 +1277,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -1391,9 +1363,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -1479,9 +1449,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -1567,9 +1535,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -1654,9 +1620,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -1741,9 +1705,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -1829,9 +1791,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -1917,9 +1877,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -2005,9 +1963,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -2093,9 +2049,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -2181,9 +2135,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -2265,9 +2217,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(CloudWatchError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedCloudWatchError())
                 }
             } else {
                 completion(nil)
@@ -2349,9 +2299,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(CloudWatchError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedCloudWatchError())
                 }
             } else {
                 completion(nil)
@@ -2433,9 +2381,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(CloudWatchError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedCloudWatchError())
                 }
             } else {
                 completion(nil)
@@ -2521,9 +2467,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }
@@ -2609,9 +2553,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationRep
                 if let typedError = error.cause as? CloudWatchError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(CloudWatchError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedCloudWatchError()))
                 }
             }
         }

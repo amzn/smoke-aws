@@ -24,6 +24,14 @@ import Logging
 
 public typealias CloudWatchErrorResult<SuccessPayload> = Result<SuccessPayload, CloudWatchError>
 
+public extension Swift.Error {
+    func asUnrecognizedCloudWatchError() -> CloudWatchError {
+        let errorType = String(describing: type(of: self))
+        let errorDescription = String(describing: self)
+        return .unrecognizedError(errorType, errorDescription)
+    }
+}
+
 private let concurrentModificationIdentity = "ConcurrentModificationException"
 private let dashboardInvalidInputIdentity = "InvalidParameterInput"
 private let dashboardNotFoundIdentity = "ResourceNotFound"

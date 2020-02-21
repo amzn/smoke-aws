@@ -170,9 +170,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -250,9 +248,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -330,9 +326,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -410,9 +404,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -490,9 +482,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -570,9 +560,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -650,9 +638,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -730,9 +716,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -810,9 +794,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -890,9 +872,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -970,9 +950,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -1050,9 +1028,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -1130,9 +1106,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -1210,9 +1184,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -1290,9 +1262,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -1370,9 +1340,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -1450,9 +1418,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -1530,9 +1496,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -1610,9 +1574,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -1690,9 +1652,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -1770,9 +1730,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -1850,9 +1808,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -1930,9 +1886,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -2010,9 +1964,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -2090,9 +2042,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -2170,9 +2120,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -2250,9 +2198,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -2330,9 +2276,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -2410,9 +2354,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -2490,9 +2432,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -2570,9 +2510,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -2650,9 +2588,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -2730,9 +2666,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -2810,9 +2744,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -2890,9 +2822,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -2970,9 +2900,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -3050,9 +2978,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -3130,9 +3056,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -3210,9 +3134,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -3290,9 +3212,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -3370,9 +3290,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -3450,9 +3368,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -3530,9 +3446,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -3610,9 +3524,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -3690,9 +3602,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -3770,9 +3680,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -3850,9 +3758,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }
@@ -3930,9 +3836,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocat
                 if let typedError = error.cause as? ElasticContainerError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticContainerError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
                 }
             }
         }

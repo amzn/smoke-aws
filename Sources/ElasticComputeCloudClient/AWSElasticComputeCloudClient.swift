@@ -173,9 +173,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -259,9 +257,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -345,9 +341,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -431,9 +425,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -517,9 +509,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -603,9 +593,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -689,9 +677,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -775,9 +761,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -861,9 +845,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -947,9 +929,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -1033,9 +1013,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -1119,9 +1097,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -1205,9 +1181,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -1287,9 +1261,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -1373,9 +1345,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -1459,9 +1429,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -1545,9 +1513,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -1631,9 +1597,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -1717,9 +1681,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -1803,9 +1765,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -1889,9 +1849,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -1971,9 +1929,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -2057,9 +2013,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -2143,9 +2097,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -2229,9 +2181,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -2315,9 +2265,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -2397,9 +2345,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -2479,9 +2425,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -2565,9 +2509,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -2651,9 +2593,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -2737,9 +2677,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -2819,9 +2757,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -2901,9 +2837,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -2987,9 +2921,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -3073,9 +3005,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -3159,9 +3089,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -3245,9 +3173,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -3331,9 +3257,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -3417,9 +3341,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -3503,9 +3425,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -3589,9 +3509,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -3675,9 +3593,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -3761,9 +3677,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -3847,9 +3761,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -3933,9 +3845,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -4019,9 +3929,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -4105,9 +4013,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -4191,9 +4097,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -4277,9 +4181,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -4363,9 +4265,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -4449,9 +4349,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -4535,9 +4433,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -4621,9 +4517,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -4707,9 +4601,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -4793,9 +4685,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -4879,9 +4769,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -4965,9 +4853,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -5051,9 +4937,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -5137,9 +5021,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -5223,9 +5105,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -5309,9 +5189,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -5395,9 +5273,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -5477,9 +5353,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -5563,9 +5437,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -5649,9 +5521,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -5731,9 +5601,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -5817,9 +5685,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -5903,9 +5769,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -5989,9 +5853,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -6075,9 +5937,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -6161,9 +6021,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -6247,9 +6105,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -6333,9 +6189,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -6419,9 +6273,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -6501,9 +6353,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -6587,9 +6437,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -6673,9 +6521,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -6759,9 +6605,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -6845,9 +6689,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -6931,9 +6773,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -7017,9 +6857,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -7103,9 +6941,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -7189,9 +7025,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -7275,9 +7109,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -7361,9 +7193,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -7447,9 +7277,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -7533,9 +7361,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -7619,9 +7445,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -7705,9 +7529,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -7791,9 +7613,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -7877,9 +7697,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -7963,9 +7781,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -8045,9 +7861,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -8131,9 +7945,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -8217,9 +8029,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -8303,9 +8113,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -8385,9 +8193,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -8467,9 +8273,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -8553,9 +8357,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -8639,9 +8441,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -8725,9 +8525,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -8811,9 +8609,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -8893,9 +8689,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -8975,9 +8769,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -9061,9 +8853,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -9147,9 +8937,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -9233,9 +9021,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -9319,9 +9105,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -9405,9 +9189,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -9487,9 +9269,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -9569,9 +9349,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -9651,9 +9429,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -9737,9 +9513,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -9819,9 +9593,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -9905,9 +9677,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -9987,9 +9757,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -10069,9 +9837,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -10151,9 +9917,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -10233,9 +9997,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -10315,9 +10077,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -10397,9 +10157,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -10479,9 +10237,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -10565,9 +10321,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -10651,9 +10405,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -10737,9 +10489,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -10823,9 +10573,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -10909,9 +10657,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -10995,9 +10741,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -11081,9 +10825,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -11167,9 +10909,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -11253,9 +10993,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -11339,9 +11077,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -11421,9 +11157,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -11503,9 +11237,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -11589,9 +11321,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -11675,9 +11405,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -11761,9 +11489,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -11847,9 +11573,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -11929,9 +11653,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -12011,9 +11733,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -12093,9 +11813,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -12179,9 +11897,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -12261,9 +11977,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -12347,9 +12061,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -12433,9 +12145,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -12519,9 +12229,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -12605,9 +12313,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -12691,9 +12397,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -12777,9 +12481,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -12863,9 +12565,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -12949,9 +12649,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -13035,9 +12733,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -13121,9 +12817,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -13207,9 +12901,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -13293,9 +12985,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -13379,9 +13069,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -13465,9 +13153,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -13551,9 +13237,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -13637,9 +13321,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -13723,9 +13405,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -13809,9 +13489,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -13895,9 +13573,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -13981,9 +13657,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -14067,9 +13741,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -14153,9 +13825,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -14239,9 +13909,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -14325,9 +13993,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -14411,9 +14077,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -14497,9 +14161,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -14583,9 +14245,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -14669,9 +14329,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -14755,9 +14413,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -14841,9 +14497,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -14927,9 +14581,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -15013,9 +14665,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -15099,9 +14749,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -15185,9 +14833,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -15271,9 +14917,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -15357,9 +15001,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -15443,9 +15085,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -15529,9 +15169,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -15615,9 +15253,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -15701,9 +15337,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -15787,9 +15421,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -15873,9 +15505,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -15959,9 +15589,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -16045,9 +15673,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -16131,9 +15757,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -16217,9 +15841,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -16303,9 +15925,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -16389,9 +16009,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -16475,9 +16093,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -16561,9 +16177,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -16647,9 +16261,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -16733,9 +16345,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -16819,9 +16429,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -16905,9 +16513,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -16991,9 +16597,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -17077,9 +16681,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -17163,9 +16765,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -17249,9 +16849,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -17335,9 +16933,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -17421,9 +17017,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -17507,9 +17101,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -17593,9 +17185,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -17679,9 +17269,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -17765,9 +17353,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -17851,9 +17437,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -17937,9 +17521,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -18023,9 +17605,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -18109,9 +17689,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -18195,9 +17773,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -18281,9 +17857,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -18367,9 +17941,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -18453,9 +18025,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -18539,9 +18109,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -18625,9 +18193,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -18711,9 +18277,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -18797,9 +18361,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -18883,9 +18445,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -18969,9 +18529,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -19055,9 +18613,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -19141,9 +18697,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -19227,9 +18781,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -19313,9 +18865,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -19399,9 +18949,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -19485,9 +19033,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -19571,9 +19117,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -19657,9 +19201,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -19743,9 +19285,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -19829,9 +19369,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -19915,9 +19453,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -20001,9 +19537,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -20087,9 +19621,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -20173,9 +19705,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -20259,9 +19789,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -20345,9 +19873,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -20431,9 +19957,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -20517,9 +20041,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -20603,9 +20125,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -20689,9 +20209,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -20775,9 +20293,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -20861,9 +20377,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -20947,9 +20461,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -21033,9 +20545,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -21119,9 +20629,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -21205,9 +20713,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -21291,9 +20797,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -21377,9 +20881,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -21463,9 +20965,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -21549,9 +21049,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -21635,9 +21133,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -21721,9 +21217,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -21807,9 +21301,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -21893,9 +21385,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -21979,9 +21469,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -22065,9 +21553,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -22151,9 +21637,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -22233,9 +21717,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -22315,9 +21797,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -22401,9 +21881,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -22483,9 +21961,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -22569,9 +22045,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -22655,9 +22129,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -22741,9 +22213,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -22823,9 +22293,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -22909,9 +22377,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -22995,9 +22461,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -23077,9 +22541,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -23163,9 +22625,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -23249,9 +22709,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -23331,9 +22789,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -23417,9 +22873,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -23503,9 +22957,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -23589,9 +23041,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -23675,9 +23125,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -23761,9 +23209,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -23847,9 +23293,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -23933,9 +23377,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -24015,9 +23457,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -24097,9 +23537,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -24183,9 +23621,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -24269,9 +23705,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -24355,9 +23789,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -24441,9 +23873,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -24527,9 +23957,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -24613,9 +24041,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -24699,9 +24125,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -24785,9 +24209,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -24871,9 +24293,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -24957,9 +24377,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -25043,9 +24461,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -25129,9 +24545,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -25215,9 +24629,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -25301,9 +24713,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -25387,9 +24797,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -25473,9 +24881,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -25559,9 +24965,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -25645,9 +25049,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -25731,9 +25133,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -25817,9 +25217,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -25903,9 +25301,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -25989,9 +25385,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -26075,9 +25469,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -26161,9 +25553,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -26247,9 +25637,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -26333,9 +25721,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -26419,9 +25805,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -26505,9 +25889,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -26591,9 +25973,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -26677,9 +26057,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -26763,9 +26141,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -26849,9 +26225,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -26935,9 +26309,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -27021,9 +26393,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -27107,9 +26477,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -27189,9 +26557,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -27271,9 +26637,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -27353,9 +26717,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -27435,9 +26797,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -27521,9 +26881,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -27607,9 +26965,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -27693,9 +27049,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -27779,9 +27133,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -27865,9 +27217,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -27951,9 +27301,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -28033,9 +27381,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -28119,9 +27465,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -28201,9 +27545,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -28287,9 +27629,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -28369,9 +27709,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -28455,9 +27793,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -28541,9 +27877,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -28627,9 +27961,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -28713,9 +28045,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -28799,9 +28129,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -28881,9 +28209,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -28963,9 +28289,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -29049,9 +28373,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -29135,9 +28457,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -29221,9 +28541,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -29307,9 +28625,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -29393,9 +28709,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -29479,9 +28793,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -29565,9 +28877,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -29651,9 +28961,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -29737,9 +29045,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -29823,9 +29129,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -29909,9 +29213,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -29995,9 +29297,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -30081,9 +29381,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -30167,9 +29465,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -30253,9 +29549,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -30335,9 +29629,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -30421,9 +29713,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -30507,9 +29797,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -30593,9 +29881,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -30679,9 +29965,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -30765,9 +30049,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -30851,9 +30133,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -30937,9 +30217,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -31019,9 +30297,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -31105,9 +30381,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -31191,9 +30465,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -31277,9 +30549,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -31359,9 +30629,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -31441,9 +30709,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -31527,9 +30793,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -31613,9 +30877,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -31695,9 +30957,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -31781,9 +31041,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -31867,9 +31125,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -31953,9 +31209,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -32039,9 +31293,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -32121,9 +31373,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -32203,9 +31453,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -32285,9 +31533,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -32367,9 +31613,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -32453,9 +31697,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -32539,9 +31781,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -32621,9 +31861,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -32703,9 +31941,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -32789,9 +32025,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -32875,9 +32109,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -32961,9 +32193,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -33047,9 +32277,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -33133,9 +32361,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -33215,9 +32441,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -33301,9 +32525,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -33387,9 +32609,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -33473,9 +32693,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -33559,9 +32777,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -33645,9 +32861,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -33731,9 +32945,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -33813,9 +33025,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedElasticComputeCloudError())
                 }
             } else {
                 completion(nil)
@@ -33899,9 +33109,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -33985,9 +33193,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -34071,9 +33277,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }
@@ -34157,9 +33361,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvo
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(ElasticComputeCloudError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
                 }
             }
         }

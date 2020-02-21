@@ -24,6 +24,14 @@ import Logging
 
 public typealias DynamoDBErrorResult<SuccessPayload> = Result<SuccessPayload, DynamoDBError>
 
+public extension Swift.Error {
+    func asUnrecognizedDynamoDBError() -> DynamoDBError {
+        let errorType = String(describing: type(of: self))
+        let errorDescription = String(describing: self)
+        return .unrecognizedError(errorType, errorDescription)
+    }
+}
+
 private let backupInUseIdentity = "BackupInUseException"
 private let backupNotFoundIdentity = "BackupNotFoundException"
 private let conditionalCheckFailedIdentity = "ConditionalCheckFailedException"

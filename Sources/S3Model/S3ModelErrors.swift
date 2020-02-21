@@ -24,6 +24,14 @@ import Logging
 
 public typealias S3ErrorResult<SuccessPayload> = Result<SuccessPayload, S3Error>
 
+public extension Swift.Error {
+    func asUnrecognizedS3Error() -> S3Error {
+        let errorType = String(describing: type(of: self))
+        let errorDescription = String(describing: self)
+        return .unrecognizedError(errorType, errorDescription)
+    }
+}
+
 private let bucketAlreadyExistsIdentity = "BucketAlreadyExists"
 private let bucketAlreadyOwnedByYouIdentity = "BucketAlreadyOwnedByYou"
 private let noSuchBucketIdentity = "NoSuchBucket"

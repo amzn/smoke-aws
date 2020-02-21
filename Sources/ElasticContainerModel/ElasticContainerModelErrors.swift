@@ -24,6 +24,14 @@ import Logging
 
 public typealias ElasticContainerErrorResult<SuccessPayload> = Result<SuccessPayload, ElasticContainerError>
 
+public extension Swift.Error {
+    func asUnrecognizedElasticContainerError() -> ElasticContainerError {
+        let errorType = String(describing: type(of: self))
+        let errorDescription = String(describing: self)
+        return .unrecognizedError(errorType, errorDescription)
+    }
+}
+
 private let accessDeniedIdentity = "AccessDeniedException"
 private let attributeLimitExceededIdentity = "AttributeLimitExceededException"
 private let blockedIdentity = "BlockedException"

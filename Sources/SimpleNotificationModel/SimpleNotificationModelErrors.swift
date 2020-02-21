@@ -24,6 +24,14 @@ import Logging
 
 public typealias SimpleNotificationErrorResult<SuccessPayload> = Result<SuccessPayload, SimpleNotificationError>
 
+public extension Swift.Error {
+    func asUnrecognizedSimpleNotificationError() -> SimpleNotificationError {
+        let errorType = String(describing: type(of: self))
+        let errorDescription = String(describing: self)
+        return .unrecognizedError(errorType, errorDescription)
+    }
+}
+
 private let authorizationErrorIdentity = "AuthorizationError"
 private let concurrentAccessIdentity = "ConcurrentAccess"
 private let endpointDisabledIdentity = "EndpointDisabled"

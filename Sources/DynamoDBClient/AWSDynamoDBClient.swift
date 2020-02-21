@@ -170,9 +170,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -250,9 +248,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -330,9 +326,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -410,9 +404,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -490,9 +482,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -570,9 +560,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -650,9 +638,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -730,9 +716,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -810,9 +794,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -890,9 +872,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -970,9 +950,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -1049,9 +1027,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -1128,9 +1104,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -1208,9 +1182,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -1288,9 +1260,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -1368,9 +1338,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -1448,9 +1416,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -1528,9 +1494,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -1608,9 +1572,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -1688,9 +1650,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -1768,9 +1728,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -1848,9 +1806,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -1928,9 +1884,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -2008,9 +1962,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -2088,9 +2040,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -2168,9 +2118,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -2248,9 +2196,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -2328,9 +2274,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -2408,9 +2352,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -2484,9 +2426,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(DynamoDBError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedDynamoDBError())
                 }
             } else {
                 completion(nil)
@@ -2564,9 +2504,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -2644,9 +2582,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -2720,9 +2656,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(DynamoDBError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedDynamoDBError())
                 }
             } else {
                 completion(nil)
@@ -2800,9 +2734,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -2880,9 +2812,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -2960,9 +2890,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -3040,9 +2968,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -3120,9 +3046,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -3200,9 +3124,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -3280,9 +3202,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }
@@ -3360,9 +3280,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationRepor
                 if let typedError = error.cause as? DynamoDBError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(DynamoDBError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedDynamoDBError()))
                 }
             }
         }

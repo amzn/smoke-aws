@@ -187,9 +187,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
                 }
             } else {
                 completion(nil)
@@ -271,9 +269,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
                 }
             } else {
                 completion(nil)
@@ -359,9 +355,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
                 }
             }
         }
@@ -447,9 +441,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
                 }
             }
         }
@@ -531,9 +523,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
                 }
             } else {
                 completion(nil)
@@ -619,9 +609,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
                 }
             }
         }
@@ -702,9 +690,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
                 }
             } else {
                 completion(nil)
@@ -789,9 +775,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
                 }
             }
         }
@@ -877,9 +861,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
                 }
             }
         }
@@ -965,9 +947,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
                 }
             }
         }
@@ -1052,9 +1032,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
                 }
             }
         }
@@ -1138,9 +1116,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
                 }
             }
         }
@@ -1221,9 +1197,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
                 }
             } else {
                 completion(nil)
@@ -1309,9 +1283,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
                 }
             }
         }
@@ -1392,9 +1364,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
                 }
             } else {
                 completion(nil)
@@ -1479,9 +1449,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
                 }
             }
         }
@@ -1567,9 +1535,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleQueueError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
                 }
             }
         }
@@ -1651,9 +1617,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
                 }
             } else {
                 completion(nil)
@@ -1734,9 +1698,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
                 }
             } else {
                 completion(nil)
@@ -1816,9 +1778,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationRe
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleQueueError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
                 }
             } else {
                 completion(nil)

@@ -170,9 +170,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -250,9 +248,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -330,9 +326,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -410,9 +404,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -486,9 +478,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -562,9 +552,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -638,9 +626,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -718,9 +704,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -798,9 +782,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -878,9 +860,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -958,9 +938,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -1038,9 +1016,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -1118,9 +1094,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -1198,9 +1172,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -1278,9 +1250,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -1358,9 +1328,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -1438,9 +1406,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -1518,9 +1484,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -1598,9 +1562,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -1678,9 +1640,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -1758,9 +1718,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -1834,9 +1792,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -1910,9 +1866,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -1986,9 +1940,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -2062,9 +2014,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -2138,9 +2088,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -2214,9 +2162,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -2290,9 +2236,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -2366,9 +2310,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -2442,9 +2384,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -2522,9 +2462,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleWorkflowError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
                 }
             }
         }
@@ -2598,9 +2536,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -2674,9 +2610,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -2750,9 +2684,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -2826,9 +2758,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -2902,9 +2832,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)
@@ -2978,9 +2906,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocatio
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleWorkflowError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
                 }
             } else {
                 completion(nil)

@@ -165,9 +165,7 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
                 if let typedError = error.cause as? RDSDataError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(RDSDataError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedRDSDataError()))
                 }
             }
         }
@@ -245,9 +243,7 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
                 if let typedError = error.cause as? RDSDataError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(RDSDataError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedRDSDataError()))
                 }
             }
         }
@@ -325,9 +321,7 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
                 if let typedError = error.cause as? RDSDataError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(RDSDataError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedRDSDataError()))
                 }
             }
         }
@@ -405,9 +399,7 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
                 if let typedError = error.cause as? RDSDataError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(RDSDataError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedRDSDataError()))
                 }
             }
         }
@@ -485,9 +477,7 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
                 if let typedError = error.cause as? RDSDataError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(RDSDataError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedRDSDataError()))
                 }
             }
         }
@@ -565,9 +555,7 @@ public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReport
                 if let typedError = error.cause as? RDSDataError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(RDSDataError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedRDSDataError()))
                 }
             }
         }

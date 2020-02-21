@@ -24,6 +24,14 @@ import Logging
 
 public typealias SecurityTokenErrorResult<SuccessPayload> = Result<SuccessPayload, SecurityTokenError>
 
+public extension Swift.Error {
+    func asUnrecognizedSecurityTokenError() -> SecurityTokenError {
+        let errorType = String(describing: type(of: self))
+        let errorDescription = String(describing: self)
+        return .unrecognizedError(errorType, errorDescription)
+    }
+}
+
 private let expiredTokenIdentity = "ExpiredTokenException"
 private let iDPCommunicationErrorIdentity = "IDPCommunicationError"
 private let iDPRejectedClaimIdentity = "IDPRejectedClaim"

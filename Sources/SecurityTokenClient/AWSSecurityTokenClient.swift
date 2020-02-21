@@ -172,9 +172,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? SecurityTokenError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SecurityTokenError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
                 }
             }
         }
@@ -260,9 +258,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? SecurityTokenError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SecurityTokenError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
                 }
             }
         }
@@ -348,9 +344,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? SecurityTokenError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SecurityTokenError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
                 }
             }
         }
@@ -436,9 +430,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? SecurityTokenError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SecurityTokenError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
                 }
             }
         }
@@ -523,9 +515,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? SecurityTokenError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SecurityTokenError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
                 }
             }
         }
@@ -609,9 +599,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? SecurityTokenError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SecurityTokenError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
                 }
             }
         }
@@ -696,9 +684,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? SecurityTokenError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SecurityTokenError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
                 }
             }
         }
@@ -784,9 +770,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? SecurityTokenError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SecurityTokenError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
                 }
             }
         }

@@ -24,6 +24,14 @@ import Logging
 
 public typealias SimpleQueueErrorResult<SuccessPayload> = Result<SuccessPayload, SimpleQueueError>
 
+public extension Swift.Error {
+    func asUnrecognizedSimpleQueueError() -> SimpleQueueError {
+        let errorType = String(describing: type(of: self))
+        let errorDescription = String(describing: self)
+        return .unrecognizedError(errorType, errorDescription)
+    }
+}
+
 private let batchEntryIdsNotDistinctIdentity = "AWS.SimpleQueueService.BatchEntryIdsNotDistinct"
 private let batchRequestTooLongIdentity = "AWS.SimpleQueueService.BatchRequestTooLong"
 private let emptyBatchRequestIdentity = "AWS.SimpleQueueService.EmptyBatchRequest"

@@ -173,9 +173,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleNotificationError())
                 }
             } else {
                 completion(nil)
@@ -261,9 +259,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -349,9 +345,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -437,9 +431,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -525,9 +517,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -613,9 +603,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -697,9 +685,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleNotificationError())
                 }
             } else {
                 completion(nil)
@@ -781,9 +767,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleNotificationError())
                 }
             } else {
                 completion(nil)
@@ -865,9 +849,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleNotificationError())
                 }
             } else {
                 completion(nil)
@@ -953,9 +935,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -1041,9 +1021,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -1129,9 +1107,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -1217,9 +1193,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -1305,9 +1279,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -1393,9 +1365,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -1481,9 +1451,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -1569,9 +1537,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -1657,9 +1623,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -1745,9 +1709,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -1833,9 +1795,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -1921,9 +1881,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -2009,9 +1967,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -2097,9 +2053,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -2181,9 +2135,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleNotificationError())
                 }
             } else {
                 completion(nil)
@@ -2265,9 +2217,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleNotificationError())
                 }
             } else {
                 completion(nil)
@@ -2349,9 +2299,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleNotificationError())
                 }
             } else {
                 completion(nil)
@@ -2437,9 +2385,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -2521,9 +2467,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleNotificationError())
                 }
             } else {
                 completion(nil)
@@ -2605,9 +2549,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleNotificationError())
                 }
             } else {
                 completion(nil)
@@ -2693,9 +2635,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -2781,9 +2721,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }
@@ -2865,9 +2803,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(SimpleNotificationError.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedSimpleNotificationError())
                 }
             } else {
                 completion(nil)
@@ -2953,9 +2889,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvoc
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(SimpleNotificationError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
                 }
             }
         }

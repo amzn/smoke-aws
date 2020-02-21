@@ -170,9 +170,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -250,9 +248,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -330,9 +326,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -410,9 +404,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -490,9 +482,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -570,9 +560,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -650,9 +638,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -730,9 +716,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -810,9 +794,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -890,9 +872,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -970,9 +950,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -1050,9 +1028,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -1130,9 +1106,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -1210,9 +1184,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -1290,9 +1262,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -1370,9 +1340,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -1450,9 +1418,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -1530,9 +1496,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -1610,9 +1574,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -1690,9 +1652,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -1770,9 +1730,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }
@@ -1850,9 +1808,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocation
                 if let typedError = error.cause as? StepFunctionsError {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(StepFunctionsError.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedStepFunctionsError()))
                 }
             }
         }

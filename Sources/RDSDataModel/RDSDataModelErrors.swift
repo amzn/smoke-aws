@@ -24,6 +24,14 @@ import Logging
 
 public typealias RDSDataErrorResult<SuccessPayload> = Result<SuccessPayload, RDSDataError>
 
+public extension Swift.Error {
+    func asUnrecognizedRDSDataError() -> RDSDataError {
+        let errorType = String(describing: type(of: self))
+        let errorDescription = String(describing: self)
+        return .unrecognizedError(errorType, errorDescription)
+    }
+}
+
 private let badRequestIdentity = "BadRequestException"
 private let forbiddenIdentity = "ForbiddenException"
 private let internalServerErrorIdentity = "InternalServerErrorException"

@@ -24,6 +24,14 @@ import Logging
 
 public typealias RDSErrorResult<SuccessPayload> = Result<SuccessPayload, RDSError>
 
+public extension Swift.Error {
+    func asUnrecognizedRDSError() -> RDSError {
+        let errorType = String(describing: type(of: self))
+        let errorDescription = String(describing: self)
+        return .unrecognizedError(errorType, errorDescription)
+    }
+}
+
 private let authorizationAlreadyExistsIdentity = "AuthorizationAlreadyExists"
 private let authorizationNotFoundIdentity = "AuthorizationNotFound"
 private let authorizationQuotaExceededIdentity = "AuthorizationQuotaExceeded"

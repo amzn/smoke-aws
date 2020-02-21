@@ -178,9 +178,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -259,9 +257,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -340,9 +336,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -422,9 +416,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -503,9 +495,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -579,9 +569,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -655,9 +643,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -731,9 +717,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -807,9 +791,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -883,9 +865,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -959,9 +939,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -1035,9 +1013,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -1111,9 +1087,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -1187,9 +1161,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -1263,9 +1235,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -1339,9 +1309,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -1419,9 +1387,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -1499,9 +1465,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -1579,9 +1543,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -1655,9 +1617,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -1735,9 +1695,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -1815,9 +1773,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -1895,9 +1851,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -1975,9 +1929,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -2055,9 +2007,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -2135,9 +2085,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -2215,9 +2163,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -2295,9 +2241,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -2375,9 +2319,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -2455,9 +2397,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -2535,9 +2475,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -2615,9 +2553,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -2695,9 +2631,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -2775,9 +2709,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -2855,9 +2787,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -2935,9 +2865,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -3015,9 +2943,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -3095,9 +3021,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -3175,9 +3099,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -3255,9 +3177,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -3336,9 +3256,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -3418,9 +3336,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -3499,9 +3415,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -3579,9 +3493,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -3659,9 +3571,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -3739,9 +3649,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -3819,9 +3727,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -3899,9 +3805,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -3976,9 +3880,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -4058,9 +3960,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -4139,9 +4039,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -4219,9 +4117,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -4299,9 +4195,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -4375,9 +4269,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -4451,9 +4343,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -4531,9 +4421,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -4612,9 +4500,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -4694,9 +4580,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -4775,9 +4659,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -4851,9 +4733,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -4927,9 +4807,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5003,9 +4881,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5079,9 +4955,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5155,9 +5029,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5231,9 +5103,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5307,9 +5177,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5383,9 +5251,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5459,9 +5325,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5535,9 +5399,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5611,9 +5473,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5687,9 +5547,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5763,9 +5621,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5839,9 +5695,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5915,9 +5769,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -5991,9 +5843,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -6067,9 +5917,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -6143,9 +5991,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -6223,9 +6069,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -6304,9 +6148,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -6385,9 +6227,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -6465,9 +6305,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -6545,9 +6383,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -6625,9 +6461,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -6701,9 +6535,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(S3Error.unrecognizedError(errorType, errorDescription))
+                    completion(error.cause.asUnrecognizedS3Error())
                 }
             } else {
                 completion(nil)
@@ -6782,9 +6614,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -6863,9 +6693,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -6943,9 +6771,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
@@ -7023,9 +6849,7 @@ public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>:
                 if let typedError = error.cause as? S3Error {
                     completion(.failure(typedError))
                 } else {
-                    let errorType = String(describing: type(of: error.cause))
-                    let errorDescription = String(describing: error.cause)
-                    completion(.failure(S3Error.unrecognizedError(errorType, errorDescription)))
+                    completion(.failure(error.cause.asUnrecognizedS3Error()))
                 }
             }
         }
