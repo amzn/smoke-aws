@@ -22,6 +22,16 @@
 import Foundation
 import Logging
 
+public typealias StepFunctionsErrorResult<SuccessPayload> = Result<SuccessPayload, StepFunctionsError>
+
+public extension Swift.Error {
+    func asUnrecognizedStepFunctionsError() -> StepFunctionsError {
+        let errorType = String(describing: type(of: self))
+        let errorDescription = String(describing: self)
+        return .unrecognizedError(errorType, errorDescription)
+    }
+}
+
 private let activityDoesNotExistIdentity = "ActivityDoesNotExist"
 private let activityLimitExceededIdentity = "ActivityLimitExceeded"
 private let activityWorkerLimitExceededIdentity = "ActivityWorkerLimitExceeded"

@@ -33,7 +33,7 @@ public enum SimpleWorkflowClientError: Swift.Error {
     case unknownError(String?)
 }
 
-private extension SimpleWorkflowError {
+internal extension SimpleWorkflowError {
     func isRetriable() -> Bool {
         switch self {
         case .limitExceeded:
@@ -57,7 +57,7 @@ private extension Swift.Error {
 /**
  AWS Client for the SimpleWorkflow service.
  */
-public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
+public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocationReporting>: SimpleWorkflowClientProtocol {
     let httpClient: HTTPClient
     let awsRegion: AWSRegion
     let service: String
@@ -65,46 +65,14 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
+    
+    public let reporting: InvocationReportingType
 
-    let countClosedWorkflowExecutionsOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let countOpenWorkflowExecutionsOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let countPendingActivityTasksOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let countPendingDecisionTasksOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let deprecateActivityTypeOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let deprecateDomainOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let deprecateWorkflowTypeOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let describeActivityTypeOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let describeDomainOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let describeWorkflowExecutionOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let describeWorkflowTypeOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let getWorkflowExecutionHistoryOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let listActivityTypesOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let listClosedWorkflowExecutionsOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let listDomainsOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let listOpenWorkflowExecutionsOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let listTagsForResourceOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let listWorkflowTypesOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let pollForActivityTaskOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let pollForDecisionTaskOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let recordActivityTaskHeartbeatOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let registerActivityTypeOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let registerDomainOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let registerWorkflowTypeOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let requestCancelWorkflowExecutionOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let respondActivityTaskCanceledOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let respondActivityTaskCompletedOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let respondActivityTaskFailedOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let respondDecisionTaskCompletedOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let signalWorkflowExecutionOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let startWorkflowExecutionOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let tagResourceOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let terminateWorkflowExecutionOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let undeprecateActivityTypeOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let undeprecateDomainOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let undeprecateWorkflowTypeOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let untagResourceOperationReporting: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    let operationsReporting: SimpleWorkflowOperationsReporting
+    let invocationsReporting: SimpleWorkflowInvocationsReporting<InvocationReportingType>
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "swf",
@@ -128,82 +96,30 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
         self.target = target
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
+        self.reporting = reporting
         self.retryOnErrorProvider = { error in error.isRetriable() }
-
-        self.countClosedWorkflowExecutionsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .countClosedWorkflowExecutions, configuration: reportingConfiguration)
-        self.countOpenWorkflowExecutionsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .countOpenWorkflowExecutions, configuration: reportingConfiguration)
-        self.countPendingActivityTasksOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .countPendingActivityTasks, configuration: reportingConfiguration)
-        self.countPendingDecisionTasksOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .countPendingDecisionTasks, configuration: reportingConfiguration)
-        self.deprecateActivityTypeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .deprecateActivityType, configuration: reportingConfiguration)
-        self.deprecateDomainOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .deprecateDomain, configuration: reportingConfiguration)
-        self.deprecateWorkflowTypeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .deprecateWorkflowType, configuration: reportingConfiguration)
-        self.describeActivityTypeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .describeActivityType, configuration: reportingConfiguration)
-        self.describeDomainOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .describeDomain, configuration: reportingConfiguration)
-        self.describeWorkflowExecutionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .describeWorkflowExecution, configuration: reportingConfiguration)
-        self.describeWorkflowTypeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .describeWorkflowType, configuration: reportingConfiguration)
-        self.getWorkflowExecutionHistoryOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .getWorkflowExecutionHistory, configuration: reportingConfiguration)
-        self.listActivityTypesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .listActivityTypes, configuration: reportingConfiguration)
-        self.listClosedWorkflowExecutionsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .listClosedWorkflowExecutions, configuration: reportingConfiguration)
-        self.listDomainsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .listDomains, configuration: reportingConfiguration)
-        self.listOpenWorkflowExecutionsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .listOpenWorkflowExecutions, configuration: reportingConfiguration)
-        self.listTagsForResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .listTagsForResource, configuration: reportingConfiguration)
-        self.listWorkflowTypesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .listWorkflowTypes, configuration: reportingConfiguration)
-        self.pollForActivityTaskOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .pollForActivityTask, configuration: reportingConfiguration)
-        self.pollForDecisionTaskOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .pollForDecisionTask, configuration: reportingConfiguration)
-        self.recordActivityTaskHeartbeatOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .recordActivityTaskHeartbeat, configuration: reportingConfiguration)
-        self.registerActivityTypeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .registerActivityType, configuration: reportingConfiguration)
-        self.registerDomainOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .registerDomain, configuration: reportingConfiguration)
-        self.registerWorkflowTypeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .registerWorkflowType, configuration: reportingConfiguration)
-        self.requestCancelWorkflowExecutionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .requestCancelWorkflowExecution, configuration: reportingConfiguration)
-        self.respondActivityTaskCanceledOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .respondActivityTaskCanceled, configuration: reportingConfiguration)
-        self.respondActivityTaskCompletedOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .respondActivityTaskCompleted, configuration: reportingConfiguration)
-        self.respondActivityTaskFailedOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .respondActivityTaskFailed, configuration: reportingConfiguration)
-        self.respondDecisionTaskCompletedOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .respondDecisionTaskCompleted, configuration: reportingConfiguration)
-        self.signalWorkflowExecutionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .signalWorkflowExecution, configuration: reportingConfiguration)
-        self.startWorkflowExecutionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .startWorkflowExecution, configuration: reportingConfiguration)
-        self.tagResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .tagResource, configuration: reportingConfiguration)
-        self.terminateWorkflowExecutionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .terminateWorkflowExecution, configuration: reportingConfiguration)
-        self.undeprecateActivityTypeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .undeprecateActivityType, configuration: reportingConfiguration)
-        self.undeprecateDomainOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .undeprecateDomain, configuration: reportingConfiguration)
-        self.undeprecateWorkflowTypeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .undeprecateWorkflowType, configuration: reportingConfiguration)
-        self.untagResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleWorkflowClient", operation: .untagResource, configuration: reportingConfiguration)
+        self.operationsReporting = SimpleWorkflowOperationsReporting(clientName: "AWSSimpleWorkflowClient", reportingConfiguration: reportingConfiguration)
+        self.invocationsReporting = SimpleWorkflowInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
+    }
+    
+    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                reporting: InvocationReportingType,
+                httpClient: HTTPClient,
+                service: String,
+                target: String?,
+                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryConfiguration: HTTPClientRetryConfiguration,
+                operationsReporting: SimpleWorkflowOperationsReporting) {
+        self.httpClient = httpClient
+        self.awsRegion = awsRegion
+        self.service = service
+        self.target = target
+        self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.reporting = reporting
+        self.retryOnErrorProvider = retryOnErrorProvider
+        self.operationsReporting = operationsReporting
+        self.invocationsReporting = SimpleWorkflowInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
 
     /**
@@ -234,8 +150,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func countClosedWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -243,16 +158,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.countClosedWorkflowExecutions.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: countClosedWorkflowExecutionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.countClosedWorkflowExecutions,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CountClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -268,8 +195,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func countClosedWorkflowExecutionsSync(
-            input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
+            input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -277,9 +203,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.countClosedWorkflowExecutions.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: countClosedWorkflowExecutionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.countClosedWorkflowExecutions,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CountClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -303,8 +228,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func countOpenWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -312,16 +236,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.countOpenWorkflowExecutions.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: countOpenWorkflowExecutionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.countOpenWorkflowExecutions,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CountOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -337,8 +273,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func countOpenWorkflowExecutionsSync(
-            input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
+            input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -346,9 +281,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.countOpenWorkflowExecutions.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: countOpenWorkflowExecutionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.countOpenWorkflowExecutions,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CountOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -372,8 +306,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func countPendingActivityTasksAsync(
             input: SimpleWorkflowModel.CountPendingActivityTasksInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -381,16 +314,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.countPendingActivityTasks.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: countPendingActivityTasksOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.countPendingActivityTasks,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CountPendingActivityTasksOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -406,8 +351,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func countPendingActivityTasksSync(
-            input: SimpleWorkflowModel.CountPendingActivityTasksInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.PendingTaskCount {
+            input: SimpleWorkflowModel.CountPendingActivityTasksInput) throws -> SimpleWorkflowModel.PendingTaskCount {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -415,9 +359,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.countPendingActivityTasks.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: countPendingActivityTasksOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.countPendingActivityTasks,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CountPendingActivityTasksOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -441,8 +384,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func countPendingDecisionTasksAsync(
             input: SimpleWorkflowModel.CountPendingDecisionTasksInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -450,16 +392,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.countPendingDecisionTasks.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: countPendingDecisionTasksOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.countPendingDecisionTasks,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CountPendingDecisionTasksOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -475,8 +429,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func countPendingDecisionTasksSync(
-            input: SimpleWorkflowModel.CountPendingDecisionTasksInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.PendingTaskCount {
+            input: SimpleWorkflowModel.CountPendingDecisionTasksInput) throws -> SimpleWorkflowModel.PendingTaskCount {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -484,9 +437,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.countPendingDecisionTasks.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: countPendingDecisionTasksOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.countPendingDecisionTasks,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CountPendingDecisionTasksOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -509,8 +461,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func deprecateActivityTypeAsync(
             input: SimpleWorkflowModel.DeprecateActivityTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -518,16 +469,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.deprecateActivityType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deprecateActivityTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deprecateActivityType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeprecateActivityTypeOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -541,8 +503,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, typeDeprecated, unknownResource.
      */
     public func deprecateActivityTypeSync(
-            input: SimpleWorkflowModel.DeprecateActivityTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.DeprecateActivityTypeInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -550,9 +511,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.deprecateActivityType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deprecateActivityTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deprecateActivityType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeprecateActivityTypeOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -575,8 +535,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func deprecateDomainAsync(
             input: SimpleWorkflowModel.DeprecateDomainInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -584,16 +543,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.deprecateDomain.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deprecateDomainOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deprecateDomain,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeprecateDomainOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -607,8 +577,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: domainDeprecated, operationNotPermitted, unknownResource.
      */
     public func deprecateDomainSync(
-            input: SimpleWorkflowModel.DeprecateDomainInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.DeprecateDomainInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -616,9 +585,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.deprecateDomain.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deprecateDomainOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deprecateDomain,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeprecateDomainOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -641,8 +609,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func deprecateWorkflowTypeAsync(
             input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -650,16 +617,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.deprecateWorkflowType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deprecateWorkflowTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deprecateWorkflowType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeprecateWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -673,8 +651,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, typeDeprecated, unknownResource.
      */
     public func deprecateWorkflowTypeSync(
-            input: SimpleWorkflowModel.DeprecateWorkflowTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.DeprecateWorkflowTypeInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -682,9 +659,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.deprecateWorkflowType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deprecateWorkflowTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deprecateWorkflowType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeprecateWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -708,8 +684,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func describeActivityTypeAsync(
             input: SimpleWorkflowModel.DescribeActivityTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -717,16 +692,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.describeActivityType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeActivityTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeActivityType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeActivityTypeOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.ActivityTypeDetail, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -742,8 +729,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func describeActivityTypeSync(
-            input: SimpleWorkflowModel.DescribeActivityTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTypeDetail {
+            input: SimpleWorkflowModel.DescribeActivityTypeInput) throws -> SimpleWorkflowModel.ActivityTypeDetail {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -751,9 +737,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.describeActivityType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeActivityTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeActivityType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeActivityTypeOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -777,8 +762,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func describeDomainAsync(
             input: SimpleWorkflowModel.DescribeDomainInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -786,16 +770,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.describeDomain.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDomainOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDomain,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeDomainOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.DomainDetail, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -811,8 +807,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func describeDomainSync(
-            input: SimpleWorkflowModel.DescribeDomainInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DomainDetail {
+            input: SimpleWorkflowModel.DescribeDomainInput) throws -> SimpleWorkflowModel.DomainDetail {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -820,9 +815,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.describeDomain.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeDomainOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDomain,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeDomainOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -846,8 +840,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func describeWorkflowExecutionAsync(
             input: SimpleWorkflowModel.DescribeWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -855,16 +848,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.describeWorkflowExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeWorkflowExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeWorkflowExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionDetail, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -880,8 +885,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func describeWorkflowExecutionSync(
-            input: SimpleWorkflowModel.DescribeWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionDetail {
+            input: SimpleWorkflowModel.DescribeWorkflowExecutionInput) throws -> SimpleWorkflowModel.WorkflowExecutionDetail {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -889,9 +893,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.describeWorkflowExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeWorkflowExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeWorkflowExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -915,8 +918,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func describeWorkflowTypeAsync(
             input: SimpleWorkflowModel.DescribeWorkflowTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -924,16 +926,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.describeWorkflowType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeWorkflowTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeWorkflowType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowTypeDetail, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -949,8 +963,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func describeWorkflowTypeSync(
-            input: SimpleWorkflowModel.DescribeWorkflowTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowTypeDetail {
+            input: SimpleWorkflowModel.DescribeWorkflowTypeInput) throws -> SimpleWorkflowModel.WorkflowTypeDetail {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -958,9 +971,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.describeWorkflowType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeWorkflowTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeWorkflowType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -984,8 +996,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func getWorkflowExecutionHistoryAsync(
             input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.History, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.History, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -993,16 +1004,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.getWorkflowExecutionHistory.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getWorkflowExecutionHistoryOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getWorkflowExecutionHistory,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = GetWorkflowExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.History, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1018,8 +1041,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func getWorkflowExecutionHistorySync(
-            input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.History {
+            input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput) throws -> SimpleWorkflowModel.History {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1027,9 +1049,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.getWorkflowExecutionHistory.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getWorkflowExecutionHistoryOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getWorkflowExecutionHistory,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = GetWorkflowExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1053,8 +1074,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func listActivityTypesAsync(
             input: SimpleWorkflowModel.ListActivityTypesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1062,16 +1082,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.listActivityTypes.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listActivityTypesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listActivityTypes,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListActivityTypesOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.ActivityTypeInfos, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1087,8 +1119,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func listActivityTypesSync(
-            input: SimpleWorkflowModel.ListActivityTypesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTypeInfos {
+            input: SimpleWorkflowModel.ListActivityTypesInput) throws -> SimpleWorkflowModel.ActivityTypeInfos {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1096,9 +1127,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.listActivityTypes.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listActivityTypesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listActivityTypes,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListActivityTypesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1122,8 +1152,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func listClosedWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1131,16 +1160,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.listClosedWorkflowExecutions.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listClosedWorkflowExecutionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listClosedWorkflowExecutions,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1156,8 +1197,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func listClosedWorkflowExecutionsSync(
-            input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
+            input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1165,9 +1205,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.listClosedWorkflowExecutions.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listClosedWorkflowExecutionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listClosedWorkflowExecutions,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1191,8 +1230,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func listDomainsAsync(
             input: SimpleWorkflowModel.ListDomainsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1200,16 +1238,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.listDomains.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listDomainsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listDomains,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListDomainsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.DomainInfos, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1225,8 +1275,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted.
      */
     public func listDomainsSync(
-            input: SimpleWorkflowModel.ListDomainsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DomainInfos {
+            input: SimpleWorkflowModel.ListDomainsInput) throws -> SimpleWorkflowModel.DomainInfos {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1234,9 +1283,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.listDomains.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listDomainsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listDomains,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListDomainsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1260,8 +1308,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func listOpenWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1269,16 +1316,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.listOpenWorkflowExecutions.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listOpenWorkflowExecutionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listOpenWorkflowExecutions,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1294,8 +1353,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func listOpenWorkflowExecutionsSync(
-            input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
+            input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1303,9 +1361,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.listOpenWorkflowExecutions.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listOpenWorkflowExecutionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listOpenWorkflowExecutions,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1329,8 +1386,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func listTagsForResourceAsync(
             input: SimpleWorkflowModel.ListTagsForResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1338,16 +1394,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.listTagsForResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTagsForResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.ListTagsForResourceOutput, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1363,8 +1431,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
     public func listTagsForResourceSync(
-            input: SimpleWorkflowModel.ListTagsForResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ListTagsForResourceOutput {
+            input: SimpleWorkflowModel.ListTagsForResourceInput) throws -> SimpleWorkflowModel.ListTagsForResourceOutput {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1372,9 +1439,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.listTagsForResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTagsForResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1398,8 +1464,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func listWorkflowTypesAsync(
             input: SimpleWorkflowModel.ListWorkflowTypesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1407,16 +1472,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.listWorkflowTypes.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listWorkflowTypesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listWorkflowTypes,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListWorkflowTypesOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowTypeInfos, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1432,8 +1509,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func listWorkflowTypesSync(
-            input: SimpleWorkflowModel.ListWorkflowTypesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowTypeInfos {
+            input: SimpleWorkflowModel.ListWorkflowTypesInput) throws -> SimpleWorkflowModel.WorkflowTypeInfos {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1441,9 +1517,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.listWorkflowTypes.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listWorkflowTypesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listWorkflowTypes,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListWorkflowTypesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1467,8 +1542,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func pollForActivityTaskAsync(
             input: SimpleWorkflowModel.PollForActivityTaskInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1476,16 +1550,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.pollForActivityTask.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: pollForActivityTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.pollForActivityTask,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = PollForActivityTaskOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.ActivityTask, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1501,8 +1587,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
     public func pollForActivityTaskSync(
-            input: SimpleWorkflowModel.PollForActivityTaskInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTask {
+            input: SimpleWorkflowModel.PollForActivityTaskInput) throws -> SimpleWorkflowModel.ActivityTask {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1510,9 +1595,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.pollForActivityTask.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: pollForActivityTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.pollForActivityTask,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = PollForActivityTaskOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1536,8 +1620,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func pollForDecisionTaskAsync(
             input: SimpleWorkflowModel.PollForDecisionTaskInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1545,16 +1628,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.pollForDecisionTask.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: pollForDecisionTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.pollForDecisionTask,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = PollForDecisionTaskOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.DecisionTask, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1570,8 +1665,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
     public func pollForDecisionTaskSync(
-            input: SimpleWorkflowModel.PollForDecisionTaskInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DecisionTask {
+            input: SimpleWorkflowModel.PollForDecisionTaskInput) throws -> SimpleWorkflowModel.DecisionTask {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1579,9 +1673,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.pollForDecisionTask.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: pollForDecisionTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.pollForDecisionTask,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = PollForDecisionTaskOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1605,8 +1698,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func recordActivityTaskHeartbeatAsync(
             input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1614,16 +1706,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.recordActivityTaskHeartbeat.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: recordActivityTaskHeartbeatOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.recordActivityTaskHeartbeat,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RecordActivityTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.ActivityTaskStatus, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1639,8 +1743,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func recordActivityTaskHeartbeatSync(
-            input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTaskStatus {
+            input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput) throws -> SimpleWorkflowModel.ActivityTaskStatus {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1648,9 +1751,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.recordActivityTaskHeartbeat.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: recordActivityTaskHeartbeatOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.recordActivityTaskHeartbeat,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RecordActivityTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1673,8 +1775,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func registerActivityTypeAsync(
             input: SimpleWorkflowModel.RegisterActivityTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1682,16 +1783,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.registerActivityType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: registerActivityTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerActivityType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RegisterActivityTypeOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1705,8 +1817,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
     public func registerActivityTypeSync(
-            input: SimpleWorkflowModel.RegisterActivityTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.RegisterActivityTypeInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1714,9 +1825,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.registerActivityType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: registerActivityTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerActivityType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RegisterActivityTypeOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -1739,8 +1849,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func registerDomainAsync(
             input: SimpleWorkflowModel.RegisterDomainInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1748,16 +1857,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.registerDomain.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: registerDomainOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerDomain,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RegisterDomainOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1771,8 +1891,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: domainAlreadyExists, limitExceeded, operationNotPermitted, tooManyTags.
      */
     public func registerDomainSync(
-            input: SimpleWorkflowModel.RegisterDomainInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.RegisterDomainInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1780,9 +1899,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.registerDomain.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: registerDomainOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerDomain,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RegisterDomainOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -1805,8 +1923,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func registerWorkflowTypeAsync(
             input: SimpleWorkflowModel.RegisterWorkflowTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1814,16 +1931,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.registerWorkflowType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: registerWorkflowTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerWorkflowType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RegisterWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1837,8 +1965,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
     public func registerWorkflowTypeSync(
-            input: SimpleWorkflowModel.RegisterWorkflowTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.RegisterWorkflowTypeInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1846,9 +1973,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.registerWorkflowType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: registerWorkflowTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerWorkflowType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RegisterWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -1871,8 +1997,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func requestCancelWorkflowExecutionAsync(
             input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1880,16 +2005,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.requestCancelWorkflowExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: requestCancelWorkflowExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.requestCancelWorkflowExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RequestCancelWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1903,8 +2039,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func requestCancelWorkflowExecutionSync(
-            input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1912,9 +2047,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.requestCancelWorkflowExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: requestCancelWorkflowExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.requestCancelWorkflowExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RequestCancelWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -1937,8 +2071,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func respondActivityTaskCanceledAsync(
             input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1946,16 +2079,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.respondActivityTaskCanceled.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: respondActivityTaskCanceledOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.respondActivityTaskCanceled,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RespondActivityTaskCanceledOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1969,8 +2113,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func respondActivityTaskCanceledSync(
-            input: SimpleWorkflowModel.RespondActivityTaskCanceledInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.RespondActivityTaskCanceledInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1978,9 +2121,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.respondActivityTaskCanceled.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: respondActivityTaskCanceledOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.respondActivityTaskCanceled,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RespondActivityTaskCanceledOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -2003,8 +2145,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func respondActivityTaskCompletedAsync(
             input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2012,16 +2153,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.respondActivityTaskCompleted.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: respondActivityTaskCompletedOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.respondActivityTaskCompleted,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RespondActivityTaskCompletedOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2035,8 +2187,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func respondActivityTaskCompletedSync(
-            input: SimpleWorkflowModel.RespondActivityTaskCompletedInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.RespondActivityTaskCompletedInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2044,9 +2195,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.respondActivityTaskCompleted.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: respondActivityTaskCompletedOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.respondActivityTaskCompleted,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RespondActivityTaskCompletedOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -2069,8 +2219,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func respondActivityTaskFailedAsync(
             input: SimpleWorkflowModel.RespondActivityTaskFailedInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2078,16 +2227,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.respondActivityTaskFailed.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: respondActivityTaskFailedOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.respondActivityTaskFailed,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RespondActivityTaskFailedOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2101,8 +2261,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func respondActivityTaskFailedSync(
-            input: SimpleWorkflowModel.RespondActivityTaskFailedInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.RespondActivityTaskFailedInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2110,9 +2269,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.respondActivityTaskFailed.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: respondActivityTaskFailedOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.respondActivityTaskFailed,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RespondActivityTaskFailedOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -2135,8 +2293,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func respondDecisionTaskCompletedAsync(
             input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2144,16 +2301,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.respondDecisionTaskCompleted.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: respondDecisionTaskCompletedOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.respondDecisionTaskCompleted,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RespondDecisionTaskCompletedOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2167,8 +2335,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func respondDecisionTaskCompletedSync(
-            input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2176,9 +2343,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.respondDecisionTaskCompleted.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: respondDecisionTaskCompletedOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.respondDecisionTaskCompleted,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RespondDecisionTaskCompletedOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -2201,8 +2367,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func signalWorkflowExecutionAsync(
             input: SimpleWorkflowModel.SignalWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2210,16 +2375,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.signalWorkflowExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: signalWorkflowExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.signalWorkflowExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SignalWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2233,8 +2409,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func signalWorkflowExecutionSync(
-            input: SimpleWorkflowModel.SignalWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.SignalWorkflowExecutionInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2242,9 +2417,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.signalWorkflowExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: signalWorkflowExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.signalWorkflowExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SignalWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -2268,8 +2442,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func startWorkflowExecutionAsync(
             input: SimpleWorkflowModel.StartWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.Run, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleWorkflowModel.Run, SimpleWorkflowError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2277,16 +2450,28 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.startWorkflowExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startWorkflowExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startWorkflowExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = StartWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<SimpleWorkflowModel.Run, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleWorkflowError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2302,8 +2487,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: defaultUndefined, limitExceeded, operationNotPermitted, typeDeprecated, unknownResource, workflowExecutionAlreadyStarted.
      */
     public func startWorkflowExecutionSync(
-            input: SimpleWorkflowModel.StartWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.Run {
+            input: SimpleWorkflowModel.StartWorkflowExecutionInput) throws -> SimpleWorkflowModel.Run {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2311,9 +2495,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.startWorkflowExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startWorkflowExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startWorkflowExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = StartWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2336,8 +2519,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func tagResourceAsync(
             input: SimpleWorkflowModel.TagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2345,16 +2527,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.tagResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: tagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2368,8 +2561,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, tooManyTags, unknownResource.
      */
     public func tagResourceSync(
-            input: SimpleWorkflowModel.TagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.TagResourceInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2377,9 +2569,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.tagResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: tagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -2402,8 +2593,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func terminateWorkflowExecutionAsync(
             input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2411,16 +2601,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.terminateWorkflowExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: terminateWorkflowExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.terminateWorkflowExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = TerminateWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2434,8 +2635,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     public func terminateWorkflowExecutionSync(
-            input: SimpleWorkflowModel.TerminateWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.TerminateWorkflowExecutionInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2443,9 +2643,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.terminateWorkflowExecution.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: terminateWorkflowExecutionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.terminateWorkflowExecution,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = TerminateWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -2468,8 +2667,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func undeprecateActivityTypeAsync(
             input: SimpleWorkflowModel.UndeprecateActivityTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2477,16 +2675,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.undeprecateActivityType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: undeprecateActivityTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.undeprecateActivityType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UndeprecateActivityTypeOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2500,8 +2709,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
      */
     public func undeprecateActivityTypeSync(
-            input: SimpleWorkflowModel.UndeprecateActivityTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.UndeprecateActivityTypeInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2509,9 +2717,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.undeprecateActivityType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: undeprecateActivityTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.undeprecateActivityType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UndeprecateActivityTypeOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -2534,8 +2741,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func undeprecateDomainAsync(
             input: SimpleWorkflowModel.UndeprecateDomainInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2543,16 +2749,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.undeprecateDomain.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: undeprecateDomainOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.undeprecateDomain,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UndeprecateDomainOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2566,8 +2783,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: domainAlreadyExists, operationNotPermitted, unknownResource.
      */
     public func undeprecateDomainSync(
-            input: SimpleWorkflowModel.UndeprecateDomainInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.UndeprecateDomainInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2575,9 +2791,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.undeprecateDomain.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: undeprecateDomainOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.undeprecateDomain,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UndeprecateDomainOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -2600,8 +2815,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func undeprecateWorkflowTypeAsync(
             input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2609,16 +2823,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.undeprecateWorkflowType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: undeprecateWorkflowTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.undeprecateWorkflowType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UndeprecateWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2632,8 +2857,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
      */
     public func undeprecateWorkflowTypeSync(
-            input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2641,9 +2865,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.undeprecateWorkflowType.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: undeprecateWorkflowTypeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.undeprecateWorkflowType,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UndeprecateWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(
@@ -2666,8 +2889,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      */
     public func untagResourceAsync(
             input: SimpleWorkflowModel.UntagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2675,16 +2897,27 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.untagResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: untagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleWorkflowError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleWorkflowError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2698,8 +2931,7 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
     public func untagResourceSync(
-            input: SimpleWorkflowModel.UntagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleWorkflowModel.UntagResourceInput) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2707,9 +2939,8 @@ public struct AWSSimpleWorkflowClient: SimpleWorkflowClientProtocol {
                     operation: SimpleWorkflowModelOperations.untagResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: untagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
         try httpClient.executeSyncRetriableWithoutOutput(

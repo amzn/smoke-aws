@@ -33,7 +33,7 @@ public enum SimpleQueueClientError: Swift.Error {
     case unknownError(String?)
 }
 
-private extension SimpleQueueError {
+internal extension SimpleQueueError {
     func isRetriable() -> Bool {
         switch self {
         case .overLimit:
@@ -57,7 +57,7 @@ private extension Swift.Error {
 /**
  AWS Client for the SimpleQueue service.
  */
-public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
+public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationReporting>: SimpleQueueClientProtocol {
     let httpClient: HTTPClient
     let listHttpClient: HTTPClient
     let awsRegion: AWSRegion
@@ -67,29 +67,14 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
+    
+    public let reporting: InvocationReportingType
 
-    let addPermissionOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let changeMessageVisibilityOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let changeMessageVisibilityBatchOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let createQueueOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let deleteMessageOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let deleteMessageBatchOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let deleteQueueOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let getQueueAttributesOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let getQueueUrlOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let listDeadLetterSourceQueuesOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let listQueueTagsOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let listQueuesOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let purgeQueueOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let receiveMessageOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let removePermissionOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let sendMessageOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let sendMessageBatchOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let setQueueAttributesOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let tagQueueOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let untagQueueOperationReporting: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    let operationsReporting: SimpleQueueOperationsReporting
+    let invocationsReporting: SimpleQueueInvocationsReporting<InvocationReportingType>
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "sqs",
@@ -123,49 +108,33 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
         self.target = nil
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
+        self.reporting = reporting
         self.retryOnErrorProvider = { error in error.isRetriable() }
         self.apiVersion = apiVersion
-
-        self.addPermissionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .addPermission, configuration: reportingConfiguration)
-        self.changeMessageVisibilityOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .changeMessageVisibility, configuration: reportingConfiguration)
-        self.changeMessageVisibilityBatchOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .changeMessageVisibilityBatch, configuration: reportingConfiguration)
-        self.createQueueOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .createQueue, configuration: reportingConfiguration)
-        self.deleteMessageOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .deleteMessage, configuration: reportingConfiguration)
-        self.deleteMessageBatchOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .deleteMessageBatch, configuration: reportingConfiguration)
-        self.deleteQueueOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .deleteQueue, configuration: reportingConfiguration)
-        self.getQueueAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .getQueueAttributes, configuration: reportingConfiguration)
-        self.getQueueUrlOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .getQueueUrl, configuration: reportingConfiguration)
-        self.listDeadLetterSourceQueuesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .listDeadLetterSourceQueues, configuration: reportingConfiguration)
-        self.listQueueTagsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .listQueueTags, configuration: reportingConfiguration)
-        self.listQueuesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .listQueues, configuration: reportingConfiguration)
-        self.purgeQueueOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .purgeQueue, configuration: reportingConfiguration)
-        self.receiveMessageOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .receiveMessage, configuration: reportingConfiguration)
-        self.removePermissionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .removePermission, configuration: reportingConfiguration)
-        self.sendMessageOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .sendMessage, configuration: reportingConfiguration)
-        self.sendMessageBatchOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .sendMessageBatch, configuration: reportingConfiguration)
-        self.setQueueAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .setQueueAttributes, configuration: reportingConfiguration)
-        self.tagQueueOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .tagQueue, configuration: reportingConfiguration)
-        self.untagQueueOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSSimpleQueueClient", operation: .untagQueue, configuration: reportingConfiguration)
+        self.operationsReporting = SimpleQueueOperationsReporting(clientName: "AWSSimpleQueueClient", reportingConfiguration: reportingConfiguration)
+        self.invocationsReporting = SimpleQueueInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
+    }
+    
+    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                reporting: InvocationReportingType,
+                httpClient: HTTPClient, listHttpClient: HTTPClient,
+                service: String,
+                apiVersion: String,
+                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryConfiguration: HTTPClientRetryConfiguration,
+                operationsReporting: SimpleQueueOperationsReporting) {
+        self.httpClient = httpClient
+            self.listHttpClient = listHttpClient
+        self.awsRegion = awsRegion
+        self.service = service
+        self.target = nil
+        self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.reporting = reporting
+        self.retryOnErrorProvider = retryOnErrorProvider
+        self.apiVersion = apiVersion
+        self.operationsReporting = operationsReporting
+        self.invocationsReporting = SimpleQueueInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
 
     /**
@@ -197,17 +166,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func addPermissionAsync(
             input: SimpleQueueModel.AddPermissionRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: addPermissionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addPermission,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AddPermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -215,11 +182,23 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.addPermission.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -233,17 +212,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: overLimit.
      */
     public func addPermissionSync(
-            input: SimpleQueueModel.AddPermissionRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleQueueModel.AddPermissionRequest) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: addPermissionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addPermission,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = AddPermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -271,17 +248,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func changeMessageVisibilityAsync(
             input: SimpleQueueModel.ChangeMessageVisibilityRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: changeMessageVisibilityOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.changeMessageVisibility,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ChangeMessageVisibilityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -289,11 +264,23 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.changeMessageVisibility.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -307,17 +294,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: messageNotInflight, receiptHandleIsInvalid.
      */
     public func changeMessageVisibilitySync(
-            input: SimpleQueueModel.ChangeMessageVisibilityRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleQueueModel.ChangeMessageVisibilityRequest) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: changeMessageVisibilityOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.changeMessageVisibility,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ChangeMessageVisibilityOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -346,17 +331,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func changeMessageVisibilityBatchAsync(
             input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: changeMessageVisibilityBatchOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.changeMessageVisibilityBatch,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ChangeMessageVisibilityBatchOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -364,11 +347,24 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.changeMessageVisibilityBatch.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -384,17 +380,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
     public func changeMessageVisibilityBatchSync(
-            input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch {
+            input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest) throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: changeMessageVisibilityBatchOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.changeMessageVisibilityBatch,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ChangeMessageVisibilityBatchOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -423,17 +417,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func createQueueAsync(
             input: SimpleQueueModel.CreateQueueRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createQueueOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createQueue,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -441,11 +433,24 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.createQueue.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.CreateQueueResultForCreateQueue, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -461,17 +466,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: queueDeletedRecently, queueNameExists.
      */
     public func createQueueSync(
-            input: SimpleQueueModel.CreateQueueRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.CreateQueueResultForCreateQueue {
+            input: SimpleQueueModel.CreateQueueRequest) throws -> SimpleQueueModel.CreateQueueResultForCreateQueue {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createQueueOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createQueue,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = CreateQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -499,17 +502,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func deleteMessageAsync(
             input: SimpleQueueModel.DeleteMessageRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteMessageOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteMessage,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -517,11 +518,23 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.deleteMessage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -535,17 +548,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: invalidIdFormat, receiptHandleIsInvalid.
      */
     public func deleteMessageSync(
-            input: SimpleQueueModel.DeleteMessageRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleQueueModel.DeleteMessageRequest) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteMessageOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteMessage,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -574,17 +585,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func deleteMessageBatchAsync(
             input: SimpleQueueModel.DeleteMessageBatchRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteMessageBatchOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteMessageBatch,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteMessageBatchOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -592,11 +601,24 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.deleteMessageBatch.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -612,17 +634,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
      */
     public func deleteMessageBatchSync(
-            input: SimpleQueueModel.DeleteMessageBatchRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch {
+            input: SimpleQueueModel.DeleteMessageBatchRequest) throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteMessageBatchOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteMessageBatch,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteMessageBatchOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -649,17 +669,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func deleteQueueAsync(
             input: SimpleQueueModel.DeleteQueueRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteQueueOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteQueue,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -667,11 +685,23 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.deleteQueue.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -684,17 +714,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated DeleteQueueRequest object being passed to this operation.
      */
     public func deleteQueueSync(
-            input: SimpleQueueModel.DeleteQueueRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleQueueModel.DeleteQueueRequest) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteQueueOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteQueue,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = DeleteQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -723,17 +751,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func getQueueAttributesAsync(
             input: SimpleQueueModel.GetQueueAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getQueueAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getQueueAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetQueueAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -741,11 +767,24 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.getQueueAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
+                }
+            }
+        }
+        
         _ = try listHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -761,17 +800,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: invalidAttributeName.
      */
     public func getQueueAttributesSync(
-            input: SimpleQueueModel.GetQueueAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes {
+            input: SimpleQueueModel.GetQueueAttributesRequest) throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getQueueAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getQueueAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetQueueAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -800,17 +837,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func getQueueUrlAsync(
             input: SimpleQueueModel.GetQueueUrlRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getQueueUrlOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getQueueUrl,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetQueueUrlOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -818,11 +853,24 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.getQueueUrl.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -838,17 +886,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: queueDoesNotExist.
      */
     public func getQueueUrlSync(
-            input: SimpleQueueModel.GetQueueUrlRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl {
+            input: SimpleQueueModel.GetQueueUrlRequest) throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: getQueueUrlOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getQueueUrl,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = GetQueueUrlOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -877,17 +923,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func listDeadLetterSourceQueuesAsync(
             input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listDeadLetterSourceQueuesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listDeadLetterSourceQueues,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListDeadLetterSourceQueuesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -895,11 +939,24 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.listDeadLetterSourceQueues.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -915,17 +972,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: queueDoesNotExist.
      */
     public func listDeadLetterSourceQueuesSync(
-            input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues {
+            input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest) throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listDeadLetterSourceQueuesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listDeadLetterSourceQueues,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListDeadLetterSourceQueuesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -953,17 +1008,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func listQueueTagsAsync(
             input: SimpleQueueModel.ListQueueTagsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listQueueTagsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listQueueTags,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListQueueTagsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -971,11 +1024,24 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.listQueueTags.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
+                }
+            }
+        }
+        
         _ = try listHttpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -990,17 +1056,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      */
     public func listQueueTagsSync(
-            input: SimpleQueueModel.ListQueueTagsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags {
+            input: SimpleQueueModel.ListQueueTagsRequest) throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listQueueTagsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listQueueTags,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListQueueTagsOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1028,17 +1092,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func listQueuesAsync(
             input: SimpleQueueModel.ListQueuesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listQueuesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listQueues,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListQueuesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1046,11 +1108,24 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.listQueues.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.ListQueuesResultForListQueues, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1065,17 +1140,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
          Will be validated before being returned to caller.
      */
     public func listQueuesSync(
-            input: SimpleQueueModel.ListQueuesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ListQueuesResultForListQueues {
+            input: SimpleQueueModel.ListQueuesRequest) throws -> SimpleQueueModel.ListQueuesResultForListQueues {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listQueuesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listQueues,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ListQueuesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1103,17 +1176,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func purgeQueueAsync(
             input: SimpleQueueModel.PurgeQueueRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: purgeQueueOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.purgeQueue,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = PurgeQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1121,11 +1192,23 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.purgeQueue.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1139,17 +1222,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: purgeQueueInProgress, queueDoesNotExist.
      */
     public func purgeQueueSync(
-            input: SimpleQueueModel.PurgeQueueRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleQueueModel.PurgeQueueRequest) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: purgeQueueOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.purgeQueue,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = PurgeQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1178,17 +1259,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func receiveMessageAsync(
             input: SimpleQueueModel.ReceiveMessageRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: receiveMessageOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.receiveMessage,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ReceiveMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1196,11 +1275,24 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.receiveMessage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1216,17 +1308,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: overLimit.
      */
     public func receiveMessageSync(
-            input: SimpleQueueModel.ReceiveMessageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage {
+            input: SimpleQueueModel.ReceiveMessageRequest) throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: receiveMessageOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.receiveMessage,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = ReceiveMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1253,17 +1343,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func removePermissionAsync(
             input: SimpleQueueModel.RemovePermissionRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removePermissionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removePermission,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemovePermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1271,11 +1359,23 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.removePermission.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1288,17 +1388,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated RemovePermissionRequest object being passed to this operation.
      */
     public func removePermissionSync(
-            input: SimpleQueueModel.RemovePermissionRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleQueueModel.RemovePermissionRequest) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: removePermissionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removePermission,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = RemovePermissionOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1327,17 +1425,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func sendMessageAsync(
             input: SimpleQueueModel.SendMessageRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: sendMessageOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendMessage,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SendMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1345,11 +1441,24 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.sendMessage.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.SendMessageResultForSendMessage, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1365,17 +1474,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: invalidMessageContents, unsupportedOperation.
      */
     public func sendMessageSync(
-            input: SimpleQueueModel.SendMessageRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.SendMessageResultForSendMessage {
+            input: SimpleQueueModel.SendMessageRequest) throws -> SimpleQueueModel.SendMessageResultForSendMessage {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: sendMessageOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendMessage,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SendMessageOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1404,17 +1511,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func sendMessageBatchAsync(
             input: SimpleQueueModel.SendMessageBatchRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, SimpleQueueError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: sendMessageBatchOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendMessageBatch,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SendMessageBatchOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1422,11 +1527,24 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.sendMessageBatch.rawValue,
             version: apiVersion)
 
+        func innerCompletion(result: Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1442,17 +1560,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest, unsupportedOperation.
      */
     public func sendMessageBatchSync(
-            input: SimpleQueueModel.SendMessageBatchRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch {
+            input: SimpleQueueModel.SendMessageBatchRequest) throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: sendMessageBatchOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendMessageBatch,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SendMessageBatchOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1480,17 +1596,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func setQueueAttributesAsync(
             input: SimpleQueueModel.SetQueueAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: setQueueAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setQueueAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SetQueueAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1498,11 +1612,23 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.setQueueAttributes.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try listHttpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1516,17 +1642,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      - Throws: invalidAttributeName.
      */
     public func setQueueAttributesSync(
-            input: SimpleQueueModel.SetQueueAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleQueueModel.SetQueueAttributesRequest) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: setQueueAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setQueueAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = SetQueueAttributesOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1553,17 +1677,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func tagQueueAsync(
             input: SimpleQueueModel.TagQueueRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: tagQueueOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagQueue,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = TagQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1571,11 +1693,23 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.tagQueue.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try listHttpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1588,17 +1722,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated TagQueueRequest object being passed to this operation.
      */
     public func tagQueueSync(
-            input: SimpleQueueModel.TagQueueRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleQueueModel.TagQueueRequest) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: tagQueueOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagQueue,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = TagQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1625,17 +1757,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
      */
     public func untagQueueAsync(
             input: SimpleQueueModel.UntagQueueRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleQueueError?) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: untagQueueOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagQueue,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = UntagQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(
@@ -1643,11 +1773,23 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
             action: SimpleQueueModelOperations.untagQueue.rawValue,
             version: apiVersion)
 
+        func innerCompletion(error: HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? SimpleQueueError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedSimpleQueueError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1660,17 +1802,15 @@ public struct AWSSimpleQueueClient: SimpleQueueClientProtocol {
          - input: The validated UntagQueueRequest object being passed to this operation.
      */
     public func untagQueueSync(
-            input: SimpleQueueModel.UntagQueueRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleQueueModel.UntagQueueRequest) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
                     target: target)
         
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: untagQueueOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagQueue,
+                                                            handlerDelegate: handlerDelegate)
         let wrappedInput = UntagQueueOperationHTTPRequestInput(encodable: input)
         
         let requestInput = QueryWrapperHTTPRequestInput(

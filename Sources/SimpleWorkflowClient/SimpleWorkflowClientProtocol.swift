@@ -29,264 +29,190 @@ import SmokeHTTPClient
  */
 public protocol SimpleWorkflowClientProtocol {
     typealias CountClosedWorkflowExecutionsSyncType = (
-            _ input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionCount
+            _ input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionCount
     typealias CountClosedWorkflowExecutionsAsyncType = (
             _ input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws -> ()
     typealias CountOpenWorkflowExecutionsSyncType = (
-            _ input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionCount
+            _ input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionCount
     typealias CountOpenWorkflowExecutionsAsyncType = (
             _ input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws -> ()
     typealias CountPendingActivityTasksSyncType = (
-            _ input: SimpleWorkflowModel.CountPendingActivityTasksInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.PendingTaskCount
+            _ input: SimpleWorkflowModel.CountPendingActivityTasksInput) throws -> SimpleWorkflowModel.PendingTaskCount
     typealias CountPendingActivityTasksAsyncType = (
             _ input: SimpleWorkflowModel.CountPendingActivityTasksInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws -> ()
     typealias CountPendingDecisionTasksSyncType = (
-            _ input: SimpleWorkflowModel.CountPendingDecisionTasksInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.PendingTaskCount
+            _ input: SimpleWorkflowModel.CountPendingDecisionTasksInput) throws -> SimpleWorkflowModel.PendingTaskCount
     typealias CountPendingDecisionTasksAsyncType = (
             _ input: SimpleWorkflowModel.CountPendingDecisionTasksInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws -> ()
     typealias DeprecateActivityTypeSyncType = (
-            _ input: SimpleWorkflowModel.DeprecateActivityTypeInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.DeprecateActivityTypeInput) throws -> ()
     typealias DeprecateActivityTypeAsyncType = (
             _ input: SimpleWorkflowModel.DeprecateActivityTypeInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias DeprecateDomainSyncType = (
-            _ input: SimpleWorkflowModel.DeprecateDomainInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.DeprecateDomainInput) throws -> ()
     typealias DeprecateDomainAsyncType = (
             _ input: SimpleWorkflowModel.DeprecateDomainInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias DeprecateWorkflowTypeSyncType = (
-            _ input: SimpleWorkflowModel.DeprecateWorkflowTypeInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.DeprecateWorkflowTypeInput) throws -> ()
     typealias DeprecateWorkflowTypeAsyncType = (
             _ input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias DescribeActivityTypeSyncType = (
-            _ input: SimpleWorkflowModel.DescribeActivityTypeInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTypeDetail
+            _ input: SimpleWorkflowModel.DescribeActivityTypeInput) throws -> SimpleWorkflowModel.ActivityTypeDetail
     typealias DescribeActivityTypeAsyncType = (
             _ input: SimpleWorkflowModel.DescribeActivityTypeInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, SimpleWorkflowError>) -> ()) throws -> ()
     typealias DescribeDomainSyncType = (
-            _ input: SimpleWorkflowModel.DescribeDomainInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DomainDetail
+            _ input: SimpleWorkflowModel.DescribeDomainInput) throws -> SimpleWorkflowModel.DomainDetail
     typealias DescribeDomainAsyncType = (
             _ input: SimpleWorkflowModel.DescribeDomainInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, SimpleWorkflowError>) -> ()) throws -> ()
     typealias DescribeWorkflowExecutionSyncType = (
-            _ input: SimpleWorkflowModel.DescribeWorkflowExecutionInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionDetail
+            _ input: SimpleWorkflowModel.DescribeWorkflowExecutionInput) throws -> SimpleWorkflowModel.WorkflowExecutionDetail
     typealias DescribeWorkflowExecutionAsyncType = (
             _ input: SimpleWorkflowModel.DescribeWorkflowExecutionInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, SimpleWorkflowError>) -> ()) throws -> ()
     typealias DescribeWorkflowTypeSyncType = (
-            _ input: SimpleWorkflowModel.DescribeWorkflowTypeInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowTypeDetail
+            _ input: SimpleWorkflowModel.DescribeWorkflowTypeInput) throws -> SimpleWorkflowModel.WorkflowTypeDetail
     typealias DescribeWorkflowTypeAsyncType = (
             _ input: SimpleWorkflowModel.DescribeWorkflowTypeInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, SimpleWorkflowError>) -> ()) throws -> ()
     typealias GetWorkflowExecutionHistorySyncType = (
-            _ input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.History
+            _ input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput) throws -> SimpleWorkflowModel.History
     typealias GetWorkflowExecutionHistoryAsyncType = (
             _ input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.History, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.History, SimpleWorkflowError>) -> ()) throws -> ()
     typealias ListActivityTypesSyncType = (
-            _ input: SimpleWorkflowModel.ListActivityTypesInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTypeInfos
+            _ input: SimpleWorkflowModel.ListActivityTypesInput) throws -> SimpleWorkflowModel.ActivityTypeInfos
     typealias ListActivityTypesAsyncType = (
             _ input: SimpleWorkflowModel.ListActivityTypesInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, SimpleWorkflowError>) -> ()) throws -> ()
     typealias ListClosedWorkflowExecutionsSyncType = (
-            _ input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionInfos
+            _ input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos
     typealias ListClosedWorkflowExecutionsAsyncType = (
             _ input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws -> ()
     typealias ListDomainsSyncType = (
-            _ input: SimpleWorkflowModel.ListDomainsInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DomainInfos
+            _ input: SimpleWorkflowModel.ListDomainsInput) throws -> SimpleWorkflowModel.DomainInfos
     typealias ListDomainsAsyncType = (
             _ input: SimpleWorkflowModel.ListDomainsInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, SimpleWorkflowError>) -> ()) throws -> ()
     typealias ListOpenWorkflowExecutionsSyncType = (
-            _ input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionInfos
+            _ input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos
     typealias ListOpenWorkflowExecutionsAsyncType = (
             _ input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws -> ()
     typealias ListTagsForResourceSyncType = (
-            _ input: SimpleWorkflowModel.ListTagsForResourceInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ListTagsForResourceOutput
+            _ input: SimpleWorkflowModel.ListTagsForResourceInput) throws -> SimpleWorkflowModel.ListTagsForResourceOutput
     typealias ListTagsForResourceAsyncType = (
             _ input: SimpleWorkflowModel.ListTagsForResourceInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, SimpleWorkflowError>) -> ()) throws -> ()
     typealias ListWorkflowTypesSyncType = (
-            _ input: SimpleWorkflowModel.ListWorkflowTypesInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowTypeInfos
+            _ input: SimpleWorkflowModel.ListWorkflowTypesInput) throws -> SimpleWorkflowModel.WorkflowTypeInfos
     typealias ListWorkflowTypesAsyncType = (
             _ input: SimpleWorkflowModel.ListWorkflowTypesInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, SimpleWorkflowError>) -> ()) throws -> ()
     typealias PollForActivityTaskSyncType = (
-            _ input: SimpleWorkflowModel.PollForActivityTaskInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTask
+            _ input: SimpleWorkflowModel.PollForActivityTaskInput) throws -> SimpleWorkflowModel.ActivityTask
     typealias PollForActivityTaskAsyncType = (
             _ input: SimpleWorkflowModel.PollForActivityTaskInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, SimpleWorkflowError>) -> ()) throws -> ()
     typealias PollForDecisionTaskSyncType = (
-            _ input: SimpleWorkflowModel.PollForDecisionTaskInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DecisionTask
+            _ input: SimpleWorkflowModel.PollForDecisionTaskInput) throws -> SimpleWorkflowModel.DecisionTask
     typealias PollForDecisionTaskAsyncType = (
             _ input: SimpleWorkflowModel.PollForDecisionTaskInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, SimpleWorkflowError>) -> ()) throws -> ()
     typealias RecordActivityTaskHeartbeatSyncType = (
-            _ input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTaskStatus
+            _ input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput) throws -> SimpleWorkflowModel.ActivityTaskStatus
     typealias RecordActivityTaskHeartbeatAsyncType = (
             _ input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, SimpleWorkflowError>) -> ()) throws -> ()
     typealias RegisterActivityTypeSyncType = (
-            _ input: SimpleWorkflowModel.RegisterActivityTypeInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.RegisterActivityTypeInput) throws -> ()
     typealias RegisterActivityTypeAsyncType = (
             _ input: SimpleWorkflowModel.RegisterActivityTypeInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RegisterDomainSyncType = (
-            _ input: SimpleWorkflowModel.RegisterDomainInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.RegisterDomainInput) throws -> ()
     typealias RegisterDomainAsyncType = (
             _ input: SimpleWorkflowModel.RegisterDomainInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RegisterWorkflowTypeSyncType = (
-            _ input: SimpleWorkflowModel.RegisterWorkflowTypeInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.RegisterWorkflowTypeInput) throws -> ()
     typealias RegisterWorkflowTypeAsyncType = (
             _ input: SimpleWorkflowModel.RegisterWorkflowTypeInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RequestCancelWorkflowExecutionSyncType = (
-            _ input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput) throws -> ()
     typealias RequestCancelWorkflowExecutionAsyncType = (
             _ input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RespondActivityTaskCanceledSyncType = (
-            _ input: SimpleWorkflowModel.RespondActivityTaskCanceledInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.RespondActivityTaskCanceledInput) throws -> ()
     typealias RespondActivityTaskCanceledAsyncType = (
             _ input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RespondActivityTaskCompletedSyncType = (
-            _ input: SimpleWorkflowModel.RespondActivityTaskCompletedInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.RespondActivityTaskCompletedInput) throws -> ()
     typealias RespondActivityTaskCompletedAsyncType = (
             _ input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RespondActivityTaskFailedSyncType = (
-            _ input: SimpleWorkflowModel.RespondActivityTaskFailedInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.RespondActivityTaskFailedInput) throws -> ()
     typealias RespondActivityTaskFailedAsyncType = (
             _ input: SimpleWorkflowModel.RespondActivityTaskFailedInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias RespondDecisionTaskCompletedSyncType = (
-            _ input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput) throws -> ()
     typealias RespondDecisionTaskCompletedAsyncType = (
             _ input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias SignalWorkflowExecutionSyncType = (
-            _ input: SimpleWorkflowModel.SignalWorkflowExecutionInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.SignalWorkflowExecutionInput) throws -> ()
     typealias SignalWorkflowExecutionAsyncType = (
             _ input: SimpleWorkflowModel.SignalWorkflowExecutionInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias StartWorkflowExecutionSyncType = (
-            _ input: SimpleWorkflowModel.StartWorkflowExecutionInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.Run
+            _ input: SimpleWorkflowModel.StartWorkflowExecutionInput) throws -> SimpleWorkflowModel.Run
     typealias StartWorkflowExecutionAsyncType = (
             _ input: SimpleWorkflowModel.StartWorkflowExecutionInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<SimpleWorkflowModel.Run, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<SimpleWorkflowModel.Run, SimpleWorkflowError>) -> ()) throws -> ()
     typealias TagResourceSyncType = (
-            _ input: SimpleWorkflowModel.TagResourceInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.TagResourceInput) throws -> ()
     typealias TagResourceAsyncType = (
             _ input: SimpleWorkflowModel.TagResourceInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias TerminateWorkflowExecutionSyncType = (
-            _ input: SimpleWorkflowModel.TerminateWorkflowExecutionInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.TerminateWorkflowExecutionInput) throws -> ()
     typealias TerminateWorkflowExecutionAsyncType = (
             _ input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias UndeprecateActivityTypeSyncType = (
-            _ input: SimpleWorkflowModel.UndeprecateActivityTypeInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.UndeprecateActivityTypeInput) throws -> ()
     typealias UndeprecateActivityTypeAsyncType = (
             _ input: SimpleWorkflowModel.UndeprecateActivityTypeInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias UndeprecateDomainSyncType = (
-            _ input: SimpleWorkflowModel.UndeprecateDomainInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.UndeprecateDomainInput) throws -> ()
     typealias UndeprecateDomainAsyncType = (
             _ input: SimpleWorkflowModel.UndeprecateDomainInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias UndeprecateWorkflowTypeSyncType = (
-            _ input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput) throws -> ()
     typealias UndeprecateWorkflowTypeAsyncType = (
             _ input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
     typealias UntagResourceSyncType = (
-            _ input: SimpleWorkflowModel.UntagResourceInput,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: SimpleWorkflowModel.UntagResourceInput) throws -> ()
     typealias UntagResourceAsyncType = (
             _ input: SimpleWorkflowModel.UntagResourceInput, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (SimpleWorkflowError?) -> ()) throws -> ()
 
     /**
      Invokes the CountClosedWorkflowExecutions operation returning immediately and passing the response to a callback.
@@ -300,8 +226,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func countClosedWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the CountClosedWorkflowExecutions operation waiting for the response before returning.
@@ -313,8 +238,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func countClosedWorkflowExecutionsSync(
-            input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionCount
+            input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionCount
 
     /**
      Invokes the CountOpenWorkflowExecutions operation returning immediately and passing the response to a callback.
@@ -328,8 +252,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func countOpenWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the CountOpenWorkflowExecutions operation waiting for the response before returning.
@@ -341,8 +264,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func countOpenWorkflowExecutionsSync(
-            input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionCount
+            input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionCount
 
     /**
      Invokes the CountPendingActivityTasks operation returning immediately and passing the response to a callback.
@@ -356,8 +278,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func countPendingActivityTasksAsync(
             input: SimpleWorkflowModel.CountPendingActivityTasksInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the CountPendingActivityTasks operation waiting for the response before returning.
@@ -369,8 +290,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func countPendingActivityTasksSync(
-            input: SimpleWorkflowModel.CountPendingActivityTasksInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.PendingTaskCount
+            input: SimpleWorkflowModel.CountPendingActivityTasksInput) throws -> SimpleWorkflowModel.PendingTaskCount
 
     /**
      Invokes the CountPendingDecisionTasks operation returning immediately and passing the response to a callback.
@@ -384,8 +304,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func countPendingDecisionTasksAsync(
             input: SimpleWorkflowModel.CountPendingDecisionTasksInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the CountPendingDecisionTasks operation waiting for the response before returning.
@@ -397,8 +316,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func countPendingDecisionTasksSync(
-            input: SimpleWorkflowModel.CountPendingDecisionTasksInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.PendingTaskCount
+            input: SimpleWorkflowModel.CountPendingDecisionTasksInput) throws -> SimpleWorkflowModel.PendingTaskCount
 
     /**
      Invokes the DeprecateActivityType operation returning immediately and passing the response to a callback.
@@ -411,8 +329,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func deprecateActivityTypeAsync(
             input: SimpleWorkflowModel.DeprecateActivityTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the DeprecateActivityType operation waiting for the response before returning.
@@ -422,8 +339,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, typeDeprecated, unknownResource.
      */
     func deprecateActivityTypeSync(
-            input: SimpleWorkflowModel.DeprecateActivityTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.DeprecateActivityTypeInput) throws
 
     /**
      Invokes the DeprecateDomain operation returning immediately and passing the response to a callback.
@@ -436,8 +352,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func deprecateDomainAsync(
             input: SimpleWorkflowModel.DeprecateDomainInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the DeprecateDomain operation waiting for the response before returning.
@@ -447,8 +362,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: domainDeprecated, operationNotPermitted, unknownResource.
      */
     func deprecateDomainSync(
-            input: SimpleWorkflowModel.DeprecateDomainInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.DeprecateDomainInput) throws
 
     /**
      Invokes the DeprecateWorkflowType operation returning immediately and passing the response to a callback.
@@ -461,8 +375,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func deprecateWorkflowTypeAsync(
             input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the DeprecateWorkflowType operation waiting for the response before returning.
@@ -472,8 +385,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, typeDeprecated, unknownResource.
      */
     func deprecateWorkflowTypeSync(
-            input: SimpleWorkflowModel.DeprecateWorkflowTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.DeprecateWorkflowTypeInput) throws
 
     /**
      Invokes the DescribeActivityType operation returning immediately and passing the response to a callback.
@@ -487,8 +399,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func describeActivityTypeAsync(
             input: SimpleWorkflowModel.DescribeActivityTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the DescribeActivityType operation waiting for the response before returning.
@@ -500,8 +411,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func describeActivityTypeSync(
-            input: SimpleWorkflowModel.DescribeActivityTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTypeDetail
+            input: SimpleWorkflowModel.DescribeActivityTypeInput) throws -> SimpleWorkflowModel.ActivityTypeDetail
 
     /**
      Invokes the DescribeDomain operation returning immediately and passing the response to a callback.
@@ -515,8 +425,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func describeDomainAsync(
             input: SimpleWorkflowModel.DescribeDomainInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the DescribeDomain operation waiting for the response before returning.
@@ -528,8 +437,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func describeDomainSync(
-            input: SimpleWorkflowModel.DescribeDomainInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DomainDetail
+            input: SimpleWorkflowModel.DescribeDomainInput) throws -> SimpleWorkflowModel.DomainDetail
 
     /**
      Invokes the DescribeWorkflowExecution operation returning immediately and passing the response to a callback.
@@ -543,8 +451,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func describeWorkflowExecutionAsync(
             input: SimpleWorkflowModel.DescribeWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the DescribeWorkflowExecution operation waiting for the response before returning.
@@ -556,8 +463,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func describeWorkflowExecutionSync(
-            input: SimpleWorkflowModel.DescribeWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionDetail
+            input: SimpleWorkflowModel.DescribeWorkflowExecutionInput) throws -> SimpleWorkflowModel.WorkflowExecutionDetail
 
     /**
      Invokes the DescribeWorkflowType operation returning immediately and passing the response to a callback.
@@ -571,8 +477,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func describeWorkflowTypeAsync(
             input: SimpleWorkflowModel.DescribeWorkflowTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the DescribeWorkflowType operation waiting for the response before returning.
@@ -584,8 +489,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func describeWorkflowTypeSync(
-            input: SimpleWorkflowModel.DescribeWorkflowTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowTypeDetail
+            input: SimpleWorkflowModel.DescribeWorkflowTypeInput) throws -> SimpleWorkflowModel.WorkflowTypeDetail
 
     /**
      Invokes the GetWorkflowExecutionHistory operation returning immediately and passing the response to a callback.
@@ -599,8 +503,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func getWorkflowExecutionHistoryAsync(
             input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.History, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.History, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the GetWorkflowExecutionHistory operation waiting for the response before returning.
@@ -612,8 +515,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func getWorkflowExecutionHistorySync(
-            input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.History
+            input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput) throws -> SimpleWorkflowModel.History
 
     /**
      Invokes the ListActivityTypes operation returning immediately and passing the response to a callback.
@@ -627,8 +529,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func listActivityTypesAsync(
             input: SimpleWorkflowModel.ListActivityTypesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the ListActivityTypes operation waiting for the response before returning.
@@ -640,8 +541,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func listActivityTypesSync(
-            input: SimpleWorkflowModel.ListActivityTypesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTypeInfos
+            input: SimpleWorkflowModel.ListActivityTypesInput) throws -> SimpleWorkflowModel.ActivityTypeInfos
 
     /**
      Invokes the ListClosedWorkflowExecutions operation returning immediately and passing the response to a callback.
@@ -655,8 +555,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func listClosedWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the ListClosedWorkflowExecutions operation waiting for the response before returning.
@@ -668,8 +567,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func listClosedWorkflowExecutionsSync(
-            input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionInfos
+            input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos
 
     /**
      Invokes the ListDomains operation returning immediately and passing the response to a callback.
@@ -683,8 +581,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func listDomainsAsync(
             input: SimpleWorkflowModel.ListDomainsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the ListDomains operation waiting for the response before returning.
@@ -696,8 +593,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted.
      */
     func listDomainsSync(
-            input: SimpleWorkflowModel.ListDomainsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DomainInfos
+            input: SimpleWorkflowModel.ListDomainsInput) throws -> SimpleWorkflowModel.DomainInfos
 
     /**
      Invokes the ListOpenWorkflowExecutions operation returning immediately and passing the response to a callback.
@@ -711,8 +607,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func listOpenWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the ListOpenWorkflowExecutions operation waiting for the response before returning.
@@ -724,8 +619,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func listOpenWorkflowExecutionsSync(
-            input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowExecutionInfos
+            input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos
 
     /**
      Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
@@ -739,8 +633,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func listTagsForResourceAsync(
             input: SimpleWorkflowModel.ListTagsForResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the ListTagsForResource operation waiting for the response before returning.
@@ -752,8 +645,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
     func listTagsForResourceSync(
-            input: SimpleWorkflowModel.ListTagsForResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ListTagsForResourceOutput
+            input: SimpleWorkflowModel.ListTagsForResourceInput) throws -> SimpleWorkflowModel.ListTagsForResourceOutput
 
     /**
      Invokes the ListWorkflowTypes operation returning immediately and passing the response to a callback.
@@ -767,8 +659,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func listWorkflowTypesAsync(
             input: SimpleWorkflowModel.ListWorkflowTypesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the ListWorkflowTypes operation waiting for the response before returning.
@@ -780,8 +671,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func listWorkflowTypesSync(
-            input: SimpleWorkflowModel.ListWorkflowTypesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.WorkflowTypeInfos
+            input: SimpleWorkflowModel.ListWorkflowTypesInput) throws -> SimpleWorkflowModel.WorkflowTypeInfos
 
     /**
      Invokes the PollForActivityTask operation returning immediately and passing the response to a callback.
@@ -795,8 +685,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func pollForActivityTaskAsync(
             input: SimpleWorkflowModel.PollForActivityTaskInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the PollForActivityTask operation waiting for the response before returning.
@@ -808,8 +697,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
     func pollForActivityTaskSync(
-            input: SimpleWorkflowModel.PollForActivityTaskInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTask
+            input: SimpleWorkflowModel.PollForActivityTaskInput) throws -> SimpleWorkflowModel.ActivityTask
 
     /**
      Invokes the PollForDecisionTask operation returning immediately and passing the response to a callback.
@@ -823,8 +711,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func pollForDecisionTaskAsync(
             input: SimpleWorkflowModel.PollForDecisionTaskInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the PollForDecisionTask operation waiting for the response before returning.
@@ -836,8 +723,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
     func pollForDecisionTaskSync(
-            input: SimpleWorkflowModel.PollForDecisionTaskInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.DecisionTask
+            input: SimpleWorkflowModel.PollForDecisionTaskInput) throws -> SimpleWorkflowModel.DecisionTask
 
     /**
      Invokes the RecordActivityTaskHeartbeat operation returning immediately and passing the response to a callback.
@@ -851,8 +737,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func recordActivityTaskHeartbeatAsync(
             input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the RecordActivityTaskHeartbeat operation waiting for the response before returning.
@@ -864,8 +749,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func recordActivityTaskHeartbeatSync(
-            input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.ActivityTaskStatus
+            input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput) throws -> SimpleWorkflowModel.ActivityTaskStatus
 
     /**
      Invokes the RegisterActivityType operation returning immediately and passing the response to a callback.
@@ -878,8 +762,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func registerActivityTypeAsync(
             input: SimpleWorkflowModel.RegisterActivityTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RegisterActivityType operation waiting for the response before returning.
@@ -889,8 +772,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
     func registerActivityTypeSync(
-            input: SimpleWorkflowModel.RegisterActivityTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.RegisterActivityTypeInput) throws
 
     /**
      Invokes the RegisterDomain operation returning immediately and passing the response to a callback.
@@ -903,8 +785,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func registerDomainAsync(
             input: SimpleWorkflowModel.RegisterDomainInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RegisterDomain operation waiting for the response before returning.
@@ -914,8 +795,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: domainAlreadyExists, limitExceeded, operationNotPermitted, tooManyTags.
      */
     func registerDomainSync(
-            input: SimpleWorkflowModel.RegisterDomainInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.RegisterDomainInput) throws
 
     /**
      Invokes the RegisterWorkflowType operation returning immediately and passing the response to a callback.
@@ -928,8 +808,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func registerWorkflowTypeAsync(
             input: SimpleWorkflowModel.RegisterWorkflowTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RegisterWorkflowType operation waiting for the response before returning.
@@ -939,8 +818,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
     func registerWorkflowTypeSync(
-            input: SimpleWorkflowModel.RegisterWorkflowTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.RegisterWorkflowTypeInput) throws
 
     /**
      Invokes the RequestCancelWorkflowExecution operation returning immediately and passing the response to a callback.
@@ -953,8 +831,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func requestCancelWorkflowExecutionAsync(
             input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RequestCancelWorkflowExecution operation waiting for the response before returning.
@@ -964,8 +841,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func requestCancelWorkflowExecutionSync(
-            input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput) throws
 
     /**
      Invokes the RespondActivityTaskCanceled operation returning immediately and passing the response to a callback.
@@ -978,8 +854,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func respondActivityTaskCanceledAsync(
             input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RespondActivityTaskCanceled operation waiting for the response before returning.
@@ -989,8 +864,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func respondActivityTaskCanceledSync(
-            input: SimpleWorkflowModel.RespondActivityTaskCanceledInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.RespondActivityTaskCanceledInput) throws
 
     /**
      Invokes the RespondActivityTaskCompleted operation returning immediately and passing the response to a callback.
@@ -1003,8 +877,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func respondActivityTaskCompletedAsync(
             input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RespondActivityTaskCompleted operation waiting for the response before returning.
@@ -1014,8 +887,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func respondActivityTaskCompletedSync(
-            input: SimpleWorkflowModel.RespondActivityTaskCompletedInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.RespondActivityTaskCompletedInput) throws
 
     /**
      Invokes the RespondActivityTaskFailed operation returning immediately and passing the response to a callback.
@@ -1028,8 +900,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func respondActivityTaskFailedAsync(
             input: SimpleWorkflowModel.RespondActivityTaskFailedInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RespondActivityTaskFailed operation waiting for the response before returning.
@@ -1039,8 +910,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func respondActivityTaskFailedSync(
-            input: SimpleWorkflowModel.RespondActivityTaskFailedInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.RespondActivityTaskFailedInput) throws
 
     /**
      Invokes the RespondDecisionTaskCompleted operation returning immediately and passing the response to a callback.
@@ -1053,8 +923,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func respondDecisionTaskCompletedAsync(
             input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the RespondDecisionTaskCompleted operation waiting for the response before returning.
@@ -1064,8 +933,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func respondDecisionTaskCompletedSync(
-            input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput) throws
 
     /**
      Invokes the SignalWorkflowExecution operation returning immediately and passing the response to a callback.
@@ -1078,8 +946,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func signalWorkflowExecutionAsync(
             input: SimpleWorkflowModel.SignalWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the SignalWorkflowExecution operation waiting for the response before returning.
@@ -1089,8 +956,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func signalWorkflowExecutionSync(
-            input: SimpleWorkflowModel.SignalWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.SignalWorkflowExecutionInput) throws
 
     /**
      Invokes the StartWorkflowExecution operation returning immediately and passing the response to a callback.
@@ -1104,8 +970,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func startWorkflowExecutionAsync(
             input: SimpleWorkflowModel.StartWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleWorkflowModel.Run, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<SimpleWorkflowModel.Run, SimpleWorkflowError>) -> ()) throws
 
     /**
      Invokes the StartWorkflowExecution operation waiting for the response before returning.
@@ -1117,8 +982,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: defaultUndefined, limitExceeded, operationNotPermitted, typeDeprecated, unknownResource, workflowExecutionAlreadyStarted.
      */
     func startWorkflowExecutionSync(
-            input: SimpleWorkflowModel.StartWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleWorkflowModel.Run
+            input: SimpleWorkflowModel.StartWorkflowExecutionInput) throws -> SimpleWorkflowModel.Run
 
     /**
      Invokes the TagResource operation returning immediately and passing the response to a callback.
@@ -1131,8 +995,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func tagResourceAsync(
             input: SimpleWorkflowModel.TagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the TagResource operation waiting for the response before returning.
@@ -1142,8 +1005,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, tooManyTags, unknownResource.
      */
     func tagResourceSync(
-            input: SimpleWorkflowModel.TagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.TagResourceInput) throws
 
     /**
      Invokes the TerminateWorkflowExecution operation returning immediately and passing the response to a callback.
@@ -1156,8 +1018,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func terminateWorkflowExecutionAsync(
             input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the TerminateWorkflowExecution operation waiting for the response before returning.
@@ -1167,8 +1028,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func terminateWorkflowExecutionSync(
-            input: SimpleWorkflowModel.TerminateWorkflowExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.TerminateWorkflowExecutionInput) throws
 
     /**
      Invokes the UndeprecateActivityType operation returning immediately and passing the response to a callback.
@@ -1181,8 +1041,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func undeprecateActivityTypeAsync(
             input: SimpleWorkflowModel.UndeprecateActivityTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the UndeprecateActivityType operation waiting for the response before returning.
@@ -1192,8 +1051,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
      */
     func undeprecateActivityTypeSync(
-            input: SimpleWorkflowModel.UndeprecateActivityTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.UndeprecateActivityTypeInput) throws
 
     /**
      Invokes the UndeprecateDomain operation returning immediately and passing the response to a callback.
@@ -1206,8 +1064,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func undeprecateDomainAsync(
             input: SimpleWorkflowModel.UndeprecateDomainInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the UndeprecateDomain operation waiting for the response before returning.
@@ -1217,8 +1074,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: domainAlreadyExists, operationNotPermitted, unknownResource.
      */
     func undeprecateDomainSync(
-            input: SimpleWorkflowModel.UndeprecateDomainInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.UndeprecateDomainInput) throws
 
     /**
      Invokes the UndeprecateWorkflowType operation returning immediately and passing the response to a callback.
@@ -1231,8 +1087,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func undeprecateWorkflowTypeAsync(
             input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the UndeprecateWorkflowType operation waiting for the response before returning.
@@ -1242,8 +1097,7 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
      */
     func undeprecateWorkflowTypeSync(
-            input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput) throws
 
     /**
      Invokes the UntagResource operation returning immediately and passing the response to a callback.
@@ -1256,8 +1110,7 @@ public protocol SimpleWorkflowClientProtocol {
      */
     func untagResourceAsync(
             input: SimpleWorkflowModel.UntagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (SimpleWorkflowError?) -> ()) throws
 
     /**
      Invokes the UntagResource operation waiting for the response before returning.
@@ -1267,6 +1120,5 @@ public protocol SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
     func untagResourceSync(
-            input: SimpleWorkflowModel.UntagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: SimpleWorkflowModel.UntagResourceInput) throws
 }

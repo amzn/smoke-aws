@@ -28,532 +28,532 @@ import SmokeHTTPClient
  Mock Client for the RDS service by default returns the `__default` property of its return type.
  */
 public struct MockRDSClient: RDSClientProtocol {
-    let addRoleToDBClusterAsyncOverride: RDSClientProtocol.AddRoleToDBClusterAsyncType?
-    let addRoleToDBClusterSyncOverride: RDSClientProtocol.AddRoleToDBClusterSyncType?
-    let addRoleToDBInstanceAsyncOverride: RDSClientProtocol.AddRoleToDBInstanceAsyncType?
-    let addRoleToDBInstanceSyncOverride: RDSClientProtocol.AddRoleToDBInstanceSyncType?
-    let addSourceIdentifierToSubscriptionAsyncOverride: RDSClientProtocol.AddSourceIdentifierToSubscriptionAsyncType?
-    let addSourceIdentifierToSubscriptionSyncOverride: RDSClientProtocol.AddSourceIdentifierToSubscriptionSyncType?
-    let addTagsToResourceAsyncOverride: RDSClientProtocol.AddTagsToResourceAsyncType?
-    let addTagsToResourceSyncOverride: RDSClientProtocol.AddTagsToResourceSyncType?
-    let applyPendingMaintenanceActionAsyncOverride: RDSClientProtocol.ApplyPendingMaintenanceActionAsyncType?
-    let applyPendingMaintenanceActionSyncOverride: RDSClientProtocol.ApplyPendingMaintenanceActionSyncType?
-    let authorizeDBSecurityGroupIngressAsyncOverride: RDSClientProtocol.AuthorizeDBSecurityGroupIngressAsyncType?
-    let authorizeDBSecurityGroupIngressSyncOverride: RDSClientProtocol.AuthorizeDBSecurityGroupIngressSyncType?
-    let backtrackDBClusterAsyncOverride: RDSClientProtocol.BacktrackDBClusterAsyncType?
-    let backtrackDBClusterSyncOverride: RDSClientProtocol.BacktrackDBClusterSyncType?
-    let cancelExportTaskAsyncOverride: RDSClientProtocol.CancelExportTaskAsyncType?
-    let cancelExportTaskSyncOverride: RDSClientProtocol.CancelExportTaskSyncType?
-    let copyDBClusterParameterGroupAsyncOverride: RDSClientProtocol.CopyDBClusterParameterGroupAsyncType?
-    let copyDBClusterParameterGroupSyncOverride: RDSClientProtocol.CopyDBClusterParameterGroupSyncType?
-    let copyDBClusterSnapshotAsyncOverride: RDSClientProtocol.CopyDBClusterSnapshotAsyncType?
-    let copyDBClusterSnapshotSyncOverride: RDSClientProtocol.CopyDBClusterSnapshotSyncType?
-    let copyDBParameterGroupAsyncOverride: RDSClientProtocol.CopyDBParameterGroupAsyncType?
-    let copyDBParameterGroupSyncOverride: RDSClientProtocol.CopyDBParameterGroupSyncType?
-    let copyDBSnapshotAsyncOverride: RDSClientProtocol.CopyDBSnapshotAsyncType?
-    let copyDBSnapshotSyncOverride: RDSClientProtocol.CopyDBSnapshotSyncType?
-    let copyOptionGroupAsyncOverride: RDSClientProtocol.CopyOptionGroupAsyncType?
-    let copyOptionGroupSyncOverride: RDSClientProtocol.CopyOptionGroupSyncType?
-    let createCustomAvailabilityZoneAsyncOverride: RDSClientProtocol.CreateCustomAvailabilityZoneAsyncType?
-    let createCustomAvailabilityZoneSyncOverride: RDSClientProtocol.CreateCustomAvailabilityZoneSyncType?
-    let createDBClusterAsyncOverride: RDSClientProtocol.CreateDBClusterAsyncType?
-    let createDBClusterSyncOverride: RDSClientProtocol.CreateDBClusterSyncType?
-    let createDBClusterEndpointAsyncOverride: RDSClientProtocol.CreateDBClusterEndpointAsyncType?
-    let createDBClusterEndpointSyncOverride: RDSClientProtocol.CreateDBClusterEndpointSyncType?
-    let createDBClusterParameterGroupAsyncOverride: RDSClientProtocol.CreateDBClusterParameterGroupAsyncType?
-    let createDBClusterParameterGroupSyncOverride: RDSClientProtocol.CreateDBClusterParameterGroupSyncType?
-    let createDBClusterSnapshotAsyncOverride: RDSClientProtocol.CreateDBClusterSnapshotAsyncType?
-    let createDBClusterSnapshotSyncOverride: RDSClientProtocol.CreateDBClusterSnapshotSyncType?
-    let createDBInstanceAsyncOverride: RDSClientProtocol.CreateDBInstanceAsyncType?
-    let createDBInstanceSyncOverride: RDSClientProtocol.CreateDBInstanceSyncType?
-    let createDBInstanceReadReplicaAsyncOverride: RDSClientProtocol.CreateDBInstanceReadReplicaAsyncType?
-    let createDBInstanceReadReplicaSyncOverride: RDSClientProtocol.CreateDBInstanceReadReplicaSyncType?
-    let createDBParameterGroupAsyncOverride: RDSClientProtocol.CreateDBParameterGroupAsyncType?
-    let createDBParameterGroupSyncOverride: RDSClientProtocol.CreateDBParameterGroupSyncType?
-    let createDBProxyAsyncOverride: RDSClientProtocol.CreateDBProxyAsyncType?
-    let createDBProxySyncOverride: RDSClientProtocol.CreateDBProxySyncType?
-    let createDBSecurityGroupAsyncOverride: RDSClientProtocol.CreateDBSecurityGroupAsyncType?
-    let createDBSecurityGroupSyncOverride: RDSClientProtocol.CreateDBSecurityGroupSyncType?
-    let createDBSnapshotAsyncOverride: RDSClientProtocol.CreateDBSnapshotAsyncType?
-    let createDBSnapshotSyncOverride: RDSClientProtocol.CreateDBSnapshotSyncType?
-    let createDBSubnetGroupAsyncOverride: RDSClientProtocol.CreateDBSubnetGroupAsyncType?
-    let createDBSubnetGroupSyncOverride: RDSClientProtocol.CreateDBSubnetGroupSyncType?
-    let createEventSubscriptionAsyncOverride: RDSClientProtocol.CreateEventSubscriptionAsyncType?
-    let createEventSubscriptionSyncOverride: RDSClientProtocol.CreateEventSubscriptionSyncType?
-    let createGlobalClusterAsyncOverride: RDSClientProtocol.CreateGlobalClusterAsyncType?
-    let createGlobalClusterSyncOverride: RDSClientProtocol.CreateGlobalClusterSyncType?
-    let createOptionGroupAsyncOverride: RDSClientProtocol.CreateOptionGroupAsyncType?
-    let createOptionGroupSyncOverride: RDSClientProtocol.CreateOptionGroupSyncType?
-    let deleteCustomAvailabilityZoneAsyncOverride: RDSClientProtocol.DeleteCustomAvailabilityZoneAsyncType?
-    let deleteCustomAvailabilityZoneSyncOverride: RDSClientProtocol.DeleteCustomAvailabilityZoneSyncType?
-    let deleteDBClusterAsyncOverride: RDSClientProtocol.DeleteDBClusterAsyncType?
-    let deleteDBClusterSyncOverride: RDSClientProtocol.DeleteDBClusterSyncType?
-    let deleteDBClusterEndpointAsyncOverride: RDSClientProtocol.DeleteDBClusterEndpointAsyncType?
-    let deleteDBClusterEndpointSyncOverride: RDSClientProtocol.DeleteDBClusterEndpointSyncType?
-    let deleteDBClusterParameterGroupAsyncOverride: RDSClientProtocol.DeleteDBClusterParameterGroupAsyncType?
-    let deleteDBClusterParameterGroupSyncOverride: RDSClientProtocol.DeleteDBClusterParameterGroupSyncType?
-    let deleteDBClusterSnapshotAsyncOverride: RDSClientProtocol.DeleteDBClusterSnapshotAsyncType?
-    let deleteDBClusterSnapshotSyncOverride: RDSClientProtocol.DeleteDBClusterSnapshotSyncType?
-    let deleteDBInstanceAsyncOverride: RDSClientProtocol.DeleteDBInstanceAsyncType?
-    let deleteDBInstanceSyncOverride: RDSClientProtocol.DeleteDBInstanceSyncType?
-    let deleteDBInstanceAutomatedBackupAsyncOverride: RDSClientProtocol.DeleteDBInstanceAutomatedBackupAsyncType?
-    let deleteDBInstanceAutomatedBackupSyncOverride: RDSClientProtocol.DeleteDBInstanceAutomatedBackupSyncType?
-    let deleteDBParameterGroupAsyncOverride: RDSClientProtocol.DeleteDBParameterGroupAsyncType?
-    let deleteDBParameterGroupSyncOverride: RDSClientProtocol.DeleteDBParameterGroupSyncType?
-    let deleteDBProxyAsyncOverride: RDSClientProtocol.DeleteDBProxyAsyncType?
-    let deleteDBProxySyncOverride: RDSClientProtocol.DeleteDBProxySyncType?
-    let deleteDBSecurityGroupAsyncOverride: RDSClientProtocol.DeleteDBSecurityGroupAsyncType?
-    let deleteDBSecurityGroupSyncOverride: RDSClientProtocol.DeleteDBSecurityGroupSyncType?
-    let deleteDBSnapshotAsyncOverride: RDSClientProtocol.DeleteDBSnapshotAsyncType?
-    let deleteDBSnapshotSyncOverride: RDSClientProtocol.DeleteDBSnapshotSyncType?
-    let deleteDBSubnetGroupAsyncOverride: RDSClientProtocol.DeleteDBSubnetGroupAsyncType?
-    let deleteDBSubnetGroupSyncOverride: RDSClientProtocol.DeleteDBSubnetGroupSyncType?
-    let deleteEventSubscriptionAsyncOverride: RDSClientProtocol.DeleteEventSubscriptionAsyncType?
-    let deleteEventSubscriptionSyncOverride: RDSClientProtocol.DeleteEventSubscriptionSyncType?
-    let deleteGlobalClusterAsyncOverride: RDSClientProtocol.DeleteGlobalClusterAsyncType?
-    let deleteGlobalClusterSyncOverride: RDSClientProtocol.DeleteGlobalClusterSyncType?
-    let deleteInstallationMediaAsyncOverride: RDSClientProtocol.DeleteInstallationMediaAsyncType?
-    let deleteInstallationMediaSyncOverride: RDSClientProtocol.DeleteInstallationMediaSyncType?
-    let deleteOptionGroupAsyncOverride: RDSClientProtocol.DeleteOptionGroupAsyncType?
-    let deleteOptionGroupSyncOverride: RDSClientProtocol.DeleteOptionGroupSyncType?
-    let deregisterDBProxyTargetsAsyncOverride: RDSClientProtocol.DeregisterDBProxyTargetsAsyncType?
-    let deregisterDBProxyTargetsSyncOverride: RDSClientProtocol.DeregisterDBProxyTargetsSyncType?
-    let describeAccountAttributesAsyncOverride: RDSClientProtocol.DescribeAccountAttributesAsyncType?
-    let describeAccountAttributesSyncOverride: RDSClientProtocol.DescribeAccountAttributesSyncType?
-    let describeCertificatesAsyncOverride: RDSClientProtocol.DescribeCertificatesAsyncType?
-    let describeCertificatesSyncOverride: RDSClientProtocol.DescribeCertificatesSyncType?
-    let describeCustomAvailabilityZonesAsyncOverride: RDSClientProtocol.DescribeCustomAvailabilityZonesAsyncType?
-    let describeCustomAvailabilityZonesSyncOverride: RDSClientProtocol.DescribeCustomAvailabilityZonesSyncType?
-    let describeDBClusterBacktracksAsyncOverride: RDSClientProtocol.DescribeDBClusterBacktracksAsyncType?
-    let describeDBClusterBacktracksSyncOverride: RDSClientProtocol.DescribeDBClusterBacktracksSyncType?
-    let describeDBClusterEndpointsAsyncOverride: RDSClientProtocol.DescribeDBClusterEndpointsAsyncType?
-    let describeDBClusterEndpointsSyncOverride: RDSClientProtocol.DescribeDBClusterEndpointsSyncType?
-    let describeDBClusterParameterGroupsAsyncOverride: RDSClientProtocol.DescribeDBClusterParameterGroupsAsyncType?
-    let describeDBClusterParameterGroupsSyncOverride: RDSClientProtocol.DescribeDBClusterParameterGroupsSyncType?
-    let describeDBClusterParametersAsyncOverride: RDSClientProtocol.DescribeDBClusterParametersAsyncType?
-    let describeDBClusterParametersSyncOverride: RDSClientProtocol.DescribeDBClusterParametersSyncType?
-    let describeDBClusterSnapshotAttributesAsyncOverride: RDSClientProtocol.DescribeDBClusterSnapshotAttributesAsyncType?
-    let describeDBClusterSnapshotAttributesSyncOverride: RDSClientProtocol.DescribeDBClusterSnapshotAttributesSyncType?
-    let describeDBClusterSnapshotsAsyncOverride: RDSClientProtocol.DescribeDBClusterSnapshotsAsyncType?
-    let describeDBClusterSnapshotsSyncOverride: RDSClientProtocol.DescribeDBClusterSnapshotsSyncType?
-    let describeDBClustersAsyncOverride: RDSClientProtocol.DescribeDBClustersAsyncType?
-    let describeDBClustersSyncOverride: RDSClientProtocol.DescribeDBClustersSyncType?
-    let describeDBEngineVersionsAsyncOverride: RDSClientProtocol.DescribeDBEngineVersionsAsyncType?
-    let describeDBEngineVersionsSyncOverride: RDSClientProtocol.DescribeDBEngineVersionsSyncType?
-    let describeDBInstanceAutomatedBackupsAsyncOverride: RDSClientProtocol.DescribeDBInstanceAutomatedBackupsAsyncType?
-    let describeDBInstanceAutomatedBackupsSyncOverride: RDSClientProtocol.DescribeDBInstanceAutomatedBackupsSyncType?
-    let describeDBInstancesAsyncOverride: RDSClientProtocol.DescribeDBInstancesAsyncType?
-    let describeDBInstancesSyncOverride: RDSClientProtocol.DescribeDBInstancesSyncType?
-    let describeDBLogFilesAsyncOverride: RDSClientProtocol.DescribeDBLogFilesAsyncType?
-    let describeDBLogFilesSyncOverride: RDSClientProtocol.DescribeDBLogFilesSyncType?
-    let describeDBParameterGroupsAsyncOverride: RDSClientProtocol.DescribeDBParameterGroupsAsyncType?
-    let describeDBParameterGroupsSyncOverride: RDSClientProtocol.DescribeDBParameterGroupsSyncType?
-    let describeDBParametersAsyncOverride: RDSClientProtocol.DescribeDBParametersAsyncType?
-    let describeDBParametersSyncOverride: RDSClientProtocol.DescribeDBParametersSyncType?
-    let describeDBProxiesAsyncOverride: RDSClientProtocol.DescribeDBProxiesAsyncType?
-    let describeDBProxiesSyncOverride: RDSClientProtocol.DescribeDBProxiesSyncType?
-    let describeDBProxyTargetGroupsAsyncOverride: RDSClientProtocol.DescribeDBProxyTargetGroupsAsyncType?
-    let describeDBProxyTargetGroupsSyncOverride: RDSClientProtocol.DescribeDBProxyTargetGroupsSyncType?
-    let describeDBProxyTargetsAsyncOverride: RDSClientProtocol.DescribeDBProxyTargetsAsyncType?
-    let describeDBProxyTargetsSyncOverride: RDSClientProtocol.DescribeDBProxyTargetsSyncType?
-    let describeDBSecurityGroupsAsyncOverride: RDSClientProtocol.DescribeDBSecurityGroupsAsyncType?
-    let describeDBSecurityGroupsSyncOverride: RDSClientProtocol.DescribeDBSecurityGroupsSyncType?
-    let describeDBSnapshotAttributesAsyncOverride: RDSClientProtocol.DescribeDBSnapshotAttributesAsyncType?
-    let describeDBSnapshotAttributesSyncOverride: RDSClientProtocol.DescribeDBSnapshotAttributesSyncType?
-    let describeDBSnapshotsAsyncOverride: RDSClientProtocol.DescribeDBSnapshotsAsyncType?
-    let describeDBSnapshotsSyncOverride: RDSClientProtocol.DescribeDBSnapshotsSyncType?
-    let describeDBSubnetGroupsAsyncOverride: RDSClientProtocol.DescribeDBSubnetGroupsAsyncType?
-    let describeDBSubnetGroupsSyncOverride: RDSClientProtocol.DescribeDBSubnetGroupsSyncType?
-    let describeEngineDefaultClusterParametersAsyncOverride: RDSClientProtocol.DescribeEngineDefaultClusterParametersAsyncType?
-    let describeEngineDefaultClusterParametersSyncOverride: RDSClientProtocol.DescribeEngineDefaultClusterParametersSyncType?
-    let describeEngineDefaultParametersAsyncOverride: RDSClientProtocol.DescribeEngineDefaultParametersAsyncType?
-    let describeEngineDefaultParametersSyncOverride: RDSClientProtocol.DescribeEngineDefaultParametersSyncType?
-    let describeEventCategoriesAsyncOverride: RDSClientProtocol.DescribeEventCategoriesAsyncType?
-    let describeEventCategoriesSyncOverride: RDSClientProtocol.DescribeEventCategoriesSyncType?
-    let describeEventSubscriptionsAsyncOverride: RDSClientProtocol.DescribeEventSubscriptionsAsyncType?
-    let describeEventSubscriptionsSyncOverride: RDSClientProtocol.DescribeEventSubscriptionsSyncType?
-    let describeEventsAsyncOverride: RDSClientProtocol.DescribeEventsAsyncType?
-    let describeEventsSyncOverride: RDSClientProtocol.DescribeEventsSyncType?
-    let describeExportTasksAsyncOverride: RDSClientProtocol.DescribeExportTasksAsyncType?
-    let describeExportTasksSyncOverride: RDSClientProtocol.DescribeExportTasksSyncType?
-    let describeGlobalClustersAsyncOverride: RDSClientProtocol.DescribeGlobalClustersAsyncType?
-    let describeGlobalClustersSyncOverride: RDSClientProtocol.DescribeGlobalClustersSyncType?
-    let describeInstallationMediaAsyncOverride: RDSClientProtocol.DescribeInstallationMediaAsyncType?
-    let describeInstallationMediaSyncOverride: RDSClientProtocol.DescribeInstallationMediaSyncType?
-    let describeOptionGroupOptionsAsyncOverride: RDSClientProtocol.DescribeOptionGroupOptionsAsyncType?
-    let describeOptionGroupOptionsSyncOverride: RDSClientProtocol.DescribeOptionGroupOptionsSyncType?
-    let describeOptionGroupsAsyncOverride: RDSClientProtocol.DescribeOptionGroupsAsyncType?
-    let describeOptionGroupsSyncOverride: RDSClientProtocol.DescribeOptionGroupsSyncType?
-    let describeOrderableDBInstanceOptionsAsyncOverride: RDSClientProtocol.DescribeOrderableDBInstanceOptionsAsyncType?
-    let describeOrderableDBInstanceOptionsSyncOverride: RDSClientProtocol.DescribeOrderableDBInstanceOptionsSyncType?
-    let describePendingMaintenanceActionsAsyncOverride: RDSClientProtocol.DescribePendingMaintenanceActionsAsyncType?
-    let describePendingMaintenanceActionsSyncOverride: RDSClientProtocol.DescribePendingMaintenanceActionsSyncType?
-    let describeReservedDBInstancesAsyncOverride: RDSClientProtocol.DescribeReservedDBInstancesAsyncType?
-    let describeReservedDBInstancesSyncOverride: RDSClientProtocol.DescribeReservedDBInstancesSyncType?
-    let describeReservedDBInstancesOfferingsAsyncOverride: RDSClientProtocol.DescribeReservedDBInstancesOfferingsAsyncType?
-    let describeReservedDBInstancesOfferingsSyncOverride: RDSClientProtocol.DescribeReservedDBInstancesOfferingsSyncType?
-    let describeSourceRegionsAsyncOverride: RDSClientProtocol.DescribeSourceRegionsAsyncType?
-    let describeSourceRegionsSyncOverride: RDSClientProtocol.DescribeSourceRegionsSyncType?
-    let describeValidDBInstanceModificationsAsyncOverride: RDSClientProtocol.DescribeValidDBInstanceModificationsAsyncType?
-    let describeValidDBInstanceModificationsSyncOverride: RDSClientProtocol.DescribeValidDBInstanceModificationsSyncType?
-    let downloadDBLogFilePortionAsyncOverride: RDSClientProtocol.DownloadDBLogFilePortionAsyncType?
-    let downloadDBLogFilePortionSyncOverride: RDSClientProtocol.DownloadDBLogFilePortionSyncType?
-    let failoverDBClusterAsyncOverride: RDSClientProtocol.FailoverDBClusterAsyncType?
-    let failoverDBClusterSyncOverride: RDSClientProtocol.FailoverDBClusterSyncType?
-    let importInstallationMediaAsyncOverride: RDSClientProtocol.ImportInstallationMediaAsyncType?
-    let importInstallationMediaSyncOverride: RDSClientProtocol.ImportInstallationMediaSyncType?
-    let listTagsForResourceAsyncOverride: RDSClientProtocol.ListTagsForResourceAsyncType?
-    let listTagsForResourceSyncOverride: RDSClientProtocol.ListTagsForResourceSyncType?
-    let modifyCertificatesAsyncOverride: RDSClientProtocol.ModifyCertificatesAsyncType?
-    let modifyCertificatesSyncOverride: RDSClientProtocol.ModifyCertificatesSyncType?
-    let modifyCurrentDBClusterCapacityAsyncOverride: RDSClientProtocol.ModifyCurrentDBClusterCapacityAsyncType?
-    let modifyCurrentDBClusterCapacitySyncOverride: RDSClientProtocol.ModifyCurrentDBClusterCapacitySyncType?
-    let modifyDBClusterAsyncOverride: RDSClientProtocol.ModifyDBClusterAsyncType?
-    let modifyDBClusterSyncOverride: RDSClientProtocol.ModifyDBClusterSyncType?
-    let modifyDBClusterEndpointAsyncOverride: RDSClientProtocol.ModifyDBClusterEndpointAsyncType?
-    let modifyDBClusterEndpointSyncOverride: RDSClientProtocol.ModifyDBClusterEndpointSyncType?
-    let modifyDBClusterParameterGroupAsyncOverride: RDSClientProtocol.ModifyDBClusterParameterGroupAsyncType?
-    let modifyDBClusterParameterGroupSyncOverride: RDSClientProtocol.ModifyDBClusterParameterGroupSyncType?
-    let modifyDBClusterSnapshotAttributeAsyncOverride: RDSClientProtocol.ModifyDBClusterSnapshotAttributeAsyncType?
-    let modifyDBClusterSnapshotAttributeSyncOverride: RDSClientProtocol.ModifyDBClusterSnapshotAttributeSyncType?
-    let modifyDBInstanceAsyncOverride: RDSClientProtocol.ModifyDBInstanceAsyncType?
-    let modifyDBInstanceSyncOverride: RDSClientProtocol.ModifyDBInstanceSyncType?
-    let modifyDBParameterGroupAsyncOverride: RDSClientProtocol.ModifyDBParameterGroupAsyncType?
-    let modifyDBParameterGroupSyncOverride: RDSClientProtocol.ModifyDBParameterGroupSyncType?
-    let modifyDBProxyAsyncOverride: RDSClientProtocol.ModifyDBProxyAsyncType?
-    let modifyDBProxySyncOverride: RDSClientProtocol.ModifyDBProxySyncType?
-    let modifyDBProxyTargetGroupAsyncOverride: RDSClientProtocol.ModifyDBProxyTargetGroupAsyncType?
-    let modifyDBProxyTargetGroupSyncOverride: RDSClientProtocol.ModifyDBProxyTargetGroupSyncType?
-    let modifyDBSnapshotAsyncOverride: RDSClientProtocol.ModifyDBSnapshotAsyncType?
-    let modifyDBSnapshotSyncOverride: RDSClientProtocol.ModifyDBSnapshotSyncType?
-    let modifyDBSnapshotAttributeAsyncOverride: RDSClientProtocol.ModifyDBSnapshotAttributeAsyncType?
-    let modifyDBSnapshotAttributeSyncOverride: RDSClientProtocol.ModifyDBSnapshotAttributeSyncType?
-    let modifyDBSubnetGroupAsyncOverride: RDSClientProtocol.ModifyDBSubnetGroupAsyncType?
-    let modifyDBSubnetGroupSyncOverride: RDSClientProtocol.ModifyDBSubnetGroupSyncType?
-    let modifyEventSubscriptionAsyncOverride: RDSClientProtocol.ModifyEventSubscriptionAsyncType?
-    let modifyEventSubscriptionSyncOverride: RDSClientProtocol.ModifyEventSubscriptionSyncType?
-    let modifyGlobalClusterAsyncOverride: RDSClientProtocol.ModifyGlobalClusterAsyncType?
-    let modifyGlobalClusterSyncOverride: RDSClientProtocol.ModifyGlobalClusterSyncType?
-    let modifyOptionGroupAsyncOverride: RDSClientProtocol.ModifyOptionGroupAsyncType?
-    let modifyOptionGroupSyncOverride: RDSClientProtocol.ModifyOptionGroupSyncType?
-    let promoteReadReplicaAsyncOverride: RDSClientProtocol.PromoteReadReplicaAsyncType?
-    let promoteReadReplicaSyncOverride: RDSClientProtocol.PromoteReadReplicaSyncType?
-    let promoteReadReplicaDBClusterAsyncOverride: RDSClientProtocol.PromoteReadReplicaDBClusterAsyncType?
-    let promoteReadReplicaDBClusterSyncOverride: RDSClientProtocol.PromoteReadReplicaDBClusterSyncType?
-    let purchaseReservedDBInstancesOfferingAsyncOverride: RDSClientProtocol.PurchaseReservedDBInstancesOfferingAsyncType?
-    let purchaseReservedDBInstancesOfferingSyncOverride: RDSClientProtocol.PurchaseReservedDBInstancesOfferingSyncType?
-    let rebootDBInstanceAsyncOverride: RDSClientProtocol.RebootDBInstanceAsyncType?
-    let rebootDBInstanceSyncOverride: RDSClientProtocol.RebootDBInstanceSyncType?
-    let registerDBProxyTargetsAsyncOverride: RDSClientProtocol.RegisterDBProxyTargetsAsyncType?
-    let registerDBProxyTargetsSyncOverride: RDSClientProtocol.RegisterDBProxyTargetsSyncType?
-    let removeFromGlobalClusterAsyncOverride: RDSClientProtocol.RemoveFromGlobalClusterAsyncType?
-    let removeFromGlobalClusterSyncOverride: RDSClientProtocol.RemoveFromGlobalClusterSyncType?
-    let removeRoleFromDBClusterAsyncOverride: RDSClientProtocol.RemoveRoleFromDBClusterAsyncType?
-    let removeRoleFromDBClusterSyncOverride: RDSClientProtocol.RemoveRoleFromDBClusterSyncType?
-    let removeRoleFromDBInstanceAsyncOverride: RDSClientProtocol.RemoveRoleFromDBInstanceAsyncType?
-    let removeRoleFromDBInstanceSyncOverride: RDSClientProtocol.RemoveRoleFromDBInstanceSyncType?
-    let removeSourceIdentifierFromSubscriptionAsyncOverride: RDSClientProtocol.RemoveSourceIdentifierFromSubscriptionAsyncType?
-    let removeSourceIdentifierFromSubscriptionSyncOverride: RDSClientProtocol.RemoveSourceIdentifierFromSubscriptionSyncType?
-    let removeTagsFromResourceAsyncOverride: RDSClientProtocol.RemoveTagsFromResourceAsyncType?
-    let removeTagsFromResourceSyncOverride: RDSClientProtocol.RemoveTagsFromResourceSyncType?
-    let resetDBClusterParameterGroupAsyncOverride: RDSClientProtocol.ResetDBClusterParameterGroupAsyncType?
-    let resetDBClusterParameterGroupSyncOverride: RDSClientProtocol.ResetDBClusterParameterGroupSyncType?
-    let resetDBParameterGroupAsyncOverride: RDSClientProtocol.ResetDBParameterGroupAsyncType?
-    let resetDBParameterGroupSyncOverride: RDSClientProtocol.ResetDBParameterGroupSyncType?
-    let restoreDBClusterFromS3AsyncOverride: RDSClientProtocol.RestoreDBClusterFromS3AsyncType?
-    let restoreDBClusterFromS3SyncOverride: RDSClientProtocol.RestoreDBClusterFromS3SyncType?
-    let restoreDBClusterFromSnapshotAsyncOverride: RDSClientProtocol.RestoreDBClusterFromSnapshotAsyncType?
-    let restoreDBClusterFromSnapshotSyncOverride: RDSClientProtocol.RestoreDBClusterFromSnapshotSyncType?
-    let restoreDBClusterToPointInTimeAsyncOverride: RDSClientProtocol.RestoreDBClusterToPointInTimeAsyncType?
-    let restoreDBClusterToPointInTimeSyncOverride: RDSClientProtocol.RestoreDBClusterToPointInTimeSyncType?
-    let restoreDBInstanceFromDBSnapshotAsyncOverride: RDSClientProtocol.RestoreDBInstanceFromDBSnapshotAsyncType?
-    let restoreDBInstanceFromDBSnapshotSyncOverride: RDSClientProtocol.RestoreDBInstanceFromDBSnapshotSyncType?
-    let restoreDBInstanceFromS3AsyncOverride: RDSClientProtocol.RestoreDBInstanceFromS3AsyncType?
-    let restoreDBInstanceFromS3SyncOverride: RDSClientProtocol.RestoreDBInstanceFromS3SyncType?
-    let restoreDBInstanceToPointInTimeAsyncOverride: RDSClientProtocol.RestoreDBInstanceToPointInTimeAsyncType?
-    let restoreDBInstanceToPointInTimeSyncOverride: RDSClientProtocol.RestoreDBInstanceToPointInTimeSyncType?
-    let revokeDBSecurityGroupIngressAsyncOverride: RDSClientProtocol.RevokeDBSecurityGroupIngressAsyncType?
-    let revokeDBSecurityGroupIngressSyncOverride: RDSClientProtocol.RevokeDBSecurityGroupIngressSyncType?
-    let startActivityStreamAsyncOverride: RDSClientProtocol.StartActivityStreamAsyncType?
-    let startActivityStreamSyncOverride: RDSClientProtocol.StartActivityStreamSyncType?
-    let startDBClusterAsyncOverride: RDSClientProtocol.StartDBClusterAsyncType?
-    let startDBClusterSyncOverride: RDSClientProtocol.StartDBClusterSyncType?
-    let startDBInstanceAsyncOverride: RDSClientProtocol.StartDBInstanceAsyncType?
-    let startDBInstanceSyncOverride: RDSClientProtocol.StartDBInstanceSyncType?
-    let startExportTaskAsyncOverride: RDSClientProtocol.StartExportTaskAsyncType?
-    let startExportTaskSyncOverride: RDSClientProtocol.StartExportTaskSyncType?
-    let stopActivityStreamAsyncOverride: RDSClientProtocol.StopActivityStreamAsyncType?
-    let stopActivityStreamSyncOverride: RDSClientProtocol.StopActivityStreamSyncType?
-    let stopDBClusterAsyncOverride: RDSClientProtocol.StopDBClusterAsyncType?
-    let stopDBClusterSyncOverride: RDSClientProtocol.StopDBClusterSyncType?
-    let stopDBInstanceAsyncOverride: RDSClientProtocol.StopDBInstanceAsyncType?
-    let stopDBInstanceSyncOverride: RDSClientProtocol.StopDBInstanceSyncType?
+    let addRoleToDBClusterAsyncOverride: AddRoleToDBClusterAsyncType?
+    let addRoleToDBClusterSyncOverride: AddRoleToDBClusterSyncType?
+    let addRoleToDBInstanceAsyncOverride: AddRoleToDBInstanceAsyncType?
+    let addRoleToDBInstanceSyncOverride: AddRoleToDBInstanceSyncType?
+    let addSourceIdentifierToSubscriptionAsyncOverride: AddSourceIdentifierToSubscriptionAsyncType?
+    let addSourceIdentifierToSubscriptionSyncOverride: AddSourceIdentifierToSubscriptionSyncType?
+    let addTagsToResourceAsyncOverride: AddTagsToResourceAsyncType?
+    let addTagsToResourceSyncOverride: AddTagsToResourceSyncType?
+    let applyPendingMaintenanceActionAsyncOverride: ApplyPendingMaintenanceActionAsyncType?
+    let applyPendingMaintenanceActionSyncOverride: ApplyPendingMaintenanceActionSyncType?
+    let authorizeDBSecurityGroupIngressAsyncOverride: AuthorizeDBSecurityGroupIngressAsyncType?
+    let authorizeDBSecurityGroupIngressSyncOverride: AuthorizeDBSecurityGroupIngressSyncType?
+    let backtrackDBClusterAsyncOverride: BacktrackDBClusterAsyncType?
+    let backtrackDBClusterSyncOverride: BacktrackDBClusterSyncType?
+    let cancelExportTaskAsyncOverride: CancelExportTaskAsyncType?
+    let cancelExportTaskSyncOverride: CancelExportTaskSyncType?
+    let copyDBClusterParameterGroupAsyncOverride: CopyDBClusterParameterGroupAsyncType?
+    let copyDBClusterParameterGroupSyncOverride: CopyDBClusterParameterGroupSyncType?
+    let copyDBClusterSnapshotAsyncOverride: CopyDBClusterSnapshotAsyncType?
+    let copyDBClusterSnapshotSyncOverride: CopyDBClusterSnapshotSyncType?
+    let copyDBParameterGroupAsyncOverride: CopyDBParameterGroupAsyncType?
+    let copyDBParameterGroupSyncOverride: CopyDBParameterGroupSyncType?
+    let copyDBSnapshotAsyncOverride: CopyDBSnapshotAsyncType?
+    let copyDBSnapshotSyncOverride: CopyDBSnapshotSyncType?
+    let copyOptionGroupAsyncOverride: CopyOptionGroupAsyncType?
+    let copyOptionGroupSyncOverride: CopyOptionGroupSyncType?
+    let createCustomAvailabilityZoneAsyncOverride: CreateCustomAvailabilityZoneAsyncType?
+    let createCustomAvailabilityZoneSyncOverride: CreateCustomAvailabilityZoneSyncType?
+    let createDBClusterAsyncOverride: CreateDBClusterAsyncType?
+    let createDBClusterSyncOverride: CreateDBClusterSyncType?
+    let createDBClusterEndpointAsyncOverride: CreateDBClusterEndpointAsyncType?
+    let createDBClusterEndpointSyncOverride: CreateDBClusterEndpointSyncType?
+    let createDBClusterParameterGroupAsyncOverride: CreateDBClusterParameterGroupAsyncType?
+    let createDBClusterParameterGroupSyncOverride: CreateDBClusterParameterGroupSyncType?
+    let createDBClusterSnapshotAsyncOverride: CreateDBClusterSnapshotAsyncType?
+    let createDBClusterSnapshotSyncOverride: CreateDBClusterSnapshotSyncType?
+    let createDBInstanceAsyncOverride: CreateDBInstanceAsyncType?
+    let createDBInstanceSyncOverride: CreateDBInstanceSyncType?
+    let createDBInstanceReadReplicaAsyncOverride: CreateDBInstanceReadReplicaAsyncType?
+    let createDBInstanceReadReplicaSyncOverride: CreateDBInstanceReadReplicaSyncType?
+    let createDBParameterGroupAsyncOverride: CreateDBParameterGroupAsyncType?
+    let createDBParameterGroupSyncOverride: CreateDBParameterGroupSyncType?
+    let createDBProxyAsyncOverride: CreateDBProxyAsyncType?
+    let createDBProxySyncOverride: CreateDBProxySyncType?
+    let createDBSecurityGroupAsyncOverride: CreateDBSecurityGroupAsyncType?
+    let createDBSecurityGroupSyncOverride: CreateDBSecurityGroupSyncType?
+    let createDBSnapshotAsyncOverride: CreateDBSnapshotAsyncType?
+    let createDBSnapshotSyncOverride: CreateDBSnapshotSyncType?
+    let createDBSubnetGroupAsyncOverride: CreateDBSubnetGroupAsyncType?
+    let createDBSubnetGroupSyncOverride: CreateDBSubnetGroupSyncType?
+    let createEventSubscriptionAsyncOverride: CreateEventSubscriptionAsyncType?
+    let createEventSubscriptionSyncOverride: CreateEventSubscriptionSyncType?
+    let createGlobalClusterAsyncOverride: CreateGlobalClusterAsyncType?
+    let createGlobalClusterSyncOverride: CreateGlobalClusterSyncType?
+    let createOptionGroupAsyncOverride: CreateOptionGroupAsyncType?
+    let createOptionGroupSyncOverride: CreateOptionGroupSyncType?
+    let deleteCustomAvailabilityZoneAsyncOverride: DeleteCustomAvailabilityZoneAsyncType?
+    let deleteCustomAvailabilityZoneSyncOverride: DeleteCustomAvailabilityZoneSyncType?
+    let deleteDBClusterAsyncOverride: DeleteDBClusterAsyncType?
+    let deleteDBClusterSyncOverride: DeleteDBClusterSyncType?
+    let deleteDBClusterEndpointAsyncOverride: DeleteDBClusterEndpointAsyncType?
+    let deleteDBClusterEndpointSyncOverride: DeleteDBClusterEndpointSyncType?
+    let deleteDBClusterParameterGroupAsyncOverride: DeleteDBClusterParameterGroupAsyncType?
+    let deleteDBClusterParameterGroupSyncOverride: DeleteDBClusterParameterGroupSyncType?
+    let deleteDBClusterSnapshotAsyncOverride: DeleteDBClusterSnapshotAsyncType?
+    let deleteDBClusterSnapshotSyncOverride: DeleteDBClusterSnapshotSyncType?
+    let deleteDBInstanceAsyncOverride: DeleteDBInstanceAsyncType?
+    let deleteDBInstanceSyncOverride: DeleteDBInstanceSyncType?
+    let deleteDBInstanceAutomatedBackupAsyncOverride: DeleteDBInstanceAutomatedBackupAsyncType?
+    let deleteDBInstanceAutomatedBackupSyncOverride: DeleteDBInstanceAutomatedBackupSyncType?
+    let deleteDBParameterGroupAsyncOverride: DeleteDBParameterGroupAsyncType?
+    let deleteDBParameterGroupSyncOverride: DeleteDBParameterGroupSyncType?
+    let deleteDBProxyAsyncOverride: DeleteDBProxyAsyncType?
+    let deleteDBProxySyncOverride: DeleteDBProxySyncType?
+    let deleteDBSecurityGroupAsyncOverride: DeleteDBSecurityGroupAsyncType?
+    let deleteDBSecurityGroupSyncOverride: DeleteDBSecurityGroupSyncType?
+    let deleteDBSnapshotAsyncOverride: DeleteDBSnapshotAsyncType?
+    let deleteDBSnapshotSyncOverride: DeleteDBSnapshotSyncType?
+    let deleteDBSubnetGroupAsyncOverride: DeleteDBSubnetGroupAsyncType?
+    let deleteDBSubnetGroupSyncOverride: DeleteDBSubnetGroupSyncType?
+    let deleteEventSubscriptionAsyncOverride: DeleteEventSubscriptionAsyncType?
+    let deleteEventSubscriptionSyncOverride: DeleteEventSubscriptionSyncType?
+    let deleteGlobalClusterAsyncOverride: DeleteGlobalClusterAsyncType?
+    let deleteGlobalClusterSyncOverride: DeleteGlobalClusterSyncType?
+    let deleteInstallationMediaAsyncOverride: DeleteInstallationMediaAsyncType?
+    let deleteInstallationMediaSyncOverride: DeleteInstallationMediaSyncType?
+    let deleteOptionGroupAsyncOverride: DeleteOptionGroupAsyncType?
+    let deleteOptionGroupSyncOverride: DeleteOptionGroupSyncType?
+    let deregisterDBProxyTargetsAsyncOverride: DeregisterDBProxyTargetsAsyncType?
+    let deregisterDBProxyTargetsSyncOverride: DeregisterDBProxyTargetsSyncType?
+    let describeAccountAttributesAsyncOverride: DescribeAccountAttributesAsyncType?
+    let describeAccountAttributesSyncOverride: DescribeAccountAttributesSyncType?
+    let describeCertificatesAsyncOverride: DescribeCertificatesAsyncType?
+    let describeCertificatesSyncOverride: DescribeCertificatesSyncType?
+    let describeCustomAvailabilityZonesAsyncOverride: DescribeCustomAvailabilityZonesAsyncType?
+    let describeCustomAvailabilityZonesSyncOverride: DescribeCustomAvailabilityZonesSyncType?
+    let describeDBClusterBacktracksAsyncOverride: DescribeDBClusterBacktracksAsyncType?
+    let describeDBClusterBacktracksSyncOverride: DescribeDBClusterBacktracksSyncType?
+    let describeDBClusterEndpointsAsyncOverride: DescribeDBClusterEndpointsAsyncType?
+    let describeDBClusterEndpointsSyncOverride: DescribeDBClusterEndpointsSyncType?
+    let describeDBClusterParameterGroupsAsyncOverride: DescribeDBClusterParameterGroupsAsyncType?
+    let describeDBClusterParameterGroupsSyncOverride: DescribeDBClusterParameterGroupsSyncType?
+    let describeDBClusterParametersAsyncOverride: DescribeDBClusterParametersAsyncType?
+    let describeDBClusterParametersSyncOverride: DescribeDBClusterParametersSyncType?
+    let describeDBClusterSnapshotAttributesAsyncOverride: DescribeDBClusterSnapshotAttributesAsyncType?
+    let describeDBClusterSnapshotAttributesSyncOverride: DescribeDBClusterSnapshotAttributesSyncType?
+    let describeDBClusterSnapshotsAsyncOverride: DescribeDBClusterSnapshotsAsyncType?
+    let describeDBClusterSnapshotsSyncOverride: DescribeDBClusterSnapshotsSyncType?
+    let describeDBClustersAsyncOverride: DescribeDBClustersAsyncType?
+    let describeDBClustersSyncOverride: DescribeDBClustersSyncType?
+    let describeDBEngineVersionsAsyncOverride: DescribeDBEngineVersionsAsyncType?
+    let describeDBEngineVersionsSyncOverride: DescribeDBEngineVersionsSyncType?
+    let describeDBInstanceAutomatedBackupsAsyncOverride: DescribeDBInstanceAutomatedBackupsAsyncType?
+    let describeDBInstanceAutomatedBackupsSyncOverride: DescribeDBInstanceAutomatedBackupsSyncType?
+    let describeDBInstancesAsyncOverride: DescribeDBInstancesAsyncType?
+    let describeDBInstancesSyncOverride: DescribeDBInstancesSyncType?
+    let describeDBLogFilesAsyncOverride: DescribeDBLogFilesAsyncType?
+    let describeDBLogFilesSyncOverride: DescribeDBLogFilesSyncType?
+    let describeDBParameterGroupsAsyncOverride: DescribeDBParameterGroupsAsyncType?
+    let describeDBParameterGroupsSyncOverride: DescribeDBParameterGroupsSyncType?
+    let describeDBParametersAsyncOverride: DescribeDBParametersAsyncType?
+    let describeDBParametersSyncOverride: DescribeDBParametersSyncType?
+    let describeDBProxiesAsyncOverride: DescribeDBProxiesAsyncType?
+    let describeDBProxiesSyncOverride: DescribeDBProxiesSyncType?
+    let describeDBProxyTargetGroupsAsyncOverride: DescribeDBProxyTargetGroupsAsyncType?
+    let describeDBProxyTargetGroupsSyncOverride: DescribeDBProxyTargetGroupsSyncType?
+    let describeDBProxyTargetsAsyncOverride: DescribeDBProxyTargetsAsyncType?
+    let describeDBProxyTargetsSyncOverride: DescribeDBProxyTargetsSyncType?
+    let describeDBSecurityGroupsAsyncOverride: DescribeDBSecurityGroupsAsyncType?
+    let describeDBSecurityGroupsSyncOverride: DescribeDBSecurityGroupsSyncType?
+    let describeDBSnapshotAttributesAsyncOverride: DescribeDBSnapshotAttributesAsyncType?
+    let describeDBSnapshotAttributesSyncOverride: DescribeDBSnapshotAttributesSyncType?
+    let describeDBSnapshotsAsyncOverride: DescribeDBSnapshotsAsyncType?
+    let describeDBSnapshotsSyncOverride: DescribeDBSnapshotsSyncType?
+    let describeDBSubnetGroupsAsyncOverride: DescribeDBSubnetGroupsAsyncType?
+    let describeDBSubnetGroupsSyncOverride: DescribeDBSubnetGroupsSyncType?
+    let describeEngineDefaultClusterParametersAsyncOverride: DescribeEngineDefaultClusterParametersAsyncType?
+    let describeEngineDefaultClusterParametersSyncOverride: DescribeEngineDefaultClusterParametersSyncType?
+    let describeEngineDefaultParametersAsyncOverride: DescribeEngineDefaultParametersAsyncType?
+    let describeEngineDefaultParametersSyncOverride: DescribeEngineDefaultParametersSyncType?
+    let describeEventCategoriesAsyncOverride: DescribeEventCategoriesAsyncType?
+    let describeEventCategoriesSyncOverride: DescribeEventCategoriesSyncType?
+    let describeEventSubscriptionsAsyncOverride: DescribeEventSubscriptionsAsyncType?
+    let describeEventSubscriptionsSyncOverride: DescribeEventSubscriptionsSyncType?
+    let describeEventsAsyncOverride: DescribeEventsAsyncType?
+    let describeEventsSyncOverride: DescribeEventsSyncType?
+    let describeExportTasksAsyncOverride: DescribeExportTasksAsyncType?
+    let describeExportTasksSyncOverride: DescribeExportTasksSyncType?
+    let describeGlobalClustersAsyncOverride: DescribeGlobalClustersAsyncType?
+    let describeGlobalClustersSyncOverride: DescribeGlobalClustersSyncType?
+    let describeInstallationMediaAsyncOverride: DescribeInstallationMediaAsyncType?
+    let describeInstallationMediaSyncOverride: DescribeInstallationMediaSyncType?
+    let describeOptionGroupOptionsAsyncOverride: DescribeOptionGroupOptionsAsyncType?
+    let describeOptionGroupOptionsSyncOverride: DescribeOptionGroupOptionsSyncType?
+    let describeOptionGroupsAsyncOverride: DescribeOptionGroupsAsyncType?
+    let describeOptionGroupsSyncOverride: DescribeOptionGroupsSyncType?
+    let describeOrderableDBInstanceOptionsAsyncOverride: DescribeOrderableDBInstanceOptionsAsyncType?
+    let describeOrderableDBInstanceOptionsSyncOverride: DescribeOrderableDBInstanceOptionsSyncType?
+    let describePendingMaintenanceActionsAsyncOverride: DescribePendingMaintenanceActionsAsyncType?
+    let describePendingMaintenanceActionsSyncOverride: DescribePendingMaintenanceActionsSyncType?
+    let describeReservedDBInstancesAsyncOverride: DescribeReservedDBInstancesAsyncType?
+    let describeReservedDBInstancesSyncOverride: DescribeReservedDBInstancesSyncType?
+    let describeReservedDBInstancesOfferingsAsyncOverride: DescribeReservedDBInstancesOfferingsAsyncType?
+    let describeReservedDBInstancesOfferingsSyncOverride: DescribeReservedDBInstancesOfferingsSyncType?
+    let describeSourceRegionsAsyncOverride: DescribeSourceRegionsAsyncType?
+    let describeSourceRegionsSyncOverride: DescribeSourceRegionsSyncType?
+    let describeValidDBInstanceModificationsAsyncOverride: DescribeValidDBInstanceModificationsAsyncType?
+    let describeValidDBInstanceModificationsSyncOverride: DescribeValidDBInstanceModificationsSyncType?
+    let downloadDBLogFilePortionAsyncOverride: DownloadDBLogFilePortionAsyncType?
+    let downloadDBLogFilePortionSyncOverride: DownloadDBLogFilePortionSyncType?
+    let failoverDBClusterAsyncOverride: FailoverDBClusterAsyncType?
+    let failoverDBClusterSyncOverride: FailoverDBClusterSyncType?
+    let importInstallationMediaAsyncOverride: ImportInstallationMediaAsyncType?
+    let importInstallationMediaSyncOverride: ImportInstallationMediaSyncType?
+    let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType?
+    let listTagsForResourceSyncOverride: ListTagsForResourceSyncType?
+    let modifyCertificatesAsyncOverride: ModifyCertificatesAsyncType?
+    let modifyCertificatesSyncOverride: ModifyCertificatesSyncType?
+    let modifyCurrentDBClusterCapacityAsyncOverride: ModifyCurrentDBClusterCapacityAsyncType?
+    let modifyCurrentDBClusterCapacitySyncOverride: ModifyCurrentDBClusterCapacitySyncType?
+    let modifyDBClusterAsyncOverride: ModifyDBClusterAsyncType?
+    let modifyDBClusterSyncOverride: ModifyDBClusterSyncType?
+    let modifyDBClusterEndpointAsyncOverride: ModifyDBClusterEndpointAsyncType?
+    let modifyDBClusterEndpointSyncOverride: ModifyDBClusterEndpointSyncType?
+    let modifyDBClusterParameterGroupAsyncOverride: ModifyDBClusterParameterGroupAsyncType?
+    let modifyDBClusterParameterGroupSyncOverride: ModifyDBClusterParameterGroupSyncType?
+    let modifyDBClusterSnapshotAttributeAsyncOverride: ModifyDBClusterSnapshotAttributeAsyncType?
+    let modifyDBClusterSnapshotAttributeSyncOverride: ModifyDBClusterSnapshotAttributeSyncType?
+    let modifyDBInstanceAsyncOverride: ModifyDBInstanceAsyncType?
+    let modifyDBInstanceSyncOverride: ModifyDBInstanceSyncType?
+    let modifyDBParameterGroupAsyncOverride: ModifyDBParameterGroupAsyncType?
+    let modifyDBParameterGroupSyncOverride: ModifyDBParameterGroupSyncType?
+    let modifyDBProxyAsyncOverride: ModifyDBProxyAsyncType?
+    let modifyDBProxySyncOverride: ModifyDBProxySyncType?
+    let modifyDBProxyTargetGroupAsyncOverride: ModifyDBProxyTargetGroupAsyncType?
+    let modifyDBProxyTargetGroupSyncOverride: ModifyDBProxyTargetGroupSyncType?
+    let modifyDBSnapshotAsyncOverride: ModifyDBSnapshotAsyncType?
+    let modifyDBSnapshotSyncOverride: ModifyDBSnapshotSyncType?
+    let modifyDBSnapshotAttributeAsyncOverride: ModifyDBSnapshotAttributeAsyncType?
+    let modifyDBSnapshotAttributeSyncOverride: ModifyDBSnapshotAttributeSyncType?
+    let modifyDBSubnetGroupAsyncOverride: ModifyDBSubnetGroupAsyncType?
+    let modifyDBSubnetGroupSyncOverride: ModifyDBSubnetGroupSyncType?
+    let modifyEventSubscriptionAsyncOverride: ModifyEventSubscriptionAsyncType?
+    let modifyEventSubscriptionSyncOverride: ModifyEventSubscriptionSyncType?
+    let modifyGlobalClusterAsyncOverride: ModifyGlobalClusterAsyncType?
+    let modifyGlobalClusterSyncOverride: ModifyGlobalClusterSyncType?
+    let modifyOptionGroupAsyncOverride: ModifyOptionGroupAsyncType?
+    let modifyOptionGroupSyncOverride: ModifyOptionGroupSyncType?
+    let promoteReadReplicaAsyncOverride: PromoteReadReplicaAsyncType?
+    let promoteReadReplicaSyncOverride: PromoteReadReplicaSyncType?
+    let promoteReadReplicaDBClusterAsyncOverride: PromoteReadReplicaDBClusterAsyncType?
+    let promoteReadReplicaDBClusterSyncOverride: PromoteReadReplicaDBClusterSyncType?
+    let purchaseReservedDBInstancesOfferingAsyncOverride: PurchaseReservedDBInstancesOfferingAsyncType?
+    let purchaseReservedDBInstancesOfferingSyncOverride: PurchaseReservedDBInstancesOfferingSyncType?
+    let rebootDBInstanceAsyncOverride: RebootDBInstanceAsyncType?
+    let rebootDBInstanceSyncOverride: RebootDBInstanceSyncType?
+    let registerDBProxyTargetsAsyncOverride: RegisterDBProxyTargetsAsyncType?
+    let registerDBProxyTargetsSyncOverride: RegisterDBProxyTargetsSyncType?
+    let removeFromGlobalClusterAsyncOverride: RemoveFromGlobalClusterAsyncType?
+    let removeFromGlobalClusterSyncOverride: RemoveFromGlobalClusterSyncType?
+    let removeRoleFromDBClusterAsyncOverride: RemoveRoleFromDBClusterAsyncType?
+    let removeRoleFromDBClusterSyncOverride: RemoveRoleFromDBClusterSyncType?
+    let removeRoleFromDBInstanceAsyncOverride: RemoveRoleFromDBInstanceAsyncType?
+    let removeRoleFromDBInstanceSyncOverride: RemoveRoleFromDBInstanceSyncType?
+    let removeSourceIdentifierFromSubscriptionAsyncOverride: RemoveSourceIdentifierFromSubscriptionAsyncType?
+    let removeSourceIdentifierFromSubscriptionSyncOverride: RemoveSourceIdentifierFromSubscriptionSyncType?
+    let removeTagsFromResourceAsyncOverride: RemoveTagsFromResourceAsyncType?
+    let removeTagsFromResourceSyncOverride: RemoveTagsFromResourceSyncType?
+    let resetDBClusterParameterGroupAsyncOverride: ResetDBClusterParameterGroupAsyncType?
+    let resetDBClusterParameterGroupSyncOverride: ResetDBClusterParameterGroupSyncType?
+    let resetDBParameterGroupAsyncOverride: ResetDBParameterGroupAsyncType?
+    let resetDBParameterGroupSyncOverride: ResetDBParameterGroupSyncType?
+    let restoreDBClusterFromS3AsyncOverride: RestoreDBClusterFromS3AsyncType?
+    let restoreDBClusterFromS3SyncOverride: RestoreDBClusterFromS3SyncType?
+    let restoreDBClusterFromSnapshotAsyncOverride: RestoreDBClusterFromSnapshotAsyncType?
+    let restoreDBClusterFromSnapshotSyncOverride: RestoreDBClusterFromSnapshotSyncType?
+    let restoreDBClusterToPointInTimeAsyncOverride: RestoreDBClusterToPointInTimeAsyncType?
+    let restoreDBClusterToPointInTimeSyncOverride: RestoreDBClusterToPointInTimeSyncType?
+    let restoreDBInstanceFromDBSnapshotAsyncOverride: RestoreDBInstanceFromDBSnapshotAsyncType?
+    let restoreDBInstanceFromDBSnapshotSyncOverride: RestoreDBInstanceFromDBSnapshotSyncType?
+    let restoreDBInstanceFromS3AsyncOverride: RestoreDBInstanceFromS3AsyncType?
+    let restoreDBInstanceFromS3SyncOverride: RestoreDBInstanceFromS3SyncType?
+    let restoreDBInstanceToPointInTimeAsyncOverride: RestoreDBInstanceToPointInTimeAsyncType?
+    let restoreDBInstanceToPointInTimeSyncOverride: RestoreDBInstanceToPointInTimeSyncType?
+    let revokeDBSecurityGroupIngressAsyncOverride: RevokeDBSecurityGroupIngressAsyncType?
+    let revokeDBSecurityGroupIngressSyncOverride: RevokeDBSecurityGroupIngressSyncType?
+    let startActivityStreamAsyncOverride: StartActivityStreamAsyncType?
+    let startActivityStreamSyncOverride: StartActivityStreamSyncType?
+    let startDBClusterAsyncOverride: StartDBClusterAsyncType?
+    let startDBClusterSyncOverride: StartDBClusterSyncType?
+    let startDBInstanceAsyncOverride: StartDBInstanceAsyncType?
+    let startDBInstanceSyncOverride: StartDBInstanceSyncType?
+    let startExportTaskAsyncOverride: StartExportTaskAsyncType?
+    let startExportTaskSyncOverride: StartExportTaskSyncType?
+    let stopActivityStreamAsyncOverride: StopActivityStreamAsyncType?
+    let stopActivityStreamSyncOverride: StopActivityStreamSyncType?
+    let stopDBClusterAsyncOverride: StopDBClusterAsyncType?
+    let stopDBClusterSyncOverride: StopDBClusterSyncType?
+    let stopDBInstanceAsyncOverride: StopDBInstanceAsyncType?
+    let stopDBInstanceSyncOverride: StopDBInstanceSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(
-            addRoleToDBClusterAsync: RDSClientProtocol.AddRoleToDBClusterAsyncType? = nil,
-            addRoleToDBClusterSync: RDSClientProtocol.AddRoleToDBClusterSyncType? = nil,
-            addRoleToDBInstanceAsync: RDSClientProtocol.AddRoleToDBInstanceAsyncType? = nil,
-            addRoleToDBInstanceSync: RDSClientProtocol.AddRoleToDBInstanceSyncType? = nil,
-            addSourceIdentifierToSubscriptionAsync: RDSClientProtocol.AddSourceIdentifierToSubscriptionAsyncType? = nil,
-            addSourceIdentifierToSubscriptionSync: RDSClientProtocol.AddSourceIdentifierToSubscriptionSyncType? = nil,
-            addTagsToResourceAsync: RDSClientProtocol.AddTagsToResourceAsyncType? = nil,
-            addTagsToResourceSync: RDSClientProtocol.AddTagsToResourceSyncType? = nil,
-            applyPendingMaintenanceActionAsync: RDSClientProtocol.ApplyPendingMaintenanceActionAsyncType? = nil,
-            applyPendingMaintenanceActionSync: RDSClientProtocol.ApplyPendingMaintenanceActionSyncType? = nil,
-            authorizeDBSecurityGroupIngressAsync: RDSClientProtocol.AuthorizeDBSecurityGroupIngressAsyncType? = nil,
-            authorizeDBSecurityGroupIngressSync: RDSClientProtocol.AuthorizeDBSecurityGroupIngressSyncType? = nil,
-            backtrackDBClusterAsync: RDSClientProtocol.BacktrackDBClusterAsyncType? = nil,
-            backtrackDBClusterSync: RDSClientProtocol.BacktrackDBClusterSyncType? = nil,
-            cancelExportTaskAsync: RDSClientProtocol.CancelExportTaskAsyncType? = nil,
-            cancelExportTaskSync: RDSClientProtocol.CancelExportTaskSyncType? = nil,
-            copyDBClusterParameterGroupAsync: RDSClientProtocol.CopyDBClusterParameterGroupAsyncType? = nil,
-            copyDBClusterParameterGroupSync: RDSClientProtocol.CopyDBClusterParameterGroupSyncType? = nil,
-            copyDBClusterSnapshotAsync: RDSClientProtocol.CopyDBClusterSnapshotAsyncType? = nil,
-            copyDBClusterSnapshotSync: RDSClientProtocol.CopyDBClusterSnapshotSyncType? = nil,
-            copyDBParameterGroupAsync: RDSClientProtocol.CopyDBParameterGroupAsyncType? = nil,
-            copyDBParameterGroupSync: RDSClientProtocol.CopyDBParameterGroupSyncType? = nil,
-            copyDBSnapshotAsync: RDSClientProtocol.CopyDBSnapshotAsyncType? = nil,
-            copyDBSnapshotSync: RDSClientProtocol.CopyDBSnapshotSyncType? = nil,
-            copyOptionGroupAsync: RDSClientProtocol.CopyOptionGroupAsyncType? = nil,
-            copyOptionGroupSync: RDSClientProtocol.CopyOptionGroupSyncType? = nil,
-            createCustomAvailabilityZoneAsync: RDSClientProtocol.CreateCustomAvailabilityZoneAsyncType? = nil,
-            createCustomAvailabilityZoneSync: RDSClientProtocol.CreateCustomAvailabilityZoneSyncType? = nil,
-            createDBClusterAsync: RDSClientProtocol.CreateDBClusterAsyncType? = nil,
-            createDBClusterSync: RDSClientProtocol.CreateDBClusterSyncType? = nil,
-            createDBClusterEndpointAsync: RDSClientProtocol.CreateDBClusterEndpointAsyncType? = nil,
-            createDBClusterEndpointSync: RDSClientProtocol.CreateDBClusterEndpointSyncType? = nil,
-            createDBClusterParameterGroupAsync: RDSClientProtocol.CreateDBClusterParameterGroupAsyncType? = nil,
-            createDBClusterParameterGroupSync: RDSClientProtocol.CreateDBClusterParameterGroupSyncType? = nil,
-            createDBClusterSnapshotAsync: RDSClientProtocol.CreateDBClusterSnapshotAsyncType? = nil,
-            createDBClusterSnapshotSync: RDSClientProtocol.CreateDBClusterSnapshotSyncType? = nil,
-            createDBInstanceAsync: RDSClientProtocol.CreateDBInstanceAsyncType? = nil,
-            createDBInstanceSync: RDSClientProtocol.CreateDBInstanceSyncType? = nil,
-            createDBInstanceReadReplicaAsync: RDSClientProtocol.CreateDBInstanceReadReplicaAsyncType? = nil,
-            createDBInstanceReadReplicaSync: RDSClientProtocol.CreateDBInstanceReadReplicaSyncType? = nil,
-            createDBParameterGroupAsync: RDSClientProtocol.CreateDBParameterGroupAsyncType? = nil,
-            createDBParameterGroupSync: RDSClientProtocol.CreateDBParameterGroupSyncType? = nil,
-            createDBProxyAsync: RDSClientProtocol.CreateDBProxyAsyncType? = nil,
-            createDBProxySync: RDSClientProtocol.CreateDBProxySyncType? = nil,
-            createDBSecurityGroupAsync: RDSClientProtocol.CreateDBSecurityGroupAsyncType? = nil,
-            createDBSecurityGroupSync: RDSClientProtocol.CreateDBSecurityGroupSyncType? = nil,
-            createDBSnapshotAsync: RDSClientProtocol.CreateDBSnapshotAsyncType? = nil,
-            createDBSnapshotSync: RDSClientProtocol.CreateDBSnapshotSyncType? = nil,
-            createDBSubnetGroupAsync: RDSClientProtocol.CreateDBSubnetGroupAsyncType? = nil,
-            createDBSubnetGroupSync: RDSClientProtocol.CreateDBSubnetGroupSyncType? = nil,
-            createEventSubscriptionAsync: RDSClientProtocol.CreateEventSubscriptionAsyncType? = nil,
-            createEventSubscriptionSync: RDSClientProtocol.CreateEventSubscriptionSyncType? = nil,
-            createGlobalClusterAsync: RDSClientProtocol.CreateGlobalClusterAsyncType? = nil,
-            createGlobalClusterSync: RDSClientProtocol.CreateGlobalClusterSyncType? = nil,
-            createOptionGroupAsync: RDSClientProtocol.CreateOptionGroupAsyncType? = nil,
-            createOptionGroupSync: RDSClientProtocol.CreateOptionGroupSyncType? = nil,
-            deleteCustomAvailabilityZoneAsync: RDSClientProtocol.DeleteCustomAvailabilityZoneAsyncType? = nil,
-            deleteCustomAvailabilityZoneSync: RDSClientProtocol.DeleteCustomAvailabilityZoneSyncType? = nil,
-            deleteDBClusterAsync: RDSClientProtocol.DeleteDBClusterAsyncType? = nil,
-            deleteDBClusterSync: RDSClientProtocol.DeleteDBClusterSyncType? = nil,
-            deleteDBClusterEndpointAsync: RDSClientProtocol.DeleteDBClusterEndpointAsyncType? = nil,
-            deleteDBClusterEndpointSync: RDSClientProtocol.DeleteDBClusterEndpointSyncType? = nil,
-            deleteDBClusterParameterGroupAsync: RDSClientProtocol.DeleteDBClusterParameterGroupAsyncType? = nil,
-            deleteDBClusterParameterGroupSync: RDSClientProtocol.DeleteDBClusterParameterGroupSyncType? = nil,
-            deleteDBClusterSnapshotAsync: RDSClientProtocol.DeleteDBClusterSnapshotAsyncType? = nil,
-            deleteDBClusterSnapshotSync: RDSClientProtocol.DeleteDBClusterSnapshotSyncType? = nil,
-            deleteDBInstanceAsync: RDSClientProtocol.DeleteDBInstanceAsyncType? = nil,
-            deleteDBInstanceSync: RDSClientProtocol.DeleteDBInstanceSyncType? = nil,
-            deleteDBInstanceAutomatedBackupAsync: RDSClientProtocol.DeleteDBInstanceAutomatedBackupAsyncType? = nil,
-            deleteDBInstanceAutomatedBackupSync: RDSClientProtocol.DeleteDBInstanceAutomatedBackupSyncType? = nil,
-            deleteDBParameterGroupAsync: RDSClientProtocol.DeleteDBParameterGroupAsyncType? = nil,
-            deleteDBParameterGroupSync: RDSClientProtocol.DeleteDBParameterGroupSyncType? = nil,
-            deleteDBProxyAsync: RDSClientProtocol.DeleteDBProxyAsyncType? = nil,
-            deleteDBProxySync: RDSClientProtocol.DeleteDBProxySyncType? = nil,
-            deleteDBSecurityGroupAsync: RDSClientProtocol.DeleteDBSecurityGroupAsyncType? = nil,
-            deleteDBSecurityGroupSync: RDSClientProtocol.DeleteDBSecurityGroupSyncType? = nil,
-            deleteDBSnapshotAsync: RDSClientProtocol.DeleteDBSnapshotAsyncType? = nil,
-            deleteDBSnapshotSync: RDSClientProtocol.DeleteDBSnapshotSyncType? = nil,
-            deleteDBSubnetGroupAsync: RDSClientProtocol.DeleteDBSubnetGroupAsyncType? = nil,
-            deleteDBSubnetGroupSync: RDSClientProtocol.DeleteDBSubnetGroupSyncType? = nil,
-            deleteEventSubscriptionAsync: RDSClientProtocol.DeleteEventSubscriptionAsyncType? = nil,
-            deleteEventSubscriptionSync: RDSClientProtocol.DeleteEventSubscriptionSyncType? = nil,
-            deleteGlobalClusterAsync: RDSClientProtocol.DeleteGlobalClusterAsyncType? = nil,
-            deleteGlobalClusterSync: RDSClientProtocol.DeleteGlobalClusterSyncType? = nil,
-            deleteInstallationMediaAsync: RDSClientProtocol.DeleteInstallationMediaAsyncType? = nil,
-            deleteInstallationMediaSync: RDSClientProtocol.DeleteInstallationMediaSyncType? = nil,
-            deleteOptionGroupAsync: RDSClientProtocol.DeleteOptionGroupAsyncType? = nil,
-            deleteOptionGroupSync: RDSClientProtocol.DeleteOptionGroupSyncType? = nil,
-            deregisterDBProxyTargetsAsync: RDSClientProtocol.DeregisterDBProxyTargetsAsyncType? = nil,
-            deregisterDBProxyTargetsSync: RDSClientProtocol.DeregisterDBProxyTargetsSyncType? = nil,
-            describeAccountAttributesAsync: RDSClientProtocol.DescribeAccountAttributesAsyncType? = nil,
-            describeAccountAttributesSync: RDSClientProtocol.DescribeAccountAttributesSyncType? = nil,
-            describeCertificatesAsync: RDSClientProtocol.DescribeCertificatesAsyncType? = nil,
-            describeCertificatesSync: RDSClientProtocol.DescribeCertificatesSyncType? = nil,
-            describeCustomAvailabilityZonesAsync: RDSClientProtocol.DescribeCustomAvailabilityZonesAsyncType? = nil,
-            describeCustomAvailabilityZonesSync: RDSClientProtocol.DescribeCustomAvailabilityZonesSyncType? = nil,
-            describeDBClusterBacktracksAsync: RDSClientProtocol.DescribeDBClusterBacktracksAsyncType? = nil,
-            describeDBClusterBacktracksSync: RDSClientProtocol.DescribeDBClusterBacktracksSyncType? = nil,
-            describeDBClusterEndpointsAsync: RDSClientProtocol.DescribeDBClusterEndpointsAsyncType? = nil,
-            describeDBClusterEndpointsSync: RDSClientProtocol.DescribeDBClusterEndpointsSyncType? = nil,
-            describeDBClusterParameterGroupsAsync: RDSClientProtocol.DescribeDBClusterParameterGroupsAsyncType? = nil,
-            describeDBClusterParameterGroupsSync: RDSClientProtocol.DescribeDBClusterParameterGroupsSyncType? = nil,
-            describeDBClusterParametersAsync: RDSClientProtocol.DescribeDBClusterParametersAsyncType? = nil,
-            describeDBClusterParametersSync: RDSClientProtocol.DescribeDBClusterParametersSyncType? = nil,
-            describeDBClusterSnapshotAttributesAsync: RDSClientProtocol.DescribeDBClusterSnapshotAttributesAsyncType? = nil,
-            describeDBClusterSnapshotAttributesSync: RDSClientProtocol.DescribeDBClusterSnapshotAttributesSyncType? = nil,
-            describeDBClusterSnapshotsAsync: RDSClientProtocol.DescribeDBClusterSnapshotsAsyncType? = nil,
-            describeDBClusterSnapshotsSync: RDSClientProtocol.DescribeDBClusterSnapshotsSyncType? = nil,
-            describeDBClustersAsync: RDSClientProtocol.DescribeDBClustersAsyncType? = nil,
-            describeDBClustersSync: RDSClientProtocol.DescribeDBClustersSyncType? = nil,
-            describeDBEngineVersionsAsync: RDSClientProtocol.DescribeDBEngineVersionsAsyncType? = nil,
-            describeDBEngineVersionsSync: RDSClientProtocol.DescribeDBEngineVersionsSyncType? = nil,
-            describeDBInstanceAutomatedBackupsAsync: RDSClientProtocol.DescribeDBInstanceAutomatedBackupsAsyncType? = nil,
-            describeDBInstanceAutomatedBackupsSync: RDSClientProtocol.DescribeDBInstanceAutomatedBackupsSyncType? = nil,
-            describeDBInstancesAsync: RDSClientProtocol.DescribeDBInstancesAsyncType? = nil,
-            describeDBInstancesSync: RDSClientProtocol.DescribeDBInstancesSyncType? = nil,
-            describeDBLogFilesAsync: RDSClientProtocol.DescribeDBLogFilesAsyncType? = nil,
-            describeDBLogFilesSync: RDSClientProtocol.DescribeDBLogFilesSyncType? = nil,
-            describeDBParameterGroupsAsync: RDSClientProtocol.DescribeDBParameterGroupsAsyncType? = nil,
-            describeDBParameterGroupsSync: RDSClientProtocol.DescribeDBParameterGroupsSyncType? = nil,
-            describeDBParametersAsync: RDSClientProtocol.DescribeDBParametersAsyncType? = nil,
-            describeDBParametersSync: RDSClientProtocol.DescribeDBParametersSyncType? = nil,
-            describeDBProxiesAsync: RDSClientProtocol.DescribeDBProxiesAsyncType? = nil,
-            describeDBProxiesSync: RDSClientProtocol.DescribeDBProxiesSyncType? = nil,
-            describeDBProxyTargetGroupsAsync: RDSClientProtocol.DescribeDBProxyTargetGroupsAsyncType? = nil,
-            describeDBProxyTargetGroupsSync: RDSClientProtocol.DescribeDBProxyTargetGroupsSyncType? = nil,
-            describeDBProxyTargetsAsync: RDSClientProtocol.DescribeDBProxyTargetsAsyncType? = nil,
-            describeDBProxyTargetsSync: RDSClientProtocol.DescribeDBProxyTargetsSyncType? = nil,
-            describeDBSecurityGroupsAsync: RDSClientProtocol.DescribeDBSecurityGroupsAsyncType? = nil,
-            describeDBSecurityGroupsSync: RDSClientProtocol.DescribeDBSecurityGroupsSyncType? = nil,
-            describeDBSnapshotAttributesAsync: RDSClientProtocol.DescribeDBSnapshotAttributesAsyncType? = nil,
-            describeDBSnapshotAttributesSync: RDSClientProtocol.DescribeDBSnapshotAttributesSyncType? = nil,
-            describeDBSnapshotsAsync: RDSClientProtocol.DescribeDBSnapshotsAsyncType? = nil,
-            describeDBSnapshotsSync: RDSClientProtocol.DescribeDBSnapshotsSyncType? = nil,
-            describeDBSubnetGroupsAsync: RDSClientProtocol.DescribeDBSubnetGroupsAsyncType? = nil,
-            describeDBSubnetGroupsSync: RDSClientProtocol.DescribeDBSubnetGroupsSyncType? = nil,
-            describeEngineDefaultClusterParametersAsync: RDSClientProtocol.DescribeEngineDefaultClusterParametersAsyncType? = nil,
-            describeEngineDefaultClusterParametersSync: RDSClientProtocol.DescribeEngineDefaultClusterParametersSyncType? = nil,
-            describeEngineDefaultParametersAsync: RDSClientProtocol.DescribeEngineDefaultParametersAsyncType? = nil,
-            describeEngineDefaultParametersSync: RDSClientProtocol.DescribeEngineDefaultParametersSyncType? = nil,
-            describeEventCategoriesAsync: RDSClientProtocol.DescribeEventCategoriesAsyncType? = nil,
-            describeEventCategoriesSync: RDSClientProtocol.DescribeEventCategoriesSyncType? = nil,
-            describeEventSubscriptionsAsync: RDSClientProtocol.DescribeEventSubscriptionsAsyncType? = nil,
-            describeEventSubscriptionsSync: RDSClientProtocol.DescribeEventSubscriptionsSyncType? = nil,
-            describeEventsAsync: RDSClientProtocol.DescribeEventsAsyncType? = nil,
-            describeEventsSync: RDSClientProtocol.DescribeEventsSyncType? = nil,
-            describeExportTasksAsync: RDSClientProtocol.DescribeExportTasksAsyncType? = nil,
-            describeExportTasksSync: RDSClientProtocol.DescribeExportTasksSyncType? = nil,
-            describeGlobalClustersAsync: RDSClientProtocol.DescribeGlobalClustersAsyncType? = nil,
-            describeGlobalClustersSync: RDSClientProtocol.DescribeGlobalClustersSyncType? = nil,
-            describeInstallationMediaAsync: RDSClientProtocol.DescribeInstallationMediaAsyncType? = nil,
-            describeInstallationMediaSync: RDSClientProtocol.DescribeInstallationMediaSyncType? = nil,
-            describeOptionGroupOptionsAsync: RDSClientProtocol.DescribeOptionGroupOptionsAsyncType? = nil,
-            describeOptionGroupOptionsSync: RDSClientProtocol.DescribeOptionGroupOptionsSyncType? = nil,
-            describeOptionGroupsAsync: RDSClientProtocol.DescribeOptionGroupsAsyncType? = nil,
-            describeOptionGroupsSync: RDSClientProtocol.DescribeOptionGroupsSyncType? = nil,
-            describeOrderableDBInstanceOptionsAsync: RDSClientProtocol.DescribeOrderableDBInstanceOptionsAsyncType? = nil,
-            describeOrderableDBInstanceOptionsSync: RDSClientProtocol.DescribeOrderableDBInstanceOptionsSyncType? = nil,
-            describePendingMaintenanceActionsAsync: RDSClientProtocol.DescribePendingMaintenanceActionsAsyncType? = nil,
-            describePendingMaintenanceActionsSync: RDSClientProtocol.DescribePendingMaintenanceActionsSyncType? = nil,
-            describeReservedDBInstancesAsync: RDSClientProtocol.DescribeReservedDBInstancesAsyncType? = nil,
-            describeReservedDBInstancesSync: RDSClientProtocol.DescribeReservedDBInstancesSyncType? = nil,
-            describeReservedDBInstancesOfferingsAsync: RDSClientProtocol.DescribeReservedDBInstancesOfferingsAsyncType? = nil,
-            describeReservedDBInstancesOfferingsSync: RDSClientProtocol.DescribeReservedDBInstancesOfferingsSyncType? = nil,
-            describeSourceRegionsAsync: RDSClientProtocol.DescribeSourceRegionsAsyncType? = nil,
-            describeSourceRegionsSync: RDSClientProtocol.DescribeSourceRegionsSyncType? = nil,
-            describeValidDBInstanceModificationsAsync: RDSClientProtocol.DescribeValidDBInstanceModificationsAsyncType? = nil,
-            describeValidDBInstanceModificationsSync: RDSClientProtocol.DescribeValidDBInstanceModificationsSyncType? = nil,
-            downloadDBLogFilePortionAsync: RDSClientProtocol.DownloadDBLogFilePortionAsyncType? = nil,
-            downloadDBLogFilePortionSync: RDSClientProtocol.DownloadDBLogFilePortionSyncType? = nil,
-            failoverDBClusterAsync: RDSClientProtocol.FailoverDBClusterAsyncType? = nil,
-            failoverDBClusterSync: RDSClientProtocol.FailoverDBClusterSyncType? = nil,
-            importInstallationMediaAsync: RDSClientProtocol.ImportInstallationMediaAsyncType? = nil,
-            importInstallationMediaSync: RDSClientProtocol.ImportInstallationMediaSyncType? = nil,
-            listTagsForResourceAsync: RDSClientProtocol.ListTagsForResourceAsyncType? = nil,
-            listTagsForResourceSync: RDSClientProtocol.ListTagsForResourceSyncType? = nil,
-            modifyCertificatesAsync: RDSClientProtocol.ModifyCertificatesAsyncType? = nil,
-            modifyCertificatesSync: RDSClientProtocol.ModifyCertificatesSyncType? = nil,
-            modifyCurrentDBClusterCapacityAsync: RDSClientProtocol.ModifyCurrentDBClusterCapacityAsyncType? = nil,
-            modifyCurrentDBClusterCapacitySync: RDSClientProtocol.ModifyCurrentDBClusterCapacitySyncType? = nil,
-            modifyDBClusterAsync: RDSClientProtocol.ModifyDBClusterAsyncType? = nil,
-            modifyDBClusterSync: RDSClientProtocol.ModifyDBClusterSyncType? = nil,
-            modifyDBClusterEndpointAsync: RDSClientProtocol.ModifyDBClusterEndpointAsyncType? = nil,
-            modifyDBClusterEndpointSync: RDSClientProtocol.ModifyDBClusterEndpointSyncType? = nil,
-            modifyDBClusterParameterGroupAsync: RDSClientProtocol.ModifyDBClusterParameterGroupAsyncType? = nil,
-            modifyDBClusterParameterGroupSync: RDSClientProtocol.ModifyDBClusterParameterGroupSyncType? = nil,
-            modifyDBClusterSnapshotAttributeAsync: RDSClientProtocol.ModifyDBClusterSnapshotAttributeAsyncType? = nil,
-            modifyDBClusterSnapshotAttributeSync: RDSClientProtocol.ModifyDBClusterSnapshotAttributeSyncType? = nil,
-            modifyDBInstanceAsync: RDSClientProtocol.ModifyDBInstanceAsyncType? = nil,
-            modifyDBInstanceSync: RDSClientProtocol.ModifyDBInstanceSyncType? = nil,
-            modifyDBParameterGroupAsync: RDSClientProtocol.ModifyDBParameterGroupAsyncType? = nil,
-            modifyDBParameterGroupSync: RDSClientProtocol.ModifyDBParameterGroupSyncType? = nil,
-            modifyDBProxyAsync: RDSClientProtocol.ModifyDBProxyAsyncType? = nil,
-            modifyDBProxySync: RDSClientProtocol.ModifyDBProxySyncType? = nil,
-            modifyDBProxyTargetGroupAsync: RDSClientProtocol.ModifyDBProxyTargetGroupAsyncType? = nil,
-            modifyDBProxyTargetGroupSync: RDSClientProtocol.ModifyDBProxyTargetGroupSyncType? = nil,
-            modifyDBSnapshotAsync: RDSClientProtocol.ModifyDBSnapshotAsyncType? = nil,
-            modifyDBSnapshotSync: RDSClientProtocol.ModifyDBSnapshotSyncType? = nil,
-            modifyDBSnapshotAttributeAsync: RDSClientProtocol.ModifyDBSnapshotAttributeAsyncType? = nil,
-            modifyDBSnapshotAttributeSync: RDSClientProtocol.ModifyDBSnapshotAttributeSyncType? = nil,
-            modifyDBSubnetGroupAsync: RDSClientProtocol.ModifyDBSubnetGroupAsyncType? = nil,
-            modifyDBSubnetGroupSync: RDSClientProtocol.ModifyDBSubnetGroupSyncType? = nil,
-            modifyEventSubscriptionAsync: RDSClientProtocol.ModifyEventSubscriptionAsyncType? = nil,
-            modifyEventSubscriptionSync: RDSClientProtocol.ModifyEventSubscriptionSyncType? = nil,
-            modifyGlobalClusterAsync: RDSClientProtocol.ModifyGlobalClusterAsyncType? = nil,
-            modifyGlobalClusterSync: RDSClientProtocol.ModifyGlobalClusterSyncType? = nil,
-            modifyOptionGroupAsync: RDSClientProtocol.ModifyOptionGroupAsyncType? = nil,
-            modifyOptionGroupSync: RDSClientProtocol.ModifyOptionGroupSyncType? = nil,
-            promoteReadReplicaAsync: RDSClientProtocol.PromoteReadReplicaAsyncType? = nil,
-            promoteReadReplicaSync: RDSClientProtocol.PromoteReadReplicaSyncType? = nil,
-            promoteReadReplicaDBClusterAsync: RDSClientProtocol.PromoteReadReplicaDBClusterAsyncType? = nil,
-            promoteReadReplicaDBClusterSync: RDSClientProtocol.PromoteReadReplicaDBClusterSyncType? = nil,
-            purchaseReservedDBInstancesOfferingAsync: RDSClientProtocol.PurchaseReservedDBInstancesOfferingAsyncType? = nil,
-            purchaseReservedDBInstancesOfferingSync: RDSClientProtocol.PurchaseReservedDBInstancesOfferingSyncType? = nil,
-            rebootDBInstanceAsync: RDSClientProtocol.RebootDBInstanceAsyncType? = nil,
-            rebootDBInstanceSync: RDSClientProtocol.RebootDBInstanceSyncType? = nil,
-            registerDBProxyTargetsAsync: RDSClientProtocol.RegisterDBProxyTargetsAsyncType? = nil,
-            registerDBProxyTargetsSync: RDSClientProtocol.RegisterDBProxyTargetsSyncType? = nil,
-            removeFromGlobalClusterAsync: RDSClientProtocol.RemoveFromGlobalClusterAsyncType? = nil,
-            removeFromGlobalClusterSync: RDSClientProtocol.RemoveFromGlobalClusterSyncType? = nil,
-            removeRoleFromDBClusterAsync: RDSClientProtocol.RemoveRoleFromDBClusterAsyncType? = nil,
-            removeRoleFromDBClusterSync: RDSClientProtocol.RemoveRoleFromDBClusterSyncType? = nil,
-            removeRoleFromDBInstanceAsync: RDSClientProtocol.RemoveRoleFromDBInstanceAsyncType? = nil,
-            removeRoleFromDBInstanceSync: RDSClientProtocol.RemoveRoleFromDBInstanceSyncType? = nil,
-            removeSourceIdentifierFromSubscriptionAsync: RDSClientProtocol.RemoveSourceIdentifierFromSubscriptionAsyncType? = nil,
-            removeSourceIdentifierFromSubscriptionSync: RDSClientProtocol.RemoveSourceIdentifierFromSubscriptionSyncType? = nil,
-            removeTagsFromResourceAsync: RDSClientProtocol.RemoveTagsFromResourceAsyncType? = nil,
-            removeTagsFromResourceSync: RDSClientProtocol.RemoveTagsFromResourceSyncType? = nil,
-            resetDBClusterParameterGroupAsync: RDSClientProtocol.ResetDBClusterParameterGroupAsyncType? = nil,
-            resetDBClusterParameterGroupSync: RDSClientProtocol.ResetDBClusterParameterGroupSyncType? = nil,
-            resetDBParameterGroupAsync: RDSClientProtocol.ResetDBParameterGroupAsyncType? = nil,
-            resetDBParameterGroupSync: RDSClientProtocol.ResetDBParameterGroupSyncType? = nil,
-            restoreDBClusterFromS3Async: RDSClientProtocol.RestoreDBClusterFromS3AsyncType? = nil,
-            restoreDBClusterFromS3Sync: RDSClientProtocol.RestoreDBClusterFromS3SyncType? = nil,
-            restoreDBClusterFromSnapshotAsync: RDSClientProtocol.RestoreDBClusterFromSnapshotAsyncType? = nil,
-            restoreDBClusterFromSnapshotSync: RDSClientProtocol.RestoreDBClusterFromSnapshotSyncType? = nil,
-            restoreDBClusterToPointInTimeAsync: RDSClientProtocol.RestoreDBClusterToPointInTimeAsyncType? = nil,
-            restoreDBClusterToPointInTimeSync: RDSClientProtocol.RestoreDBClusterToPointInTimeSyncType? = nil,
-            restoreDBInstanceFromDBSnapshotAsync: RDSClientProtocol.RestoreDBInstanceFromDBSnapshotAsyncType? = nil,
-            restoreDBInstanceFromDBSnapshotSync: RDSClientProtocol.RestoreDBInstanceFromDBSnapshotSyncType? = nil,
-            restoreDBInstanceFromS3Async: RDSClientProtocol.RestoreDBInstanceFromS3AsyncType? = nil,
-            restoreDBInstanceFromS3Sync: RDSClientProtocol.RestoreDBInstanceFromS3SyncType? = nil,
-            restoreDBInstanceToPointInTimeAsync: RDSClientProtocol.RestoreDBInstanceToPointInTimeAsyncType? = nil,
-            restoreDBInstanceToPointInTimeSync: RDSClientProtocol.RestoreDBInstanceToPointInTimeSyncType? = nil,
-            revokeDBSecurityGroupIngressAsync: RDSClientProtocol.RevokeDBSecurityGroupIngressAsyncType? = nil,
-            revokeDBSecurityGroupIngressSync: RDSClientProtocol.RevokeDBSecurityGroupIngressSyncType? = nil,
-            startActivityStreamAsync: RDSClientProtocol.StartActivityStreamAsyncType? = nil,
-            startActivityStreamSync: RDSClientProtocol.StartActivityStreamSyncType? = nil,
-            startDBClusterAsync: RDSClientProtocol.StartDBClusterAsyncType? = nil,
-            startDBClusterSync: RDSClientProtocol.StartDBClusterSyncType? = nil,
-            startDBInstanceAsync: RDSClientProtocol.StartDBInstanceAsyncType? = nil,
-            startDBInstanceSync: RDSClientProtocol.StartDBInstanceSyncType? = nil,
-            startExportTaskAsync: RDSClientProtocol.StartExportTaskAsyncType? = nil,
-            startExportTaskSync: RDSClientProtocol.StartExportTaskSyncType? = nil,
-            stopActivityStreamAsync: RDSClientProtocol.StopActivityStreamAsyncType? = nil,
-            stopActivityStreamSync: RDSClientProtocol.StopActivityStreamSyncType? = nil,
-            stopDBClusterAsync: RDSClientProtocol.StopDBClusterAsyncType? = nil,
-            stopDBClusterSync: RDSClientProtocol.StopDBClusterSyncType? = nil,
-            stopDBInstanceAsync: RDSClientProtocol.StopDBInstanceAsyncType? = nil,
-            stopDBInstanceSync: RDSClientProtocol.StopDBInstanceSyncType? = nil) {
+            addRoleToDBClusterAsync: AddRoleToDBClusterAsyncType? = nil,
+            addRoleToDBClusterSync: AddRoleToDBClusterSyncType? = nil,
+            addRoleToDBInstanceAsync: AddRoleToDBInstanceAsyncType? = nil,
+            addRoleToDBInstanceSync: AddRoleToDBInstanceSyncType? = nil,
+            addSourceIdentifierToSubscriptionAsync: AddSourceIdentifierToSubscriptionAsyncType? = nil,
+            addSourceIdentifierToSubscriptionSync: AddSourceIdentifierToSubscriptionSyncType? = nil,
+            addTagsToResourceAsync: AddTagsToResourceAsyncType? = nil,
+            addTagsToResourceSync: AddTagsToResourceSyncType? = nil,
+            applyPendingMaintenanceActionAsync: ApplyPendingMaintenanceActionAsyncType? = nil,
+            applyPendingMaintenanceActionSync: ApplyPendingMaintenanceActionSyncType? = nil,
+            authorizeDBSecurityGroupIngressAsync: AuthorizeDBSecurityGroupIngressAsyncType? = nil,
+            authorizeDBSecurityGroupIngressSync: AuthorizeDBSecurityGroupIngressSyncType? = nil,
+            backtrackDBClusterAsync: BacktrackDBClusterAsyncType? = nil,
+            backtrackDBClusterSync: BacktrackDBClusterSyncType? = nil,
+            cancelExportTaskAsync: CancelExportTaskAsyncType? = nil,
+            cancelExportTaskSync: CancelExportTaskSyncType? = nil,
+            copyDBClusterParameterGroupAsync: CopyDBClusterParameterGroupAsyncType? = nil,
+            copyDBClusterParameterGroupSync: CopyDBClusterParameterGroupSyncType? = nil,
+            copyDBClusterSnapshotAsync: CopyDBClusterSnapshotAsyncType? = nil,
+            copyDBClusterSnapshotSync: CopyDBClusterSnapshotSyncType? = nil,
+            copyDBParameterGroupAsync: CopyDBParameterGroupAsyncType? = nil,
+            copyDBParameterGroupSync: CopyDBParameterGroupSyncType? = nil,
+            copyDBSnapshotAsync: CopyDBSnapshotAsyncType? = nil,
+            copyDBSnapshotSync: CopyDBSnapshotSyncType? = nil,
+            copyOptionGroupAsync: CopyOptionGroupAsyncType? = nil,
+            copyOptionGroupSync: CopyOptionGroupSyncType? = nil,
+            createCustomAvailabilityZoneAsync: CreateCustomAvailabilityZoneAsyncType? = nil,
+            createCustomAvailabilityZoneSync: CreateCustomAvailabilityZoneSyncType? = nil,
+            createDBClusterAsync: CreateDBClusterAsyncType? = nil,
+            createDBClusterSync: CreateDBClusterSyncType? = nil,
+            createDBClusterEndpointAsync: CreateDBClusterEndpointAsyncType? = nil,
+            createDBClusterEndpointSync: CreateDBClusterEndpointSyncType? = nil,
+            createDBClusterParameterGroupAsync: CreateDBClusterParameterGroupAsyncType? = nil,
+            createDBClusterParameterGroupSync: CreateDBClusterParameterGroupSyncType? = nil,
+            createDBClusterSnapshotAsync: CreateDBClusterSnapshotAsyncType? = nil,
+            createDBClusterSnapshotSync: CreateDBClusterSnapshotSyncType? = nil,
+            createDBInstanceAsync: CreateDBInstanceAsyncType? = nil,
+            createDBInstanceSync: CreateDBInstanceSyncType? = nil,
+            createDBInstanceReadReplicaAsync: CreateDBInstanceReadReplicaAsyncType? = nil,
+            createDBInstanceReadReplicaSync: CreateDBInstanceReadReplicaSyncType? = nil,
+            createDBParameterGroupAsync: CreateDBParameterGroupAsyncType? = nil,
+            createDBParameterGroupSync: CreateDBParameterGroupSyncType? = nil,
+            createDBProxyAsync: CreateDBProxyAsyncType? = nil,
+            createDBProxySync: CreateDBProxySyncType? = nil,
+            createDBSecurityGroupAsync: CreateDBSecurityGroupAsyncType? = nil,
+            createDBSecurityGroupSync: CreateDBSecurityGroupSyncType? = nil,
+            createDBSnapshotAsync: CreateDBSnapshotAsyncType? = nil,
+            createDBSnapshotSync: CreateDBSnapshotSyncType? = nil,
+            createDBSubnetGroupAsync: CreateDBSubnetGroupAsyncType? = nil,
+            createDBSubnetGroupSync: CreateDBSubnetGroupSyncType? = nil,
+            createEventSubscriptionAsync: CreateEventSubscriptionAsyncType? = nil,
+            createEventSubscriptionSync: CreateEventSubscriptionSyncType? = nil,
+            createGlobalClusterAsync: CreateGlobalClusterAsyncType? = nil,
+            createGlobalClusterSync: CreateGlobalClusterSyncType? = nil,
+            createOptionGroupAsync: CreateOptionGroupAsyncType? = nil,
+            createOptionGroupSync: CreateOptionGroupSyncType? = nil,
+            deleteCustomAvailabilityZoneAsync: DeleteCustomAvailabilityZoneAsyncType? = nil,
+            deleteCustomAvailabilityZoneSync: DeleteCustomAvailabilityZoneSyncType? = nil,
+            deleteDBClusterAsync: DeleteDBClusterAsyncType? = nil,
+            deleteDBClusterSync: DeleteDBClusterSyncType? = nil,
+            deleteDBClusterEndpointAsync: DeleteDBClusterEndpointAsyncType? = nil,
+            deleteDBClusterEndpointSync: DeleteDBClusterEndpointSyncType? = nil,
+            deleteDBClusterParameterGroupAsync: DeleteDBClusterParameterGroupAsyncType? = nil,
+            deleteDBClusterParameterGroupSync: DeleteDBClusterParameterGroupSyncType? = nil,
+            deleteDBClusterSnapshotAsync: DeleteDBClusterSnapshotAsyncType? = nil,
+            deleteDBClusterSnapshotSync: DeleteDBClusterSnapshotSyncType? = nil,
+            deleteDBInstanceAsync: DeleteDBInstanceAsyncType? = nil,
+            deleteDBInstanceSync: DeleteDBInstanceSyncType? = nil,
+            deleteDBInstanceAutomatedBackupAsync: DeleteDBInstanceAutomatedBackupAsyncType? = nil,
+            deleteDBInstanceAutomatedBackupSync: DeleteDBInstanceAutomatedBackupSyncType? = nil,
+            deleteDBParameterGroupAsync: DeleteDBParameterGroupAsyncType? = nil,
+            deleteDBParameterGroupSync: DeleteDBParameterGroupSyncType? = nil,
+            deleteDBProxyAsync: DeleteDBProxyAsyncType? = nil,
+            deleteDBProxySync: DeleteDBProxySyncType? = nil,
+            deleteDBSecurityGroupAsync: DeleteDBSecurityGroupAsyncType? = nil,
+            deleteDBSecurityGroupSync: DeleteDBSecurityGroupSyncType? = nil,
+            deleteDBSnapshotAsync: DeleteDBSnapshotAsyncType? = nil,
+            deleteDBSnapshotSync: DeleteDBSnapshotSyncType? = nil,
+            deleteDBSubnetGroupAsync: DeleteDBSubnetGroupAsyncType? = nil,
+            deleteDBSubnetGroupSync: DeleteDBSubnetGroupSyncType? = nil,
+            deleteEventSubscriptionAsync: DeleteEventSubscriptionAsyncType? = nil,
+            deleteEventSubscriptionSync: DeleteEventSubscriptionSyncType? = nil,
+            deleteGlobalClusterAsync: DeleteGlobalClusterAsyncType? = nil,
+            deleteGlobalClusterSync: DeleteGlobalClusterSyncType? = nil,
+            deleteInstallationMediaAsync: DeleteInstallationMediaAsyncType? = nil,
+            deleteInstallationMediaSync: DeleteInstallationMediaSyncType? = nil,
+            deleteOptionGroupAsync: DeleteOptionGroupAsyncType? = nil,
+            deleteOptionGroupSync: DeleteOptionGroupSyncType? = nil,
+            deregisterDBProxyTargetsAsync: DeregisterDBProxyTargetsAsyncType? = nil,
+            deregisterDBProxyTargetsSync: DeregisterDBProxyTargetsSyncType? = nil,
+            describeAccountAttributesAsync: DescribeAccountAttributesAsyncType? = nil,
+            describeAccountAttributesSync: DescribeAccountAttributesSyncType? = nil,
+            describeCertificatesAsync: DescribeCertificatesAsyncType? = nil,
+            describeCertificatesSync: DescribeCertificatesSyncType? = nil,
+            describeCustomAvailabilityZonesAsync: DescribeCustomAvailabilityZonesAsyncType? = nil,
+            describeCustomAvailabilityZonesSync: DescribeCustomAvailabilityZonesSyncType? = nil,
+            describeDBClusterBacktracksAsync: DescribeDBClusterBacktracksAsyncType? = nil,
+            describeDBClusterBacktracksSync: DescribeDBClusterBacktracksSyncType? = nil,
+            describeDBClusterEndpointsAsync: DescribeDBClusterEndpointsAsyncType? = nil,
+            describeDBClusterEndpointsSync: DescribeDBClusterEndpointsSyncType? = nil,
+            describeDBClusterParameterGroupsAsync: DescribeDBClusterParameterGroupsAsyncType? = nil,
+            describeDBClusterParameterGroupsSync: DescribeDBClusterParameterGroupsSyncType? = nil,
+            describeDBClusterParametersAsync: DescribeDBClusterParametersAsyncType? = nil,
+            describeDBClusterParametersSync: DescribeDBClusterParametersSyncType? = nil,
+            describeDBClusterSnapshotAttributesAsync: DescribeDBClusterSnapshotAttributesAsyncType? = nil,
+            describeDBClusterSnapshotAttributesSync: DescribeDBClusterSnapshotAttributesSyncType? = nil,
+            describeDBClusterSnapshotsAsync: DescribeDBClusterSnapshotsAsyncType? = nil,
+            describeDBClusterSnapshotsSync: DescribeDBClusterSnapshotsSyncType? = nil,
+            describeDBClustersAsync: DescribeDBClustersAsyncType? = nil,
+            describeDBClustersSync: DescribeDBClustersSyncType? = nil,
+            describeDBEngineVersionsAsync: DescribeDBEngineVersionsAsyncType? = nil,
+            describeDBEngineVersionsSync: DescribeDBEngineVersionsSyncType? = nil,
+            describeDBInstanceAutomatedBackupsAsync: DescribeDBInstanceAutomatedBackupsAsyncType? = nil,
+            describeDBInstanceAutomatedBackupsSync: DescribeDBInstanceAutomatedBackupsSyncType? = nil,
+            describeDBInstancesAsync: DescribeDBInstancesAsyncType? = nil,
+            describeDBInstancesSync: DescribeDBInstancesSyncType? = nil,
+            describeDBLogFilesAsync: DescribeDBLogFilesAsyncType? = nil,
+            describeDBLogFilesSync: DescribeDBLogFilesSyncType? = nil,
+            describeDBParameterGroupsAsync: DescribeDBParameterGroupsAsyncType? = nil,
+            describeDBParameterGroupsSync: DescribeDBParameterGroupsSyncType? = nil,
+            describeDBParametersAsync: DescribeDBParametersAsyncType? = nil,
+            describeDBParametersSync: DescribeDBParametersSyncType? = nil,
+            describeDBProxiesAsync: DescribeDBProxiesAsyncType? = nil,
+            describeDBProxiesSync: DescribeDBProxiesSyncType? = nil,
+            describeDBProxyTargetGroupsAsync: DescribeDBProxyTargetGroupsAsyncType? = nil,
+            describeDBProxyTargetGroupsSync: DescribeDBProxyTargetGroupsSyncType? = nil,
+            describeDBProxyTargetsAsync: DescribeDBProxyTargetsAsyncType? = nil,
+            describeDBProxyTargetsSync: DescribeDBProxyTargetsSyncType? = nil,
+            describeDBSecurityGroupsAsync: DescribeDBSecurityGroupsAsyncType? = nil,
+            describeDBSecurityGroupsSync: DescribeDBSecurityGroupsSyncType? = nil,
+            describeDBSnapshotAttributesAsync: DescribeDBSnapshotAttributesAsyncType? = nil,
+            describeDBSnapshotAttributesSync: DescribeDBSnapshotAttributesSyncType? = nil,
+            describeDBSnapshotsAsync: DescribeDBSnapshotsAsyncType? = nil,
+            describeDBSnapshotsSync: DescribeDBSnapshotsSyncType? = nil,
+            describeDBSubnetGroupsAsync: DescribeDBSubnetGroupsAsyncType? = nil,
+            describeDBSubnetGroupsSync: DescribeDBSubnetGroupsSyncType? = nil,
+            describeEngineDefaultClusterParametersAsync: DescribeEngineDefaultClusterParametersAsyncType? = nil,
+            describeEngineDefaultClusterParametersSync: DescribeEngineDefaultClusterParametersSyncType? = nil,
+            describeEngineDefaultParametersAsync: DescribeEngineDefaultParametersAsyncType? = nil,
+            describeEngineDefaultParametersSync: DescribeEngineDefaultParametersSyncType? = nil,
+            describeEventCategoriesAsync: DescribeEventCategoriesAsyncType? = nil,
+            describeEventCategoriesSync: DescribeEventCategoriesSyncType? = nil,
+            describeEventSubscriptionsAsync: DescribeEventSubscriptionsAsyncType? = nil,
+            describeEventSubscriptionsSync: DescribeEventSubscriptionsSyncType? = nil,
+            describeEventsAsync: DescribeEventsAsyncType? = nil,
+            describeEventsSync: DescribeEventsSyncType? = nil,
+            describeExportTasksAsync: DescribeExportTasksAsyncType? = nil,
+            describeExportTasksSync: DescribeExportTasksSyncType? = nil,
+            describeGlobalClustersAsync: DescribeGlobalClustersAsyncType? = nil,
+            describeGlobalClustersSync: DescribeGlobalClustersSyncType? = nil,
+            describeInstallationMediaAsync: DescribeInstallationMediaAsyncType? = nil,
+            describeInstallationMediaSync: DescribeInstallationMediaSyncType? = nil,
+            describeOptionGroupOptionsAsync: DescribeOptionGroupOptionsAsyncType? = nil,
+            describeOptionGroupOptionsSync: DescribeOptionGroupOptionsSyncType? = nil,
+            describeOptionGroupsAsync: DescribeOptionGroupsAsyncType? = nil,
+            describeOptionGroupsSync: DescribeOptionGroupsSyncType? = nil,
+            describeOrderableDBInstanceOptionsAsync: DescribeOrderableDBInstanceOptionsAsyncType? = nil,
+            describeOrderableDBInstanceOptionsSync: DescribeOrderableDBInstanceOptionsSyncType? = nil,
+            describePendingMaintenanceActionsAsync: DescribePendingMaintenanceActionsAsyncType? = nil,
+            describePendingMaintenanceActionsSync: DescribePendingMaintenanceActionsSyncType? = nil,
+            describeReservedDBInstancesAsync: DescribeReservedDBInstancesAsyncType? = nil,
+            describeReservedDBInstancesSync: DescribeReservedDBInstancesSyncType? = nil,
+            describeReservedDBInstancesOfferingsAsync: DescribeReservedDBInstancesOfferingsAsyncType? = nil,
+            describeReservedDBInstancesOfferingsSync: DescribeReservedDBInstancesOfferingsSyncType? = nil,
+            describeSourceRegionsAsync: DescribeSourceRegionsAsyncType? = nil,
+            describeSourceRegionsSync: DescribeSourceRegionsSyncType? = nil,
+            describeValidDBInstanceModificationsAsync: DescribeValidDBInstanceModificationsAsyncType? = nil,
+            describeValidDBInstanceModificationsSync: DescribeValidDBInstanceModificationsSyncType? = nil,
+            downloadDBLogFilePortionAsync: DownloadDBLogFilePortionAsyncType? = nil,
+            downloadDBLogFilePortionSync: DownloadDBLogFilePortionSyncType? = nil,
+            failoverDBClusterAsync: FailoverDBClusterAsyncType? = nil,
+            failoverDBClusterSync: FailoverDBClusterSyncType? = nil,
+            importInstallationMediaAsync: ImportInstallationMediaAsyncType? = nil,
+            importInstallationMediaSync: ImportInstallationMediaSyncType? = nil,
+            listTagsForResourceAsync: ListTagsForResourceAsyncType? = nil,
+            listTagsForResourceSync: ListTagsForResourceSyncType? = nil,
+            modifyCertificatesAsync: ModifyCertificatesAsyncType? = nil,
+            modifyCertificatesSync: ModifyCertificatesSyncType? = nil,
+            modifyCurrentDBClusterCapacityAsync: ModifyCurrentDBClusterCapacityAsyncType? = nil,
+            modifyCurrentDBClusterCapacitySync: ModifyCurrentDBClusterCapacitySyncType? = nil,
+            modifyDBClusterAsync: ModifyDBClusterAsyncType? = nil,
+            modifyDBClusterSync: ModifyDBClusterSyncType? = nil,
+            modifyDBClusterEndpointAsync: ModifyDBClusterEndpointAsyncType? = nil,
+            modifyDBClusterEndpointSync: ModifyDBClusterEndpointSyncType? = nil,
+            modifyDBClusterParameterGroupAsync: ModifyDBClusterParameterGroupAsyncType? = nil,
+            modifyDBClusterParameterGroupSync: ModifyDBClusterParameterGroupSyncType? = nil,
+            modifyDBClusterSnapshotAttributeAsync: ModifyDBClusterSnapshotAttributeAsyncType? = nil,
+            modifyDBClusterSnapshotAttributeSync: ModifyDBClusterSnapshotAttributeSyncType? = nil,
+            modifyDBInstanceAsync: ModifyDBInstanceAsyncType? = nil,
+            modifyDBInstanceSync: ModifyDBInstanceSyncType? = nil,
+            modifyDBParameterGroupAsync: ModifyDBParameterGroupAsyncType? = nil,
+            modifyDBParameterGroupSync: ModifyDBParameterGroupSyncType? = nil,
+            modifyDBProxyAsync: ModifyDBProxyAsyncType? = nil,
+            modifyDBProxySync: ModifyDBProxySyncType? = nil,
+            modifyDBProxyTargetGroupAsync: ModifyDBProxyTargetGroupAsyncType? = nil,
+            modifyDBProxyTargetGroupSync: ModifyDBProxyTargetGroupSyncType? = nil,
+            modifyDBSnapshotAsync: ModifyDBSnapshotAsyncType? = nil,
+            modifyDBSnapshotSync: ModifyDBSnapshotSyncType? = nil,
+            modifyDBSnapshotAttributeAsync: ModifyDBSnapshotAttributeAsyncType? = nil,
+            modifyDBSnapshotAttributeSync: ModifyDBSnapshotAttributeSyncType? = nil,
+            modifyDBSubnetGroupAsync: ModifyDBSubnetGroupAsyncType? = nil,
+            modifyDBSubnetGroupSync: ModifyDBSubnetGroupSyncType? = nil,
+            modifyEventSubscriptionAsync: ModifyEventSubscriptionAsyncType? = nil,
+            modifyEventSubscriptionSync: ModifyEventSubscriptionSyncType? = nil,
+            modifyGlobalClusterAsync: ModifyGlobalClusterAsyncType? = nil,
+            modifyGlobalClusterSync: ModifyGlobalClusterSyncType? = nil,
+            modifyOptionGroupAsync: ModifyOptionGroupAsyncType? = nil,
+            modifyOptionGroupSync: ModifyOptionGroupSyncType? = nil,
+            promoteReadReplicaAsync: PromoteReadReplicaAsyncType? = nil,
+            promoteReadReplicaSync: PromoteReadReplicaSyncType? = nil,
+            promoteReadReplicaDBClusterAsync: PromoteReadReplicaDBClusterAsyncType? = nil,
+            promoteReadReplicaDBClusterSync: PromoteReadReplicaDBClusterSyncType? = nil,
+            purchaseReservedDBInstancesOfferingAsync: PurchaseReservedDBInstancesOfferingAsyncType? = nil,
+            purchaseReservedDBInstancesOfferingSync: PurchaseReservedDBInstancesOfferingSyncType? = nil,
+            rebootDBInstanceAsync: RebootDBInstanceAsyncType? = nil,
+            rebootDBInstanceSync: RebootDBInstanceSyncType? = nil,
+            registerDBProxyTargetsAsync: RegisterDBProxyTargetsAsyncType? = nil,
+            registerDBProxyTargetsSync: RegisterDBProxyTargetsSyncType? = nil,
+            removeFromGlobalClusterAsync: RemoveFromGlobalClusterAsyncType? = nil,
+            removeFromGlobalClusterSync: RemoveFromGlobalClusterSyncType? = nil,
+            removeRoleFromDBClusterAsync: RemoveRoleFromDBClusterAsyncType? = nil,
+            removeRoleFromDBClusterSync: RemoveRoleFromDBClusterSyncType? = nil,
+            removeRoleFromDBInstanceAsync: RemoveRoleFromDBInstanceAsyncType? = nil,
+            removeRoleFromDBInstanceSync: RemoveRoleFromDBInstanceSyncType? = nil,
+            removeSourceIdentifierFromSubscriptionAsync: RemoveSourceIdentifierFromSubscriptionAsyncType? = nil,
+            removeSourceIdentifierFromSubscriptionSync: RemoveSourceIdentifierFromSubscriptionSyncType? = nil,
+            removeTagsFromResourceAsync: RemoveTagsFromResourceAsyncType? = nil,
+            removeTagsFromResourceSync: RemoveTagsFromResourceSyncType? = nil,
+            resetDBClusterParameterGroupAsync: ResetDBClusterParameterGroupAsyncType? = nil,
+            resetDBClusterParameterGroupSync: ResetDBClusterParameterGroupSyncType? = nil,
+            resetDBParameterGroupAsync: ResetDBParameterGroupAsyncType? = nil,
+            resetDBParameterGroupSync: ResetDBParameterGroupSyncType? = nil,
+            restoreDBClusterFromS3Async: RestoreDBClusterFromS3AsyncType? = nil,
+            restoreDBClusterFromS3Sync: RestoreDBClusterFromS3SyncType? = nil,
+            restoreDBClusterFromSnapshotAsync: RestoreDBClusterFromSnapshotAsyncType? = nil,
+            restoreDBClusterFromSnapshotSync: RestoreDBClusterFromSnapshotSyncType? = nil,
+            restoreDBClusterToPointInTimeAsync: RestoreDBClusterToPointInTimeAsyncType? = nil,
+            restoreDBClusterToPointInTimeSync: RestoreDBClusterToPointInTimeSyncType? = nil,
+            restoreDBInstanceFromDBSnapshotAsync: RestoreDBInstanceFromDBSnapshotAsyncType? = nil,
+            restoreDBInstanceFromDBSnapshotSync: RestoreDBInstanceFromDBSnapshotSyncType? = nil,
+            restoreDBInstanceFromS3Async: RestoreDBInstanceFromS3AsyncType? = nil,
+            restoreDBInstanceFromS3Sync: RestoreDBInstanceFromS3SyncType? = nil,
+            restoreDBInstanceToPointInTimeAsync: RestoreDBInstanceToPointInTimeAsyncType? = nil,
+            restoreDBInstanceToPointInTimeSync: RestoreDBInstanceToPointInTimeSyncType? = nil,
+            revokeDBSecurityGroupIngressAsync: RevokeDBSecurityGroupIngressAsyncType? = nil,
+            revokeDBSecurityGroupIngressSync: RevokeDBSecurityGroupIngressSyncType? = nil,
+            startActivityStreamAsync: StartActivityStreamAsyncType? = nil,
+            startActivityStreamSync: StartActivityStreamSyncType? = nil,
+            startDBClusterAsync: StartDBClusterAsyncType? = nil,
+            startDBClusterSync: StartDBClusterSyncType? = nil,
+            startDBInstanceAsync: StartDBInstanceAsyncType? = nil,
+            startDBInstanceSync: StartDBInstanceSyncType? = nil,
+            startExportTaskAsync: StartExportTaskAsyncType? = nil,
+            startExportTaskSync: StartExportTaskSyncType? = nil,
+            stopActivityStreamAsync: StopActivityStreamAsyncType? = nil,
+            stopActivityStreamSync: StopActivityStreamSyncType? = nil,
+            stopDBClusterAsync: StopDBClusterAsyncType? = nil,
+            stopDBClusterSync: StopDBClusterSyncType? = nil,
+            stopDBInstanceAsync: StopDBInstanceAsyncType? = nil,
+            stopDBInstanceSync: StopDBInstanceSyncType? = nil) {
         self.addRoleToDBClusterAsyncOverride = addRoleToDBClusterAsync
         self.addRoleToDBClusterSyncOverride = addRoleToDBClusterSync
         self.addRoleToDBInstanceAsyncOverride = addRoleToDBInstanceAsync
@@ -827,10 +827,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func addRoleToDBClusterAsync(
             input: RDSModel.AddRoleToDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let addRoleToDBClusterAsyncOverride = addRoleToDBClusterAsyncOverride {
-            return try addRoleToDBClusterAsyncOverride(input, reporting, completion)
+            return try addRoleToDBClusterAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -844,10 +843,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, dBClusterRoleAlreadyExists, dBClusterRoleQuotaExceeded, invalidDBClusterState.
      */
     public func addRoleToDBClusterSync(
-            input: RDSModel.AddRoleToDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: RDSModel.AddRoleToDBClusterMessage) throws {
         if let addRoleToDBClusterSyncOverride = addRoleToDBClusterSyncOverride {
-            return try addRoleToDBClusterSyncOverride(input, reporting)
+            return try addRoleToDBClusterSyncOverride(input)
         }
 
     }
@@ -863,10 +861,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func addRoleToDBInstanceAsync(
             input: RDSModel.AddRoleToDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let addRoleToDBInstanceAsyncOverride = addRoleToDBInstanceAsyncOverride {
-            return try addRoleToDBInstanceAsyncOverride(input, reporting, completion)
+            return try addRoleToDBInstanceAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -880,10 +877,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceNotFound, dBInstanceRoleAlreadyExists, dBInstanceRoleQuotaExceeded, invalidDBInstanceState.
      */
     public func addRoleToDBInstanceSync(
-            input: RDSModel.AddRoleToDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: RDSModel.AddRoleToDBInstanceMessage) throws {
         if let addRoleToDBInstanceSyncOverride = addRoleToDBInstanceSyncOverride {
-            return try addRoleToDBInstanceSyncOverride(input, reporting)
+            return try addRoleToDBInstanceSyncOverride(input)
         }
 
     }
@@ -900,10 +896,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func addSourceIdentifierToSubscriptionAsync(
             input: RDSModel.AddSourceIdentifierToSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, RDSError>) -> ()) throws {
         if let addSourceIdentifierToSubscriptionAsyncOverride = addSourceIdentifierToSubscriptionAsyncOverride {
-            return try addSourceIdentifierToSubscriptionAsyncOverride(input, reporting, completion)
+            return try addSourceIdentifierToSubscriptionAsyncOverride(input, completion)
         }
 
         let result = AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription.__default
@@ -921,10 +916,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: sourceNotFound, subscriptionNotFound.
      */
     public func addSourceIdentifierToSubscriptionSync(
-            input: RDSModel.AddSourceIdentifierToSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription {
+            input: RDSModel.AddSourceIdentifierToSubscriptionMessage) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription {
         if let addSourceIdentifierToSubscriptionSyncOverride = addSourceIdentifierToSubscriptionSyncOverride {
-            return try addSourceIdentifierToSubscriptionSyncOverride(input, reporting)
+            return try addSourceIdentifierToSubscriptionSyncOverride(input)
         }
 
         return AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription.__default
@@ -941,10 +935,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func addTagsToResourceAsync(
             input: RDSModel.AddTagsToResourceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let addTagsToResourceAsyncOverride = addTagsToResourceAsyncOverride {
-            return try addTagsToResourceAsyncOverride(input, reporting, completion)
+            return try addTagsToResourceAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -958,10 +951,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
     public func addTagsToResourceSync(
-            input: RDSModel.AddTagsToResourceMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: RDSModel.AddTagsToResourceMessage) throws {
         if let addTagsToResourceSyncOverride = addTagsToResourceSyncOverride {
-            return try addTagsToResourceSyncOverride(input, reporting)
+            return try addTagsToResourceSyncOverride(input)
         }
 
     }
@@ -978,10 +970,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func applyPendingMaintenanceActionAsync(
             input: RDSModel.ApplyPendingMaintenanceActionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, RDSError>) -> ()) throws {
         if let applyPendingMaintenanceActionAsyncOverride = applyPendingMaintenanceActionAsyncOverride {
-            return try applyPendingMaintenanceActionAsyncOverride(input, reporting, completion)
+            return try applyPendingMaintenanceActionAsyncOverride(input, completion)
         }
 
         let result = ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction.__default
@@ -999,10 +990,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
     public func applyPendingMaintenanceActionSync(
-            input: RDSModel.ApplyPendingMaintenanceActionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction {
+            input: RDSModel.ApplyPendingMaintenanceActionMessage) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction {
         if let applyPendingMaintenanceActionSyncOverride = applyPendingMaintenanceActionSyncOverride {
-            return try applyPendingMaintenanceActionSyncOverride(input, reporting)
+            return try applyPendingMaintenanceActionSyncOverride(input)
         }
 
         return ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction.__default
@@ -1020,10 +1010,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func authorizeDBSecurityGroupIngressAsync(
             input: RDSModel.AuthorizeDBSecurityGroupIngressMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, RDSError>) -> ()) throws {
         if let authorizeDBSecurityGroupIngressAsyncOverride = authorizeDBSecurityGroupIngressAsyncOverride {
-            return try authorizeDBSecurityGroupIngressAsyncOverride(input, reporting, completion)
+            return try authorizeDBSecurityGroupIngressAsyncOverride(input, completion)
         }
 
         let result = AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress.__default
@@ -1041,10 +1030,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: authorizationAlreadyExists, authorizationQuotaExceeded, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
     public func authorizeDBSecurityGroupIngressSync(
-            input: RDSModel.AuthorizeDBSecurityGroupIngressMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress {
+            input: RDSModel.AuthorizeDBSecurityGroupIngressMessage) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress {
         if let authorizeDBSecurityGroupIngressSyncOverride = authorizeDBSecurityGroupIngressSyncOverride {
-            return try authorizeDBSecurityGroupIngressSyncOverride(input, reporting)
+            return try authorizeDBSecurityGroupIngressSyncOverride(input)
         }
 
         return AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress.__default
@@ -1062,10 +1050,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func backtrackDBClusterAsync(
             input: RDSModel.BacktrackDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, RDSError>) -> ()) throws {
         if let backtrackDBClusterAsyncOverride = backtrackDBClusterAsyncOverride {
-            return try backtrackDBClusterAsyncOverride(input, reporting, completion)
+            return try backtrackDBClusterAsyncOverride(input, completion)
         }
 
         let result = DBClusterBacktrackForBacktrackDBCluster.__default
@@ -1083,10 +1070,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, invalidDBClusterState.
      */
     public func backtrackDBClusterSync(
-            input: RDSModel.BacktrackDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster {
+            input: RDSModel.BacktrackDBClusterMessage) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster {
         if let backtrackDBClusterSyncOverride = backtrackDBClusterSyncOverride {
-            return try backtrackDBClusterSyncOverride(input, reporting)
+            return try backtrackDBClusterSyncOverride(input)
         }
 
         return DBClusterBacktrackForBacktrackDBCluster.__default
@@ -1104,10 +1090,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func cancelExportTaskAsync(
             input: RDSModel.CancelExportTaskMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, RDSError>) -> ()) throws {
         if let cancelExportTaskAsyncOverride = cancelExportTaskAsyncOverride {
-            return try cancelExportTaskAsyncOverride(input, reporting, completion)
+            return try cancelExportTaskAsyncOverride(input, completion)
         }
 
         let result = ExportTaskForCancelExportTask.__default
@@ -1125,10 +1110,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: exportTaskNotFound, invalidExportTaskState.
      */
     public func cancelExportTaskSync(
-            input: RDSModel.CancelExportTaskMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForCancelExportTask {
+            input: RDSModel.CancelExportTaskMessage) throws -> RDSModel.ExportTaskForCancelExportTask {
         if let cancelExportTaskSyncOverride = cancelExportTaskSyncOverride {
-            return try cancelExportTaskSyncOverride(input, reporting)
+            return try cancelExportTaskSyncOverride(input)
         }
 
         return ExportTaskForCancelExportTask.__default
@@ -1146,10 +1130,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func copyDBClusterParameterGroupAsync(
             input: RDSModel.CopyDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, RDSError>) -> ()) throws {
         if let copyDBClusterParameterGroupAsyncOverride = copyDBClusterParameterGroupAsyncOverride {
-            return try copyDBClusterParameterGroupAsyncOverride(input, reporting, completion)
+            return try copyDBClusterParameterGroupAsyncOverride(input, completion)
         }
 
         let result = CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup.__default
@@ -1167,10 +1150,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
     public func copyDBClusterParameterGroupSync(
-            input: RDSModel.CopyDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup {
+            input: RDSModel.CopyDBClusterParameterGroupMessage) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup {
         if let copyDBClusterParameterGroupSyncOverride = copyDBClusterParameterGroupSyncOverride {
-            return try copyDBClusterParameterGroupSyncOverride(input, reporting)
+            return try copyDBClusterParameterGroupSyncOverride(input)
         }
 
         return CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup.__default
@@ -1188,10 +1170,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func copyDBClusterSnapshotAsync(
             input: RDSModel.CopyDBClusterSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, RDSError>) -> ()) throws {
         if let copyDBClusterSnapshotAsyncOverride = copyDBClusterSnapshotAsyncOverride {
-            return try copyDBClusterSnapshotAsyncOverride(input, reporting, completion)
+            return try copyDBClusterSnapshotAsyncOverride(input, completion)
         }
 
         let result = CopyDBClusterSnapshotResultForCopyDBClusterSnapshot.__default
@@ -1209,10 +1190,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterSnapshotAlreadyExists, dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, invalidDBClusterState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
     public func copyDBClusterSnapshotSync(
-            input: RDSModel.CopyDBClusterSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
+            input: RDSModel.CopyDBClusterSnapshotMessage) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
         if let copyDBClusterSnapshotSyncOverride = copyDBClusterSnapshotSyncOverride {
-            return try copyDBClusterSnapshotSyncOverride(input, reporting)
+            return try copyDBClusterSnapshotSyncOverride(input)
         }
 
         return CopyDBClusterSnapshotResultForCopyDBClusterSnapshot.__default
@@ -1230,10 +1210,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func copyDBParameterGroupAsync(
             input: RDSModel.CopyDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, RDSError>) -> ()) throws {
         if let copyDBParameterGroupAsyncOverride = copyDBParameterGroupAsyncOverride {
-            return try copyDBParameterGroupAsyncOverride(input, reporting, completion)
+            return try copyDBParameterGroupAsyncOverride(input, completion)
         }
 
         let result = CopyDBParameterGroupResultForCopyDBParameterGroup.__default
@@ -1251,10 +1230,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
     public func copyDBParameterGroupSync(
-            input: RDSModel.CopyDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup {
+            input: RDSModel.CopyDBParameterGroupMessage) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup {
         if let copyDBParameterGroupSyncOverride = copyDBParameterGroupSyncOverride {
-            return try copyDBParameterGroupSyncOverride(input, reporting)
+            return try copyDBParameterGroupSyncOverride(input)
         }
 
         return CopyDBParameterGroupResultForCopyDBParameterGroup.__default
@@ -1272,10 +1250,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func copyDBSnapshotAsync(
             input: RDSModel.CopyDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, RDSError>) -> ()) throws {
         if let copyDBSnapshotAsyncOverride = copyDBSnapshotAsyncOverride {
-            return try copyDBSnapshotAsyncOverride(input, reporting, completion)
+            return try copyDBSnapshotAsyncOverride(input, completion)
         }
 
         let result = CopyDBSnapshotResultForCopyDBSnapshot.__default
@@ -1293,10 +1270,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
     public func copyDBSnapshotSync(
-            input: RDSModel.CopyDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot {
+            input: RDSModel.CopyDBSnapshotMessage) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot {
         if let copyDBSnapshotSyncOverride = copyDBSnapshotSyncOverride {
-            return try copyDBSnapshotSyncOverride(input, reporting)
+            return try copyDBSnapshotSyncOverride(input)
         }
 
         return CopyDBSnapshotResultForCopyDBSnapshot.__default
@@ -1314,10 +1290,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func copyOptionGroupAsync(
             input: RDSModel.CopyOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, RDSError>) -> ()) throws {
         if let copyOptionGroupAsyncOverride = copyOptionGroupAsyncOverride {
-            return try copyOptionGroupAsyncOverride(input, reporting, completion)
+            return try copyOptionGroupAsyncOverride(input, completion)
         }
 
         let result = CopyOptionGroupResultForCopyOptionGroup.__default
@@ -1335,10 +1310,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: optionGroupAlreadyExists, optionGroupNotFound, optionGroupQuotaExceeded.
      */
     public func copyOptionGroupSync(
-            input: RDSModel.CopyOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
+            input: RDSModel.CopyOptionGroupMessage) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
         if let copyOptionGroupSyncOverride = copyOptionGroupSyncOverride {
-            return try copyOptionGroupSyncOverride(input, reporting)
+            return try copyOptionGroupSyncOverride(input)
         }
 
         return CopyOptionGroupResultForCopyOptionGroup.__default
@@ -1356,10 +1330,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createCustomAvailabilityZoneAsync(
             input: RDSModel.CreateCustomAvailabilityZoneMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, RDSError>) -> ()) throws {
         if let createCustomAvailabilityZoneAsyncOverride = createCustomAvailabilityZoneAsyncOverride {
-            return try createCustomAvailabilityZoneAsyncOverride(input, reporting, completion)
+            return try createCustomAvailabilityZoneAsyncOverride(input, completion)
         }
 
         let result = CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone.__default
@@ -1377,10 +1350,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
      */
     public func createCustomAvailabilityZoneSync(
-            input: RDSModel.CreateCustomAvailabilityZoneMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
+            input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
         if let createCustomAvailabilityZoneSyncOverride = createCustomAvailabilityZoneSyncOverride {
-            return try createCustomAvailabilityZoneSyncOverride(input, reporting)
+            return try createCustomAvailabilityZoneSyncOverride(input)
         }
 
         return CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone.__default
@@ -1398,10 +1370,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBClusterAsync(
             input: RDSModel.CreateDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, RDSError>) -> ()) throws {
         if let createDBClusterAsyncOverride = createDBClusterAsyncOverride {
-            return try createDBClusterAsyncOverride(input, reporting, completion)
+            return try createDBClusterAsyncOverride(input, completion)
         }
 
         let result = CreateDBClusterResultForCreateDBCluster.__default
@@ -1419,10 +1390,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
     public func createDBClusterSync(
-            input: RDSModel.CreateDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster {
+            input: RDSModel.CreateDBClusterMessage) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster {
         if let createDBClusterSyncOverride = createDBClusterSyncOverride {
-            return try createDBClusterSyncOverride(input, reporting)
+            return try createDBClusterSyncOverride(input)
         }
 
         return CreateDBClusterResultForCreateDBCluster.__default
@@ -1440,10 +1410,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBClusterEndpointAsync(
             input: RDSModel.CreateDBClusterEndpointMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, RDSError>) -> ()) throws {
         if let createDBClusterEndpointAsyncOverride = createDBClusterEndpointAsyncOverride {
-            return try createDBClusterEndpointAsyncOverride(input, reporting, completion)
+            return try createDBClusterEndpointAsyncOverride(input, completion)
         }
 
         let result = DBClusterEndpointForCreateDBClusterEndpoint.__default
@@ -1461,10 +1430,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterEndpointAlreadyExists, dBClusterEndpointQuotaExceeded, dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
     public func createDBClusterEndpointSync(
-            input: RDSModel.CreateDBClusterEndpointMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint {
+            input: RDSModel.CreateDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint {
         if let createDBClusterEndpointSyncOverride = createDBClusterEndpointSyncOverride {
-            return try createDBClusterEndpointSyncOverride(input, reporting)
+            return try createDBClusterEndpointSyncOverride(input)
         }
 
         return DBClusterEndpointForCreateDBClusterEndpoint.__default
@@ -1482,10 +1450,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBClusterParameterGroupAsync(
             input: RDSModel.CreateDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, RDSError>) -> ()) throws {
         if let createDBClusterParameterGroupAsyncOverride = createDBClusterParameterGroupAsyncOverride {
-            return try createDBClusterParameterGroupAsyncOverride(input, reporting, completion)
+            return try createDBClusterParameterGroupAsyncOverride(input, completion)
         }
 
         let result = CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup.__default
@@ -1503,10 +1470,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
     public func createDBClusterParameterGroupSync(
-            input: RDSModel.CreateDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup {
+            input: RDSModel.CreateDBClusterParameterGroupMessage) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup {
         if let createDBClusterParameterGroupSyncOverride = createDBClusterParameterGroupSyncOverride {
-            return try createDBClusterParameterGroupSyncOverride(input, reporting)
+            return try createDBClusterParameterGroupSyncOverride(input)
         }
 
         return CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup.__default
@@ -1524,10 +1490,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBClusterSnapshotAsync(
             input: RDSModel.CreateDBClusterSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, RDSError>) -> ()) throws {
         if let createDBClusterSnapshotAsyncOverride = createDBClusterSnapshotAsyncOverride {
-            return try createDBClusterSnapshotAsyncOverride(input, reporting, completion)
+            return try createDBClusterSnapshotAsyncOverride(input, completion)
         }
 
         let result = CreateDBClusterSnapshotResultForCreateDBClusterSnapshot.__default
@@ -1545,10 +1510,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
     public func createDBClusterSnapshotSync(
-            input: RDSModel.CreateDBClusterSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
+            input: RDSModel.CreateDBClusterSnapshotMessage) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
         if let createDBClusterSnapshotSyncOverride = createDBClusterSnapshotSyncOverride {
-            return try createDBClusterSnapshotSyncOverride(input, reporting)
+            return try createDBClusterSnapshotSyncOverride(input)
         }
 
         return CreateDBClusterSnapshotResultForCreateDBClusterSnapshot.__default
@@ -1566,10 +1530,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBInstanceAsync(
             input: RDSModel.CreateDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, RDSError>) -> ()) throws {
         if let createDBInstanceAsyncOverride = createDBInstanceAsyncOverride {
-            return try createDBInstanceAsyncOverride(input, reporting, completion)
+            return try createDBInstanceAsyncOverride(input, completion)
         }
 
         let result = CreateDBInstanceResultForCreateDBInstance.__default
@@ -1587,10 +1550,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceSync(
-            input: RDSModel.CreateDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
+            input: RDSModel.CreateDBInstanceMessage) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
         if let createDBInstanceSyncOverride = createDBInstanceSyncOverride {
-            return try createDBInstanceSyncOverride(input, reporting)
+            return try createDBInstanceSyncOverride(input)
         }
 
         return CreateDBInstanceResultForCreateDBInstance.__default
@@ -1608,10 +1570,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBInstanceReadReplicaAsync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, RDSError>) -> ()) throws {
         if let createDBInstanceReadReplicaAsyncOverride = createDBInstanceReadReplicaAsyncOverride {
-            return try createDBInstanceReadReplicaAsyncOverride(input, reporting, completion)
+            return try createDBInstanceReadReplicaAsyncOverride(input, completion)
         }
 
         let result = CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica.__default
@@ -1629,10 +1590,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceReadReplicaSync(
-            input: RDSModel.CreateDBInstanceReadReplicaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
+            input: RDSModel.CreateDBInstanceReadReplicaMessage) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
         if let createDBInstanceReadReplicaSyncOverride = createDBInstanceReadReplicaSyncOverride {
-            return try createDBInstanceReadReplicaSyncOverride(input, reporting)
+            return try createDBInstanceReadReplicaSyncOverride(input)
         }
 
         return CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica.__default
@@ -1650,10 +1610,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBParameterGroupAsync(
             input: RDSModel.CreateDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, RDSError>) -> ()) throws {
         if let createDBParameterGroupAsyncOverride = createDBParameterGroupAsyncOverride {
-            return try createDBParameterGroupAsyncOverride(input, reporting, completion)
+            return try createDBParameterGroupAsyncOverride(input, completion)
         }
 
         let result = CreateDBParameterGroupResultForCreateDBParameterGroup.__default
@@ -1671,10 +1630,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
     public func createDBParameterGroupSync(
-            input: RDSModel.CreateDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup {
+            input: RDSModel.CreateDBParameterGroupMessage) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup {
         if let createDBParameterGroupSyncOverride = createDBParameterGroupSyncOverride {
-            return try createDBParameterGroupSyncOverride(input, reporting)
+            return try createDBParameterGroupSyncOverride(input)
         }
 
         return CreateDBParameterGroupResultForCreateDBParameterGroup.__default
@@ -1692,10 +1650,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBProxyAsync(
             input: RDSModel.CreateDBProxyRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, RDSError>) -> ()) throws {
         if let createDBProxyAsyncOverride = createDBProxyAsyncOverride {
-            return try createDBProxyAsyncOverride(input, reporting, completion)
+            return try createDBProxyAsyncOverride(input, completion)
         }
 
         let result = CreateDBProxyResponseForCreateDBProxy.__default
@@ -1713,10 +1670,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
      */
     public func createDBProxySync(
-            input: RDSModel.CreateDBProxyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy {
+            input: RDSModel.CreateDBProxyRequest) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy {
         if let createDBProxySyncOverride = createDBProxySyncOverride {
-            return try createDBProxySyncOverride(input, reporting)
+            return try createDBProxySyncOverride(input)
         }
 
         return CreateDBProxyResponseForCreateDBProxy.__default
@@ -1734,10 +1690,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBSecurityGroupAsync(
             input: RDSModel.CreateDBSecurityGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, RDSError>) -> ()) throws {
         if let createDBSecurityGroupAsyncOverride = createDBSecurityGroupAsyncOverride {
-            return try createDBSecurityGroupAsyncOverride(input, reporting, completion)
+            return try createDBSecurityGroupAsyncOverride(input, completion)
         }
 
         let result = CreateDBSecurityGroupResultForCreateDBSecurityGroup.__default
@@ -1755,10 +1710,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBSecurityGroupAlreadyExists, dBSecurityGroupNotSupported, dBSecurityGroupQuotaExceeded.
      */
     public func createDBSecurityGroupSync(
-            input: RDSModel.CreateDBSecurityGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup {
+            input: RDSModel.CreateDBSecurityGroupMessage) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup {
         if let createDBSecurityGroupSyncOverride = createDBSecurityGroupSyncOverride {
-            return try createDBSecurityGroupSyncOverride(input, reporting)
+            return try createDBSecurityGroupSyncOverride(input)
         }
 
         return CreateDBSecurityGroupResultForCreateDBSecurityGroup.__default
@@ -1776,10 +1730,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBSnapshotAsync(
             input: RDSModel.CreateDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, RDSError>) -> ()) throws {
         if let createDBSnapshotAsyncOverride = createDBSnapshotAsyncOverride {
-            return try createDBSnapshotAsyncOverride(input, reporting, completion)
+            return try createDBSnapshotAsyncOverride(input, completion)
         }
 
         let result = CreateDBSnapshotResultForCreateDBSnapshot.__default
@@ -1797,10 +1750,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBInstanceState, snapshotQuotaExceeded.
      */
     public func createDBSnapshotSync(
-            input: RDSModel.CreateDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot {
+            input: RDSModel.CreateDBSnapshotMessage) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot {
         if let createDBSnapshotSyncOverride = createDBSnapshotSyncOverride {
-            return try createDBSnapshotSyncOverride(input, reporting)
+            return try createDBSnapshotSyncOverride(input)
         }
 
         return CreateDBSnapshotResultForCreateDBSnapshot.__default
@@ -1818,10 +1770,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createDBSubnetGroupAsync(
             input: RDSModel.CreateDBSubnetGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, RDSError>) -> ()) throws {
         if let createDBSubnetGroupAsyncOverride = createDBSubnetGroupAsyncOverride {
-            return try createDBSubnetGroupAsyncOverride(input, reporting, completion)
+            return try createDBSubnetGroupAsyncOverride(input, completion)
         }
 
         let result = CreateDBSubnetGroupResultForCreateDBSubnetGroup.__default
@@ -1839,10 +1790,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBSubnetGroupAlreadyExists, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupQuotaExceeded, dBSubnetQuotaExceeded, invalidSubnet.
      */
     public func createDBSubnetGroupSync(
-            input: RDSModel.CreateDBSubnetGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup {
+            input: RDSModel.CreateDBSubnetGroupMessage) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup {
         if let createDBSubnetGroupSyncOverride = createDBSubnetGroupSyncOverride {
-            return try createDBSubnetGroupSyncOverride(input, reporting)
+            return try createDBSubnetGroupSyncOverride(input)
         }
 
         return CreateDBSubnetGroupResultForCreateDBSubnetGroup.__default
@@ -1860,10 +1810,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createEventSubscriptionAsync(
             input: RDSModel.CreateEventSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, RDSError>) -> ()) throws {
         if let createEventSubscriptionAsyncOverride = createEventSubscriptionAsyncOverride {
-            return try createEventSubscriptionAsyncOverride(input, reporting, completion)
+            return try createEventSubscriptionAsyncOverride(input, completion)
         }
 
         let result = CreateEventSubscriptionResultForCreateEventSubscription.__default
@@ -1881,10 +1830,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, sourceNotFound, subscriptionAlreadyExist, subscriptionCategoryNotFound.
      */
     public func createEventSubscriptionSync(
-            input: RDSModel.CreateEventSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription {
+            input: RDSModel.CreateEventSubscriptionMessage) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription {
         if let createEventSubscriptionSyncOverride = createEventSubscriptionSyncOverride {
-            return try createEventSubscriptionSyncOverride(input, reporting)
+            return try createEventSubscriptionSyncOverride(input)
         }
 
         return CreateEventSubscriptionResultForCreateEventSubscription.__default
@@ -1902,10 +1850,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createGlobalClusterAsync(
             input: RDSModel.CreateGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, RDSError>) -> ()) throws {
         if let createGlobalClusterAsyncOverride = createGlobalClusterAsyncOverride {
-            return try createGlobalClusterAsyncOverride(input, reporting, completion)
+            return try createGlobalClusterAsyncOverride(input, completion)
         }
 
         let result = CreateGlobalClusterResultForCreateGlobalCluster.__default
@@ -1923,10 +1870,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, globalClusterAlreadyExists, globalClusterQuotaExceeded, invalidDBClusterState.
      */
     public func createGlobalClusterSync(
-            input: RDSModel.CreateGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster {
+            input: RDSModel.CreateGlobalClusterMessage) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster {
         if let createGlobalClusterSyncOverride = createGlobalClusterSyncOverride {
-            return try createGlobalClusterSyncOverride(input, reporting)
+            return try createGlobalClusterSyncOverride(input)
         }
 
         return CreateGlobalClusterResultForCreateGlobalCluster.__default
@@ -1944,10 +1890,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func createOptionGroupAsync(
             input: RDSModel.CreateOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, RDSError>) -> ()) throws {
         if let createOptionGroupAsyncOverride = createOptionGroupAsyncOverride {
-            return try createOptionGroupAsyncOverride(input, reporting, completion)
+            return try createOptionGroupAsyncOverride(input, completion)
         }
 
         let result = CreateOptionGroupResultForCreateOptionGroup.__default
@@ -1965,10 +1910,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: optionGroupAlreadyExists, optionGroupQuotaExceeded.
      */
     public func createOptionGroupSync(
-            input: RDSModel.CreateOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
+            input: RDSModel.CreateOptionGroupMessage) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
         if let createOptionGroupSyncOverride = createOptionGroupSyncOverride {
-            return try createOptionGroupSyncOverride(input, reporting)
+            return try createOptionGroupSyncOverride(input)
         }
 
         return CreateOptionGroupResultForCreateOptionGroup.__default
@@ -1986,10 +1930,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteCustomAvailabilityZoneAsync(
             input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, RDSError>) -> ()) throws {
         if let deleteCustomAvailabilityZoneAsyncOverride = deleteCustomAvailabilityZoneAsyncOverride {
-            return try deleteCustomAvailabilityZoneAsyncOverride(input, reporting, completion)
+            return try deleteCustomAvailabilityZoneAsyncOverride(input, completion)
         }
 
         let result = DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone.__default
@@ -2007,10 +1950,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
      */
     public func deleteCustomAvailabilityZoneSync(
-            input: RDSModel.DeleteCustomAvailabilityZoneMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
+            input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
         if let deleteCustomAvailabilityZoneSyncOverride = deleteCustomAvailabilityZoneSyncOverride {
-            return try deleteCustomAvailabilityZoneSyncOverride(input, reporting)
+            return try deleteCustomAvailabilityZoneSyncOverride(input)
         }
 
         return DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone.__default
@@ -2028,10 +1970,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBClusterAsync(
             input: RDSModel.DeleteDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, RDSError>) -> ()) throws {
         if let deleteDBClusterAsyncOverride = deleteDBClusterAsyncOverride {
-            return try deleteDBClusterAsyncOverride(input, reporting, completion)
+            return try deleteDBClusterAsyncOverride(input, completion)
         }
 
         let result = DeleteDBClusterResultForDeleteDBCluster.__default
@@ -2049,10 +1990,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
     public func deleteDBClusterSync(
-            input: RDSModel.DeleteDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
+            input: RDSModel.DeleteDBClusterMessage) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
         if let deleteDBClusterSyncOverride = deleteDBClusterSyncOverride {
-            return try deleteDBClusterSyncOverride(input, reporting)
+            return try deleteDBClusterSyncOverride(input)
         }
 
         return DeleteDBClusterResultForDeleteDBCluster.__default
@@ -2070,10 +2010,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBClusterEndpointAsync(
             input: RDSModel.DeleteDBClusterEndpointMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, RDSError>) -> ()) throws {
         if let deleteDBClusterEndpointAsyncOverride = deleteDBClusterEndpointAsyncOverride {
-            return try deleteDBClusterEndpointAsyncOverride(input, reporting, completion)
+            return try deleteDBClusterEndpointAsyncOverride(input, completion)
         }
 
         let result = DBClusterEndpointForDeleteDBClusterEndpoint.__default
@@ -2091,10 +2030,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterEndpointNotFound, invalidDBClusterEndpointState, invalidDBClusterState.
      */
     public func deleteDBClusterEndpointSync(
-            input: RDSModel.DeleteDBClusterEndpointMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint {
+            input: RDSModel.DeleteDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint {
         if let deleteDBClusterEndpointSyncOverride = deleteDBClusterEndpointSyncOverride {
-            return try deleteDBClusterEndpointSyncOverride(input, reporting)
+            return try deleteDBClusterEndpointSyncOverride(input)
         }
 
         return DBClusterEndpointForDeleteDBClusterEndpoint.__default
@@ -2111,10 +2049,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBClusterParameterGroupAsync(
             input: RDSModel.DeleteDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let deleteDBClusterParameterGroupAsyncOverride = deleteDBClusterParameterGroupAsyncOverride {
-            return try deleteDBClusterParameterGroupAsyncOverride(input, reporting, completion)
+            return try deleteDBClusterParameterGroupAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -2128,10 +2065,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     public func deleteDBClusterParameterGroupSync(
-            input: RDSModel.DeleteDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: RDSModel.DeleteDBClusterParameterGroupMessage) throws {
         if let deleteDBClusterParameterGroupSyncOverride = deleteDBClusterParameterGroupSyncOverride {
-            return try deleteDBClusterParameterGroupSyncOverride(input, reporting)
+            return try deleteDBClusterParameterGroupSyncOverride(input)
         }
 
     }
@@ -2148,10 +2084,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBClusterSnapshotAsync(
             input: RDSModel.DeleteDBClusterSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, RDSError>) -> ()) throws {
         if let deleteDBClusterSnapshotAsyncOverride = deleteDBClusterSnapshotAsyncOverride {
-            return try deleteDBClusterSnapshotAsyncOverride(input, reporting, completion)
+            return try deleteDBClusterSnapshotAsyncOverride(input, completion)
         }
 
         let result = DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot.__default
@@ -2169,10 +2104,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState.
      */
     public func deleteDBClusterSnapshotSync(
-            input: RDSModel.DeleteDBClusterSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
+            input: RDSModel.DeleteDBClusterSnapshotMessage) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
         if let deleteDBClusterSnapshotSyncOverride = deleteDBClusterSnapshotSyncOverride {
-            return try deleteDBClusterSnapshotSyncOverride(input, reporting)
+            return try deleteDBClusterSnapshotSyncOverride(input)
         }
 
         return DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot.__default
@@ -2190,10 +2124,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBInstanceAsync(
             input: RDSModel.DeleteDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, RDSError>) -> ()) throws {
         if let deleteDBInstanceAsyncOverride = deleteDBInstanceAsyncOverride {
-            return try deleteDBInstanceAsyncOverride(input, reporting, completion)
+            return try deleteDBInstanceAsyncOverride(input, completion)
         }
 
         let result = DeleteDBInstanceResultForDeleteDBInstance.__default
@@ -2211,10 +2144,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
     public func deleteDBInstanceSync(
-            input: RDSModel.DeleteDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance {
+            input: RDSModel.DeleteDBInstanceMessage) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance {
         if let deleteDBInstanceSyncOverride = deleteDBInstanceSyncOverride {
-            return try deleteDBInstanceSyncOverride(input, reporting)
+            return try deleteDBInstanceSyncOverride(input)
         }
 
         return DeleteDBInstanceResultForDeleteDBInstance.__default
@@ -2232,10 +2164,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBInstanceAutomatedBackupAsync(
             input: RDSModel.DeleteDBInstanceAutomatedBackupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, RDSError>) -> ()) throws {
         if let deleteDBInstanceAutomatedBackupAsyncOverride = deleteDBInstanceAutomatedBackupAsyncOverride {
-            return try deleteDBInstanceAutomatedBackupAsyncOverride(input, reporting, completion)
+            return try deleteDBInstanceAutomatedBackupAsyncOverride(input, completion)
         }
 
         let result = DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup.__default
@@ -2253,10 +2184,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceAutomatedBackupNotFound, invalidDBInstanceAutomatedBackupState.
      */
     public func deleteDBInstanceAutomatedBackupSync(
-            input: RDSModel.DeleteDBInstanceAutomatedBackupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup {
+            input: RDSModel.DeleteDBInstanceAutomatedBackupMessage) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup {
         if let deleteDBInstanceAutomatedBackupSyncOverride = deleteDBInstanceAutomatedBackupSyncOverride {
-            return try deleteDBInstanceAutomatedBackupSyncOverride(input, reporting)
+            return try deleteDBInstanceAutomatedBackupSyncOverride(input)
         }
 
         return DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup.__default
@@ -2273,10 +2203,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBParameterGroupAsync(
             input: RDSModel.DeleteDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let deleteDBParameterGroupAsyncOverride = deleteDBParameterGroupAsyncOverride {
-            return try deleteDBParameterGroupAsyncOverride(input, reporting, completion)
+            return try deleteDBParameterGroupAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -2290,10 +2219,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     public func deleteDBParameterGroupSync(
-            input: RDSModel.DeleteDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: RDSModel.DeleteDBParameterGroupMessage) throws {
         if let deleteDBParameterGroupSyncOverride = deleteDBParameterGroupSyncOverride {
-            return try deleteDBParameterGroupSyncOverride(input, reporting)
+            return try deleteDBParameterGroupSyncOverride(input)
         }
 
     }
@@ -2310,10 +2238,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBProxyAsync(
             input: RDSModel.DeleteDBProxyRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, RDSError>) -> ()) throws {
         if let deleteDBProxyAsyncOverride = deleteDBProxyAsyncOverride {
-            return try deleteDBProxyAsyncOverride(input, reporting, completion)
+            return try deleteDBProxyAsyncOverride(input, completion)
         }
 
         let result = DeleteDBProxyResponseForDeleteDBProxy.__default
@@ -2331,10 +2258,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBProxyNotFound, invalidDBProxyState.
      */
     public func deleteDBProxySync(
-            input: RDSModel.DeleteDBProxyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy {
+            input: RDSModel.DeleteDBProxyRequest) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy {
         if let deleteDBProxySyncOverride = deleteDBProxySyncOverride {
-            return try deleteDBProxySyncOverride(input, reporting)
+            return try deleteDBProxySyncOverride(input)
         }
 
         return DeleteDBProxyResponseForDeleteDBProxy.__default
@@ -2351,10 +2277,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBSecurityGroupAsync(
             input: RDSModel.DeleteDBSecurityGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let deleteDBSecurityGroupAsyncOverride = deleteDBSecurityGroupAsyncOverride {
-            return try deleteDBSecurityGroupAsyncOverride(input, reporting, completion)
+            return try deleteDBSecurityGroupAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -2368,10 +2293,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
     public func deleteDBSecurityGroupSync(
-            input: RDSModel.DeleteDBSecurityGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: RDSModel.DeleteDBSecurityGroupMessage) throws {
         if let deleteDBSecurityGroupSyncOverride = deleteDBSecurityGroupSyncOverride {
-            return try deleteDBSecurityGroupSyncOverride(input, reporting)
+            return try deleteDBSecurityGroupSyncOverride(input)
         }
 
     }
@@ -2388,10 +2312,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBSnapshotAsync(
             input: RDSModel.DeleteDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, RDSError>) -> ()) throws {
         if let deleteDBSnapshotAsyncOverride = deleteDBSnapshotAsyncOverride {
-            return try deleteDBSnapshotAsyncOverride(input, reporting, completion)
+            return try deleteDBSnapshotAsyncOverride(input, completion)
         }
 
         let result = DeleteDBSnapshotResultForDeleteDBSnapshot.__default
@@ -2409,10 +2332,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBSnapshotNotFound, invalidDBSnapshotState.
      */
     public func deleteDBSnapshotSync(
-            input: RDSModel.DeleteDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot {
+            input: RDSModel.DeleteDBSnapshotMessage) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot {
         if let deleteDBSnapshotSyncOverride = deleteDBSnapshotSyncOverride {
-            return try deleteDBSnapshotSyncOverride(input, reporting)
+            return try deleteDBSnapshotSyncOverride(input)
         }
 
         return DeleteDBSnapshotResultForDeleteDBSnapshot.__default
@@ -2429,10 +2351,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteDBSubnetGroupAsync(
             input: RDSModel.DeleteDBSubnetGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let deleteDBSubnetGroupAsyncOverride = deleteDBSubnetGroupAsyncOverride {
-            return try deleteDBSubnetGroupAsyncOverride(input, reporting, completion)
+            return try deleteDBSubnetGroupAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -2446,10 +2367,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBSubnetGroupNotFound, invalidDBSubnetGroupState, invalidDBSubnetState.
      */
     public func deleteDBSubnetGroupSync(
-            input: RDSModel.DeleteDBSubnetGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: RDSModel.DeleteDBSubnetGroupMessage) throws {
         if let deleteDBSubnetGroupSyncOverride = deleteDBSubnetGroupSyncOverride {
-            return try deleteDBSubnetGroupSyncOverride(input, reporting)
+            return try deleteDBSubnetGroupSyncOverride(input)
         }
 
     }
@@ -2466,10 +2386,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteEventSubscriptionAsync(
             input: RDSModel.DeleteEventSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, RDSError>) -> ()) throws {
         if let deleteEventSubscriptionAsyncOverride = deleteEventSubscriptionAsyncOverride {
-            return try deleteEventSubscriptionAsyncOverride(input, reporting, completion)
+            return try deleteEventSubscriptionAsyncOverride(input, completion)
         }
 
         let result = DeleteEventSubscriptionResultForDeleteEventSubscription.__default
@@ -2487,10 +2406,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: invalidEventSubscriptionState, subscriptionNotFound.
      */
     public func deleteEventSubscriptionSync(
-            input: RDSModel.DeleteEventSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription {
+            input: RDSModel.DeleteEventSubscriptionMessage) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription {
         if let deleteEventSubscriptionSyncOverride = deleteEventSubscriptionSyncOverride {
-            return try deleteEventSubscriptionSyncOverride(input, reporting)
+            return try deleteEventSubscriptionSyncOverride(input)
         }
 
         return DeleteEventSubscriptionResultForDeleteEventSubscription.__default
@@ -2508,10 +2426,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteGlobalClusterAsync(
             input: RDSModel.DeleteGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, RDSError>) -> ()) throws {
         if let deleteGlobalClusterAsyncOverride = deleteGlobalClusterAsyncOverride {
-            return try deleteGlobalClusterAsyncOverride(input, reporting, completion)
+            return try deleteGlobalClusterAsyncOverride(input, completion)
         }
 
         let result = DeleteGlobalClusterResultForDeleteGlobalCluster.__default
@@ -2529,10 +2446,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: globalClusterNotFound, invalidGlobalClusterState.
      */
     public func deleteGlobalClusterSync(
-            input: RDSModel.DeleteGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster {
+            input: RDSModel.DeleteGlobalClusterMessage) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster {
         if let deleteGlobalClusterSyncOverride = deleteGlobalClusterSyncOverride {
-            return try deleteGlobalClusterSyncOverride(input, reporting)
+            return try deleteGlobalClusterSyncOverride(input)
         }
 
         return DeleteGlobalClusterResultForDeleteGlobalCluster.__default
@@ -2550,10 +2466,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteInstallationMediaAsync(
             input: RDSModel.DeleteInstallationMediaMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, RDSError>) -> ()) throws {
         if let deleteInstallationMediaAsyncOverride = deleteInstallationMediaAsyncOverride {
-            return try deleteInstallationMediaAsyncOverride(input, reporting, completion)
+            return try deleteInstallationMediaAsyncOverride(input, completion)
         }
 
         let result = InstallationMediaForDeleteInstallationMedia.__default
@@ -2571,10 +2486,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: installationMediaNotFound.
      */
     public func deleteInstallationMediaSync(
-            input: RDSModel.DeleteInstallationMediaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia {
+            input: RDSModel.DeleteInstallationMediaMessage) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia {
         if let deleteInstallationMediaSyncOverride = deleteInstallationMediaSyncOverride {
-            return try deleteInstallationMediaSyncOverride(input, reporting)
+            return try deleteInstallationMediaSyncOverride(input)
         }
 
         return InstallationMediaForDeleteInstallationMedia.__default
@@ -2591,10 +2505,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deleteOptionGroupAsync(
             input: RDSModel.DeleteOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let deleteOptionGroupAsyncOverride = deleteOptionGroupAsyncOverride {
-            return try deleteOptionGroupAsyncOverride(input, reporting, completion)
+            return try deleteOptionGroupAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -2608,10 +2521,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
     public func deleteOptionGroupSync(
-            input: RDSModel.DeleteOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: RDSModel.DeleteOptionGroupMessage) throws {
         if let deleteOptionGroupSyncOverride = deleteOptionGroupSyncOverride {
-            return try deleteOptionGroupSyncOverride(input, reporting)
+            return try deleteOptionGroupSyncOverride(input)
         }
 
     }
@@ -2628,10 +2540,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func deregisterDBProxyTargetsAsync(
             input: RDSModel.DeregisterDBProxyTargetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, RDSError>) -> ()) throws {
         if let deregisterDBProxyTargetsAsyncOverride = deregisterDBProxyTargetsAsyncOverride {
-            return try deregisterDBProxyTargetsAsyncOverride(input, reporting, completion)
+            return try deregisterDBProxyTargetsAsyncOverride(input, completion)
         }
 
         let result = DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets.__default
@@ -2649,10 +2560,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
     public func deregisterDBProxyTargetsSync(
-            input: RDSModel.DeregisterDBProxyTargetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
+            input: RDSModel.DeregisterDBProxyTargetsRequest) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
         if let deregisterDBProxyTargetsSyncOverride = deregisterDBProxyTargetsSyncOverride {
-            return try deregisterDBProxyTargetsSyncOverride(input, reporting)
+            return try deregisterDBProxyTargetsSyncOverride(input)
         }
 
         return DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets.__default
@@ -2669,10 +2579,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeAccountAttributesAsync(
             input: RDSModel.DescribeAccountAttributesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, RDSError>) -> ()) throws {
         if let describeAccountAttributesAsyncOverride = describeAccountAttributesAsyncOverride {
-            return try describeAccountAttributesAsyncOverride(input, reporting, completion)
+            return try describeAccountAttributesAsyncOverride(input, completion)
         }
 
         let result = AccountAttributesMessageForDescribeAccountAttributes.__default
@@ -2689,10 +2598,9 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     public func describeAccountAttributesSync(
-            input: RDSModel.DescribeAccountAttributesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
+            input: RDSModel.DescribeAccountAttributesMessage) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
         if let describeAccountAttributesSyncOverride = describeAccountAttributesSyncOverride {
-            return try describeAccountAttributesSyncOverride(input, reporting)
+            return try describeAccountAttributesSyncOverride(input)
         }
 
         return AccountAttributesMessageForDescribeAccountAttributes.__default
@@ -2710,10 +2618,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeCertificatesAsync(
             input: RDSModel.DescribeCertificatesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, RDSError>) -> ()) throws {
         if let describeCertificatesAsyncOverride = describeCertificatesAsyncOverride {
-            return try describeCertificatesAsyncOverride(input, reporting, completion)
+            return try describeCertificatesAsyncOverride(input, completion)
         }
 
         let result = CertificateMessageForDescribeCertificates.__default
@@ -2731,10 +2638,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: certificateNotFound.
      */
     public func describeCertificatesSync(
-            input: RDSModel.DescribeCertificatesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CertificateMessageForDescribeCertificates {
+            input: RDSModel.DescribeCertificatesMessage) throws -> RDSModel.CertificateMessageForDescribeCertificates {
         if let describeCertificatesSyncOverride = describeCertificatesSyncOverride {
-            return try describeCertificatesSyncOverride(input, reporting)
+            return try describeCertificatesSyncOverride(input)
         }
 
         return CertificateMessageForDescribeCertificates.__default
@@ -2752,10 +2658,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeCustomAvailabilityZonesAsync(
             input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, RDSError>) -> ()) throws {
         if let describeCustomAvailabilityZonesAsyncOverride = describeCustomAvailabilityZonesAsyncOverride {
-            return try describeCustomAvailabilityZonesAsyncOverride(input, reporting, completion)
+            return try describeCustomAvailabilityZonesAsyncOverride(input, completion)
         }
 
         let result = CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones.__default
@@ -2773,10 +2678,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: customAvailabilityZoneNotFound.
      */
     public func describeCustomAvailabilityZonesSync(
-            input: RDSModel.DescribeCustomAvailabilityZonesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
+            input: RDSModel.DescribeCustomAvailabilityZonesMessage) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
         if let describeCustomAvailabilityZonesSyncOverride = describeCustomAvailabilityZonesSyncOverride {
-            return try describeCustomAvailabilityZonesSyncOverride(input, reporting)
+            return try describeCustomAvailabilityZonesSyncOverride(input)
         }
 
         return CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones.__default
@@ -2794,10 +2698,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClusterBacktracksAsync(
             input: RDSModel.DescribeDBClusterBacktracksMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, RDSError>) -> ()) throws {
         if let describeDBClusterBacktracksAsyncOverride = describeDBClusterBacktracksAsyncOverride {
-            return try describeDBClusterBacktracksAsyncOverride(input, reporting, completion)
+            return try describeDBClusterBacktracksAsyncOverride(input, completion)
         }
 
         let result = DBClusterBacktrackMessageForDescribeDBClusterBacktracks.__default
@@ -2815,10 +2718,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterBacktrackNotFound, dBClusterNotFound.
      */
     public func describeDBClusterBacktracksSync(
-            input: RDSModel.DescribeDBClusterBacktracksMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
+            input: RDSModel.DescribeDBClusterBacktracksMessage) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
         if let describeDBClusterBacktracksSyncOverride = describeDBClusterBacktracksSyncOverride {
-            return try describeDBClusterBacktracksSyncOverride(input, reporting)
+            return try describeDBClusterBacktracksSyncOverride(input)
         }
 
         return DBClusterBacktrackMessageForDescribeDBClusterBacktracks.__default
@@ -2836,10 +2738,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClusterEndpointsAsync(
             input: RDSModel.DescribeDBClusterEndpointsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, RDSError>) -> ()) throws {
         if let describeDBClusterEndpointsAsyncOverride = describeDBClusterEndpointsAsyncOverride {
-            return try describeDBClusterEndpointsAsyncOverride(input, reporting, completion)
+            return try describeDBClusterEndpointsAsyncOverride(input, completion)
         }
 
         let result = DBClusterEndpointMessageForDescribeDBClusterEndpoints.__default
@@ -2857,10 +2758,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound.
      */
     public func describeDBClusterEndpointsSync(
-            input: RDSModel.DescribeDBClusterEndpointsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints {
+            input: RDSModel.DescribeDBClusterEndpointsMessage) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints {
         if let describeDBClusterEndpointsSyncOverride = describeDBClusterEndpointsSyncOverride {
-            return try describeDBClusterEndpointsSyncOverride(input, reporting)
+            return try describeDBClusterEndpointsSyncOverride(input)
         }
 
         return DBClusterEndpointMessageForDescribeDBClusterEndpoints.__default
@@ -2878,10 +2778,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClusterParameterGroupsAsync(
             input: RDSModel.DescribeDBClusterParameterGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, RDSError>) -> ()) throws {
         if let describeDBClusterParameterGroupsAsyncOverride = describeDBClusterParameterGroupsAsyncOverride {
-            return try describeDBClusterParameterGroupsAsyncOverride(input, reporting, completion)
+            return try describeDBClusterParameterGroupsAsyncOverride(input, completion)
         }
 
         let result = DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups.__default
@@ -2899,10 +2798,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupNotFound.
      */
     public func describeDBClusterParameterGroupsSync(
-            input: RDSModel.DescribeDBClusterParameterGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups {
+            input: RDSModel.DescribeDBClusterParameterGroupsMessage) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups {
         if let describeDBClusterParameterGroupsSyncOverride = describeDBClusterParameterGroupsSyncOverride {
-            return try describeDBClusterParameterGroupsSyncOverride(input, reporting)
+            return try describeDBClusterParameterGroupsSyncOverride(input)
         }
 
         return DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups.__default
@@ -2920,10 +2818,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClusterParametersAsync(
             input: RDSModel.DescribeDBClusterParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, RDSError>) -> ()) throws {
         if let describeDBClusterParametersAsyncOverride = describeDBClusterParametersAsyncOverride {
-            return try describeDBClusterParametersAsyncOverride(input, reporting, completion)
+            return try describeDBClusterParametersAsyncOverride(input, completion)
         }
 
         let result = DBClusterParameterGroupDetailsForDescribeDBClusterParameters.__default
@@ -2941,10 +2838,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupNotFound.
      */
     public func describeDBClusterParametersSync(
-            input: RDSModel.DescribeDBClusterParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
+            input: RDSModel.DescribeDBClusterParametersMessage) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
         if let describeDBClusterParametersSyncOverride = describeDBClusterParametersSyncOverride {
-            return try describeDBClusterParametersSyncOverride(input, reporting)
+            return try describeDBClusterParametersSyncOverride(input)
         }
 
         return DBClusterParameterGroupDetailsForDescribeDBClusterParameters.__default
@@ -2962,10 +2858,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClusterSnapshotAttributesAsync(
             input: RDSModel.DescribeDBClusterSnapshotAttributesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, RDSError>) -> ()) throws {
         if let describeDBClusterSnapshotAttributesAsyncOverride = describeDBClusterSnapshotAttributesAsyncOverride {
-            return try describeDBClusterSnapshotAttributesAsyncOverride(input, reporting, completion)
+            return try describeDBClusterSnapshotAttributesAsyncOverride(input, completion)
         }
 
         let result = DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes.__default
@@ -2983,10 +2878,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterSnapshotNotFound.
      */
     public func describeDBClusterSnapshotAttributesSync(
-            input: RDSModel.DescribeDBClusterSnapshotAttributesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes {
+            input: RDSModel.DescribeDBClusterSnapshotAttributesMessage) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes {
         if let describeDBClusterSnapshotAttributesSyncOverride = describeDBClusterSnapshotAttributesSyncOverride {
-            return try describeDBClusterSnapshotAttributesSyncOverride(input, reporting)
+            return try describeDBClusterSnapshotAttributesSyncOverride(input)
         }
 
         return DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes.__default
@@ -3004,10 +2898,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClusterSnapshotsAsync(
             input: RDSModel.DescribeDBClusterSnapshotsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, RDSError>) -> ()) throws {
         if let describeDBClusterSnapshotsAsyncOverride = describeDBClusterSnapshotsAsyncOverride {
-            return try describeDBClusterSnapshotsAsyncOverride(input, reporting, completion)
+            return try describeDBClusterSnapshotsAsyncOverride(input, completion)
         }
 
         let result = DBClusterSnapshotMessageForDescribeDBClusterSnapshots.__default
@@ -3025,10 +2918,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterSnapshotNotFound.
      */
     public func describeDBClusterSnapshotsSync(
-            input: RDSModel.DescribeDBClusterSnapshotsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
+            input: RDSModel.DescribeDBClusterSnapshotsMessage) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
         if let describeDBClusterSnapshotsSyncOverride = describeDBClusterSnapshotsSyncOverride {
-            return try describeDBClusterSnapshotsSyncOverride(input, reporting)
+            return try describeDBClusterSnapshotsSyncOverride(input)
         }
 
         return DBClusterSnapshotMessageForDescribeDBClusterSnapshots.__default
@@ -3046,10 +2938,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBClustersAsync(
             input: RDSModel.DescribeDBClustersMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, RDSError>) -> ()) throws {
         if let describeDBClustersAsyncOverride = describeDBClustersAsyncOverride {
-            return try describeDBClustersAsyncOverride(input, reporting, completion)
+            return try describeDBClustersAsyncOverride(input, completion)
         }
 
         let result = DBClusterMessageForDescribeDBClusters.__default
@@ -3067,10 +2958,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound.
      */
     public func describeDBClustersSync(
-            input: RDSModel.DescribeDBClustersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterMessageForDescribeDBClusters {
+            input: RDSModel.DescribeDBClustersMessage) throws -> RDSModel.DBClusterMessageForDescribeDBClusters {
         if let describeDBClustersSyncOverride = describeDBClustersSyncOverride {
-            return try describeDBClustersSyncOverride(input, reporting)
+            return try describeDBClustersSyncOverride(input)
         }
 
         return DBClusterMessageForDescribeDBClusters.__default
@@ -3087,10 +2977,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBEngineVersionsAsync(
             input: RDSModel.DescribeDBEngineVersionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, RDSError>) -> ()) throws {
         if let describeDBEngineVersionsAsyncOverride = describeDBEngineVersionsAsyncOverride {
-            return try describeDBEngineVersionsAsyncOverride(input, reporting, completion)
+            return try describeDBEngineVersionsAsyncOverride(input, completion)
         }
 
         let result = DBEngineVersionMessageForDescribeDBEngineVersions.__default
@@ -3107,10 +2996,9 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     public func describeDBEngineVersionsSync(
-            input: RDSModel.DescribeDBEngineVersionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions {
+            input: RDSModel.DescribeDBEngineVersionsMessage) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions {
         if let describeDBEngineVersionsSyncOverride = describeDBEngineVersionsSyncOverride {
-            return try describeDBEngineVersionsSyncOverride(input, reporting)
+            return try describeDBEngineVersionsSyncOverride(input)
         }
 
         return DBEngineVersionMessageForDescribeDBEngineVersions.__default
@@ -3128,10 +3016,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBInstanceAutomatedBackupsAsync(
             input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, RDSError>) -> ()) throws {
         if let describeDBInstanceAutomatedBackupsAsyncOverride = describeDBInstanceAutomatedBackupsAsyncOverride {
-            return try describeDBInstanceAutomatedBackupsAsyncOverride(input, reporting, completion)
+            return try describeDBInstanceAutomatedBackupsAsyncOverride(input, completion)
         }
 
         let result = DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups.__default
@@ -3149,10 +3036,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceAutomatedBackupNotFound.
      */
     public func describeDBInstanceAutomatedBackupsSync(
-            input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups {
+            input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups {
         if let describeDBInstanceAutomatedBackupsSyncOverride = describeDBInstanceAutomatedBackupsSyncOverride {
-            return try describeDBInstanceAutomatedBackupsSyncOverride(input, reporting)
+            return try describeDBInstanceAutomatedBackupsSyncOverride(input)
         }
 
         return DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups.__default
@@ -3170,10 +3056,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBInstancesAsync(
             input: RDSModel.DescribeDBInstancesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, RDSError>) -> ()) throws {
         if let describeDBInstancesAsyncOverride = describeDBInstancesAsyncOverride {
-            return try describeDBInstancesAsyncOverride(input, reporting, completion)
+            return try describeDBInstancesAsyncOverride(input, completion)
         }
 
         let result = DBInstanceMessageForDescribeDBInstances.__default
@@ -3191,10 +3076,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceNotFound.
      */
     public func describeDBInstancesSync(
-            input: RDSModel.DescribeDBInstancesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances {
+            input: RDSModel.DescribeDBInstancesMessage) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances {
         if let describeDBInstancesSyncOverride = describeDBInstancesSyncOverride {
-            return try describeDBInstancesSyncOverride(input, reporting)
+            return try describeDBInstancesSyncOverride(input)
         }
 
         return DBInstanceMessageForDescribeDBInstances.__default
@@ -3212,10 +3096,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBLogFilesAsync(
             input: RDSModel.DescribeDBLogFilesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, RDSError>) -> ()) throws {
         if let describeDBLogFilesAsyncOverride = describeDBLogFilesAsyncOverride {
-            return try describeDBLogFilesAsyncOverride(input, reporting, completion)
+            return try describeDBLogFilesAsyncOverride(input, completion)
         }
 
         let result = DescribeDBLogFilesResponseForDescribeDBLogFiles.__default
@@ -3233,10 +3116,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceNotFound.
      */
     public func describeDBLogFilesSync(
-            input: RDSModel.DescribeDBLogFilesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles {
+            input: RDSModel.DescribeDBLogFilesMessage) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles {
         if let describeDBLogFilesSyncOverride = describeDBLogFilesSyncOverride {
-            return try describeDBLogFilesSyncOverride(input, reporting)
+            return try describeDBLogFilesSyncOverride(input)
         }
 
         return DescribeDBLogFilesResponseForDescribeDBLogFiles.__default
@@ -3254,10 +3136,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBParameterGroupsAsync(
             input: RDSModel.DescribeDBParameterGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, RDSError>) -> ()) throws {
         if let describeDBParameterGroupsAsyncOverride = describeDBParameterGroupsAsyncOverride {
-            return try describeDBParameterGroupsAsyncOverride(input, reporting, completion)
+            return try describeDBParameterGroupsAsyncOverride(input, completion)
         }
 
         let result = DBParameterGroupsMessageForDescribeDBParameterGroups.__default
@@ -3275,10 +3156,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupNotFound.
      */
     public func describeDBParameterGroupsSync(
-            input: RDSModel.DescribeDBParameterGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups {
+            input: RDSModel.DescribeDBParameterGroupsMessage) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups {
         if let describeDBParameterGroupsSyncOverride = describeDBParameterGroupsSyncOverride {
-            return try describeDBParameterGroupsSyncOverride(input, reporting)
+            return try describeDBParameterGroupsSyncOverride(input)
         }
 
         return DBParameterGroupsMessageForDescribeDBParameterGroups.__default
@@ -3296,10 +3176,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBParametersAsync(
             input: RDSModel.DescribeDBParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, RDSError>) -> ()) throws {
         if let describeDBParametersAsyncOverride = describeDBParametersAsyncOverride {
-            return try describeDBParametersAsyncOverride(input, reporting, completion)
+            return try describeDBParametersAsyncOverride(input, completion)
         }
 
         let result = DBParameterGroupDetailsForDescribeDBParameters.__default
@@ -3317,10 +3196,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupNotFound.
      */
     public func describeDBParametersSync(
-            input: RDSModel.DescribeDBParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters {
+            input: RDSModel.DescribeDBParametersMessage) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters {
         if let describeDBParametersSyncOverride = describeDBParametersSyncOverride {
-            return try describeDBParametersSyncOverride(input, reporting)
+            return try describeDBParametersSyncOverride(input)
         }
 
         return DBParameterGroupDetailsForDescribeDBParameters.__default
@@ -3338,10 +3216,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBProxiesAsync(
             input: RDSModel.DescribeDBProxiesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, RDSError>) -> ()) throws {
         if let describeDBProxiesAsyncOverride = describeDBProxiesAsyncOverride {
-            return try describeDBProxiesAsyncOverride(input, reporting, completion)
+            return try describeDBProxiesAsyncOverride(input, completion)
         }
 
         let result = DescribeDBProxiesResponseForDescribeDBProxies.__default
@@ -3359,10 +3236,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBProxyNotFound.
      */
     public func describeDBProxiesSync(
-            input: RDSModel.DescribeDBProxiesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies {
+            input: RDSModel.DescribeDBProxiesRequest) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies {
         if let describeDBProxiesSyncOverride = describeDBProxiesSyncOverride {
-            return try describeDBProxiesSyncOverride(input, reporting)
+            return try describeDBProxiesSyncOverride(input)
         }
 
         return DescribeDBProxiesResponseForDescribeDBProxies.__default
@@ -3380,10 +3256,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBProxyTargetGroupsAsync(
             input: RDSModel.DescribeDBProxyTargetGroupsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, RDSError>) -> ()) throws {
         if let describeDBProxyTargetGroupsAsyncOverride = describeDBProxyTargetGroupsAsyncOverride {
-            return try describeDBProxyTargetGroupsAsyncOverride(input, reporting, completion)
+            return try describeDBProxyTargetGroupsAsyncOverride(input, completion)
         }
 
         let result = DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups.__default
@@ -3401,10 +3276,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBProxyTargetGroupNotFound.
      */
     public func describeDBProxyTargetGroupsSync(
-            input: RDSModel.DescribeDBProxyTargetGroupsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
+            input: RDSModel.DescribeDBProxyTargetGroupsRequest) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
         if let describeDBProxyTargetGroupsSyncOverride = describeDBProxyTargetGroupsSyncOverride {
-            return try describeDBProxyTargetGroupsSyncOverride(input, reporting)
+            return try describeDBProxyTargetGroupsSyncOverride(input)
         }
 
         return DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups.__default
@@ -3422,10 +3296,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBProxyTargetsAsync(
             input: RDSModel.DescribeDBProxyTargetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, RDSError>) -> ()) throws {
         if let describeDBProxyTargetsAsyncOverride = describeDBProxyTargetsAsyncOverride {
-            return try describeDBProxyTargetsAsyncOverride(input, reporting, completion)
+            return try describeDBProxyTargetsAsyncOverride(input, completion)
         }
 
         let result = DescribeDBProxyTargetsResponseForDescribeDBProxyTargets.__default
@@ -3443,10 +3316,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
     public func describeDBProxyTargetsSync(
-            input: RDSModel.DescribeDBProxyTargetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
+            input: RDSModel.DescribeDBProxyTargetsRequest) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
         if let describeDBProxyTargetsSyncOverride = describeDBProxyTargetsSyncOverride {
-            return try describeDBProxyTargetsSyncOverride(input, reporting)
+            return try describeDBProxyTargetsSyncOverride(input)
         }
 
         return DescribeDBProxyTargetsResponseForDescribeDBProxyTargets.__default
@@ -3464,10 +3336,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBSecurityGroupsAsync(
             input: RDSModel.DescribeDBSecurityGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, RDSError>) -> ()) throws {
         if let describeDBSecurityGroupsAsyncOverride = describeDBSecurityGroupsAsyncOverride {
-            return try describeDBSecurityGroupsAsyncOverride(input, reporting, completion)
+            return try describeDBSecurityGroupsAsyncOverride(input, completion)
         }
 
         let result = DBSecurityGroupMessageForDescribeDBSecurityGroups.__default
@@ -3485,10 +3356,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBSecurityGroupNotFound.
      */
     public func describeDBSecurityGroupsSync(
-            input: RDSModel.DescribeDBSecurityGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups {
+            input: RDSModel.DescribeDBSecurityGroupsMessage) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups {
         if let describeDBSecurityGroupsSyncOverride = describeDBSecurityGroupsSyncOverride {
-            return try describeDBSecurityGroupsSyncOverride(input, reporting)
+            return try describeDBSecurityGroupsSyncOverride(input)
         }
 
         return DBSecurityGroupMessageForDescribeDBSecurityGroups.__default
@@ -3506,10 +3376,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBSnapshotAttributesAsync(
             input: RDSModel.DescribeDBSnapshotAttributesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, RDSError>) -> ()) throws {
         if let describeDBSnapshotAttributesAsyncOverride = describeDBSnapshotAttributesAsyncOverride {
-            return try describeDBSnapshotAttributesAsyncOverride(input, reporting, completion)
+            return try describeDBSnapshotAttributesAsyncOverride(input, completion)
         }
 
         let result = DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes.__default
@@ -3527,10 +3396,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBSnapshotNotFound.
      */
     public func describeDBSnapshotAttributesSync(
-            input: RDSModel.DescribeDBSnapshotAttributesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes {
+            input: RDSModel.DescribeDBSnapshotAttributesMessage) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes {
         if let describeDBSnapshotAttributesSyncOverride = describeDBSnapshotAttributesSyncOverride {
-            return try describeDBSnapshotAttributesSyncOverride(input, reporting)
+            return try describeDBSnapshotAttributesSyncOverride(input)
         }
 
         return DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes.__default
@@ -3548,10 +3416,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBSnapshotsAsync(
             input: RDSModel.DescribeDBSnapshotsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, RDSError>) -> ()) throws {
         if let describeDBSnapshotsAsyncOverride = describeDBSnapshotsAsyncOverride {
-            return try describeDBSnapshotsAsyncOverride(input, reporting, completion)
+            return try describeDBSnapshotsAsyncOverride(input, completion)
         }
 
         let result = DBSnapshotMessageForDescribeDBSnapshots.__default
@@ -3569,10 +3436,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBSnapshotNotFound.
      */
     public func describeDBSnapshotsSync(
-            input: RDSModel.DescribeDBSnapshotsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots {
+            input: RDSModel.DescribeDBSnapshotsMessage) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots {
         if let describeDBSnapshotsSyncOverride = describeDBSnapshotsSyncOverride {
-            return try describeDBSnapshotsSyncOverride(input, reporting)
+            return try describeDBSnapshotsSyncOverride(input)
         }
 
         return DBSnapshotMessageForDescribeDBSnapshots.__default
@@ -3590,10 +3456,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeDBSubnetGroupsAsync(
             input: RDSModel.DescribeDBSubnetGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, RDSError>) -> ()) throws {
         if let describeDBSubnetGroupsAsyncOverride = describeDBSubnetGroupsAsyncOverride {
-            return try describeDBSubnetGroupsAsyncOverride(input, reporting, completion)
+            return try describeDBSubnetGroupsAsyncOverride(input, completion)
         }
 
         let result = DBSubnetGroupMessageForDescribeDBSubnetGroups.__default
@@ -3611,10 +3476,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBSubnetGroupNotFound.
      */
     public func describeDBSubnetGroupsSync(
-            input: RDSModel.DescribeDBSubnetGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups {
+            input: RDSModel.DescribeDBSubnetGroupsMessage) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups {
         if let describeDBSubnetGroupsSyncOverride = describeDBSubnetGroupsSyncOverride {
-            return try describeDBSubnetGroupsSyncOverride(input, reporting)
+            return try describeDBSubnetGroupsSyncOverride(input)
         }
 
         return DBSubnetGroupMessageForDescribeDBSubnetGroups.__default
@@ -3631,10 +3495,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeEngineDefaultClusterParametersAsync(
             input: RDSModel.DescribeEngineDefaultClusterParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, RDSError>) -> ()) throws {
         if let describeEngineDefaultClusterParametersAsyncOverride = describeEngineDefaultClusterParametersAsyncOverride {
-            return try describeEngineDefaultClusterParametersAsyncOverride(input, reporting, completion)
+            return try describeEngineDefaultClusterParametersAsyncOverride(input, completion)
         }
 
         let result = DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters.__default
@@ -3651,10 +3514,9 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     public func describeEngineDefaultClusterParametersSync(
-            input: RDSModel.DescribeEngineDefaultClusterParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters {
+            input: RDSModel.DescribeEngineDefaultClusterParametersMessage) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters {
         if let describeEngineDefaultClusterParametersSyncOverride = describeEngineDefaultClusterParametersSyncOverride {
-            return try describeEngineDefaultClusterParametersSyncOverride(input, reporting)
+            return try describeEngineDefaultClusterParametersSyncOverride(input)
         }
 
         return DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters.__default
@@ -3671,10 +3533,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeEngineDefaultParametersAsync(
             input: RDSModel.DescribeEngineDefaultParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, RDSError>) -> ()) throws {
         if let describeEngineDefaultParametersAsyncOverride = describeEngineDefaultParametersAsyncOverride {
-            return try describeEngineDefaultParametersAsyncOverride(input, reporting, completion)
+            return try describeEngineDefaultParametersAsyncOverride(input, completion)
         }
 
         let result = DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters.__default
@@ -3691,10 +3552,9 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     public func describeEngineDefaultParametersSync(
-            input: RDSModel.DescribeEngineDefaultParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters {
+            input: RDSModel.DescribeEngineDefaultParametersMessage) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters {
         if let describeEngineDefaultParametersSyncOverride = describeEngineDefaultParametersSyncOverride {
-            return try describeEngineDefaultParametersSyncOverride(input, reporting)
+            return try describeEngineDefaultParametersSyncOverride(input)
         }
 
         return DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters.__default
@@ -3711,10 +3571,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeEventCategoriesAsync(
             input: RDSModel.DescribeEventCategoriesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, RDSError>) -> ()) throws {
         if let describeEventCategoriesAsyncOverride = describeEventCategoriesAsyncOverride {
-            return try describeEventCategoriesAsyncOverride(input, reporting, completion)
+            return try describeEventCategoriesAsyncOverride(input, completion)
         }
 
         let result = EventCategoriesMessageForDescribeEventCategories.__default
@@ -3731,10 +3590,9 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     public func describeEventCategoriesSync(
-            input: RDSModel.DescribeEventCategoriesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories {
+            input: RDSModel.DescribeEventCategoriesMessage) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories {
         if let describeEventCategoriesSyncOverride = describeEventCategoriesSyncOverride {
-            return try describeEventCategoriesSyncOverride(input, reporting)
+            return try describeEventCategoriesSyncOverride(input)
         }
 
         return EventCategoriesMessageForDescribeEventCategories.__default
@@ -3752,10 +3610,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeEventSubscriptionsAsync(
             input: RDSModel.DescribeEventSubscriptionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, RDSError>) -> ()) throws {
         if let describeEventSubscriptionsAsyncOverride = describeEventSubscriptionsAsyncOverride {
-            return try describeEventSubscriptionsAsyncOverride(input, reporting, completion)
+            return try describeEventSubscriptionsAsyncOverride(input, completion)
         }
 
         let result = EventSubscriptionsMessageForDescribeEventSubscriptions.__default
@@ -3773,10 +3630,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: subscriptionNotFound.
      */
     public func describeEventSubscriptionsSync(
-            input: RDSModel.DescribeEventSubscriptionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions {
+            input: RDSModel.DescribeEventSubscriptionsMessage) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions {
         if let describeEventSubscriptionsSyncOverride = describeEventSubscriptionsSyncOverride {
-            return try describeEventSubscriptionsSyncOverride(input, reporting)
+            return try describeEventSubscriptionsSyncOverride(input)
         }
 
         return EventSubscriptionsMessageForDescribeEventSubscriptions.__default
@@ -3793,10 +3649,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeEventsAsync(
             input: RDSModel.DescribeEventsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, RDSError>) -> ()) throws {
         if let describeEventsAsyncOverride = describeEventsAsyncOverride {
-            return try describeEventsAsyncOverride(input, reporting, completion)
+            return try describeEventsAsyncOverride(input, completion)
         }
 
         let result = EventsMessageForDescribeEvents.__default
@@ -3813,10 +3668,9 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     public func describeEventsSync(
-            input: RDSModel.DescribeEventsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventsMessageForDescribeEvents {
+            input: RDSModel.DescribeEventsMessage) throws -> RDSModel.EventsMessageForDescribeEvents {
         if let describeEventsSyncOverride = describeEventsSyncOverride {
-            return try describeEventsSyncOverride(input, reporting)
+            return try describeEventsSyncOverride(input)
         }
 
         return EventsMessageForDescribeEvents.__default
@@ -3834,10 +3688,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeExportTasksAsync(
             input: RDSModel.DescribeExportTasksMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, RDSError>) -> ()) throws {
         if let describeExportTasksAsyncOverride = describeExportTasksAsyncOverride {
-            return try describeExportTasksAsyncOverride(input, reporting, completion)
+            return try describeExportTasksAsyncOverride(input, completion)
         }
 
         let result = ExportTasksMessageForDescribeExportTasks.__default
@@ -3855,10 +3708,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: exportTaskNotFound.
      */
     public func describeExportTasksSync(
-            input: RDSModel.DescribeExportTasksMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks {
+            input: RDSModel.DescribeExportTasksMessage) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks {
         if let describeExportTasksSyncOverride = describeExportTasksSyncOverride {
-            return try describeExportTasksSyncOverride(input, reporting)
+            return try describeExportTasksSyncOverride(input)
         }
 
         return ExportTasksMessageForDescribeExportTasks.__default
@@ -3876,10 +3728,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeGlobalClustersAsync(
             input: RDSModel.DescribeGlobalClustersMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, RDSError>) -> ()) throws {
         if let describeGlobalClustersAsyncOverride = describeGlobalClustersAsyncOverride {
-            return try describeGlobalClustersAsyncOverride(input, reporting, completion)
+            return try describeGlobalClustersAsyncOverride(input, completion)
         }
 
         let result = GlobalClustersMessageForDescribeGlobalClusters.__default
@@ -3897,10 +3748,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: globalClusterNotFound.
      */
     public func describeGlobalClustersSync(
-            input: RDSModel.DescribeGlobalClustersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
+            input: RDSModel.DescribeGlobalClustersMessage) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
         if let describeGlobalClustersSyncOverride = describeGlobalClustersSyncOverride {
-            return try describeGlobalClustersSyncOverride(input, reporting)
+            return try describeGlobalClustersSyncOverride(input)
         }
 
         return GlobalClustersMessageForDescribeGlobalClusters.__default
@@ -3918,10 +3768,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeInstallationMediaAsync(
             input: RDSModel.DescribeInstallationMediaMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, RDSError>) -> ()) throws {
         if let describeInstallationMediaAsyncOverride = describeInstallationMediaAsyncOverride {
-            return try describeInstallationMediaAsyncOverride(input, reporting, completion)
+            return try describeInstallationMediaAsyncOverride(input, completion)
         }
 
         let result = InstallationMediaMessageForDescribeInstallationMedia.__default
@@ -3939,10 +3788,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: installationMediaNotFound.
      */
     public func describeInstallationMediaSync(
-            input: RDSModel.DescribeInstallationMediaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
+            input: RDSModel.DescribeInstallationMediaMessage) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
         if let describeInstallationMediaSyncOverride = describeInstallationMediaSyncOverride {
-            return try describeInstallationMediaSyncOverride(input, reporting)
+            return try describeInstallationMediaSyncOverride(input)
         }
 
         return InstallationMediaMessageForDescribeInstallationMedia.__default
@@ -3959,10 +3807,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeOptionGroupOptionsAsync(
             input: RDSModel.DescribeOptionGroupOptionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, RDSError>) -> ()) throws {
         if let describeOptionGroupOptionsAsyncOverride = describeOptionGroupOptionsAsyncOverride {
-            return try describeOptionGroupOptionsAsyncOverride(input, reporting, completion)
+            return try describeOptionGroupOptionsAsyncOverride(input, completion)
         }
 
         let result = OptionGroupOptionsMessageForDescribeOptionGroupOptions.__default
@@ -3979,10 +3826,9 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     public func describeOptionGroupOptionsSync(
-            input: RDSModel.DescribeOptionGroupOptionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions {
+            input: RDSModel.DescribeOptionGroupOptionsMessage) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions {
         if let describeOptionGroupOptionsSyncOverride = describeOptionGroupOptionsSyncOverride {
-            return try describeOptionGroupOptionsSyncOverride(input, reporting)
+            return try describeOptionGroupOptionsSyncOverride(input)
         }
 
         return OptionGroupOptionsMessageForDescribeOptionGroupOptions.__default
@@ -4000,10 +3846,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeOptionGroupsAsync(
             input: RDSModel.DescribeOptionGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, RDSError>) -> ()) throws {
         if let describeOptionGroupsAsyncOverride = describeOptionGroupsAsyncOverride {
-            return try describeOptionGroupsAsyncOverride(input, reporting, completion)
+            return try describeOptionGroupsAsyncOverride(input, completion)
         }
 
         let result = OptionGroupsForDescribeOptionGroups.__default
@@ -4021,10 +3866,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: optionGroupNotFound.
      */
     public func describeOptionGroupsSync(
-            input: RDSModel.DescribeOptionGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OptionGroupsForDescribeOptionGroups {
+            input: RDSModel.DescribeOptionGroupsMessage) throws -> RDSModel.OptionGroupsForDescribeOptionGroups {
         if let describeOptionGroupsSyncOverride = describeOptionGroupsSyncOverride {
-            return try describeOptionGroupsSyncOverride(input, reporting)
+            return try describeOptionGroupsSyncOverride(input)
         }
 
         return OptionGroupsForDescribeOptionGroups.__default
@@ -4041,10 +3885,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeOrderableDBInstanceOptionsAsync(
             input: RDSModel.DescribeOrderableDBInstanceOptionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, RDSError>) -> ()) throws {
         if let describeOrderableDBInstanceOptionsAsyncOverride = describeOrderableDBInstanceOptionsAsyncOverride {
-            return try describeOrderableDBInstanceOptionsAsyncOverride(input, reporting, completion)
+            return try describeOrderableDBInstanceOptionsAsyncOverride(input, completion)
         }
 
         let result = OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions.__default
@@ -4061,10 +3904,9 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     public func describeOrderableDBInstanceOptionsSync(
-            input: RDSModel.DescribeOrderableDBInstanceOptionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions {
+            input: RDSModel.DescribeOrderableDBInstanceOptionsMessage) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions {
         if let describeOrderableDBInstanceOptionsSyncOverride = describeOrderableDBInstanceOptionsSyncOverride {
-            return try describeOrderableDBInstanceOptionsSyncOverride(input, reporting)
+            return try describeOrderableDBInstanceOptionsSyncOverride(input)
         }
 
         return OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions.__default
@@ -4082,10 +3924,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describePendingMaintenanceActionsAsync(
             input: RDSModel.DescribePendingMaintenanceActionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, RDSError>) -> ()) throws {
         if let describePendingMaintenanceActionsAsyncOverride = describePendingMaintenanceActionsAsyncOverride {
-            return try describePendingMaintenanceActionsAsyncOverride(input, reporting, completion)
+            return try describePendingMaintenanceActionsAsyncOverride(input, completion)
         }
 
         let result = PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions.__default
@@ -4103,10 +3944,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: resourceNotFound.
      */
     public func describePendingMaintenanceActionsSync(
-            input: RDSModel.DescribePendingMaintenanceActionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions {
+            input: RDSModel.DescribePendingMaintenanceActionsMessage) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions {
         if let describePendingMaintenanceActionsSyncOverride = describePendingMaintenanceActionsSyncOverride {
-            return try describePendingMaintenanceActionsSyncOverride(input, reporting)
+            return try describePendingMaintenanceActionsSyncOverride(input)
         }
 
         return PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions.__default
@@ -4124,10 +3964,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeReservedDBInstancesAsync(
             input: RDSModel.DescribeReservedDBInstancesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, RDSError>) -> ()) throws {
         if let describeReservedDBInstancesAsyncOverride = describeReservedDBInstancesAsyncOverride {
-            return try describeReservedDBInstancesAsyncOverride(input, reporting, completion)
+            return try describeReservedDBInstancesAsyncOverride(input, completion)
         }
 
         let result = ReservedDBInstanceMessageForDescribeReservedDBInstances.__default
@@ -4145,10 +3984,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: reservedDBInstanceNotFound.
      */
     public func describeReservedDBInstancesSync(
-            input: RDSModel.DescribeReservedDBInstancesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances {
+            input: RDSModel.DescribeReservedDBInstancesMessage) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances {
         if let describeReservedDBInstancesSyncOverride = describeReservedDBInstancesSyncOverride {
-            return try describeReservedDBInstancesSyncOverride(input, reporting)
+            return try describeReservedDBInstancesSyncOverride(input)
         }
 
         return ReservedDBInstanceMessageForDescribeReservedDBInstances.__default
@@ -4166,10 +4004,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeReservedDBInstancesOfferingsAsync(
             input: RDSModel.DescribeReservedDBInstancesOfferingsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, RDSError>) -> ()) throws {
         if let describeReservedDBInstancesOfferingsAsyncOverride = describeReservedDBInstancesOfferingsAsyncOverride {
-            return try describeReservedDBInstancesOfferingsAsyncOverride(input, reporting, completion)
+            return try describeReservedDBInstancesOfferingsAsyncOverride(input, completion)
         }
 
         let result = ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings.__default
@@ -4187,10 +4024,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: reservedDBInstancesOfferingNotFound.
      */
     public func describeReservedDBInstancesOfferingsSync(
-            input: RDSModel.DescribeReservedDBInstancesOfferingsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings {
+            input: RDSModel.DescribeReservedDBInstancesOfferingsMessage) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings {
         if let describeReservedDBInstancesOfferingsSyncOverride = describeReservedDBInstancesOfferingsSyncOverride {
-            return try describeReservedDBInstancesOfferingsSyncOverride(input, reporting)
+            return try describeReservedDBInstancesOfferingsSyncOverride(input)
         }
 
         return ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings.__default
@@ -4207,10 +4043,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeSourceRegionsAsync(
             input: RDSModel.DescribeSourceRegionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, RDSError>) -> ()) throws {
         if let describeSourceRegionsAsyncOverride = describeSourceRegionsAsyncOverride {
-            return try describeSourceRegionsAsyncOverride(input, reporting, completion)
+            return try describeSourceRegionsAsyncOverride(input, completion)
         }
 
         let result = SourceRegionMessageForDescribeSourceRegions.__default
@@ -4227,10 +4062,9 @@ public struct MockRDSClient: RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     public func describeSourceRegionsSync(
-            input: RDSModel.DescribeSourceRegionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions {
+            input: RDSModel.DescribeSourceRegionsMessage) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions {
         if let describeSourceRegionsSyncOverride = describeSourceRegionsSyncOverride {
-            return try describeSourceRegionsSyncOverride(input, reporting)
+            return try describeSourceRegionsSyncOverride(input)
         }
 
         return SourceRegionMessageForDescribeSourceRegions.__default
@@ -4248,10 +4082,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func describeValidDBInstanceModificationsAsync(
             input: RDSModel.DescribeValidDBInstanceModificationsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, RDSError>) -> ()) throws {
         if let describeValidDBInstanceModificationsAsyncOverride = describeValidDBInstanceModificationsAsyncOverride {
-            return try describeValidDBInstanceModificationsAsyncOverride(input, reporting, completion)
+            return try describeValidDBInstanceModificationsAsyncOverride(input, completion)
         }
 
         let result = DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications.__default
@@ -4269,10 +4102,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
     public func describeValidDBInstanceModificationsSync(
-            input: RDSModel.DescribeValidDBInstanceModificationsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications {
+            input: RDSModel.DescribeValidDBInstanceModificationsMessage) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications {
         if let describeValidDBInstanceModificationsSyncOverride = describeValidDBInstanceModificationsSyncOverride {
-            return try describeValidDBInstanceModificationsSyncOverride(input, reporting)
+            return try describeValidDBInstanceModificationsSyncOverride(input)
         }
 
         return DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications.__default
@@ -4290,10 +4122,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func downloadDBLogFilePortionAsync(
             input: RDSModel.DownloadDBLogFilePortionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, RDSError>) -> ()) throws {
         if let downloadDBLogFilePortionAsyncOverride = downloadDBLogFilePortionAsyncOverride {
-            return try downloadDBLogFilePortionAsyncOverride(input, reporting, completion)
+            return try downloadDBLogFilePortionAsyncOverride(input, completion)
         }
 
         let result = DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion.__default
@@ -4311,10 +4142,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceNotFound, dBLogFileNotFound.
      */
     public func downloadDBLogFilePortionSync(
-            input: RDSModel.DownloadDBLogFilePortionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
+            input: RDSModel.DownloadDBLogFilePortionMessage) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
         if let downloadDBLogFilePortionSyncOverride = downloadDBLogFilePortionSyncOverride {
-            return try downloadDBLogFilePortionSyncOverride(input, reporting)
+            return try downloadDBLogFilePortionSyncOverride(input)
         }
 
         return DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion.__default
@@ -4332,10 +4162,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func failoverDBClusterAsync(
             input: RDSModel.FailoverDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, RDSError>) -> ()) throws {
         if let failoverDBClusterAsyncOverride = failoverDBClusterAsyncOverride {
-            return try failoverDBClusterAsyncOverride(input, reporting, completion)
+            return try failoverDBClusterAsyncOverride(input, completion)
         }
 
         let result = FailoverDBClusterResultForFailoverDBCluster.__default
@@ -4353,10 +4182,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
     public func failoverDBClusterSync(
-            input: RDSModel.FailoverDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
+            input: RDSModel.FailoverDBClusterMessage) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
         if let failoverDBClusterSyncOverride = failoverDBClusterSyncOverride {
-            return try failoverDBClusterSyncOverride(input, reporting)
+            return try failoverDBClusterSyncOverride(input)
         }
 
         return FailoverDBClusterResultForFailoverDBCluster.__default
@@ -4374,10 +4202,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func importInstallationMediaAsync(
             input: RDSModel.ImportInstallationMediaMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, RDSError>) -> ()) throws {
         if let importInstallationMediaAsyncOverride = importInstallationMediaAsyncOverride {
-            return try importInstallationMediaAsyncOverride(input, reporting, completion)
+            return try importInstallationMediaAsyncOverride(input, completion)
         }
 
         let result = InstallationMediaForImportInstallationMedia.__default
@@ -4395,10 +4222,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
      */
     public func importInstallationMediaSync(
-            input: RDSModel.ImportInstallationMediaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaForImportInstallationMedia {
+            input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia {
         if let importInstallationMediaSyncOverride = importInstallationMediaSyncOverride {
-            return try importInstallationMediaSyncOverride(input, reporting)
+            return try importInstallationMediaSyncOverride(input)
         }
 
         return InstallationMediaForImportInstallationMedia.__default
@@ -4416,10 +4242,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func listTagsForResourceAsync(
             input: RDSModel.ListTagsForResourceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, RDSError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
-            return try listTagsForResourceAsyncOverride(input, reporting, completion)
+            return try listTagsForResourceAsyncOverride(input, completion)
         }
 
         let result = TagListMessageForListTagsForResource.__default
@@ -4437,10 +4262,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
     public func listTagsForResourceSync(
-            input: RDSModel.ListTagsForResourceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.TagListMessageForListTagsForResource {
+            input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource {
         if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
-            return try listTagsForResourceSyncOverride(input, reporting)
+            return try listTagsForResourceSyncOverride(input)
         }
 
         return TagListMessageForListTagsForResource.__default
@@ -4458,10 +4282,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyCertificatesAsync(
             input: RDSModel.ModifyCertificatesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, RDSError>) -> ()) throws {
         if let modifyCertificatesAsyncOverride = modifyCertificatesAsyncOverride {
-            return try modifyCertificatesAsyncOverride(input, reporting, completion)
+            return try modifyCertificatesAsyncOverride(input, completion)
         }
 
         let result = ModifyCertificatesResultForModifyCertificates.__default
@@ -4479,10 +4302,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: certificateNotFound.
      */
     public func modifyCertificatesSync(
-            input: RDSModel.ModifyCertificatesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates {
+            input: RDSModel.ModifyCertificatesMessage) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates {
         if let modifyCertificatesSyncOverride = modifyCertificatesSyncOverride {
-            return try modifyCertificatesSyncOverride(input, reporting)
+            return try modifyCertificatesSyncOverride(input)
         }
 
         return ModifyCertificatesResultForModifyCertificates.__default
@@ -4500,10 +4322,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyCurrentDBClusterCapacityAsync(
             input: RDSModel.ModifyCurrentDBClusterCapacityMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, RDSError>) -> ()) throws {
         if let modifyCurrentDBClusterCapacityAsyncOverride = modifyCurrentDBClusterCapacityAsyncOverride {
-            return try modifyCurrentDBClusterCapacityAsyncOverride(input, reporting, completion)
+            return try modifyCurrentDBClusterCapacityAsyncOverride(input, completion)
         }
 
         let result = DBClusterCapacityInfoForModifyCurrentDBClusterCapacity.__default
@@ -4521,10 +4342,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, invalidDBClusterCapacity, invalidDBClusterState.
      */
     public func modifyCurrentDBClusterCapacitySync(
-            input: RDSModel.ModifyCurrentDBClusterCapacityMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
+            input: RDSModel.ModifyCurrentDBClusterCapacityMessage) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
         if let modifyCurrentDBClusterCapacitySyncOverride = modifyCurrentDBClusterCapacitySyncOverride {
-            return try modifyCurrentDBClusterCapacitySyncOverride(input, reporting)
+            return try modifyCurrentDBClusterCapacitySyncOverride(input)
         }
 
         return DBClusterCapacityInfoForModifyCurrentDBClusterCapacity.__default
@@ -4542,10 +4362,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBClusterAsync(
             input: RDSModel.ModifyDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, RDSError>) -> ()) throws {
         if let modifyDBClusterAsyncOverride = modifyDBClusterAsyncOverride {
-            return try modifyDBClusterAsyncOverride(input, reporting, completion)
+            return try modifyDBClusterAsyncOverride(input, completion)
         }
 
         let result = ModifyDBClusterResultForModifyDBCluster.__default
@@ -4563,10 +4382,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
      */
     public func modifyDBClusterSync(
-            input: RDSModel.ModifyDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster {
+            input: RDSModel.ModifyDBClusterMessage) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster {
         if let modifyDBClusterSyncOverride = modifyDBClusterSyncOverride {
-            return try modifyDBClusterSyncOverride(input, reporting)
+            return try modifyDBClusterSyncOverride(input)
         }
 
         return ModifyDBClusterResultForModifyDBCluster.__default
@@ -4584,10 +4402,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBClusterEndpointAsync(
             input: RDSModel.ModifyDBClusterEndpointMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, RDSError>) -> ()) throws {
         if let modifyDBClusterEndpointAsyncOverride = modifyDBClusterEndpointAsyncOverride {
-            return try modifyDBClusterEndpointAsyncOverride(input, reporting, completion)
+            return try modifyDBClusterEndpointAsyncOverride(input, completion)
         }
 
         let result = DBClusterEndpointForModifyDBClusterEndpoint.__default
@@ -4605,10 +4422,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterEndpointNotFound, dBInstanceNotFound, invalidDBClusterEndpointState, invalidDBClusterState, invalidDBInstanceState.
      */
     public func modifyDBClusterEndpointSync(
-            input: RDSModel.ModifyDBClusterEndpointMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint {
+            input: RDSModel.ModifyDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint {
         if let modifyDBClusterEndpointSyncOverride = modifyDBClusterEndpointSyncOverride {
-            return try modifyDBClusterEndpointSyncOverride(input, reporting)
+            return try modifyDBClusterEndpointSyncOverride(input)
         }
 
         return DBClusterEndpointForModifyDBClusterEndpoint.__default
@@ -4626,10 +4442,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBClusterParameterGroupAsync(
             input: RDSModel.ModifyDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, RDSError>) -> ()) throws {
         if let modifyDBClusterParameterGroupAsyncOverride = modifyDBClusterParameterGroupAsyncOverride {
-            return try modifyDBClusterParameterGroupAsyncOverride(input, reporting, completion)
+            return try modifyDBClusterParameterGroupAsyncOverride(input, completion)
         }
 
         let result = DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup.__default
@@ -4647,10 +4462,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     public func modifyDBClusterParameterGroupSync(
-            input: RDSModel.ModifyDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup {
+            input: RDSModel.ModifyDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup {
         if let modifyDBClusterParameterGroupSyncOverride = modifyDBClusterParameterGroupSyncOverride {
-            return try modifyDBClusterParameterGroupSyncOverride(input, reporting)
+            return try modifyDBClusterParameterGroupSyncOverride(input)
         }
 
         return DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup.__default
@@ -4668,10 +4482,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBClusterSnapshotAttributeAsync(
             input: RDSModel.ModifyDBClusterSnapshotAttributeMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, RDSError>) -> ()) throws {
         if let modifyDBClusterSnapshotAttributeAsyncOverride = modifyDBClusterSnapshotAttributeAsyncOverride {
-            return try modifyDBClusterSnapshotAttributeAsyncOverride(input, reporting, completion)
+            return try modifyDBClusterSnapshotAttributeAsyncOverride(input, completion)
         }
 
         let result = ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute.__default
@@ -4689,10 +4502,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, sharedSnapshotQuotaExceeded.
      */
     public func modifyDBClusterSnapshotAttributeSync(
-            input: RDSModel.ModifyDBClusterSnapshotAttributeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute {
+            input: RDSModel.ModifyDBClusterSnapshotAttributeMessage) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute {
         if let modifyDBClusterSnapshotAttributeSyncOverride = modifyDBClusterSnapshotAttributeSyncOverride {
-            return try modifyDBClusterSnapshotAttributeSyncOverride(input, reporting)
+            return try modifyDBClusterSnapshotAttributeSyncOverride(input)
         }
 
         return ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute.__default
@@ -4710,10 +4522,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBInstanceAsync(
             input: RDSModel.ModifyDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, RDSError>) -> ()) throws {
         if let modifyDBInstanceAsyncOverride = modifyDBInstanceAsyncOverride {
-            return try modifyDBInstanceAsyncOverride(input, reporting, completion)
+            return try modifyDBInstanceAsyncOverride(input, completion)
         }
 
         let result = ModifyDBInstanceResultForModifyDBInstance.__default
@@ -4731,10 +4542,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func modifyDBInstanceSync(
-            input: RDSModel.ModifyDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
+            input: RDSModel.ModifyDBInstanceMessage) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
         if let modifyDBInstanceSyncOverride = modifyDBInstanceSyncOverride {
-            return try modifyDBInstanceSyncOverride(input, reporting)
+            return try modifyDBInstanceSyncOverride(input)
         }
 
         return ModifyDBInstanceResultForModifyDBInstance.__default
@@ -4752,10 +4562,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBParameterGroupAsync(
             input: RDSModel.ModifyDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, RDSError>) -> ()) throws {
         if let modifyDBParameterGroupAsyncOverride = modifyDBParameterGroupAsyncOverride {
-            return try modifyDBParameterGroupAsyncOverride(input, reporting, completion)
+            return try modifyDBParameterGroupAsyncOverride(input, completion)
         }
 
         let result = DBParameterGroupNameMessageForModifyDBParameterGroup.__default
@@ -4773,10 +4582,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     public func modifyDBParameterGroupSync(
-            input: RDSModel.ModifyDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
+            input: RDSModel.ModifyDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
         if let modifyDBParameterGroupSyncOverride = modifyDBParameterGroupSyncOverride {
-            return try modifyDBParameterGroupSyncOverride(input, reporting)
+            return try modifyDBParameterGroupSyncOverride(input)
         }
 
         return DBParameterGroupNameMessageForModifyDBParameterGroup.__default
@@ -4794,10 +4602,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBProxyAsync(
             input: RDSModel.ModifyDBProxyRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, RDSError>) -> ()) throws {
         if let modifyDBProxyAsyncOverride = modifyDBProxyAsyncOverride {
-            return try modifyDBProxyAsyncOverride(input, reporting, completion)
+            return try modifyDBProxyAsyncOverride(input, completion)
         }
 
         let result = ModifyDBProxyResponseForModifyDBProxy.__default
@@ -4815,10 +4622,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
      */
     public func modifyDBProxySync(
-            input: RDSModel.ModifyDBProxyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy {
+            input: RDSModel.ModifyDBProxyRequest) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy {
         if let modifyDBProxySyncOverride = modifyDBProxySyncOverride {
-            return try modifyDBProxySyncOverride(input, reporting)
+            return try modifyDBProxySyncOverride(input)
         }
 
         return ModifyDBProxyResponseForModifyDBProxy.__default
@@ -4836,10 +4642,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBProxyTargetGroupAsync(
             input: RDSModel.ModifyDBProxyTargetGroupRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, RDSError>) -> ()) throws {
         if let modifyDBProxyTargetGroupAsyncOverride = modifyDBProxyTargetGroupAsyncOverride {
-            return try modifyDBProxyTargetGroupAsyncOverride(input, reporting, completion)
+            return try modifyDBProxyTargetGroupAsyncOverride(input, completion)
         }
 
         let result = ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup.__default
@@ -4857,10 +4662,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound.
      */
     public func modifyDBProxyTargetGroupSync(
-            input: RDSModel.ModifyDBProxyTargetGroupRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
+            input: RDSModel.ModifyDBProxyTargetGroupRequest) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
         if let modifyDBProxyTargetGroupSyncOverride = modifyDBProxyTargetGroupSyncOverride {
-            return try modifyDBProxyTargetGroupSyncOverride(input, reporting)
+            return try modifyDBProxyTargetGroupSyncOverride(input)
         }
 
         return ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup.__default
@@ -4878,10 +4682,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBSnapshotAsync(
             input: RDSModel.ModifyDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, RDSError>) -> ()) throws {
         if let modifyDBSnapshotAsyncOverride = modifyDBSnapshotAsyncOverride {
-            return try modifyDBSnapshotAsyncOverride(input, reporting, completion)
+            return try modifyDBSnapshotAsyncOverride(input, completion)
         }
 
         let result = ModifyDBSnapshotResultForModifyDBSnapshot.__default
@@ -4899,10 +4702,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBSnapshotNotFound.
      */
     public func modifyDBSnapshotSync(
-            input: RDSModel.ModifyDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot {
+            input: RDSModel.ModifyDBSnapshotMessage) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot {
         if let modifyDBSnapshotSyncOverride = modifyDBSnapshotSyncOverride {
-            return try modifyDBSnapshotSyncOverride(input, reporting)
+            return try modifyDBSnapshotSyncOverride(input)
         }
 
         return ModifyDBSnapshotResultForModifyDBSnapshot.__default
@@ -4920,10 +4722,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBSnapshotAttributeAsync(
             input: RDSModel.ModifyDBSnapshotAttributeMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, RDSError>) -> ()) throws {
         if let modifyDBSnapshotAttributeAsyncOverride = modifyDBSnapshotAttributeAsyncOverride {
-            return try modifyDBSnapshotAttributeAsyncOverride(input, reporting, completion)
+            return try modifyDBSnapshotAttributeAsyncOverride(input, completion)
         }
 
         let result = ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute.__default
@@ -4941,10 +4742,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBSnapshotNotFound, invalidDBSnapshotState, sharedSnapshotQuotaExceeded.
      */
     public func modifyDBSnapshotAttributeSync(
-            input: RDSModel.ModifyDBSnapshotAttributeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
+            input: RDSModel.ModifyDBSnapshotAttributeMessage) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
         if let modifyDBSnapshotAttributeSyncOverride = modifyDBSnapshotAttributeSyncOverride {
-            return try modifyDBSnapshotAttributeSyncOverride(input, reporting)
+            return try modifyDBSnapshotAttributeSyncOverride(input)
         }
 
         return ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute.__default
@@ -4962,10 +4762,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyDBSubnetGroupAsync(
             input: RDSModel.ModifyDBSubnetGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, RDSError>) -> ()) throws {
         if let modifyDBSubnetGroupAsyncOverride = modifyDBSubnetGroupAsyncOverride {
-            return try modifyDBSubnetGroupAsyncOverride(input, reporting, completion)
+            return try modifyDBSubnetGroupAsyncOverride(input, completion)
         }
 
         let result = ModifyDBSubnetGroupResultForModifyDBSubnetGroup.__default
@@ -4983,10 +4782,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetQuotaExceeded, invalidSubnet, subnetAlreadyInUse.
      */
     public func modifyDBSubnetGroupSync(
-            input: RDSModel.ModifyDBSubnetGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
+            input: RDSModel.ModifyDBSubnetGroupMessage) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
         if let modifyDBSubnetGroupSyncOverride = modifyDBSubnetGroupSyncOverride {
-            return try modifyDBSubnetGroupSyncOverride(input, reporting)
+            return try modifyDBSubnetGroupSyncOverride(input)
         }
 
         return ModifyDBSubnetGroupResultForModifyDBSubnetGroup.__default
@@ -5004,10 +4802,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyEventSubscriptionAsync(
             input: RDSModel.ModifyEventSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, RDSError>) -> ()) throws {
         if let modifyEventSubscriptionAsyncOverride = modifyEventSubscriptionAsyncOverride {
-            return try modifyEventSubscriptionAsyncOverride(input, reporting, completion)
+            return try modifyEventSubscriptionAsyncOverride(input, completion)
         }
 
         let result = ModifyEventSubscriptionResultForModifyEventSubscription.__default
@@ -5025,10 +4822,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, subscriptionCategoryNotFound, subscriptionNotFound.
      */
     public func modifyEventSubscriptionSync(
-            input: RDSModel.ModifyEventSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription {
+            input: RDSModel.ModifyEventSubscriptionMessage) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription {
         if let modifyEventSubscriptionSyncOverride = modifyEventSubscriptionSyncOverride {
-            return try modifyEventSubscriptionSyncOverride(input, reporting)
+            return try modifyEventSubscriptionSyncOverride(input)
         }
 
         return ModifyEventSubscriptionResultForModifyEventSubscription.__default
@@ -5046,10 +4842,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyGlobalClusterAsync(
             input: RDSModel.ModifyGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, RDSError>) -> ()) throws {
         if let modifyGlobalClusterAsyncOverride = modifyGlobalClusterAsyncOverride {
-            return try modifyGlobalClusterAsyncOverride(input, reporting, completion)
+            return try modifyGlobalClusterAsyncOverride(input, completion)
         }
 
         let result = ModifyGlobalClusterResultForModifyGlobalCluster.__default
@@ -5067,10 +4862,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: globalClusterNotFound, invalidGlobalClusterState.
      */
     public func modifyGlobalClusterSync(
-            input: RDSModel.ModifyGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
+            input: RDSModel.ModifyGlobalClusterMessage) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
         if let modifyGlobalClusterSyncOverride = modifyGlobalClusterSyncOverride {
-            return try modifyGlobalClusterSyncOverride(input, reporting)
+            return try modifyGlobalClusterSyncOverride(input)
         }
 
         return ModifyGlobalClusterResultForModifyGlobalCluster.__default
@@ -5088,10 +4882,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func modifyOptionGroupAsync(
             input: RDSModel.ModifyOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, RDSError>) -> ()) throws {
         if let modifyOptionGroupAsyncOverride = modifyOptionGroupAsyncOverride {
-            return try modifyOptionGroupAsyncOverride(input, reporting, completion)
+            return try modifyOptionGroupAsyncOverride(input, completion)
         }
 
         let result = ModifyOptionGroupResultForModifyOptionGroup.__default
@@ -5109,10 +4902,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
     public func modifyOptionGroupSync(
-            input: RDSModel.ModifyOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup {
+            input: RDSModel.ModifyOptionGroupMessage) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup {
         if let modifyOptionGroupSyncOverride = modifyOptionGroupSyncOverride {
-            return try modifyOptionGroupSyncOverride(input, reporting)
+            return try modifyOptionGroupSyncOverride(input)
         }
 
         return ModifyOptionGroupResultForModifyOptionGroup.__default
@@ -5130,10 +4922,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func promoteReadReplicaAsync(
             input: RDSModel.PromoteReadReplicaMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, RDSError>) -> ()) throws {
         if let promoteReadReplicaAsyncOverride = promoteReadReplicaAsyncOverride {
-            return try promoteReadReplicaAsyncOverride(input, reporting, completion)
+            return try promoteReadReplicaAsyncOverride(input, completion)
         }
 
         let result = PromoteReadReplicaResultForPromoteReadReplica.__default
@@ -5151,10 +4942,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
     public func promoteReadReplicaSync(
-            input: RDSModel.PromoteReadReplicaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica {
+            input: RDSModel.PromoteReadReplicaMessage) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica {
         if let promoteReadReplicaSyncOverride = promoteReadReplicaSyncOverride {
-            return try promoteReadReplicaSyncOverride(input, reporting)
+            return try promoteReadReplicaSyncOverride(input)
         }
 
         return PromoteReadReplicaResultForPromoteReadReplica.__default
@@ -5172,10 +4962,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func promoteReadReplicaDBClusterAsync(
             input: RDSModel.PromoteReadReplicaDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, RDSError>) -> ()) throws {
         if let promoteReadReplicaDBClusterAsyncOverride = promoteReadReplicaDBClusterAsyncOverride {
-            return try promoteReadReplicaDBClusterAsyncOverride(input, reporting, completion)
+            return try promoteReadReplicaDBClusterAsyncOverride(input, completion)
         }
 
         let result = PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster.__default
@@ -5193,10 +4982,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, invalidDBClusterState.
      */
     public func promoteReadReplicaDBClusterSync(
-            input: RDSModel.PromoteReadReplicaDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster {
+            input: RDSModel.PromoteReadReplicaDBClusterMessage) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster {
         if let promoteReadReplicaDBClusterSyncOverride = promoteReadReplicaDBClusterSyncOverride {
-            return try promoteReadReplicaDBClusterSyncOverride(input, reporting)
+            return try promoteReadReplicaDBClusterSyncOverride(input)
         }
 
         return PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster.__default
@@ -5214,10 +5002,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func purchaseReservedDBInstancesOfferingAsync(
             input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, RDSError>) -> ()) throws {
         if let purchaseReservedDBInstancesOfferingAsyncOverride = purchaseReservedDBInstancesOfferingAsyncOverride {
-            return try purchaseReservedDBInstancesOfferingAsyncOverride(input, reporting, completion)
+            return try purchaseReservedDBInstancesOfferingAsyncOverride(input, completion)
         }
 
         let result = PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering.__default
@@ -5235,10 +5022,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: reservedDBInstanceAlreadyExists, reservedDBInstanceQuotaExceeded, reservedDBInstancesOfferingNotFound.
      */
     public func purchaseReservedDBInstancesOfferingSync(
-            input: RDSModel.PurchaseReservedDBInstancesOfferingMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering {
+            input: RDSModel.PurchaseReservedDBInstancesOfferingMessage) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering {
         if let purchaseReservedDBInstancesOfferingSyncOverride = purchaseReservedDBInstancesOfferingSyncOverride {
-            return try purchaseReservedDBInstancesOfferingSyncOverride(input, reporting)
+            return try purchaseReservedDBInstancesOfferingSyncOverride(input)
         }
 
         return PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering.__default
@@ -5256,10 +5042,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func rebootDBInstanceAsync(
             input: RDSModel.RebootDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, RDSError>) -> ()) throws {
         if let rebootDBInstanceAsyncOverride = rebootDBInstanceAsyncOverride {
-            return try rebootDBInstanceAsyncOverride(input, reporting, completion)
+            return try rebootDBInstanceAsyncOverride(input, completion)
         }
 
         let result = RebootDBInstanceResultForRebootDBInstance.__default
@@ -5277,10 +5062,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
     public func rebootDBInstanceSync(
-            input: RDSModel.RebootDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
+            input: RDSModel.RebootDBInstanceMessage) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
         if let rebootDBInstanceSyncOverride = rebootDBInstanceSyncOverride {
-            return try rebootDBInstanceSyncOverride(input, reporting)
+            return try rebootDBInstanceSyncOverride(input)
         }
 
         return RebootDBInstanceResultForRebootDBInstance.__default
@@ -5298,10 +5082,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func registerDBProxyTargetsAsync(
             input: RDSModel.RegisterDBProxyTargetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, RDSError>) -> ()) throws {
         if let registerDBProxyTargetsAsyncOverride = registerDBProxyTargetsAsyncOverride {
-            return try registerDBProxyTargetsAsyncOverride(input, reporting, completion)
+            return try registerDBProxyTargetsAsyncOverride(input, completion)
         }
 
         let result = RegisterDBProxyTargetsResponseForRegisterDBProxyTargets.__default
@@ -5319,10 +5102,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
     public func registerDBProxyTargetsSync(
-            input: RDSModel.RegisterDBProxyTargetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
+            input: RDSModel.RegisterDBProxyTargetsRequest) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
         if let registerDBProxyTargetsSyncOverride = registerDBProxyTargetsSyncOverride {
-            return try registerDBProxyTargetsSyncOverride(input, reporting)
+            return try registerDBProxyTargetsSyncOverride(input)
         }
 
         return RegisterDBProxyTargetsResponseForRegisterDBProxyTargets.__default
@@ -5340,10 +5122,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func removeFromGlobalClusterAsync(
             input: RDSModel.RemoveFromGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, RDSError>) -> ()) throws {
         if let removeFromGlobalClusterAsyncOverride = removeFromGlobalClusterAsyncOverride {
-            return try removeFromGlobalClusterAsyncOverride(input, reporting, completion)
+            return try removeFromGlobalClusterAsyncOverride(input, completion)
         }
 
         let result = RemoveFromGlobalClusterResultForRemoveFromGlobalCluster.__default
@@ -5361,10 +5142,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, globalClusterNotFound, invalidGlobalClusterState.
      */
     public func removeFromGlobalClusterSync(
-            input: RDSModel.RemoveFromGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
+            input: RDSModel.RemoveFromGlobalClusterMessage) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
         if let removeFromGlobalClusterSyncOverride = removeFromGlobalClusterSyncOverride {
-            return try removeFromGlobalClusterSyncOverride(input, reporting)
+            return try removeFromGlobalClusterSyncOverride(input)
         }
 
         return RemoveFromGlobalClusterResultForRemoveFromGlobalCluster.__default
@@ -5381,10 +5161,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func removeRoleFromDBClusterAsync(
             input: RDSModel.RemoveRoleFromDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let removeRoleFromDBClusterAsyncOverride = removeRoleFromDBClusterAsyncOverride {
-            return try removeRoleFromDBClusterAsyncOverride(input, reporting, completion)
+            return try removeRoleFromDBClusterAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -5398,10 +5177,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, dBClusterRoleNotFound, invalidDBClusterState.
      */
     public func removeRoleFromDBClusterSync(
-            input: RDSModel.RemoveRoleFromDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: RDSModel.RemoveRoleFromDBClusterMessage) throws {
         if let removeRoleFromDBClusterSyncOverride = removeRoleFromDBClusterSyncOverride {
-            return try removeRoleFromDBClusterSyncOverride(input, reporting)
+            return try removeRoleFromDBClusterSyncOverride(input)
         }
 
     }
@@ -5417,10 +5195,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func removeRoleFromDBInstanceAsync(
             input: RDSModel.RemoveRoleFromDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let removeRoleFromDBInstanceAsyncOverride = removeRoleFromDBInstanceAsyncOverride {
-            return try removeRoleFromDBInstanceAsyncOverride(input, reporting, completion)
+            return try removeRoleFromDBInstanceAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -5434,10 +5211,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceNotFound, dBInstanceRoleNotFound, invalidDBInstanceState.
      */
     public func removeRoleFromDBInstanceSync(
-            input: RDSModel.RemoveRoleFromDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: RDSModel.RemoveRoleFromDBInstanceMessage) throws {
         if let removeRoleFromDBInstanceSyncOverride = removeRoleFromDBInstanceSyncOverride {
-            return try removeRoleFromDBInstanceSyncOverride(input, reporting)
+            return try removeRoleFromDBInstanceSyncOverride(input)
         }
 
     }
@@ -5454,10 +5230,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func removeSourceIdentifierFromSubscriptionAsync(
             input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, RDSError>) -> ()) throws {
         if let removeSourceIdentifierFromSubscriptionAsyncOverride = removeSourceIdentifierFromSubscriptionAsyncOverride {
-            return try removeSourceIdentifierFromSubscriptionAsyncOverride(input, reporting, completion)
+            return try removeSourceIdentifierFromSubscriptionAsyncOverride(input, completion)
         }
 
         let result = RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription.__default
@@ -5475,10 +5250,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: sourceNotFound, subscriptionNotFound.
      */
     public func removeSourceIdentifierFromSubscriptionSync(
-            input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription {
+            input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription {
         if let removeSourceIdentifierFromSubscriptionSyncOverride = removeSourceIdentifierFromSubscriptionSyncOverride {
-            return try removeSourceIdentifierFromSubscriptionSyncOverride(input, reporting)
+            return try removeSourceIdentifierFromSubscriptionSyncOverride(input)
         }
 
         return RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription.__default
@@ -5495,10 +5269,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func removeTagsFromResourceAsync(
             input: RDSModel.RemoveTagsFromResourceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (RDSError?) -> ()) throws {
         if let removeTagsFromResourceAsyncOverride = removeTagsFromResourceAsyncOverride {
-            return try removeTagsFromResourceAsyncOverride(input, reporting, completion)
+            return try removeTagsFromResourceAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -5512,10 +5285,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
     public func removeTagsFromResourceSync(
-            input: RDSModel.RemoveTagsFromResourceMessage,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: RDSModel.RemoveTagsFromResourceMessage) throws {
         if let removeTagsFromResourceSyncOverride = removeTagsFromResourceSyncOverride {
-            return try removeTagsFromResourceSyncOverride(input, reporting)
+            return try removeTagsFromResourceSyncOverride(input)
         }
 
     }
@@ -5532,10 +5304,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func resetDBClusterParameterGroupAsync(
             input: RDSModel.ResetDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, RDSError>) -> ()) throws {
         if let resetDBClusterParameterGroupAsyncOverride = resetDBClusterParameterGroupAsyncOverride {
-            return try resetDBClusterParameterGroupAsyncOverride(input, reporting, completion)
+            return try resetDBClusterParameterGroupAsyncOverride(input, completion)
         }
 
         let result = DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup.__default
@@ -5553,10 +5324,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     public func resetDBClusterParameterGroupSync(
-            input: RDSModel.ResetDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup {
+            input: RDSModel.ResetDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup {
         if let resetDBClusterParameterGroupSyncOverride = resetDBClusterParameterGroupSyncOverride {
-            return try resetDBClusterParameterGroupSyncOverride(input, reporting)
+            return try resetDBClusterParameterGroupSyncOverride(input)
         }
 
         return DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup.__default
@@ -5574,10 +5344,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func resetDBParameterGroupAsync(
             input: RDSModel.ResetDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, RDSError>) -> ()) throws {
         if let resetDBParameterGroupAsyncOverride = resetDBParameterGroupAsyncOverride {
-            return try resetDBParameterGroupAsyncOverride(input, reporting, completion)
+            return try resetDBParameterGroupAsyncOverride(input, completion)
         }
 
         let result = DBParameterGroupNameMessageForResetDBParameterGroup.__default
@@ -5595,10 +5364,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     public func resetDBParameterGroupSync(
-            input: RDSModel.ResetDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup {
+            input: RDSModel.ResetDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup {
         if let resetDBParameterGroupSyncOverride = resetDBParameterGroupSyncOverride {
-            return try resetDBParameterGroupSyncOverride(input, reporting)
+            return try resetDBParameterGroupSyncOverride(input)
         }
 
         return DBParameterGroupNameMessageForResetDBParameterGroup.__default
@@ -5616,10 +5384,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func restoreDBClusterFromS3Async(
             input: RDSModel.RestoreDBClusterFromS3Message, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, RDSError>) -> ()) throws {
         if let restoreDBClusterFromS3AsyncOverride = restoreDBClusterFromS3AsyncOverride {
-            return try restoreDBClusterFromS3AsyncOverride(input, reporting, completion)
+            return try restoreDBClusterFromS3AsyncOverride(input, completion)
         }
 
         let result = RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3.__default
@@ -5637,10 +5404,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
     public func restoreDBClusterFromS3Sync(
-            input: RDSModel.RestoreDBClusterFromS3Message,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
+            input: RDSModel.RestoreDBClusterFromS3Message) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
         if let restoreDBClusterFromS3SyncOverride = restoreDBClusterFromS3SyncOverride {
-            return try restoreDBClusterFromS3SyncOverride(input, reporting)
+            return try restoreDBClusterFromS3SyncOverride(input)
         }
 
         return RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3.__default
@@ -5658,10 +5424,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func restoreDBClusterFromSnapshotAsync(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, RDSError>) -> ()) throws {
         if let restoreDBClusterFromSnapshotAsyncOverride = restoreDBClusterFromSnapshotAsyncOverride {
-            return try restoreDBClusterFromSnapshotAsyncOverride(input, reporting, completion)
+            return try restoreDBClusterFromSnapshotAsyncOverride(input, completion)
         }
 
         let result = RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot.__default
@@ -5679,10 +5444,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
     public func restoreDBClusterFromSnapshotSync(
-            input: RDSModel.RestoreDBClusterFromSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
+            input: RDSModel.RestoreDBClusterFromSnapshotMessage) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
         if let restoreDBClusterFromSnapshotSyncOverride = restoreDBClusterFromSnapshotSyncOverride {
-            return try restoreDBClusterFromSnapshotSyncOverride(input, reporting)
+            return try restoreDBClusterFromSnapshotSyncOverride(input)
         }
 
         return RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot.__default
@@ -5700,10 +5464,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func restoreDBClusterToPointInTimeAsync(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, RDSError>) -> ()) throws {
         if let restoreDBClusterToPointInTimeAsyncOverride = restoreDBClusterToPointInTimeAsyncOverride {
-            return try restoreDBClusterToPointInTimeAsyncOverride(input, reporting, completion)
+            return try restoreDBClusterToPointInTimeAsyncOverride(input, completion)
         }
 
         let result = RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime.__default
@@ -5721,10 +5484,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
     public func restoreDBClusterToPointInTimeSync(
-            input: RDSModel.RestoreDBClusterToPointInTimeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
+            input: RDSModel.RestoreDBClusterToPointInTimeMessage) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
         if let restoreDBClusterToPointInTimeSyncOverride = restoreDBClusterToPointInTimeSyncOverride {
-            return try restoreDBClusterToPointInTimeSyncOverride(input, reporting)
+            return try restoreDBClusterToPointInTimeSyncOverride(input)
         }
 
         return RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime.__default
@@ -5742,10 +5504,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func restoreDBInstanceFromDBSnapshotAsync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, RDSError>) -> ()) throws {
         if let restoreDBInstanceFromDBSnapshotAsyncOverride = restoreDBInstanceFromDBSnapshotAsyncOverride {
-            return try restoreDBInstanceFromDBSnapshotAsyncOverride(input, reporting, completion)
+            return try restoreDBInstanceFromDBSnapshotAsyncOverride(input, completion)
         }
 
         let result = RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot.__default
@@ -5763,10 +5524,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceFromDBSnapshotSync(
-            input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
+            input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
         if let restoreDBInstanceFromDBSnapshotSyncOverride = restoreDBInstanceFromDBSnapshotSyncOverride {
-            return try restoreDBInstanceFromDBSnapshotSyncOverride(input, reporting)
+            return try restoreDBInstanceFromDBSnapshotSyncOverride(input)
         }
 
         return RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot.__default
@@ -5784,10 +5544,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func restoreDBInstanceFromS3Async(
             input: RDSModel.RestoreDBInstanceFromS3Message, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, RDSError>) -> ()) throws {
         if let restoreDBInstanceFromS3AsyncOverride = restoreDBInstanceFromS3AsyncOverride {
-            return try restoreDBInstanceFromS3AsyncOverride(input, reporting, completion)
+            return try restoreDBInstanceFromS3AsyncOverride(input, completion)
         }
 
         let result = RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3.__default
@@ -5805,10 +5564,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceFromS3Sync(
-            input: RDSModel.RestoreDBInstanceFromS3Message,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
+            input: RDSModel.RestoreDBInstanceFromS3Message) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
         if let restoreDBInstanceFromS3SyncOverride = restoreDBInstanceFromS3SyncOverride {
-            return try restoreDBInstanceFromS3SyncOverride(input, reporting)
+            return try restoreDBInstanceFromS3SyncOverride(input)
         }
 
         return RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3.__default
@@ -5826,10 +5584,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func restoreDBInstanceToPointInTimeAsync(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, RDSError>) -> ()) throws {
         if let restoreDBInstanceToPointInTimeAsyncOverride = restoreDBInstanceToPointInTimeAsyncOverride {
-            return try restoreDBInstanceToPointInTimeAsyncOverride(input, reporting, completion)
+            return try restoreDBInstanceToPointInTimeAsyncOverride(input, completion)
         }
 
         let result = RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime.__default
@@ -5847,10 +5604,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceToPointInTimeSync(
-            input: RDSModel.RestoreDBInstanceToPointInTimeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {
+            input: RDSModel.RestoreDBInstanceToPointInTimeMessage) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {
         if let restoreDBInstanceToPointInTimeSyncOverride = restoreDBInstanceToPointInTimeSyncOverride {
-            return try restoreDBInstanceToPointInTimeSyncOverride(input, reporting)
+            return try restoreDBInstanceToPointInTimeSyncOverride(input)
         }
 
         return RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime.__default
@@ -5868,10 +5624,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func revokeDBSecurityGroupIngressAsync(
             input: RDSModel.RevokeDBSecurityGroupIngressMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, RDSError>) -> ()) throws {
         if let revokeDBSecurityGroupIngressAsyncOverride = revokeDBSecurityGroupIngressAsyncOverride {
-            return try revokeDBSecurityGroupIngressAsyncOverride(input, reporting, completion)
+            return try revokeDBSecurityGroupIngressAsyncOverride(input, completion)
         }
 
         let result = RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress.__default
@@ -5889,10 +5644,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: authorizationNotFound, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
     public func revokeDBSecurityGroupIngressSync(
-            input: RDSModel.RevokeDBSecurityGroupIngressMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress {
+            input: RDSModel.RevokeDBSecurityGroupIngressMessage) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress {
         if let revokeDBSecurityGroupIngressSyncOverride = revokeDBSecurityGroupIngressSyncOverride {
-            return try revokeDBSecurityGroupIngressSyncOverride(input, reporting)
+            return try revokeDBSecurityGroupIngressSyncOverride(input)
         }
 
         return RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress.__default
@@ -5910,10 +5664,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func startActivityStreamAsync(
             input: RDSModel.StartActivityStreamRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, RDSError>) -> ()) throws {
         if let startActivityStreamAsyncOverride = startActivityStreamAsyncOverride {
-            return try startActivityStreamAsyncOverride(input, reporting, completion)
+            return try startActivityStreamAsyncOverride(input, completion)
         }
 
         let result = StartActivityStreamResponseForStartActivityStream.__default
@@ -5931,10 +5684,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
      */
     public func startActivityStreamSync(
-            input: RDSModel.StartActivityStreamRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
+            input: RDSModel.StartActivityStreamRequest) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
         if let startActivityStreamSyncOverride = startActivityStreamSyncOverride {
-            return try startActivityStreamSyncOverride(input, reporting)
+            return try startActivityStreamSyncOverride(input)
         }
 
         return StartActivityStreamResponseForStartActivityStream.__default
@@ -5952,10 +5704,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func startDBClusterAsync(
             input: RDSModel.StartDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, RDSError>) -> ()) throws {
         if let startDBClusterAsyncOverride = startDBClusterAsyncOverride {
-            return try startDBClusterAsyncOverride(input, reporting, completion)
+            return try startDBClusterAsyncOverride(input, completion)
         }
 
         let result = StartDBClusterResultForStartDBCluster.__default
@@ -5973,10 +5724,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
     public func startDBClusterSync(
-            input: RDSModel.StartDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartDBClusterResultForStartDBCluster {
+            input: RDSModel.StartDBClusterMessage) throws -> RDSModel.StartDBClusterResultForStartDBCluster {
         if let startDBClusterSyncOverride = startDBClusterSyncOverride {
-            return try startDBClusterSyncOverride(input, reporting)
+            return try startDBClusterSyncOverride(input)
         }
 
         return StartDBClusterResultForStartDBCluster.__default
@@ -5994,10 +5744,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func startDBInstanceAsync(
             input: RDSModel.StartDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, RDSError>) -> ()) throws {
         if let startDBInstanceAsyncOverride = startDBInstanceAsyncOverride {
-            return try startDBInstanceAsyncOverride(input, reporting, completion)
+            return try startDBInstanceAsyncOverride(input, completion)
         }
 
         let result = StartDBInstanceResultForStartDBInstance.__default
@@ -6015,10 +5764,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: authorizationNotFound, dBClusterNotFound, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible.
      */
     public func startDBInstanceSync(
-            input: RDSModel.StartDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
+            input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
         if let startDBInstanceSyncOverride = startDBInstanceSyncOverride {
-            return try startDBInstanceSyncOverride(input, reporting)
+            return try startDBInstanceSyncOverride(input)
         }
 
         return StartDBInstanceResultForStartDBInstance.__default
@@ -6036,10 +5784,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func startExportTaskAsync(
             input: RDSModel.StartExportTaskMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, RDSError>) -> ()) throws {
         if let startExportTaskAsyncOverride = startExportTaskAsyncOverride {
-            return try startExportTaskAsyncOverride(input, reporting, completion)
+            return try startExportTaskAsyncOverride(input, completion)
         }
 
         let result = ExportTaskForStartExportTask.__default
@@ -6057,10 +5804,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
      */
     public func startExportTaskSync(
-            input: RDSModel.StartExportTaskMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForStartExportTask {
+            input: RDSModel.StartExportTaskMessage) throws -> RDSModel.ExportTaskForStartExportTask {
         if let startExportTaskSyncOverride = startExportTaskSyncOverride {
-            return try startExportTaskSyncOverride(input, reporting)
+            return try startExportTaskSyncOverride(input)
         }
 
         return ExportTaskForStartExportTask.__default
@@ -6078,10 +5824,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func stopActivityStreamAsync(
             input: RDSModel.StopActivityStreamRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, RDSError>) -> ()) throws {
         if let stopActivityStreamAsyncOverride = stopActivityStreamAsyncOverride {
-            return try stopActivityStreamAsyncOverride(input, reporting, completion)
+            return try stopActivityStreamAsyncOverride(input, completion)
         }
 
         let result = StopActivityStreamResponseForStopActivityStream.__default
@@ -6099,10 +5844,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
     public func stopActivityStreamSync(
-            input: RDSModel.StopActivityStreamRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
+            input: RDSModel.StopActivityStreamRequest) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
         if let stopActivityStreamSyncOverride = stopActivityStreamSyncOverride {
-            return try stopActivityStreamSyncOverride(input, reporting)
+            return try stopActivityStreamSyncOverride(input)
         }
 
         return StopActivityStreamResponseForStopActivityStream.__default
@@ -6120,10 +5864,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func stopDBClusterAsync(
             input: RDSModel.StopDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, RDSError>) -> ()) throws {
         if let stopDBClusterAsyncOverride = stopDBClusterAsyncOverride {
-            return try stopDBClusterAsyncOverride(input, reporting, completion)
+            return try stopDBClusterAsyncOverride(input, completion)
         }
 
         let result = StopDBClusterResultForStopDBCluster.__default
@@ -6141,10 +5884,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
     public func stopDBClusterSync(
-            input: RDSModel.StopDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopDBClusterResultForStopDBCluster {
+            input: RDSModel.StopDBClusterMessage) throws -> RDSModel.StopDBClusterResultForStopDBCluster {
         if let stopDBClusterSyncOverride = stopDBClusterSyncOverride {
-            return try stopDBClusterSyncOverride(input, reporting)
+            return try stopDBClusterSyncOverride(input)
         }
 
         return StopDBClusterResultForStopDBCluster.__default
@@ -6162,10 +5904,9 @@ public struct MockRDSClient: RDSClientProtocol {
      */
     public func stopDBInstanceAsync(
             input: RDSModel.StopDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, RDSError>) -> ()) throws {
         if let stopDBInstanceAsyncOverride = stopDBInstanceAsyncOverride {
-            return try stopDBInstanceAsyncOverride(input, reporting, completion)
+            return try stopDBInstanceAsyncOverride(input, completion)
         }
 
         let result = StopDBInstanceResultForStopDBInstance.__default
@@ -6183,10 +5924,9 @@ public struct MockRDSClient: RDSClientProtocol {
      - Throws: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
     public func stopDBInstanceSync(
-            input: RDSModel.StopDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopDBInstanceResultForStopDBInstance {
+            input: RDSModel.StopDBInstanceMessage) throws -> RDSModel.StopDBInstanceResultForStopDBInstance {
         if let stopDBInstanceSyncOverride = stopDBInstanceSyncOverride {
-            return try stopDBInstanceSyncOverride(input, reporting)
+            return try stopDBInstanceSyncOverride(input)
         }
 
         return StopDBInstanceResultForStopDBInstance.__default

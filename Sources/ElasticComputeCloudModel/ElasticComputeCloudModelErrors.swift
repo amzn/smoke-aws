@@ -22,6 +22,16 @@
 import Foundation
 import Logging
 
+public typealias ElasticComputeCloudErrorResult<SuccessPayload> = Result<SuccessPayload, ElasticComputeCloudError>
+
+public extension Swift.Error {
+    func asUnrecognizedElasticComputeCloudError() -> ElasticComputeCloudError {
+        let errorType = String(describing: type(of: self))
+        let errorDescription = String(describing: self)
+        return .unrecognizedError(errorType, errorDescription)
+    }
+}
+
 private let activeVpcPeeringConnectionPerVpcLimitExceededIdentity = "ActiveVpcPeeringConnectionPerVpcLimitExceeded"
 private let addressLimitExceededIdentity = "AddressLimitExceeded"
 private let asnConflictIdentity = "AsnConflict"

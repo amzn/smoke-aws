@@ -29,915 +29,655 @@ import SmokeHTTPClient
  */
 public protocol RDSClientProtocol {
     typealias AddRoleToDBClusterSyncType = (
-            _ input: RDSModel.AddRoleToDBClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: RDSModel.AddRoleToDBClusterMessage) throws -> ()
     typealias AddRoleToDBClusterAsyncType = (
             _ input: RDSModel.AddRoleToDBClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias AddRoleToDBInstanceSyncType = (
-            _ input: RDSModel.AddRoleToDBInstanceMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: RDSModel.AddRoleToDBInstanceMessage) throws -> ()
     typealias AddRoleToDBInstanceAsyncType = (
             _ input: RDSModel.AddRoleToDBInstanceMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias AddSourceIdentifierToSubscriptionSyncType = (
-            _ input: RDSModel.AddSourceIdentifierToSubscriptionMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription
+            _ input: RDSModel.AddSourceIdentifierToSubscriptionMessage) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription
     typealias AddSourceIdentifierToSubscriptionAsyncType = (
             _ input: RDSModel.AddSourceIdentifierToSubscriptionMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, RDSError>) -> ()) throws -> ()
     typealias AddTagsToResourceSyncType = (
-            _ input: RDSModel.AddTagsToResourceMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: RDSModel.AddTagsToResourceMessage) throws -> ()
     typealias AddTagsToResourceAsyncType = (
             _ input: RDSModel.AddTagsToResourceMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias ApplyPendingMaintenanceActionSyncType = (
-            _ input: RDSModel.ApplyPendingMaintenanceActionMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction
+            _ input: RDSModel.ApplyPendingMaintenanceActionMessage) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction
     typealias ApplyPendingMaintenanceActionAsyncType = (
             _ input: RDSModel.ApplyPendingMaintenanceActionMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, RDSError>) -> ()) throws -> ()
     typealias AuthorizeDBSecurityGroupIngressSyncType = (
-            _ input: RDSModel.AuthorizeDBSecurityGroupIngressMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress
+            _ input: RDSModel.AuthorizeDBSecurityGroupIngressMessage) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress
     typealias AuthorizeDBSecurityGroupIngressAsyncType = (
             _ input: RDSModel.AuthorizeDBSecurityGroupIngressMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, RDSError>) -> ()) throws -> ()
     typealias BacktrackDBClusterSyncType = (
-            _ input: RDSModel.BacktrackDBClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster
+            _ input: RDSModel.BacktrackDBClusterMessage) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster
     typealias BacktrackDBClusterAsyncType = (
             _ input: RDSModel.BacktrackDBClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, RDSError>) -> ()) throws -> ()
     typealias CancelExportTaskSyncType = (
-            _ input: RDSModel.CancelExportTaskMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForCancelExportTask
+            _ input: RDSModel.CancelExportTaskMessage) throws -> RDSModel.ExportTaskForCancelExportTask
     typealias CancelExportTaskAsyncType = (
             _ input: RDSModel.CancelExportTaskMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, RDSError>) -> ()) throws -> ()
     typealias CopyDBClusterParameterGroupSyncType = (
-            _ input: RDSModel.CopyDBClusterParameterGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup
+            _ input: RDSModel.CopyDBClusterParameterGroupMessage) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup
     typealias CopyDBClusterParameterGroupAsyncType = (
             _ input: RDSModel.CopyDBClusterParameterGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, RDSError>) -> ()) throws -> ()
     typealias CopyDBClusterSnapshotSyncType = (
-            _ input: RDSModel.CopyDBClusterSnapshotMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot
+            _ input: RDSModel.CopyDBClusterSnapshotMessage) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot
     typealias CopyDBClusterSnapshotAsyncType = (
             _ input: RDSModel.CopyDBClusterSnapshotMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, RDSError>) -> ()) throws -> ()
     typealias CopyDBParameterGroupSyncType = (
-            _ input: RDSModel.CopyDBParameterGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup
+            _ input: RDSModel.CopyDBParameterGroupMessage) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup
     typealias CopyDBParameterGroupAsyncType = (
             _ input: RDSModel.CopyDBParameterGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, RDSError>) -> ()) throws -> ()
     typealias CopyDBSnapshotSyncType = (
-            _ input: RDSModel.CopyDBSnapshotMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot
+            _ input: RDSModel.CopyDBSnapshotMessage) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot
     typealias CopyDBSnapshotAsyncType = (
             _ input: RDSModel.CopyDBSnapshotMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, RDSError>) -> ()) throws -> ()
     typealias CopyOptionGroupSyncType = (
-            _ input: RDSModel.CopyOptionGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup
+            _ input: RDSModel.CopyOptionGroupMessage) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup
     typealias CopyOptionGroupAsyncType = (
             _ input: RDSModel.CopyOptionGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, RDSError>) -> ()) throws -> ()
     typealias CreateCustomAvailabilityZoneSyncType = (
-            _ input: RDSModel.CreateCustomAvailabilityZoneMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
+            _ input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
     typealias CreateCustomAvailabilityZoneAsyncType = (
             _ input: RDSModel.CreateCustomAvailabilityZoneMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, RDSError>) -> ()) throws -> ()
     typealias CreateDBClusterSyncType = (
-            _ input: RDSModel.CreateDBClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster
+            _ input: RDSModel.CreateDBClusterMessage) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster
     typealias CreateDBClusterAsyncType = (
             _ input: RDSModel.CreateDBClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, RDSError>) -> ()) throws -> ()
     typealias CreateDBClusterEndpointSyncType = (
-            _ input: RDSModel.CreateDBClusterEndpointMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint
+            _ input: RDSModel.CreateDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint
     typealias CreateDBClusterEndpointAsyncType = (
             _ input: RDSModel.CreateDBClusterEndpointMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, RDSError>) -> ()) throws -> ()
     typealias CreateDBClusterParameterGroupSyncType = (
-            _ input: RDSModel.CreateDBClusterParameterGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup
+            _ input: RDSModel.CreateDBClusterParameterGroupMessage) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup
     typealias CreateDBClusterParameterGroupAsyncType = (
             _ input: RDSModel.CreateDBClusterParameterGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, RDSError>) -> ()) throws -> ()
     typealias CreateDBClusterSnapshotSyncType = (
-            _ input: RDSModel.CreateDBClusterSnapshotMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot
+            _ input: RDSModel.CreateDBClusterSnapshotMessage) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot
     typealias CreateDBClusterSnapshotAsyncType = (
             _ input: RDSModel.CreateDBClusterSnapshotMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, RDSError>) -> ()) throws -> ()
     typealias CreateDBInstanceSyncType = (
-            _ input: RDSModel.CreateDBInstanceMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance
+            _ input: RDSModel.CreateDBInstanceMessage) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance
     typealias CreateDBInstanceAsyncType = (
             _ input: RDSModel.CreateDBInstanceMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, RDSError>) -> ()) throws -> ()
     typealias CreateDBInstanceReadReplicaSyncType = (
-            _ input: RDSModel.CreateDBInstanceReadReplicaMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica
+            _ input: RDSModel.CreateDBInstanceReadReplicaMessage) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica
     typealias CreateDBInstanceReadReplicaAsyncType = (
             _ input: RDSModel.CreateDBInstanceReadReplicaMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, RDSError>) -> ()) throws -> ()
     typealias CreateDBParameterGroupSyncType = (
-            _ input: RDSModel.CreateDBParameterGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup
+            _ input: RDSModel.CreateDBParameterGroupMessage) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup
     typealias CreateDBParameterGroupAsyncType = (
             _ input: RDSModel.CreateDBParameterGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, RDSError>) -> ()) throws -> ()
     typealias CreateDBProxySyncType = (
-            _ input: RDSModel.CreateDBProxyRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy
+            _ input: RDSModel.CreateDBProxyRequest) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy
     typealias CreateDBProxyAsyncType = (
             _ input: RDSModel.CreateDBProxyRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, RDSError>) -> ()) throws -> ()
     typealias CreateDBSecurityGroupSyncType = (
-            _ input: RDSModel.CreateDBSecurityGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup
+            _ input: RDSModel.CreateDBSecurityGroupMessage) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup
     typealias CreateDBSecurityGroupAsyncType = (
             _ input: RDSModel.CreateDBSecurityGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, RDSError>) -> ()) throws -> ()
     typealias CreateDBSnapshotSyncType = (
-            _ input: RDSModel.CreateDBSnapshotMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot
+            _ input: RDSModel.CreateDBSnapshotMessage) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot
     typealias CreateDBSnapshotAsyncType = (
             _ input: RDSModel.CreateDBSnapshotMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, RDSError>) -> ()) throws -> ()
     typealias CreateDBSubnetGroupSyncType = (
-            _ input: RDSModel.CreateDBSubnetGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup
+            _ input: RDSModel.CreateDBSubnetGroupMessage) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup
     typealias CreateDBSubnetGroupAsyncType = (
             _ input: RDSModel.CreateDBSubnetGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, RDSError>) -> ()) throws -> ()
     typealias CreateEventSubscriptionSyncType = (
-            _ input: RDSModel.CreateEventSubscriptionMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription
+            _ input: RDSModel.CreateEventSubscriptionMessage) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription
     typealias CreateEventSubscriptionAsyncType = (
             _ input: RDSModel.CreateEventSubscriptionMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, RDSError>) -> ()) throws -> ()
     typealias CreateGlobalClusterSyncType = (
-            _ input: RDSModel.CreateGlobalClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster
+            _ input: RDSModel.CreateGlobalClusterMessage) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster
     typealias CreateGlobalClusterAsyncType = (
             _ input: RDSModel.CreateGlobalClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, RDSError>) -> ()) throws -> ()
     typealias CreateOptionGroupSyncType = (
-            _ input: RDSModel.CreateOptionGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup
+            _ input: RDSModel.CreateOptionGroupMessage) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup
     typealias CreateOptionGroupAsyncType = (
             _ input: RDSModel.CreateOptionGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, RDSError>) -> ()) throws -> ()
     typealias DeleteCustomAvailabilityZoneSyncType = (
-            _ input: RDSModel.DeleteCustomAvailabilityZoneMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
+            _ input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
     typealias DeleteCustomAvailabilityZoneAsyncType = (
             _ input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, RDSError>) -> ()) throws -> ()
     typealias DeleteDBClusterSyncType = (
-            _ input: RDSModel.DeleteDBClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster
+            _ input: RDSModel.DeleteDBClusterMessage) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster
     typealias DeleteDBClusterAsyncType = (
             _ input: RDSModel.DeleteDBClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, RDSError>) -> ()) throws -> ()
     typealias DeleteDBClusterEndpointSyncType = (
-            _ input: RDSModel.DeleteDBClusterEndpointMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint
+            _ input: RDSModel.DeleteDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint
     typealias DeleteDBClusterEndpointAsyncType = (
             _ input: RDSModel.DeleteDBClusterEndpointMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, RDSError>) -> ()) throws -> ()
     typealias DeleteDBClusterParameterGroupSyncType = (
-            _ input: RDSModel.DeleteDBClusterParameterGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: RDSModel.DeleteDBClusterParameterGroupMessage) throws -> ()
     typealias DeleteDBClusterParameterGroupAsyncType = (
             _ input: RDSModel.DeleteDBClusterParameterGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias DeleteDBClusterSnapshotSyncType = (
-            _ input: RDSModel.DeleteDBClusterSnapshotMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot
+            _ input: RDSModel.DeleteDBClusterSnapshotMessage) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot
     typealias DeleteDBClusterSnapshotAsyncType = (
             _ input: RDSModel.DeleteDBClusterSnapshotMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, RDSError>) -> ()) throws -> ()
     typealias DeleteDBInstanceSyncType = (
-            _ input: RDSModel.DeleteDBInstanceMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance
+            _ input: RDSModel.DeleteDBInstanceMessage) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance
     typealias DeleteDBInstanceAsyncType = (
             _ input: RDSModel.DeleteDBInstanceMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, RDSError>) -> ()) throws -> ()
     typealias DeleteDBInstanceAutomatedBackupSyncType = (
-            _ input: RDSModel.DeleteDBInstanceAutomatedBackupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup
+            _ input: RDSModel.DeleteDBInstanceAutomatedBackupMessage) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup
     typealias DeleteDBInstanceAutomatedBackupAsyncType = (
             _ input: RDSModel.DeleteDBInstanceAutomatedBackupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, RDSError>) -> ()) throws -> ()
     typealias DeleteDBParameterGroupSyncType = (
-            _ input: RDSModel.DeleteDBParameterGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: RDSModel.DeleteDBParameterGroupMessage) throws -> ()
     typealias DeleteDBParameterGroupAsyncType = (
             _ input: RDSModel.DeleteDBParameterGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias DeleteDBProxySyncType = (
-            _ input: RDSModel.DeleteDBProxyRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy
+            _ input: RDSModel.DeleteDBProxyRequest) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy
     typealias DeleteDBProxyAsyncType = (
             _ input: RDSModel.DeleteDBProxyRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, RDSError>) -> ()) throws -> ()
     typealias DeleteDBSecurityGroupSyncType = (
-            _ input: RDSModel.DeleteDBSecurityGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: RDSModel.DeleteDBSecurityGroupMessage) throws -> ()
     typealias DeleteDBSecurityGroupAsyncType = (
             _ input: RDSModel.DeleteDBSecurityGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias DeleteDBSnapshotSyncType = (
-            _ input: RDSModel.DeleteDBSnapshotMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot
+            _ input: RDSModel.DeleteDBSnapshotMessage) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot
     typealias DeleteDBSnapshotAsyncType = (
             _ input: RDSModel.DeleteDBSnapshotMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, RDSError>) -> ()) throws -> ()
     typealias DeleteDBSubnetGroupSyncType = (
-            _ input: RDSModel.DeleteDBSubnetGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: RDSModel.DeleteDBSubnetGroupMessage) throws -> ()
     typealias DeleteDBSubnetGroupAsyncType = (
             _ input: RDSModel.DeleteDBSubnetGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias DeleteEventSubscriptionSyncType = (
-            _ input: RDSModel.DeleteEventSubscriptionMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription
+            _ input: RDSModel.DeleteEventSubscriptionMessage) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription
     typealias DeleteEventSubscriptionAsyncType = (
             _ input: RDSModel.DeleteEventSubscriptionMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, RDSError>) -> ()) throws -> ()
     typealias DeleteGlobalClusterSyncType = (
-            _ input: RDSModel.DeleteGlobalClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster
+            _ input: RDSModel.DeleteGlobalClusterMessage) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster
     typealias DeleteGlobalClusterAsyncType = (
             _ input: RDSModel.DeleteGlobalClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, RDSError>) -> ()) throws -> ()
     typealias DeleteInstallationMediaSyncType = (
-            _ input: RDSModel.DeleteInstallationMediaMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia
+            _ input: RDSModel.DeleteInstallationMediaMessage) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia
     typealias DeleteInstallationMediaAsyncType = (
             _ input: RDSModel.DeleteInstallationMediaMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, RDSError>) -> ()) throws -> ()
     typealias DeleteOptionGroupSyncType = (
-            _ input: RDSModel.DeleteOptionGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: RDSModel.DeleteOptionGroupMessage) throws -> ()
     typealias DeleteOptionGroupAsyncType = (
             _ input: RDSModel.DeleteOptionGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias DeregisterDBProxyTargetsSyncType = (
-            _ input: RDSModel.DeregisterDBProxyTargetsRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
+            _ input: RDSModel.DeregisterDBProxyTargetsRequest) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
     typealias DeregisterDBProxyTargetsAsyncType = (
             _ input: RDSModel.DeregisterDBProxyTargetsRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, RDSError>) -> ()) throws -> ()
     typealias DescribeAccountAttributesSyncType = (
-            _ input: RDSModel.DescribeAccountAttributesMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes
+            _ input: RDSModel.DescribeAccountAttributesMessage) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes
     typealias DescribeAccountAttributesAsyncType = (
             _ input: RDSModel.DescribeAccountAttributesMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, RDSError>) -> ()) throws -> ()
     typealias DescribeCertificatesSyncType = (
-            _ input: RDSModel.DescribeCertificatesMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CertificateMessageForDescribeCertificates
+            _ input: RDSModel.DescribeCertificatesMessage) throws -> RDSModel.CertificateMessageForDescribeCertificates
     typealias DescribeCertificatesAsyncType = (
             _ input: RDSModel.DescribeCertificatesMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, RDSError>) -> ()) throws -> ()
     typealias DescribeCustomAvailabilityZonesSyncType = (
-            _ input: RDSModel.DescribeCustomAvailabilityZonesMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
+            _ input: RDSModel.DescribeCustomAvailabilityZonesMessage) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
     typealias DescribeCustomAvailabilityZonesAsyncType = (
             _ input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClusterBacktracksSyncType = (
-            _ input: RDSModel.DescribeDBClusterBacktracksMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks
+            _ input: RDSModel.DescribeDBClusterBacktracksMessage) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks
     typealias DescribeDBClusterBacktracksAsyncType = (
             _ input: RDSModel.DescribeDBClusterBacktracksMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClusterEndpointsSyncType = (
-            _ input: RDSModel.DescribeDBClusterEndpointsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints
+            _ input: RDSModel.DescribeDBClusterEndpointsMessage) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints
     typealias DescribeDBClusterEndpointsAsyncType = (
             _ input: RDSModel.DescribeDBClusterEndpointsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClusterParameterGroupsSyncType = (
-            _ input: RDSModel.DescribeDBClusterParameterGroupsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups
+            _ input: RDSModel.DescribeDBClusterParameterGroupsMessage) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups
     typealias DescribeDBClusterParameterGroupsAsyncType = (
             _ input: RDSModel.DescribeDBClusterParameterGroupsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClusterParametersSyncType = (
-            _ input: RDSModel.DescribeDBClusterParametersMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters
+            _ input: RDSModel.DescribeDBClusterParametersMessage) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters
     typealias DescribeDBClusterParametersAsyncType = (
             _ input: RDSModel.DescribeDBClusterParametersMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClusterSnapshotAttributesSyncType = (
-            _ input: RDSModel.DescribeDBClusterSnapshotAttributesMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes
+            _ input: RDSModel.DescribeDBClusterSnapshotAttributesMessage) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes
     typealias DescribeDBClusterSnapshotAttributesAsyncType = (
             _ input: RDSModel.DescribeDBClusterSnapshotAttributesMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClusterSnapshotsSyncType = (
-            _ input: RDSModel.DescribeDBClusterSnapshotsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots
+            _ input: RDSModel.DescribeDBClusterSnapshotsMessage) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots
     typealias DescribeDBClusterSnapshotsAsyncType = (
             _ input: RDSModel.DescribeDBClusterSnapshotsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClustersSyncType = (
-            _ input: RDSModel.DescribeDBClustersMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterMessageForDescribeDBClusters
+            _ input: RDSModel.DescribeDBClustersMessage) throws -> RDSModel.DBClusterMessageForDescribeDBClusters
     typealias DescribeDBClustersAsyncType = (
             _ input: RDSModel.DescribeDBClustersMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, RDSError>) -> ()) throws -> ()
     typealias DescribeDBEngineVersionsSyncType = (
-            _ input: RDSModel.DescribeDBEngineVersionsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions
+            _ input: RDSModel.DescribeDBEngineVersionsMessage) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions
     typealias DescribeDBEngineVersionsAsyncType = (
             _ input: RDSModel.DescribeDBEngineVersionsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, RDSError>) -> ()) throws -> ()
     typealias DescribeDBInstanceAutomatedBackupsSyncType = (
-            _ input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups
+            _ input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups
     typealias DescribeDBInstanceAutomatedBackupsAsyncType = (
             _ input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, RDSError>) -> ()) throws -> ()
     typealias DescribeDBInstancesSyncType = (
-            _ input: RDSModel.DescribeDBInstancesMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances
+            _ input: RDSModel.DescribeDBInstancesMessage) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances
     typealias DescribeDBInstancesAsyncType = (
             _ input: RDSModel.DescribeDBInstancesMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, RDSError>) -> ()) throws -> ()
     typealias DescribeDBLogFilesSyncType = (
-            _ input: RDSModel.DescribeDBLogFilesMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles
+            _ input: RDSModel.DescribeDBLogFilesMessage) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles
     typealias DescribeDBLogFilesAsyncType = (
             _ input: RDSModel.DescribeDBLogFilesMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, RDSError>) -> ()) throws -> ()
     typealias DescribeDBParameterGroupsSyncType = (
-            _ input: RDSModel.DescribeDBParameterGroupsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups
+            _ input: RDSModel.DescribeDBParameterGroupsMessage) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups
     typealias DescribeDBParameterGroupsAsyncType = (
             _ input: RDSModel.DescribeDBParameterGroupsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, RDSError>) -> ()) throws -> ()
     typealias DescribeDBParametersSyncType = (
-            _ input: RDSModel.DescribeDBParametersMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters
+            _ input: RDSModel.DescribeDBParametersMessage) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters
     typealias DescribeDBParametersAsyncType = (
             _ input: RDSModel.DescribeDBParametersMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, RDSError>) -> ()) throws -> ()
     typealias DescribeDBProxiesSyncType = (
-            _ input: RDSModel.DescribeDBProxiesRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies
+            _ input: RDSModel.DescribeDBProxiesRequest) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies
     typealias DescribeDBProxiesAsyncType = (
             _ input: RDSModel.DescribeDBProxiesRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, RDSError>) -> ()) throws -> ()
     typealias DescribeDBProxyTargetGroupsSyncType = (
-            _ input: RDSModel.DescribeDBProxyTargetGroupsRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
+            _ input: RDSModel.DescribeDBProxyTargetGroupsRequest) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
     typealias DescribeDBProxyTargetGroupsAsyncType = (
             _ input: RDSModel.DescribeDBProxyTargetGroupsRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, RDSError>) -> ()) throws -> ()
     typealias DescribeDBProxyTargetsSyncType = (
-            _ input: RDSModel.DescribeDBProxyTargetsRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
+            _ input: RDSModel.DescribeDBProxyTargetsRequest) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
     typealias DescribeDBProxyTargetsAsyncType = (
             _ input: RDSModel.DescribeDBProxyTargetsRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, RDSError>) -> ()) throws -> ()
     typealias DescribeDBSecurityGroupsSyncType = (
-            _ input: RDSModel.DescribeDBSecurityGroupsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups
+            _ input: RDSModel.DescribeDBSecurityGroupsMessage) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups
     typealias DescribeDBSecurityGroupsAsyncType = (
             _ input: RDSModel.DescribeDBSecurityGroupsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, RDSError>) -> ()) throws -> ()
     typealias DescribeDBSnapshotAttributesSyncType = (
-            _ input: RDSModel.DescribeDBSnapshotAttributesMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes
+            _ input: RDSModel.DescribeDBSnapshotAttributesMessage) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes
     typealias DescribeDBSnapshotAttributesAsyncType = (
             _ input: RDSModel.DescribeDBSnapshotAttributesMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, RDSError>) -> ()) throws -> ()
     typealias DescribeDBSnapshotsSyncType = (
-            _ input: RDSModel.DescribeDBSnapshotsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots
+            _ input: RDSModel.DescribeDBSnapshotsMessage) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots
     typealias DescribeDBSnapshotsAsyncType = (
             _ input: RDSModel.DescribeDBSnapshotsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, RDSError>) -> ()) throws -> ()
     typealias DescribeDBSubnetGroupsSyncType = (
-            _ input: RDSModel.DescribeDBSubnetGroupsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups
+            _ input: RDSModel.DescribeDBSubnetGroupsMessage) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups
     typealias DescribeDBSubnetGroupsAsyncType = (
             _ input: RDSModel.DescribeDBSubnetGroupsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, RDSError>) -> ()) throws -> ()
     typealias DescribeEngineDefaultClusterParametersSyncType = (
-            _ input: RDSModel.DescribeEngineDefaultClusterParametersMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters
+            _ input: RDSModel.DescribeEngineDefaultClusterParametersMessage) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters
     typealias DescribeEngineDefaultClusterParametersAsyncType = (
             _ input: RDSModel.DescribeEngineDefaultClusterParametersMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, RDSError>) -> ()) throws -> ()
     typealias DescribeEngineDefaultParametersSyncType = (
-            _ input: RDSModel.DescribeEngineDefaultParametersMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters
+            _ input: RDSModel.DescribeEngineDefaultParametersMessage) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters
     typealias DescribeEngineDefaultParametersAsyncType = (
             _ input: RDSModel.DescribeEngineDefaultParametersMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, RDSError>) -> ()) throws -> ()
     typealias DescribeEventCategoriesSyncType = (
-            _ input: RDSModel.DescribeEventCategoriesMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories
+            _ input: RDSModel.DescribeEventCategoriesMessage) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories
     typealias DescribeEventCategoriesAsyncType = (
             _ input: RDSModel.DescribeEventCategoriesMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, RDSError>) -> ()) throws -> ()
     typealias DescribeEventSubscriptionsSyncType = (
-            _ input: RDSModel.DescribeEventSubscriptionsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions
+            _ input: RDSModel.DescribeEventSubscriptionsMessage) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions
     typealias DescribeEventSubscriptionsAsyncType = (
             _ input: RDSModel.DescribeEventSubscriptionsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, RDSError>) -> ()) throws -> ()
     typealias DescribeEventsSyncType = (
-            _ input: RDSModel.DescribeEventsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventsMessageForDescribeEvents
+            _ input: RDSModel.DescribeEventsMessage) throws -> RDSModel.EventsMessageForDescribeEvents
     typealias DescribeEventsAsyncType = (
             _ input: RDSModel.DescribeEventsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, RDSError>) -> ()) throws -> ()
     typealias DescribeExportTasksSyncType = (
-            _ input: RDSModel.DescribeExportTasksMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks
+            _ input: RDSModel.DescribeExportTasksMessage) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks
     typealias DescribeExportTasksAsyncType = (
             _ input: RDSModel.DescribeExportTasksMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, RDSError>) -> ()) throws -> ()
     typealias DescribeGlobalClustersSyncType = (
-            _ input: RDSModel.DescribeGlobalClustersMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters
+            _ input: RDSModel.DescribeGlobalClustersMessage) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters
     typealias DescribeGlobalClustersAsyncType = (
             _ input: RDSModel.DescribeGlobalClustersMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, RDSError>) -> ()) throws -> ()
     typealias DescribeInstallationMediaSyncType = (
-            _ input: RDSModel.DescribeInstallationMediaMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia
+            _ input: RDSModel.DescribeInstallationMediaMessage) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia
     typealias DescribeInstallationMediaAsyncType = (
             _ input: RDSModel.DescribeInstallationMediaMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, RDSError>) -> ()) throws -> ()
     typealias DescribeOptionGroupOptionsSyncType = (
-            _ input: RDSModel.DescribeOptionGroupOptionsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions
+            _ input: RDSModel.DescribeOptionGroupOptionsMessage) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions
     typealias DescribeOptionGroupOptionsAsyncType = (
             _ input: RDSModel.DescribeOptionGroupOptionsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, RDSError>) -> ()) throws -> ()
     typealias DescribeOptionGroupsSyncType = (
-            _ input: RDSModel.DescribeOptionGroupsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OptionGroupsForDescribeOptionGroups
+            _ input: RDSModel.DescribeOptionGroupsMessage) throws -> RDSModel.OptionGroupsForDescribeOptionGroups
     typealias DescribeOptionGroupsAsyncType = (
             _ input: RDSModel.DescribeOptionGroupsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, RDSError>) -> ()) throws -> ()
     typealias DescribeOrderableDBInstanceOptionsSyncType = (
-            _ input: RDSModel.DescribeOrderableDBInstanceOptionsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions
+            _ input: RDSModel.DescribeOrderableDBInstanceOptionsMessage) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions
     typealias DescribeOrderableDBInstanceOptionsAsyncType = (
             _ input: RDSModel.DescribeOrderableDBInstanceOptionsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, RDSError>) -> ()) throws -> ()
     typealias DescribePendingMaintenanceActionsSyncType = (
-            _ input: RDSModel.DescribePendingMaintenanceActionsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions
+            _ input: RDSModel.DescribePendingMaintenanceActionsMessage) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions
     typealias DescribePendingMaintenanceActionsAsyncType = (
             _ input: RDSModel.DescribePendingMaintenanceActionsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, RDSError>) -> ()) throws -> ()
     typealias DescribeReservedDBInstancesSyncType = (
-            _ input: RDSModel.DescribeReservedDBInstancesMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances
+            _ input: RDSModel.DescribeReservedDBInstancesMessage) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances
     typealias DescribeReservedDBInstancesAsyncType = (
             _ input: RDSModel.DescribeReservedDBInstancesMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, RDSError>) -> ()) throws -> ()
     typealias DescribeReservedDBInstancesOfferingsSyncType = (
-            _ input: RDSModel.DescribeReservedDBInstancesOfferingsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings
+            _ input: RDSModel.DescribeReservedDBInstancesOfferingsMessage) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings
     typealias DescribeReservedDBInstancesOfferingsAsyncType = (
             _ input: RDSModel.DescribeReservedDBInstancesOfferingsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, RDSError>) -> ()) throws -> ()
     typealias DescribeSourceRegionsSyncType = (
-            _ input: RDSModel.DescribeSourceRegionsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions
+            _ input: RDSModel.DescribeSourceRegionsMessage) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions
     typealias DescribeSourceRegionsAsyncType = (
             _ input: RDSModel.DescribeSourceRegionsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, RDSError>) -> ()) throws -> ()
     typealias DescribeValidDBInstanceModificationsSyncType = (
-            _ input: RDSModel.DescribeValidDBInstanceModificationsMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications
+            _ input: RDSModel.DescribeValidDBInstanceModificationsMessage) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications
     typealias DescribeValidDBInstanceModificationsAsyncType = (
             _ input: RDSModel.DescribeValidDBInstanceModificationsMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, RDSError>) -> ()) throws -> ()
     typealias DownloadDBLogFilePortionSyncType = (
-            _ input: RDSModel.DownloadDBLogFilePortionMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion
+            _ input: RDSModel.DownloadDBLogFilePortionMessage) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion
     typealias DownloadDBLogFilePortionAsyncType = (
             _ input: RDSModel.DownloadDBLogFilePortionMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, RDSError>) -> ()) throws -> ()
     typealias FailoverDBClusterSyncType = (
-            _ input: RDSModel.FailoverDBClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster
+            _ input: RDSModel.FailoverDBClusterMessage) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster
     typealias FailoverDBClusterAsyncType = (
             _ input: RDSModel.FailoverDBClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, RDSError>) -> ()) throws -> ()
     typealias ImportInstallationMediaSyncType = (
-            _ input: RDSModel.ImportInstallationMediaMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaForImportInstallationMedia
+            _ input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia
     typealias ImportInstallationMediaAsyncType = (
             _ input: RDSModel.ImportInstallationMediaMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, RDSError>) -> ()) throws -> ()
     typealias ListTagsForResourceSyncType = (
-            _ input: RDSModel.ListTagsForResourceMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.TagListMessageForListTagsForResource
+            _ input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource
     typealias ListTagsForResourceAsyncType = (
             _ input: RDSModel.ListTagsForResourceMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, RDSError>) -> ()) throws -> ()
     typealias ModifyCertificatesSyncType = (
-            _ input: RDSModel.ModifyCertificatesMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates
+            _ input: RDSModel.ModifyCertificatesMessage) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates
     typealias ModifyCertificatesAsyncType = (
             _ input: RDSModel.ModifyCertificatesMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, RDSError>) -> ()) throws -> ()
     typealias ModifyCurrentDBClusterCapacitySyncType = (
-            _ input: RDSModel.ModifyCurrentDBClusterCapacityMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity
+            _ input: RDSModel.ModifyCurrentDBClusterCapacityMessage) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity
     typealias ModifyCurrentDBClusterCapacityAsyncType = (
             _ input: RDSModel.ModifyCurrentDBClusterCapacityMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, RDSError>) -> ()) throws -> ()
     typealias ModifyDBClusterSyncType = (
-            _ input: RDSModel.ModifyDBClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster
+            _ input: RDSModel.ModifyDBClusterMessage) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster
     typealias ModifyDBClusterAsyncType = (
             _ input: RDSModel.ModifyDBClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, RDSError>) -> ()) throws -> ()
     typealias ModifyDBClusterEndpointSyncType = (
-            _ input: RDSModel.ModifyDBClusterEndpointMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint
+            _ input: RDSModel.ModifyDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint
     typealias ModifyDBClusterEndpointAsyncType = (
             _ input: RDSModel.ModifyDBClusterEndpointMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, RDSError>) -> ()) throws -> ()
     typealias ModifyDBClusterParameterGroupSyncType = (
-            _ input: RDSModel.ModifyDBClusterParameterGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup
+            _ input: RDSModel.ModifyDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup
     typealias ModifyDBClusterParameterGroupAsyncType = (
             _ input: RDSModel.ModifyDBClusterParameterGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, RDSError>) -> ()) throws -> ()
     typealias ModifyDBClusterSnapshotAttributeSyncType = (
-            _ input: RDSModel.ModifyDBClusterSnapshotAttributeMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute
+            _ input: RDSModel.ModifyDBClusterSnapshotAttributeMessage) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute
     typealias ModifyDBClusterSnapshotAttributeAsyncType = (
             _ input: RDSModel.ModifyDBClusterSnapshotAttributeMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, RDSError>) -> ()) throws -> ()
     typealias ModifyDBInstanceSyncType = (
-            _ input: RDSModel.ModifyDBInstanceMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance
+            _ input: RDSModel.ModifyDBInstanceMessage) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance
     typealias ModifyDBInstanceAsyncType = (
             _ input: RDSModel.ModifyDBInstanceMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, RDSError>) -> ()) throws -> ()
     typealias ModifyDBParameterGroupSyncType = (
-            _ input: RDSModel.ModifyDBParameterGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup
+            _ input: RDSModel.ModifyDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup
     typealias ModifyDBParameterGroupAsyncType = (
             _ input: RDSModel.ModifyDBParameterGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, RDSError>) -> ()) throws -> ()
     typealias ModifyDBProxySyncType = (
-            _ input: RDSModel.ModifyDBProxyRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy
+            _ input: RDSModel.ModifyDBProxyRequest) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy
     typealias ModifyDBProxyAsyncType = (
             _ input: RDSModel.ModifyDBProxyRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, RDSError>) -> ()) throws -> ()
     typealias ModifyDBProxyTargetGroupSyncType = (
-            _ input: RDSModel.ModifyDBProxyTargetGroupRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
+            _ input: RDSModel.ModifyDBProxyTargetGroupRequest) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
     typealias ModifyDBProxyTargetGroupAsyncType = (
             _ input: RDSModel.ModifyDBProxyTargetGroupRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, RDSError>) -> ()) throws -> ()
     typealias ModifyDBSnapshotSyncType = (
-            _ input: RDSModel.ModifyDBSnapshotMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot
+            _ input: RDSModel.ModifyDBSnapshotMessage) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot
     typealias ModifyDBSnapshotAsyncType = (
             _ input: RDSModel.ModifyDBSnapshotMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, RDSError>) -> ()) throws -> ()
     typealias ModifyDBSnapshotAttributeSyncType = (
-            _ input: RDSModel.ModifyDBSnapshotAttributeMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute
+            _ input: RDSModel.ModifyDBSnapshotAttributeMessage) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute
     typealias ModifyDBSnapshotAttributeAsyncType = (
             _ input: RDSModel.ModifyDBSnapshotAttributeMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, RDSError>) -> ()) throws -> ()
     typealias ModifyDBSubnetGroupSyncType = (
-            _ input: RDSModel.ModifyDBSubnetGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup
+            _ input: RDSModel.ModifyDBSubnetGroupMessage) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup
     typealias ModifyDBSubnetGroupAsyncType = (
             _ input: RDSModel.ModifyDBSubnetGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, RDSError>) -> ()) throws -> ()
     typealias ModifyEventSubscriptionSyncType = (
-            _ input: RDSModel.ModifyEventSubscriptionMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription
+            _ input: RDSModel.ModifyEventSubscriptionMessage) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription
     typealias ModifyEventSubscriptionAsyncType = (
             _ input: RDSModel.ModifyEventSubscriptionMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, RDSError>) -> ()) throws -> ()
     typealias ModifyGlobalClusterSyncType = (
-            _ input: RDSModel.ModifyGlobalClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster
+            _ input: RDSModel.ModifyGlobalClusterMessage) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster
     typealias ModifyGlobalClusterAsyncType = (
             _ input: RDSModel.ModifyGlobalClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, RDSError>) -> ()) throws -> ()
     typealias ModifyOptionGroupSyncType = (
-            _ input: RDSModel.ModifyOptionGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup
+            _ input: RDSModel.ModifyOptionGroupMessage) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup
     typealias ModifyOptionGroupAsyncType = (
             _ input: RDSModel.ModifyOptionGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, RDSError>) -> ()) throws -> ()
     typealias PromoteReadReplicaSyncType = (
-            _ input: RDSModel.PromoteReadReplicaMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica
+            _ input: RDSModel.PromoteReadReplicaMessage) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica
     typealias PromoteReadReplicaAsyncType = (
             _ input: RDSModel.PromoteReadReplicaMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, RDSError>) -> ()) throws -> ()
     typealias PromoteReadReplicaDBClusterSyncType = (
-            _ input: RDSModel.PromoteReadReplicaDBClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster
+            _ input: RDSModel.PromoteReadReplicaDBClusterMessage) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster
     typealias PromoteReadReplicaDBClusterAsyncType = (
             _ input: RDSModel.PromoteReadReplicaDBClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, RDSError>) -> ()) throws -> ()
     typealias PurchaseReservedDBInstancesOfferingSyncType = (
-            _ input: RDSModel.PurchaseReservedDBInstancesOfferingMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering
+            _ input: RDSModel.PurchaseReservedDBInstancesOfferingMessage) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering
     typealias PurchaseReservedDBInstancesOfferingAsyncType = (
             _ input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, RDSError>) -> ()) throws -> ()
     typealias RebootDBInstanceSyncType = (
-            _ input: RDSModel.RebootDBInstanceMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance
+            _ input: RDSModel.RebootDBInstanceMessage) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance
     typealias RebootDBInstanceAsyncType = (
             _ input: RDSModel.RebootDBInstanceMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, RDSError>) -> ()) throws -> ()
     typealias RegisterDBProxyTargetsSyncType = (
-            _ input: RDSModel.RegisterDBProxyTargetsRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
+            _ input: RDSModel.RegisterDBProxyTargetsRequest) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
     typealias RegisterDBProxyTargetsAsyncType = (
             _ input: RDSModel.RegisterDBProxyTargetsRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, RDSError>) -> ()) throws -> ()
     typealias RemoveFromGlobalClusterSyncType = (
-            _ input: RDSModel.RemoveFromGlobalClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster
+            _ input: RDSModel.RemoveFromGlobalClusterMessage) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster
     typealias RemoveFromGlobalClusterAsyncType = (
             _ input: RDSModel.RemoveFromGlobalClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, RDSError>) -> ()) throws -> ()
     typealias RemoveRoleFromDBClusterSyncType = (
-            _ input: RDSModel.RemoveRoleFromDBClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: RDSModel.RemoveRoleFromDBClusterMessage) throws -> ()
     typealias RemoveRoleFromDBClusterAsyncType = (
             _ input: RDSModel.RemoveRoleFromDBClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias RemoveRoleFromDBInstanceSyncType = (
-            _ input: RDSModel.RemoveRoleFromDBInstanceMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: RDSModel.RemoveRoleFromDBInstanceMessage) throws -> ()
     typealias RemoveRoleFromDBInstanceAsyncType = (
             _ input: RDSModel.RemoveRoleFromDBInstanceMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias RemoveSourceIdentifierFromSubscriptionSyncType = (
-            _ input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription
+            _ input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription
     typealias RemoveSourceIdentifierFromSubscriptionAsyncType = (
             _ input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, RDSError>) -> ()) throws -> ()
     typealias RemoveTagsFromResourceSyncType = (
-            _ input: RDSModel.RemoveTagsFromResourceMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> ()
+            _ input: RDSModel.RemoveTagsFromResourceMessage) throws -> ()
     typealias RemoveTagsFromResourceAsyncType = (
             _ input: RDSModel.RemoveTagsFromResourceMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
+            _ completion: @escaping (RDSError?) -> ()) throws -> ()
     typealias ResetDBClusterParameterGroupSyncType = (
-            _ input: RDSModel.ResetDBClusterParameterGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup
+            _ input: RDSModel.ResetDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup
     typealias ResetDBClusterParameterGroupAsyncType = (
             _ input: RDSModel.ResetDBClusterParameterGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, RDSError>) -> ()) throws -> ()
     typealias ResetDBParameterGroupSyncType = (
-            _ input: RDSModel.ResetDBParameterGroupMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup
+            _ input: RDSModel.ResetDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup
     typealias ResetDBParameterGroupAsyncType = (
             _ input: RDSModel.ResetDBParameterGroupMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, RDSError>) -> ()) throws -> ()
     typealias RestoreDBClusterFromS3SyncType = (
-            _ input: RDSModel.RestoreDBClusterFromS3Message,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3
+            _ input: RDSModel.RestoreDBClusterFromS3Message) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3
     typealias RestoreDBClusterFromS3AsyncType = (
             _ input: RDSModel.RestoreDBClusterFromS3Message, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, RDSError>) -> ()) throws -> ()
     typealias RestoreDBClusterFromSnapshotSyncType = (
-            _ input: RDSModel.RestoreDBClusterFromSnapshotMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot
+            _ input: RDSModel.RestoreDBClusterFromSnapshotMessage) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot
     typealias RestoreDBClusterFromSnapshotAsyncType = (
             _ input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, RDSError>) -> ()) throws -> ()
     typealias RestoreDBClusterToPointInTimeSyncType = (
-            _ input: RDSModel.RestoreDBClusterToPointInTimeMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime
+            _ input: RDSModel.RestoreDBClusterToPointInTimeMessage) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime
     typealias RestoreDBClusterToPointInTimeAsyncType = (
             _ input: RDSModel.RestoreDBClusterToPointInTimeMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, RDSError>) -> ()) throws -> ()
     typealias RestoreDBInstanceFromDBSnapshotSyncType = (
-            _ input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot
+            _ input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot
     typealias RestoreDBInstanceFromDBSnapshotAsyncType = (
             _ input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, RDSError>) -> ()) throws -> ()
     typealias RestoreDBInstanceFromS3SyncType = (
-            _ input: RDSModel.RestoreDBInstanceFromS3Message,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3
+            _ input: RDSModel.RestoreDBInstanceFromS3Message) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3
     typealias RestoreDBInstanceFromS3AsyncType = (
             _ input: RDSModel.RestoreDBInstanceFromS3Message, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, RDSError>) -> ()) throws -> ()
     typealias RestoreDBInstanceToPointInTimeSyncType = (
-            _ input: RDSModel.RestoreDBInstanceToPointInTimeMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime
+            _ input: RDSModel.RestoreDBInstanceToPointInTimeMessage) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime
     typealias RestoreDBInstanceToPointInTimeAsyncType = (
             _ input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, RDSError>) -> ()) throws -> ()
     typealias RevokeDBSecurityGroupIngressSyncType = (
-            _ input: RDSModel.RevokeDBSecurityGroupIngressMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress
+            _ input: RDSModel.RevokeDBSecurityGroupIngressMessage) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress
     typealias RevokeDBSecurityGroupIngressAsyncType = (
             _ input: RDSModel.RevokeDBSecurityGroupIngressMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, RDSError>) -> ()) throws -> ()
     typealias StartActivityStreamSyncType = (
-            _ input: RDSModel.StartActivityStreamRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream
+            _ input: RDSModel.StartActivityStreamRequest) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream
     typealias StartActivityStreamAsyncType = (
             _ input: RDSModel.StartActivityStreamRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, RDSError>) -> ()) throws -> ()
     typealias StartDBClusterSyncType = (
-            _ input: RDSModel.StartDBClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartDBClusterResultForStartDBCluster
+            _ input: RDSModel.StartDBClusterMessage) throws -> RDSModel.StartDBClusterResultForStartDBCluster
     typealias StartDBClusterAsyncType = (
             _ input: RDSModel.StartDBClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, RDSError>) -> ()) throws -> ()
     typealias StartDBInstanceSyncType = (
-            _ input: RDSModel.StartDBInstanceMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartDBInstanceResultForStartDBInstance
+            _ input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance
     typealias StartDBInstanceAsyncType = (
             _ input: RDSModel.StartDBInstanceMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, RDSError>) -> ()) throws -> ()
     typealias StartExportTaskSyncType = (
-            _ input: RDSModel.StartExportTaskMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForStartExportTask
+            _ input: RDSModel.StartExportTaskMessage) throws -> RDSModel.ExportTaskForStartExportTask
     typealias StartExportTaskAsyncType = (
             _ input: RDSModel.StartExportTaskMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, RDSError>) -> ()) throws -> ()
     typealias StopActivityStreamSyncType = (
-            _ input: RDSModel.StopActivityStreamRequest,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream
+            _ input: RDSModel.StopActivityStreamRequest) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream
     typealias StopActivityStreamAsyncType = (
             _ input: RDSModel.StopActivityStreamRequest, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, RDSError>) -> ()) throws -> ()
     typealias StopDBClusterSyncType = (
-            _ input: RDSModel.StopDBClusterMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopDBClusterResultForStopDBCluster
+            _ input: RDSModel.StopDBClusterMessage) throws -> RDSModel.StopDBClusterResultForStopDBCluster
     typealias StopDBClusterAsyncType = (
             _ input: RDSModel.StopDBClusterMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, RDSError>) -> ()) throws -> ()
     typealias StopDBInstanceSyncType = (
-            _ input: RDSModel.StopDBInstanceMessage,
-            _ reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopDBInstanceResultForStopDBInstance
+            _ input: RDSModel.StopDBInstanceMessage) throws -> RDSModel.StopDBInstanceResultForStopDBInstance
     typealias StopDBInstanceAsyncType = (
             _ input: RDSModel.StopDBInstanceMessage, 
-            _ reporting: SmokeAWSInvocationReporting,
-            _ completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, HTTPClientError>) -> ()) throws -> ()
+            _ completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, RDSError>) -> ()) throws -> ()
 
     /**
      Invokes the AddRoleToDBCluster operation returning immediately and passing the response to a callback.
@@ -950,8 +690,7 @@ public protocol RDSClientProtocol {
      */
     func addRoleToDBClusterAsync(
             input: RDSModel.AddRoleToDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the AddRoleToDBCluster operation waiting for the response before returning.
@@ -961,8 +700,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, dBClusterRoleAlreadyExists, dBClusterRoleQuotaExceeded, invalidDBClusterState.
      */
     func addRoleToDBClusterSync(
-            input: RDSModel.AddRoleToDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: RDSModel.AddRoleToDBClusterMessage) throws
 
     /**
      Invokes the AddRoleToDBInstance operation returning immediately and passing the response to a callback.
@@ -975,8 +713,7 @@ public protocol RDSClientProtocol {
      */
     func addRoleToDBInstanceAsync(
             input: RDSModel.AddRoleToDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the AddRoleToDBInstance operation waiting for the response before returning.
@@ -986,8 +723,7 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceNotFound, dBInstanceRoleAlreadyExists, dBInstanceRoleQuotaExceeded, invalidDBInstanceState.
      */
     func addRoleToDBInstanceSync(
-            input: RDSModel.AddRoleToDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: RDSModel.AddRoleToDBInstanceMessage) throws
 
     /**
      Invokes the AddSourceIdentifierToSubscription operation returning immediately and passing the response to a callback.
@@ -1001,8 +737,7 @@ public protocol RDSClientProtocol {
      */
     func addSourceIdentifierToSubscriptionAsync(
             input: RDSModel.AddSourceIdentifierToSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, RDSError>) -> ()) throws
 
     /**
      Invokes the AddSourceIdentifierToSubscription operation waiting for the response before returning.
@@ -1014,8 +749,7 @@ public protocol RDSClientProtocol {
      - Throws: sourceNotFound, subscriptionNotFound.
      */
     func addSourceIdentifierToSubscriptionSync(
-            input: RDSModel.AddSourceIdentifierToSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription
+            input: RDSModel.AddSourceIdentifierToSubscriptionMessage) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription
 
     /**
      Invokes the AddTagsToResource operation returning immediately and passing the response to a callback.
@@ -1028,8 +762,7 @@ public protocol RDSClientProtocol {
      */
     func addTagsToResourceAsync(
             input: RDSModel.AddTagsToResourceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the AddTagsToResource operation waiting for the response before returning.
@@ -1039,8 +772,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
     func addTagsToResourceSync(
-            input: RDSModel.AddTagsToResourceMessage,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: RDSModel.AddTagsToResourceMessage) throws
 
     /**
      Invokes the ApplyPendingMaintenanceAction operation returning immediately and passing the response to a callback.
@@ -1054,8 +786,7 @@ public protocol RDSClientProtocol {
      */
     func applyPendingMaintenanceActionAsync(
             input: RDSModel.ApplyPendingMaintenanceActionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, RDSError>) -> ()) throws
 
     /**
      Invokes the ApplyPendingMaintenanceAction operation waiting for the response before returning.
@@ -1067,8 +798,7 @@ public protocol RDSClientProtocol {
      - Throws: invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
     func applyPendingMaintenanceActionSync(
-            input: RDSModel.ApplyPendingMaintenanceActionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction
+            input: RDSModel.ApplyPendingMaintenanceActionMessage) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction
 
     /**
      Invokes the AuthorizeDBSecurityGroupIngress operation returning immediately and passing the response to a callback.
@@ -1082,8 +812,7 @@ public protocol RDSClientProtocol {
      */
     func authorizeDBSecurityGroupIngressAsync(
             input: RDSModel.AuthorizeDBSecurityGroupIngressMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, RDSError>) -> ()) throws
 
     /**
      Invokes the AuthorizeDBSecurityGroupIngress operation waiting for the response before returning.
@@ -1095,8 +824,7 @@ public protocol RDSClientProtocol {
      - Throws: authorizationAlreadyExists, authorizationQuotaExceeded, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
     func authorizeDBSecurityGroupIngressSync(
-            input: RDSModel.AuthorizeDBSecurityGroupIngressMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress
+            input: RDSModel.AuthorizeDBSecurityGroupIngressMessage) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress
 
     /**
      Invokes the BacktrackDBCluster operation returning immediately and passing the response to a callback.
@@ -1110,8 +838,7 @@ public protocol RDSClientProtocol {
      */
     func backtrackDBClusterAsync(
             input: RDSModel.BacktrackDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the BacktrackDBCluster operation waiting for the response before returning.
@@ -1123,8 +850,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, invalidDBClusterState.
      */
     func backtrackDBClusterSync(
-            input: RDSModel.BacktrackDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster
+            input: RDSModel.BacktrackDBClusterMessage) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster
 
     /**
      Invokes the CancelExportTask operation returning immediately and passing the response to a callback.
@@ -1138,8 +864,7 @@ public protocol RDSClientProtocol {
      */
     func cancelExportTaskAsync(
             input: RDSModel.CancelExportTaskMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, RDSError>) -> ()) throws
 
     /**
      Invokes the CancelExportTask operation waiting for the response before returning.
@@ -1151,8 +876,7 @@ public protocol RDSClientProtocol {
      - Throws: exportTaskNotFound, invalidExportTaskState.
      */
     func cancelExportTaskSync(
-            input: RDSModel.CancelExportTaskMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForCancelExportTask
+            input: RDSModel.CancelExportTaskMessage) throws -> RDSModel.ExportTaskForCancelExportTask
 
     /**
      Invokes the CopyDBClusterParameterGroup operation returning immediately and passing the response to a callback.
@@ -1166,8 +890,7 @@ public protocol RDSClientProtocol {
      */
     func copyDBClusterParameterGroupAsync(
             input: RDSModel.CopyDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CopyDBClusterParameterGroup operation waiting for the response before returning.
@@ -1179,8 +902,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
     func copyDBClusterParameterGroupSync(
-            input: RDSModel.CopyDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup
+            input: RDSModel.CopyDBClusterParameterGroupMessage) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup
 
     /**
      Invokes the CopyDBClusterSnapshot operation returning immediately and passing the response to a callback.
@@ -1194,8 +916,7 @@ public protocol RDSClientProtocol {
      */
     func copyDBClusterSnapshotAsync(
             input: RDSModel.CopyDBClusterSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the CopyDBClusterSnapshot operation waiting for the response before returning.
@@ -1207,8 +928,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterSnapshotAlreadyExists, dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, invalidDBClusterState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
     func copyDBClusterSnapshotSync(
-            input: RDSModel.CopyDBClusterSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot
+            input: RDSModel.CopyDBClusterSnapshotMessage) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot
 
     /**
      Invokes the CopyDBParameterGroup operation returning immediately and passing the response to a callback.
@@ -1222,8 +942,7 @@ public protocol RDSClientProtocol {
      */
     func copyDBParameterGroupAsync(
             input: RDSModel.CopyDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CopyDBParameterGroup operation waiting for the response before returning.
@@ -1235,8 +954,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupNotFound, dBParameterGroupQuotaExceeded.
      */
     func copyDBParameterGroupSync(
-            input: RDSModel.CopyDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup
+            input: RDSModel.CopyDBParameterGroupMessage) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup
 
     /**
      Invokes the CopyDBSnapshot operation returning immediately and passing the response to a callback.
@@ -1250,8 +968,7 @@ public protocol RDSClientProtocol {
      */
     func copyDBSnapshotAsync(
             input: RDSModel.CopyDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the CopyDBSnapshot operation waiting for the response before returning.
@@ -1263,8 +980,7 @@ public protocol RDSClientProtocol {
      - Throws: dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
     func copyDBSnapshotSync(
-            input: RDSModel.CopyDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot
+            input: RDSModel.CopyDBSnapshotMessage) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot
 
     /**
      Invokes the CopyOptionGroup operation returning immediately and passing the response to a callback.
@@ -1278,8 +994,7 @@ public protocol RDSClientProtocol {
      */
     func copyOptionGroupAsync(
             input: RDSModel.CopyOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CopyOptionGroup operation waiting for the response before returning.
@@ -1291,8 +1006,7 @@ public protocol RDSClientProtocol {
      - Throws: optionGroupAlreadyExists, optionGroupNotFound, optionGroupQuotaExceeded.
      */
     func copyOptionGroupSync(
-            input: RDSModel.CopyOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup
+            input: RDSModel.CopyOptionGroupMessage) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup
 
     /**
      Invokes the CreateCustomAvailabilityZone operation returning immediately and passing the response to a callback.
@@ -1306,8 +1020,7 @@ public protocol RDSClientProtocol {
      */
     func createCustomAvailabilityZoneAsync(
             input: RDSModel.CreateCustomAvailabilityZoneMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateCustomAvailabilityZone operation waiting for the response before returning.
@@ -1319,8 +1032,7 @@ public protocol RDSClientProtocol {
      - Throws: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
      */
     func createCustomAvailabilityZoneSync(
-            input: RDSModel.CreateCustomAvailabilityZoneMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
+            input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
 
     /**
      Invokes the CreateDBCluster operation returning immediately and passing the response to a callback.
@@ -1334,8 +1046,7 @@ public protocol RDSClientProtocol {
      */
     func createDBClusterAsync(
             input: RDSModel.CreateDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBCluster operation waiting for the response before returning.
@@ -1347,8 +1058,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, globalClusterNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroupState, invalidGlobalClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
     func createDBClusterSync(
-            input: RDSModel.CreateDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster
+            input: RDSModel.CreateDBClusterMessage) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster
 
     /**
      Invokes the CreateDBClusterEndpoint operation returning immediately and passing the response to a callback.
@@ -1362,8 +1072,7 @@ public protocol RDSClientProtocol {
      */
     func createDBClusterEndpointAsync(
             input: RDSModel.CreateDBClusterEndpointMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBClusterEndpoint operation waiting for the response before returning.
@@ -1375,8 +1084,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterEndpointAlreadyExists, dBClusterEndpointQuotaExceeded, dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
     func createDBClusterEndpointSync(
-            input: RDSModel.CreateDBClusterEndpointMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint
+            input: RDSModel.CreateDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint
 
     /**
      Invokes the CreateDBClusterParameterGroup operation returning immediately and passing the response to a callback.
@@ -1390,8 +1098,7 @@ public protocol RDSClientProtocol {
      */
     func createDBClusterParameterGroupAsync(
             input: RDSModel.CreateDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBClusterParameterGroup operation waiting for the response before returning.
@@ -1403,8 +1110,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
     func createDBClusterParameterGroupSync(
-            input: RDSModel.CreateDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup
+            input: RDSModel.CreateDBClusterParameterGroupMessage) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup
 
     /**
      Invokes the CreateDBClusterSnapshot operation returning immediately and passing the response to a callback.
@@ -1418,8 +1124,7 @@ public protocol RDSClientProtocol {
      */
     func createDBClusterSnapshotAsync(
             input: RDSModel.CreateDBClusterSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBClusterSnapshot operation waiting for the response before returning.
@@ -1431,8 +1136,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
     func createDBClusterSnapshotSync(
-            input: RDSModel.CreateDBClusterSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot
+            input: RDSModel.CreateDBClusterSnapshotMessage) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot
 
     /**
      Invokes the CreateDBInstance operation returning immediately and passing the response to a callback.
@@ -1446,8 +1150,7 @@ public protocol RDSClientProtocol {
      */
     func createDBInstanceAsync(
             input: RDSModel.CreateDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBInstance operation waiting for the response before returning.
@@ -1459,8 +1162,7 @@ public protocol RDSClientProtocol {
      - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func createDBInstanceSync(
-            input: RDSModel.CreateDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance
+            input: RDSModel.CreateDBInstanceMessage) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance
 
     /**
      Invokes the CreateDBInstanceReadReplica operation returning immediately and passing the response to a callback.
@@ -1474,8 +1176,7 @@ public protocol RDSClientProtocol {
      */
     func createDBInstanceReadReplicaAsync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBInstanceReadReplica operation waiting for the response before returning.
@@ -1487,8 +1188,7 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func createDBInstanceReadReplicaSync(
-            input: RDSModel.CreateDBInstanceReadReplicaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica
+            input: RDSModel.CreateDBInstanceReadReplicaMessage) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica
 
     /**
      Invokes the CreateDBParameterGroup operation returning immediately and passing the response to a callback.
@@ -1502,8 +1202,7 @@ public protocol RDSClientProtocol {
      */
     func createDBParameterGroupAsync(
             input: RDSModel.CreateDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBParameterGroup operation waiting for the response before returning.
@@ -1515,8 +1214,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupAlreadyExists, dBParameterGroupQuotaExceeded.
      */
     func createDBParameterGroupSync(
-            input: RDSModel.CreateDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup
+            input: RDSModel.CreateDBParameterGroupMessage) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup
 
     /**
      Invokes the CreateDBProxy operation returning immediately and passing the response to a callback.
@@ -1530,8 +1228,7 @@ public protocol RDSClientProtocol {
      */
     func createDBProxyAsync(
             input: RDSModel.CreateDBProxyRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBProxy operation waiting for the response before returning.
@@ -1543,8 +1240,7 @@ public protocol RDSClientProtocol {
      - Throws: dBProxyAlreadyExists, dBProxyQuotaExceeded, invalidSubnet.
      */
     func createDBProxySync(
-            input: RDSModel.CreateDBProxyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy
+            input: RDSModel.CreateDBProxyRequest) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy
 
     /**
      Invokes the CreateDBSecurityGroup operation returning immediately and passing the response to a callback.
@@ -1558,8 +1254,7 @@ public protocol RDSClientProtocol {
      */
     func createDBSecurityGroupAsync(
             input: RDSModel.CreateDBSecurityGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBSecurityGroup operation waiting for the response before returning.
@@ -1571,8 +1266,7 @@ public protocol RDSClientProtocol {
      - Throws: dBSecurityGroupAlreadyExists, dBSecurityGroupNotSupported, dBSecurityGroupQuotaExceeded.
      */
     func createDBSecurityGroupSync(
-            input: RDSModel.CreateDBSecurityGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup
+            input: RDSModel.CreateDBSecurityGroupMessage) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup
 
     /**
      Invokes the CreateDBSnapshot operation returning immediately and passing the response to a callback.
@@ -1586,8 +1280,7 @@ public protocol RDSClientProtocol {
      */
     func createDBSnapshotAsync(
             input: RDSModel.CreateDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBSnapshot operation waiting for the response before returning.
@@ -1599,8 +1292,7 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBInstanceState, snapshotQuotaExceeded.
      */
     func createDBSnapshotSync(
-            input: RDSModel.CreateDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot
+            input: RDSModel.CreateDBSnapshotMessage) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot
 
     /**
      Invokes the CreateDBSubnetGroup operation returning immediately and passing the response to a callback.
@@ -1614,8 +1306,7 @@ public protocol RDSClientProtocol {
      */
     func createDBSubnetGroupAsync(
             input: RDSModel.CreateDBSubnetGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateDBSubnetGroup operation waiting for the response before returning.
@@ -1627,8 +1318,7 @@ public protocol RDSClientProtocol {
      - Throws: dBSubnetGroupAlreadyExists, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupQuotaExceeded, dBSubnetQuotaExceeded, invalidSubnet.
      */
     func createDBSubnetGroupSync(
-            input: RDSModel.CreateDBSubnetGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup
+            input: RDSModel.CreateDBSubnetGroupMessage) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup
 
     /**
      Invokes the CreateEventSubscription operation returning immediately and passing the response to a callback.
@@ -1642,8 +1332,7 @@ public protocol RDSClientProtocol {
      */
     func createEventSubscriptionAsync(
             input: RDSModel.CreateEventSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateEventSubscription operation waiting for the response before returning.
@@ -1655,8 +1344,7 @@ public protocol RDSClientProtocol {
      - Throws: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, sourceNotFound, subscriptionAlreadyExist, subscriptionCategoryNotFound.
      */
     func createEventSubscriptionSync(
-            input: RDSModel.CreateEventSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription
+            input: RDSModel.CreateEventSubscriptionMessage) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription
 
     /**
      Invokes the CreateGlobalCluster operation returning immediately and passing the response to a callback.
@@ -1670,8 +1358,7 @@ public protocol RDSClientProtocol {
      */
     func createGlobalClusterAsync(
             input: RDSModel.CreateGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateGlobalCluster operation waiting for the response before returning.
@@ -1683,8 +1370,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, globalClusterAlreadyExists, globalClusterQuotaExceeded, invalidDBClusterState.
      */
     func createGlobalClusterSync(
-            input: RDSModel.CreateGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster
+            input: RDSModel.CreateGlobalClusterMessage) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster
 
     /**
      Invokes the CreateOptionGroup operation returning immediately and passing the response to a callback.
@@ -1698,8 +1384,7 @@ public protocol RDSClientProtocol {
      */
     func createOptionGroupAsync(
             input: RDSModel.CreateOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the CreateOptionGroup operation waiting for the response before returning.
@@ -1711,8 +1396,7 @@ public protocol RDSClientProtocol {
      - Throws: optionGroupAlreadyExists, optionGroupQuotaExceeded.
      */
     func createOptionGroupSync(
-            input: RDSModel.CreateOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup
+            input: RDSModel.CreateOptionGroupMessage) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup
 
     /**
      Invokes the DeleteCustomAvailabilityZone operation returning immediately and passing the response to a callback.
@@ -1726,8 +1410,7 @@ public protocol RDSClientProtocol {
      */
     func deleteCustomAvailabilityZoneAsync(
             input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteCustomAvailabilityZone operation waiting for the response before returning.
@@ -1739,8 +1422,7 @@ public protocol RDSClientProtocol {
      - Throws: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
      */
     func deleteCustomAvailabilityZoneSync(
-            input: RDSModel.DeleteCustomAvailabilityZoneMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
+            input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
 
     /**
      Invokes the DeleteDBCluster operation returning immediately and passing the response to a callback.
@@ -1754,8 +1436,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBClusterAsync(
             input: RDSModel.DeleteDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBCluster operation waiting for the response before returning.
@@ -1767,8 +1448,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
     func deleteDBClusterSync(
-            input: RDSModel.DeleteDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster
+            input: RDSModel.DeleteDBClusterMessage) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster
 
     /**
      Invokes the DeleteDBClusterEndpoint operation returning immediately and passing the response to a callback.
@@ -1782,8 +1462,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBClusterEndpointAsync(
             input: RDSModel.DeleteDBClusterEndpointMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBClusterEndpoint operation waiting for the response before returning.
@@ -1795,8 +1474,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterEndpointNotFound, invalidDBClusterEndpointState, invalidDBClusterState.
      */
     func deleteDBClusterEndpointSync(
-            input: RDSModel.DeleteDBClusterEndpointMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint
+            input: RDSModel.DeleteDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint
 
     /**
      Invokes the DeleteDBClusterParameterGroup operation returning immediately and passing the response to a callback.
@@ -1809,8 +1487,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBClusterParameterGroupAsync(
             input: RDSModel.DeleteDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the DeleteDBClusterParameterGroup operation waiting for the response before returning.
@@ -1820,8 +1497,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     func deleteDBClusterParameterGroupSync(
-            input: RDSModel.DeleteDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: RDSModel.DeleteDBClusterParameterGroupMessage) throws
 
     /**
      Invokes the DeleteDBClusterSnapshot operation returning immediately and passing the response to a callback.
@@ -1835,8 +1511,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBClusterSnapshotAsync(
             input: RDSModel.DeleteDBClusterSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBClusterSnapshot operation waiting for the response before returning.
@@ -1848,8 +1523,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState.
      */
     func deleteDBClusterSnapshotSync(
-            input: RDSModel.DeleteDBClusterSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot
+            input: RDSModel.DeleteDBClusterSnapshotMessage) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot
 
     /**
      Invokes the DeleteDBInstance operation returning immediately and passing the response to a callback.
@@ -1863,8 +1537,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBInstanceAsync(
             input: RDSModel.DeleteDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBInstance operation waiting for the response before returning.
@@ -1876,8 +1549,7 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
     func deleteDBInstanceSync(
-            input: RDSModel.DeleteDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance
+            input: RDSModel.DeleteDBInstanceMessage) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance
 
     /**
      Invokes the DeleteDBInstanceAutomatedBackup operation returning immediately and passing the response to a callback.
@@ -1891,8 +1563,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBInstanceAutomatedBackupAsync(
             input: RDSModel.DeleteDBInstanceAutomatedBackupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBInstanceAutomatedBackup operation waiting for the response before returning.
@@ -1904,8 +1575,7 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceAutomatedBackupNotFound, invalidDBInstanceAutomatedBackupState.
      */
     func deleteDBInstanceAutomatedBackupSync(
-            input: RDSModel.DeleteDBInstanceAutomatedBackupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup
+            input: RDSModel.DeleteDBInstanceAutomatedBackupMessage) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup
 
     /**
      Invokes the DeleteDBParameterGroup operation returning immediately and passing the response to a callback.
@@ -1918,8 +1588,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBParameterGroupAsync(
             input: RDSModel.DeleteDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the DeleteDBParameterGroup operation waiting for the response before returning.
@@ -1929,8 +1598,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     func deleteDBParameterGroupSync(
-            input: RDSModel.DeleteDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: RDSModel.DeleteDBParameterGroupMessage) throws
 
     /**
      Invokes the DeleteDBProxy operation returning immediately and passing the response to a callback.
@@ -1944,8 +1612,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBProxyAsync(
             input: RDSModel.DeleteDBProxyRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBProxy operation waiting for the response before returning.
@@ -1957,8 +1624,7 @@ public protocol RDSClientProtocol {
      - Throws: dBProxyNotFound, invalidDBProxyState.
      */
     func deleteDBProxySync(
-            input: RDSModel.DeleteDBProxyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy
+            input: RDSModel.DeleteDBProxyRequest) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy
 
     /**
      Invokes the DeleteDBSecurityGroup operation returning immediately and passing the response to a callback.
@@ -1971,8 +1637,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBSecurityGroupAsync(
             input: RDSModel.DeleteDBSecurityGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the DeleteDBSecurityGroup operation waiting for the response before returning.
@@ -1982,8 +1647,7 @@ public protocol RDSClientProtocol {
      - Throws: dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
     func deleteDBSecurityGroupSync(
-            input: RDSModel.DeleteDBSecurityGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: RDSModel.DeleteDBSecurityGroupMessage) throws
 
     /**
      Invokes the DeleteDBSnapshot operation returning immediately and passing the response to a callback.
@@ -1997,8 +1661,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBSnapshotAsync(
             input: RDSModel.DeleteDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteDBSnapshot operation waiting for the response before returning.
@@ -2010,8 +1673,7 @@ public protocol RDSClientProtocol {
      - Throws: dBSnapshotNotFound, invalidDBSnapshotState.
      */
     func deleteDBSnapshotSync(
-            input: RDSModel.DeleteDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot
+            input: RDSModel.DeleteDBSnapshotMessage) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot
 
     /**
      Invokes the DeleteDBSubnetGroup operation returning immediately and passing the response to a callback.
@@ -2024,8 +1686,7 @@ public protocol RDSClientProtocol {
      */
     func deleteDBSubnetGroupAsync(
             input: RDSModel.DeleteDBSubnetGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the DeleteDBSubnetGroup operation waiting for the response before returning.
@@ -2035,8 +1696,7 @@ public protocol RDSClientProtocol {
      - Throws: dBSubnetGroupNotFound, invalidDBSubnetGroupState, invalidDBSubnetState.
      */
     func deleteDBSubnetGroupSync(
-            input: RDSModel.DeleteDBSubnetGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: RDSModel.DeleteDBSubnetGroupMessage) throws
 
     /**
      Invokes the DeleteEventSubscription operation returning immediately and passing the response to a callback.
@@ -2050,8 +1710,7 @@ public protocol RDSClientProtocol {
      */
     func deleteEventSubscriptionAsync(
             input: RDSModel.DeleteEventSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteEventSubscription operation waiting for the response before returning.
@@ -2063,8 +1722,7 @@ public protocol RDSClientProtocol {
      - Throws: invalidEventSubscriptionState, subscriptionNotFound.
      */
     func deleteEventSubscriptionSync(
-            input: RDSModel.DeleteEventSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription
+            input: RDSModel.DeleteEventSubscriptionMessage) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription
 
     /**
      Invokes the DeleteGlobalCluster operation returning immediately and passing the response to a callback.
@@ -2078,8 +1736,7 @@ public protocol RDSClientProtocol {
      */
     func deleteGlobalClusterAsync(
             input: RDSModel.DeleteGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteGlobalCluster operation waiting for the response before returning.
@@ -2091,8 +1748,7 @@ public protocol RDSClientProtocol {
      - Throws: globalClusterNotFound, invalidGlobalClusterState.
      */
     func deleteGlobalClusterSync(
-            input: RDSModel.DeleteGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster
+            input: RDSModel.DeleteGlobalClusterMessage) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster
 
     /**
      Invokes the DeleteInstallationMedia operation returning immediately and passing the response to a callback.
@@ -2106,8 +1762,7 @@ public protocol RDSClientProtocol {
      */
     func deleteInstallationMediaAsync(
             input: RDSModel.DeleteInstallationMediaMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, RDSError>) -> ()) throws
 
     /**
      Invokes the DeleteInstallationMedia operation waiting for the response before returning.
@@ -2119,8 +1774,7 @@ public protocol RDSClientProtocol {
      - Throws: installationMediaNotFound.
      */
     func deleteInstallationMediaSync(
-            input: RDSModel.DeleteInstallationMediaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia
+            input: RDSModel.DeleteInstallationMediaMessage) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia
 
     /**
      Invokes the DeleteOptionGroup operation returning immediately and passing the response to a callback.
@@ -2133,8 +1787,7 @@ public protocol RDSClientProtocol {
      */
     func deleteOptionGroupAsync(
             input: RDSModel.DeleteOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the DeleteOptionGroup operation waiting for the response before returning.
@@ -2144,8 +1797,7 @@ public protocol RDSClientProtocol {
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
     func deleteOptionGroupSync(
-            input: RDSModel.DeleteOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: RDSModel.DeleteOptionGroupMessage) throws
 
     /**
      Invokes the DeregisterDBProxyTargets operation returning immediately and passing the response to a callback.
@@ -2159,8 +1811,7 @@ public protocol RDSClientProtocol {
      */
     func deregisterDBProxyTargetsAsync(
             input: RDSModel.DeregisterDBProxyTargetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, RDSError>) -> ()) throws
 
     /**
      Invokes the DeregisterDBProxyTargets operation waiting for the response before returning.
@@ -2172,8 +1823,7 @@ public protocol RDSClientProtocol {
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
     func deregisterDBProxyTargetsSync(
-            input: RDSModel.DeregisterDBProxyTargetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
+            input: RDSModel.DeregisterDBProxyTargetsRequest) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
 
     /**
      Invokes the DescribeAccountAttributes operation returning immediately and passing the response to a callback.
@@ -2186,8 +1836,7 @@ public protocol RDSClientProtocol {
      */
     func describeAccountAttributesAsync(
             input: RDSModel.DescribeAccountAttributesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeAccountAttributes operation waiting for the response before returning.
@@ -2198,8 +1847,7 @@ public protocol RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     func describeAccountAttributesSync(
-            input: RDSModel.DescribeAccountAttributesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes
+            input: RDSModel.DescribeAccountAttributesMessage) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes
 
     /**
      Invokes the DescribeCertificates operation returning immediately and passing the response to a callback.
@@ -2213,8 +1861,7 @@ public protocol RDSClientProtocol {
      */
     func describeCertificatesAsync(
             input: RDSModel.DescribeCertificatesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeCertificates operation waiting for the response before returning.
@@ -2226,8 +1873,7 @@ public protocol RDSClientProtocol {
      - Throws: certificateNotFound.
      */
     func describeCertificatesSync(
-            input: RDSModel.DescribeCertificatesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CertificateMessageForDescribeCertificates
+            input: RDSModel.DescribeCertificatesMessage) throws -> RDSModel.CertificateMessageForDescribeCertificates
 
     /**
      Invokes the DescribeCustomAvailabilityZones operation returning immediately and passing the response to a callback.
@@ -2241,8 +1887,7 @@ public protocol RDSClientProtocol {
      */
     func describeCustomAvailabilityZonesAsync(
             input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeCustomAvailabilityZones operation waiting for the response before returning.
@@ -2254,8 +1899,7 @@ public protocol RDSClientProtocol {
      - Throws: customAvailabilityZoneNotFound.
      */
     func describeCustomAvailabilityZonesSync(
-            input: RDSModel.DescribeCustomAvailabilityZonesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
+            input: RDSModel.DescribeCustomAvailabilityZonesMessage) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
 
     /**
      Invokes the DescribeDBClusterBacktracks operation returning immediately and passing the response to a callback.
@@ -2269,8 +1913,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClusterBacktracksAsync(
             input: RDSModel.DescribeDBClusterBacktracksMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusterBacktracks operation waiting for the response before returning.
@@ -2282,8 +1925,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterBacktrackNotFound, dBClusterNotFound.
      */
     func describeDBClusterBacktracksSync(
-            input: RDSModel.DescribeDBClusterBacktracksMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks
+            input: RDSModel.DescribeDBClusterBacktracksMessage) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks
 
     /**
      Invokes the DescribeDBClusterEndpoints operation returning immediately and passing the response to a callback.
@@ -2297,8 +1939,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClusterEndpointsAsync(
             input: RDSModel.DescribeDBClusterEndpointsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusterEndpoints operation waiting for the response before returning.
@@ -2310,8 +1951,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound.
      */
     func describeDBClusterEndpointsSync(
-            input: RDSModel.DescribeDBClusterEndpointsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints
+            input: RDSModel.DescribeDBClusterEndpointsMessage) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints
 
     /**
      Invokes the DescribeDBClusterParameterGroups operation returning immediately and passing the response to a callback.
@@ -2325,8 +1965,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClusterParameterGroupsAsync(
             input: RDSModel.DescribeDBClusterParameterGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusterParameterGroups operation waiting for the response before returning.
@@ -2338,8 +1977,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupNotFound.
      */
     func describeDBClusterParameterGroupsSync(
-            input: RDSModel.DescribeDBClusterParameterGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups
+            input: RDSModel.DescribeDBClusterParameterGroupsMessage) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups
 
     /**
      Invokes the DescribeDBClusterParameters operation returning immediately and passing the response to a callback.
@@ -2353,8 +1991,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClusterParametersAsync(
             input: RDSModel.DescribeDBClusterParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusterParameters operation waiting for the response before returning.
@@ -2366,8 +2003,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupNotFound.
      */
     func describeDBClusterParametersSync(
-            input: RDSModel.DescribeDBClusterParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters
+            input: RDSModel.DescribeDBClusterParametersMessage) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters
 
     /**
      Invokes the DescribeDBClusterSnapshotAttributes operation returning immediately and passing the response to a callback.
@@ -2381,8 +2017,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClusterSnapshotAttributesAsync(
             input: RDSModel.DescribeDBClusterSnapshotAttributesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusterSnapshotAttributes operation waiting for the response before returning.
@@ -2394,8 +2029,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterSnapshotNotFound.
      */
     func describeDBClusterSnapshotAttributesSync(
-            input: RDSModel.DescribeDBClusterSnapshotAttributesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes
+            input: RDSModel.DescribeDBClusterSnapshotAttributesMessage) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes
 
     /**
      Invokes the DescribeDBClusterSnapshots operation returning immediately and passing the response to a callback.
@@ -2409,8 +2043,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClusterSnapshotsAsync(
             input: RDSModel.DescribeDBClusterSnapshotsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusterSnapshots operation waiting for the response before returning.
@@ -2422,8 +2055,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterSnapshotNotFound.
      */
     func describeDBClusterSnapshotsSync(
-            input: RDSModel.DescribeDBClusterSnapshotsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots
+            input: RDSModel.DescribeDBClusterSnapshotsMessage) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots
 
     /**
      Invokes the DescribeDBClusters operation returning immediately and passing the response to a callback.
@@ -2437,8 +2069,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBClustersAsync(
             input: RDSModel.DescribeDBClustersMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBClusters operation waiting for the response before returning.
@@ -2450,8 +2081,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound.
      */
     func describeDBClustersSync(
-            input: RDSModel.DescribeDBClustersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterMessageForDescribeDBClusters
+            input: RDSModel.DescribeDBClustersMessage) throws -> RDSModel.DBClusterMessageForDescribeDBClusters
 
     /**
      Invokes the DescribeDBEngineVersions operation returning immediately and passing the response to a callback.
@@ -2464,8 +2094,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBEngineVersionsAsync(
             input: RDSModel.DescribeDBEngineVersionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBEngineVersions operation waiting for the response before returning.
@@ -2476,8 +2105,7 @@ public protocol RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     func describeDBEngineVersionsSync(
-            input: RDSModel.DescribeDBEngineVersionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions
+            input: RDSModel.DescribeDBEngineVersionsMessage) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions
 
     /**
      Invokes the DescribeDBInstanceAutomatedBackups operation returning immediately and passing the response to a callback.
@@ -2491,8 +2119,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBInstanceAutomatedBackupsAsync(
             input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBInstanceAutomatedBackups operation waiting for the response before returning.
@@ -2504,8 +2131,7 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceAutomatedBackupNotFound.
      */
     func describeDBInstanceAutomatedBackupsSync(
-            input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups
+            input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups
 
     /**
      Invokes the DescribeDBInstances operation returning immediately and passing the response to a callback.
@@ -2519,8 +2145,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBInstancesAsync(
             input: RDSModel.DescribeDBInstancesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBInstances operation waiting for the response before returning.
@@ -2532,8 +2157,7 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceNotFound.
      */
     func describeDBInstancesSync(
-            input: RDSModel.DescribeDBInstancesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances
+            input: RDSModel.DescribeDBInstancesMessage) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances
 
     /**
      Invokes the DescribeDBLogFiles operation returning immediately and passing the response to a callback.
@@ -2547,8 +2171,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBLogFilesAsync(
             input: RDSModel.DescribeDBLogFilesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBLogFiles operation waiting for the response before returning.
@@ -2560,8 +2183,7 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceNotFound.
      */
     func describeDBLogFilesSync(
-            input: RDSModel.DescribeDBLogFilesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles
+            input: RDSModel.DescribeDBLogFilesMessage) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles
 
     /**
      Invokes the DescribeDBParameterGroups operation returning immediately and passing the response to a callback.
@@ -2575,8 +2197,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBParameterGroupsAsync(
             input: RDSModel.DescribeDBParameterGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBParameterGroups operation waiting for the response before returning.
@@ -2588,8 +2209,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupNotFound.
      */
     func describeDBParameterGroupsSync(
-            input: RDSModel.DescribeDBParameterGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups
+            input: RDSModel.DescribeDBParameterGroupsMessage) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups
 
     /**
      Invokes the DescribeDBParameters operation returning immediately and passing the response to a callback.
@@ -2603,8 +2223,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBParametersAsync(
             input: RDSModel.DescribeDBParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBParameters operation waiting for the response before returning.
@@ -2616,8 +2235,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupNotFound.
      */
     func describeDBParametersSync(
-            input: RDSModel.DescribeDBParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters
+            input: RDSModel.DescribeDBParametersMessage) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters
 
     /**
      Invokes the DescribeDBProxies operation returning immediately and passing the response to a callback.
@@ -2631,8 +2249,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBProxiesAsync(
             input: RDSModel.DescribeDBProxiesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBProxies operation waiting for the response before returning.
@@ -2644,8 +2261,7 @@ public protocol RDSClientProtocol {
      - Throws: dBProxyNotFound.
      */
     func describeDBProxiesSync(
-            input: RDSModel.DescribeDBProxiesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies
+            input: RDSModel.DescribeDBProxiesRequest) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies
 
     /**
      Invokes the DescribeDBProxyTargetGroups operation returning immediately and passing the response to a callback.
@@ -2659,8 +2275,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBProxyTargetGroupsAsync(
             input: RDSModel.DescribeDBProxyTargetGroupsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBProxyTargetGroups operation waiting for the response before returning.
@@ -2672,8 +2287,7 @@ public protocol RDSClientProtocol {
      - Throws: dBProxyTargetGroupNotFound.
      */
     func describeDBProxyTargetGroupsSync(
-            input: RDSModel.DescribeDBProxyTargetGroupsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
+            input: RDSModel.DescribeDBProxyTargetGroupsRequest) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
 
     /**
      Invokes the DescribeDBProxyTargets operation returning immediately and passing the response to a callback.
@@ -2687,8 +2301,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBProxyTargetsAsync(
             input: RDSModel.DescribeDBProxyTargetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBProxyTargets operation waiting for the response before returning.
@@ -2700,8 +2313,7 @@ public protocol RDSClientProtocol {
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
      */
     func describeDBProxyTargetsSync(
-            input: RDSModel.DescribeDBProxyTargetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
+            input: RDSModel.DescribeDBProxyTargetsRequest) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
 
     /**
      Invokes the DescribeDBSecurityGroups operation returning immediately and passing the response to a callback.
@@ -2715,8 +2327,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBSecurityGroupsAsync(
             input: RDSModel.DescribeDBSecurityGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBSecurityGroups operation waiting for the response before returning.
@@ -2728,8 +2339,7 @@ public protocol RDSClientProtocol {
      - Throws: dBSecurityGroupNotFound.
      */
     func describeDBSecurityGroupsSync(
-            input: RDSModel.DescribeDBSecurityGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups
+            input: RDSModel.DescribeDBSecurityGroupsMessage) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups
 
     /**
      Invokes the DescribeDBSnapshotAttributes operation returning immediately and passing the response to a callback.
@@ -2743,8 +2353,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBSnapshotAttributesAsync(
             input: RDSModel.DescribeDBSnapshotAttributesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBSnapshotAttributes operation waiting for the response before returning.
@@ -2756,8 +2365,7 @@ public protocol RDSClientProtocol {
      - Throws: dBSnapshotNotFound.
      */
     func describeDBSnapshotAttributesSync(
-            input: RDSModel.DescribeDBSnapshotAttributesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes
+            input: RDSModel.DescribeDBSnapshotAttributesMessage) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes
 
     /**
      Invokes the DescribeDBSnapshots operation returning immediately and passing the response to a callback.
@@ -2771,8 +2379,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBSnapshotsAsync(
             input: RDSModel.DescribeDBSnapshotsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBSnapshots operation waiting for the response before returning.
@@ -2784,8 +2391,7 @@ public protocol RDSClientProtocol {
      - Throws: dBSnapshotNotFound.
      */
     func describeDBSnapshotsSync(
-            input: RDSModel.DescribeDBSnapshotsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots
+            input: RDSModel.DescribeDBSnapshotsMessage) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots
 
     /**
      Invokes the DescribeDBSubnetGroups operation returning immediately and passing the response to a callback.
@@ -2799,8 +2405,7 @@ public protocol RDSClientProtocol {
      */
     func describeDBSubnetGroupsAsync(
             input: RDSModel.DescribeDBSubnetGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeDBSubnetGroups operation waiting for the response before returning.
@@ -2812,8 +2417,7 @@ public protocol RDSClientProtocol {
      - Throws: dBSubnetGroupNotFound.
      */
     func describeDBSubnetGroupsSync(
-            input: RDSModel.DescribeDBSubnetGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups
+            input: RDSModel.DescribeDBSubnetGroupsMessage) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups
 
     /**
      Invokes the DescribeEngineDefaultClusterParameters operation returning immediately and passing the response to a callback.
@@ -2826,8 +2430,7 @@ public protocol RDSClientProtocol {
      */
     func describeEngineDefaultClusterParametersAsync(
             input: RDSModel.DescribeEngineDefaultClusterParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeEngineDefaultClusterParameters operation waiting for the response before returning.
@@ -2838,8 +2441,7 @@ public protocol RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     func describeEngineDefaultClusterParametersSync(
-            input: RDSModel.DescribeEngineDefaultClusterParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters
+            input: RDSModel.DescribeEngineDefaultClusterParametersMessage) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters
 
     /**
      Invokes the DescribeEngineDefaultParameters operation returning immediately and passing the response to a callback.
@@ -2852,8 +2454,7 @@ public protocol RDSClientProtocol {
      */
     func describeEngineDefaultParametersAsync(
             input: RDSModel.DescribeEngineDefaultParametersMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeEngineDefaultParameters operation waiting for the response before returning.
@@ -2864,8 +2465,7 @@ public protocol RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     func describeEngineDefaultParametersSync(
-            input: RDSModel.DescribeEngineDefaultParametersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters
+            input: RDSModel.DescribeEngineDefaultParametersMessage) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters
 
     /**
      Invokes the DescribeEventCategories operation returning immediately and passing the response to a callback.
@@ -2878,8 +2478,7 @@ public protocol RDSClientProtocol {
      */
     func describeEventCategoriesAsync(
             input: RDSModel.DescribeEventCategoriesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeEventCategories operation waiting for the response before returning.
@@ -2890,8 +2489,7 @@ public protocol RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     func describeEventCategoriesSync(
-            input: RDSModel.DescribeEventCategoriesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories
+            input: RDSModel.DescribeEventCategoriesMessage) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories
 
     /**
      Invokes the DescribeEventSubscriptions operation returning immediately and passing the response to a callback.
@@ -2905,8 +2503,7 @@ public protocol RDSClientProtocol {
      */
     func describeEventSubscriptionsAsync(
             input: RDSModel.DescribeEventSubscriptionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeEventSubscriptions operation waiting for the response before returning.
@@ -2918,8 +2515,7 @@ public protocol RDSClientProtocol {
      - Throws: subscriptionNotFound.
      */
     func describeEventSubscriptionsSync(
-            input: RDSModel.DescribeEventSubscriptionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions
+            input: RDSModel.DescribeEventSubscriptionsMessage) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions
 
     /**
      Invokes the DescribeEvents operation returning immediately and passing the response to a callback.
@@ -2932,8 +2528,7 @@ public protocol RDSClientProtocol {
      */
     func describeEventsAsync(
             input: RDSModel.DescribeEventsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeEvents operation waiting for the response before returning.
@@ -2944,8 +2539,7 @@ public protocol RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     func describeEventsSync(
-            input: RDSModel.DescribeEventsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.EventsMessageForDescribeEvents
+            input: RDSModel.DescribeEventsMessage) throws -> RDSModel.EventsMessageForDescribeEvents
 
     /**
      Invokes the DescribeExportTasks operation returning immediately and passing the response to a callback.
@@ -2959,8 +2553,7 @@ public protocol RDSClientProtocol {
      */
     func describeExportTasksAsync(
             input: RDSModel.DescribeExportTasksMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeExportTasks operation waiting for the response before returning.
@@ -2972,8 +2565,7 @@ public protocol RDSClientProtocol {
      - Throws: exportTaskNotFound.
      */
     func describeExportTasksSync(
-            input: RDSModel.DescribeExportTasksMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks
+            input: RDSModel.DescribeExportTasksMessage) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks
 
     /**
      Invokes the DescribeGlobalClusters operation returning immediately and passing the response to a callback.
@@ -2987,8 +2579,7 @@ public protocol RDSClientProtocol {
      */
     func describeGlobalClustersAsync(
             input: RDSModel.DescribeGlobalClustersMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeGlobalClusters operation waiting for the response before returning.
@@ -3000,8 +2591,7 @@ public protocol RDSClientProtocol {
      - Throws: globalClusterNotFound.
      */
     func describeGlobalClustersSync(
-            input: RDSModel.DescribeGlobalClustersMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters
+            input: RDSModel.DescribeGlobalClustersMessage) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters
 
     /**
      Invokes the DescribeInstallationMedia operation returning immediately and passing the response to a callback.
@@ -3015,8 +2605,7 @@ public protocol RDSClientProtocol {
      */
     func describeInstallationMediaAsync(
             input: RDSModel.DescribeInstallationMediaMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeInstallationMedia operation waiting for the response before returning.
@@ -3028,8 +2617,7 @@ public protocol RDSClientProtocol {
      - Throws: installationMediaNotFound.
      */
     func describeInstallationMediaSync(
-            input: RDSModel.DescribeInstallationMediaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia
+            input: RDSModel.DescribeInstallationMediaMessage) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia
 
     /**
      Invokes the DescribeOptionGroupOptions operation returning immediately and passing the response to a callback.
@@ -3042,8 +2630,7 @@ public protocol RDSClientProtocol {
      */
     func describeOptionGroupOptionsAsync(
             input: RDSModel.DescribeOptionGroupOptionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeOptionGroupOptions operation waiting for the response before returning.
@@ -3054,8 +2641,7 @@ public protocol RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     func describeOptionGroupOptionsSync(
-            input: RDSModel.DescribeOptionGroupOptionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions
+            input: RDSModel.DescribeOptionGroupOptionsMessage) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions
 
     /**
      Invokes the DescribeOptionGroups operation returning immediately and passing the response to a callback.
@@ -3069,8 +2655,7 @@ public protocol RDSClientProtocol {
      */
     func describeOptionGroupsAsync(
             input: RDSModel.DescribeOptionGroupsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeOptionGroups operation waiting for the response before returning.
@@ -3082,8 +2667,7 @@ public protocol RDSClientProtocol {
      - Throws: optionGroupNotFound.
      */
     func describeOptionGroupsSync(
-            input: RDSModel.DescribeOptionGroupsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OptionGroupsForDescribeOptionGroups
+            input: RDSModel.DescribeOptionGroupsMessage) throws -> RDSModel.OptionGroupsForDescribeOptionGroups
 
     /**
      Invokes the DescribeOrderableDBInstanceOptions operation returning immediately and passing the response to a callback.
@@ -3096,8 +2680,7 @@ public protocol RDSClientProtocol {
      */
     func describeOrderableDBInstanceOptionsAsync(
             input: RDSModel.DescribeOrderableDBInstanceOptionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeOrderableDBInstanceOptions operation waiting for the response before returning.
@@ -3108,8 +2691,7 @@ public protocol RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     func describeOrderableDBInstanceOptionsSync(
-            input: RDSModel.DescribeOrderableDBInstanceOptionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions
+            input: RDSModel.DescribeOrderableDBInstanceOptionsMessage) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions
 
     /**
      Invokes the DescribePendingMaintenanceActions operation returning immediately and passing the response to a callback.
@@ -3123,8 +2705,7 @@ public protocol RDSClientProtocol {
      */
     func describePendingMaintenanceActionsAsync(
             input: RDSModel.DescribePendingMaintenanceActionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribePendingMaintenanceActions operation waiting for the response before returning.
@@ -3136,8 +2717,7 @@ public protocol RDSClientProtocol {
      - Throws: resourceNotFound.
      */
     func describePendingMaintenanceActionsSync(
-            input: RDSModel.DescribePendingMaintenanceActionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions
+            input: RDSModel.DescribePendingMaintenanceActionsMessage) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions
 
     /**
      Invokes the DescribeReservedDBInstances operation returning immediately and passing the response to a callback.
@@ -3151,8 +2731,7 @@ public protocol RDSClientProtocol {
      */
     func describeReservedDBInstancesAsync(
             input: RDSModel.DescribeReservedDBInstancesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeReservedDBInstances operation waiting for the response before returning.
@@ -3164,8 +2743,7 @@ public protocol RDSClientProtocol {
      - Throws: reservedDBInstanceNotFound.
      */
     func describeReservedDBInstancesSync(
-            input: RDSModel.DescribeReservedDBInstancesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances
+            input: RDSModel.DescribeReservedDBInstancesMessage) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances
 
     /**
      Invokes the DescribeReservedDBInstancesOfferings operation returning immediately and passing the response to a callback.
@@ -3179,8 +2757,7 @@ public protocol RDSClientProtocol {
      */
     func describeReservedDBInstancesOfferingsAsync(
             input: RDSModel.DescribeReservedDBInstancesOfferingsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeReservedDBInstancesOfferings operation waiting for the response before returning.
@@ -3192,8 +2769,7 @@ public protocol RDSClientProtocol {
      - Throws: reservedDBInstancesOfferingNotFound.
      */
     func describeReservedDBInstancesOfferingsSync(
-            input: RDSModel.DescribeReservedDBInstancesOfferingsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings
+            input: RDSModel.DescribeReservedDBInstancesOfferingsMessage) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings
 
     /**
      Invokes the DescribeSourceRegions operation returning immediately and passing the response to a callback.
@@ -3206,8 +2782,7 @@ public protocol RDSClientProtocol {
      */
     func describeSourceRegionsAsync(
             input: RDSModel.DescribeSourceRegionsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeSourceRegions operation waiting for the response before returning.
@@ -3218,8 +2793,7 @@ public protocol RDSClientProtocol {
          Will be validated before being returned to caller.
      */
     func describeSourceRegionsSync(
-            input: RDSModel.DescribeSourceRegionsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions
+            input: RDSModel.DescribeSourceRegionsMessage) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions
 
     /**
      Invokes the DescribeValidDBInstanceModifications operation returning immediately and passing the response to a callback.
@@ -3233,8 +2807,7 @@ public protocol RDSClientProtocol {
      */
     func describeValidDBInstanceModificationsAsync(
             input: RDSModel.DescribeValidDBInstanceModificationsMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, RDSError>) -> ()) throws
 
     /**
      Invokes the DescribeValidDBInstanceModifications operation waiting for the response before returning.
@@ -3246,8 +2819,7 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
     func describeValidDBInstanceModificationsSync(
-            input: RDSModel.DescribeValidDBInstanceModificationsMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications
+            input: RDSModel.DescribeValidDBInstanceModificationsMessage) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications
 
     /**
      Invokes the DownloadDBLogFilePortion operation returning immediately and passing the response to a callback.
@@ -3261,8 +2833,7 @@ public protocol RDSClientProtocol {
      */
     func downloadDBLogFilePortionAsync(
             input: RDSModel.DownloadDBLogFilePortionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, RDSError>) -> ()) throws
 
     /**
      Invokes the DownloadDBLogFilePortion operation waiting for the response before returning.
@@ -3274,8 +2845,7 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceNotFound, dBLogFileNotFound.
      */
     func downloadDBLogFilePortionSync(
-            input: RDSModel.DownloadDBLogFilePortionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion
+            input: RDSModel.DownloadDBLogFilePortionMessage) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion
 
     /**
      Invokes the FailoverDBCluster operation returning immediately and passing the response to a callback.
@@ -3289,8 +2859,7 @@ public protocol RDSClientProtocol {
      */
     func failoverDBClusterAsync(
             input: RDSModel.FailoverDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the FailoverDBCluster operation waiting for the response before returning.
@@ -3302,8 +2871,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
     func failoverDBClusterSync(
-            input: RDSModel.FailoverDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster
+            input: RDSModel.FailoverDBClusterMessage) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster
 
     /**
      Invokes the ImportInstallationMedia operation returning immediately and passing the response to a callback.
@@ -3317,8 +2885,7 @@ public protocol RDSClientProtocol {
      */
     func importInstallationMediaAsync(
             input: RDSModel.ImportInstallationMediaMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, RDSError>) -> ()) throws
 
     /**
      Invokes the ImportInstallationMedia operation waiting for the response before returning.
@@ -3330,8 +2897,7 @@ public protocol RDSClientProtocol {
      - Throws: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
      */
     func importInstallationMediaSync(
-            input: RDSModel.ImportInstallationMediaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.InstallationMediaForImportInstallationMedia
+            input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia
 
     /**
      Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
@@ -3345,8 +2911,7 @@ public protocol RDSClientProtocol {
      */
     func listTagsForResourceAsync(
             input: RDSModel.ListTagsForResourceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, RDSError>) -> ()) throws
 
     /**
      Invokes the ListTagsForResource operation waiting for the response before returning.
@@ -3358,8 +2923,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
     func listTagsForResourceSync(
-            input: RDSModel.ListTagsForResourceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.TagListMessageForListTagsForResource
+            input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource
 
     /**
      Invokes the ModifyCertificates operation returning immediately and passing the response to a callback.
@@ -3373,8 +2937,7 @@ public protocol RDSClientProtocol {
      */
     func modifyCertificatesAsync(
             input: RDSModel.ModifyCertificatesMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyCertificates operation waiting for the response before returning.
@@ -3386,8 +2949,7 @@ public protocol RDSClientProtocol {
      - Throws: certificateNotFound.
      */
     func modifyCertificatesSync(
-            input: RDSModel.ModifyCertificatesMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates
+            input: RDSModel.ModifyCertificatesMessage) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates
 
     /**
      Invokes the ModifyCurrentDBClusterCapacity operation returning immediately and passing the response to a callback.
@@ -3401,8 +2963,7 @@ public protocol RDSClientProtocol {
      */
     func modifyCurrentDBClusterCapacityAsync(
             input: RDSModel.ModifyCurrentDBClusterCapacityMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyCurrentDBClusterCapacity operation waiting for the response before returning.
@@ -3414,8 +2975,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, invalidDBClusterCapacity, invalidDBClusterState.
      */
     func modifyCurrentDBClusterCapacitySync(
-            input: RDSModel.ModifyCurrentDBClusterCapacityMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity
+            input: RDSModel.ModifyCurrentDBClusterCapacityMessage) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity
 
     /**
      Invokes the ModifyDBCluster operation returning immediately and passing the response to a callback.
@@ -3429,8 +2989,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBClusterAsync(
             input: RDSModel.ModifyDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBCluster operation waiting for the response before returning.
@@ -3442,8 +3001,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
      */
     func modifyDBClusterSync(
-            input: RDSModel.ModifyDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster
+            input: RDSModel.ModifyDBClusterMessage) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster
 
     /**
      Invokes the ModifyDBClusterEndpoint operation returning immediately and passing the response to a callback.
@@ -3457,8 +3015,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBClusterEndpointAsync(
             input: RDSModel.ModifyDBClusterEndpointMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBClusterEndpoint operation waiting for the response before returning.
@@ -3470,8 +3027,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterEndpointNotFound, dBInstanceNotFound, invalidDBClusterEndpointState, invalidDBClusterState, invalidDBInstanceState.
      */
     func modifyDBClusterEndpointSync(
-            input: RDSModel.ModifyDBClusterEndpointMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint
+            input: RDSModel.ModifyDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint
 
     /**
      Invokes the ModifyDBClusterParameterGroup operation returning immediately and passing the response to a callback.
@@ -3485,8 +3041,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBClusterParameterGroupAsync(
             input: RDSModel.ModifyDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBClusterParameterGroup operation waiting for the response before returning.
@@ -3498,8 +3053,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     func modifyDBClusterParameterGroupSync(
-            input: RDSModel.ModifyDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup
+            input: RDSModel.ModifyDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup
 
     /**
      Invokes the ModifyDBClusterSnapshotAttribute operation returning immediately and passing the response to a callback.
@@ -3513,8 +3067,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBClusterSnapshotAttributeAsync(
             input: RDSModel.ModifyDBClusterSnapshotAttributeMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBClusterSnapshotAttribute operation waiting for the response before returning.
@@ -3526,8 +3079,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterSnapshotNotFound, invalidDBClusterSnapshotState, sharedSnapshotQuotaExceeded.
      */
     func modifyDBClusterSnapshotAttributeSync(
-            input: RDSModel.ModifyDBClusterSnapshotAttributeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute
+            input: RDSModel.ModifyDBClusterSnapshotAttributeMessage) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute
 
     /**
      Invokes the ModifyDBInstance operation returning immediately and passing the response to a callback.
@@ -3541,8 +3093,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBInstanceAsync(
             input: RDSModel.ModifyDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBInstance operation waiting for the response before returning.
@@ -3554,8 +3105,7 @@ public protocol RDSClientProtocol {
      - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func modifyDBInstanceSync(
-            input: RDSModel.ModifyDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance
+            input: RDSModel.ModifyDBInstanceMessage) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance
 
     /**
      Invokes the ModifyDBParameterGroup operation returning immediately and passing the response to a callback.
@@ -3569,8 +3119,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBParameterGroupAsync(
             input: RDSModel.ModifyDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBParameterGroup operation waiting for the response before returning.
@@ -3582,8 +3131,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     func modifyDBParameterGroupSync(
-            input: RDSModel.ModifyDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup
+            input: RDSModel.ModifyDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup
 
     /**
      Invokes the ModifyDBProxy operation returning immediately and passing the response to a callback.
@@ -3597,8 +3145,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBProxyAsync(
             input: RDSModel.ModifyDBProxyRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBProxy operation waiting for the response before returning.
@@ -3610,8 +3157,7 @@ public protocol RDSClientProtocol {
      - Throws: dBProxyAlreadyExists, dBProxyNotFound, invalidDBProxyState.
      */
     func modifyDBProxySync(
-            input: RDSModel.ModifyDBProxyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy
+            input: RDSModel.ModifyDBProxyRequest) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy
 
     /**
      Invokes the ModifyDBProxyTargetGroup operation returning immediately and passing the response to a callback.
@@ -3625,8 +3171,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBProxyTargetGroupAsync(
             input: RDSModel.ModifyDBProxyTargetGroupRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBProxyTargetGroup operation waiting for the response before returning.
@@ -3638,8 +3183,7 @@ public protocol RDSClientProtocol {
      - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound.
      */
     func modifyDBProxyTargetGroupSync(
-            input: RDSModel.ModifyDBProxyTargetGroupRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
+            input: RDSModel.ModifyDBProxyTargetGroupRequest) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
 
     /**
      Invokes the ModifyDBSnapshot operation returning immediately and passing the response to a callback.
@@ -3653,8 +3197,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBSnapshotAsync(
             input: RDSModel.ModifyDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBSnapshot operation waiting for the response before returning.
@@ -3666,8 +3209,7 @@ public protocol RDSClientProtocol {
      - Throws: dBSnapshotNotFound.
      */
     func modifyDBSnapshotSync(
-            input: RDSModel.ModifyDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot
+            input: RDSModel.ModifyDBSnapshotMessage) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot
 
     /**
      Invokes the ModifyDBSnapshotAttribute operation returning immediately and passing the response to a callback.
@@ -3681,8 +3223,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBSnapshotAttributeAsync(
             input: RDSModel.ModifyDBSnapshotAttributeMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBSnapshotAttribute operation waiting for the response before returning.
@@ -3694,8 +3235,7 @@ public protocol RDSClientProtocol {
      - Throws: dBSnapshotNotFound, invalidDBSnapshotState, sharedSnapshotQuotaExceeded.
      */
     func modifyDBSnapshotAttributeSync(
-            input: RDSModel.ModifyDBSnapshotAttributeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute
+            input: RDSModel.ModifyDBSnapshotAttributeMessage) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute
 
     /**
      Invokes the ModifyDBSubnetGroup operation returning immediately and passing the response to a callback.
@@ -3709,8 +3249,7 @@ public protocol RDSClientProtocol {
      */
     func modifyDBSubnetGroupAsync(
             input: RDSModel.ModifyDBSubnetGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyDBSubnetGroup operation waiting for the response before returning.
@@ -3722,8 +3261,7 @@ public protocol RDSClientProtocol {
      - Throws: dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetQuotaExceeded, invalidSubnet, subnetAlreadyInUse.
      */
     func modifyDBSubnetGroupSync(
-            input: RDSModel.ModifyDBSubnetGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup
+            input: RDSModel.ModifyDBSubnetGroupMessage) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup
 
     /**
      Invokes the ModifyEventSubscription operation returning immediately and passing the response to a callback.
@@ -3737,8 +3275,7 @@ public protocol RDSClientProtocol {
      */
     func modifyEventSubscriptionAsync(
             input: RDSModel.ModifyEventSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyEventSubscription operation waiting for the response before returning.
@@ -3750,8 +3287,7 @@ public protocol RDSClientProtocol {
      - Throws: eventSubscriptionQuotaExceeded, sNSInvalidTopic, sNSNoAuthorization, sNSTopicArnNotFound, subscriptionCategoryNotFound, subscriptionNotFound.
      */
     func modifyEventSubscriptionSync(
-            input: RDSModel.ModifyEventSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription
+            input: RDSModel.ModifyEventSubscriptionMessage) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription
 
     /**
      Invokes the ModifyGlobalCluster operation returning immediately and passing the response to a callback.
@@ -3765,8 +3301,7 @@ public protocol RDSClientProtocol {
      */
     func modifyGlobalClusterAsync(
             input: RDSModel.ModifyGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyGlobalCluster operation waiting for the response before returning.
@@ -3778,8 +3313,7 @@ public protocol RDSClientProtocol {
      - Throws: globalClusterNotFound, invalidGlobalClusterState.
      */
     func modifyGlobalClusterSync(
-            input: RDSModel.ModifyGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster
+            input: RDSModel.ModifyGlobalClusterMessage) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster
 
     /**
      Invokes the ModifyOptionGroup operation returning immediately and passing the response to a callback.
@@ -3793,8 +3327,7 @@ public protocol RDSClientProtocol {
      */
     func modifyOptionGroupAsync(
             input: RDSModel.ModifyOptionGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ModifyOptionGroup operation waiting for the response before returning.
@@ -3806,8 +3339,7 @@ public protocol RDSClientProtocol {
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
     func modifyOptionGroupSync(
-            input: RDSModel.ModifyOptionGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup
+            input: RDSModel.ModifyOptionGroupMessage) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup
 
     /**
      Invokes the PromoteReadReplica operation returning immediately and passing the response to a callback.
@@ -3821,8 +3353,7 @@ public protocol RDSClientProtocol {
      */
     func promoteReadReplicaAsync(
             input: RDSModel.PromoteReadReplicaMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, RDSError>) -> ()) throws
 
     /**
      Invokes the PromoteReadReplica operation waiting for the response before returning.
@@ -3834,8 +3365,7 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
     func promoteReadReplicaSync(
-            input: RDSModel.PromoteReadReplicaMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica
+            input: RDSModel.PromoteReadReplicaMessage) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica
 
     /**
      Invokes the PromoteReadReplicaDBCluster operation returning immediately and passing the response to a callback.
@@ -3849,8 +3379,7 @@ public protocol RDSClientProtocol {
      */
     func promoteReadReplicaDBClusterAsync(
             input: RDSModel.PromoteReadReplicaDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the PromoteReadReplicaDBCluster operation waiting for the response before returning.
@@ -3862,8 +3391,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, invalidDBClusterState.
      */
     func promoteReadReplicaDBClusterSync(
-            input: RDSModel.PromoteReadReplicaDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster
+            input: RDSModel.PromoteReadReplicaDBClusterMessage) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster
 
     /**
      Invokes the PurchaseReservedDBInstancesOffering operation returning immediately and passing the response to a callback.
@@ -3877,8 +3405,7 @@ public protocol RDSClientProtocol {
      */
     func purchaseReservedDBInstancesOfferingAsync(
             input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, RDSError>) -> ()) throws
 
     /**
      Invokes the PurchaseReservedDBInstancesOffering operation waiting for the response before returning.
@@ -3890,8 +3417,7 @@ public protocol RDSClientProtocol {
      - Throws: reservedDBInstanceAlreadyExists, reservedDBInstanceQuotaExceeded, reservedDBInstancesOfferingNotFound.
      */
     func purchaseReservedDBInstancesOfferingSync(
-            input: RDSModel.PurchaseReservedDBInstancesOfferingMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering
+            input: RDSModel.PurchaseReservedDBInstancesOfferingMessage) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering
 
     /**
      Invokes the RebootDBInstance operation returning immediately and passing the response to a callback.
@@ -3905,8 +3431,7 @@ public protocol RDSClientProtocol {
      */
     func rebootDBInstanceAsync(
             input: RDSModel.RebootDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, RDSError>) -> ()) throws
 
     /**
      Invokes the RebootDBInstance operation waiting for the response before returning.
@@ -3918,8 +3443,7 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceNotFound, invalidDBInstanceState.
      */
     func rebootDBInstanceSync(
-            input: RDSModel.RebootDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance
+            input: RDSModel.RebootDBInstanceMessage) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance
 
     /**
      Invokes the RegisterDBProxyTargets operation returning immediately and passing the response to a callback.
@@ -3933,8 +3457,7 @@ public protocol RDSClientProtocol {
      */
     func registerDBProxyTargetsAsync(
             input: RDSModel.RegisterDBProxyTargetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, RDSError>) -> ()) throws
 
     /**
      Invokes the RegisterDBProxyTargets operation waiting for the response before returning.
@@ -3946,8 +3469,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
     func registerDBProxyTargetsSync(
-            input: RDSModel.RegisterDBProxyTargetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
+            input: RDSModel.RegisterDBProxyTargetsRequest) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
 
     /**
      Invokes the RemoveFromGlobalCluster operation returning immediately and passing the response to a callback.
@@ -3961,8 +3483,7 @@ public protocol RDSClientProtocol {
      */
     func removeFromGlobalClusterAsync(
             input: RDSModel.RemoveFromGlobalClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the RemoveFromGlobalCluster operation waiting for the response before returning.
@@ -3974,8 +3495,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, globalClusterNotFound, invalidGlobalClusterState.
      */
     func removeFromGlobalClusterSync(
-            input: RDSModel.RemoveFromGlobalClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster
+            input: RDSModel.RemoveFromGlobalClusterMessage) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster
 
     /**
      Invokes the RemoveRoleFromDBCluster operation returning immediately and passing the response to a callback.
@@ -3988,8 +3508,7 @@ public protocol RDSClientProtocol {
      */
     func removeRoleFromDBClusterAsync(
             input: RDSModel.RemoveRoleFromDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the RemoveRoleFromDBCluster operation waiting for the response before returning.
@@ -3999,8 +3518,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, dBClusterRoleNotFound, invalidDBClusterState.
      */
     func removeRoleFromDBClusterSync(
-            input: RDSModel.RemoveRoleFromDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: RDSModel.RemoveRoleFromDBClusterMessage) throws
 
     /**
      Invokes the RemoveRoleFromDBInstance operation returning immediately and passing the response to a callback.
@@ -4013,8 +3531,7 @@ public protocol RDSClientProtocol {
      */
     func removeRoleFromDBInstanceAsync(
             input: RDSModel.RemoveRoleFromDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the RemoveRoleFromDBInstance operation waiting for the response before returning.
@@ -4024,8 +3541,7 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceNotFound, dBInstanceRoleNotFound, invalidDBInstanceState.
      */
     func removeRoleFromDBInstanceSync(
-            input: RDSModel.RemoveRoleFromDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: RDSModel.RemoveRoleFromDBInstanceMessage) throws
 
     /**
      Invokes the RemoveSourceIdentifierFromSubscription operation returning immediately and passing the response to a callback.
@@ -4039,8 +3555,7 @@ public protocol RDSClientProtocol {
      */
     func removeSourceIdentifierFromSubscriptionAsync(
             input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, RDSError>) -> ()) throws
 
     /**
      Invokes the RemoveSourceIdentifierFromSubscription operation waiting for the response before returning.
@@ -4052,8 +3567,7 @@ public protocol RDSClientProtocol {
      - Throws: sourceNotFound, subscriptionNotFound.
      */
     func removeSourceIdentifierFromSubscriptionSync(
-            input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription
+            input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription
 
     /**
      Invokes the RemoveTagsFromResource operation returning immediately and passing the response to a callback.
@@ -4066,8 +3580,7 @@ public protocol RDSClientProtocol {
      */
     func removeTagsFromResourceAsync(
             input: RDSModel.RemoveTagsFromResourceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws
+            completion: @escaping (RDSError?) -> ()) throws
 
     /**
      Invokes the RemoveTagsFromResource operation waiting for the response before returning.
@@ -4077,8 +3590,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
      */
     func removeTagsFromResourceSync(
-            input: RDSModel.RemoveTagsFromResourceMessage,
-            reporting: SmokeAWSInvocationReporting) throws
+            input: RDSModel.RemoveTagsFromResourceMessage) throws
 
     /**
      Invokes the ResetDBClusterParameterGroup operation returning immediately and passing the response to a callback.
@@ -4092,8 +3604,7 @@ public protocol RDSClientProtocol {
      */
     func resetDBClusterParameterGroupAsync(
             input: RDSModel.ResetDBClusterParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ResetDBClusterParameterGroup operation waiting for the response before returning.
@@ -4105,8 +3616,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     func resetDBClusterParameterGroupSync(
-            input: RDSModel.ResetDBClusterParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup
+            input: RDSModel.ResetDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup
 
     /**
      Invokes the ResetDBParameterGroup operation returning immediately and passing the response to a callback.
@@ -4120,8 +3630,7 @@ public protocol RDSClientProtocol {
      */
     func resetDBParameterGroupAsync(
             input: RDSModel.ResetDBParameterGroupMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, RDSError>) -> ()) throws
 
     /**
      Invokes the ResetDBParameterGroup operation waiting for the response before returning.
@@ -4133,8 +3642,7 @@ public protocol RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     func resetDBParameterGroupSync(
-            input: RDSModel.ResetDBParameterGroupMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup
+            input: RDSModel.ResetDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup
 
     /**
      Invokes the RestoreDBClusterFromS3 operation returning immediately and passing the response to a callback.
@@ -4148,8 +3656,7 @@ public protocol RDSClientProtocol {
      */
     func restoreDBClusterFromS3Async(
             input: RDSModel.RestoreDBClusterFromS3Message, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, RDSError>) -> ()) throws
 
     /**
      Invokes the RestoreDBClusterFromS3 operation waiting for the response before returning.
@@ -4161,8 +3668,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
      */
     func restoreDBClusterFromS3Sync(
-            input: RDSModel.RestoreDBClusterFromS3Message,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3
+            input: RDSModel.RestoreDBClusterFromS3Message) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3
 
     /**
      Invokes the RestoreDBClusterFromSnapshot operation returning immediately and passing the response to a callback.
@@ -4176,8 +3682,7 @@ public protocol RDSClientProtocol {
      */
     func restoreDBClusterFromSnapshotAsync(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the RestoreDBClusterFromSnapshot operation waiting for the response before returning.
@@ -4189,8 +3694,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
     func restoreDBClusterFromSnapshotSync(
-            input: RDSModel.RestoreDBClusterFromSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot
+            input: RDSModel.RestoreDBClusterFromSnapshotMessage) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot
 
     /**
      Invokes the RestoreDBClusterToPointInTime operation returning immediately and passing the response to a callback.
@@ -4204,8 +3708,7 @@ public protocol RDSClientProtocol {
      */
     func restoreDBClusterToPointInTimeAsync(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, RDSError>) -> ()) throws
 
     /**
      Invokes the RestoreDBClusterToPointInTime operation waiting for the response before returning.
@@ -4217,8 +3720,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
     func restoreDBClusterToPointInTimeSync(
-            input: RDSModel.RestoreDBClusterToPointInTimeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime
+            input: RDSModel.RestoreDBClusterToPointInTimeMessage) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime
 
     /**
      Invokes the RestoreDBInstanceFromDBSnapshot operation returning immediately and passing the response to a callback.
@@ -4232,8 +3734,7 @@ public protocol RDSClientProtocol {
      */
     func restoreDBInstanceFromDBSnapshotAsync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, RDSError>) -> ()) throws
 
     /**
      Invokes the RestoreDBInstanceFromDBSnapshot operation waiting for the response before returning.
@@ -4245,8 +3746,7 @@ public protocol RDSClientProtocol {
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBInstanceFromDBSnapshotSync(
-            input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot
+            input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot
 
     /**
      Invokes the RestoreDBInstanceFromS3 operation returning immediately and passing the response to a callback.
@@ -4260,8 +3760,7 @@ public protocol RDSClientProtocol {
      */
     func restoreDBInstanceFromS3Async(
             input: RDSModel.RestoreDBInstanceFromS3Message, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, RDSError>) -> ()) throws
 
     /**
      Invokes the RestoreDBInstanceFromS3 operation waiting for the response before returning.
@@ -4273,8 +3772,7 @@ public protocol RDSClientProtocol {
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBInstanceFromS3Sync(
-            input: RDSModel.RestoreDBInstanceFromS3Message,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3
+            input: RDSModel.RestoreDBInstanceFromS3Message) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3
 
     /**
      Invokes the RestoreDBInstanceToPointInTime operation returning immediately and passing the response to a callback.
@@ -4288,8 +3786,7 @@ public protocol RDSClientProtocol {
      */
     func restoreDBInstanceToPointInTimeAsync(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, RDSError>) -> ()) throws
 
     /**
      Invokes the RestoreDBInstanceToPointInTime operation waiting for the response before returning.
@@ -4301,8 +3798,7 @@ public protocol RDSClientProtocol {
      - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBInstanceToPointInTimeSync(
-            input: RDSModel.RestoreDBInstanceToPointInTimeMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime
+            input: RDSModel.RestoreDBInstanceToPointInTimeMessage) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime
 
     /**
      Invokes the RevokeDBSecurityGroupIngress operation returning immediately and passing the response to a callback.
@@ -4316,8 +3812,7 @@ public protocol RDSClientProtocol {
      */
     func revokeDBSecurityGroupIngressAsync(
             input: RDSModel.RevokeDBSecurityGroupIngressMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, RDSError>) -> ()) throws
 
     /**
      Invokes the RevokeDBSecurityGroupIngress operation waiting for the response before returning.
@@ -4329,8 +3824,7 @@ public protocol RDSClientProtocol {
      - Throws: authorizationNotFound, dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
     func revokeDBSecurityGroupIngressSync(
-            input: RDSModel.RevokeDBSecurityGroupIngressMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress
+            input: RDSModel.RevokeDBSecurityGroupIngressMessage) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress
 
     /**
      Invokes the StartActivityStream operation returning immediately and passing the response to a callback.
@@ -4344,8 +3838,7 @@ public protocol RDSClientProtocol {
      */
     func startActivityStreamAsync(
             input: RDSModel.StartActivityStreamRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, RDSError>) -> ()) throws
 
     /**
      Invokes the StartActivityStream operation waiting for the response before returning.
@@ -4357,8 +3850,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, kMSKeyNotAccessible, resourceNotFound.
      */
     func startActivityStreamSync(
-            input: RDSModel.StartActivityStreamRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream
+            input: RDSModel.StartActivityStreamRequest) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream
 
     /**
      Invokes the StartDBCluster operation returning immediately and passing the response to a callback.
@@ -4372,8 +3864,7 @@ public protocol RDSClientProtocol {
      */
     func startDBClusterAsync(
             input: RDSModel.StartDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the StartDBCluster operation waiting for the response before returning.
@@ -4385,8 +3876,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
     func startDBClusterSync(
-            input: RDSModel.StartDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartDBClusterResultForStartDBCluster
+            input: RDSModel.StartDBClusterMessage) throws -> RDSModel.StartDBClusterResultForStartDBCluster
 
     /**
      Invokes the StartDBInstance operation returning immediately and passing the response to a callback.
@@ -4400,8 +3890,7 @@ public protocol RDSClientProtocol {
      */
     func startDBInstanceAsync(
             input: RDSModel.StartDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, RDSError>) -> ()) throws
 
     /**
      Invokes the StartDBInstance operation waiting for the response before returning.
@@ -4413,8 +3902,7 @@ public protocol RDSClientProtocol {
      - Throws: authorizationNotFound, dBClusterNotFound, dBInstanceNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible.
      */
     func startDBInstanceSync(
-            input: RDSModel.StartDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StartDBInstanceResultForStartDBInstance
+            input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance
 
     /**
      Invokes the StartExportTask operation returning immediately and passing the response to a callback.
@@ -4428,8 +3916,7 @@ public protocol RDSClientProtocol {
      */
     func startExportTaskAsync(
             input: RDSModel.StartExportTaskMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, RDSError>) -> ()) throws
 
     /**
      Invokes the StartExportTask operation waiting for the response before returning.
@@ -4441,8 +3928,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
      */
     func startExportTaskSync(
-            input: RDSModel.StartExportTaskMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.ExportTaskForStartExportTask
+            input: RDSModel.StartExportTaskMessage) throws -> RDSModel.ExportTaskForStartExportTask
 
     /**
      Invokes the StopActivityStream operation returning immediately and passing the response to a callback.
@@ -4456,8 +3942,7 @@ public protocol RDSClientProtocol {
      */
     func stopActivityStreamAsync(
             input: RDSModel.StopActivityStreamRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, RDSError>) -> ()) throws
 
     /**
      Invokes the StopActivityStream operation waiting for the response before returning.
@@ -4469,8 +3954,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, invalidDBClusterState, invalidDBInstanceState, resourceNotFound.
      */
     func stopActivityStreamSync(
-            input: RDSModel.StopActivityStreamRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream
+            input: RDSModel.StopActivityStreamRequest) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream
 
     /**
      Invokes the StopDBCluster operation returning immediately and passing the response to a callback.
@@ -4484,8 +3968,7 @@ public protocol RDSClientProtocol {
      */
     func stopDBClusterAsync(
             input: RDSModel.StopDBClusterMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, RDSError>) -> ()) throws
 
     /**
      Invokes the StopDBCluster operation waiting for the response before returning.
@@ -4497,8 +3980,7 @@ public protocol RDSClientProtocol {
      - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
      */
     func stopDBClusterSync(
-            input: RDSModel.StopDBClusterMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopDBClusterResultForStopDBCluster
+            input: RDSModel.StopDBClusterMessage) throws -> RDSModel.StopDBClusterResultForStopDBCluster
 
     /**
      Invokes the StopDBInstance operation returning immediately and passing the response to a callback.
@@ -4512,8 +3994,7 @@ public protocol RDSClientProtocol {
      */
     func stopDBInstanceAsync(
             input: RDSModel.StopDBInstanceMessage, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, HTTPClientError>) -> ()) throws
+            completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, RDSError>) -> ()) throws
 
     /**
      Invokes the StopDBInstance operation waiting for the response before returning.
@@ -4525,6 +4006,5 @@ public protocol RDSClientProtocol {
      - Throws: dBInstanceNotFound, dBSnapshotAlreadyExists, invalidDBClusterState, invalidDBInstanceState, snapshotQuotaExceeded.
      */
     func stopDBInstanceSync(
-            input: RDSModel.StopDBInstanceMessage,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSModel.StopDBInstanceResultForStopDBInstance
+            input: RDSModel.StopDBInstanceMessage) throws -> RDSModel.StopDBInstanceResultForStopDBInstance
 }

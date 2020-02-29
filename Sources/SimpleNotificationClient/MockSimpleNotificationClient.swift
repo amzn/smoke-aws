@@ -28,144 +28,144 @@ import SmokeHTTPClient
  Mock Client for the SimpleNotification service by default returns the `__default` property of its return type.
  */
 public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
-    let addPermissionAsyncOverride: SimpleNotificationClientProtocol.AddPermissionAsyncType?
-    let addPermissionSyncOverride: SimpleNotificationClientProtocol.AddPermissionSyncType?
-    let checkIfPhoneNumberIsOptedOutAsyncOverride: SimpleNotificationClientProtocol.CheckIfPhoneNumberIsOptedOutAsyncType?
-    let checkIfPhoneNumberIsOptedOutSyncOverride: SimpleNotificationClientProtocol.CheckIfPhoneNumberIsOptedOutSyncType?
-    let confirmSubscriptionAsyncOverride: SimpleNotificationClientProtocol.ConfirmSubscriptionAsyncType?
-    let confirmSubscriptionSyncOverride: SimpleNotificationClientProtocol.ConfirmSubscriptionSyncType?
-    let createPlatformApplicationAsyncOverride: SimpleNotificationClientProtocol.CreatePlatformApplicationAsyncType?
-    let createPlatformApplicationSyncOverride: SimpleNotificationClientProtocol.CreatePlatformApplicationSyncType?
-    let createPlatformEndpointAsyncOverride: SimpleNotificationClientProtocol.CreatePlatformEndpointAsyncType?
-    let createPlatformEndpointSyncOverride: SimpleNotificationClientProtocol.CreatePlatformEndpointSyncType?
-    let createTopicAsyncOverride: SimpleNotificationClientProtocol.CreateTopicAsyncType?
-    let createTopicSyncOverride: SimpleNotificationClientProtocol.CreateTopicSyncType?
-    let deleteEndpointAsyncOverride: SimpleNotificationClientProtocol.DeleteEndpointAsyncType?
-    let deleteEndpointSyncOverride: SimpleNotificationClientProtocol.DeleteEndpointSyncType?
-    let deletePlatformApplicationAsyncOverride: SimpleNotificationClientProtocol.DeletePlatformApplicationAsyncType?
-    let deletePlatformApplicationSyncOverride: SimpleNotificationClientProtocol.DeletePlatformApplicationSyncType?
-    let deleteTopicAsyncOverride: SimpleNotificationClientProtocol.DeleteTopicAsyncType?
-    let deleteTopicSyncOverride: SimpleNotificationClientProtocol.DeleteTopicSyncType?
-    let getEndpointAttributesAsyncOverride: SimpleNotificationClientProtocol.GetEndpointAttributesAsyncType?
-    let getEndpointAttributesSyncOverride: SimpleNotificationClientProtocol.GetEndpointAttributesSyncType?
-    let getPlatformApplicationAttributesAsyncOverride: SimpleNotificationClientProtocol.GetPlatformApplicationAttributesAsyncType?
-    let getPlatformApplicationAttributesSyncOverride: SimpleNotificationClientProtocol.GetPlatformApplicationAttributesSyncType?
-    let getSMSAttributesAsyncOverride: SimpleNotificationClientProtocol.GetSMSAttributesAsyncType?
-    let getSMSAttributesSyncOverride: SimpleNotificationClientProtocol.GetSMSAttributesSyncType?
-    let getSubscriptionAttributesAsyncOverride: SimpleNotificationClientProtocol.GetSubscriptionAttributesAsyncType?
-    let getSubscriptionAttributesSyncOverride: SimpleNotificationClientProtocol.GetSubscriptionAttributesSyncType?
-    let getTopicAttributesAsyncOverride: SimpleNotificationClientProtocol.GetTopicAttributesAsyncType?
-    let getTopicAttributesSyncOverride: SimpleNotificationClientProtocol.GetTopicAttributesSyncType?
-    let listEndpointsByPlatformApplicationAsyncOverride: SimpleNotificationClientProtocol.ListEndpointsByPlatformApplicationAsyncType?
-    let listEndpointsByPlatformApplicationSyncOverride: SimpleNotificationClientProtocol.ListEndpointsByPlatformApplicationSyncType?
-    let listPhoneNumbersOptedOutAsyncOverride: SimpleNotificationClientProtocol.ListPhoneNumbersOptedOutAsyncType?
-    let listPhoneNumbersOptedOutSyncOverride: SimpleNotificationClientProtocol.ListPhoneNumbersOptedOutSyncType?
-    let listPlatformApplicationsAsyncOverride: SimpleNotificationClientProtocol.ListPlatformApplicationsAsyncType?
-    let listPlatformApplicationsSyncOverride: SimpleNotificationClientProtocol.ListPlatformApplicationsSyncType?
-    let listSubscriptionsAsyncOverride: SimpleNotificationClientProtocol.ListSubscriptionsAsyncType?
-    let listSubscriptionsSyncOverride: SimpleNotificationClientProtocol.ListSubscriptionsSyncType?
-    let listSubscriptionsByTopicAsyncOverride: SimpleNotificationClientProtocol.ListSubscriptionsByTopicAsyncType?
-    let listSubscriptionsByTopicSyncOverride: SimpleNotificationClientProtocol.ListSubscriptionsByTopicSyncType?
-    let listTagsForResourceAsyncOverride: SimpleNotificationClientProtocol.ListTagsForResourceAsyncType?
-    let listTagsForResourceSyncOverride: SimpleNotificationClientProtocol.ListTagsForResourceSyncType?
-    let listTopicsAsyncOverride: SimpleNotificationClientProtocol.ListTopicsAsyncType?
-    let listTopicsSyncOverride: SimpleNotificationClientProtocol.ListTopicsSyncType?
-    let optInPhoneNumberAsyncOverride: SimpleNotificationClientProtocol.OptInPhoneNumberAsyncType?
-    let optInPhoneNumberSyncOverride: SimpleNotificationClientProtocol.OptInPhoneNumberSyncType?
-    let publishAsyncOverride: SimpleNotificationClientProtocol.PublishAsyncType?
-    let publishSyncOverride: SimpleNotificationClientProtocol.PublishSyncType?
-    let removePermissionAsyncOverride: SimpleNotificationClientProtocol.RemovePermissionAsyncType?
-    let removePermissionSyncOverride: SimpleNotificationClientProtocol.RemovePermissionSyncType?
-    let setEndpointAttributesAsyncOverride: SimpleNotificationClientProtocol.SetEndpointAttributesAsyncType?
-    let setEndpointAttributesSyncOverride: SimpleNotificationClientProtocol.SetEndpointAttributesSyncType?
-    let setPlatformApplicationAttributesAsyncOverride: SimpleNotificationClientProtocol.SetPlatformApplicationAttributesAsyncType?
-    let setPlatformApplicationAttributesSyncOverride: SimpleNotificationClientProtocol.SetPlatformApplicationAttributesSyncType?
-    let setSMSAttributesAsyncOverride: SimpleNotificationClientProtocol.SetSMSAttributesAsyncType?
-    let setSMSAttributesSyncOverride: SimpleNotificationClientProtocol.SetSMSAttributesSyncType?
-    let setSubscriptionAttributesAsyncOverride: SimpleNotificationClientProtocol.SetSubscriptionAttributesAsyncType?
-    let setSubscriptionAttributesSyncOverride: SimpleNotificationClientProtocol.SetSubscriptionAttributesSyncType?
-    let setTopicAttributesAsyncOverride: SimpleNotificationClientProtocol.SetTopicAttributesAsyncType?
-    let setTopicAttributesSyncOverride: SimpleNotificationClientProtocol.SetTopicAttributesSyncType?
-    let subscribeAsyncOverride: SimpleNotificationClientProtocol.SubscribeAsyncType?
-    let subscribeSyncOverride: SimpleNotificationClientProtocol.SubscribeSyncType?
-    let tagResourceAsyncOverride: SimpleNotificationClientProtocol.TagResourceAsyncType?
-    let tagResourceSyncOverride: SimpleNotificationClientProtocol.TagResourceSyncType?
-    let unsubscribeAsyncOverride: SimpleNotificationClientProtocol.UnsubscribeAsyncType?
-    let unsubscribeSyncOverride: SimpleNotificationClientProtocol.UnsubscribeSyncType?
-    let untagResourceAsyncOverride: SimpleNotificationClientProtocol.UntagResourceAsyncType?
-    let untagResourceSyncOverride: SimpleNotificationClientProtocol.UntagResourceSyncType?
+    let addPermissionAsyncOverride: AddPermissionAsyncType?
+    let addPermissionSyncOverride: AddPermissionSyncType?
+    let checkIfPhoneNumberIsOptedOutAsyncOverride: CheckIfPhoneNumberIsOptedOutAsyncType?
+    let checkIfPhoneNumberIsOptedOutSyncOverride: CheckIfPhoneNumberIsOptedOutSyncType?
+    let confirmSubscriptionAsyncOverride: ConfirmSubscriptionAsyncType?
+    let confirmSubscriptionSyncOverride: ConfirmSubscriptionSyncType?
+    let createPlatformApplicationAsyncOverride: CreatePlatformApplicationAsyncType?
+    let createPlatformApplicationSyncOverride: CreatePlatformApplicationSyncType?
+    let createPlatformEndpointAsyncOverride: CreatePlatformEndpointAsyncType?
+    let createPlatformEndpointSyncOverride: CreatePlatformEndpointSyncType?
+    let createTopicAsyncOverride: CreateTopicAsyncType?
+    let createTopicSyncOverride: CreateTopicSyncType?
+    let deleteEndpointAsyncOverride: DeleteEndpointAsyncType?
+    let deleteEndpointSyncOverride: DeleteEndpointSyncType?
+    let deletePlatformApplicationAsyncOverride: DeletePlatformApplicationAsyncType?
+    let deletePlatformApplicationSyncOverride: DeletePlatformApplicationSyncType?
+    let deleteTopicAsyncOverride: DeleteTopicAsyncType?
+    let deleteTopicSyncOverride: DeleteTopicSyncType?
+    let getEndpointAttributesAsyncOverride: GetEndpointAttributesAsyncType?
+    let getEndpointAttributesSyncOverride: GetEndpointAttributesSyncType?
+    let getPlatformApplicationAttributesAsyncOverride: GetPlatformApplicationAttributesAsyncType?
+    let getPlatformApplicationAttributesSyncOverride: GetPlatformApplicationAttributesSyncType?
+    let getSMSAttributesAsyncOverride: GetSMSAttributesAsyncType?
+    let getSMSAttributesSyncOverride: GetSMSAttributesSyncType?
+    let getSubscriptionAttributesAsyncOverride: GetSubscriptionAttributesAsyncType?
+    let getSubscriptionAttributesSyncOverride: GetSubscriptionAttributesSyncType?
+    let getTopicAttributesAsyncOverride: GetTopicAttributesAsyncType?
+    let getTopicAttributesSyncOverride: GetTopicAttributesSyncType?
+    let listEndpointsByPlatformApplicationAsyncOverride: ListEndpointsByPlatformApplicationAsyncType?
+    let listEndpointsByPlatformApplicationSyncOverride: ListEndpointsByPlatformApplicationSyncType?
+    let listPhoneNumbersOptedOutAsyncOverride: ListPhoneNumbersOptedOutAsyncType?
+    let listPhoneNumbersOptedOutSyncOverride: ListPhoneNumbersOptedOutSyncType?
+    let listPlatformApplicationsAsyncOverride: ListPlatformApplicationsAsyncType?
+    let listPlatformApplicationsSyncOverride: ListPlatformApplicationsSyncType?
+    let listSubscriptionsAsyncOverride: ListSubscriptionsAsyncType?
+    let listSubscriptionsSyncOverride: ListSubscriptionsSyncType?
+    let listSubscriptionsByTopicAsyncOverride: ListSubscriptionsByTopicAsyncType?
+    let listSubscriptionsByTopicSyncOverride: ListSubscriptionsByTopicSyncType?
+    let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType?
+    let listTagsForResourceSyncOverride: ListTagsForResourceSyncType?
+    let listTopicsAsyncOverride: ListTopicsAsyncType?
+    let listTopicsSyncOverride: ListTopicsSyncType?
+    let optInPhoneNumberAsyncOverride: OptInPhoneNumberAsyncType?
+    let optInPhoneNumberSyncOverride: OptInPhoneNumberSyncType?
+    let publishAsyncOverride: PublishAsyncType?
+    let publishSyncOverride: PublishSyncType?
+    let removePermissionAsyncOverride: RemovePermissionAsyncType?
+    let removePermissionSyncOverride: RemovePermissionSyncType?
+    let setEndpointAttributesAsyncOverride: SetEndpointAttributesAsyncType?
+    let setEndpointAttributesSyncOverride: SetEndpointAttributesSyncType?
+    let setPlatformApplicationAttributesAsyncOverride: SetPlatformApplicationAttributesAsyncType?
+    let setPlatformApplicationAttributesSyncOverride: SetPlatformApplicationAttributesSyncType?
+    let setSMSAttributesAsyncOverride: SetSMSAttributesAsyncType?
+    let setSMSAttributesSyncOverride: SetSMSAttributesSyncType?
+    let setSubscriptionAttributesAsyncOverride: SetSubscriptionAttributesAsyncType?
+    let setSubscriptionAttributesSyncOverride: SetSubscriptionAttributesSyncType?
+    let setTopicAttributesAsyncOverride: SetTopicAttributesAsyncType?
+    let setTopicAttributesSyncOverride: SetTopicAttributesSyncType?
+    let subscribeAsyncOverride: SubscribeAsyncType?
+    let subscribeSyncOverride: SubscribeSyncType?
+    let tagResourceAsyncOverride: TagResourceAsyncType?
+    let tagResourceSyncOverride: TagResourceSyncType?
+    let unsubscribeAsyncOverride: UnsubscribeAsyncType?
+    let unsubscribeSyncOverride: UnsubscribeSyncType?
+    let untagResourceAsyncOverride: UntagResourceAsyncType?
+    let untagResourceSyncOverride: UntagResourceSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(
-            addPermissionAsync: SimpleNotificationClientProtocol.AddPermissionAsyncType? = nil,
-            addPermissionSync: SimpleNotificationClientProtocol.AddPermissionSyncType? = nil,
-            checkIfPhoneNumberIsOptedOutAsync: SimpleNotificationClientProtocol.CheckIfPhoneNumberIsOptedOutAsyncType? = nil,
-            checkIfPhoneNumberIsOptedOutSync: SimpleNotificationClientProtocol.CheckIfPhoneNumberIsOptedOutSyncType? = nil,
-            confirmSubscriptionAsync: SimpleNotificationClientProtocol.ConfirmSubscriptionAsyncType? = nil,
-            confirmSubscriptionSync: SimpleNotificationClientProtocol.ConfirmSubscriptionSyncType? = nil,
-            createPlatformApplicationAsync: SimpleNotificationClientProtocol.CreatePlatformApplicationAsyncType? = nil,
-            createPlatformApplicationSync: SimpleNotificationClientProtocol.CreatePlatformApplicationSyncType? = nil,
-            createPlatformEndpointAsync: SimpleNotificationClientProtocol.CreatePlatformEndpointAsyncType? = nil,
-            createPlatformEndpointSync: SimpleNotificationClientProtocol.CreatePlatformEndpointSyncType? = nil,
-            createTopicAsync: SimpleNotificationClientProtocol.CreateTopicAsyncType? = nil,
-            createTopicSync: SimpleNotificationClientProtocol.CreateTopicSyncType? = nil,
-            deleteEndpointAsync: SimpleNotificationClientProtocol.DeleteEndpointAsyncType? = nil,
-            deleteEndpointSync: SimpleNotificationClientProtocol.DeleteEndpointSyncType? = nil,
-            deletePlatformApplicationAsync: SimpleNotificationClientProtocol.DeletePlatformApplicationAsyncType? = nil,
-            deletePlatformApplicationSync: SimpleNotificationClientProtocol.DeletePlatformApplicationSyncType? = nil,
-            deleteTopicAsync: SimpleNotificationClientProtocol.DeleteTopicAsyncType? = nil,
-            deleteTopicSync: SimpleNotificationClientProtocol.DeleteTopicSyncType? = nil,
-            getEndpointAttributesAsync: SimpleNotificationClientProtocol.GetEndpointAttributesAsyncType? = nil,
-            getEndpointAttributesSync: SimpleNotificationClientProtocol.GetEndpointAttributesSyncType? = nil,
-            getPlatformApplicationAttributesAsync: SimpleNotificationClientProtocol.GetPlatformApplicationAttributesAsyncType? = nil,
-            getPlatformApplicationAttributesSync: SimpleNotificationClientProtocol.GetPlatformApplicationAttributesSyncType? = nil,
-            getSMSAttributesAsync: SimpleNotificationClientProtocol.GetSMSAttributesAsyncType? = nil,
-            getSMSAttributesSync: SimpleNotificationClientProtocol.GetSMSAttributesSyncType? = nil,
-            getSubscriptionAttributesAsync: SimpleNotificationClientProtocol.GetSubscriptionAttributesAsyncType? = nil,
-            getSubscriptionAttributesSync: SimpleNotificationClientProtocol.GetSubscriptionAttributesSyncType? = nil,
-            getTopicAttributesAsync: SimpleNotificationClientProtocol.GetTopicAttributesAsyncType? = nil,
-            getTopicAttributesSync: SimpleNotificationClientProtocol.GetTopicAttributesSyncType? = nil,
-            listEndpointsByPlatformApplicationAsync: SimpleNotificationClientProtocol.ListEndpointsByPlatformApplicationAsyncType? = nil,
-            listEndpointsByPlatformApplicationSync: SimpleNotificationClientProtocol.ListEndpointsByPlatformApplicationSyncType? = nil,
-            listPhoneNumbersOptedOutAsync: SimpleNotificationClientProtocol.ListPhoneNumbersOptedOutAsyncType? = nil,
-            listPhoneNumbersOptedOutSync: SimpleNotificationClientProtocol.ListPhoneNumbersOptedOutSyncType? = nil,
-            listPlatformApplicationsAsync: SimpleNotificationClientProtocol.ListPlatformApplicationsAsyncType? = nil,
-            listPlatformApplicationsSync: SimpleNotificationClientProtocol.ListPlatformApplicationsSyncType? = nil,
-            listSubscriptionsAsync: SimpleNotificationClientProtocol.ListSubscriptionsAsyncType? = nil,
-            listSubscriptionsSync: SimpleNotificationClientProtocol.ListSubscriptionsSyncType? = nil,
-            listSubscriptionsByTopicAsync: SimpleNotificationClientProtocol.ListSubscriptionsByTopicAsyncType? = nil,
-            listSubscriptionsByTopicSync: SimpleNotificationClientProtocol.ListSubscriptionsByTopicSyncType? = nil,
-            listTagsForResourceAsync: SimpleNotificationClientProtocol.ListTagsForResourceAsyncType? = nil,
-            listTagsForResourceSync: SimpleNotificationClientProtocol.ListTagsForResourceSyncType? = nil,
-            listTopicsAsync: SimpleNotificationClientProtocol.ListTopicsAsyncType? = nil,
-            listTopicsSync: SimpleNotificationClientProtocol.ListTopicsSyncType? = nil,
-            optInPhoneNumberAsync: SimpleNotificationClientProtocol.OptInPhoneNumberAsyncType? = nil,
-            optInPhoneNumberSync: SimpleNotificationClientProtocol.OptInPhoneNumberSyncType? = nil,
-            publishAsync: SimpleNotificationClientProtocol.PublishAsyncType? = nil,
-            publishSync: SimpleNotificationClientProtocol.PublishSyncType? = nil,
-            removePermissionAsync: SimpleNotificationClientProtocol.RemovePermissionAsyncType? = nil,
-            removePermissionSync: SimpleNotificationClientProtocol.RemovePermissionSyncType? = nil,
-            setEndpointAttributesAsync: SimpleNotificationClientProtocol.SetEndpointAttributesAsyncType? = nil,
-            setEndpointAttributesSync: SimpleNotificationClientProtocol.SetEndpointAttributesSyncType? = nil,
-            setPlatformApplicationAttributesAsync: SimpleNotificationClientProtocol.SetPlatformApplicationAttributesAsyncType? = nil,
-            setPlatformApplicationAttributesSync: SimpleNotificationClientProtocol.SetPlatformApplicationAttributesSyncType? = nil,
-            setSMSAttributesAsync: SimpleNotificationClientProtocol.SetSMSAttributesAsyncType? = nil,
-            setSMSAttributesSync: SimpleNotificationClientProtocol.SetSMSAttributesSyncType? = nil,
-            setSubscriptionAttributesAsync: SimpleNotificationClientProtocol.SetSubscriptionAttributesAsyncType? = nil,
-            setSubscriptionAttributesSync: SimpleNotificationClientProtocol.SetSubscriptionAttributesSyncType? = nil,
-            setTopicAttributesAsync: SimpleNotificationClientProtocol.SetTopicAttributesAsyncType? = nil,
-            setTopicAttributesSync: SimpleNotificationClientProtocol.SetTopicAttributesSyncType? = nil,
-            subscribeAsync: SimpleNotificationClientProtocol.SubscribeAsyncType? = nil,
-            subscribeSync: SimpleNotificationClientProtocol.SubscribeSyncType? = nil,
-            tagResourceAsync: SimpleNotificationClientProtocol.TagResourceAsyncType? = nil,
-            tagResourceSync: SimpleNotificationClientProtocol.TagResourceSyncType? = nil,
-            unsubscribeAsync: SimpleNotificationClientProtocol.UnsubscribeAsyncType? = nil,
-            unsubscribeSync: SimpleNotificationClientProtocol.UnsubscribeSyncType? = nil,
-            untagResourceAsync: SimpleNotificationClientProtocol.UntagResourceAsyncType? = nil,
-            untagResourceSync: SimpleNotificationClientProtocol.UntagResourceSyncType? = nil) {
+            addPermissionAsync: AddPermissionAsyncType? = nil,
+            addPermissionSync: AddPermissionSyncType? = nil,
+            checkIfPhoneNumberIsOptedOutAsync: CheckIfPhoneNumberIsOptedOutAsyncType? = nil,
+            checkIfPhoneNumberIsOptedOutSync: CheckIfPhoneNumberIsOptedOutSyncType? = nil,
+            confirmSubscriptionAsync: ConfirmSubscriptionAsyncType? = nil,
+            confirmSubscriptionSync: ConfirmSubscriptionSyncType? = nil,
+            createPlatformApplicationAsync: CreatePlatformApplicationAsyncType? = nil,
+            createPlatformApplicationSync: CreatePlatformApplicationSyncType? = nil,
+            createPlatformEndpointAsync: CreatePlatformEndpointAsyncType? = nil,
+            createPlatformEndpointSync: CreatePlatformEndpointSyncType? = nil,
+            createTopicAsync: CreateTopicAsyncType? = nil,
+            createTopicSync: CreateTopicSyncType? = nil,
+            deleteEndpointAsync: DeleteEndpointAsyncType? = nil,
+            deleteEndpointSync: DeleteEndpointSyncType? = nil,
+            deletePlatformApplicationAsync: DeletePlatformApplicationAsyncType? = nil,
+            deletePlatformApplicationSync: DeletePlatformApplicationSyncType? = nil,
+            deleteTopicAsync: DeleteTopicAsyncType? = nil,
+            deleteTopicSync: DeleteTopicSyncType? = nil,
+            getEndpointAttributesAsync: GetEndpointAttributesAsyncType? = nil,
+            getEndpointAttributesSync: GetEndpointAttributesSyncType? = nil,
+            getPlatformApplicationAttributesAsync: GetPlatformApplicationAttributesAsyncType? = nil,
+            getPlatformApplicationAttributesSync: GetPlatformApplicationAttributesSyncType? = nil,
+            getSMSAttributesAsync: GetSMSAttributesAsyncType? = nil,
+            getSMSAttributesSync: GetSMSAttributesSyncType? = nil,
+            getSubscriptionAttributesAsync: GetSubscriptionAttributesAsyncType? = nil,
+            getSubscriptionAttributesSync: GetSubscriptionAttributesSyncType? = nil,
+            getTopicAttributesAsync: GetTopicAttributesAsyncType? = nil,
+            getTopicAttributesSync: GetTopicAttributesSyncType? = nil,
+            listEndpointsByPlatformApplicationAsync: ListEndpointsByPlatformApplicationAsyncType? = nil,
+            listEndpointsByPlatformApplicationSync: ListEndpointsByPlatformApplicationSyncType? = nil,
+            listPhoneNumbersOptedOutAsync: ListPhoneNumbersOptedOutAsyncType? = nil,
+            listPhoneNumbersOptedOutSync: ListPhoneNumbersOptedOutSyncType? = nil,
+            listPlatformApplicationsAsync: ListPlatformApplicationsAsyncType? = nil,
+            listPlatformApplicationsSync: ListPlatformApplicationsSyncType? = nil,
+            listSubscriptionsAsync: ListSubscriptionsAsyncType? = nil,
+            listSubscriptionsSync: ListSubscriptionsSyncType? = nil,
+            listSubscriptionsByTopicAsync: ListSubscriptionsByTopicAsyncType? = nil,
+            listSubscriptionsByTopicSync: ListSubscriptionsByTopicSyncType? = nil,
+            listTagsForResourceAsync: ListTagsForResourceAsyncType? = nil,
+            listTagsForResourceSync: ListTagsForResourceSyncType? = nil,
+            listTopicsAsync: ListTopicsAsyncType? = nil,
+            listTopicsSync: ListTopicsSyncType? = nil,
+            optInPhoneNumberAsync: OptInPhoneNumberAsyncType? = nil,
+            optInPhoneNumberSync: OptInPhoneNumberSyncType? = nil,
+            publishAsync: PublishAsyncType? = nil,
+            publishSync: PublishSyncType? = nil,
+            removePermissionAsync: RemovePermissionAsyncType? = nil,
+            removePermissionSync: RemovePermissionSyncType? = nil,
+            setEndpointAttributesAsync: SetEndpointAttributesAsyncType? = nil,
+            setEndpointAttributesSync: SetEndpointAttributesSyncType? = nil,
+            setPlatformApplicationAttributesAsync: SetPlatformApplicationAttributesAsyncType? = nil,
+            setPlatformApplicationAttributesSync: SetPlatformApplicationAttributesSyncType? = nil,
+            setSMSAttributesAsync: SetSMSAttributesAsyncType? = nil,
+            setSMSAttributesSync: SetSMSAttributesSyncType? = nil,
+            setSubscriptionAttributesAsync: SetSubscriptionAttributesAsyncType? = nil,
+            setSubscriptionAttributesSync: SetSubscriptionAttributesSyncType? = nil,
+            setTopicAttributesAsync: SetTopicAttributesAsyncType? = nil,
+            setTopicAttributesSync: SetTopicAttributesSyncType? = nil,
+            subscribeAsync: SubscribeAsyncType? = nil,
+            subscribeSync: SubscribeSyncType? = nil,
+            tagResourceAsync: TagResourceAsyncType? = nil,
+            tagResourceSync: TagResourceSyncType? = nil,
+            unsubscribeAsync: UnsubscribeAsyncType? = nil,
+            unsubscribeSync: UnsubscribeSyncType? = nil,
+            untagResourceAsync: UntagResourceAsyncType? = nil,
+            untagResourceSync: UntagResourceSyncType? = nil) {
         self.addPermissionAsyncOverride = addPermissionAsync
         self.addPermissionSyncOverride = addPermissionSync
         self.checkIfPhoneNumberIsOptedOutAsyncOverride = checkIfPhoneNumberIsOptedOutAsync
@@ -245,10 +245,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func addPermissionAsync(
             input: SimpleNotificationModel.AddPermissionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let addPermissionAsyncOverride = addPermissionAsyncOverride {
-            return try addPermissionAsyncOverride(input, reporting, completion)
+            return try addPermissionAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -262,10 +261,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     public func addPermissionSync(
-            input: SimpleNotificationModel.AddPermissionInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleNotificationModel.AddPermissionInput) throws {
         if let addPermissionSyncOverride = addPermissionSyncOverride {
-            return try addPermissionSyncOverride(input, reporting)
+            return try addPermissionSyncOverride(input)
         }
 
     }
@@ -282,10 +280,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func checkIfPhoneNumberIsOptedOutAsync(
             input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, SimpleNotificationError>) -> ()) throws {
         if let checkIfPhoneNumberIsOptedOutAsyncOverride = checkIfPhoneNumberIsOptedOutAsyncOverride {
-            return try checkIfPhoneNumberIsOptedOutAsyncOverride(input, reporting, completion)
+            return try checkIfPhoneNumberIsOptedOutAsyncOverride(input, completion)
         }
 
         let result = CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut.__default
@@ -303,10 +300,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
     public func checkIfPhoneNumberIsOptedOutSync(
-            input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut {
+            input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut {
         if let checkIfPhoneNumberIsOptedOutSyncOverride = checkIfPhoneNumberIsOptedOutSyncOverride {
-            return try checkIfPhoneNumberIsOptedOutSyncOverride(input, reporting)
+            return try checkIfPhoneNumberIsOptedOutSyncOverride(input)
         }
 
         return CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut.__default
@@ -324,10 +320,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func confirmSubscriptionAsync(
             input: SimpleNotificationModel.ConfirmSubscriptionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, SimpleNotificationError>) -> ()) throws {
         if let confirmSubscriptionAsyncOverride = confirmSubscriptionAsyncOverride {
-            return try confirmSubscriptionAsyncOverride(input, reporting, completion)
+            return try confirmSubscriptionAsyncOverride(input, completion)
         }
 
         let result = ConfirmSubscriptionResponseForConfirmSubscription.__default
@@ -345,10 +340,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
      */
     public func confirmSubscriptionSync(
-            input: SimpleNotificationModel.ConfirmSubscriptionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
+            input: SimpleNotificationModel.ConfirmSubscriptionInput) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
         if let confirmSubscriptionSyncOverride = confirmSubscriptionSyncOverride {
-            return try confirmSubscriptionSyncOverride(input, reporting)
+            return try confirmSubscriptionSyncOverride(input)
         }
 
         return ConfirmSubscriptionResponseForConfirmSubscription.__default
@@ -366,10 +360,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func createPlatformApplicationAsync(
             input: SimpleNotificationModel.CreatePlatformApplicationInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, SimpleNotificationError>) -> ()) throws {
         if let createPlatformApplicationAsyncOverride = createPlatformApplicationAsyncOverride {
-            return try createPlatformApplicationAsyncOverride(input, reporting, completion)
+            return try createPlatformApplicationAsyncOverride(input, completion)
         }
 
         let result = CreatePlatformApplicationResponseForCreatePlatformApplication.__default
@@ -387,10 +380,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter.
      */
     public func createPlatformApplicationSync(
-            input: SimpleNotificationModel.CreatePlatformApplicationInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication {
+            input: SimpleNotificationModel.CreatePlatformApplicationInput) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication {
         if let createPlatformApplicationSyncOverride = createPlatformApplicationSyncOverride {
-            return try createPlatformApplicationSyncOverride(input, reporting)
+            return try createPlatformApplicationSyncOverride(input)
         }
 
         return CreatePlatformApplicationResponseForCreatePlatformApplication.__default
@@ -408,10 +400,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func createPlatformEndpointAsync(
             input: SimpleNotificationModel.CreatePlatformEndpointInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, SimpleNotificationError>) -> ()) throws {
         if let createPlatformEndpointAsyncOverride = createPlatformEndpointAsyncOverride {
-            return try createPlatformEndpointAsyncOverride(input, reporting, completion)
+            return try createPlatformEndpointAsyncOverride(input, completion)
         }
 
         let result = CreateEndpointResponseForCreatePlatformEndpoint.__default
@@ -429,10 +420,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     public func createPlatformEndpointSync(
-            input: SimpleNotificationModel.CreatePlatformEndpointInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint {
+            input: SimpleNotificationModel.CreatePlatformEndpointInput) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint {
         if let createPlatformEndpointSyncOverride = createPlatformEndpointSyncOverride {
-            return try createPlatformEndpointSyncOverride(input, reporting)
+            return try createPlatformEndpointSyncOverride(input)
         }
 
         return CreateEndpointResponseForCreatePlatformEndpoint.__default
@@ -450,10 +440,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func createTopicAsync(
             input: SimpleNotificationModel.CreateTopicInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, SimpleNotificationError>) -> ()) throws {
         if let createTopicAsyncOverride = createTopicAsyncOverride {
-            return try createTopicAsyncOverride(input, reporting, completion)
+            return try createTopicAsyncOverride(input, completion)
         }
 
         let result = CreateTopicResponseForCreateTopic.__default
@@ -471,10 +460,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
      */
     public func createTopicSync(
-            input: SimpleNotificationModel.CreateTopicInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
+            input: SimpleNotificationModel.CreateTopicInput) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
         if let createTopicSyncOverride = createTopicSyncOverride {
-            return try createTopicSyncOverride(input, reporting)
+            return try createTopicSyncOverride(input)
         }
 
         return CreateTopicResponseForCreateTopic.__default
@@ -491,10 +479,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func deleteEndpointAsync(
             input: SimpleNotificationModel.DeleteEndpointInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let deleteEndpointAsyncOverride = deleteEndpointAsyncOverride {
-            return try deleteEndpointAsyncOverride(input, reporting, completion)
+            return try deleteEndpointAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -508,10 +495,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter.
      */
     public func deleteEndpointSync(
-            input: SimpleNotificationModel.DeleteEndpointInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleNotificationModel.DeleteEndpointInput) throws {
         if let deleteEndpointSyncOverride = deleteEndpointSyncOverride {
-            return try deleteEndpointSyncOverride(input, reporting)
+            return try deleteEndpointSyncOverride(input)
         }
 
     }
@@ -527,10 +513,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func deletePlatformApplicationAsync(
             input: SimpleNotificationModel.DeletePlatformApplicationInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let deletePlatformApplicationAsyncOverride = deletePlatformApplicationAsyncOverride {
-            return try deletePlatformApplicationAsyncOverride(input, reporting, completion)
+            return try deletePlatformApplicationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -544,10 +529,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter.
      */
     public func deletePlatformApplicationSync(
-            input: SimpleNotificationModel.DeletePlatformApplicationInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleNotificationModel.DeletePlatformApplicationInput) throws {
         if let deletePlatformApplicationSyncOverride = deletePlatformApplicationSyncOverride {
-            return try deletePlatformApplicationSyncOverride(input, reporting)
+            return try deletePlatformApplicationSyncOverride(input)
         }
 
     }
@@ -563,10 +547,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func deleteTopicAsync(
             input: SimpleNotificationModel.DeleteTopicInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let deleteTopicAsyncOverride = deleteTopicAsyncOverride {
-            return try deleteTopicAsyncOverride(input, reporting, completion)
+            return try deleteTopicAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -580,10 +563,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
     public func deleteTopicSync(
-            input: SimpleNotificationModel.DeleteTopicInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleNotificationModel.DeleteTopicInput) throws {
         if let deleteTopicSyncOverride = deleteTopicSyncOverride {
-            return try deleteTopicSyncOverride(input, reporting)
+            return try deleteTopicSyncOverride(input)
         }
 
     }
@@ -600,10 +582,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func getEndpointAttributesAsync(
             input: SimpleNotificationModel.GetEndpointAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, SimpleNotificationError>) -> ()) throws {
         if let getEndpointAttributesAsyncOverride = getEndpointAttributesAsyncOverride {
-            return try getEndpointAttributesAsyncOverride(input, reporting, completion)
+            return try getEndpointAttributesAsyncOverride(input, completion)
         }
 
         let result = GetEndpointAttributesResponseForGetEndpointAttributes.__default
@@ -621,10 +602,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     public func getEndpointAttributesSync(
-            input: SimpleNotificationModel.GetEndpointAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes {
+            input: SimpleNotificationModel.GetEndpointAttributesInput) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes {
         if let getEndpointAttributesSyncOverride = getEndpointAttributesSyncOverride {
-            return try getEndpointAttributesSyncOverride(input, reporting)
+            return try getEndpointAttributesSyncOverride(input)
         }
 
         return GetEndpointAttributesResponseForGetEndpointAttributes.__default
@@ -642,10 +622,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func getPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.GetPlatformApplicationAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, SimpleNotificationError>) -> ()) throws {
         if let getPlatformApplicationAttributesAsyncOverride = getPlatformApplicationAttributesAsyncOverride {
-            return try getPlatformApplicationAttributesAsyncOverride(input, reporting, completion)
+            return try getPlatformApplicationAttributesAsyncOverride(input, completion)
         }
 
         let result = GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes.__default
@@ -663,10 +642,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     public func getPlatformApplicationAttributesSync(
-            input: SimpleNotificationModel.GetPlatformApplicationAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes {
+            input: SimpleNotificationModel.GetPlatformApplicationAttributesInput) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes {
         if let getPlatformApplicationAttributesSyncOverride = getPlatformApplicationAttributesSyncOverride {
-            return try getPlatformApplicationAttributesSyncOverride(input, reporting)
+            return try getPlatformApplicationAttributesSyncOverride(input)
         }
 
         return GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes.__default
@@ -684,10 +662,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func getSMSAttributesAsync(
             input: SimpleNotificationModel.GetSMSAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, SimpleNotificationError>) -> ()) throws {
         if let getSMSAttributesAsyncOverride = getSMSAttributesAsyncOverride {
-            return try getSMSAttributesAsyncOverride(input, reporting, completion)
+            return try getSMSAttributesAsyncOverride(input, completion)
         }
 
         let result = GetSMSAttributesResponseForGetSMSAttributes.__default
@@ -705,10 +682,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
     public func getSMSAttributesSync(
-            input: SimpleNotificationModel.GetSMSAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes {
+            input: SimpleNotificationModel.GetSMSAttributesInput) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes {
         if let getSMSAttributesSyncOverride = getSMSAttributesSyncOverride {
-            return try getSMSAttributesSyncOverride(input, reporting)
+            return try getSMSAttributesSyncOverride(input)
         }
 
         return GetSMSAttributesResponseForGetSMSAttributes.__default
@@ -726,10 +702,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func getSubscriptionAttributesAsync(
             input: SimpleNotificationModel.GetSubscriptionAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, SimpleNotificationError>) -> ()) throws {
         if let getSubscriptionAttributesAsyncOverride = getSubscriptionAttributesAsyncOverride {
-            return try getSubscriptionAttributesAsyncOverride(input, reporting, completion)
+            return try getSubscriptionAttributesAsyncOverride(input, completion)
         }
 
         let result = GetSubscriptionAttributesResponseForGetSubscriptionAttributes.__default
@@ -747,10 +722,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     public func getSubscriptionAttributesSync(
-            input: SimpleNotificationModel.GetSubscriptionAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes {
+            input: SimpleNotificationModel.GetSubscriptionAttributesInput) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes {
         if let getSubscriptionAttributesSyncOverride = getSubscriptionAttributesSyncOverride {
-            return try getSubscriptionAttributesSyncOverride(input, reporting)
+            return try getSubscriptionAttributesSyncOverride(input)
         }
 
         return GetSubscriptionAttributesResponseForGetSubscriptionAttributes.__default
@@ -768,10 +742,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func getTopicAttributesAsync(
             input: SimpleNotificationModel.GetTopicAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, SimpleNotificationError>) -> ()) throws {
         if let getTopicAttributesAsyncOverride = getTopicAttributesAsyncOverride {
-            return try getTopicAttributesAsyncOverride(input, reporting, completion)
+            return try getTopicAttributesAsyncOverride(input, completion)
         }
 
         let result = GetTopicAttributesResponseForGetTopicAttributes.__default
@@ -789,10 +762,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
     public func getTopicAttributesSync(
-            input: SimpleNotificationModel.GetTopicAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes {
+            input: SimpleNotificationModel.GetTopicAttributesInput) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes {
         if let getTopicAttributesSyncOverride = getTopicAttributesSyncOverride {
-            return try getTopicAttributesSyncOverride(input, reporting)
+            return try getTopicAttributesSyncOverride(input)
         }
 
         return GetTopicAttributesResponseForGetTopicAttributes.__default
@@ -810,10 +782,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listEndpointsByPlatformApplicationAsync(
             input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, SimpleNotificationError>) -> ()) throws {
         if let listEndpointsByPlatformApplicationAsyncOverride = listEndpointsByPlatformApplicationAsyncOverride {
-            return try listEndpointsByPlatformApplicationAsyncOverride(input, reporting, completion)
+            return try listEndpointsByPlatformApplicationAsyncOverride(input, completion)
         }
 
         let result = ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication.__default
@@ -831,10 +802,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     public func listEndpointsByPlatformApplicationSync(
-            input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication {
+            input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication {
         if let listEndpointsByPlatformApplicationSyncOverride = listEndpointsByPlatformApplicationSyncOverride {
-            return try listEndpointsByPlatformApplicationSyncOverride(input, reporting)
+            return try listEndpointsByPlatformApplicationSyncOverride(input)
         }
 
         return ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication.__default
@@ -852,10 +822,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listPhoneNumbersOptedOutAsync(
             input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, SimpleNotificationError>) -> ()) throws {
         if let listPhoneNumbersOptedOutAsyncOverride = listPhoneNumbersOptedOutAsyncOverride {
-            return try listPhoneNumbersOptedOutAsyncOverride(input, reporting, completion)
+            return try listPhoneNumbersOptedOutAsyncOverride(input, completion)
         }
 
         let result = ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut.__default
@@ -873,10 +842,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
     public func listPhoneNumbersOptedOutSync(
-            input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut {
+            input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut {
         if let listPhoneNumbersOptedOutSyncOverride = listPhoneNumbersOptedOutSyncOverride {
-            return try listPhoneNumbersOptedOutSyncOverride(input, reporting)
+            return try listPhoneNumbersOptedOutSyncOverride(input)
         }
 
         return ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut.__default
@@ -894,10 +862,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listPlatformApplicationsAsync(
             input: SimpleNotificationModel.ListPlatformApplicationsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, SimpleNotificationError>) -> ()) throws {
         if let listPlatformApplicationsAsyncOverride = listPlatformApplicationsAsyncOverride {
-            return try listPlatformApplicationsAsyncOverride(input, reporting, completion)
+            return try listPlatformApplicationsAsyncOverride(input, completion)
         }
 
         let result = ListPlatformApplicationsResponseForListPlatformApplications.__default
@@ -915,10 +882,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter.
      */
     public func listPlatformApplicationsSync(
-            input: SimpleNotificationModel.ListPlatformApplicationsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications {
+            input: SimpleNotificationModel.ListPlatformApplicationsInput) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications {
         if let listPlatformApplicationsSyncOverride = listPlatformApplicationsSyncOverride {
-            return try listPlatformApplicationsSyncOverride(input, reporting)
+            return try listPlatformApplicationsSyncOverride(input)
         }
 
         return ListPlatformApplicationsResponseForListPlatformApplications.__default
@@ -936,10 +902,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listSubscriptionsAsync(
             input: SimpleNotificationModel.ListSubscriptionsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, SimpleNotificationError>) -> ()) throws {
         if let listSubscriptionsAsyncOverride = listSubscriptionsAsyncOverride {
-            return try listSubscriptionsAsyncOverride(input, reporting, completion)
+            return try listSubscriptionsAsyncOverride(input, completion)
         }
 
         let result = ListSubscriptionsResponseForListSubscriptions.__default
@@ -957,10 +922,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter.
      */
     public func listSubscriptionsSync(
-            input: SimpleNotificationModel.ListSubscriptionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions {
+            input: SimpleNotificationModel.ListSubscriptionsInput) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions {
         if let listSubscriptionsSyncOverride = listSubscriptionsSyncOverride {
-            return try listSubscriptionsSyncOverride(input, reporting)
+            return try listSubscriptionsSyncOverride(input)
         }
 
         return ListSubscriptionsResponseForListSubscriptions.__default
@@ -978,10 +942,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listSubscriptionsByTopicAsync(
             input: SimpleNotificationModel.ListSubscriptionsByTopicInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, SimpleNotificationError>) -> ()) throws {
         if let listSubscriptionsByTopicAsyncOverride = listSubscriptionsByTopicAsyncOverride {
-            return try listSubscriptionsByTopicAsyncOverride(input, reporting, completion)
+            return try listSubscriptionsByTopicAsyncOverride(input, completion)
         }
 
         let result = ListSubscriptionsByTopicResponseForListSubscriptionsByTopic.__default
@@ -999,10 +962,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     public func listSubscriptionsByTopicSync(
-            input: SimpleNotificationModel.ListSubscriptionsByTopicInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic {
+            input: SimpleNotificationModel.ListSubscriptionsByTopicInput) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic {
         if let listSubscriptionsByTopicSyncOverride = listSubscriptionsByTopicSyncOverride {
-            return try listSubscriptionsByTopicSyncOverride(input, reporting)
+            return try listSubscriptionsByTopicSyncOverride(input)
         }
 
         return ListSubscriptionsByTopicResponseForListSubscriptionsByTopic.__default
@@ -1020,10 +982,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listTagsForResourceAsync(
             input: SimpleNotificationModel.ListTagsForResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, SimpleNotificationError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
-            return try listTagsForResourceAsyncOverride(input, reporting, completion)
+            return try listTagsForResourceAsyncOverride(input, completion)
         }
 
         let result = ListTagsForResourceResponseForListTagsForResource.__default
@@ -1041,10 +1002,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
      */
     public func listTagsForResourceSync(
-            input: SimpleNotificationModel.ListTagsForResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
+            input: SimpleNotificationModel.ListTagsForResourceRequest) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
         if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
-            return try listTagsForResourceSyncOverride(input, reporting)
+            return try listTagsForResourceSyncOverride(input)
         }
 
         return ListTagsForResourceResponseForListTagsForResource.__default
@@ -1062,10 +1022,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func listTopicsAsync(
             input: SimpleNotificationModel.ListTopicsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, SimpleNotificationError>) -> ()) throws {
         if let listTopicsAsyncOverride = listTopicsAsyncOverride {
-            return try listTopicsAsyncOverride(input, reporting, completion)
+            return try listTopicsAsyncOverride(input, completion)
         }
 
         let result = ListTopicsResponseForListTopics.__default
@@ -1083,10 +1042,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter.
      */
     public func listTopicsSync(
-            input: SimpleNotificationModel.ListTopicsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics {
+            input: SimpleNotificationModel.ListTopicsInput) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics {
         if let listTopicsSyncOverride = listTopicsSyncOverride {
-            return try listTopicsSyncOverride(input, reporting)
+            return try listTopicsSyncOverride(input)
         }
 
         return ListTopicsResponseForListTopics.__default
@@ -1104,10 +1062,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func optInPhoneNumberAsync(
             input: SimpleNotificationModel.OptInPhoneNumberInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, SimpleNotificationError>) -> ()) throws {
         if let optInPhoneNumberAsyncOverride = optInPhoneNumberAsyncOverride {
-            return try optInPhoneNumberAsyncOverride(input, reporting, completion)
+            return try optInPhoneNumberAsyncOverride(input, completion)
         }
 
         let result = OptInPhoneNumberResponseForOptInPhoneNumber.__default
@@ -1125,10 +1082,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
     public func optInPhoneNumberSync(
-            input: SimpleNotificationModel.OptInPhoneNumberInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber {
+            input: SimpleNotificationModel.OptInPhoneNumberInput) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber {
         if let optInPhoneNumberSyncOverride = optInPhoneNumberSyncOverride {
-            return try optInPhoneNumberSyncOverride(input, reporting)
+            return try optInPhoneNumberSyncOverride(input)
         }
 
         return OptInPhoneNumberResponseForOptInPhoneNumber.__default
@@ -1146,10 +1102,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func publishAsync(
             input: SimpleNotificationModel.PublishInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, SimpleNotificationError>) -> ()) throws {
         if let publishAsyncOverride = publishAsyncOverride {
-            return try publishAsyncOverride(input, reporting, completion)
+            return try publishAsyncOverride(input, completion)
         }
 
         let result = PublishResponseForPublish.__default
@@ -1167,10 +1122,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
      */
     public func publishSync(
-            input: SimpleNotificationModel.PublishInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.PublishResponseForPublish {
+            input: SimpleNotificationModel.PublishInput) throws -> SimpleNotificationModel.PublishResponseForPublish {
         if let publishSyncOverride = publishSyncOverride {
-            return try publishSyncOverride(input, reporting)
+            return try publishSyncOverride(input)
         }
 
         return PublishResponseForPublish.__default
@@ -1187,10 +1141,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func removePermissionAsync(
             input: SimpleNotificationModel.RemovePermissionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let removePermissionAsyncOverride = removePermissionAsyncOverride {
-            return try removePermissionAsyncOverride(input, reporting, completion)
+            return try removePermissionAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1204,10 +1157,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     public func removePermissionSync(
-            input: SimpleNotificationModel.RemovePermissionInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleNotificationModel.RemovePermissionInput) throws {
         if let removePermissionSyncOverride = removePermissionSyncOverride {
-            return try removePermissionSyncOverride(input, reporting)
+            return try removePermissionSyncOverride(input)
         }
 
     }
@@ -1223,10 +1175,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func setEndpointAttributesAsync(
             input: SimpleNotificationModel.SetEndpointAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let setEndpointAttributesAsyncOverride = setEndpointAttributesAsyncOverride {
-            return try setEndpointAttributesAsyncOverride(input, reporting, completion)
+            return try setEndpointAttributesAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1240,10 +1191,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     public func setEndpointAttributesSync(
-            input: SimpleNotificationModel.SetEndpointAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleNotificationModel.SetEndpointAttributesInput) throws {
         if let setEndpointAttributesSyncOverride = setEndpointAttributesSyncOverride {
-            return try setEndpointAttributesSyncOverride(input, reporting)
+            return try setEndpointAttributesSyncOverride(input)
         }
 
     }
@@ -1259,10 +1209,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func setPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let setPlatformApplicationAttributesAsyncOverride = setPlatformApplicationAttributesAsyncOverride {
-            return try setPlatformApplicationAttributesAsyncOverride(input, reporting, completion)
+            return try setPlatformApplicationAttributesAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1276,10 +1225,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     public func setPlatformApplicationAttributesSync(
-            input: SimpleNotificationModel.SetPlatformApplicationAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleNotificationModel.SetPlatformApplicationAttributesInput) throws {
         if let setPlatformApplicationAttributesSyncOverride = setPlatformApplicationAttributesSyncOverride {
-            return try setPlatformApplicationAttributesSyncOverride(input, reporting)
+            return try setPlatformApplicationAttributesSyncOverride(input)
         }
 
     }
@@ -1296,10 +1244,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func setSMSAttributesAsync(
             input: SimpleNotificationModel.SetSMSAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, SimpleNotificationError>) -> ()) throws {
         if let setSMSAttributesAsyncOverride = setSMSAttributesAsyncOverride {
-            return try setSMSAttributesAsyncOverride(input, reporting, completion)
+            return try setSMSAttributesAsyncOverride(input, completion)
         }
 
         let result = SetSMSAttributesResponseForSetSMSAttributes.__default
@@ -1317,10 +1264,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, throttled.
      */
     public func setSMSAttributesSync(
-            input: SimpleNotificationModel.SetSMSAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes {
+            input: SimpleNotificationModel.SetSMSAttributesInput) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes {
         if let setSMSAttributesSyncOverride = setSMSAttributesSyncOverride {
-            return try setSMSAttributesSyncOverride(input, reporting)
+            return try setSMSAttributesSyncOverride(input)
         }
 
         return SetSMSAttributesResponseForSetSMSAttributes.__default
@@ -1337,10 +1283,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func setSubscriptionAttributesAsync(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let setSubscriptionAttributesAsyncOverride = setSubscriptionAttributesAsyncOverride {
-            return try setSubscriptionAttributesAsyncOverride(input, reporting, completion)
+            return try setSubscriptionAttributesAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1354,10 +1299,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
      */
     public func setSubscriptionAttributesSync(
-            input: SimpleNotificationModel.SetSubscriptionAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleNotificationModel.SetSubscriptionAttributesInput) throws {
         if let setSubscriptionAttributesSyncOverride = setSubscriptionAttributesSyncOverride {
-            return try setSubscriptionAttributesSyncOverride(input, reporting)
+            return try setSubscriptionAttributesSyncOverride(input)
         }
 
     }
@@ -1373,10 +1317,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func setTopicAttributesAsync(
             input: SimpleNotificationModel.SetTopicAttributesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let setTopicAttributesAsyncOverride = setTopicAttributesAsyncOverride {
-            return try setTopicAttributesAsyncOverride(input, reporting, completion)
+            return try setTopicAttributesAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1390,10 +1333,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
     public func setTopicAttributesSync(
-            input: SimpleNotificationModel.SetTopicAttributesInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleNotificationModel.SetTopicAttributesInput) throws {
         if let setTopicAttributesSyncOverride = setTopicAttributesSyncOverride {
-            return try setTopicAttributesSyncOverride(input, reporting)
+            return try setTopicAttributesSyncOverride(input)
         }
 
     }
@@ -1410,10 +1352,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func subscribeAsync(
             input: SimpleNotificationModel.SubscribeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, SimpleNotificationError>) -> ()) throws {
         if let subscribeAsyncOverride = subscribeAsyncOverride {
-            return try subscribeAsyncOverride(input, reporting, completion)
+            return try subscribeAsyncOverride(input, completion)
         }
 
         let result = SubscribeResponseForSubscribe.__default
@@ -1431,10 +1372,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
      */
     public func subscribeSync(
-            input: SimpleNotificationModel.SubscribeInput,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {
+            input: SimpleNotificationModel.SubscribeInput) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {
         if let subscribeSyncOverride = subscribeSyncOverride {
-            return try subscribeSyncOverride(input, reporting)
+            return try subscribeSyncOverride(input)
         }
 
         return SubscribeResponseForSubscribe.__default
@@ -1452,10 +1392,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func tagResourceAsync(
             input: SimpleNotificationModel.TagResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, SimpleNotificationError>) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
-            return try tagResourceAsyncOverride(input, reporting, completion)
+            return try tagResourceAsyncOverride(input, completion)
         }
 
         let result = TagResourceResponseForTagResource.__default
@@ -1473,10 +1412,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
     public func tagResourceSync(
-            input: SimpleNotificationModel.TagResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.TagResourceResponseForTagResource {
+            input: SimpleNotificationModel.TagResourceRequest) throws -> SimpleNotificationModel.TagResourceResponseForTagResource {
         if let tagResourceSyncOverride = tagResourceSyncOverride {
-            return try tagResourceSyncOverride(input, reporting)
+            return try tagResourceSyncOverride(input)
         }
 
         return TagResourceResponseForTagResource.__default
@@ -1493,10 +1431,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func unsubscribeAsync(
             input: SimpleNotificationModel.UnsubscribeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
         if let unsubscribeAsyncOverride = unsubscribeAsyncOverride {
-            return try unsubscribeAsyncOverride(input, reporting, completion)
+            return try unsubscribeAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1510,10 +1447,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
     public func unsubscribeSync(
-            input: SimpleNotificationModel.UnsubscribeInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: SimpleNotificationModel.UnsubscribeInput) throws {
         if let unsubscribeSyncOverride = unsubscribeSyncOverride {
-            return try unsubscribeSyncOverride(input, reporting)
+            return try unsubscribeSyncOverride(input)
         }
 
     }
@@ -1530,10 +1466,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      */
     public func untagResourceAsync(
             input: SimpleNotificationModel.UntagResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, SimpleNotificationError>) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
-            return try untagResourceAsyncOverride(input, reporting, completion)
+            return try untagResourceAsyncOverride(input, completion)
         }
 
         let result = UntagResourceResponseForUntagResource.__default
@@ -1551,10 +1486,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
      - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
      */
     public func untagResourceSync(
-            input: SimpleNotificationModel.UntagResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
+            input: SimpleNotificationModel.UntagResourceRequest) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
         if let untagResourceSyncOverride = untagResourceSyncOverride {
-            return try untagResourceSyncOverride(input, reporting)
+            return try untagResourceSyncOverride(input)
         }
 
         return UntagResourceResponseForUntagResource.__default

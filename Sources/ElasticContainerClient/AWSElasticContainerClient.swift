@@ -33,7 +33,7 @@ public enum ElasticContainerClientError: Swift.Error {
     case unknownError(String?)
 }
 
-private extension ElasticContainerError {
+internal extension ElasticContainerError {
     func isRetriable() -> Bool {
         switch self {
         case .attributeLimitExceeded:
@@ -57,7 +57,7 @@ private extension Swift.Error {
 /**
  AWS Client for the ElasticContainer service.
  */
-public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
+public struct AWSElasticContainerClient<InvocationReportingType: SmokeAWSInvocationReporting>: ElasticContainerClientProtocol {
     let httpClient: HTTPClient
     let awsRegion: AWSRegion
     let service: String
@@ -65,57 +65,14 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
     let credentialsProvider: CredentialsProvider
+    
+    public let reporting: InvocationReportingType
 
-    let createCapacityProviderOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let createClusterOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let createServiceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let createTaskSetOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deleteAccountSettingOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deleteAttributesOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deleteClusterOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deleteServiceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deleteTaskSetOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deregisterContainerInstanceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deregisterTaskDefinitionOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeCapacityProvidersOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeClustersOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeContainerInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeServicesOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeTaskDefinitionOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeTaskSetsOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeTasksOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let discoverPollEndpointOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listAccountSettingsOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listAttributesOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listClustersOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listContainerInstancesOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listServicesOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listTagsForResourceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listTaskDefinitionFamiliesOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listTaskDefinitionsOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listTasksOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let putAccountSettingOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let putAccountSettingDefaultOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let putAttributesOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let putClusterCapacityProvidersOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let registerContainerInstanceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let registerTaskDefinitionOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let runTaskOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let startTaskOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let stopTaskOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let submitAttachmentStateChangesOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let submitContainerStateChangeOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let submitTaskStateChangeOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let tagResourceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let untagResourceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let updateClusterSettingsOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let updateContainerAgentOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let updateContainerInstancesStateOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let updateServiceOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let updateServicePrimaryTaskSetOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let updateTaskSetOperationReporting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    let operationsReporting: ElasticContainerOperationsReporting
+    let invocationsReporting: ElasticContainerInvocationsReporting<InvocationReportingType>
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "ecs",
@@ -139,104 +96,30 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
         self.target = target
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
+        self.reporting = reporting
         self.retryOnErrorProvider = { error in error.isRetriable() }
-
-        self.createCapacityProviderOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .createCapacityProvider, configuration: reportingConfiguration)
-        self.createClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .createCluster, configuration: reportingConfiguration)
-        self.createServiceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .createService, configuration: reportingConfiguration)
-        self.createTaskSetOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .createTaskSet, configuration: reportingConfiguration)
-        self.deleteAccountSettingOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .deleteAccountSetting, configuration: reportingConfiguration)
-        self.deleteAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .deleteAttributes, configuration: reportingConfiguration)
-        self.deleteClusterOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .deleteCluster, configuration: reportingConfiguration)
-        self.deleteServiceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .deleteService, configuration: reportingConfiguration)
-        self.deleteTaskSetOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .deleteTaskSet, configuration: reportingConfiguration)
-        self.deregisterContainerInstanceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .deregisterContainerInstance, configuration: reportingConfiguration)
-        self.deregisterTaskDefinitionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .deregisterTaskDefinition, configuration: reportingConfiguration)
-        self.describeCapacityProvidersOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .describeCapacityProviders, configuration: reportingConfiguration)
-        self.describeClustersOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .describeClusters, configuration: reportingConfiguration)
-        self.describeContainerInstancesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .describeContainerInstances, configuration: reportingConfiguration)
-        self.describeServicesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .describeServices, configuration: reportingConfiguration)
-        self.describeTaskDefinitionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .describeTaskDefinition, configuration: reportingConfiguration)
-        self.describeTaskSetsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .describeTaskSets, configuration: reportingConfiguration)
-        self.describeTasksOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .describeTasks, configuration: reportingConfiguration)
-        self.discoverPollEndpointOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .discoverPollEndpoint, configuration: reportingConfiguration)
-        self.listAccountSettingsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .listAccountSettings, configuration: reportingConfiguration)
-        self.listAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .listAttributes, configuration: reportingConfiguration)
-        self.listClustersOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .listClusters, configuration: reportingConfiguration)
-        self.listContainerInstancesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .listContainerInstances, configuration: reportingConfiguration)
-        self.listServicesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .listServices, configuration: reportingConfiguration)
-        self.listTagsForResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .listTagsForResource, configuration: reportingConfiguration)
-        self.listTaskDefinitionFamiliesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .listTaskDefinitionFamilies, configuration: reportingConfiguration)
-        self.listTaskDefinitionsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .listTaskDefinitions, configuration: reportingConfiguration)
-        self.listTasksOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .listTasks, configuration: reportingConfiguration)
-        self.putAccountSettingOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .putAccountSetting, configuration: reportingConfiguration)
-        self.putAccountSettingDefaultOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .putAccountSettingDefault, configuration: reportingConfiguration)
-        self.putAttributesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .putAttributes, configuration: reportingConfiguration)
-        self.putClusterCapacityProvidersOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .putClusterCapacityProviders, configuration: reportingConfiguration)
-        self.registerContainerInstanceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .registerContainerInstance, configuration: reportingConfiguration)
-        self.registerTaskDefinitionOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .registerTaskDefinition, configuration: reportingConfiguration)
-        self.runTaskOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .runTask, configuration: reportingConfiguration)
-        self.startTaskOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .startTask, configuration: reportingConfiguration)
-        self.stopTaskOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .stopTask, configuration: reportingConfiguration)
-        self.submitAttachmentStateChangesOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .submitAttachmentStateChanges, configuration: reportingConfiguration)
-        self.submitContainerStateChangeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .submitContainerStateChange, configuration: reportingConfiguration)
-        self.submitTaskStateChangeOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .submitTaskStateChange, configuration: reportingConfiguration)
-        self.tagResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .tagResource, configuration: reportingConfiguration)
-        self.untagResourceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .untagResource, configuration: reportingConfiguration)
-        self.updateClusterSettingsOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .updateClusterSettings, configuration: reportingConfiguration)
-        self.updateContainerAgentOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .updateContainerAgent, configuration: reportingConfiguration)
-        self.updateContainerInstancesStateOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .updateContainerInstancesState, configuration: reportingConfiguration)
-        self.updateServiceOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .updateService, configuration: reportingConfiguration)
-        self.updateServicePrimaryTaskSetOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .updateServicePrimaryTaskSet, configuration: reportingConfiguration)
-        self.updateTaskSetOperationReporting = StandardSmokeAWSOperationReporting(
-            clientName: "AWSElasticContainerClient", operation: .updateTaskSet, configuration: reportingConfiguration)
+        self.operationsReporting = ElasticContainerOperationsReporting(clientName: "AWSElasticContainerClient", reportingConfiguration: reportingConfiguration)
+        self.invocationsReporting = ElasticContainerInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
+    }
+    
+    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                reporting: InvocationReportingType,
+                httpClient: HTTPClient,
+                service: String,
+                target: String?,
+                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryConfiguration: HTTPClientRetryConfiguration,
+                operationsReporting: ElasticContainerOperationsReporting) {
+        self.httpClient = httpClient
+        self.awsRegion = awsRegion
+        self.service = service
+        self.target = target
+        self.credentialsProvider = credentialsProvider
+        self.retryConfiguration = retryConfiguration
+        self.reporting = reporting
+        self.retryOnErrorProvider = retryOnErrorProvider
+        self.operationsReporting = operationsReporting
+        self.invocationsReporting = ElasticContainerInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
 
     /**
@@ -267,8 +150,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func createCapacityProviderAsync(
             input: ElasticContainerModel.CreateCapacityProviderRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.CreateCapacityProviderResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -276,16 +158,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.createCapacityProvider.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createCapacityProviderOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCapacityProvider,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CreateCapacityProviderOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.CreateCapacityProviderResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -301,8 +195,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, limitExceeded, server.
      */
     public func createCapacityProviderSync(
-            input: ElasticContainerModel.CreateCapacityProviderRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateCapacityProviderResponse {
+            input: ElasticContainerModel.CreateCapacityProviderRequest) throws -> ElasticContainerModel.CreateCapacityProviderResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -310,9 +203,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.createCapacityProvider.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createCapacityProviderOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCapacityProvider,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CreateCapacityProviderOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -336,8 +228,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func createClusterAsync(
             input: ElasticContainerModel.CreateClusterRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.CreateClusterResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.CreateClusterResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -345,16 +236,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.createCluster.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCluster,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CreateClusterOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.CreateClusterResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -370,8 +273,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func createClusterSync(
-            input: ElasticContainerModel.CreateClusterRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateClusterResponse {
+            input: ElasticContainerModel.CreateClusterRequest) throws -> ElasticContainerModel.CreateClusterResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -379,9 +281,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.createCluster.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCluster,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CreateClusterOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -405,8 +306,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func createServiceAsync(
             input: ElasticContainerModel.CreateServiceRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.CreateServiceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.CreateServiceResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -414,16 +314,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.createService.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createServiceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createService,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CreateServiceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.CreateServiceResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -439,8 +351,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
     public func createServiceSync(
-            input: ElasticContainerModel.CreateServiceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateServiceResponse {
+            input: ElasticContainerModel.CreateServiceRequest) throws -> ElasticContainerModel.CreateServiceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -448,9 +359,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.createService.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createServiceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createService,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CreateServiceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -474,8 +384,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func createTaskSetAsync(
             input: ElasticContainerModel.CreateTaskSetRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.CreateTaskSetResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.CreateTaskSetResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -483,16 +392,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.createTaskSet.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createTaskSetOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createTaskSet,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CreateTaskSetOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.CreateTaskSetResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -508,8 +429,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
     public func createTaskSetSync(
-            input: ElasticContainerModel.CreateTaskSetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.CreateTaskSetResponse {
+            input: ElasticContainerModel.CreateTaskSetRequest) throws -> ElasticContainerModel.CreateTaskSetResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -517,9 +437,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.createTaskSet.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: createTaskSetOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createTaskSet,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = CreateTaskSetOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -543,8 +462,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deleteAccountSettingAsync(
             input: ElasticContainerModel.DeleteAccountSettingRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DeleteAccountSettingResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeleteAccountSettingResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -552,16 +470,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deleteAccountSetting.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteAccountSettingOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteAccountSetting,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteAccountSettingOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DeleteAccountSettingResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -577,8 +507,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func deleteAccountSettingSync(
-            input: ElasticContainerModel.DeleteAccountSettingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteAccountSettingResponse {
+            input: ElasticContainerModel.DeleteAccountSettingRequest) throws -> ElasticContainerModel.DeleteAccountSettingResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -586,9 +515,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deleteAccountSetting.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteAccountSettingOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteAccountSetting,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteAccountSettingOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -612,8 +540,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deleteAttributesAsync(
             input: ElasticContainerModel.DeleteAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -621,16 +548,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deleteAttributes.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteAttributesOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DeleteAttributesResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -646,8 +585,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: clusterNotFound, invalidParameter, targetNotFound.
      */
     public func deleteAttributesSync(
-            input: ElasticContainerModel.DeleteAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteAttributesResponse {
+            input: ElasticContainerModel.DeleteAttributesRequest) throws -> ElasticContainerModel.DeleteAttributesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -655,9 +593,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deleteAttributes.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteAttributesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -681,8 +618,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deleteClusterAsync(
             input: ElasticContainerModel.DeleteClusterRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DeleteClusterResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeleteClusterResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -690,16 +626,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deleteCluster.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCluster,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteClusterOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DeleteClusterResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -715,8 +663,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
      */
     public func deleteClusterSync(
-            input: ElasticContainerModel.DeleteClusterRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteClusterResponse {
+            input: ElasticContainerModel.DeleteClusterRequest) throws -> ElasticContainerModel.DeleteClusterResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -724,9 +671,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deleteCluster.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteClusterOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCluster,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteClusterOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -750,8 +696,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deleteServiceAsync(
             input: ElasticContainerModel.DeleteServiceRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -759,16 +704,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deleteService.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteServiceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteService,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteServiceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DeleteServiceResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -784,8 +741,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
     public func deleteServiceSync(
-            input: ElasticContainerModel.DeleteServiceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteServiceResponse {
+            input: ElasticContainerModel.DeleteServiceRequest) throws -> ElasticContainerModel.DeleteServiceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -793,9 +749,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deleteService.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteServiceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteService,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteServiceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -819,8 +774,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deleteTaskSetAsync(
             input: ElasticContainerModel.DeleteTaskSetRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DeleteTaskSetResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeleteTaskSetResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -828,16 +782,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deleteTaskSet.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteTaskSetOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTaskSet,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteTaskSetOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DeleteTaskSetResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -853,8 +819,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
     public func deleteTaskSetSync(
-            input: ElasticContainerModel.DeleteTaskSetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeleteTaskSetResponse {
+            input: ElasticContainerModel.DeleteTaskSetRequest) throws -> ElasticContainerModel.DeleteTaskSetResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -862,9 +827,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deleteTaskSet.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deleteTaskSetOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTaskSet,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeleteTaskSetOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -888,8 +852,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deregisterContainerInstanceAsync(
             input: ElasticContainerModel.DeregisterContainerInstanceRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DeregisterContainerInstanceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeregisterContainerInstanceResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -897,16 +860,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deregisterContainerInstance.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deregisterContainerInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deregisterContainerInstance,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeregisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DeregisterContainerInstanceResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -922,8 +897,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
     public func deregisterContainerInstanceSync(
-            input: ElasticContainerModel.DeregisterContainerInstanceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse {
+            input: ElasticContainerModel.DeregisterContainerInstanceRequest) throws -> ElasticContainerModel.DeregisterContainerInstanceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -931,9 +905,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deregisterContainerInstance.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deregisterContainerInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deregisterContainerInstance,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeregisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -957,8 +930,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func deregisterTaskDefinitionAsync(
             input: ElasticContainerModel.DeregisterTaskDefinitionRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -966,16 +938,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deregisterTaskDefinition.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deregisterTaskDefinitionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deregisterTaskDefinition,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeregisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -991,8 +975,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func deregisterTaskDefinitionSync(
-            input: ElasticContainerModel.DeregisterTaskDefinitionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse {
+            input: ElasticContainerModel.DeregisterTaskDefinitionRequest) throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1000,9 +983,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.deregisterTaskDefinition.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: deregisterTaskDefinitionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deregisterTaskDefinition,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DeregisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1026,8 +1008,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeCapacityProvidersAsync(
             input: ElasticContainerModel.DescribeCapacityProvidersRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeCapacityProvidersResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1035,16 +1016,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeCapacityProviders.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeCapacityProvidersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeCapacityProviders,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeCapacityProvidersOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DescribeCapacityProvidersResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1060,8 +1053,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func describeCapacityProvidersSync(
-            input: ElasticContainerModel.DescribeCapacityProvidersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse {
+            input: ElasticContainerModel.DescribeCapacityProvidersRequest) throws -> ElasticContainerModel.DescribeCapacityProvidersResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1069,9 +1061,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeCapacityProviders.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeCapacityProvidersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeCapacityProviders,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeCapacityProvidersOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1095,8 +1086,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeClustersAsync(
             input: ElasticContainerModel.DescribeClustersRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DescribeClustersResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeClustersResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1104,16 +1094,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeClusters.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeClustersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeClusters,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeClustersOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DescribeClustersResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1129,8 +1131,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func describeClustersSync(
-            input: ElasticContainerModel.DescribeClustersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeClustersResponse {
+            input: ElasticContainerModel.DescribeClustersRequest) throws -> ElasticContainerModel.DescribeClustersResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1138,9 +1139,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeClusters.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeClustersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeClusters,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeClustersOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1164,8 +1164,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeContainerInstancesAsync(
             input: ElasticContainerModel.DescribeContainerInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DescribeContainerInstancesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeContainerInstancesResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1173,16 +1172,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeContainerInstances.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeContainerInstancesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeContainerInstances,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeContainerInstancesOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DescribeContainerInstancesResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1198,8 +1209,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
     public func describeContainerInstancesSync(
-            input: ElasticContainerModel.DescribeContainerInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeContainerInstancesResponse {
+            input: ElasticContainerModel.DescribeContainerInstancesRequest) throws -> ElasticContainerModel.DescribeContainerInstancesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1207,9 +1217,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeContainerInstances.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeContainerInstancesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeContainerInstances,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeContainerInstancesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1233,8 +1242,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeServicesAsync(
             input: ElasticContainerModel.DescribeServicesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DescribeServicesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeServicesResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1242,16 +1250,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeServices.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeServicesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeServices,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeServicesOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DescribeServicesResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1267,8 +1287,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
     public func describeServicesSync(
-            input: ElasticContainerModel.DescribeServicesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeServicesResponse {
+            input: ElasticContainerModel.DescribeServicesRequest) throws -> ElasticContainerModel.DescribeServicesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1276,9 +1295,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeServices.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeServicesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeServices,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeServicesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1302,8 +1320,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeTaskDefinitionAsync(
             input: ElasticContainerModel.DescribeTaskDefinitionRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DescribeTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeTaskDefinitionResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1311,16 +1328,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeTaskDefinition.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeTaskDefinitionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTaskDefinition,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DescribeTaskDefinitionResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1336,8 +1365,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func describeTaskDefinitionSync(
-            input: ElasticContainerModel.DescribeTaskDefinitionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse {
+            input: ElasticContainerModel.DescribeTaskDefinitionRequest) throws -> ElasticContainerModel.DescribeTaskDefinitionResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1345,9 +1373,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeTaskDefinition.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeTaskDefinitionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTaskDefinition,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1371,8 +1398,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeTaskSetsAsync(
             input: ElasticContainerModel.DescribeTaskSetsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DescribeTaskSetsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeTaskSetsResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1380,16 +1406,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeTaskSets.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeTaskSetsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTaskSets,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeTaskSetsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DescribeTaskSetsResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1405,8 +1443,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
     public func describeTaskSetsSync(
-            input: ElasticContainerModel.DescribeTaskSetsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeTaskSetsResponse {
+            input: ElasticContainerModel.DescribeTaskSetsRequest) throws -> ElasticContainerModel.DescribeTaskSetsResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1414,9 +1451,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeTaskSets.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeTaskSetsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTaskSets,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeTaskSetsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1440,8 +1476,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func describeTasksAsync(
             input: ElasticContainerModel.DescribeTasksRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DescribeTasksResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DescribeTasksResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1449,16 +1484,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeTasks.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeTasksOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTasks,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeTasksOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DescribeTasksResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1474,8 +1521,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
     public func describeTasksSync(
-            input: ElasticContainerModel.DescribeTasksRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DescribeTasksResponse {
+            input: ElasticContainerModel.DescribeTasksRequest) throws -> ElasticContainerModel.DescribeTasksResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1483,9 +1529,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.describeTasks.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: describeTasksOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTasks,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DescribeTasksOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1509,8 +1554,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func discoverPollEndpointAsync(
             input: ElasticContainerModel.DiscoverPollEndpointRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1518,16 +1562,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.discoverPollEndpoint.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: discoverPollEndpointOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.discoverPollEndpoint,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DiscoverPollEndpointOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.DiscoverPollEndpointResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1543,8 +1599,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, server.
      */
     public func discoverPollEndpointSync(
-            input: ElasticContainerModel.DiscoverPollEndpointRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.DiscoverPollEndpointResponse {
+            input: ElasticContainerModel.DiscoverPollEndpointRequest) throws -> ElasticContainerModel.DiscoverPollEndpointResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1552,9 +1607,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.discoverPollEndpoint.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: discoverPollEndpointOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.discoverPollEndpoint,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = DiscoverPollEndpointOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1578,8 +1632,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listAccountSettingsAsync(
             input: ElasticContainerModel.ListAccountSettingsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.ListAccountSettingsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListAccountSettingsResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1587,16 +1640,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listAccountSettings.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listAccountSettingsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listAccountSettings,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListAccountSettingsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.ListAccountSettingsResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1612,8 +1677,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func listAccountSettingsSync(
-            input: ElasticContainerModel.ListAccountSettingsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListAccountSettingsResponse {
+            input: ElasticContainerModel.ListAccountSettingsRequest) throws -> ElasticContainerModel.ListAccountSettingsResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1621,9 +1685,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listAccountSettings.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listAccountSettingsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listAccountSettings,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListAccountSettingsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1647,8 +1710,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listAttributesAsync(
             input: ElasticContainerModel.ListAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.ListAttributesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListAttributesResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1656,16 +1718,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listAttributes.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListAttributesOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.ListAttributesResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1681,8 +1755,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: clusterNotFound, invalidParameter.
      */
     public func listAttributesSync(
-            input: ElasticContainerModel.ListAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListAttributesResponse {
+            input: ElasticContainerModel.ListAttributesRequest) throws -> ElasticContainerModel.ListAttributesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1690,9 +1763,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listAttributes.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListAttributesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1716,8 +1788,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listClustersAsync(
             input: ElasticContainerModel.ListClustersRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.ListClustersResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListClustersResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1725,16 +1796,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listClusters.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listClustersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listClusters,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListClustersOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.ListClustersResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1750,8 +1833,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func listClustersSync(
-            input: ElasticContainerModel.ListClustersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListClustersResponse {
+            input: ElasticContainerModel.ListClustersRequest) throws -> ElasticContainerModel.ListClustersResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1759,9 +1841,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listClusters.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listClustersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listClusters,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListClustersOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1785,8 +1866,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listContainerInstancesAsync(
             input: ElasticContainerModel.ListContainerInstancesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.ListContainerInstancesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListContainerInstancesResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1794,16 +1874,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listContainerInstances.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listContainerInstancesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listContainerInstances,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListContainerInstancesOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.ListContainerInstancesResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1819,8 +1911,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
     public func listContainerInstancesSync(
-            input: ElasticContainerModel.ListContainerInstancesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListContainerInstancesResponse {
+            input: ElasticContainerModel.ListContainerInstancesRequest) throws -> ElasticContainerModel.ListContainerInstancesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1828,9 +1919,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listContainerInstances.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listContainerInstancesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listContainerInstances,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListContainerInstancesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1854,8 +1944,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listServicesAsync(
             input: ElasticContainerModel.ListServicesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1863,16 +1952,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listServices.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listServicesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listServices,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListServicesOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.ListServicesResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1888,8 +1989,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
     public func listServicesSync(
-            input: ElasticContainerModel.ListServicesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListServicesResponse {
+            input: ElasticContainerModel.ListServicesRequest) throws -> ElasticContainerModel.ListServicesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1897,9 +1997,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listServices.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listServicesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listServices,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListServicesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1923,8 +2022,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listTagsForResourceAsync(
             input: ElasticContainerModel.ListTagsForResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.ListTagsForResourceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListTagsForResourceResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1932,16 +2030,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listTagsForResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTagsForResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.ListTagsForResourceResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1957,8 +2067,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
     public func listTagsForResourceSync(
-            input: ElasticContainerModel.ListTagsForResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTagsForResourceResponse {
+            input: ElasticContainerModel.ListTagsForResourceRequest) throws -> ElasticContainerModel.ListTagsForResourceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -1966,9 +2075,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listTagsForResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTagsForResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -1992,8 +2100,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listTaskDefinitionFamiliesAsync(
             input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2001,16 +2108,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listTaskDefinitionFamilies.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTaskDefinitionFamiliesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTaskDefinitionFamilies,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListTaskDefinitionFamiliesOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2026,8 +2145,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func listTaskDefinitionFamiliesSync(
-            input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse {
+            input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest) throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2035,9 +2153,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listTaskDefinitionFamilies.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTaskDefinitionFamiliesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTaskDefinitionFamilies,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListTaskDefinitionFamiliesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2061,8 +2178,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listTaskDefinitionsAsync(
             input: ElasticContainerModel.ListTaskDefinitionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListTaskDefinitionsResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2070,16 +2186,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listTaskDefinitions.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTaskDefinitionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTaskDefinitions,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListTaskDefinitionsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.ListTaskDefinitionsResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2095,8 +2223,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func listTaskDefinitionsSync(
-            input: ElasticContainerModel.ListTaskDefinitionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTaskDefinitionsResponse {
+            input: ElasticContainerModel.ListTaskDefinitionsRequest) throws -> ElasticContainerModel.ListTaskDefinitionsResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2104,9 +2231,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listTaskDefinitions.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTaskDefinitionsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTaskDefinitions,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListTaskDefinitionsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2130,8 +2256,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func listTasksAsync(
             input: ElasticContainerModel.ListTasksRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.ListTasksResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.ListTasksResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2139,16 +2264,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listTasks.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTasksOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTasks,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListTasksOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.ListTasksResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2164,8 +2301,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
      */
     public func listTasksSync(
-            input: ElasticContainerModel.ListTasksRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.ListTasksResponse {
+            input: ElasticContainerModel.ListTasksRequest) throws -> ElasticContainerModel.ListTasksResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2173,9 +2309,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.listTasks.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: listTasksOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTasks,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = ListTasksOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2199,8 +2334,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func putAccountSettingAsync(
             input: ElasticContainerModel.PutAccountSettingRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2208,16 +2342,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.putAccountSetting.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: putAccountSettingOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putAccountSetting,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = PutAccountSettingOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.PutAccountSettingResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2233,8 +2379,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func putAccountSettingSync(
-            input: ElasticContainerModel.PutAccountSettingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutAccountSettingResponse {
+            input: ElasticContainerModel.PutAccountSettingRequest) throws -> ElasticContainerModel.PutAccountSettingResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2242,9 +2387,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.putAccountSetting.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: putAccountSettingOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putAccountSetting,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = PutAccountSettingOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2268,8 +2412,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func putAccountSettingDefaultAsync(
             input: ElasticContainerModel.PutAccountSettingDefaultRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingDefaultResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.PutAccountSettingDefaultResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2277,16 +2420,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.putAccountSettingDefault.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: putAccountSettingDefaultOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putAccountSettingDefault,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = PutAccountSettingDefaultOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.PutAccountSettingDefaultResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2302,8 +2457,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func putAccountSettingDefaultSync(
-            input: ElasticContainerModel.PutAccountSettingDefaultRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse {
+            input: ElasticContainerModel.PutAccountSettingDefaultRequest) throws -> ElasticContainerModel.PutAccountSettingDefaultResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2311,9 +2465,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.putAccountSettingDefault.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: putAccountSettingDefaultOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putAccountSettingDefault,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = PutAccountSettingDefaultOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2337,8 +2490,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func putAttributesAsync(
             input: ElasticContainerModel.PutAttributesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.PutAttributesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.PutAttributesResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2346,16 +2498,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.putAttributes.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: putAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = PutAttributesOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.PutAttributesResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2371,8 +2535,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: attributeLimitExceeded, clusterNotFound, invalidParameter, targetNotFound.
      */
     public func putAttributesSync(
-            input: ElasticContainerModel.PutAttributesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutAttributesResponse {
+            input: ElasticContainerModel.PutAttributesRequest) throws -> ElasticContainerModel.PutAttributesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2380,9 +2543,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.putAttributes.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: putAttributesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putAttributes,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = PutAttributesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2406,8 +2568,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func putClusterCapacityProvidersAsync(
             input: ElasticContainerModel.PutClusterCapacityProvidersRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2415,16 +2576,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.putClusterCapacityProviders.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: putClusterCapacityProvidersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putClusterCapacityProviders,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = PutClusterCapacityProvidersOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2440,8 +2613,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
      */
     public func putClusterCapacityProvidersSync(
-            input: ElasticContainerModel.PutClusterCapacityProvidersRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse {
+            input: ElasticContainerModel.PutClusterCapacityProvidersRequest) throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2449,9 +2621,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.putClusterCapacityProviders.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: putClusterCapacityProvidersOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putClusterCapacityProviders,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = PutClusterCapacityProvidersOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2475,8 +2646,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func registerContainerInstanceAsync(
             input: ElasticContainerModel.RegisterContainerInstanceRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.RegisterContainerInstanceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.RegisterContainerInstanceResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2484,16 +2654,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.registerContainerInstance.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: registerContainerInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerContainerInstance,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RegisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.RegisterContainerInstanceResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2509,8 +2691,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func registerContainerInstanceSync(
-            input: ElasticContainerModel.RegisterContainerInstanceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.RegisterContainerInstanceResponse {
+            input: ElasticContainerModel.RegisterContainerInstanceRequest) throws -> ElasticContainerModel.RegisterContainerInstanceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2518,9 +2699,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.registerContainerInstance.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: registerContainerInstanceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerContainerInstance,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RegisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2544,8 +2724,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func registerTaskDefinitionAsync(
             input: ElasticContainerModel.RegisterTaskDefinitionRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.RegisterTaskDefinitionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.RegisterTaskDefinitionResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2553,16 +2732,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.registerTaskDefinition.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: registerTaskDefinitionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerTaskDefinition,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RegisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.RegisterTaskDefinitionResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2578,8 +2769,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, invalidParameter, server.
      */
     public func registerTaskDefinitionSync(
-            input: ElasticContainerModel.RegisterTaskDefinitionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse {
+            input: ElasticContainerModel.RegisterTaskDefinitionRequest) throws -> ElasticContainerModel.RegisterTaskDefinitionResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2587,9 +2777,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.registerTaskDefinition.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: registerTaskDefinitionOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerTaskDefinition,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RegisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2613,8 +2802,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func runTaskAsync(
             input: ElasticContainerModel.RunTaskRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.RunTaskResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.RunTaskResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2622,16 +2810,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.runTask.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: runTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.runTask,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RunTaskOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.RunTaskResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2647,8 +2847,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: accessDenied, blocked, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
     public func runTaskSync(
-            input: ElasticContainerModel.RunTaskRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.RunTaskResponse {
+            input: ElasticContainerModel.RunTaskRequest) throws -> ElasticContainerModel.RunTaskResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2656,9 +2855,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.runTask.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: runTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.runTask,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = RunTaskOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2682,8 +2880,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func startTaskAsync(
             input: ElasticContainerModel.StartTaskRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.StartTaskResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.StartTaskResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2691,16 +2888,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.startTask.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startTask,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = StartTaskOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.StartTaskResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2716,8 +2925,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
     public func startTaskSync(
-            input: ElasticContainerModel.StartTaskRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.StartTaskResponse {
+            input: ElasticContainerModel.StartTaskRequest) throws -> ElasticContainerModel.StartTaskResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2725,9 +2933,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.startTask.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: startTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startTask,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = StartTaskOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2751,8 +2958,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func stopTaskAsync(
             input: ElasticContainerModel.StopTaskRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.StopTaskResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.StopTaskResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2760,16 +2966,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.stopTask.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: stopTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopTask,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = StopTaskOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.StopTaskResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2785,8 +3003,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
     public func stopTaskSync(
-            input: ElasticContainerModel.StopTaskRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.StopTaskResponse {
+            input: ElasticContainerModel.StopTaskRequest) throws -> ElasticContainerModel.StopTaskResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2794,9 +3011,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.stopTask.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: stopTaskOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopTask,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = StopTaskOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2820,8 +3036,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func submitAttachmentStateChangesAsync(
             input: ElasticContainerModel.SubmitAttachmentStateChangesRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2829,16 +3044,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.submitAttachmentStateChanges.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: submitAttachmentStateChangesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.submitAttachmentStateChanges,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SubmitAttachmentStateChangesOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2854,8 +3081,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: accessDenied, client, invalidParameter, server.
      */
     public func submitAttachmentStateChangesSync(
-            input: ElasticContainerModel.SubmitAttachmentStateChangesRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse {
+            input: ElasticContainerModel.SubmitAttachmentStateChangesRequest) throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2863,9 +3089,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.submitAttachmentStateChanges.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: submitAttachmentStateChangesOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.submitAttachmentStateChanges,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SubmitAttachmentStateChangesOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2889,8 +3114,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func submitContainerStateChangeAsync(
             input: ElasticContainerModel.SubmitContainerStateChangeRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.SubmitContainerStateChangeResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.SubmitContainerStateChangeResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2898,16 +3122,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.submitContainerStateChange.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: submitContainerStateChangeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.submitContainerStateChange,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SubmitContainerStateChangeOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.SubmitContainerStateChangeResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2923,8 +3159,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: accessDenied, client, server.
      */
     public func submitContainerStateChangeSync(
-            input: ElasticContainerModel.SubmitContainerStateChangeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse {
+            input: ElasticContainerModel.SubmitContainerStateChangeRequest) throws -> ElasticContainerModel.SubmitContainerStateChangeResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2932,9 +3167,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.submitContainerStateChange.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: submitContainerStateChangeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.submitContainerStateChange,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SubmitContainerStateChangeOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -2958,8 +3192,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func submitTaskStateChangeAsync(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.SubmitTaskStateChangeResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.SubmitTaskStateChangeResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2967,16 +3200,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.submitTaskStateChange.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: submitTaskStateChangeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.submitTaskStateChange,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SubmitTaskStateChangeOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.SubmitTaskStateChangeResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2992,8 +3237,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: accessDenied, client, invalidParameter, server.
      */
     public func submitTaskStateChangeSync(
-            input: ElasticContainerModel.SubmitTaskStateChangeRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse {
+            input: ElasticContainerModel.SubmitTaskStateChangeRequest) throws -> ElasticContainerModel.SubmitTaskStateChangeResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3001,9 +3245,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.submitTaskStateChange.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: submitTaskStateChangeOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.submitTaskStateChange,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = SubmitTaskStateChangeOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -3027,8 +3270,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func tagResourceAsync(
             input: ElasticContainerModel.TagResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.TagResourceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.TagResourceResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3036,16 +3278,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.tagResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: tagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.TagResourceResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3061,8 +3315,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
     public func tagResourceSync(
-            input: ElasticContainerModel.TagResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.TagResourceResponse {
+            input: ElasticContainerModel.TagResourceRequest) throws -> ElasticContainerModel.TagResourceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3070,9 +3323,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.tagResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: tagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -3096,8 +3348,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func untagResourceAsync(
             input: ElasticContainerModel.UntagResourceRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3105,16 +3356,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.untagResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: untagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.UntagResourceResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3130,8 +3393,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
      */
     public func untagResourceSync(
-            input: ElasticContainerModel.UntagResourceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UntagResourceResponse {
+            input: ElasticContainerModel.UntagResourceRequest) throws -> ElasticContainerModel.UntagResourceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3139,9 +3401,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.untagResource.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: untagResourceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -3165,8 +3426,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func updateClusterSettingsAsync(
             input: ElasticContainerModel.UpdateClusterSettingsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UpdateClusterSettingsResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3174,16 +3434,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.updateClusterSettings.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateClusterSettingsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateClusterSettings,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateClusterSettingsOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.UpdateClusterSettingsResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3199,8 +3471,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
     public func updateClusterSettingsSync(
-            input: ElasticContainerModel.UpdateClusterSettingsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateClusterSettingsResponse {
+            input: ElasticContainerModel.UpdateClusterSettingsRequest) throws -> ElasticContainerModel.UpdateClusterSettingsResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3208,9 +3479,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.updateClusterSettings.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateClusterSettingsOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateClusterSettings,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateClusterSettingsOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -3234,8 +3504,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func updateContainerAgentAsync(
             input: ElasticContainerModel.UpdateContainerAgentRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.UpdateContainerAgentResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UpdateContainerAgentResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3243,16 +3512,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.updateContainerAgent.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateContainerAgentOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateContainerAgent,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateContainerAgentOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.UpdateContainerAgentResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3268,8 +3549,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, missingVersion, noUpdateAvailable, server, updateInProgress.
      */
     public func updateContainerAgentSync(
-            input: ElasticContainerModel.UpdateContainerAgentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateContainerAgentResponse {
+            input: ElasticContainerModel.UpdateContainerAgentRequest) throws -> ElasticContainerModel.UpdateContainerAgentResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3277,9 +3557,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.updateContainerAgent.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateContainerAgentOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateContainerAgent,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateContainerAgentOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -3303,8 +3582,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func updateContainerInstancesStateAsync(
             input: ElasticContainerModel.UpdateContainerInstancesStateRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3312,16 +3590,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.updateContainerInstancesState.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateContainerInstancesStateOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateContainerInstancesState,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateContainerInstancesStateOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3337,8 +3627,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: client, clusterNotFound, invalidParameter, server.
      */
     public func updateContainerInstancesStateSync(
-            input: ElasticContainerModel.UpdateContainerInstancesStateRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse {
+            input: ElasticContainerModel.UpdateContainerInstancesStateRequest) throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3346,9 +3635,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.updateContainerInstancesState.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateContainerInstancesStateOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateContainerInstancesState,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateContainerInstancesStateOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -3372,8 +3660,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func updateServiceAsync(
             input: ElasticContainerModel.UpdateServiceRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.UpdateServiceResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UpdateServiceResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3381,16 +3668,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.updateService.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateServiceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateService,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateServiceOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.UpdateServiceResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3406,8 +3705,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
      */
     public func updateServiceSync(
-            input: ElasticContainerModel.UpdateServiceRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateServiceResponse {
+            input: ElasticContainerModel.UpdateServiceRequest) throws -> ElasticContainerModel.UpdateServiceResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3415,9 +3713,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.updateService.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateServiceOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateService,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateServiceOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -3441,8 +3738,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func updateServicePrimaryTaskSetAsync(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3450,16 +3746,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.updateServicePrimaryTaskSet.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateServicePrimaryTaskSetOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateServicePrimaryTaskSet,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateServicePrimaryTaskSetOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3475,8 +3783,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
     public func updateServicePrimaryTaskSetSync(
-            input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse {
+            input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3484,9 +3791,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.updateServicePrimaryTaskSet.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateServicePrimaryTaskSetOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateServicePrimaryTaskSet,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateServicePrimaryTaskSetOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -3510,8 +3816,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      */
     public func updateTaskSetAsync(
             input: ElasticContainerModel.UpdateTaskSetRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<ElasticContainerModel.UpdateTaskSetResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<ElasticContainerModel.UpdateTaskSetResponse, ElasticContainerError>) -> ()) throws {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3519,16 +3824,28 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.updateTaskSet.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateTaskSetOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateTaskSet,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateTaskSetOperationHTTPRequestInput(encodable: input)
 
+        func innerCompletion(result: Result<ElasticContainerModel.UpdateTaskSetResponse, HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticContainerError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
+                }
+            }
+        }
+        
         _ = try httpClient.executeAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: completion,
+            completion: innerCompletion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3544,8 +3861,7 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
      - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
      */
     public func updateTaskSetSync(
-            input: ElasticContainerModel.UpdateTaskSetRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> ElasticContainerModel.UpdateTaskSetResponse {
+            input: ElasticContainerModel.UpdateTaskSetRequest) throws -> ElasticContainerModel.UpdateTaskSetResponse {
         let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -3553,9 +3869,8 @@ public struct AWSElasticContainerClient: ElasticContainerClientProtocol {
                     operation: ElasticContainerModelOperations.updateTaskSet.rawValue,
                     target: target)
 
-        let httpClientInvocationReporting = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-                                                                                  smokeAWSOperationReporting: updateTaskSetOperationReporting)
-        let invocationContext = HTTPClientInvocationContext(reporting: httpClientInvocationReporting, handlerDelegate: handlerDelegate)
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateTaskSet,
+                                                            handlerDelegate: handlerDelegate)
         let requestInput = UpdateTaskSetOperationHTTPRequestInput(encodable: input)
 
         return try httpClient.executeSyncRetriableWithOutput(

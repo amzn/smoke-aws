@@ -28,364 +28,364 @@ import SmokeHTTPClient
  Mock Client for the S3 service by default returns the `__default` property of its return type.
  */
 public struct MockS3Client: S3ClientProtocol {
-    let abortMultipartUploadAsyncOverride: S3ClientProtocol.AbortMultipartUploadAsyncType?
-    let abortMultipartUploadSyncOverride: S3ClientProtocol.AbortMultipartUploadSyncType?
-    let completeMultipartUploadAsyncOverride: S3ClientProtocol.CompleteMultipartUploadAsyncType?
-    let completeMultipartUploadSyncOverride: S3ClientProtocol.CompleteMultipartUploadSyncType?
-    let copyObjectAsyncOverride: S3ClientProtocol.CopyObjectAsyncType?
-    let copyObjectSyncOverride: S3ClientProtocol.CopyObjectSyncType?
-    let createBucketAsyncOverride: S3ClientProtocol.CreateBucketAsyncType?
-    let createBucketSyncOverride: S3ClientProtocol.CreateBucketSyncType?
-    let createMultipartUploadAsyncOverride: S3ClientProtocol.CreateMultipartUploadAsyncType?
-    let createMultipartUploadSyncOverride: S3ClientProtocol.CreateMultipartUploadSyncType?
-    let deleteBucketAsyncOverride: S3ClientProtocol.DeleteBucketAsyncType?
-    let deleteBucketSyncOverride: S3ClientProtocol.DeleteBucketSyncType?
-    let deleteBucketAnalyticsConfigurationAsyncOverride: S3ClientProtocol.DeleteBucketAnalyticsConfigurationAsyncType?
-    let deleteBucketAnalyticsConfigurationSyncOverride: S3ClientProtocol.DeleteBucketAnalyticsConfigurationSyncType?
-    let deleteBucketCorsAsyncOverride: S3ClientProtocol.DeleteBucketCorsAsyncType?
-    let deleteBucketCorsSyncOverride: S3ClientProtocol.DeleteBucketCorsSyncType?
-    let deleteBucketEncryptionAsyncOverride: S3ClientProtocol.DeleteBucketEncryptionAsyncType?
-    let deleteBucketEncryptionSyncOverride: S3ClientProtocol.DeleteBucketEncryptionSyncType?
-    let deleteBucketInventoryConfigurationAsyncOverride: S3ClientProtocol.DeleteBucketInventoryConfigurationAsyncType?
-    let deleteBucketInventoryConfigurationSyncOverride: S3ClientProtocol.DeleteBucketInventoryConfigurationSyncType?
-    let deleteBucketLifecycleAsyncOverride: S3ClientProtocol.DeleteBucketLifecycleAsyncType?
-    let deleteBucketLifecycleSyncOverride: S3ClientProtocol.DeleteBucketLifecycleSyncType?
-    let deleteBucketMetricsConfigurationAsyncOverride: S3ClientProtocol.DeleteBucketMetricsConfigurationAsyncType?
-    let deleteBucketMetricsConfigurationSyncOverride: S3ClientProtocol.DeleteBucketMetricsConfigurationSyncType?
-    let deleteBucketPolicyAsyncOverride: S3ClientProtocol.DeleteBucketPolicyAsyncType?
-    let deleteBucketPolicySyncOverride: S3ClientProtocol.DeleteBucketPolicySyncType?
-    let deleteBucketReplicationAsyncOverride: S3ClientProtocol.DeleteBucketReplicationAsyncType?
-    let deleteBucketReplicationSyncOverride: S3ClientProtocol.DeleteBucketReplicationSyncType?
-    let deleteBucketTaggingAsyncOverride: S3ClientProtocol.DeleteBucketTaggingAsyncType?
-    let deleteBucketTaggingSyncOverride: S3ClientProtocol.DeleteBucketTaggingSyncType?
-    let deleteBucketWebsiteAsyncOverride: S3ClientProtocol.DeleteBucketWebsiteAsyncType?
-    let deleteBucketWebsiteSyncOverride: S3ClientProtocol.DeleteBucketWebsiteSyncType?
-    let deleteObjectAsyncOverride: S3ClientProtocol.DeleteObjectAsyncType?
-    let deleteObjectSyncOverride: S3ClientProtocol.DeleteObjectSyncType?
-    let deleteObjectTaggingAsyncOverride: S3ClientProtocol.DeleteObjectTaggingAsyncType?
-    let deleteObjectTaggingSyncOverride: S3ClientProtocol.DeleteObjectTaggingSyncType?
-    let deleteObjectsAsyncOverride: S3ClientProtocol.DeleteObjectsAsyncType?
-    let deleteObjectsSyncOverride: S3ClientProtocol.DeleteObjectsSyncType?
-    let deletePublicAccessBlockAsyncOverride: S3ClientProtocol.DeletePublicAccessBlockAsyncType?
-    let deletePublicAccessBlockSyncOverride: S3ClientProtocol.DeletePublicAccessBlockSyncType?
-    let getBucketAccelerateConfigurationAsyncOverride: S3ClientProtocol.GetBucketAccelerateConfigurationAsyncType?
-    let getBucketAccelerateConfigurationSyncOverride: S3ClientProtocol.GetBucketAccelerateConfigurationSyncType?
-    let getBucketAclAsyncOverride: S3ClientProtocol.GetBucketAclAsyncType?
-    let getBucketAclSyncOverride: S3ClientProtocol.GetBucketAclSyncType?
-    let getBucketAnalyticsConfigurationAsyncOverride: S3ClientProtocol.GetBucketAnalyticsConfigurationAsyncType?
-    let getBucketAnalyticsConfigurationSyncOverride: S3ClientProtocol.GetBucketAnalyticsConfigurationSyncType?
-    let getBucketCorsAsyncOverride: S3ClientProtocol.GetBucketCorsAsyncType?
-    let getBucketCorsSyncOverride: S3ClientProtocol.GetBucketCorsSyncType?
-    let getBucketEncryptionAsyncOverride: S3ClientProtocol.GetBucketEncryptionAsyncType?
-    let getBucketEncryptionSyncOverride: S3ClientProtocol.GetBucketEncryptionSyncType?
-    let getBucketInventoryConfigurationAsyncOverride: S3ClientProtocol.GetBucketInventoryConfigurationAsyncType?
-    let getBucketInventoryConfigurationSyncOverride: S3ClientProtocol.GetBucketInventoryConfigurationSyncType?
-    let getBucketLifecycleAsyncOverride: S3ClientProtocol.GetBucketLifecycleAsyncType?
-    let getBucketLifecycleSyncOverride: S3ClientProtocol.GetBucketLifecycleSyncType?
-    let getBucketLifecycleConfigurationAsyncOverride: S3ClientProtocol.GetBucketLifecycleConfigurationAsyncType?
-    let getBucketLifecycleConfigurationSyncOverride: S3ClientProtocol.GetBucketLifecycleConfigurationSyncType?
-    let getBucketLocationAsyncOverride: S3ClientProtocol.GetBucketLocationAsyncType?
-    let getBucketLocationSyncOverride: S3ClientProtocol.GetBucketLocationSyncType?
-    let getBucketLoggingAsyncOverride: S3ClientProtocol.GetBucketLoggingAsyncType?
-    let getBucketLoggingSyncOverride: S3ClientProtocol.GetBucketLoggingSyncType?
-    let getBucketMetricsConfigurationAsyncOverride: S3ClientProtocol.GetBucketMetricsConfigurationAsyncType?
-    let getBucketMetricsConfigurationSyncOverride: S3ClientProtocol.GetBucketMetricsConfigurationSyncType?
-    let getBucketNotificationAsyncOverride: S3ClientProtocol.GetBucketNotificationAsyncType?
-    let getBucketNotificationSyncOverride: S3ClientProtocol.GetBucketNotificationSyncType?
-    let getBucketNotificationConfigurationAsyncOverride: S3ClientProtocol.GetBucketNotificationConfigurationAsyncType?
-    let getBucketNotificationConfigurationSyncOverride: S3ClientProtocol.GetBucketNotificationConfigurationSyncType?
-    let getBucketPolicyAsyncOverride: S3ClientProtocol.GetBucketPolicyAsyncType?
-    let getBucketPolicySyncOverride: S3ClientProtocol.GetBucketPolicySyncType?
-    let getBucketPolicyStatusAsyncOverride: S3ClientProtocol.GetBucketPolicyStatusAsyncType?
-    let getBucketPolicyStatusSyncOverride: S3ClientProtocol.GetBucketPolicyStatusSyncType?
-    let getBucketReplicationAsyncOverride: S3ClientProtocol.GetBucketReplicationAsyncType?
-    let getBucketReplicationSyncOverride: S3ClientProtocol.GetBucketReplicationSyncType?
-    let getBucketRequestPaymentAsyncOverride: S3ClientProtocol.GetBucketRequestPaymentAsyncType?
-    let getBucketRequestPaymentSyncOverride: S3ClientProtocol.GetBucketRequestPaymentSyncType?
-    let getBucketTaggingAsyncOverride: S3ClientProtocol.GetBucketTaggingAsyncType?
-    let getBucketTaggingSyncOverride: S3ClientProtocol.GetBucketTaggingSyncType?
-    let getBucketVersioningAsyncOverride: S3ClientProtocol.GetBucketVersioningAsyncType?
-    let getBucketVersioningSyncOverride: S3ClientProtocol.GetBucketVersioningSyncType?
-    let getBucketWebsiteAsyncOverride: S3ClientProtocol.GetBucketWebsiteAsyncType?
-    let getBucketWebsiteSyncOverride: S3ClientProtocol.GetBucketWebsiteSyncType?
-    let getObjectAsyncOverride: S3ClientProtocol.GetObjectAsyncType?
-    let getObjectSyncOverride: S3ClientProtocol.GetObjectSyncType?
-    let getObjectAclAsyncOverride: S3ClientProtocol.GetObjectAclAsyncType?
-    let getObjectAclSyncOverride: S3ClientProtocol.GetObjectAclSyncType?
-    let getObjectLegalHoldAsyncOverride: S3ClientProtocol.GetObjectLegalHoldAsyncType?
-    let getObjectLegalHoldSyncOverride: S3ClientProtocol.GetObjectLegalHoldSyncType?
-    let getObjectLockConfigurationAsyncOverride: S3ClientProtocol.GetObjectLockConfigurationAsyncType?
-    let getObjectLockConfigurationSyncOverride: S3ClientProtocol.GetObjectLockConfigurationSyncType?
-    let getObjectRetentionAsyncOverride: S3ClientProtocol.GetObjectRetentionAsyncType?
-    let getObjectRetentionSyncOverride: S3ClientProtocol.GetObjectRetentionSyncType?
-    let getObjectTaggingAsyncOverride: S3ClientProtocol.GetObjectTaggingAsyncType?
-    let getObjectTaggingSyncOverride: S3ClientProtocol.GetObjectTaggingSyncType?
-    let getObjectTorrentAsyncOverride: S3ClientProtocol.GetObjectTorrentAsyncType?
-    let getObjectTorrentSyncOverride: S3ClientProtocol.GetObjectTorrentSyncType?
-    let getPublicAccessBlockAsyncOverride: S3ClientProtocol.GetPublicAccessBlockAsyncType?
-    let getPublicAccessBlockSyncOverride: S3ClientProtocol.GetPublicAccessBlockSyncType?
-    let headBucketAsyncOverride: S3ClientProtocol.HeadBucketAsyncType?
-    let headBucketSyncOverride: S3ClientProtocol.HeadBucketSyncType?
-    let headObjectAsyncOverride: S3ClientProtocol.HeadObjectAsyncType?
-    let headObjectSyncOverride: S3ClientProtocol.HeadObjectSyncType?
-    let listBucketAnalyticsConfigurationsAsyncOverride: S3ClientProtocol.ListBucketAnalyticsConfigurationsAsyncType?
-    let listBucketAnalyticsConfigurationsSyncOverride: S3ClientProtocol.ListBucketAnalyticsConfigurationsSyncType?
-    let listBucketInventoryConfigurationsAsyncOverride: S3ClientProtocol.ListBucketInventoryConfigurationsAsyncType?
-    let listBucketInventoryConfigurationsSyncOverride: S3ClientProtocol.ListBucketInventoryConfigurationsSyncType?
-    let listBucketMetricsConfigurationsAsyncOverride: S3ClientProtocol.ListBucketMetricsConfigurationsAsyncType?
-    let listBucketMetricsConfigurationsSyncOverride: S3ClientProtocol.ListBucketMetricsConfigurationsSyncType?
-    let listBucketsAsyncOverride: S3ClientProtocol.ListBucketsAsyncType?
-    let listBucketsSyncOverride: S3ClientProtocol.ListBucketsSyncType?
-    let listMultipartUploadsAsyncOverride: S3ClientProtocol.ListMultipartUploadsAsyncType?
-    let listMultipartUploadsSyncOverride: S3ClientProtocol.ListMultipartUploadsSyncType?
-    let listObjectVersionsAsyncOverride: S3ClientProtocol.ListObjectVersionsAsyncType?
-    let listObjectVersionsSyncOverride: S3ClientProtocol.ListObjectVersionsSyncType?
-    let listObjectsAsyncOverride: S3ClientProtocol.ListObjectsAsyncType?
-    let listObjectsSyncOverride: S3ClientProtocol.ListObjectsSyncType?
-    let listObjectsV2AsyncOverride: S3ClientProtocol.ListObjectsV2AsyncType?
-    let listObjectsV2SyncOverride: S3ClientProtocol.ListObjectsV2SyncType?
-    let listPartsAsyncOverride: S3ClientProtocol.ListPartsAsyncType?
-    let listPartsSyncOverride: S3ClientProtocol.ListPartsSyncType?
-    let putBucketAccelerateConfigurationAsyncOverride: S3ClientProtocol.PutBucketAccelerateConfigurationAsyncType?
-    let putBucketAccelerateConfigurationSyncOverride: S3ClientProtocol.PutBucketAccelerateConfigurationSyncType?
-    let putBucketAclAsyncOverride: S3ClientProtocol.PutBucketAclAsyncType?
-    let putBucketAclSyncOverride: S3ClientProtocol.PutBucketAclSyncType?
-    let putBucketAnalyticsConfigurationAsyncOverride: S3ClientProtocol.PutBucketAnalyticsConfigurationAsyncType?
-    let putBucketAnalyticsConfigurationSyncOverride: S3ClientProtocol.PutBucketAnalyticsConfigurationSyncType?
-    let putBucketCorsAsyncOverride: S3ClientProtocol.PutBucketCorsAsyncType?
-    let putBucketCorsSyncOverride: S3ClientProtocol.PutBucketCorsSyncType?
-    let putBucketEncryptionAsyncOverride: S3ClientProtocol.PutBucketEncryptionAsyncType?
-    let putBucketEncryptionSyncOverride: S3ClientProtocol.PutBucketEncryptionSyncType?
-    let putBucketInventoryConfigurationAsyncOverride: S3ClientProtocol.PutBucketInventoryConfigurationAsyncType?
-    let putBucketInventoryConfigurationSyncOverride: S3ClientProtocol.PutBucketInventoryConfigurationSyncType?
-    let putBucketLifecycleAsyncOverride: S3ClientProtocol.PutBucketLifecycleAsyncType?
-    let putBucketLifecycleSyncOverride: S3ClientProtocol.PutBucketLifecycleSyncType?
-    let putBucketLifecycleConfigurationAsyncOverride: S3ClientProtocol.PutBucketLifecycleConfigurationAsyncType?
-    let putBucketLifecycleConfigurationSyncOverride: S3ClientProtocol.PutBucketLifecycleConfigurationSyncType?
-    let putBucketLoggingAsyncOverride: S3ClientProtocol.PutBucketLoggingAsyncType?
-    let putBucketLoggingSyncOverride: S3ClientProtocol.PutBucketLoggingSyncType?
-    let putBucketMetricsConfigurationAsyncOverride: S3ClientProtocol.PutBucketMetricsConfigurationAsyncType?
-    let putBucketMetricsConfigurationSyncOverride: S3ClientProtocol.PutBucketMetricsConfigurationSyncType?
-    let putBucketNotificationAsyncOverride: S3ClientProtocol.PutBucketNotificationAsyncType?
-    let putBucketNotificationSyncOverride: S3ClientProtocol.PutBucketNotificationSyncType?
-    let putBucketNotificationConfigurationAsyncOverride: S3ClientProtocol.PutBucketNotificationConfigurationAsyncType?
-    let putBucketNotificationConfigurationSyncOverride: S3ClientProtocol.PutBucketNotificationConfigurationSyncType?
-    let putBucketPolicyAsyncOverride: S3ClientProtocol.PutBucketPolicyAsyncType?
-    let putBucketPolicySyncOverride: S3ClientProtocol.PutBucketPolicySyncType?
-    let putBucketReplicationAsyncOverride: S3ClientProtocol.PutBucketReplicationAsyncType?
-    let putBucketReplicationSyncOverride: S3ClientProtocol.PutBucketReplicationSyncType?
-    let putBucketRequestPaymentAsyncOverride: S3ClientProtocol.PutBucketRequestPaymentAsyncType?
-    let putBucketRequestPaymentSyncOverride: S3ClientProtocol.PutBucketRequestPaymentSyncType?
-    let putBucketTaggingAsyncOverride: S3ClientProtocol.PutBucketTaggingAsyncType?
-    let putBucketTaggingSyncOverride: S3ClientProtocol.PutBucketTaggingSyncType?
-    let putBucketVersioningAsyncOverride: S3ClientProtocol.PutBucketVersioningAsyncType?
-    let putBucketVersioningSyncOverride: S3ClientProtocol.PutBucketVersioningSyncType?
-    let putBucketWebsiteAsyncOverride: S3ClientProtocol.PutBucketWebsiteAsyncType?
-    let putBucketWebsiteSyncOverride: S3ClientProtocol.PutBucketWebsiteSyncType?
-    let putObjectAsyncOverride: S3ClientProtocol.PutObjectAsyncType?
-    let putObjectSyncOverride: S3ClientProtocol.PutObjectSyncType?
-    let putObjectAclAsyncOverride: S3ClientProtocol.PutObjectAclAsyncType?
-    let putObjectAclSyncOverride: S3ClientProtocol.PutObjectAclSyncType?
-    let putObjectLegalHoldAsyncOverride: S3ClientProtocol.PutObjectLegalHoldAsyncType?
-    let putObjectLegalHoldSyncOverride: S3ClientProtocol.PutObjectLegalHoldSyncType?
-    let putObjectLockConfigurationAsyncOverride: S3ClientProtocol.PutObjectLockConfigurationAsyncType?
-    let putObjectLockConfigurationSyncOverride: S3ClientProtocol.PutObjectLockConfigurationSyncType?
-    let putObjectRetentionAsyncOverride: S3ClientProtocol.PutObjectRetentionAsyncType?
-    let putObjectRetentionSyncOverride: S3ClientProtocol.PutObjectRetentionSyncType?
-    let putObjectTaggingAsyncOverride: S3ClientProtocol.PutObjectTaggingAsyncType?
-    let putObjectTaggingSyncOverride: S3ClientProtocol.PutObjectTaggingSyncType?
-    let putPublicAccessBlockAsyncOverride: S3ClientProtocol.PutPublicAccessBlockAsyncType?
-    let putPublicAccessBlockSyncOverride: S3ClientProtocol.PutPublicAccessBlockSyncType?
-    let restoreObjectAsyncOverride: S3ClientProtocol.RestoreObjectAsyncType?
-    let restoreObjectSyncOverride: S3ClientProtocol.RestoreObjectSyncType?
-    let selectObjectContentAsyncOverride: S3ClientProtocol.SelectObjectContentAsyncType?
-    let selectObjectContentSyncOverride: S3ClientProtocol.SelectObjectContentSyncType?
-    let uploadPartAsyncOverride: S3ClientProtocol.UploadPartAsyncType?
-    let uploadPartSyncOverride: S3ClientProtocol.UploadPartSyncType?
-    let uploadPartCopyAsyncOverride: S3ClientProtocol.UploadPartCopyAsyncType?
-    let uploadPartCopySyncOverride: S3ClientProtocol.UploadPartCopySyncType?
+    let abortMultipartUploadAsyncOverride: AbortMultipartUploadAsyncType?
+    let abortMultipartUploadSyncOverride: AbortMultipartUploadSyncType?
+    let completeMultipartUploadAsyncOverride: CompleteMultipartUploadAsyncType?
+    let completeMultipartUploadSyncOverride: CompleteMultipartUploadSyncType?
+    let copyObjectAsyncOverride: CopyObjectAsyncType?
+    let copyObjectSyncOverride: CopyObjectSyncType?
+    let createBucketAsyncOverride: CreateBucketAsyncType?
+    let createBucketSyncOverride: CreateBucketSyncType?
+    let createMultipartUploadAsyncOverride: CreateMultipartUploadAsyncType?
+    let createMultipartUploadSyncOverride: CreateMultipartUploadSyncType?
+    let deleteBucketAsyncOverride: DeleteBucketAsyncType?
+    let deleteBucketSyncOverride: DeleteBucketSyncType?
+    let deleteBucketAnalyticsConfigurationAsyncOverride: DeleteBucketAnalyticsConfigurationAsyncType?
+    let deleteBucketAnalyticsConfigurationSyncOverride: DeleteBucketAnalyticsConfigurationSyncType?
+    let deleteBucketCorsAsyncOverride: DeleteBucketCorsAsyncType?
+    let deleteBucketCorsSyncOverride: DeleteBucketCorsSyncType?
+    let deleteBucketEncryptionAsyncOverride: DeleteBucketEncryptionAsyncType?
+    let deleteBucketEncryptionSyncOverride: DeleteBucketEncryptionSyncType?
+    let deleteBucketInventoryConfigurationAsyncOverride: DeleteBucketInventoryConfigurationAsyncType?
+    let deleteBucketInventoryConfigurationSyncOverride: DeleteBucketInventoryConfigurationSyncType?
+    let deleteBucketLifecycleAsyncOverride: DeleteBucketLifecycleAsyncType?
+    let deleteBucketLifecycleSyncOverride: DeleteBucketLifecycleSyncType?
+    let deleteBucketMetricsConfigurationAsyncOverride: DeleteBucketMetricsConfigurationAsyncType?
+    let deleteBucketMetricsConfigurationSyncOverride: DeleteBucketMetricsConfigurationSyncType?
+    let deleteBucketPolicyAsyncOverride: DeleteBucketPolicyAsyncType?
+    let deleteBucketPolicySyncOverride: DeleteBucketPolicySyncType?
+    let deleteBucketReplicationAsyncOverride: DeleteBucketReplicationAsyncType?
+    let deleteBucketReplicationSyncOverride: DeleteBucketReplicationSyncType?
+    let deleteBucketTaggingAsyncOverride: DeleteBucketTaggingAsyncType?
+    let deleteBucketTaggingSyncOverride: DeleteBucketTaggingSyncType?
+    let deleteBucketWebsiteAsyncOverride: DeleteBucketWebsiteAsyncType?
+    let deleteBucketWebsiteSyncOverride: DeleteBucketWebsiteSyncType?
+    let deleteObjectAsyncOverride: DeleteObjectAsyncType?
+    let deleteObjectSyncOverride: DeleteObjectSyncType?
+    let deleteObjectTaggingAsyncOverride: DeleteObjectTaggingAsyncType?
+    let deleteObjectTaggingSyncOverride: DeleteObjectTaggingSyncType?
+    let deleteObjectsAsyncOverride: DeleteObjectsAsyncType?
+    let deleteObjectsSyncOverride: DeleteObjectsSyncType?
+    let deletePublicAccessBlockAsyncOverride: DeletePublicAccessBlockAsyncType?
+    let deletePublicAccessBlockSyncOverride: DeletePublicAccessBlockSyncType?
+    let getBucketAccelerateConfigurationAsyncOverride: GetBucketAccelerateConfigurationAsyncType?
+    let getBucketAccelerateConfigurationSyncOverride: GetBucketAccelerateConfigurationSyncType?
+    let getBucketAclAsyncOverride: GetBucketAclAsyncType?
+    let getBucketAclSyncOverride: GetBucketAclSyncType?
+    let getBucketAnalyticsConfigurationAsyncOverride: GetBucketAnalyticsConfigurationAsyncType?
+    let getBucketAnalyticsConfigurationSyncOverride: GetBucketAnalyticsConfigurationSyncType?
+    let getBucketCorsAsyncOverride: GetBucketCorsAsyncType?
+    let getBucketCorsSyncOverride: GetBucketCorsSyncType?
+    let getBucketEncryptionAsyncOverride: GetBucketEncryptionAsyncType?
+    let getBucketEncryptionSyncOverride: GetBucketEncryptionSyncType?
+    let getBucketInventoryConfigurationAsyncOverride: GetBucketInventoryConfigurationAsyncType?
+    let getBucketInventoryConfigurationSyncOverride: GetBucketInventoryConfigurationSyncType?
+    let getBucketLifecycleAsyncOverride: GetBucketLifecycleAsyncType?
+    let getBucketLifecycleSyncOverride: GetBucketLifecycleSyncType?
+    let getBucketLifecycleConfigurationAsyncOverride: GetBucketLifecycleConfigurationAsyncType?
+    let getBucketLifecycleConfigurationSyncOverride: GetBucketLifecycleConfigurationSyncType?
+    let getBucketLocationAsyncOverride: GetBucketLocationAsyncType?
+    let getBucketLocationSyncOverride: GetBucketLocationSyncType?
+    let getBucketLoggingAsyncOverride: GetBucketLoggingAsyncType?
+    let getBucketLoggingSyncOverride: GetBucketLoggingSyncType?
+    let getBucketMetricsConfigurationAsyncOverride: GetBucketMetricsConfigurationAsyncType?
+    let getBucketMetricsConfigurationSyncOverride: GetBucketMetricsConfigurationSyncType?
+    let getBucketNotificationAsyncOverride: GetBucketNotificationAsyncType?
+    let getBucketNotificationSyncOverride: GetBucketNotificationSyncType?
+    let getBucketNotificationConfigurationAsyncOverride: GetBucketNotificationConfigurationAsyncType?
+    let getBucketNotificationConfigurationSyncOverride: GetBucketNotificationConfigurationSyncType?
+    let getBucketPolicyAsyncOverride: GetBucketPolicyAsyncType?
+    let getBucketPolicySyncOverride: GetBucketPolicySyncType?
+    let getBucketPolicyStatusAsyncOverride: GetBucketPolicyStatusAsyncType?
+    let getBucketPolicyStatusSyncOverride: GetBucketPolicyStatusSyncType?
+    let getBucketReplicationAsyncOverride: GetBucketReplicationAsyncType?
+    let getBucketReplicationSyncOverride: GetBucketReplicationSyncType?
+    let getBucketRequestPaymentAsyncOverride: GetBucketRequestPaymentAsyncType?
+    let getBucketRequestPaymentSyncOverride: GetBucketRequestPaymentSyncType?
+    let getBucketTaggingAsyncOverride: GetBucketTaggingAsyncType?
+    let getBucketTaggingSyncOverride: GetBucketTaggingSyncType?
+    let getBucketVersioningAsyncOverride: GetBucketVersioningAsyncType?
+    let getBucketVersioningSyncOverride: GetBucketVersioningSyncType?
+    let getBucketWebsiteAsyncOverride: GetBucketWebsiteAsyncType?
+    let getBucketWebsiteSyncOverride: GetBucketWebsiteSyncType?
+    let getObjectAsyncOverride: GetObjectAsyncType?
+    let getObjectSyncOverride: GetObjectSyncType?
+    let getObjectAclAsyncOverride: GetObjectAclAsyncType?
+    let getObjectAclSyncOverride: GetObjectAclSyncType?
+    let getObjectLegalHoldAsyncOverride: GetObjectLegalHoldAsyncType?
+    let getObjectLegalHoldSyncOverride: GetObjectLegalHoldSyncType?
+    let getObjectLockConfigurationAsyncOverride: GetObjectLockConfigurationAsyncType?
+    let getObjectLockConfigurationSyncOverride: GetObjectLockConfigurationSyncType?
+    let getObjectRetentionAsyncOverride: GetObjectRetentionAsyncType?
+    let getObjectRetentionSyncOverride: GetObjectRetentionSyncType?
+    let getObjectTaggingAsyncOverride: GetObjectTaggingAsyncType?
+    let getObjectTaggingSyncOverride: GetObjectTaggingSyncType?
+    let getObjectTorrentAsyncOverride: GetObjectTorrentAsyncType?
+    let getObjectTorrentSyncOverride: GetObjectTorrentSyncType?
+    let getPublicAccessBlockAsyncOverride: GetPublicAccessBlockAsyncType?
+    let getPublicAccessBlockSyncOverride: GetPublicAccessBlockSyncType?
+    let headBucketAsyncOverride: HeadBucketAsyncType?
+    let headBucketSyncOverride: HeadBucketSyncType?
+    let headObjectAsyncOverride: HeadObjectAsyncType?
+    let headObjectSyncOverride: HeadObjectSyncType?
+    let listBucketAnalyticsConfigurationsAsyncOverride: ListBucketAnalyticsConfigurationsAsyncType?
+    let listBucketAnalyticsConfigurationsSyncOverride: ListBucketAnalyticsConfigurationsSyncType?
+    let listBucketInventoryConfigurationsAsyncOverride: ListBucketInventoryConfigurationsAsyncType?
+    let listBucketInventoryConfigurationsSyncOverride: ListBucketInventoryConfigurationsSyncType?
+    let listBucketMetricsConfigurationsAsyncOverride: ListBucketMetricsConfigurationsAsyncType?
+    let listBucketMetricsConfigurationsSyncOverride: ListBucketMetricsConfigurationsSyncType?
+    let listBucketsAsyncOverride: ListBucketsAsyncType?
+    let listBucketsSyncOverride: ListBucketsSyncType?
+    let listMultipartUploadsAsyncOverride: ListMultipartUploadsAsyncType?
+    let listMultipartUploadsSyncOverride: ListMultipartUploadsSyncType?
+    let listObjectVersionsAsyncOverride: ListObjectVersionsAsyncType?
+    let listObjectVersionsSyncOverride: ListObjectVersionsSyncType?
+    let listObjectsAsyncOverride: ListObjectsAsyncType?
+    let listObjectsSyncOverride: ListObjectsSyncType?
+    let listObjectsV2AsyncOverride: ListObjectsV2AsyncType?
+    let listObjectsV2SyncOverride: ListObjectsV2SyncType?
+    let listPartsAsyncOverride: ListPartsAsyncType?
+    let listPartsSyncOverride: ListPartsSyncType?
+    let putBucketAccelerateConfigurationAsyncOverride: PutBucketAccelerateConfigurationAsyncType?
+    let putBucketAccelerateConfigurationSyncOverride: PutBucketAccelerateConfigurationSyncType?
+    let putBucketAclAsyncOverride: PutBucketAclAsyncType?
+    let putBucketAclSyncOverride: PutBucketAclSyncType?
+    let putBucketAnalyticsConfigurationAsyncOverride: PutBucketAnalyticsConfigurationAsyncType?
+    let putBucketAnalyticsConfigurationSyncOverride: PutBucketAnalyticsConfigurationSyncType?
+    let putBucketCorsAsyncOverride: PutBucketCorsAsyncType?
+    let putBucketCorsSyncOverride: PutBucketCorsSyncType?
+    let putBucketEncryptionAsyncOverride: PutBucketEncryptionAsyncType?
+    let putBucketEncryptionSyncOverride: PutBucketEncryptionSyncType?
+    let putBucketInventoryConfigurationAsyncOverride: PutBucketInventoryConfigurationAsyncType?
+    let putBucketInventoryConfigurationSyncOverride: PutBucketInventoryConfigurationSyncType?
+    let putBucketLifecycleAsyncOverride: PutBucketLifecycleAsyncType?
+    let putBucketLifecycleSyncOverride: PutBucketLifecycleSyncType?
+    let putBucketLifecycleConfigurationAsyncOverride: PutBucketLifecycleConfigurationAsyncType?
+    let putBucketLifecycleConfigurationSyncOverride: PutBucketLifecycleConfigurationSyncType?
+    let putBucketLoggingAsyncOverride: PutBucketLoggingAsyncType?
+    let putBucketLoggingSyncOverride: PutBucketLoggingSyncType?
+    let putBucketMetricsConfigurationAsyncOverride: PutBucketMetricsConfigurationAsyncType?
+    let putBucketMetricsConfigurationSyncOverride: PutBucketMetricsConfigurationSyncType?
+    let putBucketNotificationAsyncOverride: PutBucketNotificationAsyncType?
+    let putBucketNotificationSyncOverride: PutBucketNotificationSyncType?
+    let putBucketNotificationConfigurationAsyncOverride: PutBucketNotificationConfigurationAsyncType?
+    let putBucketNotificationConfigurationSyncOverride: PutBucketNotificationConfigurationSyncType?
+    let putBucketPolicyAsyncOverride: PutBucketPolicyAsyncType?
+    let putBucketPolicySyncOverride: PutBucketPolicySyncType?
+    let putBucketReplicationAsyncOverride: PutBucketReplicationAsyncType?
+    let putBucketReplicationSyncOverride: PutBucketReplicationSyncType?
+    let putBucketRequestPaymentAsyncOverride: PutBucketRequestPaymentAsyncType?
+    let putBucketRequestPaymentSyncOverride: PutBucketRequestPaymentSyncType?
+    let putBucketTaggingAsyncOverride: PutBucketTaggingAsyncType?
+    let putBucketTaggingSyncOverride: PutBucketTaggingSyncType?
+    let putBucketVersioningAsyncOverride: PutBucketVersioningAsyncType?
+    let putBucketVersioningSyncOverride: PutBucketVersioningSyncType?
+    let putBucketWebsiteAsyncOverride: PutBucketWebsiteAsyncType?
+    let putBucketWebsiteSyncOverride: PutBucketWebsiteSyncType?
+    let putObjectAsyncOverride: PutObjectAsyncType?
+    let putObjectSyncOverride: PutObjectSyncType?
+    let putObjectAclAsyncOverride: PutObjectAclAsyncType?
+    let putObjectAclSyncOverride: PutObjectAclSyncType?
+    let putObjectLegalHoldAsyncOverride: PutObjectLegalHoldAsyncType?
+    let putObjectLegalHoldSyncOverride: PutObjectLegalHoldSyncType?
+    let putObjectLockConfigurationAsyncOverride: PutObjectLockConfigurationAsyncType?
+    let putObjectLockConfigurationSyncOverride: PutObjectLockConfigurationSyncType?
+    let putObjectRetentionAsyncOverride: PutObjectRetentionAsyncType?
+    let putObjectRetentionSyncOverride: PutObjectRetentionSyncType?
+    let putObjectTaggingAsyncOverride: PutObjectTaggingAsyncType?
+    let putObjectTaggingSyncOverride: PutObjectTaggingSyncType?
+    let putPublicAccessBlockAsyncOverride: PutPublicAccessBlockAsyncType?
+    let putPublicAccessBlockSyncOverride: PutPublicAccessBlockSyncType?
+    let restoreObjectAsyncOverride: RestoreObjectAsyncType?
+    let restoreObjectSyncOverride: RestoreObjectSyncType?
+    let selectObjectContentAsyncOverride: SelectObjectContentAsyncType?
+    let selectObjectContentSyncOverride: SelectObjectContentSyncType?
+    let uploadPartAsyncOverride: UploadPartAsyncType?
+    let uploadPartSyncOverride: UploadPartSyncType?
+    let uploadPartCopyAsyncOverride: UploadPartCopyAsyncType?
+    let uploadPartCopySyncOverride: UploadPartCopySyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(
-            abortMultipartUploadAsync: S3ClientProtocol.AbortMultipartUploadAsyncType? = nil,
-            abortMultipartUploadSync: S3ClientProtocol.AbortMultipartUploadSyncType? = nil,
-            completeMultipartUploadAsync: S3ClientProtocol.CompleteMultipartUploadAsyncType? = nil,
-            completeMultipartUploadSync: S3ClientProtocol.CompleteMultipartUploadSyncType? = nil,
-            copyObjectAsync: S3ClientProtocol.CopyObjectAsyncType? = nil,
-            copyObjectSync: S3ClientProtocol.CopyObjectSyncType? = nil,
-            createBucketAsync: S3ClientProtocol.CreateBucketAsyncType? = nil,
-            createBucketSync: S3ClientProtocol.CreateBucketSyncType? = nil,
-            createMultipartUploadAsync: S3ClientProtocol.CreateMultipartUploadAsyncType? = nil,
-            createMultipartUploadSync: S3ClientProtocol.CreateMultipartUploadSyncType? = nil,
-            deleteBucketAsync: S3ClientProtocol.DeleteBucketAsyncType? = nil,
-            deleteBucketSync: S3ClientProtocol.DeleteBucketSyncType? = nil,
-            deleteBucketAnalyticsConfigurationAsync: S3ClientProtocol.DeleteBucketAnalyticsConfigurationAsyncType? = nil,
-            deleteBucketAnalyticsConfigurationSync: S3ClientProtocol.DeleteBucketAnalyticsConfigurationSyncType? = nil,
-            deleteBucketCorsAsync: S3ClientProtocol.DeleteBucketCorsAsyncType? = nil,
-            deleteBucketCorsSync: S3ClientProtocol.DeleteBucketCorsSyncType? = nil,
-            deleteBucketEncryptionAsync: S3ClientProtocol.DeleteBucketEncryptionAsyncType? = nil,
-            deleteBucketEncryptionSync: S3ClientProtocol.DeleteBucketEncryptionSyncType? = nil,
-            deleteBucketInventoryConfigurationAsync: S3ClientProtocol.DeleteBucketInventoryConfigurationAsyncType? = nil,
-            deleteBucketInventoryConfigurationSync: S3ClientProtocol.DeleteBucketInventoryConfigurationSyncType? = nil,
-            deleteBucketLifecycleAsync: S3ClientProtocol.DeleteBucketLifecycleAsyncType? = nil,
-            deleteBucketLifecycleSync: S3ClientProtocol.DeleteBucketLifecycleSyncType? = nil,
-            deleteBucketMetricsConfigurationAsync: S3ClientProtocol.DeleteBucketMetricsConfigurationAsyncType? = nil,
-            deleteBucketMetricsConfigurationSync: S3ClientProtocol.DeleteBucketMetricsConfigurationSyncType? = nil,
-            deleteBucketPolicyAsync: S3ClientProtocol.DeleteBucketPolicyAsyncType? = nil,
-            deleteBucketPolicySync: S3ClientProtocol.DeleteBucketPolicySyncType? = nil,
-            deleteBucketReplicationAsync: S3ClientProtocol.DeleteBucketReplicationAsyncType? = nil,
-            deleteBucketReplicationSync: S3ClientProtocol.DeleteBucketReplicationSyncType? = nil,
-            deleteBucketTaggingAsync: S3ClientProtocol.DeleteBucketTaggingAsyncType? = nil,
-            deleteBucketTaggingSync: S3ClientProtocol.DeleteBucketTaggingSyncType? = nil,
-            deleteBucketWebsiteAsync: S3ClientProtocol.DeleteBucketWebsiteAsyncType? = nil,
-            deleteBucketWebsiteSync: S3ClientProtocol.DeleteBucketWebsiteSyncType? = nil,
-            deleteObjectAsync: S3ClientProtocol.DeleteObjectAsyncType? = nil,
-            deleteObjectSync: S3ClientProtocol.DeleteObjectSyncType? = nil,
-            deleteObjectTaggingAsync: S3ClientProtocol.DeleteObjectTaggingAsyncType? = nil,
-            deleteObjectTaggingSync: S3ClientProtocol.DeleteObjectTaggingSyncType? = nil,
-            deleteObjectsAsync: S3ClientProtocol.DeleteObjectsAsyncType? = nil,
-            deleteObjectsSync: S3ClientProtocol.DeleteObjectsSyncType? = nil,
-            deletePublicAccessBlockAsync: S3ClientProtocol.DeletePublicAccessBlockAsyncType? = nil,
-            deletePublicAccessBlockSync: S3ClientProtocol.DeletePublicAccessBlockSyncType? = nil,
-            getBucketAccelerateConfigurationAsync: S3ClientProtocol.GetBucketAccelerateConfigurationAsyncType? = nil,
-            getBucketAccelerateConfigurationSync: S3ClientProtocol.GetBucketAccelerateConfigurationSyncType? = nil,
-            getBucketAclAsync: S3ClientProtocol.GetBucketAclAsyncType? = nil,
-            getBucketAclSync: S3ClientProtocol.GetBucketAclSyncType? = nil,
-            getBucketAnalyticsConfigurationAsync: S3ClientProtocol.GetBucketAnalyticsConfigurationAsyncType? = nil,
-            getBucketAnalyticsConfigurationSync: S3ClientProtocol.GetBucketAnalyticsConfigurationSyncType? = nil,
-            getBucketCorsAsync: S3ClientProtocol.GetBucketCorsAsyncType? = nil,
-            getBucketCorsSync: S3ClientProtocol.GetBucketCorsSyncType? = nil,
-            getBucketEncryptionAsync: S3ClientProtocol.GetBucketEncryptionAsyncType? = nil,
-            getBucketEncryptionSync: S3ClientProtocol.GetBucketEncryptionSyncType? = nil,
-            getBucketInventoryConfigurationAsync: S3ClientProtocol.GetBucketInventoryConfigurationAsyncType? = nil,
-            getBucketInventoryConfigurationSync: S3ClientProtocol.GetBucketInventoryConfigurationSyncType? = nil,
-            getBucketLifecycleAsync: S3ClientProtocol.GetBucketLifecycleAsyncType? = nil,
-            getBucketLifecycleSync: S3ClientProtocol.GetBucketLifecycleSyncType? = nil,
-            getBucketLifecycleConfigurationAsync: S3ClientProtocol.GetBucketLifecycleConfigurationAsyncType? = nil,
-            getBucketLifecycleConfigurationSync: S3ClientProtocol.GetBucketLifecycleConfigurationSyncType? = nil,
-            getBucketLocationAsync: S3ClientProtocol.GetBucketLocationAsyncType? = nil,
-            getBucketLocationSync: S3ClientProtocol.GetBucketLocationSyncType? = nil,
-            getBucketLoggingAsync: S3ClientProtocol.GetBucketLoggingAsyncType? = nil,
-            getBucketLoggingSync: S3ClientProtocol.GetBucketLoggingSyncType? = nil,
-            getBucketMetricsConfigurationAsync: S3ClientProtocol.GetBucketMetricsConfigurationAsyncType? = nil,
-            getBucketMetricsConfigurationSync: S3ClientProtocol.GetBucketMetricsConfigurationSyncType? = nil,
-            getBucketNotificationAsync: S3ClientProtocol.GetBucketNotificationAsyncType? = nil,
-            getBucketNotificationSync: S3ClientProtocol.GetBucketNotificationSyncType? = nil,
-            getBucketNotificationConfigurationAsync: S3ClientProtocol.GetBucketNotificationConfigurationAsyncType? = nil,
-            getBucketNotificationConfigurationSync: S3ClientProtocol.GetBucketNotificationConfigurationSyncType? = nil,
-            getBucketPolicyAsync: S3ClientProtocol.GetBucketPolicyAsyncType? = nil,
-            getBucketPolicySync: S3ClientProtocol.GetBucketPolicySyncType? = nil,
-            getBucketPolicyStatusAsync: S3ClientProtocol.GetBucketPolicyStatusAsyncType? = nil,
-            getBucketPolicyStatusSync: S3ClientProtocol.GetBucketPolicyStatusSyncType? = nil,
-            getBucketReplicationAsync: S3ClientProtocol.GetBucketReplicationAsyncType? = nil,
-            getBucketReplicationSync: S3ClientProtocol.GetBucketReplicationSyncType? = nil,
-            getBucketRequestPaymentAsync: S3ClientProtocol.GetBucketRequestPaymentAsyncType? = nil,
-            getBucketRequestPaymentSync: S3ClientProtocol.GetBucketRequestPaymentSyncType? = nil,
-            getBucketTaggingAsync: S3ClientProtocol.GetBucketTaggingAsyncType? = nil,
-            getBucketTaggingSync: S3ClientProtocol.GetBucketTaggingSyncType? = nil,
-            getBucketVersioningAsync: S3ClientProtocol.GetBucketVersioningAsyncType? = nil,
-            getBucketVersioningSync: S3ClientProtocol.GetBucketVersioningSyncType? = nil,
-            getBucketWebsiteAsync: S3ClientProtocol.GetBucketWebsiteAsyncType? = nil,
-            getBucketWebsiteSync: S3ClientProtocol.GetBucketWebsiteSyncType? = nil,
-            getObjectAsync: S3ClientProtocol.GetObjectAsyncType? = nil,
-            getObjectSync: S3ClientProtocol.GetObjectSyncType? = nil,
-            getObjectAclAsync: S3ClientProtocol.GetObjectAclAsyncType? = nil,
-            getObjectAclSync: S3ClientProtocol.GetObjectAclSyncType? = nil,
-            getObjectLegalHoldAsync: S3ClientProtocol.GetObjectLegalHoldAsyncType? = nil,
-            getObjectLegalHoldSync: S3ClientProtocol.GetObjectLegalHoldSyncType? = nil,
-            getObjectLockConfigurationAsync: S3ClientProtocol.GetObjectLockConfigurationAsyncType? = nil,
-            getObjectLockConfigurationSync: S3ClientProtocol.GetObjectLockConfigurationSyncType? = nil,
-            getObjectRetentionAsync: S3ClientProtocol.GetObjectRetentionAsyncType? = nil,
-            getObjectRetentionSync: S3ClientProtocol.GetObjectRetentionSyncType? = nil,
-            getObjectTaggingAsync: S3ClientProtocol.GetObjectTaggingAsyncType? = nil,
-            getObjectTaggingSync: S3ClientProtocol.GetObjectTaggingSyncType? = nil,
-            getObjectTorrentAsync: S3ClientProtocol.GetObjectTorrentAsyncType? = nil,
-            getObjectTorrentSync: S3ClientProtocol.GetObjectTorrentSyncType? = nil,
-            getPublicAccessBlockAsync: S3ClientProtocol.GetPublicAccessBlockAsyncType? = nil,
-            getPublicAccessBlockSync: S3ClientProtocol.GetPublicAccessBlockSyncType? = nil,
-            headBucketAsync: S3ClientProtocol.HeadBucketAsyncType? = nil,
-            headBucketSync: S3ClientProtocol.HeadBucketSyncType? = nil,
-            headObjectAsync: S3ClientProtocol.HeadObjectAsyncType? = nil,
-            headObjectSync: S3ClientProtocol.HeadObjectSyncType? = nil,
-            listBucketAnalyticsConfigurationsAsync: S3ClientProtocol.ListBucketAnalyticsConfigurationsAsyncType? = nil,
-            listBucketAnalyticsConfigurationsSync: S3ClientProtocol.ListBucketAnalyticsConfigurationsSyncType? = nil,
-            listBucketInventoryConfigurationsAsync: S3ClientProtocol.ListBucketInventoryConfigurationsAsyncType? = nil,
-            listBucketInventoryConfigurationsSync: S3ClientProtocol.ListBucketInventoryConfigurationsSyncType? = nil,
-            listBucketMetricsConfigurationsAsync: S3ClientProtocol.ListBucketMetricsConfigurationsAsyncType? = nil,
-            listBucketMetricsConfigurationsSync: S3ClientProtocol.ListBucketMetricsConfigurationsSyncType? = nil,
-            listBucketsAsync: S3ClientProtocol.ListBucketsAsyncType? = nil,
-            listBucketsSync: S3ClientProtocol.ListBucketsSyncType? = nil,
-            listMultipartUploadsAsync: S3ClientProtocol.ListMultipartUploadsAsyncType? = nil,
-            listMultipartUploadsSync: S3ClientProtocol.ListMultipartUploadsSyncType? = nil,
-            listObjectVersionsAsync: S3ClientProtocol.ListObjectVersionsAsyncType? = nil,
-            listObjectVersionsSync: S3ClientProtocol.ListObjectVersionsSyncType? = nil,
-            listObjectsAsync: S3ClientProtocol.ListObjectsAsyncType? = nil,
-            listObjectsSync: S3ClientProtocol.ListObjectsSyncType? = nil,
-            listObjectsV2Async: S3ClientProtocol.ListObjectsV2AsyncType? = nil,
-            listObjectsV2Sync: S3ClientProtocol.ListObjectsV2SyncType? = nil,
-            listPartsAsync: S3ClientProtocol.ListPartsAsyncType? = nil,
-            listPartsSync: S3ClientProtocol.ListPartsSyncType? = nil,
-            putBucketAccelerateConfigurationAsync: S3ClientProtocol.PutBucketAccelerateConfigurationAsyncType? = nil,
-            putBucketAccelerateConfigurationSync: S3ClientProtocol.PutBucketAccelerateConfigurationSyncType? = nil,
-            putBucketAclAsync: S3ClientProtocol.PutBucketAclAsyncType? = nil,
-            putBucketAclSync: S3ClientProtocol.PutBucketAclSyncType? = nil,
-            putBucketAnalyticsConfigurationAsync: S3ClientProtocol.PutBucketAnalyticsConfigurationAsyncType? = nil,
-            putBucketAnalyticsConfigurationSync: S3ClientProtocol.PutBucketAnalyticsConfigurationSyncType? = nil,
-            putBucketCorsAsync: S3ClientProtocol.PutBucketCorsAsyncType? = nil,
-            putBucketCorsSync: S3ClientProtocol.PutBucketCorsSyncType? = nil,
-            putBucketEncryptionAsync: S3ClientProtocol.PutBucketEncryptionAsyncType? = nil,
-            putBucketEncryptionSync: S3ClientProtocol.PutBucketEncryptionSyncType? = nil,
-            putBucketInventoryConfigurationAsync: S3ClientProtocol.PutBucketInventoryConfigurationAsyncType? = nil,
-            putBucketInventoryConfigurationSync: S3ClientProtocol.PutBucketInventoryConfigurationSyncType? = nil,
-            putBucketLifecycleAsync: S3ClientProtocol.PutBucketLifecycleAsyncType? = nil,
-            putBucketLifecycleSync: S3ClientProtocol.PutBucketLifecycleSyncType? = nil,
-            putBucketLifecycleConfigurationAsync: S3ClientProtocol.PutBucketLifecycleConfigurationAsyncType? = nil,
-            putBucketLifecycleConfigurationSync: S3ClientProtocol.PutBucketLifecycleConfigurationSyncType? = nil,
-            putBucketLoggingAsync: S3ClientProtocol.PutBucketLoggingAsyncType? = nil,
-            putBucketLoggingSync: S3ClientProtocol.PutBucketLoggingSyncType? = nil,
-            putBucketMetricsConfigurationAsync: S3ClientProtocol.PutBucketMetricsConfigurationAsyncType? = nil,
-            putBucketMetricsConfigurationSync: S3ClientProtocol.PutBucketMetricsConfigurationSyncType? = nil,
-            putBucketNotificationAsync: S3ClientProtocol.PutBucketNotificationAsyncType? = nil,
-            putBucketNotificationSync: S3ClientProtocol.PutBucketNotificationSyncType? = nil,
-            putBucketNotificationConfigurationAsync: S3ClientProtocol.PutBucketNotificationConfigurationAsyncType? = nil,
-            putBucketNotificationConfigurationSync: S3ClientProtocol.PutBucketNotificationConfigurationSyncType? = nil,
-            putBucketPolicyAsync: S3ClientProtocol.PutBucketPolicyAsyncType? = nil,
-            putBucketPolicySync: S3ClientProtocol.PutBucketPolicySyncType? = nil,
-            putBucketReplicationAsync: S3ClientProtocol.PutBucketReplicationAsyncType? = nil,
-            putBucketReplicationSync: S3ClientProtocol.PutBucketReplicationSyncType? = nil,
-            putBucketRequestPaymentAsync: S3ClientProtocol.PutBucketRequestPaymentAsyncType? = nil,
-            putBucketRequestPaymentSync: S3ClientProtocol.PutBucketRequestPaymentSyncType? = nil,
-            putBucketTaggingAsync: S3ClientProtocol.PutBucketTaggingAsyncType? = nil,
-            putBucketTaggingSync: S3ClientProtocol.PutBucketTaggingSyncType? = nil,
-            putBucketVersioningAsync: S3ClientProtocol.PutBucketVersioningAsyncType? = nil,
-            putBucketVersioningSync: S3ClientProtocol.PutBucketVersioningSyncType? = nil,
-            putBucketWebsiteAsync: S3ClientProtocol.PutBucketWebsiteAsyncType? = nil,
-            putBucketWebsiteSync: S3ClientProtocol.PutBucketWebsiteSyncType? = nil,
-            putObjectAsync: S3ClientProtocol.PutObjectAsyncType? = nil,
-            putObjectSync: S3ClientProtocol.PutObjectSyncType? = nil,
-            putObjectAclAsync: S3ClientProtocol.PutObjectAclAsyncType? = nil,
-            putObjectAclSync: S3ClientProtocol.PutObjectAclSyncType? = nil,
-            putObjectLegalHoldAsync: S3ClientProtocol.PutObjectLegalHoldAsyncType? = nil,
-            putObjectLegalHoldSync: S3ClientProtocol.PutObjectLegalHoldSyncType? = nil,
-            putObjectLockConfigurationAsync: S3ClientProtocol.PutObjectLockConfigurationAsyncType? = nil,
-            putObjectLockConfigurationSync: S3ClientProtocol.PutObjectLockConfigurationSyncType? = nil,
-            putObjectRetentionAsync: S3ClientProtocol.PutObjectRetentionAsyncType? = nil,
-            putObjectRetentionSync: S3ClientProtocol.PutObjectRetentionSyncType? = nil,
-            putObjectTaggingAsync: S3ClientProtocol.PutObjectTaggingAsyncType? = nil,
-            putObjectTaggingSync: S3ClientProtocol.PutObjectTaggingSyncType? = nil,
-            putPublicAccessBlockAsync: S3ClientProtocol.PutPublicAccessBlockAsyncType? = nil,
-            putPublicAccessBlockSync: S3ClientProtocol.PutPublicAccessBlockSyncType? = nil,
-            restoreObjectAsync: S3ClientProtocol.RestoreObjectAsyncType? = nil,
-            restoreObjectSync: S3ClientProtocol.RestoreObjectSyncType? = nil,
-            selectObjectContentAsync: S3ClientProtocol.SelectObjectContentAsyncType? = nil,
-            selectObjectContentSync: S3ClientProtocol.SelectObjectContentSyncType? = nil,
-            uploadPartAsync: S3ClientProtocol.UploadPartAsyncType? = nil,
-            uploadPartSync: S3ClientProtocol.UploadPartSyncType? = nil,
-            uploadPartCopyAsync: S3ClientProtocol.UploadPartCopyAsyncType? = nil,
-            uploadPartCopySync: S3ClientProtocol.UploadPartCopySyncType? = nil) {
+            abortMultipartUploadAsync: AbortMultipartUploadAsyncType? = nil,
+            abortMultipartUploadSync: AbortMultipartUploadSyncType? = nil,
+            completeMultipartUploadAsync: CompleteMultipartUploadAsyncType? = nil,
+            completeMultipartUploadSync: CompleteMultipartUploadSyncType? = nil,
+            copyObjectAsync: CopyObjectAsyncType? = nil,
+            copyObjectSync: CopyObjectSyncType? = nil,
+            createBucketAsync: CreateBucketAsyncType? = nil,
+            createBucketSync: CreateBucketSyncType? = nil,
+            createMultipartUploadAsync: CreateMultipartUploadAsyncType? = nil,
+            createMultipartUploadSync: CreateMultipartUploadSyncType? = nil,
+            deleteBucketAsync: DeleteBucketAsyncType? = nil,
+            deleteBucketSync: DeleteBucketSyncType? = nil,
+            deleteBucketAnalyticsConfigurationAsync: DeleteBucketAnalyticsConfigurationAsyncType? = nil,
+            deleteBucketAnalyticsConfigurationSync: DeleteBucketAnalyticsConfigurationSyncType? = nil,
+            deleteBucketCorsAsync: DeleteBucketCorsAsyncType? = nil,
+            deleteBucketCorsSync: DeleteBucketCorsSyncType? = nil,
+            deleteBucketEncryptionAsync: DeleteBucketEncryptionAsyncType? = nil,
+            deleteBucketEncryptionSync: DeleteBucketEncryptionSyncType? = nil,
+            deleteBucketInventoryConfigurationAsync: DeleteBucketInventoryConfigurationAsyncType? = nil,
+            deleteBucketInventoryConfigurationSync: DeleteBucketInventoryConfigurationSyncType? = nil,
+            deleteBucketLifecycleAsync: DeleteBucketLifecycleAsyncType? = nil,
+            deleteBucketLifecycleSync: DeleteBucketLifecycleSyncType? = nil,
+            deleteBucketMetricsConfigurationAsync: DeleteBucketMetricsConfigurationAsyncType? = nil,
+            deleteBucketMetricsConfigurationSync: DeleteBucketMetricsConfigurationSyncType? = nil,
+            deleteBucketPolicyAsync: DeleteBucketPolicyAsyncType? = nil,
+            deleteBucketPolicySync: DeleteBucketPolicySyncType? = nil,
+            deleteBucketReplicationAsync: DeleteBucketReplicationAsyncType? = nil,
+            deleteBucketReplicationSync: DeleteBucketReplicationSyncType? = nil,
+            deleteBucketTaggingAsync: DeleteBucketTaggingAsyncType? = nil,
+            deleteBucketTaggingSync: DeleteBucketTaggingSyncType? = nil,
+            deleteBucketWebsiteAsync: DeleteBucketWebsiteAsyncType? = nil,
+            deleteBucketWebsiteSync: DeleteBucketWebsiteSyncType? = nil,
+            deleteObjectAsync: DeleteObjectAsyncType? = nil,
+            deleteObjectSync: DeleteObjectSyncType? = nil,
+            deleteObjectTaggingAsync: DeleteObjectTaggingAsyncType? = nil,
+            deleteObjectTaggingSync: DeleteObjectTaggingSyncType? = nil,
+            deleteObjectsAsync: DeleteObjectsAsyncType? = nil,
+            deleteObjectsSync: DeleteObjectsSyncType? = nil,
+            deletePublicAccessBlockAsync: DeletePublicAccessBlockAsyncType? = nil,
+            deletePublicAccessBlockSync: DeletePublicAccessBlockSyncType? = nil,
+            getBucketAccelerateConfigurationAsync: GetBucketAccelerateConfigurationAsyncType? = nil,
+            getBucketAccelerateConfigurationSync: GetBucketAccelerateConfigurationSyncType? = nil,
+            getBucketAclAsync: GetBucketAclAsyncType? = nil,
+            getBucketAclSync: GetBucketAclSyncType? = nil,
+            getBucketAnalyticsConfigurationAsync: GetBucketAnalyticsConfigurationAsyncType? = nil,
+            getBucketAnalyticsConfigurationSync: GetBucketAnalyticsConfigurationSyncType? = nil,
+            getBucketCorsAsync: GetBucketCorsAsyncType? = nil,
+            getBucketCorsSync: GetBucketCorsSyncType? = nil,
+            getBucketEncryptionAsync: GetBucketEncryptionAsyncType? = nil,
+            getBucketEncryptionSync: GetBucketEncryptionSyncType? = nil,
+            getBucketInventoryConfigurationAsync: GetBucketInventoryConfigurationAsyncType? = nil,
+            getBucketInventoryConfigurationSync: GetBucketInventoryConfigurationSyncType? = nil,
+            getBucketLifecycleAsync: GetBucketLifecycleAsyncType? = nil,
+            getBucketLifecycleSync: GetBucketLifecycleSyncType? = nil,
+            getBucketLifecycleConfigurationAsync: GetBucketLifecycleConfigurationAsyncType? = nil,
+            getBucketLifecycleConfigurationSync: GetBucketLifecycleConfigurationSyncType? = nil,
+            getBucketLocationAsync: GetBucketLocationAsyncType? = nil,
+            getBucketLocationSync: GetBucketLocationSyncType? = nil,
+            getBucketLoggingAsync: GetBucketLoggingAsyncType? = nil,
+            getBucketLoggingSync: GetBucketLoggingSyncType? = nil,
+            getBucketMetricsConfigurationAsync: GetBucketMetricsConfigurationAsyncType? = nil,
+            getBucketMetricsConfigurationSync: GetBucketMetricsConfigurationSyncType? = nil,
+            getBucketNotificationAsync: GetBucketNotificationAsyncType? = nil,
+            getBucketNotificationSync: GetBucketNotificationSyncType? = nil,
+            getBucketNotificationConfigurationAsync: GetBucketNotificationConfigurationAsyncType? = nil,
+            getBucketNotificationConfigurationSync: GetBucketNotificationConfigurationSyncType? = nil,
+            getBucketPolicyAsync: GetBucketPolicyAsyncType? = nil,
+            getBucketPolicySync: GetBucketPolicySyncType? = nil,
+            getBucketPolicyStatusAsync: GetBucketPolicyStatusAsyncType? = nil,
+            getBucketPolicyStatusSync: GetBucketPolicyStatusSyncType? = nil,
+            getBucketReplicationAsync: GetBucketReplicationAsyncType? = nil,
+            getBucketReplicationSync: GetBucketReplicationSyncType? = nil,
+            getBucketRequestPaymentAsync: GetBucketRequestPaymentAsyncType? = nil,
+            getBucketRequestPaymentSync: GetBucketRequestPaymentSyncType? = nil,
+            getBucketTaggingAsync: GetBucketTaggingAsyncType? = nil,
+            getBucketTaggingSync: GetBucketTaggingSyncType? = nil,
+            getBucketVersioningAsync: GetBucketVersioningAsyncType? = nil,
+            getBucketVersioningSync: GetBucketVersioningSyncType? = nil,
+            getBucketWebsiteAsync: GetBucketWebsiteAsyncType? = nil,
+            getBucketWebsiteSync: GetBucketWebsiteSyncType? = nil,
+            getObjectAsync: GetObjectAsyncType? = nil,
+            getObjectSync: GetObjectSyncType? = nil,
+            getObjectAclAsync: GetObjectAclAsyncType? = nil,
+            getObjectAclSync: GetObjectAclSyncType? = nil,
+            getObjectLegalHoldAsync: GetObjectLegalHoldAsyncType? = nil,
+            getObjectLegalHoldSync: GetObjectLegalHoldSyncType? = nil,
+            getObjectLockConfigurationAsync: GetObjectLockConfigurationAsyncType? = nil,
+            getObjectLockConfigurationSync: GetObjectLockConfigurationSyncType? = nil,
+            getObjectRetentionAsync: GetObjectRetentionAsyncType? = nil,
+            getObjectRetentionSync: GetObjectRetentionSyncType? = nil,
+            getObjectTaggingAsync: GetObjectTaggingAsyncType? = nil,
+            getObjectTaggingSync: GetObjectTaggingSyncType? = nil,
+            getObjectTorrentAsync: GetObjectTorrentAsyncType? = nil,
+            getObjectTorrentSync: GetObjectTorrentSyncType? = nil,
+            getPublicAccessBlockAsync: GetPublicAccessBlockAsyncType? = nil,
+            getPublicAccessBlockSync: GetPublicAccessBlockSyncType? = nil,
+            headBucketAsync: HeadBucketAsyncType? = nil,
+            headBucketSync: HeadBucketSyncType? = nil,
+            headObjectAsync: HeadObjectAsyncType? = nil,
+            headObjectSync: HeadObjectSyncType? = nil,
+            listBucketAnalyticsConfigurationsAsync: ListBucketAnalyticsConfigurationsAsyncType? = nil,
+            listBucketAnalyticsConfigurationsSync: ListBucketAnalyticsConfigurationsSyncType? = nil,
+            listBucketInventoryConfigurationsAsync: ListBucketInventoryConfigurationsAsyncType? = nil,
+            listBucketInventoryConfigurationsSync: ListBucketInventoryConfigurationsSyncType? = nil,
+            listBucketMetricsConfigurationsAsync: ListBucketMetricsConfigurationsAsyncType? = nil,
+            listBucketMetricsConfigurationsSync: ListBucketMetricsConfigurationsSyncType? = nil,
+            listBucketsAsync: ListBucketsAsyncType? = nil,
+            listBucketsSync: ListBucketsSyncType? = nil,
+            listMultipartUploadsAsync: ListMultipartUploadsAsyncType? = nil,
+            listMultipartUploadsSync: ListMultipartUploadsSyncType? = nil,
+            listObjectVersionsAsync: ListObjectVersionsAsyncType? = nil,
+            listObjectVersionsSync: ListObjectVersionsSyncType? = nil,
+            listObjectsAsync: ListObjectsAsyncType? = nil,
+            listObjectsSync: ListObjectsSyncType? = nil,
+            listObjectsV2Async: ListObjectsV2AsyncType? = nil,
+            listObjectsV2Sync: ListObjectsV2SyncType? = nil,
+            listPartsAsync: ListPartsAsyncType? = nil,
+            listPartsSync: ListPartsSyncType? = nil,
+            putBucketAccelerateConfigurationAsync: PutBucketAccelerateConfigurationAsyncType? = nil,
+            putBucketAccelerateConfigurationSync: PutBucketAccelerateConfigurationSyncType? = nil,
+            putBucketAclAsync: PutBucketAclAsyncType? = nil,
+            putBucketAclSync: PutBucketAclSyncType? = nil,
+            putBucketAnalyticsConfigurationAsync: PutBucketAnalyticsConfigurationAsyncType? = nil,
+            putBucketAnalyticsConfigurationSync: PutBucketAnalyticsConfigurationSyncType? = nil,
+            putBucketCorsAsync: PutBucketCorsAsyncType? = nil,
+            putBucketCorsSync: PutBucketCorsSyncType? = nil,
+            putBucketEncryptionAsync: PutBucketEncryptionAsyncType? = nil,
+            putBucketEncryptionSync: PutBucketEncryptionSyncType? = nil,
+            putBucketInventoryConfigurationAsync: PutBucketInventoryConfigurationAsyncType? = nil,
+            putBucketInventoryConfigurationSync: PutBucketInventoryConfigurationSyncType? = nil,
+            putBucketLifecycleAsync: PutBucketLifecycleAsyncType? = nil,
+            putBucketLifecycleSync: PutBucketLifecycleSyncType? = nil,
+            putBucketLifecycleConfigurationAsync: PutBucketLifecycleConfigurationAsyncType? = nil,
+            putBucketLifecycleConfigurationSync: PutBucketLifecycleConfigurationSyncType? = nil,
+            putBucketLoggingAsync: PutBucketLoggingAsyncType? = nil,
+            putBucketLoggingSync: PutBucketLoggingSyncType? = nil,
+            putBucketMetricsConfigurationAsync: PutBucketMetricsConfigurationAsyncType? = nil,
+            putBucketMetricsConfigurationSync: PutBucketMetricsConfigurationSyncType? = nil,
+            putBucketNotificationAsync: PutBucketNotificationAsyncType? = nil,
+            putBucketNotificationSync: PutBucketNotificationSyncType? = nil,
+            putBucketNotificationConfigurationAsync: PutBucketNotificationConfigurationAsyncType? = nil,
+            putBucketNotificationConfigurationSync: PutBucketNotificationConfigurationSyncType? = nil,
+            putBucketPolicyAsync: PutBucketPolicyAsyncType? = nil,
+            putBucketPolicySync: PutBucketPolicySyncType? = nil,
+            putBucketReplicationAsync: PutBucketReplicationAsyncType? = nil,
+            putBucketReplicationSync: PutBucketReplicationSyncType? = nil,
+            putBucketRequestPaymentAsync: PutBucketRequestPaymentAsyncType? = nil,
+            putBucketRequestPaymentSync: PutBucketRequestPaymentSyncType? = nil,
+            putBucketTaggingAsync: PutBucketTaggingAsyncType? = nil,
+            putBucketTaggingSync: PutBucketTaggingSyncType? = nil,
+            putBucketVersioningAsync: PutBucketVersioningAsyncType? = nil,
+            putBucketVersioningSync: PutBucketVersioningSyncType? = nil,
+            putBucketWebsiteAsync: PutBucketWebsiteAsyncType? = nil,
+            putBucketWebsiteSync: PutBucketWebsiteSyncType? = nil,
+            putObjectAsync: PutObjectAsyncType? = nil,
+            putObjectSync: PutObjectSyncType? = nil,
+            putObjectAclAsync: PutObjectAclAsyncType? = nil,
+            putObjectAclSync: PutObjectAclSyncType? = nil,
+            putObjectLegalHoldAsync: PutObjectLegalHoldAsyncType? = nil,
+            putObjectLegalHoldSync: PutObjectLegalHoldSyncType? = nil,
+            putObjectLockConfigurationAsync: PutObjectLockConfigurationAsyncType? = nil,
+            putObjectLockConfigurationSync: PutObjectLockConfigurationSyncType? = nil,
+            putObjectRetentionAsync: PutObjectRetentionAsyncType? = nil,
+            putObjectRetentionSync: PutObjectRetentionSyncType? = nil,
+            putObjectTaggingAsync: PutObjectTaggingAsyncType? = nil,
+            putObjectTaggingSync: PutObjectTaggingSyncType? = nil,
+            putPublicAccessBlockAsync: PutPublicAccessBlockAsyncType? = nil,
+            putPublicAccessBlockSync: PutPublicAccessBlockSyncType? = nil,
+            restoreObjectAsync: RestoreObjectAsyncType? = nil,
+            restoreObjectSync: RestoreObjectSyncType? = nil,
+            selectObjectContentAsync: SelectObjectContentAsyncType? = nil,
+            selectObjectContentSync: SelectObjectContentSyncType? = nil,
+            uploadPartAsync: UploadPartAsyncType? = nil,
+            uploadPartSync: UploadPartSyncType? = nil,
+            uploadPartCopyAsync: UploadPartCopyAsyncType? = nil,
+            uploadPartCopySync: UploadPartCopySyncType? = nil) {
         self.abortMultipartUploadAsyncOverride = abortMultipartUploadAsync
         self.abortMultipartUploadSyncOverride = abortMultipartUploadSync
         self.completeMultipartUploadAsyncOverride = completeMultipartUploadAsync
@@ -576,10 +576,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func abortMultipartUploadAsync(
             input: S3Model.AbortMultipartUploadRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, S3Error>) -> ()) throws {
         if let abortMultipartUploadAsyncOverride = abortMultipartUploadAsyncOverride {
-            return try abortMultipartUploadAsyncOverride(input, reporting, completion)
+            return try abortMultipartUploadAsyncOverride(input, completion)
         }
 
         let result = AbortMultipartUploadOutput.__default
@@ -597,10 +596,9 @@ public struct MockS3Client: S3ClientProtocol {
      - Throws: noSuchUpload.
      */
     public func abortMultipartUploadSync(
-            input: S3Model.AbortMultipartUploadRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.AbortMultipartUploadOutput {
+            input: S3Model.AbortMultipartUploadRequest) throws -> S3Model.AbortMultipartUploadOutput {
         if let abortMultipartUploadSyncOverride = abortMultipartUploadSyncOverride {
-            return try abortMultipartUploadSyncOverride(input, reporting)
+            return try abortMultipartUploadSyncOverride(input)
         }
 
         return AbortMultipartUploadOutput.__default
@@ -617,10 +615,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func completeMultipartUploadAsync(
             input: S3Model.CompleteMultipartUploadRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, S3Error>) -> ()) throws {
         if let completeMultipartUploadAsyncOverride = completeMultipartUploadAsyncOverride {
-            return try completeMultipartUploadAsyncOverride(input, reporting, completion)
+            return try completeMultipartUploadAsyncOverride(input, completion)
         }
 
         let result = CompleteMultipartUploadOutput.__default
@@ -637,10 +634,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func completeMultipartUploadSync(
-            input: S3Model.CompleteMultipartUploadRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.CompleteMultipartUploadOutput {
+            input: S3Model.CompleteMultipartUploadRequest) throws -> S3Model.CompleteMultipartUploadOutput {
         if let completeMultipartUploadSyncOverride = completeMultipartUploadSyncOverride {
-            return try completeMultipartUploadSyncOverride(input, reporting)
+            return try completeMultipartUploadSyncOverride(input)
         }
 
         return CompleteMultipartUploadOutput.__default
@@ -658,10 +654,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func copyObjectAsync(
             input: S3Model.CopyObjectRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.CopyObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.CopyObjectOutput, S3Error>) -> ()) throws {
         if let copyObjectAsyncOverride = copyObjectAsyncOverride {
-            return try copyObjectAsyncOverride(input, reporting, completion)
+            return try copyObjectAsyncOverride(input, completion)
         }
 
         let result = CopyObjectOutput.__default
@@ -679,10 +674,9 @@ public struct MockS3Client: S3ClientProtocol {
      - Throws: objectNotInActiveTier.
      */
     public func copyObjectSync(
-            input: S3Model.CopyObjectRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.CopyObjectOutput {
+            input: S3Model.CopyObjectRequest) throws -> S3Model.CopyObjectOutput {
         if let copyObjectSyncOverride = copyObjectSyncOverride {
-            return try copyObjectSyncOverride(input, reporting)
+            return try copyObjectSyncOverride(input)
         }
 
         return CopyObjectOutput.__default
@@ -700,10 +694,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func createBucketAsync(
             input: S3Model.CreateBucketRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.CreateBucketOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.CreateBucketOutput, S3Error>) -> ()) throws {
         if let createBucketAsyncOverride = createBucketAsyncOverride {
-            return try createBucketAsyncOverride(input, reporting, completion)
+            return try createBucketAsyncOverride(input, completion)
         }
 
         let result = CreateBucketOutput.__default
@@ -721,10 +714,9 @@ public struct MockS3Client: S3ClientProtocol {
      - Throws: bucketAlreadyExists, bucketAlreadyOwnedByYou.
      */
     public func createBucketSync(
-            input: S3Model.CreateBucketRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.CreateBucketOutput {
+            input: S3Model.CreateBucketRequest) throws -> S3Model.CreateBucketOutput {
         if let createBucketSyncOverride = createBucketSyncOverride {
-            return try createBucketSyncOverride(input, reporting)
+            return try createBucketSyncOverride(input)
         }
 
         return CreateBucketOutput.__default
@@ -741,10 +733,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func createMultipartUploadAsync(
             input: S3Model.CreateMultipartUploadRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, S3Error>) -> ()) throws {
         if let createMultipartUploadAsyncOverride = createMultipartUploadAsyncOverride {
-            return try createMultipartUploadAsyncOverride(input, reporting, completion)
+            return try createMultipartUploadAsyncOverride(input, completion)
         }
 
         let result = CreateMultipartUploadOutput.__default
@@ -761,10 +752,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func createMultipartUploadSync(
-            input: S3Model.CreateMultipartUploadRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.CreateMultipartUploadOutput {
+            input: S3Model.CreateMultipartUploadRequest) throws -> S3Model.CreateMultipartUploadOutput {
         if let createMultipartUploadSyncOverride = createMultipartUploadSyncOverride {
-            return try createMultipartUploadSyncOverride(input, reporting)
+            return try createMultipartUploadSyncOverride(input)
         }
 
         return CreateMultipartUploadOutput.__default
@@ -780,10 +770,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteBucketAsync(
             input: S3Model.DeleteBucketRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketAsyncOverride = deleteBucketAsyncOverride {
-            return try deleteBucketAsyncOverride(input, reporting, completion)
+            return try deleteBucketAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -796,10 +785,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated DeleteBucketRequest object being passed to this operation.
      */
     public func deleteBucketSync(
-            input: S3Model.DeleteBucketRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.DeleteBucketRequest) throws {
         if let deleteBucketSyncOverride = deleteBucketSyncOverride {
-            return try deleteBucketSyncOverride(input, reporting)
+            return try deleteBucketSyncOverride(input)
         }
 
     }
@@ -814,10 +802,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteBucketAnalyticsConfigurationAsync(
             input: S3Model.DeleteBucketAnalyticsConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketAnalyticsConfigurationAsyncOverride = deleteBucketAnalyticsConfigurationAsyncOverride {
-            return try deleteBucketAnalyticsConfigurationAsyncOverride(input, reporting, completion)
+            return try deleteBucketAnalyticsConfigurationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -830,10 +817,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated DeleteBucketAnalyticsConfigurationRequest object being passed to this operation.
      */
     public func deleteBucketAnalyticsConfigurationSync(
-            input: S3Model.DeleteBucketAnalyticsConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.DeleteBucketAnalyticsConfigurationRequest) throws {
         if let deleteBucketAnalyticsConfigurationSyncOverride = deleteBucketAnalyticsConfigurationSyncOverride {
-            return try deleteBucketAnalyticsConfigurationSyncOverride(input, reporting)
+            return try deleteBucketAnalyticsConfigurationSyncOverride(input)
         }
 
     }
@@ -848,10 +834,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteBucketCorsAsync(
             input: S3Model.DeleteBucketCorsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketCorsAsyncOverride = deleteBucketCorsAsyncOverride {
-            return try deleteBucketCorsAsyncOverride(input, reporting, completion)
+            return try deleteBucketCorsAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -864,10 +849,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated DeleteBucketCorsRequest object being passed to this operation.
      */
     public func deleteBucketCorsSync(
-            input: S3Model.DeleteBucketCorsRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.DeleteBucketCorsRequest) throws {
         if let deleteBucketCorsSyncOverride = deleteBucketCorsSyncOverride {
-            return try deleteBucketCorsSyncOverride(input, reporting)
+            return try deleteBucketCorsSyncOverride(input)
         }
 
     }
@@ -882,10 +866,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteBucketEncryptionAsync(
             input: S3Model.DeleteBucketEncryptionRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketEncryptionAsyncOverride = deleteBucketEncryptionAsyncOverride {
-            return try deleteBucketEncryptionAsyncOverride(input, reporting, completion)
+            return try deleteBucketEncryptionAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -898,10 +881,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated DeleteBucketEncryptionRequest object being passed to this operation.
      */
     public func deleteBucketEncryptionSync(
-            input: S3Model.DeleteBucketEncryptionRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.DeleteBucketEncryptionRequest) throws {
         if let deleteBucketEncryptionSyncOverride = deleteBucketEncryptionSyncOverride {
-            return try deleteBucketEncryptionSyncOverride(input, reporting)
+            return try deleteBucketEncryptionSyncOverride(input)
         }
 
     }
@@ -916,10 +898,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteBucketInventoryConfigurationAsync(
             input: S3Model.DeleteBucketInventoryConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketInventoryConfigurationAsyncOverride = deleteBucketInventoryConfigurationAsyncOverride {
-            return try deleteBucketInventoryConfigurationAsyncOverride(input, reporting, completion)
+            return try deleteBucketInventoryConfigurationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -932,10 +913,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated DeleteBucketInventoryConfigurationRequest object being passed to this operation.
      */
     public func deleteBucketInventoryConfigurationSync(
-            input: S3Model.DeleteBucketInventoryConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.DeleteBucketInventoryConfigurationRequest) throws {
         if let deleteBucketInventoryConfigurationSyncOverride = deleteBucketInventoryConfigurationSyncOverride {
-            return try deleteBucketInventoryConfigurationSyncOverride(input, reporting)
+            return try deleteBucketInventoryConfigurationSyncOverride(input)
         }
 
     }
@@ -950,10 +930,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteBucketLifecycleAsync(
             input: S3Model.DeleteBucketLifecycleRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketLifecycleAsyncOverride = deleteBucketLifecycleAsyncOverride {
-            return try deleteBucketLifecycleAsyncOverride(input, reporting, completion)
+            return try deleteBucketLifecycleAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -966,10 +945,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated DeleteBucketLifecycleRequest object being passed to this operation.
      */
     public func deleteBucketLifecycleSync(
-            input: S3Model.DeleteBucketLifecycleRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.DeleteBucketLifecycleRequest) throws {
         if let deleteBucketLifecycleSyncOverride = deleteBucketLifecycleSyncOverride {
-            return try deleteBucketLifecycleSyncOverride(input, reporting)
+            return try deleteBucketLifecycleSyncOverride(input)
         }
 
     }
@@ -984,10 +962,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteBucketMetricsConfigurationAsync(
             input: S3Model.DeleteBucketMetricsConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketMetricsConfigurationAsyncOverride = deleteBucketMetricsConfigurationAsyncOverride {
-            return try deleteBucketMetricsConfigurationAsyncOverride(input, reporting, completion)
+            return try deleteBucketMetricsConfigurationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1000,10 +977,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated DeleteBucketMetricsConfigurationRequest object being passed to this operation.
      */
     public func deleteBucketMetricsConfigurationSync(
-            input: S3Model.DeleteBucketMetricsConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.DeleteBucketMetricsConfigurationRequest) throws {
         if let deleteBucketMetricsConfigurationSyncOverride = deleteBucketMetricsConfigurationSyncOverride {
-            return try deleteBucketMetricsConfigurationSyncOverride(input, reporting)
+            return try deleteBucketMetricsConfigurationSyncOverride(input)
         }
 
     }
@@ -1018,10 +994,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteBucketPolicyAsync(
             input: S3Model.DeleteBucketPolicyRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketPolicyAsyncOverride = deleteBucketPolicyAsyncOverride {
-            return try deleteBucketPolicyAsyncOverride(input, reporting, completion)
+            return try deleteBucketPolicyAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1034,10 +1009,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated DeleteBucketPolicyRequest object being passed to this operation.
      */
     public func deleteBucketPolicySync(
-            input: S3Model.DeleteBucketPolicyRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.DeleteBucketPolicyRequest) throws {
         if let deleteBucketPolicySyncOverride = deleteBucketPolicySyncOverride {
-            return try deleteBucketPolicySyncOverride(input, reporting)
+            return try deleteBucketPolicySyncOverride(input)
         }
 
     }
@@ -1052,10 +1026,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteBucketReplicationAsync(
             input: S3Model.DeleteBucketReplicationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketReplicationAsyncOverride = deleteBucketReplicationAsyncOverride {
-            return try deleteBucketReplicationAsyncOverride(input, reporting, completion)
+            return try deleteBucketReplicationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1068,10 +1041,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated DeleteBucketReplicationRequest object being passed to this operation.
      */
     public func deleteBucketReplicationSync(
-            input: S3Model.DeleteBucketReplicationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.DeleteBucketReplicationRequest) throws {
         if let deleteBucketReplicationSyncOverride = deleteBucketReplicationSyncOverride {
-            return try deleteBucketReplicationSyncOverride(input, reporting)
+            return try deleteBucketReplicationSyncOverride(input)
         }
 
     }
@@ -1086,10 +1058,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteBucketTaggingAsync(
             input: S3Model.DeleteBucketTaggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketTaggingAsyncOverride = deleteBucketTaggingAsyncOverride {
-            return try deleteBucketTaggingAsyncOverride(input, reporting, completion)
+            return try deleteBucketTaggingAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1102,10 +1073,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated DeleteBucketTaggingRequest object being passed to this operation.
      */
     public func deleteBucketTaggingSync(
-            input: S3Model.DeleteBucketTaggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.DeleteBucketTaggingRequest) throws {
         if let deleteBucketTaggingSyncOverride = deleteBucketTaggingSyncOverride {
-            return try deleteBucketTaggingSyncOverride(input, reporting)
+            return try deleteBucketTaggingSyncOverride(input)
         }
 
     }
@@ -1120,10 +1090,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteBucketWebsiteAsync(
             input: S3Model.DeleteBucketWebsiteRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deleteBucketWebsiteAsyncOverride = deleteBucketWebsiteAsyncOverride {
-            return try deleteBucketWebsiteAsyncOverride(input, reporting, completion)
+            return try deleteBucketWebsiteAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1136,10 +1105,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated DeleteBucketWebsiteRequest object being passed to this operation.
      */
     public func deleteBucketWebsiteSync(
-            input: S3Model.DeleteBucketWebsiteRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.DeleteBucketWebsiteRequest) throws {
         if let deleteBucketWebsiteSyncOverride = deleteBucketWebsiteSyncOverride {
-            return try deleteBucketWebsiteSyncOverride(input, reporting)
+            return try deleteBucketWebsiteSyncOverride(input)
         }
 
     }
@@ -1155,10 +1123,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteObjectAsync(
             input: S3Model.DeleteObjectRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.DeleteObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.DeleteObjectOutput, S3Error>) -> ()) throws {
         if let deleteObjectAsyncOverride = deleteObjectAsyncOverride {
-            return try deleteObjectAsyncOverride(input, reporting, completion)
+            return try deleteObjectAsyncOverride(input, completion)
         }
 
         let result = DeleteObjectOutput.__default
@@ -1175,10 +1142,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func deleteObjectSync(
-            input: S3Model.DeleteObjectRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.DeleteObjectOutput {
+            input: S3Model.DeleteObjectRequest) throws -> S3Model.DeleteObjectOutput {
         if let deleteObjectSyncOverride = deleteObjectSyncOverride {
-            return try deleteObjectSyncOverride(input, reporting)
+            return try deleteObjectSyncOverride(input)
         }
 
         return DeleteObjectOutput.__default
@@ -1195,10 +1161,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteObjectTaggingAsync(
             input: S3Model.DeleteObjectTaggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, S3Error>) -> ()) throws {
         if let deleteObjectTaggingAsyncOverride = deleteObjectTaggingAsyncOverride {
-            return try deleteObjectTaggingAsyncOverride(input, reporting, completion)
+            return try deleteObjectTaggingAsyncOverride(input, completion)
         }
 
         let result = DeleteObjectTaggingOutput.__default
@@ -1215,10 +1180,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func deleteObjectTaggingSync(
-            input: S3Model.DeleteObjectTaggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.DeleteObjectTaggingOutput {
+            input: S3Model.DeleteObjectTaggingRequest) throws -> S3Model.DeleteObjectTaggingOutput {
         if let deleteObjectTaggingSyncOverride = deleteObjectTaggingSyncOverride {
-            return try deleteObjectTaggingSyncOverride(input, reporting)
+            return try deleteObjectTaggingSyncOverride(input)
         }
 
         return DeleteObjectTaggingOutput.__default
@@ -1235,10 +1199,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deleteObjectsAsync(
             input: S3Model.DeleteObjectsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.DeleteObjectsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.DeleteObjectsOutput, S3Error>) -> ()) throws {
         if let deleteObjectsAsyncOverride = deleteObjectsAsyncOverride {
-            return try deleteObjectsAsyncOverride(input, reporting, completion)
+            return try deleteObjectsAsyncOverride(input, completion)
         }
 
         let result = DeleteObjectsOutput.__default
@@ -1255,10 +1218,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func deleteObjectsSync(
-            input: S3Model.DeleteObjectsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.DeleteObjectsOutput {
+            input: S3Model.DeleteObjectsRequest) throws -> S3Model.DeleteObjectsOutput {
         if let deleteObjectsSyncOverride = deleteObjectsSyncOverride {
-            return try deleteObjectsSyncOverride(input, reporting)
+            return try deleteObjectsSyncOverride(input)
         }
 
         return DeleteObjectsOutput.__default
@@ -1274,10 +1236,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func deletePublicAccessBlockAsync(
             input: S3Model.DeletePublicAccessBlockRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let deletePublicAccessBlockAsyncOverride = deletePublicAccessBlockAsyncOverride {
-            return try deletePublicAccessBlockAsyncOverride(input, reporting, completion)
+            return try deletePublicAccessBlockAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -1290,10 +1251,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated DeletePublicAccessBlockRequest object being passed to this operation.
      */
     public func deletePublicAccessBlockSync(
-            input: S3Model.DeletePublicAccessBlockRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.DeletePublicAccessBlockRequest) throws {
         if let deletePublicAccessBlockSyncOverride = deletePublicAccessBlockSyncOverride {
-            return try deletePublicAccessBlockSyncOverride(input, reporting)
+            return try deletePublicAccessBlockSyncOverride(input)
         }
 
     }
@@ -1309,10 +1269,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketAccelerateConfigurationAsync(
             input: S3Model.GetBucketAccelerateConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, S3Error>) -> ()) throws {
         if let getBucketAccelerateConfigurationAsyncOverride = getBucketAccelerateConfigurationAsyncOverride {
-            return try getBucketAccelerateConfigurationAsyncOverride(input, reporting, completion)
+            return try getBucketAccelerateConfigurationAsyncOverride(input, completion)
         }
 
         let result = GetBucketAccelerateConfigurationOutput.__default
@@ -1329,10 +1288,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketAccelerateConfigurationSync(
-            input: S3Model.GetBucketAccelerateConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketAccelerateConfigurationOutput {
+            input: S3Model.GetBucketAccelerateConfigurationRequest) throws -> S3Model.GetBucketAccelerateConfigurationOutput {
         if let getBucketAccelerateConfigurationSyncOverride = getBucketAccelerateConfigurationSyncOverride {
-            return try getBucketAccelerateConfigurationSyncOverride(input, reporting)
+            return try getBucketAccelerateConfigurationSyncOverride(input)
         }
 
         return GetBucketAccelerateConfigurationOutput.__default
@@ -1349,10 +1307,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketAclAsync(
             input: S3Model.GetBucketAclRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketAclOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketAclOutput, S3Error>) -> ()) throws {
         if let getBucketAclAsyncOverride = getBucketAclAsyncOverride {
-            return try getBucketAclAsyncOverride(input, reporting, completion)
+            return try getBucketAclAsyncOverride(input, completion)
         }
 
         let result = GetBucketAclOutput.__default
@@ -1369,10 +1326,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketAclSync(
-            input: S3Model.GetBucketAclRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketAclOutput {
+            input: S3Model.GetBucketAclRequest) throws -> S3Model.GetBucketAclOutput {
         if let getBucketAclSyncOverride = getBucketAclSyncOverride {
-            return try getBucketAclSyncOverride(input, reporting)
+            return try getBucketAclSyncOverride(input)
         }
 
         return GetBucketAclOutput.__default
@@ -1389,10 +1345,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketAnalyticsConfigurationAsync(
             input: S3Model.GetBucketAnalyticsConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, S3Error>) -> ()) throws {
         if let getBucketAnalyticsConfigurationAsyncOverride = getBucketAnalyticsConfigurationAsyncOverride {
-            return try getBucketAnalyticsConfigurationAsyncOverride(input, reporting, completion)
+            return try getBucketAnalyticsConfigurationAsyncOverride(input, completion)
         }
 
         let result = GetBucketAnalyticsConfigurationOutput.__default
@@ -1409,10 +1364,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketAnalyticsConfigurationSync(
-            input: S3Model.GetBucketAnalyticsConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketAnalyticsConfigurationOutput {
+            input: S3Model.GetBucketAnalyticsConfigurationRequest) throws -> S3Model.GetBucketAnalyticsConfigurationOutput {
         if let getBucketAnalyticsConfigurationSyncOverride = getBucketAnalyticsConfigurationSyncOverride {
-            return try getBucketAnalyticsConfigurationSyncOverride(input, reporting)
+            return try getBucketAnalyticsConfigurationSyncOverride(input)
         }
 
         return GetBucketAnalyticsConfigurationOutput.__default
@@ -1429,10 +1383,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketCorsAsync(
             input: S3Model.GetBucketCorsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketCorsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketCorsOutput, S3Error>) -> ()) throws {
         if let getBucketCorsAsyncOverride = getBucketCorsAsyncOverride {
-            return try getBucketCorsAsyncOverride(input, reporting, completion)
+            return try getBucketCorsAsyncOverride(input, completion)
         }
 
         let result = GetBucketCorsOutput.__default
@@ -1449,10 +1402,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketCorsSync(
-            input: S3Model.GetBucketCorsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketCorsOutput {
+            input: S3Model.GetBucketCorsRequest) throws -> S3Model.GetBucketCorsOutput {
         if let getBucketCorsSyncOverride = getBucketCorsSyncOverride {
-            return try getBucketCorsSyncOverride(input, reporting)
+            return try getBucketCorsSyncOverride(input)
         }
 
         return GetBucketCorsOutput.__default
@@ -1469,10 +1421,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketEncryptionAsync(
             input: S3Model.GetBucketEncryptionRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, S3Error>) -> ()) throws {
         if let getBucketEncryptionAsyncOverride = getBucketEncryptionAsyncOverride {
-            return try getBucketEncryptionAsyncOverride(input, reporting, completion)
+            return try getBucketEncryptionAsyncOverride(input, completion)
         }
 
         let result = GetBucketEncryptionOutput.__default
@@ -1489,10 +1440,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketEncryptionSync(
-            input: S3Model.GetBucketEncryptionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketEncryptionOutput {
+            input: S3Model.GetBucketEncryptionRequest) throws -> S3Model.GetBucketEncryptionOutput {
         if let getBucketEncryptionSyncOverride = getBucketEncryptionSyncOverride {
-            return try getBucketEncryptionSyncOverride(input, reporting)
+            return try getBucketEncryptionSyncOverride(input)
         }
 
         return GetBucketEncryptionOutput.__default
@@ -1509,10 +1459,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketInventoryConfigurationAsync(
             input: S3Model.GetBucketInventoryConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, S3Error>) -> ()) throws {
         if let getBucketInventoryConfigurationAsyncOverride = getBucketInventoryConfigurationAsyncOverride {
-            return try getBucketInventoryConfigurationAsyncOverride(input, reporting, completion)
+            return try getBucketInventoryConfigurationAsyncOverride(input, completion)
         }
 
         let result = GetBucketInventoryConfigurationOutput.__default
@@ -1529,10 +1478,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketInventoryConfigurationSync(
-            input: S3Model.GetBucketInventoryConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketInventoryConfigurationOutput {
+            input: S3Model.GetBucketInventoryConfigurationRequest) throws -> S3Model.GetBucketInventoryConfigurationOutput {
         if let getBucketInventoryConfigurationSyncOverride = getBucketInventoryConfigurationSyncOverride {
-            return try getBucketInventoryConfigurationSyncOverride(input, reporting)
+            return try getBucketInventoryConfigurationSyncOverride(input)
         }
 
         return GetBucketInventoryConfigurationOutput.__default
@@ -1549,10 +1497,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketLifecycleAsync(
             input: S3Model.GetBucketLifecycleRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, S3Error>) -> ()) throws {
         if let getBucketLifecycleAsyncOverride = getBucketLifecycleAsyncOverride {
-            return try getBucketLifecycleAsyncOverride(input, reporting, completion)
+            return try getBucketLifecycleAsyncOverride(input, completion)
         }
 
         let result = GetBucketLifecycleOutput.__default
@@ -1569,10 +1516,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketLifecycleSync(
-            input: S3Model.GetBucketLifecycleRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketLifecycleOutput {
+            input: S3Model.GetBucketLifecycleRequest) throws -> S3Model.GetBucketLifecycleOutput {
         if let getBucketLifecycleSyncOverride = getBucketLifecycleSyncOverride {
-            return try getBucketLifecycleSyncOverride(input, reporting)
+            return try getBucketLifecycleSyncOverride(input)
         }
 
         return GetBucketLifecycleOutput.__default
@@ -1589,10 +1535,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketLifecycleConfigurationAsync(
             input: S3Model.GetBucketLifecycleConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, S3Error>) -> ()) throws {
         if let getBucketLifecycleConfigurationAsyncOverride = getBucketLifecycleConfigurationAsyncOverride {
-            return try getBucketLifecycleConfigurationAsyncOverride(input, reporting, completion)
+            return try getBucketLifecycleConfigurationAsyncOverride(input, completion)
         }
 
         let result = GetBucketLifecycleConfigurationOutput.__default
@@ -1609,10 +1554,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketLifecycleConfigurationSync(
-            input: S3Model.GetBucketLifecycleConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketLifecycleConfigurationOutput {
+            input: S3Model.GetBucketLifecycleConfigurationRequest) throws -> S3Model.GetBucketLifecycleConfigurationOutput {
         if let getBucketLifecycleConfigurationSyncOverride = getBucketLifecycleConfigurationSyncOverride {
-            return try getBucketLifecycleConfigurationSyncOverride(input, reporting)
+            return try getBucketLifecycleConfigurationSyncOverride(input)
         }
 
         return GetBucketLifecycleConfigurationOutput.__default
@@ -1629,10 +1573,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketLocationAsync(
             input: S3Model.GetBucketLocationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketLocationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketLocationOutput, S3Error>) -> ()) throws {
         if let getBucketLocationAsyncOverride = getBucketLocationAsyncOverride {
-            return try getBucketLocationAsyncOverride(input, reporting, completion)
+            return try getBucketLocationAsyncOverride(input, completion)
         }
 
         let result = GetBucketLocationOutput.__default
@@ -1649,10 +1592,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketLocationSync(
-            input: S3Model.GetBucketLocationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketLocationOutput {
+            input: S3Model.GetBucketLocationRequest) throws -> S3Model.GetBucketLocationOutput {
         if let getBucketLocationSyncOverride = getBucketLocationSyncOverride {
-            return try getBucketLocationSyncOverride(input, reporting)
+            return try getBucketLocationSyncOverride(input)
         }
 
         return GetBucketLocationOutput.__default
@@ -1669,10 +1611,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketLoggingAsync(
             input: S3Model.GetBucketLoggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketLoggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketLoggingOutput, S3Error>) -> ()) throws {
         if let getBucketLoggingAsyncOverride = getBucketLoggingAsyncOverride {
-            return try getBucketLoggingAsyncOverride(input, reporting, completion)
+            return try getBucketLoggingAsyncOverride(input, completion)
         }
 
         let result = GetBucketLoggingOutput.__default
@@ -1689,10 +1630,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketLoggingSync(
-            input: S3Model.GetBucketLoggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketLoggingOutput {
+            input: S3Model.GetBucketLoggingRequest) throws -> S3Model.GetBucketLoggingOutput {
         if let getBucketLoggingSyncOverride = getBucketLoggingSyncOverride {
-            return try getBucketLoggingSyncOverride(input, reporting)
+            return try getBucketLoggingSyncOverride(input)
         }
 
         return GetBucketLoggingOutput.__default
@@ -1709,10 +1649,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketMetricsConfigurationAsync(
             input: S3Model.GetBucketMetricsConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, S3Error>) -> ()) throws {
         if let getBucketMetricsConfigurationAsyncOverride = getBucketMetricsConfigurationAsyncOverride {
-            return try getBucketMetricsConfigurationAsyncOverride(input, reporting, completion)
+            return try getBucketMetricsConfigurationAsyncOverride(input, completion)
         }
 
         let result = GetBucketMetricsConfigurationOutput.__default
@@ -1729,10 +1668,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketMetricsConfigurationSync(
-            input: S3Model.GetBucketMetricsConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketMetricsConfigurationOutput {
+            input: S3Model.GetBucketMetricsConfigurationRequest) throws -> S3Model.GetBucketMetricsConfigurationOutput {
         if let getBucketMetricsConfigurationSyncOverride = getBucketMetricsConfigurationSyncOverride {
-            return try getBucketMetricsConfigurationSyncOverride(input, reporting)
+            return try getBucketMetricsConfigurationSyncOverride(input)
         }
 
         return GetBucketMetricsConfigurationOutput.__default
@@ -1749,10 +1687,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketNotificationAsync(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, S3Error>) -> ()) throws {
         if let getBucketNotificationAsyncOverride = getBucketNotificationAsyncOverride {
-            return try getBucketNotificationAsyncOverride(input, reporting, completion)
+            return try getBucketNotificationAsyncOverride(input, completion)
         }
 
         let result = NotificationConfigurationDeprecated.__default
@@ -1769,10 +1706,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketNotificationSync(
-            input: S3Model.GetBucketNotificationConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.NotificationConfigurationDeprecated {
+            input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfigurationDeprecated {
         if let getBucketNotificationSyncOverride = getBucketNotificationSyncOverride {
-            return try getBucketNotificationSyncOverride(input, reporting)
+            return try getBucketNotificationSyncOverride(input)
         }
 
         return NotificationConfigurationDeprecated.__default
@@ -1789,10 +1725,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketNotificationConfigurationAsync(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.NotificationConfiguration, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.NotificationConfiguration, S3Error>) -> ()) throws {
         if let getBucketNotificationConfigurationAsyncOverride = getBucketNotificationConfigurationAsyncOverride {
-            return try getBucketNotificationConfigurationAsyncOverride(input, reporting, completion)
+            return try getBucketNotificationConfigurationAsyncOverride(input, completion)
         }
 
         let result = NotificationConfiguration.__default
@@ -1809,10 +1744,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketNotificationConfigurationSync(
-            input: S3Model.GetBucketNotificationConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.NotificationConfiguration {
+            input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfiguration {
         if let getBucketNotificationConfigurationSyncOverride = getBucketNotificationConfigurationSyncOverride {
-            return try getBucketNotificationConfigurationSyncOverride(input, reporting)
+            return try getBucketNotificationConfigurationSyncOverride(input)
         }
 
         return NotificationConfiguration.__default
@@ -1829,10 +1763,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketPolicyAsync(
             input: S3Model.GetBucketPolicyRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketPolicyOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketPolicyOutput, S3Error>) -> ()) throws {
         if let getBucketPolicyAsyncOverride = getBucketPolicyAsyncOverride {
-            return try getBucketPolicyAsyncOverride(input, reporting, completion)
+            return try getBucketPolicyAsyncOverride(input, completion)
         }
 
         let result = GetBucketPolicyOutput.__default
@@ -1849,10 +1782,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketPolicySync(
-            input: S3Model.GetBucketPolicyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketPolicyOutput {
+            input: S3Model.GetBucketPolicyRequest) throws -> S3Model.GetBucketPolicyOutput {
         if let getBucketPolicySyncOverride = getBucketPolicySyncOverride {
-            return try getBucketPolicySyncOverride(input, reporting)
+            return try getBucketPolicySyncOverride(input)
         }
 
         return GetBucketPolicyOutput.__default
@@ -1869,10 +1801,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketPolicyStatusAsync(
             input: S3Model.GetBucketPolicyStatusRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, S3Error>) -> ()) throws {
         if let getBucketPolicyStatusAsyncOverride = getBucketPolicyStatusAsyncOverride {
-            return try getBucketPolicyStatusAsyncOverride(input, reporting, completion)
+            return try getBucketPolicyStatusAsyncOverride(input, completion)
         }
 
         let result = GetBucketPolicyStatusOutput.__default
@@ -1889,10 +1820,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketPolicyStatusSync(
-            input: S3Model.GetBucketPolicyStatusRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketPolicyStatusOutput {
+            input: S3Model.GetBucketPolicyStatusRequest) throws -> S3Model.GetBucketPolicyStatusOutput {
         if let getBucketPolicyStatusSyncOverride = getBucketPolicyStatusSyncOverride {
-            return try getBucketPolicyStatusSyncOverride(input, reporting)
+            return try getBucketPolicyStatusSyncOverride(input)
         }
 
         return GetBucketPolicyStatusOutput.__default
@@ -1909,10 +1839,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketReplicationAsync(
             input: S3Model.GetBucketReplicationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketReplicationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketReplicationOutput, S3Error>) -> ()) throws {
         if let getBucketReplicationAsyncOverride = getBucketReplicationAsyncOverride {
-            return try getBucketReplicationAsyncOverride(input, reporting, completion)
+            return try getBucketReplicationAsyncOverride(input, completion)
         }
 
         let result = GetBucketReplicationOutput.__default
@@ -1929,10 +1858,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketReplicationSync(
-            input: S3Model.GetBucketReplicationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketReplicationOutput {
+            input: S3Model.GetBucketReplicationRequest) throws -> S3Model.GetBucketReplicationOutput {
         if let getBucketReplicationSyncOverride = getBucketReplicationSyncOverride {
-            return try getBucketReplicationSyncOverride(input, reporting)
+            return try getBucketReplicationSyncOverride(input)
         }
 
         return GetBucketReplicationOutput.__default
@@ -1949,10 +1877,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketRequestPaymentAsync(
             input: S3Model.GetBucketRequestPaymentRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, S3Error>) -> ()) throws {
         if let getBucketRequestPaymentAsyncOverride = getBucketRequestPaymentAsyncOverride {
-            return try getBucketRequestPaymentAsyncOverride(input, reporting, completion)
+            return try getBucketRequestPaymentAsyncOverride(input, completion)
         }
 
         let result = GetBucketRequestPaymentOutput.__default
@@ -1969,10 +1896,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketRequestPaymentSync(
-            input: S3Model.GetBucketRequestPaymentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketRequestPaymentOutput {
+            input: S3Model.GetBucketRequestPaymentRequest) throws -> S3Model.GetBucketRequestPaymentOutput {
         if let getBucketRequestPaymentSyncOverride = getBucketRequestPaymentSyncOverride {
-            return try getBucketRequestPaymentSyncOverride(input, reporting)
+            return try getBucketRequestPaymentSyncOverride(input)
         }
 
         return GetBucketRequestPaymentOutput.__default
@@ -1989,10 +1915,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketTaggingAsync(
             input: S3Model.GetBucketTaggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketTaggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketTaggingOutput, S3Error>) -> ()) throws {
         if let getBucketTaggingAsyncOverride = getBucketTaggingAsyncOverride {
-            return try getBucketTaggingAsyncOverride(input, reporting, completion)
+            return try getBucketTaggingAsyncOverride(input, completion)
         }
 
         let result = GetBucketTaggingOutput.__default
@@ -2009,10 +1934,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketTaggingSync(
-            input: S3Model.GetBucketTaggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketTaggingOutput {
+            input: S3Model.GetBucketTaggingRequest) throws -> S3Model.GetBucketTaggingOutput {
         if let getBucketTaggingSyncOverride = getBucketTaggingSyncOverride {
-            return try getBucketTaggingSyncOverride(input, reporting)
+            return try getBucketTaggingSyncOverride(input)
         }
 
         return GetBucketTaggingOutput.__default
@@ -2029,10 +1953,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketVersioningAsync(
             input: S3Model.GetBucketVersioningRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketVersioningOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketVersioningOutput, S3Error>) -> ()) throws {
         if let getBucketVersioningAsyncOverride = getBucketVersioningAsyncOverride {
-            return try getBucketVersioningAsyncOverride(input, reporting, completion)
+            return try getBucketVersioningAsyncOverride(input, completion)
         }
 
         let result = GetBucketVersioningOutput.__default
@@ -2049,10 +1972,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketVersioningSync(
-            input: S3Model.GetBucketVersioningRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketVersioningOutput {
+            input: S3Model.GetBucketVersioningRequest) throws -> S3Model.GetBucketVersioningOutput {
         if let getBucketVersioningSyncOverride = getBucketVersioningSyncOverride {
-            return try getBucketVersioningSyncOverride(input, reporting)
+            return try getBucketVersioningSyncOverride(input)
         }
 
         return GetBucketVersioningOutput.__default
@@ -2069,10 +1991,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getBucketWebsiteAsync(
             input: S3Model.GetBucketWebsiteRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, S3Error>) -> ()) throws {
         if let getBucketWebsiteAsyncOverride = getBucketWebsiteAsyncOverride {
-            return try getBucketWebsiteAsyncOverride(input, reporting, completion)
+            return try getBucketWebsiteAsyncOverride(input, completion)
         }
 
         let result = GetBucketWebsiteOutput.__default
@@ -2089,10 +2010,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getBucketWebsiteSync(
-            input: S3Model.GetBucketWebsiteRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetBucketWebsiteOutput {
+            input: S3Model.GetBucketWebsiteRequest) throws -> S3Model.GetBucketWebsiteOutput {
         if let getBucketWebsiteSyncOverride = getBucketWebsiteSyncOverride {
-            return try getBucketWebsiteSyncOverride(input, reporting)
+            return try getBucketWebsiteSyncOverride(input)
         }
 
         return GetBucketWebsiteOutput.__default
@@ -2110,10 +2030,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getObjectAsync(
             input: S3Model.GetObjectRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectOutput, S3Error>) -> ()) throws {
         if let getObjectAsyncOverride = getObjectAsyncOverride {
-            return try getObjectAsyncOverride(input, reporting, completion)
+            return try getObjectAsyncOverride(input, completion)
         }
 
         let result = GetObjectOutput.__default
@@ -2131,10 +2050,9 @@ public struct MockS3Client: S3ClientProtocol {
      - Throws: noSuchKey.
      */
     public func getObjectSync(
-            input: S3Model.GetObjectRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectOutput {
+            input: S3Model.GetObjectRequest) throws -> S3Model.GetObjectOutput {
         if let getObjectSyncOverride = getObjectSyncOverride {
-            return try getObjectSyncOverride(input, reporting)
+            return try getObjectSyncOverride(input)
         }
 
         return GetObjectOutput.__default
@@ -2152,10 +2070,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getObjectAclAsync(
             input: S3Model.GetObjectAclRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetObjectAclOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectAclOutput, S3Error>) -> ()) throws {
         if let getObjectAclAsyncOverride = getObjectAclAsyncOverride {
-            return try getObjectAclAsyncOverride(input, reporting, completion)
+            return try getObjectAclAsyncOverride(input, completion)
         }
 
         let result = GetObjectAclOutput.__default
@@ -2173,10 +2090,9 @@ public struct MockS3Client: S3ClientProtocol {
      - Throws: noSuchKey.
      */
     public func getObjectAclSync(
-            input: S3Model.GetObjectAclRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectAclOutput {
+            input: S3Model.GetObjectAclRequest) throws -> S3Model.GetObjectAclOutput {
         if let getObjectAclSyncOverride = getObjectAclSyncOverride {
-            return try getObjectAclSyncOverride(input, reporting)
+            return try getObjectAclSyncOverride(input)
         }
 
         return GetObjectAclOutput.__default
@@ -2193,10 +2109,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getObjectLegalHoldAsync(
             input: S3Model.GetObjectLegalHoldRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, S3Error>) -> ()) throws {
         if let getObjectLegalHoldAsyncOverride = getObjectLegalHoldAsyncOverride {
-            return try getObjectLegalHoldAsyncOverride(input, reporting, completion)
+            return try getObjectLegalHoldAsyncOverride(input, completion)
         }
 
         let result = GetObjectLegalHoldOutput.__default
@@ -2213,10 +2128,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getObjectLegalHoldSync(
-            input: S3Model.GetObjectLegalHoldRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectLegalHoldOutput {
+            input: S3Model.GetObjectLegalHoldRequest) throws -> S3Model.GetObjectLegalHoldOutput {
         if let getObjectLegalHoldSyncOverride = getObjectLegalHoldSyncOverride {
-            return try getObjectLegalHoldSyncOverride(input, reporting)
+            return try getObjectLegalHoldSyncOverride(input)
         }
 
         return GetObjectLegalHoldOutput.__default
@@ -2233,10 +2147,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getObjectLockConfigurationAsync(
             input: S3Model.GetObjectLockConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, S3Error>) -> ()) throws {
         if let getObjectLockConfigurationAsyncOverride = getObjectLockConfigurationAsyncOverride {
-            return try getObjectLockConfigurationAsyncOverride(input, reporting, completion)
+            return try getObjectLockConfigurationAsyncOverride(input, completion)
         }
 
         let result = GetObjectLockConfigurationOutput.__default
@@ -2253,10 +2166,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getObjectLockConfigurationSync(
-            input: S3Model.GetObjectLockConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectLockConfigurationOutput {
+            input: S3Model.GetObjectLockConfigurationRequest) throws -> S3Model.GetObjectLockConfigurationOutput {
         if let getObjectLockConfigurationSyncOverride = getObjectLockConfigurationSyncOverride {
-            return try getObjectLockConfigurationSyncOverride(input, reporting)
+            return try getObjectLockConfigurationSyncOverride(input)
         }
 
         return GetObjectLockConfigurationOutput.__default
@@ -2273,10 +2185,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getObjectRetentionAsync(
             input: S3Model.GetObjectRetentionRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetObjectRetentionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectRetentionOutput, S3Error>) -> ()) throws {
         if let getObjectRetentionAsyncOverride = getObjectRetentionAsyncOverride {
-            return try getObjectRetentionAsyncOverride(input, reporting, completion)
+            return try getObjectRetentionAsyncOverride(input, completion)
         }
 
         let result = GetObjectRetentionOutput.__default
@@ -2293,10 +2204,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getObjectRetentionSync(
-            input: S3Model.GetObjectRetentionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectRetentionOutput {
+            input: S3Model.GetObjectRetentionRequest) throws -> S3Model.GetObjectRetentionOutput {
         if let getObjectRetentionSyncOverride = getObjectRetentionSyncOverride {
-            return try getObjectRetentionSyncOverride(input, reporting)
+            return try getObjectRetentionSyncOverride(input)
         }
 
         return GetObjectRetentionOutput.__default
@@ -2313,10 +2223,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getObjectTaggingAsync(
             input: S3Model.GetObjectTaggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetObjectTaggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectTaggingOutput, S3Error>) -> ()) throws {
         if let getObjectTaggingAsyncOverride = getObjectTaggingAsyncOverride {
-            return try getObjectTaggingAsyncOverride(input, reporting, completion)
+            return try getObjectTaggingAsyncOverride(input, completion)
         }
 
         let result = GetObjectTaggingOutput.__default
@@ -2333,10 +2242,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getObjectTaggingSync(
-            input: S3Model.GetObjectTaggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectTaggingOutput {
+            input: S3Model.GetObjectTaggingRequest) throws -> S3Model.GetObjectTaggingOutput {
         if let getObjectTaggingSyncOverride = getObjectTaggingSyncOverride {
-            return try getObjectTaggingSyncOverride(input, reporting)
+            return try getObjectTaggingSyncOverride(input)
         }
 
         return GetObjectTaggingOutput.__default
@@ -2353,10 +2261,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getObjectTorrentAsync(
             input: S3Model.GetObjectTorrentRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetObjectTorrentOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetObjectTorrentOutput, S3Error>) -> ()) throws {
         if let getObjectTorrentAsyncOverride = getObjectTorrentAsyncOverride {
-            return try getObjectTorrentAsyncOverride(input, reporting, completion)
+            return try getObjectTorrentAsyncOverride(input, completion)
         }
 
         let result = GetObjectTorrentOutput.__default
@@ -2373,10 +2280,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getObjectTorrentSync(
-            input: S3Model.GetObjectTorrentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetObjectTorrentOutput {
+            input: S3Model.GetObjectTorrentRequest) throws -> S3Model.GetObjectTorrentOutput {
         if let getObjectTorrentSyncOverride = getObjectTorrentSyncOverride {
-            return try getObjectTorrentSyncOverride(input, reporting)
+            return try getObjectTorrentSyncOverride(input)
         }
 
         return GetObjectTorrentOutput.__default
@@ -2393,10 +2299,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func getPublicAccessBlockAsync(
             input: S3Model.GetPublicAccessBlockRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, S3Error>) -> ()) throws {
         if let getPublicAccessBlockAsyncOverride = getPublicAccessBlockAsyncOverride {
-            return try getPublicAccessBlockAsyncOverride(input, reporting, completion)
+            return try getPublicAccessBlockAsyncOverride(input, completion)
         }
 
         let result = GetPublicAccessBlockOutput.__default
@@ -2413,10 +2318,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func getPublicAccessBlockSync(
-            input: S3Model.GetPublicAccessBlockRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.GetPublicAccessBlockOutput {
+            input: S3Model.GetPublicAccessBlockRequest) throws -> S3Model.GetPublicAccessBlockOutput {
         if let getPublicAccessBlockSyncOverride = getPublicAccessBlockSyncOverride {
-            return try getPublicAccessBlockSyncOverride(input, reporting)
+            return try getPublicAccessBlockSyncOverride(input)
         }
 
         return GetPublicAccessBlockOutput.__default
@@ -2433,10 +2337,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func headBucketAsync(
             input: S3Model.HeadBucketRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let headBucketAsyncOverride = headBucketAsyncOverride {
-            return try headBucketAsyncOverride(input, reporting, completion)
+            return try headBucketAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -2450,10 +2353,9 @@ public struct MockS3Client: S3ClientProtocol {
      - Throws: noSuchBucket.
      */
     public func headBucketSync(
-            input: S3Model.HeadBucketRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.HeadBucketRequest) throws {
         if let headBucketSyncOverride = headBucketSyncOverride {
-            return try headBucketSyncOverride(input, reporting)
+            return try headBucketSyncOverride(input)
         }
 
     }
@@ -2470,10 +2372,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func headObjectAsync(
             input: S3Model.HeadObjectRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.HeadObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.HeadObjectOutput, S3Error>) -> ()) throws {
         if let headObjectAsyncOverride = headObjectAsyncOverride {
-            return try headObjectAsyncOverride(input, reporting, completion)
+            return try headObjectAsyncOverride(input, completion)
         }
 
         let result = HeadObjectOutput.__default
@@ -2491,10 +2392,9 @@ public struct MockS3Client: S3ClientProtocol {
      - Throws: noSuchKey.
      */
     public func headObjectSync(
-            input: S3Model.HeadObjectRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.HeadObjectOutput {
+            input: S3Model.HeadObjectRequest) throws -> S3Model.HeadObjectOutput {
         if let headObjectSyncOverride = headObjectSyncOverride {
-            return try headObjectSyncOverride(input, reporting)
+            return try headObjectSyncOverride(input)
         }
 
         return HeadObjectOutput.__default
@@ -2511,10 +2411,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func listBucketAnalyticsConfigurationsAsync(
             input: S3Model.ListBucketAnalyticsConfigurationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, S3Error>) -> ()) throws {
         if let listBucketAnalyticsConfigurationsAsyncOverride = listBucketAnalyticsConfigurationsAsyncOverride {
-            return try listBucketAnalyticsConfigurationsAsyncOverride(input, reporting, completion)
+            return try listBucketAnalyticsConfigurationsAsyncOverride(input, completion)
         }
 
         let result = ListBucketAnalyticsConfigurationsOutput.__default
@@ -2531,10 +2430,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func listBucketAnalyticsConfigurationsSync(
-            input: S3Model.ListBucketAnalyticsConfigurationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput {
+            input: S3Model.ListBucketAnalyticsConfigurationsRequest) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput {
         if let listBucketAnalyticsConfigurationsSyncOverride = listBucketAnalyticsConfigurationsSyncOverride {
-            return try listBucketAnalyticsConfigurationsSyncOverride(input, reporting)
+            return try listBucketAnalyticsConfigurationsSyncOverride(input)
         }
 
         return ListBucketAnalyticsConfigurationsOutput.__default
@@ -2551,10 +2449,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func listBucketInventoryConfigurationsAsync(
             input: S3Model.ListBucketInventoryConfigurationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, S3Error>) -> ()) throws {
         if let listBucketInventoryConfigurationsAsyncOverride = listBucketInventoryConfigurationsAsyncOverride {
-            return try listBucketInventoryConfigurationsAsyncOverride(input, reporting, completion)
+            return try listBucketInventoryConfigurationsAsyncOverride(input, completion)
         }
 
         let result = ListBucketInventoryConfigurationsOutput.__default
@@ -2571,10 +2468,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func listBucketInventoryConfigurationsSync(
-            input: S3Model.ListBucketInventoryConfigurationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListBucketInventoryConfigurationsOutput {
+            input: S3Model.ListBucketInventoryConfigurationsRequest) throws -> S3Model.ListBucketInventoryConfigurationsOutput {
         if let listBucketInventoryConfigurationsSyncOverride = listBucketInventoryConfigurationsSyncOverride {
-            return try listBucketInventoryConfigurationsSyncOverride(input, reporting)
+            return try listBucketInventoryConfigurationsSyncOverride(input)
         }
 
         return ListBucketInventoryConfigurationsOutput.__default
@@ -2591,10 +2487,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func listBucketMetricsConfigurationsAsync(
             input: S3Model.ListBucketMetricsConfigurationsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, S3Error>) -> ()) throws {
         if let listBucketMetricsConfigurationsAsyncOverride = listBucketMetricsConfigurationsAsyncOverride {
-            return try listBucketMetricsConfigurationsAsyncOverride(input, reporting, completion)
+            return try listBucketMetricsConfigurationsAsyncOverride(input, completion)
         }
 
         let result = ListBucketMetricsConfigurationsOutput.__default
@@ -2611,10 +2506,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func listBucketMetricsConfigurationsSync(
-            input: S3Model.ListBucketMetricsConfigurationsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListBucketMetricsConfigurationsOutput {
+            input: S3Model.ListBucketMetricsConfigurationsRequest) throws -> S3Model.ListBucketMetricsConfigurationsOutput {
         if let listBucketMetricsConfigurationsSyncOverride = listBucketMetricsConfigurationsSyncOverride {
-            return try listBucketMetricsConfigurationsSyncOverride(input, reporting)
+            return try listBucketMetricsConfigurationsSyncOverride(input)
         }
 
         return ListBucketMetricsConfigurationsOutput.__default
@@ -2627,10 +2521,9 @@ public struct MockS3Client: S3ClientProtocol {
            object will be validated before being returned to caller.
      */
     public func listBucketsAsync(
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.ListBucketsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListBucketsOutput, S3Error>) -> ()) throws {
         if let listBucketsAsyncOverride = listBucketsAsyncOverride {
-            return try listBucketsAsyncOverride(reporting, completion)
+            return try listBucketsAsyncOverride(completion)
         }
 
         let result = ListBucketsOutput.__default
@@ -2643,10 +2536,9 @@ public struct MockS3Client: S3ClientProtocol {
      - Returns: The ListBucketsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
      */
-    public func listBucketsSync(
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListBucketsOutput {
+    public func listBucketsSync() throws -> S3Model.ListBucketsOutput {
         if let listBucketsSyncOverride = listBucketsSyncOverride {
-            return try listBucketsSyncOverride(reporting)
+            return try listBucketsSyncOverride()
         }
 
         return ListBucketsOutput.__default
@@ -2663,10 +2555,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func listMultipartUploadsAsync(
             input: S3Model.ListMultipartUploadsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, S3Error>) -> ()) throws {
         if let listMultipartUploadsAsyncOverride = listMultipartUploadsAsyncOverride {
-            return try listMultipartUploadsAsyncOverride(input, reporting, completion)
+            return try listMultipartUploadsAsyncOverride(input, completion)
         }
 
         let result = ListMultipartUploadsOutput.__default
@@ -2683,10 +2574,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func listMultipartUploadsSync(
-            input: S3Model.ListMultipartUploadsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListMultipartUploadsOutput {
+            input: S3Model.ListMultipartUploadsRequest) throws -> S3Model.ListMultipartUploadsOutput {
         if let listMultipartUploadsSyncOverride = listMultipartUploadsSyncOverride {
-            return try listMultipartUploadsSyncOverride(input, reporting)
+            return try listMultipartUploadsSyncOverride(input)
         }
 
         return ListMultipartUploadsOutput.__default
@@ -2703,10 +2593,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func listObjectVersionsAsync(
             input: S3Model.ListObjectVersionsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.ListObjectVersionsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListObjectVersionsOutput, S3Error>) -> ()) throws {
         if let listObjectVersionsAsyncOverride = listObjectVersionsAsyncOverride {
-            return try listObjectVersionsAsyncOverride(input, reporting, completion)
+            return try listObjectVersionsAsyncOverride(input, completion)
         }
 
         let result = ListObjectVersionsOutput.__default
@@ -2723,10 +2612,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func listObjectVersionsSync(
-            input: S3Model.ListObjectVersionsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListObjectVersionsOutput {
+            input: S3Model.ListObjectVersionsRequest) throws -> S3Model.ListObjectVersionsOutput {
         if let listObjectVersionsSyncOverride = listObjectVersionsSyncOverride {
-            return try listObjectVersionsSyncOverride(input, reporting)
+            return try listObjectVersionsSyncOverride(input)
         }
 
         return ListObjectVersionsOutput.__default
@@ -2744,10 +2632,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func listObjectsAsync(
             input: S3Model.ListObjectsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.ListObjectsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListObjectsOutput, S3Error>) -> ()) throws {
         if let listObjectsAsyncOverride = listObjectsAsyncOverride {
-            return try listObjectsAsyncOverride(input, reporting, completion)
+            return try listObjectsAsyncOverride(input, completion)
         }
 
         let result = ListObjectsOutput.__default
@@ -2765,10 +2652,9 @@ public struct MockS3Client: S3ClientProtocol {
      - Throws: noSuchBucket.
      */
     public func listObjectsSync(
-            input: S3Model.ListObjectsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListObjectsOutput {
+            input: S3Model.ListObjectsRequest) throws -> S3Model.ListObjectsOutput {
         if let listObjectsSyncOverride = listObjectsSyncOverride {
-            return try listObjectsSyncOverride(input, reporting)
+            return try listObjectsSyncOverride(input)
         }
 
         return ListObjectsOutput.__default
@@ -2786,10 +2672,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func listObjectsV2Async(
             input: S3Model.ListObjectsV2Request, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.ListObjectsV2Output, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListObjectsV2Output, S3Error>) -> ()) throws {
         if let listObjectsV2AsyncOverride = listObjectsV2AsyncOverride {
-            return try listObjectsV2AsyncOverride(input, reporting, completion)
+            return try listObjectsV2AsyncOverride(input, completion)
         }
 
         let result = ListObjectsV2Output.__default
@@ -2807,10 +2692,9 @@ public struct MockS3Client: S3ClientProtocol {
      - Throws: noSuchBucket.
      */
     public func listObjectsV2Sync(
-            input: S3Model.ListObjectsV2Request,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListObjectsV2Output {
+            input: S3Model.ListObjectsV2Request) throws -> S3Model.ListObjectsV2Output {
         if let listObjectsV2SyncOverride = listObjectsV2SyncOverride {
-            return try listObjectsV2SyncOverride(input, reporting)
+            return try listObjectsV2SyncOverride(input)
         }
 
         return ListObjectsV2Output.__default
@@ -2827,10 +2711,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func listPartsAsync(
             input: S3Model.ListPartsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.ListPartsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.ListPartsOutput, S3Error>) -> ()) throws {
         if let listPartsAsyncOverride = listPartsAsyncOverride {
-            return try listPartsAsyncOverride(input, reporting, completion)
+            return try listPartsAsyncOverride(input, completion)
         }
 
         let result = ListPartsOutput.__default
@@ -2847,10 +2730,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func listPartsSync(
-            input: S3Model.ListPartsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.ListPartsOutput {
+            input: S3Model.ListPartsRequest) throws -> S3Model.ListPartsOutput {
         if let listPartsSyncOverride = listPartsSyncOverride {
-            return try listPartsSyncOverride(input, reporting)
+            return try listPartsSyncOverride(input)
         }
 
         return ListPartsOutput.__default
@@ -2866,10 +2748,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketAccelerateConfigurationAsync(
             input: S3Model.PutBucketAccelerateConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketAccelerateConfigurationAsyncOverride = putBucketAccelerateConfigurationAsyncOverride {
-            return try putBucketAccelerateConfigurationAsyncOverride(input, reporting, completion)
+            return try putBucketAccelerateConfigurationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -2882,10 +2763,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketAccelerateConfigurationRequest object being passed to this operation.
      */
     public func putBucketAccelerateConfigurationSync(
-            input: S3Model.PutBucketAccelerateConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketAccelerateConfigurationRequest) throws {
         if let putBucketAccelerateConfigurationSyncOverride = putBucketAccelerateConfigurationSyncOverride {
-            return try putBucketAccelerateConfigurationSyncOverride(input, reporting)
+            return try putBucketAccelerateConfigurationSyncOverride(input)
         }
 
     }
@@ -2900,10 +2780,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketAclAsync(
             input: S3Model.PutBucketAclRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketAclAsyncOverride = putBucketAclAsyncOverride {
-            return try putBucketAclAsyncOverride(input, reporting, completion)
+            return try putBucketAclAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -2916,10 +2795,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketAclRequest object being passed to this operation.
      */
     public func putBucketAclSync(
-            input: S3Model.PutBucketAclRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketAclRequest) throws {
         if let putBucketAclSyncOverride = putBucketAclSyncOverride {
-            return try putBucketAclSyncOverride(input, reporting)
+            return try putBucketAclSyncOverride(input)
         }
 
     }
@@ -2934,10 +2812,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketAnalyticsConfigurationAsync(
             input: S3Model.PutBucketAnalyticsConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketAnalyticsConfigurationAsyncOverride = putBucketAnalyticsConfigurationAsyncOverride {
-            return try putBucketAnalyticsConfigurationAsyncOverride(input, reporting, completion)
+            return try putBucketAnalyticsConfigurationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -2950,10 +2827,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketAnalyticsConfigurationRequest object being passed to this operation.
      */
     public func putBucketAnalyticsConfigurationSync(
-            input: S3Model.PutBucketAnalyticsConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketAnalyticsConfigurationRequest) throws {
         if let putBucketAnalyticsConfigurationSyncOverride = putBucketAnalyticsConfigurationSyncOverride {
-            return try putBucketAnalyticsConfigurationSyncOverride(input, reporting)
+            return try putBucketAnalyticsConfigurationSyncOverride(input)
         }
 
     }
@@ -2968,10 +2844,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketCorsAsync(
             input: S3Model.PutBucketCorsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketCorsAsyncOverride = putBucketCorsAsyncOverride {
-            return try putBucketCorsAsyncOverride(input, reporting, completion)
+            return try putBucketCorsAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -2984,10 +2859,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketCorsRequest object being passed to this operation.
      */
     public func putBucketCorsSync(
-            input: S3Model.PutBucketCorsRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketCorsRequest) throws {
         if let putBucketCorsSyncOverride = putBucketCorsSyncOverride {
-            return try putBucketCorsSyncOverride(input, reporting)
+            return try putBucketCorsSyncOverride(input)
         }
 
     }
@@ -3002,10 +2876,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketEncryptionAsync(
             input: S3Model.PutBucketEncryptionRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketEncryptionAsyncOverride = putBucketEncryptionAsyncOverride {
-            return try putBucketEncryptionAsyncOverride(input, reporting, completion)
+            return try putBucketEncryptionAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3018,10 +2891,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketEncryptionRequest object being passed to this operation.
      */
     public func putBucketEncryptionSync(
-            input: S3Model.PutBucketEncryptionRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketEncryptionRequest) throws {
         if let putBucketEncryptionSyncOverride = putBucketEncryptionSyncOverride {
-            return try putBucketEncryptionSyncOverride(input, reporting)
+            return try putBucketEncryptionSyncOverride(input)
         }
 
     }
@@ -3036,10 +2908,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketInventoryConfigurationAsync(
             input: S3Model.PutBucketInventoryConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketInventoryConfigurationAsyncOverride = putBucketInventoryConfigurationAsyncOverride {
-            return try putBucketInventoryConfigurationAsyncOverride(input, reporting, completion)
+            return try putBucketInventoryConfigurationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3052,10 +2923,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketInventoryConfigurationRequest object being passed to this operation.
      */
     public func putBucketInventoryConfigurationSync(
-            input: S3Model.PutBucketInventoryConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketInventoryConfigurationRequest) throws {
         if let putBucketInventoryConfigurationSyncOverride = putBucketInventoryConfigurationSyncOverride {
-            return try putBucketInventoryConfigurationSyncOverride(input, reporting)
+            return try putBucketInventoryConfigurationSyncOverride(input)
         }
 
     }
@@ -3070,10 +2940,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketLifecycleAsync(
             input: S3Model.PutBucketLifecycleRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketLifecycleAsyncOverride = putBucketLifecycleAsyncOverride {
-            return try putBucketLifecycleAsyncOverride(input, reporting, completion)
+            return try putBucketLifecycleAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3086,10 +2955,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketLifecycleRequest object being passed to this operation.
      */
     public func putBucketLifecycleSync(
-            input: S3Model.PutBucketLifecycleRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketLifecycleRequest) throws {
         if let putBucketLifecycleSyncOverride = putBucketLifecycleSyncOverride {
-            return try putBucketLifecycleSyncOverride(input, reporting)
+            return try putBucketLifecycleSyncOverride(input)
         }
 
     }
@@ -3104,10 +2972,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketLifecycleConfigurationAsync(
             input: S3Model.PutBucketLifecycleConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketLifecycleConfigurationAsyncOverride = putBucketLifecycleConfigurationAsyncOverride {
-            return try putBucketLifecycleConfigurationAsyncOverride(input, reporting, completion)
+            return try putBucketLifecycleConfigurationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3120,10 +2987,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketLifecycleConfigurationRequest object being passed to this operation.
      */
     public func putBucketLifecycleConfigurationSync(
-            input: S3Model.PutBucketLifecycleConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketLifecycleConfigurationRequest) throws {
         if let putBucketLifecycleConfigurationSyncOverride = putBucketLifecycleConfigurationSyncOverride {
-            return try putBucketLifecycleConfigurationSyncOverride(input, reporting)
+            return try putBucketLifecycleConfigurationSyncOverride(input)
         }
 
     }
@@ -3138,10 +3004,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketLoggingAsync(
             input: S3Model.PutBucketLoggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketLoggingAsyncOverride = putBucketLoggingAsyncOverride {
-            return try putBucketLoggingAsyncOverride(input, reporting, completion)
+            return try putBucketLoggingAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3154,10 +3019,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketLoggingRequest object being passed to this operation.
      */
     public func putBucketLoggingSync(
-            input: S3Model.PutBucketLoggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketLoggingRequest) throws {
         if let putBucketLoggingSyncOverride = putBucketLoggingSyncOverride {
-            return try putBucketLoggingSyncOverride(input, reporting)
+            return try putBucketLoggingSyncOverride(input)
         }
 
     }
@@ -3172,10 +3036,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketMetricsConfigurationAsync(
             input: S3Model.PutBucketMetricsConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketMetricsConfigurationAsyncOverride = putBucketMetricsConfigurationAsyncOverride {
-            return try putBucketMetricsConfigurationAsyncOverride(input, reporting, completion)
+            return try putBucketMetricsConfigurationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3188,10 +3051,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketMetricsConfigurationRequest object being passed to this operation.
      */
     public func putBucketMetricsConfigurationSync(
-            input: S3Model.PutBucketMetricsConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketMetricsConfigurationRequest) throws {
         if let putBucketMetricsConfigurationSyncOverride = putBucketMetricsConfigurationSyncOverride {
-            return try putBucketMetricsConfigurationSyncOverride(input, reporting)
+            return try putBucketMetricsConfigurationSyncOverride(input)
         }
 
     }
@@ -3206,10 +3068,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketNotificationAsync(
             input: S3Model.PutBucketNotificationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketNotificationAsyncOverride = putBucketNotificationAsyncOverride {
-            return try putBucketNotificationAsyncOverride(input, reporting, completion)
+            return try putBucketNotificationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3222,10 +3083,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketNotificationRequest object being passed to this operation.
      */
     public func putBucketNotificationSync(
-            input: S3Model.PutBucketNotificationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketNotificationRequest) throws {
         if let putBucketNotificationSyncOverride = putBucketNotificationSyncOverride {
-            return try putBucketNotificationSyncOverride(input, reporting)
+            return try putBucketNotificationSyncOverride(input)
         }
 
     }
@@ -3240,10 +3100,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketNotificationConfigurationAsync(
             input: S3Model.PutBucketNotificationConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketNotificationConfigurationAsyncOverride = putBucketNotificationConfigurationAsyncOverride {
-            return try putBucketNotificationConfigurationAsyncOverride(input, reporting, completion)
+            return try putBucketNotificationConfigurationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3256,10 +3115,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketNotificationConfigurationRequest object being passed to this operation.
      */
     public func putBucketNotificationConfigurationSync(
-            input: S3Model.PutBucketNotificationConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketNotificationConfigurationRequest) throws {
         if let putBucketNotificationConfigurationSyncOverride = putBucketNotificationConfigurationSyncOverride {
-            return try putBucketNotificationConfigurationSyncOverride(input, reporting)
+            return try putBucketNotificationConfigurationSyncOverride(input)
         }
 
     }
@@ -3274,10 +3132,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketPolicyAsync(
             input: S3Model.PutBucketPolicyRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketPolicyAsyncOverride = putBucketPolicyAsyncOverride {
-            return try putBucketPolicyAsyncOverride(input, reporting, completion)
+            return try putBucketPolicyAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3290,10 +3147,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketPolicyRequest object being passed to this operation.
      */
     public func putBucketPolicySync(
-            input: S3Model.PutBucketPolicyRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketPolicyRequest) throws {
         if let putBucketPolicySyncOverride = putBucketPolicySyncOverride {
-            return try putBucketPolicySyncOverride(input, reporting)
+            return try putBucketPolicySyncOverride(input)
         }
 
     }
@@ -3308,10 +3164,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketReplicationAsync(
             input: S3Model.PutBucketReplicationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketReplicationAsyncOverride = putBucketReplicationAsyncOverride {
-            return try putBucketReplicationAsyncOverride(input, reporting, completion)
+            return try putBucketReplicationAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3324,10 +3179,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketReplicationRequest object being passed to this operation.
      */
     public func putBucketReplicationSync(
-            input: S3Model.PutBucketReplicationRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketReplicationRequest) throws {
         if let putBucketReplicationSyncOverride = putBucketReplicationSyncOverride {
-            return try putBucketReplicationSyncOverride(input, reporting)
+            return try putBucketReplicationSyncOverride(input)
         }
 
     }
@@ -3342,10 +3196,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketRequestPaymentAsync(
             input: S3Model.PutBucketRequestPaymentRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketRequestPaymentAsyncOverride = putBucketRequestPaymentAsyncOverride {
-            return try putBucketRequestPaymentAsyncOverride(input, reporting, completion)
+            return try putBucketRequestPaymentAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3358,10 +3211,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketRequestPaymentRequest object being passed to this operation.
      */
     public func putBucketRequestPaymentSync(
-            input: S3Model.PutBucketRequestPaymentRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketRequestPaymentRequest) throws {
         if let putBucketRequestPaymentSyncOverride = putBucketRequestPaymentSyncOverride {
-            return try putBucketRequestPaymentSyncOverride(input, reporting)
+            return try putBucketRequestPaymentSyncOverride(input)
         }
 
     }
@@ -3376,10 +3228,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketTaggingAsync(
             input: S3Model.PutBucketTaggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketTaggingAsyncOverride = putBucketTaggingAsyncOverride {
-            return try putBucketTaggingAsyncOverride(input, reporting, completion)
+            return try putBucketTaggingAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3392,10 +3243,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketTaggingRequest object being passed to this operation.
      */
     public func putBucketTaggingSync(
-            input: S3Model.PutBucketTaggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketTaggingRequest) throws {
         if let putBucketTaggingSyncOverride = putBucketTaggingSyncOverride {
-            return try putBucketTaggingSyncOverride(input, reporting)
+            return try putBucketTaggingSyncOverride(input)
         }
 
     }
@@ -3410,10 +3260,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketVersioningAsync(
             input: S3Model.PutBucketVersioningRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketVersioningAsyncOverride = putBucketVersioningAsyncOverride {
-            return try putBucketVersioningAsyncOverride(input, reporting, completion)
+            return try putBucketVersioningAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3426,10 +3275,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketVersioningRequest object being passed to this operation.
      */
     public func putBucketVersioningSync(
-            input: S3Model.PutBucketVersioningRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketVersioningRequest) throws {
         if let putBucketVersioningSyncOverride = putBucketVersioningSyncOverride {
-            return try putBucketVersioningSyncOverride(input, reporting)
+            return try putBucketVersioningSyncOverride(input)
         }
 
     }
@@ -3444,10 +3292,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putBucketWebsiteAsync(
             input: S3Model.PutBucketWebsiteRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putBucketWebsiteAsyncOverride = putBucketWebsiteAsyncOverride {
-            return try putBucketWebsiteAsyncOverride(input, reporting, completion)
+            return try putBucketWebsiteAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3460,10 +3307,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutBucketWebsiteRequest object being passed to this operation.
      */
     public func putBucketWebsiteSync(
-            input: S3Model.PutBucketWebsiteRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutBucketWebsiteRequest) throws {
         if let putBucketWebsiteSyncOverride = putBucketWebsiteSyncOverride {
-            return try putBucketWebsiteSyncOverride(input, reporting)
+            return try putBucketWebsiteSyncOverride(input)
         }
 
     }
@@ -3479,10 +3325,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putObjectAsync(
             input: S3Model.PutObjectRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.PutObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectOutput, S3Error>) -> ()) throws {
         if let putObjectAsyncOverride = putObjectAsyncOverride {
-            return try putObjectAsyncOverride(input, reporting, completion)
+            return try putObjectAsyncOverride(input, completion)
         }
 
         let result = PutObjectOutput.__default
@@ -3499,10 +3344,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func putObjectSync(
-            input: S3Model.PutObjectRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectOutput {
+            input: S3Model.PutObjectRequest) throws -> S3Model.PutObjectOutput {
         if let putObjectSyncOverride = putObjectSyncOverride {
-            return try putObjectSyncOverride(input, reporting)
+            return try putObjectSyncOverride(input)
         }
 
         return PutObjectOutput.__default
@@ -3520,10 +3364,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putObjectAclAsync(
             input: S3Model.PutObjectAclRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.PutObjectAclOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectAclOutput, S3Error>) -> ()) throws {
         if let putObjectAclAsyncOverride = putObjectAclAsyncOverride {
-            return try putObjectAclAsyncOverride(input, reporting, completion)
+            return try putObjectAclAsyncOverride(input, completion)
         }
 
         let result = PutObjectAclOutput.__default
@@ -3541,10 +3384,9 @@ public struct MockS3Client: S3ClientProtocol {
      - Throws: noSuchKey.
      */
     public func putObjectAclSync(
-            input: S3Model.PutObjectAclRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectAclOutput {
+            input: S3Model.PutObjectAclRequest) throws -> S3Model.PutObjectAclOutput {
         if let putObjectAclSyncOverride = putObjectAclSyncOverride {
-            return try putObjectAclSyncOverride(input, reporting)
+            return try putObjectAclSyncOverride(input)
         }
 
         return PutObjectAclOutput.__default
@@ -3561,10 +3403,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putObjectLegalHoldAsync(
             input: S3Model.PutObjectLegalHoldRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, S3Error>) -> ()) throws {
         if let putObjectLegalHoldAsyncOverride = putObjectLegalHoldAsyncOverride {
-            return try putObjectLegalHoldAsyncOverride(input, reporting, completion)
+            return try putObjectLegalHoldAsyncOverride(input, completion)
         }
 
         let result = PutObjectLegalHoldOutput.__default
@@ -3581,10 +3422,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func putObjectLegalHoldSync(
-            input: S3Model.PutObjectLegalHoldRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectLegalHoldOutput {
+            input: S3Model.PutObjectLegalHoldRequest) throws -> S3Model.PutObjectLegalHoldOutput {
         if let putObjectLegalHoldSyncOverride = putObjectLegalHoldSyncOverride {
-            return try putObjectLegalHoldSyncOverride(input, reporting)
+            return try putObjectLegalHoldSyncOverride(input)
         }
 
         return PutObjectLegalHoldOutput.__default
@@ -3601,10 +3441,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putObjectLockConfigurationAsync(
             input: S3Model.PutObjectLockConfigurationRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, S3Error>) -> ()) throws {
         if let putObjectLockConfigurationAsyncOverride = putObjectLockConfigurationAsyncOverride {
-            return try putObjectLockConfigurationAsyncOverride(input, reporting, completion)
+            return try putObjectLockConfigurationAsyncOverride(input, completion)
         }
 
         let result = PutObjectLockConfigurationOutput.__default
@@ -3621,10 +3460,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func putObjectLockConfigurationSync(
-            input: S3Model.PutObjectLockConfigurationRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectLockConfigurationOutput {
+            input: S3Model.PutObjectLockConfigurationRequest) throws -> S3Model.PutObjectLockConfigurationOutput {
         if let putObjectLockConfigurationSyncOverride = putObjectLockConfigurationSyncOverride {
-            return try putObjectLockConfigurationSyncOverride(input, reporting)
+            return try putObjectLockConfigurationSyncOverride(input)
         }
 
         return PutObjectLockConfigurationOutput.__default
@@ -3641,10 +3479,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putObjectRetentionAsync(
             input: S3Model.PutObjectRetentionRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.PutObjectRetentionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectRetentionOutput, S3Error>) -> ()) throws {
         if let putObjectRetentionAsyncOverride = putObjectRetentionAsyncOverride {
-            return try putObjectRetentionAsyncOverride(input, reporting, completion)
+            return try putObjectRetentionAsyncOverride(input, completion)
         }
 
         let result = PutObjectRetentionOutput.__default
@@ -3661,10 +3498,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func putObjectRetentionSync(
-            input: S3Model.PutObjectRetentionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectRetentionOutput {
+            input: S3Model.PutObjectRetentionRequest) throws -> S3Model.PutObjectRetentionOutput {
         if let putObjectRetentionSyncOverride = putObjectRetentionSyncOverride {
-            return try putObjectRetentionSyncOverride(input, reporting)
+            return try putObjectRetentionSyncOverride(input)
         }
 
         return PutObjectRetentionOutput.__default
@@ -3681,10 +3517,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putObjectTaggingAsync(
             input: S3Model.PutObjectTaggingRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.PutObjectTaggingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.PutObjectTaggingOutput, S3Error>) -> ()) throws {
         if let putObjectTaggingAsyncOverride = putObjectTaggingAsyncOverride {
-            return try putObjectTaggingAsyncOverride(input, reporting, completion)
+            return try putObjectTaggingAsyncOverride(input, completion)
         }
 
         let result = PutObjectTaggingOutput.__default
@@ -3701,10 +3536,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func putObjectTaggingSync(
-            input: S3Model.PutObjectTaggingRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.PutObjectTaggingOutput {
+            input: S3Model.PutObjectTaggingRequest) throws -> S3Model.PutObjectTaggingOutput {
         if let putObjectTaggingSyncOverride = putObjectTaggingSyncOverride {
-            return try putObjectTaggingSyncOverride(input, reporting)
+            return try putObjectTaggingSyncOverride(input)
         }
 
         return PutObjectTaggingOutput.__default
@@ -3720,10 +3554,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func putPublicAccessBlockAsync(
             input: S3Model.PutPublicAccessBlockRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (S3Error?) -> ()) throws {
         if let putPublicAccessBlockAsyncOverride = putPublicAccessBlockAsyncOverride {
-            return try putPublicAccessBlockAsyncOverride(input, reporting, completion)
+            return try putPublicAccessBlockAsyncOverride(input, completion)
         }
 
         completion(nil)
@@ -3736,10 +3569,9 @@ public struct MockS3Client: S3ClientProtocol {
          - input: The validated PutPublicAccessBlockRequest object being passed to this operation.
      */
     public func putPublicAccessBlockSync(
-            input: S3Model.PutPublicAccessBlockRequest,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: S3Model.PutPublicAccessBlockRequest) throws {
         if let putPublicAccessBlockSyncOverride = putPublicAccessBlockSyncOverride {
-            return try putPublicAccessBlockSyncOverride(input, reporting)
+            return try putPublicAccessBlockSyncOverride(input)
         }
 
     }
@@ -3756,10 +3588,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func restoreObjectAsync(
             input: S3Model.RestoreObjectRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.RestoreObjectOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.RestoreObjectOutput, S3Error>) -> ()) throws {
         if let restoreObjectAsyncOverride = restoreObjectAsyncOverride {
-            return try restoreObjectAsyncOverride(input, reporting, completion)
+            return try restoreObjectAsyncOverride(input, completion)
         }
 
         let result = RestoreObjectOutput.__default
@@ -3777,10 +3608,9 @@ public struct MockS3Client: S3ClientProtocol {
      - Throws: objectAlreadyInActiveTier.
      */
     public func restoreObjectSync(
-            input: S3Model.RestoreObjectRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.RestoreObjectOutput {
+            input: S3Model.RestoreObjectRequest) throws -> S3Model.RestoreObjectOutput {
         if let restoreObjectSyncOverride = restoreObjectSyncOverride {
-            return try restoreObjectSyncOverride(input, reporting)
+            return try restoreObjectSyncOverride(input)
         }
 
         return RestoreObjectOutput.__default
@@ -3797,10 +3627,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func selectObjectContentAsync(
             input: S3Model.SelectObjectContentRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.SelectObjectContentOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.SelectObjectContentOutput, S3Error>) -> ()) throws {
         if let selectObjectContentAsyncOverride = selectObjectContentAsyncOverride {
-            return try selectObjectContentAsyncOverride(input, reporting, completion)
+            return try selectObjectContentAsyncOverride(input, completion)
         }
 
         let result = SelectObjectContentOutput.__default
@@ -3817,10 +3646,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func selectObjectContentSync(
-            input: S3Model.SelectObjectContentRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.SelectObjectContentOutput {
+            input: S3Model.SelectObjectContentRequest) throws -> S3Model.SelectObjectContentOutput {
         if let selectObjectContentSyncOverride = selectObjectContentSyncOverride {
-            return try selectObjectContentSyncOverride(input, reporting)
+            return try selectObjectContentSyncOverride(input)
         }
 
         return SelectObjectContentOutput.__default
@@ -3837,10 +3665,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func uploadPartAsync(
             input: S3Model.UploadPartRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.UploadPartOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.UploadPartOutput, S3Error>) -> ()) throws {
         if let uploadPartAsyncOverride = uploadPartAsyncOverride {
-            return try uploadPartAsyncOverride(input, reporting, completion)
+            return try uploadPartAsyncOverride(input, completion)
         }
 
         let result = UploadPartOutput.__default
@@ -3857,10 +3684,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func uploadPartSync(
-            input: S3Model.UploadPartRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.UploadPartOutput {
+            input: S3Model.UploadPartRequest) throws -> S3Model.UploadPartOutput {
         if let uploadPartSyncOverride = uploadPartSyncOverride {
-            return try uploadPartSyncOverride(input, reporting)
+            return try uploadPartSyncOverride(input)
         }
 
         return UploadPartOutput.__default
@@ -3877,10 +3703,9 @@ public struct MockS3Client: S3ClientProtocol {
      */
     public func uploadPartCopyAsync(
             input: S3Model.UploadPartCopyRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<S3Model.UploadPartCopyOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<S3Model.UploadPartCopyOutput, S3Error>) -> ()) throws {
         if let uploadPartCopyAsyncOverride = uploadPartCopyAsyncOverride {
-            return try uploadPartCopyAsyncOverride(input, reporting, completion)
+            return try uploadPartCopyAsyncOverride(input, completion)
         }
 
         let result = UploadPartCopyOutput.__default
@@ -3897,10 +3722,9 @@ public struct MockS3Client: S3ClientProtocol {
          Will be validated before being returned to caller.
      */
     public func uploadPartCopySync(
-            input: S3Model.UploadPartCopyRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> S3Model.UploadPartCopyOutput {
+            input: S3Model.UploadPartCopyRequest) throws -> S3Model.UploadPartCopyOutput {
         if let uploadPartCopySyncOverride = uploadPartCopySyncOverride {
-            return try uploadPartCopySyncOverride(input, reporting)
+            return try uploadPartCopySyncOverride(input)
         }
 
         return UploadPartCopyOutput.__default

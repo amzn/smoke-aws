@@ -28,100 +28,100 @@ import SmokeHTTPClient
  Mock Client for the StepFunctions service by default returns the `__default` property of its return type.
  */
 public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
-    let createActivityAsyncOverride: StepFunctionsClientProtocol.CreateActivityAsyncType?
-    let createActivitySyncOverride: StepFunctionsClientProtocol.CreateActivitySyncType?
-    let createStateMachineAsyncOverride: StepFunctionsClientProtocol.CreateStateMachineAsyncType?
-    let createStateMachineSyncOverride: StepFunctionsClientProtocol.CreateStateMachineSyncType?
-    let deleteActivityAsyncOverride: StepFunctionsClientProtocol.DeleteActivityAsyncType?
-    let deleteActivitySyncOverride: StepFunctionsClientProtocol.DeleteActivitySyncType?
-    let deleteStateMachineAsyncOverride: StepFunctionsClientProtocol.DeleteStateMachineAsyncType?
-    let deleteStateMachineSyncOverride: StepFunctionsClientProtocol.DeleteStateMachineSyncType?
-    let describeActivityAsyncOverride: StepFunctionsClientProtocol.DescribeActivityAsyncType?
-    let describeActivitySyncOverride: StepFunctionsClientProtocol.DescribeActivitySyncType?
-    let describeExecutionAsyncOverride: StepFunctionsClientProtocol.DescribeExecutionAsyncType?
-    let describeExecutionSyncOverride: StepFunctionsClientProtocol.DescribeExecutionSyncType?
-    let describeStateMachineAsyncOverride: StepFunctionsClientProtocol.DescribeStateMachineAsyncType?
-    let describeStateMachineSyncOverride: StepFunctionsClientProtocol.DescribeStateMachineSyncType?
-    let describeStateMachineForExecutionAsyncOverride: StepFunctionsClientProtocol.DescribeStateMachineForExecutionAsyncType?
-    let describeStateMachineForExecutionSyncOverride: StepFunctionsClientProtocol.DescribeStateMachineForExecutionSyncType?
-    let getActivityTaskAsyncOverride: StepFunctionsClientProtocol.GetActivityTaskAsyncType?
-    let getActivityTaskSyncOverride: StepFunctionsClientProtocol.GetActivityTaskSyncType?
-    let getExecutionHistoryAsyncOverride: StepFunctionsClientProtocol.GetExecutionHistoryAsyncType?
-    let getExecutionHistorySyncOverride: StepFunctionsClientProtocol.GetExecutionHistorySyncType?
-    let listActivitiesAsyncOverride: StepFunctionsClientProtocol.ListActivitiesAsyncType?
-    let listActivitiesSyncOverride: StepFunctionsClientProtocol.ListActivitiesSyncType?
-    let listExecutionsAsyncOverride: StepFunctionsClientProtocol.ListExecutionsAsyncType?
-    let listExecutionsSyncOverride: StepFunctionsClientProtocol.ListExecutionsSyncType?
-    let listStateMachinesAsyncOverride: StepFunctionsClientProtocol.ListStateMachinesAsyncType?
-    let listStateMachinesSyncOverride: StepFunctionsClientProtocol.ListStateMachinesSyncType?
-    let listTagsForResourceAsyncOverride: StepFunctionsClientProtocol.ListTagsForResourceAsyncType?
-    let listTagsForResourceSyncOverride: StepFunctionsClientProtocol.ListTagsForResourceSyncType?
-    let sendTaskFailureAsyncOverride: StepFunctionsClientProtocol.SendTaskFailureAsyncType?
-    let sendTaskFailureSyncOverride: StepFunctionsClientProtocol.SendTaskFailureSyncType?
-    let sendTaskHeartbeatAsyncOverride: StepFunctionsClientProtocol.SendTaskHeartbeatAsyncType?
-    let sendTaskHeartbeatSyncOverride: StepFunctionsClientProtocol.SendTaskHeartbeatSyncType?
-    let sendTaskSuccessAsyncOverride: StepFunctionsClientProtocol.SendTaskSuccessAsyncType?
-    let sendTaskSuccessSyncOverride: StepFunctionsClientProtocol.SendTaskSuccessSyncType?
-    let startExecutionAsyncOverride: StepFunctionsClientProtocol.StartExecutionAsyncType?
-    let startExecutionSyncOverride: StepFunctionsClientProtocol.StartExecutionSyncType?
-    let stopExecutionAsyncOverride: StepFunctionsClientProtocol.StopExecutionAsyncType?
-    let stopExecutionSyncOverride: StepFunctionsClientProtocol.StopExecutionSyncType?
-    let tagResourceAsyncOverride: StepFunctionsClientProtocol.TagResourceAsyncType?
-    let tagResourceSyncOverride: StepFunctionsClientProtocol.TagResourceSyncType?
-    let untagResourceAsyncOverride: StepFunctionsClientProtocol.UntagResourceAsyncType?
-    let untagResourceSyncOverride: StepFunctionsClientProtocol.UntagResourceSyncType?
-    let updateStateMachineAsyncOverride: StepFunctionsClientProtocol.UpdateStateMachineAsyncType?
-    let updateStateMachineSyncOverride: StepFunctionsClientProtocol.UpdateStateMachineSyncType?
+    let createActivityAsyncOverride: CreateActivityAsyncType?
+    let createActivitySyncOverride: CreateActivitySyncType?
+    let createStateMachineAsyncOverride: CreateStateMachineAsyncType?
+    let createStateMachineSyncOverride: CreateStateMachineSyncType?
+    let deleteActivityAsyncOverride: DeleteActivityAsyncType?
+    let deleteActivitySyncOverride: DeleteActivitySyncType?
+    let deleteStateMachineAsyncOverride: DeleteStateMachineAsyncType?
+    let deleteStateMachineSyncOverride: DeleteStateMachineSyncType?
+    let describeActivityAsyncOverride: DescribeActivityAsyncType?
+    let describeActivitySyncOverride: DescribeActivitySyncType?
+    let describeExecutionAsyncOverride: DescribeExecutionAsyncType?
+    let describeExecutionSyncOverride: DescribeExecutionSyncType?
+    let describeStateMachineAsyncOverride: DescribeStateMachineAsyncType?
+    let describeStateMachineSyncOverride: DescribeStateMachineSyncType?
+    let describeStateMachineForExecutionAsyncOverride: DescribeStateMachineForExecutionAsyncType?
+    let describeStateMachineForExecutionSyncOverride: DescribeStateMachineForExecutionSyncType?
+    let getActivityTaskAsyncOverride: GetActivityTaskAsyncType?
+    let getActivityTaskSyncOverride: GetActivityTaskSyncType?
+    let getExecutionHistoryAsyncOverride: GetExecutionHistoryAsyncType?
+    let getExecutionHistorySyncOverride: GetExecutionHistorySyncType?
+    let listActivitiesAsyncOverride: ListActivitiesAsyncType?
+    let listActivitiesSyncOverride: ListActivitiesSyncType?
+    let listExecutionsAsyncOverride: ListExecutionsAsyncType?
+    let listExecutionsSyncOverride: ListExecutionsSyncType?
+    let listStateMachinesAsyncOverride: ListStateMachinesAsyncType?
+    let listStateMachinesSyncOverride: ListStateMachinesSyncType?
+    let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType?
+    let listTagsForResourceSyncOverride: ListTagsForResourceSyncType?
+    let sendTaskFailureAsyncOverride: SendTaskFailureAsyncType?
+    let sendTaskFailureSyncOverride: SendTaskFailureSyncType?
+    let sendTaskHeartbeatAsyncOverride: SendTaskHeartbeatAsyncType?
+    let sendTaskHeartbeatSyncOverride: SendTaskHeartbeatSyncType?
+    let sendTaskSuccessAsyncOverride: SendTaskSuccessAsyncType?
+    let sendTaskSuccessSyncOverride: SendTaskSuccessSyncType?
+    let startExecutionAsyncOverride: StartExecutionAsyncType?
+    let startExecutionSyncOverride: StartExecutionSyncType?
+    let stopExecutionAsyncOverride: StopExecutionAsyncType?
+    let stopExecutionSyncOverride: StopExecutionSyncType?
+    let tagResourceAsyncOverride: TagResourceAsyncType?
+    let tagResourceSyncOverride: TagResourceSyncType?
+    let untagResourceAsyncOverride: UntagResourceAsyncType?
+    let untagResourceSyncOverride: UntagResourceSyncType?
+    let updateStateMachineAsyncOverride: UpdateStateMachineAsyncType?
+    let updateStateMachineSyncOverride: UpdateStateMachineSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
     public init(
-            createActivityAsync: StepFunctionsClientProtocol.CreateActivityAsyncType? = nil,
-            createActivitySync: StepFunctionsClientProtocol.CreateActivitySyncType? = nil,
-            createStateMachineAsync: StepFunctionsClientProtocol.CreateStateMachineAsyncType? = nil,
-            createStateMachineSync: StepFunctionsClientProtocol.CreateStateMachineSyncType? = nil,
-            deleteActivityAsync: StepFunctionsClientProtocol.DeleteActivityAsyncType? = nil,
-            deleteActivitySync: StepFunctionsClientProtocol.DeleteActivitySyncType? = nil,
-            deleteStateMachineAsync: StepFunctionsClientProtocol.DeleteStateMachineAsyncType? = nil,
-            deleteStateMachineSync: StepFunctionsClientProtocol.DeleteStateMachineSyncType? = nil,
-            describeActivityAsync: StepFunctionsClientProtocol.DescribeActivityAsyncType? = nil,
-            describeActivitySync: StepFunctionsClientProtocol.DescribeActivitySyncType? = nil,
-            describeExecutionAsync: StepFunctionsClientProtocol.DescribeExecutionAsyncType? = nil,
-            describeExecutionSync: StepFunctionsClientProtocol.DescribeExecutionSyncType? = nil,
-            describeStateMachineAsync: StepFunctionsClientProtocol.DescribeStateMachineAsyncType? = nil,
-            describeStateMachineSync: StepFunctionsClientProtocol.DescribeStateMachineSyncType? = nil,
-            describeStateMachineForExecutionAsync: StepFunctionsClientProtocol.DescribeStateMachineForExecutionAsyncType? = nil,
-            describeStateMachineForExecutionSync: StepFunctionsClientProtocol.DescribeStateMachineForExecutionSyncType? = nil,
-            getActivityTaskAsync: StepFunctionsClientProtocol.GetActivityTaskAsyncType? = nil,
-            getActivityTaskSync: StepFunctionsClientProtocol.GetActivityTaskSyncType? = nil,
-            getExecutionHistoryAsync: StepFunctionsClientProtocol.GetExecutionHistoryAsyncType? = nil,
-            getExecutionHistorySync: StepFunctionsClientProtocol.GetExecutionHistorySyncType? = nil,
-            listActivitiesAsync: StepFunctionsClientProtocol.ListActivitiesAsyncType? = nil,
-            listActivitiesSync: StepFunctionsClientProtocol.ListActivitiesSyncType? = nil,
-            listExecutionsAsync: StepFunctionsClientProtocol.ListExecutionsAsyncType? = nil,
-            listExecutionsSync: StepFunctionsClientProtocol.ListExecutionsSyncType? = nil,
-            listStateMachinesAsync: StepFunctionsClientProtocol.ListStateMachinesAsyncType? = nil,
-            listStateMachinesSync: StepFunctionsClientProtocol.ListStateMachinesSyncType? = nil,
-            listTagsForResourceAsync: StepFunctionsClientProtocol.ListTagsForResourceAsyncType? = nil,
-            listTagsForResourceSync: StepFunctionsClientProtocol.ListTagsForResourceSyncType? = nil,
-            sendTaskFailureAsync: StepFunctionsClientProtocol.SendTaskFailureAsyncType? = nil,
-            sendTaskFailureSync: StepFunctionsClientProtocol.SendTaskFailureSyncType? = nil,
-            sendTaskHeartbeatAsync: StepFunctionsClientProtocol.SendTaskHeartbeatAsyncType? = nil,
-            sendTaskHeartbeatSync: StepFunctionsClientProtocol.SendTaskHeartbeatSyncType? = nil,
-            sendTaskSuccessAsync: StepFunctionsClientProtocol.SendTaskSuccessAsyncType? = nil,
-            sendTaskSuccessSync: StepFunctionsClientProtocol.SendTaskSuccessSyncType? = nil,
-            startExecutionAsync: StepFunctionsClientProtocol.StartExecutionAsyncType? = nil,
-            startExecutionSync: StepFunctionsClientProtocol.StartExecutionSyncType? = nil,
-            stopExecutionAsync: StepFunctionsClientProtocol.StopExecutionAsyncType? = nil,
-            stopExecutionSync: StepFunctionsClientProtocol.StopExecutionSyncType? = nil,
-            tagResourceAsync: StepFunctionsClientProtocol.TagResourceAsyncType? = nil,
-            tagResourceSync: StepFunctionsClientProtocol.TagResourceSyncType? = nil,
-            untagResourceAsync: StepFunctionsClientProtocol.UntagResourceAsyncType? = nil,
-            untagResourceSync: StepFunctionsClientProtocol.UntagResourceSyncType? = nil,
-            updateStateMachineAsync: StepFunctionsClientProtocol.UpdateStateMachineAsyncType? = nil,
-            updateStateMachineSync: StepFunctionsClientProtocol.UpdateStateMachineSyncType? = nil) {
+            createActivityAsync: CreateActivityAsyncType? = nil,
+            createActivitySync: CreateActivitySyncType? = nil,
+            createStateMachineAsync: CreateStateMachineAsyncType? = nil,
+            createStateMachineSync: CreateStateMachineSyncType? = nil,
+            deleteActivityAsync: DeleteActivityAsyncType? = nil,
+            deleteActivitySync: DeleteActivitySyncType? = nil,
+            deleteStateMachineAsync: DeleteStateMachineAsyncType? = nil,
+            deleteStateMachineSync: DeleteStateMachineSyncType? = nil,
+            describeActivityAsync: DescribeActivityAsyncType? = nil,
+            describeActivitySync: DescribeActivitySyncType? = nil,
+            describeExecutionAsync: DescribeExecutionAsyncType? = nil,
+            describeExecutionSync: DescribeExecutionSyncType? = nil,
+            describeStateMachineAsync: DescribeStateMachineAsyncType? = nil,
+            describeStateMachineSync: DescribeStateMachineSyncType? = nil,
+            describeStateMachineForExecutionAsync: DescribeStateMachineForExecutionAsyncType? = nil,
+            describeStateMachineForExecutionSync: DescribeStateMachineForExecutionSyncType? = nil,
+            getActivityTaskAsync: GetActivityTaskAsyncType? = nil,
+            getActivityTaskSync: GetActivityTaskSyncType? = nil,
+            getExecutionHistoryAsync: GetExecutionHistoryAsyncType? = nil,
+            getExecutionHistorySync: GetExecutionHistorySyncType? = nil,
+            listActivitiesAsync: ListActivitiesAsyncType? = nil,
+            listActivitiesSync: ListActivitiesSyncType? = nil,
+            listExecutionsAsync: ListExecutionsAsyncType? = nil,
+            listExecutionsSync: ListExecutionsSyncType? = nil,
+            listStateMachinesAsync: ListStateMachinesAsyncType? = nil,
+            listStateMachinesSync: ListStateMachinesSyncType? = nil,
+            listTagsForResourceAsync: ListTagsForResourceAsyncType? = nil,
+            listTagsForResourceSync: ListTagsForResourceSyncType? = nil,
+            sendTaskFailureAsync: SendTaskFailureAsyncType? = nil,
+            sendTaskFailureSync: SendTaskFailureSyncType? = nil,
+            sendTaskHeartbeatAsync: SendTaskHeartbeatAsyncType? = nil,
+            sendTaskHeartbeatSync: SendTaskHeartbeatSyncType? = nil,
+            sendTaskSuccessAsync: SendTaskSuccessAsyncType? = nil,
+            sendTaskSuccessSync: SendTaskSuccessSyncType? = nil,
+            startExecutionAsync: StartExecutionAsyncType? = nil,
+            startExecutionSync: StartExecutionSyncType? = nil,
+            stopExecutionAsync: StopExecutionAsyncType? = nil,
+            stopExecutionSync: StopExecutionSyncType? = nil,
+            tagResourceAsync: TagResourceAsyncType? = nil,
+            tagResourceSync: TagResourceSyncType? = nil,
+            untagResourceAsync: UntagResourceAsyncType? = nil,
+            untagResourceSync: UntagResourceSyncType? = nil,
+            updateStateMachineAsync: UpdateStateMachineAsyncType? = nil,
+            updateStateMachineSync: UpdateStateMachineSyncType? = nil) {
         self.createActivityAsyncOverride = createActivityAsync
         self.createActivitySyncOverride = createActivitySync
         self.createStateMachineAsyncOverride = createStateMachineAsync
@@ -180,10 +180,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func createActivityAsync(
             input: StepFunctionsModel.CreateActivityInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, StepFunctionsError>) -> ()) throws {
         if let createActivityAsyncOverride = createActivityAsyncOverride {
-            return try createActivityAsyncOverride(input, reporting, completion)
+            return try createActivityAsyncOverride(input, completion)
         }
 
         let result = CreateActivityOutput.__default
@@ -201,10 +200,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: activityLimitExceeded, invalidName, tooManyTags.
      */
     public func createActivitySync(
-            input: StepFunctionsModel.CreateActivityInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.CreateActivityOutput {
+            input: StepFunctionsModel.CreateActivityInput) throws -> StepFunctionsModel.CreateActivityOutput {
         if let createActivitySyncOverride = createActivitySyncOverride {
-            return try createActivitySyncOverride(input, reporting)
+            return try createActivitySyncOverride(input)
         }
 
         return CreateActivityOutput.__default
@@ -222,10 +220,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func createStateMachineAsync(
             input: StepFunctionsModel.CreateStateMachineInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, StepFunctionsError>) -> ()) throws {
         if let createStateMachineAsyncOverride = createStateMachineAsyncOverride {
-            return try createStateMachineAsyncOverride(input, reporting, completion)
+            return try createStateMachineAsyncOverride(input, completion)
         }
 
         let result = CreateStateMachineOutput.__default
@@ -243,10 +240,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
      */
     public func createStateMachineSync(
-            input: StepFunctionsModel.CreateStateMachineInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.CreateStateMachineOutput {
+            input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput {
         if let createStateMachineSyncOverride = createStateMachineSyncOverride {
-            return try createStateMachineSyncOverride(input, reporting)
+            return try createStateMachineSyncOverride(input)
         }
 
         return CreateStateMachineOutput.__default
@@ -264,10 +260,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func deleteActivityAsync(
             input: StepFunctionsModel.DeleteActivityInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, StepFunctionsError>) -> ()) throws {
         if let deleteActivityAsyncOverride = deleteActivityAsyncOverride {
-            return try deleteActivityAsyncOverride(input, reporting, completion)
+            return try deleteActivityAsyncOverride(input, completion)
         }
 
         let result = DeleteActivityOutput.__default
@@ -285,10 +280,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidArn.
      */
     public func deleteActivitySync(
-            input: StepFunctionsModel.DeleteActivityInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DeleteActivityOutput {
+            input: StepFunctionsModel.DeleteActivityInput) throws -> StepFunctionsModel.DeleteActivityOutput {
         if let deleteActivitySyncOverride = deleteActivitySyncOverride {
-            return try deleteActivitySyncOverride(input, reporting)
+            return try deleteActivitySyncOverride(input)
         }
 
         return DeleteActivityOutput.__default
@@ -306,10 +300,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func deleteStateMachineAsync(
             input: StepFunctionsModel.DeleteStateMachineInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, StepFunctionsError>) -> ()) throws {
         if let deleteStateMachineAsyncOverride = deleteStateMachineAsyncOverride {
-            return try deleteStateMachineAsyncOverride(input, reporting, completion)
+            return try deleteStateMachineAsyncOverride(input, completion)
         }
 
         let result = DeleteStateMachineOutput.__default
@@ -327,10 +320,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidArn.
      */
     public func deleteStateMachineSync(
-            input: StepFunctionsModel.DeleteStateMachineInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DeleteStateMachineOutput {
+            input: StepFunctionsModel.DeleteStateMachineInput) throws -> StepFunctionsModel.DeleteStateMachineOutput {
         if let deleteStateMachineSyncOverride = deleteStateMachineSyncOverride {
-            return try deleteStateMachineSyncOverride(input, reporting)
+            return try deleteStateMachineSyncOverride(input)
         }
 
         return DeleteStateMachineOutput.__default
@@ -348,10 +340,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func describeActivityAsync(
             input: StepFunctionsModel.DescribeActivityInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, StepFunctionsError>) -> ()) throws {
         if let describeActivityAsyncOverride = describeActivityAsyncOverride {
-            return try describeActivityAsyncOverride(input, reporting, completion)
+            return try describeActivityAsyncOverride(input, completion)
         }
 
         let result = DescribeActivityOutput.__default
@@ -369,10 +360,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: activityDoesNotExist, invalidArn.
      */
     public func describeActivitySync(
-            input: StepFunctionsModel.DescribeActivityInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeActivityOutput {
+            input: StepFunctionsModel.DescribeActivityInput) throws -> StepFunctionsModel.DescribeActivityOutput {
         if let describeActivitySyncOverride = describeActivitySyncOverride {
-            return try describeActivitySyncOverride(input, reporting)
+            return try describeActivitySyncOverride(input)
         }
 
         return DescribeActivityOutput.__default
@@ -390,10 +380,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func describeExecutionAsync(
             input: StepFunctionsModel.DescribeExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, StepFunctionsError>) -> ()) throws {
         if let describeExecutionAsyncOverride = describeExecutionAsyncOverride {
-            return try describeExecutionAsyncOverride(input, reporting, completion)
+            return try describeExecutionAsyncOverride(input, completion)
         }
 
         let result = DescribeExecutionOutput.__default
@@ -411,10 +400,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: executionDoesNotExist, invalidArn.
      */
     public func describeExecutionSync(
-            input: StepFunctionsModel.DescribeExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeExecutionOutput {
+            input: StepFunctionsModel.DescribeExecutionInput) throws -> StepFunctionsModel.DescribeExecutionOutput {
         if let describeExecutionSyncOverride = describeExecutionSyncOverride {
-            return try describeExecutionSyncOverride(input, reporting)
+            return try describeExecutionSyncOverride(input)
         }
 
         return DescribeExecutionOutput.__default
@@ -432,10 +420,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func describeStateMachineAsync(
             input: StepFunctionsModel.DescribeStateMachineInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, StepFunctionsError>) -> ()) throws {
         if let describeStateMachineAsyncOverride = describeStateMachineAsyncOverride {
-            return try describeStateMachineAsyncOverride(input, reporting, completion)
+            return try describeStateMachineAsyncOverride(input, completion)
         }
 
         let result = DescribeStateMachineOutput.__default
@@ -453,10 +440,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidArn, stateMachineDoesNotExist.
      */
     public func describeStateMachineSync(
-            input: StepFunctionsModel.DescribeStateMachineInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeStateMachineOutput {
+            input: StepFunctionsModel.DescribeStateMachineInput) throws -> StepFunctionsModel.DescribeStateMachineOutput {
         if let describeStateMachineSyncOverride = describeStateMachineSyncOverride {
-            return try describeStateMachineSyncOverride(input, reporting)
+            return try describeStateMachineSyncOverride(input)
         }
 
         return DescribeStateMachineOutput.__default
@@ -474,10 +460,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func describeStateMachineForExecutionAsync(
             input: StepFunctionsModel.DescribeStateMachineForExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, StepFunctionsError>) -> ()) throws {
         if let describeStateMachineForExecutionAsyncOverride = describeStateMachineForExecutionAsyncOverride {
-            return try describeStateMachineForExecutionAsyncOverride(input, reporting, completion)
+            return try describeStateMachineForExecutionAsyncOverride(input, completion)
         }
 
         let result = DescribeStateMachineForExecutionOutput.__default
@@ -495,10 +480,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: executionDoesNotExist, invalidArn.
      */
     public func describeStateMachineForExecutionSync(
-            input: StepFunctionsModel.DescribeStateMachineForExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
+            input: StepFunctionsModel.DescribeStateMachineForExecutionInput) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
         if let describeStateMachineForExecutionSyncOverride = describeStateMachineForExecutionSyncOverride {
-            return try describeStateMachineForExecutionSyncOverride(input, reporting)
+            return try describeStateMachineForExecutionSyncOverride(input)
         }
 
         return DescribeStateMachineForExecutionOutput.__default
@@ -516,10 +500,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func getActivityTaskAsync(
             input: StepFunctionsModel.GetActivityTaskInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, StepFunctionsError>) -> ()) throws {
         if let getActivityTaskAsyncOverride = getActivityTaskAsyncOverride {
-            return try getActivityTaskAsyncOverride(input, reporting, completion)
+            return try getActivityTaskAsyncOverride(input, completion)
         }
 
         let result = GetActivityTaskOutput.__default
@@ -537,10 +520,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: activityDoesNotExist, activityWorkerLimitExceeded, invalidArn.
      */
     public func getActivityTaskSync(
-            input: StepFunctionsModel.GetActivityTaskInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.GetActivityTaskOutput {
+            input: StepFunctionsModel.GetActivityTaskInput) throws -> StepFunctionsModel.GetActivityTaskOutput {
         if let getActivityTaskSyncOverride = getActivityTaskSyncOverride {
-            return try getActivityTaskSyncOverride(input, reporting)
+            return try getActivityTaskSyncOverride(input)
         }
 
         return GetActivityTaskOutput.__default
@@ -558,10 +540,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func getExecutionHistoryAsync(
             input: StepFunctionsModel.GetExecutionHistoryInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, StepFunctionsError>) -> ()) throws {
         if let getExecutionHistoryAsyncOverride = getExecutionHistoryAsyncOverride {
-            return try getExecutionHistoryAsyncOverride(input, reporting, completion)
+            return try getExecutionHistoryAsyncOverride(input, completion)
         }
 
         let result = GetExecutionHistoryOutput.__default
@@ -579,10 +560,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: executionDoesNotExist, invalidArn, invalidToken.
      */
     public func getExecutionHistorySync(
-            input: StepFunctionsModel.GetExecutionHistoryInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.GetExecutionHistoryOutput {
+            input: StepFunctionsModel.GetExecutionHistoryInput) throws -> StepFunctionsModel.GetExecutionHistoryOutput {
         if let getExecutionHistorySyncOverride = getExecutionHistorySyncOverride {
-            return try getExecutionHistorySyncOverride(input, reporting)
+            return try getExecutionHistorySyncOverride(input)
         }
 
         return GetExecutionHistoryOutput.__default
@@ -600,10 +580,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func listActivitiesAsync(
             input: StepFunctionsModel.ListActivitiesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, StepFunctionsError>) -> ()) throws {
         if let listActivitiesAsyncOverride = listActivitiesAsyncOverride {
-            return try listActivitiesAsyncOverride(input, reporting, completion)
+            return try listActivitiesAsyncOverride(input, completion)
         }
 
         let result = ListActivitiesOutput.__default
@@ -621,10 +600,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidToken.
      */
     public func listActivitiesSync(
-            input: StepFunctionsModel.ListActivitiesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListActivitiesOutput {
+            input: StepFunctionsModel.ListActivitiesInput) throws -> StepFunctionsModel.ListActivitiesOutput {
         if let listActivitiesSyncOverride = listActivitiesSyncOverride {
-            return try listActivitiesSyncOverride(input, reporting)
+            return try listActivitiesSyncOverride(input)
         }
 
         return ListActivitiesOutput.__default
@@ -642,10 +620,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func listExecutionsAsync(
             input: StepFunctionsModel.ListExecutionsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, StepFunctionsError>) -> ()) throws {
         if let listExecutionsAsyncOverride = listExecutionsAsyncOverride {
-            return try listExecutionsAsyncOverride(input, reporting, completion)
+            return try listExecutionsAsyncOverride(input, completion)
         }
 
         let result = ListExecutionsOutput.__default
@@ -663,10 +640,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
      */
     public func listExecutionsSync(
-            input: StepFunctionsModel.ListExecutionsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListExecutionsOutput {
+            input: StepFunctionsModel.ListExecutionsInput) throws -> StepFunctionsModel.ListExecutionsOutput {
         if let listExecutionsSyncOverride = listExecutionsSyncOverride {
-            return try listExecutionsSyncOverride(input, reporting)
+            return try listExecutionsSyncOverride(input)
         }
 
         return ListExecutionsOutput.__default
@@ -684,10 +660,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func listStateMachinesAsync(
             input: StepFunctionsModel.ListStateMachinesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, StepFunctionsError>) -> ()) throws {
         if let listStateMachinesAsyncOverride = listStateMachinesAsyncOverride {
-            return try listStateMachinesAsyncOverride(input, reporting, completion)
+            return try listStateMachinesAsyncOverride(input, completion)
         }
 
         let result = ListStateMachinesOutput.__default
@@ -705,10 +680,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidToken.
      */
     public func listStateMachinesSync(
-            input: StepFunctionsModel.ListStateMachinesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListStateMachinesOutput {
+            input: StepFunctionsModel.ListStateMachinesInput) throws -> StepFunctionsModel.ListStateMachinesOutput {
         if let listStateMachinesSyncOverride = listStateMachinesSyncOverride {
-            return try listStateMachinesSyncOverride(input, reporting)
+            return try listStateMachinesSyncOverride(input)
         }
 
         return ListStateMachinesOutput.__default
@@ -726,10 +700,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func listTagsForResourceAsync(
             input: StepFunctionsModel.ListTagsForResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, StepFunctionsError>) -> ()) throws {
         if let listTagsForResourceAsyncOverride = listTagsForResourceAsyncOverride {
-            return try listTagsForResourceAsyncOverride(input, reporting, completion)
+            return try listTagsForResourceAsyncOverride(input, completion)
         }
 
         let result = ListTagsForResourceOutput.__default
@@ -747,10 +720,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidArn, resourceNotFound.
      */
     public func listTagsForResourceSync(
-            input: StepFunctionsModel.ListTagsForResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.ListTagsForResourceOutput {
+            input: StepFunctionsModel.ListTagsForResourceInput) throws -> StepFunctionsModel.ListTagsForResourceOutput {
         if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
-            return try listTagsForResourceSyncOverride(input, reporting)
+            return try listTagsForResourceSyncOverride(input)
         }
 
         return ListTagsForResourceOutput.__default
@@ -768,10 +740,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func sendTaskFailureAsync(
             input: StepFunctionsModel.SendTaskFailureInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, StepFunctionsError>) -> ()) throws {
         if let sendTaskFailureAsyncOverride = sendTaskFailureAsyncOverride {
-            return try sendTaskFailureAsyncOverride(input, reporting, completion)
+            return try sendTaskFailureAsyncOverride(input, completion)
         }
 
         let result = SendTaskFailureOutput.__default
@@ -789,10 +760,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
      */
     public func sendTaskFailureSync(
-            input: StepFunctionsModel.SendTaskFailureInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskFailureOutput {
+            input: StepFunctionsModel.SendTaskFailureInput) throws -> StepFunctionsModel.SendTaskFailureOutput {
         if let sendTaskFailureSyncOverride = sendTaskFailureSyncOverride {
-            return try sendTaskFailureSyncOverride(input, reporting)
+            return try sendTaskFailureSyncOverride(input)
         }
 
         return SendTaskFailureOutput.__default
@@ -810,10 +780,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func sendTaskHeartbeatAsync(
             input: StepFunctionsModel.SendTaskHeartbeatInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, StepFunctionsError>) -> ()) throws {
         if let sendTaskHeartbeatAsyncOverride = sendTaskHeartbeatAsyncOverride {
-            return try sendTaskHeartbeatAsyncOverride(input, reporting, completion)
+            return try sendTaskHeartbeatAsyncOverride(input, completion)
         }
 
         let result = SendTaskHeartbeatOutput.__default
@@ -831,10 +800,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
      */
     public func sendTaskHeartbeatSync(
-            input: StepFunctionsModel.SendTaskHeartbeatInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
+            input: StepFunctionsModel.SendTaskHeartbeatInput) throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
         if let sendTaskHeartbeatSyncOverride = sendTaskHeartbeatSyncOverride {
-            return try sendTaskHeartbeatSyncOverride(input, reporting)
+            return try sendTaskHeartbeatSyncOverride(input)
         }
 
         return SendTaskHeartbeatOutput.__default
@@ -852,10 +820,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func sendTaskSuccessAsync(
             input: StepFunctionsModel.SendTaskSuccessInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, StepFunctionsError>) -> ()) throws {
         if let sendTaskSuccessAsyncOverride = sendTaskSuccessAsyncOverride {
-            return try sendTaskSuccessAsyncOverride(input, reporting, completion)
+            return try sendTaskSuccessAsyncOverride(input, completion)
         }
 
         let result = SendTaskSuccessOutput.__default
@@ -873,10 +840,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidOutput, invalidToken, taskDoesNotExist, taskTimedOut.
      */
     public func sendTaskSuccessSync(
-            input: StepFunctionsModel.SendTaskSuccessInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.SendTaskSuccessOutput {
+            input: StepFunctionsModel.SendTaskSuccessInput) throws -> StepFunctionsModel.SendTaskSuccessOutput {
         if let sendTaskSuccessSyncOverride = sendTaskSuccessSyncOverride {
-            return try sendTaskSuccessSyncOverride(input, reporting)
+            return try sendTaskSuccessSyncOverride(input)
         }
 
         return SendTaskSuccessOutput.__default
@@ -894,10 +860,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func startExecutionAsync(
             input: StepFunctionsModel.StartExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, StepFunctionsError>) -> ()) throws {
         if let startExecutionAsyncOverride = startExecutionAsyncOverride {
-            return try startExecutionAsyncOverride(input, reporting, completion)
+            return try startExecutionAsyncOverride(input, completion)
         }
 
         let result = StartExecutionOutput.__default
@@ -915,10 +880,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
      */
     public func startExecutionSync(
-            input: StepFunctionsModel.StartExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.StartExecutionOutput {
+            input: StepFunctionsModel.StartExecutionInput) throws -> StepFunctionsModel.StartExecutionOutput {
         if let startExecutionSyncOverride = startExecutionSyncOverride {
-            return try startExecutionSyncOverride(input, reporting)
+            return try startExecutionSyncOverride(input)
         }
 
         return StartExecutionOutput.__default
@@ -936,10 +900,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func stopExecutionAsync(
             input: StepFunctionsModel.StopExecutionInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, StepFunctionsError>) -> ()) throws {
         if let stopExecutionAsyncOverride = stopExecutionAsyncOverride {
-            return try stopExecutionAsyncOverride(input, reporting, completion)
+            return try stopExecutionAsyncOverride(input, completion)
         }
 
         let result = StopExecutionOutput.__default
@@ -957,10 +920,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: executionDoesNotExist, invalidArn.
      */
     public func stopExecutionSync(
-            input: StepFunctionsModel.StopExecutionInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.StopExecutionOutput {
+            input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput {
         if let stopExecutionSyncOverride = stopExecutionSyncOverride {
-            return try stopExecutionSyncOverride(input, reporting)
+            return try stopExecutionSyncOverride(input)
         }
 
         return StopExecutionOutput.__default
@@ -978,10 +940,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func tagResourceAsync(
             input: StepFunctionsModel.TagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, StepFunctionsError>) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
-            return try tagResourceAsyncOverride(input, reporting, completion)
+            return try tagResourceAsyncOverride(input, completion)
         }
 
         let result = TagResourceOutput.__default
@@ -999,10 +960,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidArn, resourceNotFound, tooManyTags.
      */
     public func tagResourceSync(
-            input: StepFunctionsModel.TagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.TagResourceOutput {
+            input: StepFunctionsModel.TagResourceInput) throws -> StepFunctionsModel.TagResourceOutput {
         if let tagResourceSyncOverride = tagResourceSyncOverride {
-            return try tagResourceSyncOverride(input, reporting)
+            return try tagResourceSyncOverride(input)
         }
 
         return TagResourceOutput.__default
@@ -1020,10 +980,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func untagResourceAsync(
             input: StepFunctionsModel.UntagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, StepFunctionsError>) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
-            return try untagResourceAsyncOverride(input, reporting, completion)
+            return try untagResourceAsyncOverride(input, completion)
         }
 
         let result = UntagResourceOutput.__default
@@ -1041,10 +1000,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidArn, resourceNotFound.
      */
     public func untagResourceSync(
-            input: StepFunctionsModel.UntagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.UntagResourceOutput {
+            input: StepFunctionsModel.UntagResourceInput) throws -> StepFunctionsModel.UntagResourceOutput {
         if let untagResourceSyncOverride = untagResourceSyncOverride {
-            return try untagResourceSyncOverride(input, reporting)
+            return try untagResourceSyncOverride(input)
         }
 
         return UntagResourceOutput.__default
@@ -1062,10 +1020,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      */
     public func updateStateMachineAsync(
             input: StepFunctionsModel.UpdateStateMachineInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, StepFunctionsError>) -> ()) throws {
         if let updateStateMachineAsyncOverride = updateStateMachineAsyncOverride {
-            return try updateStateMachineAsyncOverride(input, reporting, completion)
+            return try updateStateMachineAsyncOverride(input, completion)
         }
 
         let result = UpdateStateMachineOutput.__default
@@ -1083,10 +1040,9 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
      - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
      */
     public func updateStateMachineSync(
-            input: StepFunctionsModel.UpdateStateMachineInput,
-            reporting: SmokeAWSInvocationReporting) throws -> StepFunctionsModel.UpdateStateMachineOutput {
+            input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput {
         if let updateStateMachineSyncOverride = updateStateMachineSyncOverride {
-            return try updateStateMachineSyncOverride(input, reporting)
+            return try updateStateMachineSyncOverride(input)
         }
 
         return UpdateStateMachineOutput.__default

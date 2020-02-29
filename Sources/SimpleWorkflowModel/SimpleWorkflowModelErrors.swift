@@ -22,6 +22,16 @@
 import Foundation
 import Logging
 
+public typealias SimpleWorkflowErrorResult<SuccessPayload> = Result<SuccessPayload, SimpleWorkflowError>
+
+public extension Swift.Error {
+    func asUnrecognizedSimpleWorkflowError() -> SimpleWorkflowError {
+        let errorType = String(describing: type(of: self))
+        let errorDescription = String(describing: self)
+        return .unrecognizedError(errorType, errorDescription)
+    }
+}
+
 private let defaultUndefinedIdentity = "DefaultUndefinedFault"
 private let domainAlreadyExistsIdentity = "DomainAlreadyExistsFault"
 private let domainDeprecatedIdentity = "DomainDeprecatedFault"

@@ -28,37 +28,37 @@ import SmokeHTTPClient
  Mock Client for the RDSData service that by default always throws from its methods.
  */
 public struct ThrowingRDSDataClient: RDSDataClientProtocol {
-    let error: HTTPClientError
-    let batchExecuteStatementAsyncOverride: RDSDataClientProtocol.BatchExecuteStatementAsyncType?
-    let batchExecuteStatementSyncOverride: RDSDataClientProtocol.BatchExecuteStatementSyncType?
-    let beginTransactionAsyncOverride: RDSDataClientProtocol.BeginTransactionAsyncType?
-    let beginTransactionSyncOverride: RDSDataClientProtocol.BeginTransactionSyncType?
-    let commitTransactionAsyncOverride: RDSDataClientProtocol.CommitTransactionAsyncType?
-    let commitTransactionSyncOverride: RDSDataClientProtocol.CommitTransactionSyncType?
-    let executeSqlAsyncOverride: RDSDataClientProtocol.ExecuteSqlAsyncType?
-    let executeSqlSyncOverride: RDSDataClientProtocol.ExecuteSqlSyncType?
-    let executeStatementAsyncOverride: RDSDataClientProtocol.ExecuteStatementAsyncType?
-    let executeStatementSyncOverride: RDSDataClientProtocol.ExecuteStatementSyncType?
-    let rollbackTransactionAsyncOverride: RDSDataClientProtocol.RollbackTransactionAsyncType?
-    let rollbackTransactionSyncOverride: RDSDataClientProtocol.RollbackTransactionSyncType?
+    let error: RDSDataError
+    let batchExecuteStatementAsyncOverride: BatchExecuteStatementAsyncType?
+    let batchExecuteStatementSyncOverride: BatchExecuteStatementSyncType?
+    let beginTransactionAsyncOverride: BeginTransactionAsyncType?
+    let beginTransactionSyncOverride: BeginTransactionSyncType?
+    let commitTransactionAsyncOverride: CommitTransactionAsyncType?
+    let commitTransactionSyncOverride: CommitTransactionSyncType?
+    let executeSqlAsyncOverride: ExecuteSqlAsyncType?
+    let executeSqlSyncOverride: ExecuteSqlSyncType?
+    let executeStatementAsyncOverride: ExecuteStatementAsyncType?
+    let executeStatementSyncOverride: ExecuteStatementSyncType?
+    let rollbackTransactionAsyncOverride: RollbackTransactionAsyncType?
+    let rollbackTransactionSyncOverride: RollbackTransactionSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: HTTPClientError,
-            batchExecuteStatementAsync: RDSDataClientProtocol.BatchExecuteStatementAsyncType? = nil,
-            batchExecuteStatementSync: RDSDataClientProtocol.BatchExecuteStatementSyncType? = nil,
-            beginTransactionAsync: RDSDataClientProtocol.BeginTransactionAsyncType? = nil,
-            beginTransactionSync: RDSDataClientProtocol.BeginTransactionSyncType? = nil,
-            commitTransactionAsync: RDSDataClientProtocol.CommitTransactionAsyncType? = nil,
-            commitTransactionSync: RDSDataClientProtocol.CommitTransactionSyncType? = nil,
-            executeSqlAsync: RDSDataClientProtocol.ExecuteSqlAsyncType? = nil,
-            executeSqlSync: RDSDataClientProtocol.ExecuteSqlSyncType? = nil,
-            executeStatementAsync: RDSDataClientProtocol.ExecuteStatementAsyncType? = nil,
-            executeStatementSync: RDSDataClientProtocol.ExecuteStatementSyncType? = nil,
-            rollbackTransactionAsync: RDSDataClientProtocol.RollbackTransactionAsyncType? = nil,
-            rollbackTransactionSync: RDSDataClientProtocol.RollbackTransactionSyncType? = nil) {
+    public init(error: RDSDataError,
+            batchExecuteStatementAsync: BatchExecuteStatementAsyncType? = nil,
+            batchExecuteStatementSync: BatchExecuteStatementSyncType? = nil,
+            beginTransactionAsync: BeginTransactionAsyncType? = nil,
+            beginTransactionSync: BeginTransactionSyncType? = nil,
+            commitTransactionAsync: CommitTransactionAsyncType? = nil,
+            commitTransactionSync: CommitTransactionSyncType? = nil,
+            executeSqlAsync: ExecuteSqlAsyncType? = nil,
+            executeSqlSync: ExecuteSqlSyncType? = nil,
+            executeStatementAsync: ExecuteStatementAsyncType? = nil,
+            executeStatementSync: ExecuteStatementSyncType? = nil,
+            rollbackTransactionAsync: RollbackTransactionAsyncType? = nil,
+            rollbackTransactionSync: RollbackTransactionSyncType? = nil) {
         self.error = error
         self.batchExecuteStatementAsyncOverride = batchExecuteStatementAsync
         self.batchExecuteStatementSyncOverride = batchExecuteStatementSync
@@ -86,10 +86,9 @@ public struct ThrowingRDSDataClient: RDSDataClientProtocol {
      */
     public func batchExecuteStatementAsync(
             input: RDSDataModel.BatchExecuteStatementRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.BatchExecuteStatementResponse, RDSDataError>) -> ()) throws {
         if let batchExecuteStatementAsyncOverride = batchExecuteStatementAsyncOverride {
-            return try batchExecuteStatementAsyncOverride(input, reporting, completion)
+            return try batchExecuteStatementAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -105,10 +104,9 @@ public struct ThrowingRDSDataClient: RDSDataClientProtocol {
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
     public func batchExecuteStatementSync(
-            input: RDSDataModel.BatchExecuteStatementRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.BatchExecuteStatementResponse {
+            input: RDSDataModel.BatchExecuteStatementRequest) throws -> RDSDataModel.BatchExecuteStatementResponse {
         if let batchExecuteStatementSyncOverride = batchExecuteStatementSyncOverride {
-            return try batchExecuteStatementSyncOverride(input, reporting)
+            return try batchExecuteStatementSyncOverride(input)
         }
 
         throw error
@@ -126,10 +124,9 @@ public struct ThrowingRDSDataClient: RDSDataClientProtocol {
      */
     public func beginTransactionAsync(
             input: RDSDataModel.BeginTransactionRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.BeginTransactionResponse, RDSDataError>) -> ()) throws {
         if let beginTransactionAsyncOverride = beginTransactionAsyncOverride {
-            return try beginTransactionAsyncOverride(input, reporting, completion)
+            return try beginTransactionAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -145,10 +142,9 @@ public struct ThrowingRDSDataClient: RDSDataClientProtocol {
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
     public func beginTransactionSync(
-            input: RDSDataModel.BeginTransactionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.BeginTransactionResponse {
+            input: RDSDataModel.BeginTransactionRequest) throws -> RDSDataModel.BeginTransactionResponse {
         if let beginTransactionSyncOverride = beginTransactionSyncOverride {
-            return try beginTransactionSyncOverride(input, reporting)
+            return try beginTransactionSyncOverride(input)
         }
 
         throw error
@@ -166,10 +162,9 @@ public struct ThrowingRDSDataClient: RDSDataClientProtocol {
      */
     public func commitTransactionAsync(
             input: RDSDataModel.CommitTransactionRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.CommitTransactionResponse, RDSDataError>) -> ()) throws {
         if let commitTransactionAsyncOverride = commitTransactionAsyncOverride {
-            return try commitTransactionAsyncOverride(input, reporting, completion)
+            return try commitTransactionAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -185,10 +180,9 @@ public struct ThrowingRDSDataClient: RDSDataClientProtocol {
      - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     public func commitTransactionSync(
-            input: RDSDataModel.CommitTransactionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.CommitTransactionResponse {
+            input: RDSDataModel.CommitTransactionRequest) throws -> RDSDataModel.CommitTransactionResponse {
         if let commitTransactionSyncOverride = commitTransactionSyncOverride {
-            return try commitTransactionSyncOverride(input, reporting)
+            return try commitTransactionSyncOverride(input)
         }
 
         throw error
@@ -206,10 +200,9 @@ public struct ThrowingRDSDataClient: RDSDataClientProtocol {
      */
     public func executeSqlAsync(
             input: RDSDataModel.ExecuteSqlRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.ExecuteSqlResponse, RDSDataError>) -> ()) throws {
         if let executeSqlAsyncOverride = executeSqlAsyncOverride {
-            return try executeSqlAsyncOverride(input, reporting, completion)
+            return try executeSqlAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -225,10 +218,9 @@ public struct ThrowingRDSDataClient: RDSDataClientProtocol {
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable.
      */
     public func executeSqlSync(
-            input: RDSDataModel.ExecuteSqlRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.ExecuteSqlResponse {
+            input: RDSDataModel.ExecuteSqlRequest) throws -> RDSDataModel.ExecuteSqlResponse {
         if let executeSqlSyncOverride = executeSqlSyncOverride {
-            return try executeSqlSyncOverride(input, reporting)
+            return try executeSqlSyncOverride(input)
         }
 
         throw error
@@ -246,10 +238,9 @@ public struct ThrowingRDSDataClient: RDSDataClientProtocol {
      */
     public func executeStatementAsync(
             input: RDSDataModel.ExecuteStatementRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.ExecuteStatementResponse, RDSDataError>) -> ()) throws {
         if let executeStatementAsyncOverride = executeStatementAsyncOverride {
-            return try executeStatementAsyncOverride(input, reporting, completion)
+            return try executeStatementAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -265,10 +256,9 @@ public struct ThrowingRDSDataClient: RDSDataClientProtocol {
      - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
     public func executeStatementSync(
-            input: RDSDataModel.ExecuteStatementRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.ExecuteStatementResponse {
+            input: RDSDataModel.ExecuteStatementRequest) throws -> RDSDataModel.ExecuteStatementResponse {
         if let executeStatementSyncOverride = executeStatementSyncOverride {
-            return try executeStatementSyncOverride(input, reporting)
+            return try executeStatementSyncOverride(input)
         }
 
         throw error
@@ -286,10 +276,9 @@ public struct ThrowingRDSDataClient: RDSDataClientProtocol {
      */
     public func rollbackTransactionAsync(
             input: RDSDataModel.RollbackTransactionRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<RDSDataModel.RollbackTransactionResponse, RDSDataError>) -> ()) throws {
         if let rollbackTransactionAsyncOverride = rollbackTransactionAsyncOverride {
-            return try rollbackTransactionAsyncOverride(input, reporting, completion)
+            return try rollbackTransactionAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -305,10 +294,9 @@ public struct ThrowingRDSDataClient: RDSDataClientProtocol {
      - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     public func rollbackTransactionSync(
-            input: RDSDataModel.RollbackTransactionRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> RDSDataModel.RollbackTransactionResponse {
+            input: RDSDataModel.RollbackTransactionRequest) throws -> RDSDataModel.RollbackTransactionResponse {
         if let rollbackTransactionSyncOverride = rollbackTransactionSyncOverride {
-            return try rollbackTransactionSyncOverride(input, reporting)
+            return try rollbackTransactionSyncOverride(input)
         }
 
         throw error

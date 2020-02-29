@@ -28,177 +28,177 @@ import SmokeHTTPClient
  Mock Client for the DynamoDB service that by default always throws from its methods.
  */
 public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
-    let error: HTTPClientError
-    let batchGetItemAsyncOverride: DynamoDBClientProtocol.BatchGetItemAsyncType?
-    let batchGetItemSyncOverride: DynamoDBClientProtocol.BatchGetItemSyncType?
-    let batchWriteItemAsyncOverride: DynamoDBClientProtocol.BatchWriteItemAsyncType?
-    let batchWriteItemSyncOverride: DynamoDBClientProtocol.BatchWriteItemSyncType?
-    let createBackupAsyncOverride: DynamoDBClientProtocol.CreateBackupAsyncType?
-    let createBackupSyncOverride: DynamoDBClientProtocol.CreateBackupSyncType?
-    let createGlobalTableAsyncOverride: DynamoDBClientProtocol.CreateGlobalTableAsyncType?
-    let createGlobalTableSyncOverride: DynamoDBClientProtocol.CreateGlobalTableSyncType?
-    let createTableAsyncOverride: DynamoDBClientProtocol.CreateTableAsyncType?
-    let createTableSyncOverride: DynamoDBClientProtocol.CreateTableSyncType?
-    let deleteBackupAsyncOverride: DynamoDBClientProtocol.DeleteBackupAsyncType?
-    let deleteBackupSyncOverride: DynamoDBClientProtocol.DeleteBackupSyncType?
-    let deleteItemAsyncOverride: DynamoDBClientProtocol.DeleteItemAsyncType?
-    let deleteItemSyncOverride: DynamoDBClientProtocol.DeleteItemSyncType?
-    let deleteTableAsyncOverride: DynamoDBClientProtocol.DeleteTableAsyncType?
-    let deleteTableSyncOverride: DynamoDBClientProtocol.DeleteTableSyncType?
-    let describeBackupAsyncOverride: DynamoDBClientProtocol.DescribeBackupAsyncType?
-    let describeBackupSyncOverride: DynamoDBClientProtocol.DescribeBackupSyncType?
-    let describeContinuousBackupsAsyncOverride: DynamoDBClientProtocol.DescribeContinuousBackupsAsyncType?
-    let describeContinuousBackupsSyncOverride: DynamoDBClientProtocol.DescribeContinuousBackupsSyncType?
-    let describeContributorInsightsAsyncOverride: DynamoDBClientProtocol.DescribeContributorInsightsAsyncType?
-    let describeContributorInsightsSyncOverride: DynamoDBClientProtocol.DescribeContributorInsightsSyncType?
-    let describeEndpointsAsyncOverride: DynamoDBClientProtocol.DescribeEndpointsAsyncType?
-    let describeEndpointsSyncOverride: DynamoDBClientProtocol.DescribeEndpointsSyncType?
-    let describeGlobalTableAsyncOverride: DynamoDBClientProtocol.DescribeGlobalTableAsyncType?
-    let describeGlobalTableSyncOverride: DynamoDBClientProtocol.DescribeGlobalTableSyncType?
-    let describeGlobalTableSettingsAsyncOverride: DynamoDBClientProtocol.DescribeGlobalTableSettingsAsyncType?
-    let describeGlobalTableSettingsSyncOverride: DynamoDBClientProtocol.DescribeGlobalTableSettingsSyncType?
-    let describeLimitsAsyncOverride: DynamoDBClientProtocol.DescribeLimitsAsyncType?
-    let describeLimitsSyncOverride: DynamoDBClientProtocol.DescribeLimitsSyncType?
-    let describeTableAsyncOverride: DynamoDBClientProtocol.DescribeTableAsyncType?
-    let describeTableSyncOverride: DynamoDBClientProtocol.DescribeTableSyncType?
-    let describeTableReplicaAutoScalingAsyncOverride: DynamoDBClientProtocol.DescribeTableReplicaAutoScalingAsyncType?
-    let describeTableReplicaAutoScalingSyncOverride: DynamoDBClientProtocol.DescribeTableReplicaAutoScalingSyncType?
-    let describeTimeToLiveAsyncOverride: DynamoDBClientProtocol.DescribeTimeToLiveAsyncType?
-    let describeTimeToLiveSyncOverride: DynamoDBClientProtocol.DescribeTimeToLiveSyncType?
-    let getItemAsyncOverride: DynamoDBClientProtocol.GetItemAsyncType?
-    let getItemSyncOverride: DynamoDBClientProtocol.GetItemSyncType?
-    let listBackupsAsyncOverride: DynamoDBClientProtocol.ListBackupsAsyncType?
-    let listBackupsSyncOverride: DynamoDBClientProtocol.ListBackupsSyncType?
-    let listContributorInsightsAsyncOverride: DynamoDBClientProtocol.ListContributorInsightsAsyncType?
-    let listContributorInsightsSyncOverride: DynamoDBClientProtocol.ListContributorInsightsSyncType?
-    let listGlobalTablesAsyncOverride: DynamoDBClientProtocol.ListGlobalTablesAsyncType?
-    let listGlobalTablesSyncOverride: DynamoDBClientProtocol.ListGlobalTablesSyncType?
-    let listTablesAsyncOverride: DynamoDBClientProtocol.ListTablesAsyncType?
-    let listTablesSyncOverride: DynamoDBClientProtocol.ListTablesSyncType?
-    let listTagsOfResourceAsyncOverride: DynamoDBClientProtocol.ListTagsOfResourceAsyncType?
-    let listTagsOfResourceSyncOverride: DynamoDBClientProtocol.ListTagsOfResourceSyncType?
-    let putItemAsyncOverride: DynamoDBClientProtocol.PutItemAsyncType?
-    let putItemSyncOverride: DynamoDBClientProtocol.PutItemSyncType?
-    let queryAsyncOverride: DynamoDBClientProtocol.QueryAsyncType?
-    let querySyncOverride: DynamoDBClientProtocol.QuerySyncType?
-    let restoreTableFromBackupAsyncOverride: DynamoDBClientProtocol.RestoreTableFromBackupAsyncType?
-    let restoreTableFromBackupSyncOverride: DynamoDBClientProtocol.RestoreTableFromBackupSyncType?
-    let restoreTableToPointInTimeAsyncOverride: DynamoDBClientProtocol.RestoreTableToPointInTimeAsyncType?
-    let restoreTableToPointInTimeSyncOverride: DynamoDBClientProtocol.RestoreTableToPointInTimeSyncType?
-    let scanAsyncOverride: DynamoDBClientProtocol.ScanAsyncType?
-    let scanSyncOverride: DynamoDBClientProtocol.ScanSyncType?
-    let tagResourceAsyncOverride: DynamoDBClientProtocol.TagResourceAsyncType?
-    let tagResourceSyncOverride: DynamoDBClientProtocol.TagResourceSyncType?
-    let transactGetItemsAsyncOverride: DynamoDBClientProtocol.TransactGetItemsAsyncType?
-    let transactGetItemsSyncOverride: DynamoDBClientProtocol.TransactGetItemsSyncType?
-    let transactWriteItemsAsyncOverride: DynamoDBClientProtocol.TransactWriteItemsAsyncType?
-    let transactWriteItemsSyncOverride: DynamoDBClientProtocol.TransactWriteItemsSyncType?
-    let untagResourceAsyncOverride: DynamoDBClientProtocol.UntagResourceAsyncType?
-    let untagResourceSyncOverride: DynamoDBClientProtocol.UntagResourceSyncType?
-    let updateContinuousBackupsAsyncOverride: DynamoDBClientProtocol.UpdateContinuousBackupsAsyncType?
-    let updateContinuousBackupsSyncOverride: DynamoDBClientProtocol.UpdateContinuousBackupsSyncType?
-    let updateContributorInsightsAsyncOverride: DynamoDBClientProtocol.UpdateContributorInsightsAsyncType?
-    let updateContributorInsightsSyncOverride: DynamoDBClientProtocol.UpdateContributorInsightsSyncType?
-    let updateGlobalTableAsyncOverride: DynamoDBClientProtocol.UpdateGlobalTableAsyncType?
-    let updateGlobalTableSyncOverride: DynamoDBClientProtocol.UpdateGlobalTableSyncType?
-    let updateGlobalTableSettingsAsyncOverride: DynamoDBClientProtocol.UpdateGlobalTableSettingsAsyncType?
-    let updateGlobalTableSettingsSyncOverride: DynamoDBClientProtocol.UpdateGlobalTableSettingsSyncType?
-    let updateItemAsyncOverride: DynamoDBClientProtocol.UpdateItemAsyncType?
-    let updateItemSyncOverride: DynamoDBClientProtocol.UpdateItemSyncType?
-    let updateTableAsyncOverride: DynamoDBClientProtocol.UpdateTableAsyncType?
-    let updateTableSyncOverride: DynamoDBClientProtocol.UpdateTableSyncType?
-    let updateTableReplicaAutoScalingAsyncOverride: DynamoDBClientProtocol.UpdateTableReplicaAutoScalingAsyncType?
-    let updateTableReplicaAutoScalingSyncOverride: DynamoDBClientProtocol.UpdateTableReplicaAutoScalingSyncType?
-    let updateTimeToLiveAsyncOverride: DynamoDBClientProtocol.UpdateTimeToLiveAsyncType?
-    let updateTimeToLiveSyncOverride: DynamoDBClientProtocol.UpdateTimeToLiveSyncType?
+    let error: DynamoDBError
+    let batchGetItemAsyncOverride: BatchGetItemAsyncType?
+    let batchGetItemSyncOverride: BatchGetItemSyncType?
+    let batchWriteItemAsyncOverride: BatchWriteItemAsyncType?
+    let batchWriteItemSyncOverride: BatchWriteItemSyncType?
+    let createBackupAsyncOverride: CreateBackupAsyncType?
+    let createBackupSyncOverride: CreateBackupSyncType?
+    let createGlobalTableAsyncOverride: CreateGlobalTableAsyncType?
+    let createGlobalTableSyncOverride: CreateGlobalTableSyncType?
+    let createTableAsyncOverride: CreateTableAsyncType?
+    let createTableSyncOverride: CreateTableSyncType?
+    let deleteBackupAsyncOverride: DeleteBackupAsyncType?
+    let deleteBackupSyncOverride: DeleteBackupSyncType?
+    let deleteItemAsyncOverride: DeleteItemAsyncType?
+    let deleteItemSyncOverride: DeleteItemSyncType?
+    let deleteTableAsyncOverride: DeleteTableAsyncType?
+    let deleteTableSyncOverride: DeleteTableSyncType?
+    let describeBackupAsyncOverride: DescribeBackupAsyncType?
+    let describeBackupSyncOverride: DescribeBackupSyncType?
+    let describeContinuousBackupsAsyncOverride: DescribeContinuousBackupsAsyncType?
+    let describeContinuousBackupsSyncOverride: DescribeContinuousBackupsSyncType?
+    let describeContributorInsightsAsyncOverride: DescribeContributorInsightsAsyncType?
+    let describeContributorInsightsSyncOverride: DescribeContributorInsightsSyncType?
+    let describeEndpointsAsyncOverride: DescribeEndpointsAsyncType?
+    let describeEndpointsSyncOverride: DescribeEndpointsSyncType?
+    let describeGlobalTableAsyncOverride: DescribeGlobalTableAsyncType?
+    let describeGlobalTableSyncOverride: DescribeGlobalTableSyncType?
+    let describeGlobalTableSettingsAsyncOverride: DescribeGlobalTableSettingsAsyncType?
+    let describeGlobalTableSettingsSyncOverride: DescribeGlobalTableSettingsSyncType?
+    let describeLimitsAsyncOverride: DescribeLimitsAsyncType?
+    let describeLimitsSyncOverride: DescribeLimitsSyncType?
+    let describeTableAsyncOverride: DescribeTableAsyncType?
+    let describeTableSyncOverride: DescribeTableSyncType?
+    let describeTableReplicaAutoScalingAsyncOverride: DescribeTableReplicaAutoScalingAsyncType?
+    let describeTableReplicaAutoScalingSyncOverride: DescribeTableReplicaAutoScalingSyncType?
+    let describeTimeToLiveAsyncOverride: DescribeTimeToLiveAsyncType?
+    let describeTimeToLiveSyncOverride: DescribeTimeToLiveSyncType?
+    let getItemAsyncOverride: GetItemAsyncType?
+    let getItemSyncOverride: GetItemSyncType?
+    let listBackupsAsyncOverride: ListBackupsAsyncType?
+    let listBackupsSyncOverride: ListBackupsSyncType?
+    let listContributorInsightsAsyncOverride: ListContributorInsightsAsyncType?
+    let listContributorInsightsSyncOverride: ListContributorInsightsSyncType?
+    let listGlobalTablesAsyncOverride: ListGlobalTablesAsyncType?
+    let listGlobalTablesSyncOverride: ListGlobalTablesSyncType?
+    let listTablesAsyncOverride: ListTablesAsyncType?
+    let listTablesSyncOverride: ListTablesSyncType?
+    let listTagsOfResourceAsyncOverride: ListTagsOfResourceAsyncType?
+    let listTagsOfResourceSyncOverride: ListTagsOfResourceSyncType?
+    let putItemAsyncOverride: PutItemAsyncType?
+    let putItemSyncOverride: PutItemSyncType?
+    let queryAsyncOverride: QueryAsyncType?
+    let querySyncOverride: QuerySyncType?
+    let restoreTableFromBackupAsyncOverride: RestoreTableFromBackupAsyncType?
+    let restoreTableFromBackupSyncOverride: RestoreTableFromBackupSyncType?
+    let restoreTableToPointInTimeAsyncOverride: RestoreTableToPointInTimeAsyncType?
+    let restoreTableToPointInTimeSyncOverride: RestoreTableToPointInTimeSyncType?
+    let scanAsyncOverride: ScanAsyncType?
+    let scanSyncOverride: ScanSyncType?
+    let tagResourceAsyncOverride: TagResourceAsyncType?
+    let tagResourceSyncOverride: TagResourceSyncType?
+    let transactGetItemsAsyncOverride: TransactGetItemsAsyncType?
+    let transactGetItemsSyncOverride: TransactGetItemsSyncType?
+    let transactWriteItemsAsyncOverride: TransactWriteItemsAsyncType?
+    let transactWriteItemsSyncOverride: TransactWriteItemsSyncType?
+    let untagResourceAsyncOverride: UntagResourceAsyncType?
+    let untagResourceSyncOverride: UntagResourceSyncType?
+    let updateContinuousBackupsAsyncOverride: UpdateContinuousBackupsAsyncType?
+    let updateContinuousBackupsSyncOverride: UpdateContinuousBackupsSyncType?
+    let updateContributorInsightsAsyncOverride: UpdateContributorInsightsAsyncType?
+    let updateContributorInsightsSyncOverride: UpdateContributorInsightsSyncType?
+    let updateGlobalTableAsyncOverride: UpdateGlobalTableAsyncType?
+    let updateGlobalTableSyncOverride: UpdateGlobalTableSyncType?
+    let updateGlobalTableSettingsAsyncOverride: UpdateGlobalTableSettingsAsyncType?
+    let updateGlobalTableSettingsSyncOverride: UpdateGlobalTableSettingsSyncType?
+    let updateItemAsyncOverride: UpdateItemAsyncType?
+    let updateItemSyncOverride: UpdateItemSyncType?
+    let updateTableAsyncOverride: UpdateTableAsyncType?
+    let updateTableSyncOverride: UpdateTableSyncType?
+    let updateTableReplicaAutoScalingAsyncOverride: UpdateTableReplicaAutoScalingAsyncType?
+    let updateTableReplicaAutoScalingSyncOverride: UpdateTableReplicaAutoScalingSyncType?
+    let updateTimeToLiveAsyncOverride: UpdateTimeToLiveAsyncType?
+    let updateTimeToLiveSyncOverride: UpdateTimeToLiveSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
      functions can be overridden by passing them to this initializer.
      */
-    public init(error: HTTPClientError,
-            batchGetItemAsync: DynamoDBClientProtocol.BatchGetItemAsyncType? = nil,
-            batchGetItemSync: DynamoDBClientProtocol.BatchGetItemSyncType? = nil,
-            batchWriteItemAsync: DynamoDBClientProtocol.BatchWriteItemAsyncType? = nil,
-            batchWriteItemSync: DynamoDBClientProtocol.BatchWriteItemSyncType? = nil,
-            createBackupAsync: DynamoDBClientProtocol.CreateBackupAsyncType? = nil,
-            createBackupSync: DynamoDBClientProtocol.CreateBackupSyncType? = nil,
-            createGlobalTableAsync: DynamoDBClientProtocol.CreateGlobalTableAsyncType? = nil,
-            createGlobalTableSync: DynamoDBClientProtocol.CreateGlobalTableSyncType? = nil,
-            createTableAsync: DynamoDBClientProtocol.CreateTableAsyncType? = nil,
-            createTableSync: DynamoDBClientProtocol.CreateTableSyncType? = nil,
-            deleteBackupAsync: DynamoDBClientProtocol.DeleteBackupAsyncType? = nil,
-            deleteBackupSync: DynamoDBClientProtocol.DeleteBackupSyncType? = nil,
-            deleteItemAsync: DynamoDBClientProtocol.DeleteItemAsyncType? = nil,
-            deleteItemSync: DynamoDBClientProtocol.DeleteItemSyncType? = nil,
-            deleteTableAsync: DynamoDBClientProtocol.DeleteTableAsyncType? = nil,
-            deleteTableSync: DynamoDBClientProtocol.DeleteTableSyncType? = nil,
-            describeBackupAsync: DynamoDBClientProtocol.DescribeBackupAsyncType? = nil,
-            describeBackupSync: DynamoDBClientProtocol.DescribeBackupSyncType? = nil,
-            describeContinuousBackupsAsync: DynamoDBClientProtocol.DescribeContinuousBackupsAsyncType? = nil,
-            describeContinuousBackupsSync: DynamoDBClientProtocol.DescribeContinuousBackupsSyncType? = nil,
-            describeContributorInsightsAsync: DynamoDBClientProtocol.DescribeContributorInsightsAsyncType? = nil,
-            describeContributorInsightsSync: DynamoDBClientProtocol.DescribeContributorInsightsSyncType? = nil,
-            describeEndpointsAsync: DynamoDBClientProtocol.DescribeEndpointsAsyncType? = nil,
-            describeEndpointsSync: DynamoDBClientProtocol.DescribeEndpointsSyncType? = nil,
-            describeGlobalTableAsync: DynamoDBClientProtocol.DescribeGlobalTableAsyncType? = nil,
-            describeGlobalTableSync: DynamoDBClientProtocol.DescribeGlobalTableSyncType? = nil,
-            describeGlobalTableSettingsAsync: DynamoDBClientProtocol.DescribeGlobalTableSettingsAsyncType? = nil,
-            describeGlobalTableSettingsSync: DynamoDBClientProtocol.DescribeGlobalTableSettingsSyncType? = nil,
-            describeLimitsAsync: DynamoDBClientProtocol.DescribeLimitsAsyncType? = nil,
-            describeLimitsSync: DynamoDBClientProtocol.DescribeLimitsSyncType? = nil,
-            describeTableAsync: DynamoDBClientProtocol.DescribeTableAsyncType? = nil,
-            describeTableSync: DynamoDBClientProtocol.DescribeTableSyncType? = nil,
-            describeTableReplicaAutoScalingAsync: DynamoDBClientProtocol.DescribeTableReplicaAutoScalingAsyncType? = nil,
-            describeTableReplicaAutoScalingSync: DynamoDBClientProtocol.DescribeTableReplicaAutoScalingSyncType? = nil,
-            describeTimeToLiveAsync: DynamoDBClientProtocol.DescribeTimeToLiveAsyncType? = nil,
-            describeTimeToLiveSync: DynamoDBClientProtocol.DescribeTimeToLiveSyncType? = nil,
-            getItemAsync: DynamoDBClientProtocol.GetItemAsyncType? = nil,
-            getItemSync: DynamoDBClientProtocol.GetItemSyncType? = nil,
-            listBackupsAsync: DynamoDBClientProtocol.ListBackupsAsyncType? = nil,
-            listBackupsSync: DynamoDBClientProtocol.ListBackupsSyncType? = nil,
-            listContributorInsightsAsync: DynamoDBClientProtocol.ListContributorInsightsAsyncType? = nil,
-            listContributorInsightsSync: DynamoDBClientProtocol.ListContributorInsightsSyncType? = nil,
-            listGlobalTablesAsync: DynamoDBClientProtocol.ListGlobalTablesAsyncType? = nil,
-            listGlobalTablesSync: DynamoDBClientProtocol.ListGlobalTablesSyncType? = nil,
-            listTablesAsync: DynamoDBClientProtocol.ListTablesAsyncType? = nil,
-            listTablesSync: DynamoDBClientProtocol.ListTablesSyncType? = nil,
-            listTagsOfResourceAsync: DynamoDBClientProtocol.ListTagsOfResourceAsyncType? = nil,
-            listTagsOfResourceSync: DynamoDBClientProtocol.ListTagsOfResourceSyncType? = nil,
-            putItemAsync: DynamoDBClientProtocol.PutItemAsyncType? = nil,
-            putItemSync: DynamoDBClientProtocol.PutItemSyncType? = nil,
-            queryAsync: DynamoDBClientProtocol.QueryAsyncType? = nil,
-            querySync: DynamoDBClientProtocol.QuerySyncType? = nil,
-            restoreTableFromBackupAsync: DynamoDBClientProtocol.RestoreTableFromBackupAsyncType? = nil,
-            restoreTableFromBackupSync: DynamoDBClientProtocol.RestoreTableFromBackupSyncType? = nil,
-            restoreTableToPointInTimeAsync: DynamoDBClientProtocol.RestoreTableToPointInTimeAsyncType? = nil,
-            restoreTableToPointInTimeSync: DynamoDBClientProtocol.RestoreTableToPointInTimeSyncType? = nil,
-            scanAsync: DynamoDBClientProtocol.ScanAsyncType? = nil,
-            scanSync: DynamoDBClientProtocol.ScanSyncType? = nil,
-            tagResourceAsync: DynamoDBClientProtocol.TagResourceAsyncType? = nil,
-            tagResourceSync: DynamoDBClientProtocol.TagResourceSyncType? = nil,
-            transactGetItemsAsync: DynamoDBClientProtocol.TransactGetItemsAsyncType? = nil,
-            transactGetItemsSync: DynamoDBClientProtocol.TransactGetItemsSyncType? = nil,
-            transactWriteItemsAsync: DynamoDBClientProtocol.TransactWriteItemsAsyncType? = nil,
-            transactWriteItemsSync: DynamoDBClientProtocol.TransactWriteItemsSyncType? = nil,
-            untagResourceAsync: DynamoDBClientProtocol.UntagResourceAsyncType? = nil,
-            untagResourceSync: DynamoDBClientProtocol.UntagResourceSyncType? = nil,
-            updateContinuousBackupsAsync: DynamoDBClientProtocol.UpdateContinuousBackupsAsyncType? = nil,
-            updateContinuousBackupsSync: DynamoDBClientProtocol.UpdateContinuousBackupsSyncType? = nil,
-            updateContributorInsightsAsync: DynamoDBClientProtocol.UpdateContributorInsightsAsyncType? = nil,
-            updateContributorInsightsSync: DynamoDBClientProtocol.UpdateContributorInsightsSyncType? = nil,
-            updateGlobalTableAsync: DynamoDBClientProtocol.UpdateGlobalTableAsyncType? = nil,
-            updateGlobalTableSync: DynamoDBClientProtocol.UpdateGlobalTableSyncType? = nil,
-            updateGlobalTableSettingsAsync: DynamoDBClientProtocol.UpdateGlobalTableSettingsAsyncType? = nil,
-            updateGlobalTableSettingsSync: DynamoDBClientProtocol.UpdateGlobalTableSettingsSyncType? = nil,
-            updateItemAsync: DynamoDBClientProtocol.UpdateItemAsyncType? = nil,
-            updateItemSync: DynamoDBClientProtocol.UpdateItemSyncType? = nil,
-            updateTableAsync: DynamoDBClientProtocol.UpdateTableAsyncType? = nil,
-            updateTableSync: DynamoDBClientProtocol.UpdateTableSyncType? = nil,
-            updateTableReplicaAutoScalingAsync: DynamoDBClientProtocol.UpdateTableReplicaAutoScalingAsyncType? = nil,
-            updateTableReplicaAutoScalingSync: DynamoDBClientProtocol.UpdateTableReplicaAutoScalingSyncType? = nil,
-            updateTimeToLiveAsync: DynamoDBClientProtocol.UpdateTimeToLiveAsyncType? = nil,
-            updateTimeToLiveSync: DynamoDBClientProtocol.UpdateTimeToLiveSyncType? = nil) {
+    public init(error: DynamoDBError,
+            batchGetItemAsync: BatchGetItemAsyncType? = nil,
+            batchGetItemSync: BatchGetItemSyncType? = nil,
+            batchWriteItemAsync: BatchWriteItemAsyncType? = nil,
+            batchWriteItemSync: BatchWriteItemSyncType? = nil,
+            createBackupAsync: CreateBackupAsyncType? = nil,
+            createBackupSync: CreateBackupSyncType? = nil,
+            createGlobalTableAsync: CreateGlobalTableAsyncType? = nil,
+            createGlobalTableSync: CreateGlobalTableSyncType? = nil,
+            createTableAsync: CreateTableAsyncType? = nil,
+            createTableSync: CreateTableSyncType? = nil,
+            deleteBackupAsync: DeleteBackupAsyncType? = nil,
+            deleteBackupSync: DeleteBackupSyncType? = nil,
+            deleteItemAsync: DeleteItemAsyncType? = nil,
+            deleteItemSync: DeleteItemSyncType? = nil,
+            deleteTableAsync: DeleteTableAsyncType? = nil,
+            deleteTableSync: DeleteTableSyncType? = nil,
+            describeBackupAsync: DescribeBackupAsyncType? = nil,
+            describeBackupSync: DescribeBackupSyncType? = nil,
+            describeContinuousBackupsAsync: DescribeContinuousBackupsAsyncType? = nil,
+            describeContinuousBackupsSync: DescribeContinuousBackupsSyncType? = nil,
+            describeContributorInsightsAsync: DescribeContributorInsightsAsyncType? = nil,
+            describeContributorInsightsSync: DescribeContributorInsightsSyncType? = nil,
+            describeEndpointsAsync: DescribeEndpointsAsyncType? = nil,
+            describeEndpointsSync: DescribeEndpointsSyncType? = nil,
+            describeGlobalTableAsync: DescribeGlobalTableAsyncType? = nil,
+            describeGlobalTableSync: DescribeGlobalTableSyncType? = nil,
+            describeGlobalTableSettingsAsync: DescribeGlobalTableSettingsAsyncType? = nil,
+            describeGlobalTableSettingsSync: DescribeGlobalTableSettingsSyncType? = nil,
+            describeLimitsAsync: DescribeLimitsAsyncType? = nil,
+            describeLimitsSync: DescribeLimitsSyncType? = nil,
+            describeTableAsync: DescribeTableAsyncType? = nil,
+            describeTableSync: DescribeTableSyncType? = nil,
+            describeTableReplicaAutoScalingAsync: DescribeTableReplicaAutoScalingAsyncType? = nil,
+            describeTableReplicaAutoScalingSync: DescribeTableReplicaAutoScalingSyncType? = nil,
+            describeTimeToLiveAsync: DescribeTimeToLiveAsyncType? = nil,
+            describeTimeToLiveSync: DescribeTimeToLiveSyncType? = nil,
+            getItemAsync: GetItemAsyncType? = nil,
+            getItemSync: GetItemSyncType? = nil,
+            listBackupsAsync: ListBackupsAsyncType? = nil,
+            listBackupsSync: ListBackupsSyncType? = nil,
+            listContributorInsightsAsync: ListContributorInsightsAsyncType? = nil,
+            listContributorInsightsSync: ListContributorInsightsSyncType? = nil,
+            listGlobalTablesAsync: ListGlobalTablesAsyncType? = nil,
+            listGlobalTablesSync: ListGlobalTablesSyncType? = nil,
+            listTablesAsync: ListTablesAsyncType? = nil,
+            listTablesSync: ListTablesSyncType? = nil,
+            listTagsOfResourceAsync: ListTagsOfResourceAsyncType? = nil,
+            listTagsOfResourceSync: ListTagsOfResourceSyncType? = nil,
+            putItemAsync: PutItemAsyncType? = nil,
+            putItemSync: PutItemSyncType? = nil,
+            queryAsync: QueryAsyncType? = nil,
+            querySync: QuerySyncType? = nil,
+            restoreTableFromBackupAsync: RestoreTableFromBackupAsyncType? = nil,
+            restoreTableFromBackupSync: RestoreTableFromBackupSyncType? = nil,
+            restoreTableToPointInTimeAsync: RestoreTableToPointInTimeAsyncType? = nil,
+            restoreTableToPointInTimeSync: RestoreTableToPointInTimeSyncType? = nil,
+            scanAsync: ScanAsyncType? = nil,
+            scanSync: ScanSyncType? = nil,
+            tagResourceAsync: TagResourceAsyncType? = nil,
+            tagResourceSync: TagResourceSyncType? = nil,
+            transactGetItemsAsync: TransactGetItemsAsyncType? = nil,
+            transactGetItemsSync: TransactGetItemsSyncType? = nil,
+            transactWriteItemsAsync: TransactWriteItemsAsyncType? = nil,
+            transactWriteItemsSync: TransactWriteItemsSyncType? = nil,
+            untagResourceAsync: UntagResourceAsyncType? = nil,
+            untagResourceSync: UntagResourceSyncType? = nil,
+            updateContinuousBackupsAsync: UpdateContinuousBackupsAsyncType? = nil,
+            updateContinuousBackupsSync: UpdateContinuousBackupsSyncType? = nil,
+            updateContributorInsightsAsync: UpdateContributorInsightsAsyncType? = nil,
+            updateContributorInsightsSync: UpdateContributorInsightsSyncType? = nil,
+            updateGlobalTableAsync: UpdateGlobalTableAsyncType? = nil,
+            updateGlobalTableSync: UpdateGlobalTableSyncType? = nil,
+            updateGlobalTableSettingsAsync: UpdateGlobalTableSettingsAsyncType? = nil,
+            updateGlobalTableSettingsSync: UpdateGlobalTableSettingsSyncType? = nil,
+            updateItemAsync: UpdateItemAsyncType? = nil,
+            updateItemSync: UpdateItemSyncType? = nil,
+            updateTableAsync: UpdateTableAsyncType? = nil,
+            updateTableSync: UpdateTableSyncType? = nil,
+            updateTableReplicaAutoScalingAsync: UpdateTableReplicaAutoScalingAsyncType? = nil,
+            updateTableReplicaAutoScalingSync: UpdateTableReplicaAutoScalingSyncType? = nil,
+            updateTimeToLiveAsync: UpdateTimeToLiveAsyncType? = nil,
+            updateTimeToLiveSync: UpdateTimeToLiveSyncType? = nil) {
         self.error = error
         self.batchGetItemAsyncOverride = batchGetItemAsync
         self.batchGetItemSyncOverride = batchGetItemSync
@@ -296,10 +296,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func batchGetItemAsync(
             input: DynamoDBModel.BatchGetItemInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, DynamoDBError>) -> ()) throws {
         if let batchGetItemAsyncOverride = batchGetItemAsyncOverride {
-            return try batchGetItemAsyncOverride(input, reporting, completion)
+            return try batchGetItemAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -315,10 +314,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func batchGetItemSync(
-            input: DynamoDBModel.BatchGetItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.BatchGetItemOutput {
+            input: DynamoDBModel.BatchGetItemInput) throws -> DynamoDBModel.BatchGetItemOutput {
         if let batchGetItemSyncOverride = batchGetItemSyncOverride {
-            return try batchGetItemSyncOverride(input, reporting)
+            return try batchGetItemSyncOverride(input)
         }
 
         throw error
@@ -336,10 +334,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func batchWriteItemAsync(
             input: DynamoDBModel.BatchWriteItemInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, DynamoDBError>) -> ()) throws {
         if let batchWriteItemAsyncOverride = batchWriteItemAsyncOverride {
-            return try batchWriteItemAsyncOverride(input, reporting, completion)
+            return try batchWriteItemAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -355,10 +352,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func batchWriteItemSync(
-            input: DynamoDBModel.BatchWriteItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.BatchWriteItemOutput {
+            input: DynamoDBModel.BatchWriteItemInput) throws -> DynamoDBModel.BatchWriteItemOutput {
         if let batchWriteItemSyncOverride = batchWriteItemSyncOverride {
-            return try batchWriteItemSyncOverride(input, reporting)
+            return try batchWriteItemSyncOverride(input)
         }
 
         throw error
@@ -376,10 +372,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func createBackupAsync(
             input: DynamoDBModel.CreateBackupInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, DynamoDBError>) -> ()) throws {
         if let createBackupAsyncOverride = createBackupAsyncOverride {
-            return try createBackupAsyncOverride(input, reporting, completion)
+            return try createBackupAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -395,10 +390,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: backupInUse, continuousBackupsUnavailable, internalServer, limitExceeded, tableInUse, tableNotFound.
      */
     public func createBackupSync(
-            input: DynamoDBModel.CreateBackupInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.CreateBackupOutput {
+            input: DynamoDBModel.CreateBackupInput) throws -> DynamoDBModel.CreateBackupOutput {
         if let createBackupSyncOverride = createBackupSyncOverride {
-            return try createBackupSyncOverride(input, reporting)
+            return try createBackupSyncOverride(input)
         }
 
         throw error
@@ -416,10 +410,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func createGlobalTableAsync(
             input: DynamoDBModel.CreateGlobalTableInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, DynamoDBError>) -> ()) throws {
         if let createGlobalTableAsyncOverride = createGlobalTableAsyncOverride {
-            return try createGlobalTableAsyncOverride(input, reporting, completion)
+            return try createGlobalTableAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -435,10 +428,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: globalTableAlreadyExists, internalServer, limitExceeded, tableNotFound.
      */
     public func createGlobalTableSync(
-            input: DynamoDBModel.CreateGlobalTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.CreateGlobalTableOutput {
+            input: DynamoDBModel.CreateGlobalTableInput) throws -> DynamoDBModel.CreateGlobalTableOutput {
         if let createGlobalTableSyncOverride = createGlobalTableSyncOverride {
-            return try createGlobalTableSyncOverride(input, reporting)
+            return try createGlobalTableSyncOverride(input)
         }
 
         throw error
@@ -456,10 +448,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func createTableAsync(
             input: DynamoDBModel.CreateTableInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.CreateTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.CreateTableOutput, DynamoDBError>) -> ()) throws {
         if let createTableAsyncOverride = createTableAsyncOverride {
-            return try createTableAsyncOverride(input, reporting, completion)
+            return try createTableAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -475,10 +466,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, limitExceeded, resourceInUse.
      */
     public func createTableSync(
-            input: DynamoDBModel.CreateTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.CreateTableOutput {
+            input: DynamoDBModel.CreateTableInput) throws -> DynamoDBModel.CreateTableOutput {
         if let createTableSyncOverride = createTableSyncOverride {
-            return try createTableSyncOverride(input, reporting)
+            return try createTableSyncOverride(input)
         }
 
         throw error
@@ -496,10 +486,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func deleteBackupAsync(
             input: DynamoDBModel.DeleteBackupInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, DynamoDBError>) -> ()) throws {
         if let deleteBackupAsyncOverride = deleteBackupAsyncOverride {
-            return try deleteBackupAsyncOverride(input, reporting, completion)
+            return try deleteBackupAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -515,10 +504,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: backupInUse, backupNotFound, internalServer, limitExceeded.
      */
     public func deleteBackupSync(
-            input: DynamoDBModel.DeleteBackupInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DeleteBackupOutput {
+            input: DynamoDBModel.DeleteBackupInput) throws -> DynamoDBModel.DeleteBackupOutput {
         if let deleteBackupSyncOverride = deleteBackupSyncOverride {
-            return try deleteBackupSyncOverride(input, reporting)
+            return try deleteBackupSyncOverride(input)
         }
 
         throw error
@@ -536,10 +524,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func deleteItemAsync(
             input: DynamoDBModel.DeleteItemInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, DynamoDBError>) -> ()) throws {
         if let deleteItemAsyncOverride = deleteItemAsyncOverride {
-            return try deleteItemAsyncOverride(input, reporting, completion)
+            return try deleteItemAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -555,10 +542,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func deleteItemSync(
-            input: DynamoDBModel.DeleteItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DeleteItemOutput {
+            input: DynamoDBModel.DeleteItemInput) throws -> DynamoDBModel.DeleteItemOutput {
         if let deleteItemSyncOverride = deleteItemSyncOverride {
-            return try deleteItemSyncOverride(input, reporting)
+            return try deleteItemSyncOverride(input)
         }
 
         throw error
@@ -576,10 +562,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func deleteTableAsync(
             input: DynamoDBModel.DeleteTableInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, DynamoDBError>) -> ()) throws {
         if let deleteTableAsyncOverride = deleteTableAsyncOverride {
-            return try deleteTableAsyncOverride(input, reporting, completion)
+            return try deleteTableAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -595,10 +580,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
     public func deleteTableSync(
-            input: DynamoDBModel.DeleteTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DeleteTableOutput {
+            input: DynamoDBModel.DeleteTableInput) throws -> DynamoDBModel.DeleteTableOutput {
         if let deleteTableSyncOverride = deleteTableSyncOverride {
-            return try deleteTableSyncOverride(input, reporting)
+            return try deleteTableSyncOverride(input)
         }
 
         throw error
@@ -616,10 +600,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeBackupAsync(
             input: DynamoDBModel.DescribeBackupInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, DynamoDBError>) -> ()) throws {
         if let describeBackupAsyncOverride = describeBackupAsyncOverride {
-            return try describeBackupAsyncOverride(input, reporting, completion)
+            return try describeBackupAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -635,10 +618,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: backupNotFound, internalServer.
      */
     public func describeBackupSync(
-            input: DynamoDBModel.DescribeBackupInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeBackupOutput {
+            input: DynamoDBModel.DescribeBackupInput) throws -> DynamoDBModel.DescribeBackupOutput {
         if let describeBackupSyncOverride = describeBackupSyncOverride {
-            return try describeBackupSyncOverride(input, reporting)
+            return try describeBackupSyncOverride(input)
         }
 
         throw error
@@ -656,10 +638,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeContinuousBackupsAsync(
             input: DynamoDBModel.DescribeContinuousBackupsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, DynamoDBError>) -> ()) throws {
         if let describeContinuousBackupsAsyncOverride = describeContinuousBackupsAsyncOverride {
-            return try describeContinuousBackupsAsyncOverride(input, reporting, completion)
+            return try describeContinuousBackupsAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -675,10 +656,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, tableNotFound.
      */
     public func describeContinuousBackupsSync(
-            input: DynamoDBModel.DescribeContinuousBackupsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeContinuousBackupsOutput {
+            input: DynamoDBModel.DescribeContinuousBackupsInput) throws -> DynamoDBModel.DescribeContinuousBackupsOutput {
         if let describeContinuousBackupsSyncOverride = describeContinuousBackupsSyncOverride {
-            return try describeContinuousBackupsSyncOverride(input, reporting)
+            return try describeContinuousBackupsSyncOverride(input)
         }
 
         throw error
@@ -696,10 +676,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeContributorInsightsAsync(
             input: DynamoDBModel.DescribeContributorInsightsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, DynamoDBError>) -> ()) throws {
         if let describeContributorInsightsAsyncOverride = describeContributorInsightsAsyncOverride {
-            return try describeContributorInsightsAsyncOverride(input, reporting, completion)
+            return try describeContributorInsightsAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -715,10 +694,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, resourceNotFound.
      */
     public func describeContributorInsightsSync(
-            input: DynamoDBModel.DescribeContributorInsightsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeContributorInsightsOutput {
+            input: DynamoDBModel.DescribeContributorInsightsInput) throws -> DynamoDBModel.DescribeContributorInsightsOutput {
         if let describeContributorInsightsSyncOverride = describeContributorInsightsSyncOverride {
-            return try describeContributorInsightsSyncOverride(input, reporting)
+            return try describeContributorInsightsSyncOverride(input)
         }
 
         throw error
@@ -735,10 +713,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeEndpointsAsync(
             input: DynamoDBModel.DescribeEndpointsRequest, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, DynamoDBError>) -> ()) throws {
         if let describeEndpointsAsyncOverride = describeEndpointsAsyncOverride {
-            return try describeEndpointsAsyncOverride(input, reporting, completion)
+            return try describeEndpointsAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -753,10 +730,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
          Will be validated before being returned to caller.
      */
     public func describeEndpointsSync(
-            input: DynamoDBModel.DescribeEndpointsRequest,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeEndpointsResponse {
+            input: DynamoDBModel.DescribeEndpointsRequest) throws -> DynamoDBModel.DescribeEndpointsResponse {
         if let describeEndpointsSyncOverride = describeEndpointsSyncOverride {
-            return try describeEndpointsSyncOverride(input, reporting)
+            return try describeEndpointsSyncOverride(input)
         }
 
         throw error
@@ -774,10 +750,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeGlobalTableAsync(
             input: DynamoDBModel.DescribeGlobalTableInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, DynamoDBError>) -> ()) throws {
         if let describeGlobalTableAsyncOverride = describeGlobalTableAsyncOverride {
-            return try describeGlobalTableAsyncOverride(input, reporting, completion)
+            return try describeGlobalTableAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -793,10 +768,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: globalTableNotFound, internalServer.
      */
     public func describeGlobalTableSync(
-            input: DynamoDBModel.DescribeGlobalTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeGlobalTableOutput {
+            input: DynamoDBModel.DescribeGlobalTableInput) throws -> DynamoDBModel.DescribeGlobalTableOutput {
         if let describeGlobalTableSyncOverride = describeGlobalTableSyncOverride {
-            return try describeGlobalTableSyncOverride(input, reporting)
+            return try describeGlobalTableSyncOverride(input)
         }
 
         throw error
@@ -814,10 +788,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeGlobalTableSettingsAsync(
             input: DynamoDBModel.DescribeGlobalTableSettingsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws {
         if let describeGlobalTableSettingsAsyncOverride = describeGlobalTableSettingsAsyncOverride {
-            return try describeGlobalTableSettingsAsyncOverride(input, reporting, completion)
+            return try describeGlobalTableSettingsAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -833,10 +806,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: globalTableNotFound, internalServer.
      */
     public func describeGlobalTableSettingsSync(
-            input: DynamoDBModel.DescribeGlobalTableSettingsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput {
+            input: DynamoDBModel.DescribeGlobalTableSettingsInput) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput {
         if let describeGlobalTableSettingsSyncOverride = describeGlobalTableSettingsSyncOverride {
-            return try describeGlobalTableSettingsSyncOverride(input, reporting)
+            return try describeGlobalTableSettingsSyncOverride(input)
         }
 
         throw error
@@ -854,10 +826,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeLimitsAsync(
             input: DynamoDBModel.DescribeLimitsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, DynamoDBError>) -> ()) throws {
         if let describeLimitsAsyncOverride = describeLimitsAsyncOverride {
-            return try describeLimitsAsyncOverride(input, reporting, completion)
+            return try describeLimitsAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -873,10 +844,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer.
      */
     public func describeLimitsSync(
-            input: DynamoDBModel.DescribeLimitsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeLimitsOutput {
+            input: DynamoDBModel.DescribeLimitsInput) throws -> DynamoDBModel.DescribeLimitsOutput {
         if let describeLimitsSyncOverride = describeLimitsSyncOverride {
-            return try describeLimitsSyncOverride(input, reporting)
+            return try describeLimitsSyncOverride(input)
         }
 
         throw error
@@ -894,10 +864,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeTableAsync(
             input: DynamoDBModel.DescribeTableInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, DynamoDBError>) -> ()) throws {
         if let describeTableAsyncOverride = describeTableAsyncOverride {
-            return try describeTableAsyncOverride(input, reporting, completion)
+            return try describeTableAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -913,10 +882,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, resourceNotFound.
      */
     public func describeTableSync(
-            input: DynamoDBModel.DescribeTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTableOutput {
+            input: DynamoDBModel.DescribeTableInput) throws -> DynamoDBModel.DescribeTableOutput {
         if let describeTableSyncOverride = describeTableSyncOverride {
-            return try describeTableSyncOverride(input, reporting)
+            return try describeTableSyncOverride(input)
         }
 
         throw error
@@ -934,10 +902,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeTableReplicaAutoScalingAsync(
             input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, DynamoDBError>) -> ()) throws {
         if let describeTableReplicaAutoScalingAsyncOverride = describeTableReplicaAutoScalingAsyncOverride {
-            return try describeTableReplicaAutoScalingAsyncOverride(input, reporting, completion)
+            return try describeTableReplicaAutoScalingAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -953,10 +920,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, resourceNotFound.
      */
     public func describeTableReplicaAutoScalingSync(
-            input: DynamoDBModel.DescribeTableReplicaAutoScalingInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
+            input: DynamoDBModel.DescribeTableReplicaAutoScalingInput) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
         if let describeTableReplicaAutoScalingSyncOverride = describeTableReplicaAutoScalingSyncOverride {
-            return try describeTableReplicaAutoScalingSyncOverride(input, reporting)
+            return try describeTableReplicaAutoScalingSyncOverride(input)
         }
 
         throw error
@@ -974,10 +940,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func describeTimeToLiveAsync(
             input: DynamoDBModel.DescribeTimeToLiveInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, DynamoDBError>) -> ()) throws {
         if let describeTimeToLiveAsyncOverride = describeTimeToLiveAsyncOverride {
-            return try describeTimeToLiveAsyncOverride(input, reporting, completion)
+            return try describeTimeToLiveAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -993,10 +958,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, resourceNotFound.
      */
     public func describeTimeToLiveSync(
-            input: DynamoDBModel.DescribeTimeToLiveInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.DescribeTimeToLiveOutput {
+            input: DynamoDBModel.DescribeTimeToLiveInput) throws -> DynamoDBModel.DescribeTimeToLiveOutput {
         if let describeTimeToLiveSyncOverride = describeTimeToLiveSyncOverride {
-            return try describeTimeToLiveSyncOverride(input, reporting)
+            return try describeTimeToLiveSyncOverride(input)
         }
 
         throw error
@@ -1014,10 +978,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func getItemAsync(
             input: DynamoDBModel.GetItemInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.GetItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.GetItemOutput, DynamoDBError>) -> ()) throws {
         if let getItemAsyncOverride = getItemAsyncOverride {
-            return try getItemAsyncOverride(input, reporting, completion)
+            return try getItemAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1033,10 +996,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func getItemSync(
-            input: DynamoDBModel.GetItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.GetItemOutput {
+            input: DynamoDBModel.GetItemInput) throws -> DynamoDBModel.GetItemOutput {
         if let getItemSyncOverride = getItemSyncOverride {
-            return try getItemSyncOverride(input, reporting)
+            return try getItemSyncOverride(input)
         }
 
         throw error
@@ -1054,10 +1016,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func listBackupsAsync(
             input: DynamoDBModel.ListBackupsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, DynamoDBError>) -> ()) throws {
         if let listBackupsAsyncOverride = listBackupsAsyncOverride {
-            return try listBackupsAsyncOverride(input, reporting, completion)
+            return try listBackupsAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1073,10 +1034,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer.
      */
     public func listBackupsSync(
-            input: DynamoDBModel.ListBackupsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListBackupsOutput {
+            input: DynamoDBModel.ListBackupsInput) throws -> DynamoDBModel.ListBackupsOutput {
         if let listBackupsSyncOverride = listBackupsSyncOverride {
-            return try listBackupsSyncOverride(input, reporting)
+            return try listBackupsSyncOverride(input)
         }
 
         throw error
@@ -1094,10 +1054,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func listContributorInsightsAsync(
             input: DynamoDBModel.ListContributorInsightsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, DynamoDBError>) -> ()) throws {
         if let listContributorInsightsAsyncOverride = listContributorInsightsAsyncOverride {
-            return try listContributorInsightsAsyncOverride(input, reporting, completion)
+            return try listContributorInsightsAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1113,10 +1072,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, resourceNotFound.
      */
     public func listContributorInsightsSync(
-            input: DynamoDBModel.ListContributorInsightsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListContributorInsightsOutput {
+            input: DynamoDBModel.ListContributorInsightsInput) throws -> DynamoDBModel.ListContributorInsightsOutput {
         if let listContributorInsightsSyncOverride = listContributorInsightsSyncOverride {
-            return try listContributorInsightsSyncOverride(input, reporting)
+            return try listContributorInsightsSyncOverride(input)
         }
 
         throw error
@@ -1134,10 +1092,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func listGlobalTablesAsync(
             input: DynamoDBModel.ListGlobalTablesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, DynamoDBError>) -> ()) throws {
         if let listGlobalTablesAsyncOverride = listGlobalTablesAsyncOverride {
-            return try listGlobalTablesAsyncOverride(input, reporting, completion)
+            return try listGlobalTablesAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1153,10 +1110,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer.
      */
     public func listGlobalTablesSync(
-            input: DynamoDBModel.ListGlobalTablesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListGlobalTablesOutput {
+            input: DynamoDBModel.ListGlobalTablesInput) throws -> DynamoDBModel.ListGlobalTablesOutput {
         if let listGlobalTablesSyncOverride = listGlobalTablesSyncOverride {
-            return try listGlobalTablesSyncOverride(input, reporting)
+            return try listGlobalTablesSyncOverride(input)
         }
 
         throw error
@@ -1174,10 +1130,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func listTablesAsync(
             input: DynamoDBModel.ListTablesInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.ListTablesOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListTablesOutput, DynamoDBError>) -> ()) throws {
         if let listTablesAsyncOverride = listTablesAsyncOverride {
-            return try listTablesAsyncOverride(input, reporting, completion)
+            return try listTablesAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1193,10 +1148,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer.
      */
     public func listTablesSync(
-            input: DynamoDBModel.ListTablesInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListTablesOutput {
+            input: DynamoDBModel.ListTablesInput) throws -> DynamoDBModel.ListTablesOutput {
         if let listTablesSyncOverride = listTablesSyncOverride {
-            return try listTablesSyncOverride(input, reporting)
+            return try listTablesSyncOverride(input)
         }
 
         throw error
@@ -1214,10 +1168,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func listTagsOfResourceAsync(
             input: DynamoDBModel.ListTagsOfResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, DynamoDBError>) -> ()) throws {
         if let listTagsOfResourceAsyncOverride = listTagsOfResourceAsyncOverride {
-            return try listTagsOfResourceAsyncOverride(input, reporting, completion)
+            return try listTagsOfResourceAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1233,10 +1186,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, resourceNotFound.
      */
     public func listTagsOfResourceSync(
-            input: DynamoDBModel.ListTagsOfResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ListTagsOfResourceOutput {
+            input: DynamoDBModel.ListTagsOfResourceInput) throws -> DynamoDBModel.ListTagsOfResourceOutput {
         if let listTagsOfResourceSyncOverride = listTagsOfResourceSyncOverride {
-            return try listTagsOfResourceSyncOverride(input, reporting)
+            return try listTagsOfResourceSyncOverride(input)
         }
 
         throw error
@@ -1254,10 +1206,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func putItemAsync(
             input: DynamoDBModel.PutItemInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.PutItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.PutItemOutput, DynamoDBError>) -> ()) throws {
         if let putItemAsyncOverride = putItemAsyncOverride {
-            return try putItemAsyncOverride(input, reporting, completion)
+            return try putItemAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1273,10 +1224,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func putItemSync(
-            input: DynamoDBModel.PutItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.PutItemOutput {
+            input: DynamoDBModel.PutItemInput) throws -> DynamoDBModel.PutItemOutput {
         if let putItemSyncOverride = putItemSyncOverride {
-            return try putItemSyncOverride(input, reporting)
+            return try putItemSyncOverride(input)
         }
 
         throw error
@@ -1294,10 +1244,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func queryAsync(
             input: DynamoDBModel.QueryInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.QueryOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.QueryOutput, DynamoDBError>) -> ()) throws {
         if let queryAsyncOverride = queryAsyncOverride {
-            return try queryAsyncOverride(input, reporting, completion)
+            return try queryAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1313,10 +1262,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func querySync(
-            input: DynamoDBModel.QueryInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.QueryOutput {
+            input: DynamoDBModel.QueryInput) throws -> DynamoDBModel.QueryOutput {
         if let querySyncOverride = querySyncOverride {
-            return try querySyncOverride(input, reporting)
+            return try querySyncOverride(input)
         }
 
         throw error
@@ -1334,10 +1282,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func restoreTableFromBackupAsync(
             input: DynamoDBModel.RestoreTableFromBackupInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, DynamoDBError>) -> ()) throws {
         if let restoreTableFromBackupAsyncOverride = restoreTableFromBackupAsyncOverride {
-            return try restoreTableFromBackupAsyncOverride(input, reporting, completion)
+            return try restoreTableFromBackupAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1353,10 +1300,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: backupInUse, backupNotFound, internalServer, limitExceeded, tableAlreadyExists, tableInUse.
      */
     public func restoreTableFromBackupSync(
-            input: DynamoDBModel.RestoreTableFromBackupInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.RestoreTableFromBackupOutput {
+            input: DynamoDBModel.RestoreTableFromBackupInput) throws -> DynamoDBModel.RestoreTableFromBackupOutput {
         if let restoreTableFromBackupSyncOverride = restoreTableFromBackupSyncOverride {
-            return try restoreTableFromBackupSyncOverride(input, reporting)
+            return try restoreTableFromBackupSyncOverride(input)
         }
 
         throw error
@@ -1374,10 +1320,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func restoreTableToPointInTimeAsync(
             input: DynamoDBModel.RestoreTableToPointInTimeInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, DynamoDBError>) -> ()) throws {
         if let restoreTableToPointInTimeAsyncOverride = restoreTableToPointInTimeAsyncOverride {
-            return try restoreTableToPointInTimeAsyncOverride(input, reporting, completion)
+            return try restoreTableToPointInTimeAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1393,10 +1338,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, invalidRestoreTime, limitExceeded, pointInTimeRecoveryUnavailable, tableAlreadyExists, tableInUse, tableNotFound.
      */
     public func restoreTableToPointInTimeSync(
-            input: DynamoDBModel.RestoreTableToPointInTimeInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput {
+            input: DynamoDBModel.RestoreTableToPointInTimeInput) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput {
         if let restoreTableToPointInTimeSyncOverride = restoreTableToPointInTimeSyncOverride {
-            return try restoreTableToPointInTimeSyncOverride(input, reporting)
+            return try restoreTableToPointInTimeSyncOverride(input)
         }
 
         throw error
@@ -1414,10 +1358,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func scanAsync(
             input: DynamoDBModel.ScanInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.ScanOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.ScanOutput, DynamoDBError>) -> ()) throws {
         if let scanAsyncOverride = scanAsyncOverride {
-            return try scanAsyncOverride(input, reporting, completion)
+            return try scanAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1433,10 +1376,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
      */
     public func scanSync(
-            input: DynamoDBModel.ScanInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.ScanOutput {
+            input: DynamoDBModel.ScanInput) throws -> DynamoDBModel.ScanOutput {
         if let scanSyncOverride = scanSyncOverride {
-            return try scanSyncOverride(input, reporting)
+            return try scanSyncOverride(input)
         }
 
         throw error
@@ -1453,10 +1395,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func tagResourceAsync(
             input: DynamoDBModel.TagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (DynamoDBError?) -> ()) throws {
         if let tagResourceAsyncOverride = tagResourceAsyncOverride {
-            return try tagResourceAsyncOverride(input, reporting, completion)
+            return try tagResourceAsyncOverride(input, completion)
         }
 
         completion(error)
@@ -1470,10 +1411,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
     public func tagResourceSync(
-            input: DynamoDBModel.TagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: DynamoDBModel.TagResourceInput) throws {
         if let tagResourceSyncOverride = tagResourceSyncOverride {
-            return try tagResourceSyncOverride(input, reporting)
+            return try tagResourceSyncOverride(input)
         }
 
         throw error
@@ -1491,10 +1431,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func transactGetItemsAsync(
             input: DynamoDBModel.TransactGetItemsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, DynamoDBError>) -> ()) throws {
         if let transactGetItemsAsyncOverride = transactGetItemsAsyncOverride {
-            return try transactGetItemsAsyncOverride(input, reporting, completion)
+            return try transactGetItemsAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1510,10 +1449,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
      */
     public func transactGetItemsSync(
-            input: DynamoDBModel.TransactGetItemsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.TransactGetItemsOutput {
+            input: DynamoDBModel.TransactGetItemsInput) throws -> DynamoDBModel.TransactGetItemsOutput {
         if let transactGetItemsSyncOverride = transactGetItemsSyncOverride {
-            return try transactGetItemsSyncOverride(input, reporting)
+            return try transactGetItemsSyncOverride(input)
         }
 
         throw error
@@ -1531,10 +1469,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func transactWriteItemsAsync(
             input: DynamoDBModel.TransactWriteItemsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, DynamoDBError>) -> ()) throws {
         if let transactWriteItemsAsyncOverride = transactWriteItemsAsyncOverride {
-            return try transactWriteItemsAsyncOverride(input, reporting, completion)
+            return try transactWriteItemsAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1550,10 +1487,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
      */
     public func transactWriteItemsSync(
-            input: DynamoDBModel.TransactWriteItemsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.TransactWriteItemsOutput {
+            input: DynamoDBModel.TransactWriteItemsInput) throws -> DynamoDBModel.TransactWriteItemsOutput {
         if let transactWriteItemsSyncOverride = transactWriteItemsSyncOverride {
-            return try transactWriteItemsSyncOverride(input, reporting)
+            return try transactWriteItemsSyncOverride(input)
         }
 
         throw error
@@ -1570,10 +1506,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func untagResourceAsync(
             input: DynamoDBModel.UntagResourceInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Swift.Error?) -> ()) throws {
+            completion: @escaping (DynamoDBError?) -> ()) throws {
         if let untagResourceAsyncOverride = untagResourceAsyncOverride {
-            return try untagResourceAsyncOverride(input, reporting, completion)
+            return try untagResourceAsyncOverride(input, completion)
         }
 
         completion(error)
@@ -1587,10 +1522,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
     public func untagResourceSync(
-            input: DynamoDBModel.UntagResourceInput,
-            reporting: SmokeAWSInvocationReporting) throws {
+            input: DynamoDBModel.UntagResourceInput) throws {
         if let untagResourceSyncOverride = untagResourceSyncOverride {
-            return try untagResourceSyncOverride(input, reporting)
+            return try untagResourceSyncOverride(input)
         }
 
         throw error
@@ -1608,10 +1542,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateContinuousBackupsAsync(
             input: DynamoDBModel.UpdateContinuousBackupsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, DynamoDBError>) -> ()) throws {
         if let updateContinuousBackupsAsyncOverride = updateContinuousBackupsAsyncOverride {
-            return try updateContinuousBackupsAsyncOverride(input, reporting, completion)
+            return try updateContinuousBackupsAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1627,10 +1560,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: continuousBackupsUnavailable, internalServer, tableNotFound.
      */
     public func updateContinuousBackupsSync(
-            input: DynamoDBModel.UpdateContinuousBackupsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateContinuousBackupsOutput {
+            input: DynamoDBModel.UpdateContinuousBackupsInput) throws -> DynamoDBModel.UpdateContinuousBackupsOutput {
         if let updateContinuousBackupsSyncOverride = updateContinuousBackupsSyncOverride {
-            return try updateContinuousBackupsSyncOverride(input, reporting)
+            return try updateContinuousBackupsSyncOverride(input)
         }
 
         throw error
@@ -1648,10 +1580,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateContributorInsightsAsync(
             input: DynamoDBModel.UpdateContributorInsightsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, DynamoDBError>) -> ()) throws {
         if let updateContributorInsightsAsyncOverride = updateContributorInsightsAsyncOverride {
-            return try updateContributorInsightsAsyncOverride(input, reporting, completion)
+            return try updateContributorInsightsAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1667,10 +1598,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, resourceNotFound.
      */
     public func updateContributorInsightsSync(
-            input: DynamoDBModel.UpdateContributorInsightsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateContributorInsightsOutput {
+            input: DynamoDBModel.UpdateContributorInsightsInput) throws -> DynamoDBModel.UpdateContributorInsightsOutput {
         if let updateContributorInsightsSyncOverride = updateContributorInsightsSyncOverride {
-            return try updateContributorInsightsSyncOverride(input, reporting)
+            return try updateContributorInsightsSyncOverride(input)
         }
 
         throw error
@@ -1688,10 +1618,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateGlobalTableAsync(
             input: DynamoDBModel.UpdateGlobalTableInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, DynamoDBError>) -> ()) throws {
         if let updateGlobalTableAsyncOverride = updateGlobalTableAsyncOverride {
-            return try updateGlobalTableAsyncOverride(input, reporting, completion)
+            return try updateGlobalTableAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1707,10 +1636,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: globalTableNotFound, internalServer, replicaAlreadyExists, replicaNotFound, tableNotFound.
      */
     public func updateGlobalTableSync(
-            input: DynamoDBModel.UpdateGlobalTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateGlobalTableOutput {
+            input: DynamoDBModel.UpdateGlobalTableInput) throws -> DynamoDBModel.UpdateGlobalTableOutput {
         if let updateGlobalTableSyncOverride = updateGlobalTableSyncOverride {
-            return try updateGlobalTableSyncOverride(input, reporting)
+            return try updateGlobalTableSyncOverride(input)
         }
 
         throw error
@@ -1728,10 +1656,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateGlobalTableSettingsAsync(
             input: DynamoDBModel.UpdateGlobalTableSettingsInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws {
         if let updateGlobalTableSettingsAsyncOverride = updateGlobalTableSettingsAsyncOverride {
-            return try updateGlobalTableSettingsAsyncOverride(input, reporting, completion)
+            return try updateGlobalTableSettingsAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1747,10 +1674,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: globalTableNotFound, indexNotFound, internalServer, limitExceeded, replicaNotFound, resourceInUse.
      */
     public func updateGlobalTableSettingsSync(
-            input: DynamoDBModel.UpdateGlobalTableSettingsInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput {
+            input: DynamoDBModel.UpdateGlobalTableSettingsInput) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput {
         if let updateGlobalTableSettingsSyncOverride = updateGlobalTableSettingsSyncOverride {
-            return try updateGlobalTableSettingsSyncOverride(input, reporting)
+            return try updateGlobalTableSettingsSyncOverride(input)
         }
 
         throw error
@@ -1768,10 +1694,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateItemAsync(
             input: DynamoDBModel.UpdateItemInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, DynamoDBError>) -> ()) throws {
         if let updateItemAsyncOverride = updateItemAsyncOverride {
-            return try updateItemAsyncOverride(input, reporting, completion)
+            return try updateItemAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1787,10 +1712,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
      */
     public func updateItemSync(
-            input: DynamoDBModel.UpdateItemInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateItemOutput {
+            input: DynamoDBModel.UpdateItemInput) throws -> DynamoDBModel.UpdateItemOutput {
         if let updateItemSyncOverride = updateItemSyncOverride {
-            return try updateItemSyncOverride(input, reporting)
+            return try updateItemSyncOverride(input)
         }
 
         throw error
@@ -1808,10 +1732,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateTableAsync(
             input: DynamoDBModel.UpdateTableInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, DynamoDBError>) -> ()) throws {
         if let updateTableAsyncOverride = updateTableAsyncOverride {
-            return try updateTableAsyncOverride(input, reporting, completion)
+            return try updateTableAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1827,10 +1750,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
     public func updateTableSync(
-            input: DynamoDBModel.UpdateTableInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTableOutput {
+            input: DynamoDBModel.UpdateTableInput) throws -> DynamoDBModel.UpdateTableOutput {
         if let updateTableSyncOverride = updateTableSyncOverride {
-            return try updateTableSyncOverride(input, reporting)
+            return try updateTableSyncOverride(input)
         }
 
         throw error
@@ -1848,10 +1770,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateTableReplicaAutoScalingAsync(
             input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, DynamoDBError>) -> ()) throws {
         if let updateTableReplicaAutoScalingAsyncOverride = updateTableReplicaAutoScalingAsyncOverride {
-            return try updateTableReplicaAutoScalingAsyncOverride(input, reporting, completion)
+            return try updateTableReplicaAutoScalingAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1867,10 +1788,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
     public func updateTableReplicaAutoScalingSync(
-            input: DynamoDBModel.UpdateTableReplicaAutoScalingInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
+            input: DynamoDBModel.UpdateTableReplicaAutoScalingInput) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
         if let updateTableReplicaAutoScalingSyncOverride = updateTableReplicaAutoScalingSyncOverride {
-            return try updateTableReplicaAutoScalingSyncOverride(input, reporting)
+            return try updateTableReplicaAutoScalingSyncOverride(input)
         }
 
         throw error
@@ -1888,10 +1808,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      */
     public func updateTimeToLiveAsync(
             input: DynamoDBModel.UpdateTimeToLiveInput, 
-            reporting: SmokeAWSInvocationReporting,
-            completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, HTTPClientError>) -> ()) throws {
+            completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, DynamoDBError>) -> ()) throws {
         if let updateTimeToLiveAsyncOverride = updateTimeToLiveAsyncOverride {
-            return try updateTimeToLiveAsyncOverride(input, reporting, completion)
+            return try updateTimeToLiveAsyncOverride(input, completion)
         }
 
         completion(.failure(error))
@@ -1907,10 +1826,9 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
     public func updateTimeToLiveSync(
-            input: DynamoDBModel.UpdateTimeToLiveInput,
-            reporting: SmokeAWSInvocationReporting) throws -> DynamoDBModel.UpdateTimeToLiveOutput {
+            input: DynamoDBModel.UpdateTimeToLiveInput) throws -> DynamoDBModel.UpdateTimeToLiveOutput {
         if let updateTimeToLiveSyncOverride = updateTimeToLiveSyncOverride {
-            return try updateTimeToLiveSyncOverride(input, reporting)
+            return try updateTimeToLiveSyncOverride(input)
         }
 
         throw error
