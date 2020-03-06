@@ -30,11 +30,11 @@
       },
       {
         "package": "swift-metrics",
-        "repositoryURL": "https://github.com/apple/swift-metrics",
+        "repositoryURL": "https://github.com/apple/swift-metrics.git",
         "state": {
           "branch": null,
-          "revision": "3fefedaaef285830cc98ae80231140122076a7e0",
-          "version": "1.2.0"
+          "revision": "09b72f68ed9b01b614c12855fc7e22876b97a97e",
+          "version": "1.2.1"
         }
       },
       {
