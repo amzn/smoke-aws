@@ -97,7 +97,7 @@ public struct AWSSecurityTokenClientGenerator {
         httpClient.wait()
     }
     
-    public func with<NewInvocationReportingType: SmokeAWSInvocationReporting>(
+    public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
             reporting: NewInvocationReportingType) -> AWSSecurityTokenClient<NewInvocationReportingType> {
         return AWSSecurityTokenClient<NewInvocationReportingType>(
             credentialsProvider: self.credentialsProvider,

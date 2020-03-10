@@ -97,7 +97,7 @@ public struct AWSSimpleNotificationClientGenerator {
         httpClient.wait()
     }
     
-    public func with<NewInvocationReportingType: SmokeAWSInvocationReporting>(
+    public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
             reporting: NewInvocationReportingType) -> AWSSimpleNotificationClient<NewInvocationReportingType> {
         return AWSSimpleNotificationClient<NewInvocationReportingType>(
             credentialsProvider: self.credentialsProvider,

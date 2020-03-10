@@ -52,7 +52,7 @@ private extension Swift.Error {
 /**
  AWS Client for the SecurityToken service.
  */
-public struct AWSSecurityTokenClient<InvocationReportingType: SmokeAWSInvocationReporting>: SecurityTokenClientProtocol {
+public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SecurityTokenClientProtocol {
     let httpClient: HTTPClient
     let awsRegion: AWSRegion
     let service: String

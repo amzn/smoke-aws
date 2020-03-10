@@ -20,14 +20,14 @@
 //
 
 import Foundation
-import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import ElasticComputeCloudModel
 
 /**
  Operation reporting for the ElasticComputeCloudModel.
  */
-public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: SmokeAWSInvocationReporting> {
+public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     let acceptReservedInstancesExchangeQuote: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let acceptTransitGatewayPeeringAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let acceptTransitGatewayVpcAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

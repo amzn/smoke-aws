@@ -20,14 +20,14 @@
 //
 
 import Foundation
-import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import DynamoDBModel
 
 /**
  Operation reporting for the DynamoDBModel.
  */
-public struct DynamoDBInvocationsReporting<InvocationReportingType: SmokeAWSInvocationReporting> {
+public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     let batchGetItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let batchWriteItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

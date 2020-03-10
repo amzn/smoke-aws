@@ -20,14 +20,14 @@
 //
 
 import Foundation
-import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import SecurityTokenModel
 
 /**
  Operation reporting for the SecurityTokenModel.
  */
-public struct SecurityTokenInvocationsReporting<InvocationReportingType: SmokeAWSInvocationReporting> {
+public struct SecurityTokenInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     let assumeRole: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let assumeRoleWithSAML: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let assumeRoleWithWebIdentity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

@@ -20,14 +20,14 @@
 //
 
 import Foundation
-import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import CloudWatchModel
 
 /**
  Operation reporting for the CloudWatchModel.
  */
-public struct CloudWatchInvocationsReporting<InvocationReportingType: SmokeAWSInvocationReporting> {
+public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     let deleteAlarms: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteAnomalyDetector: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteDashboards: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

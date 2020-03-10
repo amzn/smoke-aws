@@ -95,7 +95,7 @@ public struct AWSDynamoDBClientGenerator {
         httpClient.wait()
     }
     
-    public func with<NewInvocationReportingType: SmokeAWSInvocationReporting>(
+    public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
             reporting: NewInvocationReportingType) -> AWSDynamoDBClient<NewInvocationReportingType> {
         return AWSDynamoDBClient<NewInvocationReportingType>(
             credentialsProvider: self.credentialsProvider,

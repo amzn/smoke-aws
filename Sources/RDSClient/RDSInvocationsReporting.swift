@@ -20,14 +20,14 @@
 //
 
 import Foundation
-import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import RDSModel
 
 /**
  Operation reporting for the RDSModel.
  */
-public struct RDSInvocationsReporting<InvocationReportingType: SmokeAWSInvocationReporting> {
+public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     let addRoleToDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let addRoleToDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let addSourceIdentifierToSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

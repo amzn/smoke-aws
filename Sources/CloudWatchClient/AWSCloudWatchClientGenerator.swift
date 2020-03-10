@@ -97,7 +97,7 @@ public struct AWSCloudWatchClientGenerator {
         httpClient.wait()
     }
     
-    public func with<NewInvocationReportingType: SmokeAWSInvocationReporting>(
+    public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
             reporting: NewInvocationReportingType) -> AWSCloudWatchClient<NewInvocationReportingType> {
         return AWSCloudWatchClient<NewInvocationReportingType>(
             credentialsProvider: self.credentialsProvider,

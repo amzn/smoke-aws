@@ -95,7 +95,7 @@ public struct AWSSimpleWorkflowClientGenerator {
         httpClient.wait()
     }
     
-    public func with<NewInvocationReportingType: SmokeAWSInvocationReporting>(
+    public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
             reporting: NewInvocationReportingType) -> AWSSimpleWorkflowClient<NewInvocationReportingType> {
         return AWSSimpleWorkflowClient<NewInvocationReportingType>(
             credentialsProvider: self.credentialsProvider,

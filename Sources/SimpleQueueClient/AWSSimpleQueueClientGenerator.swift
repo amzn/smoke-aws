@@ -110,7 +110,7 @@ public struct AWSSimpleQueueClientGenerator {
         listHttpClient.wait()
     }
     
-    public func with<NewInvocationReportingType: SmokeAWSInvocationReporting>(
+    public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
             reporting: NewInvocationReportingType) -> AWSSimpleQueueClient<NewInvocationReportingType> {
         return AWSSimpleQueueClient<NewInvocationReportingType>(
             credentialsProvider: self.credentialsProvider,

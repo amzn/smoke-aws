@@ -52,7 +52,7 @@ private extension Swift.Error {
 /**
  AWS Client for the ElasticComputeCloud service.
  */
-public struct AWSElasticComputeCloudClient<InvocationReportingType: SmokeAWSInvocationReporting>: ElasticComputeCloudClientProtocol {
+public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: ElasticComputeCloudClientProtocol {
     let httpClient: HTTPClient
     let awsRegion: AWSRegion
     let service: String

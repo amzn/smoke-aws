@@ -57,7 +57,7 @@ private extension Swift.Error {
 /**
  AWS Client for the SimpleQueue service.
  */
-public struct AWSSimpleQueueClient<InvocationReportingType: SmokeAWSInvocationReporting>: SimpleQueueClientProtocol {
+public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SimpleQueueClientProtocol {
     let httpClient: HTTPClient
     let listHttpClient: HTTPClient
     let awsRegion: AWSRegion

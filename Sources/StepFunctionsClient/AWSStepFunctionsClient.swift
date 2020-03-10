@@ -57,7 +57,7 @@ private extension Swift.Error {
 /**
  AWS Client for the StepFunctions service.
  */
-public struct AWSStepFunctionsClient<InvocationReportingType: SmokeAWSInvocationReporting>: StepFunctionsClientProtocol {
+public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: StepFunctionsClientProtocol {
     let httpClient: HTTPClient
     let awsRegion: AWSRegion
     let service: String

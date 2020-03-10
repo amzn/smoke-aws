@@ -20,14 +20,14 @@
 //
 
 import Foundation
-import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import SimpleQueueModel
 
 /**
  Operation reporting for the SimpleQueueModel.
  */
-public struct SimpleQueueInvocationsReporting<InvocationReportingType: SmokeAWSInvocationReporting> {
+public struct SimpleQueueInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     let addPermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let changeMessageVisibility: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let changeMessageVisibilityBatch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
