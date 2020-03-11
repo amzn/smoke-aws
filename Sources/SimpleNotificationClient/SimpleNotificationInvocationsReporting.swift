@@ -20,14 +20,14 @@
 //
 
 import Foundation
-import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import SimpleNotificationModel
 
 /**
  Operation reporting for the SimpleNotificationModel.
  */
-public struct SimpleNotificationInvocationsReporting<InvocationReportingType: SmokeAWSInvocationReporting> {
+public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     let addPermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let checkIfPhoneNumberIsOptedOut: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let confirmSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

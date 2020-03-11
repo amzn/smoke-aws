@@ -99,7 +99,7 @@ public struct AWSElasticComputeCloudClientGenerator {
         httpClient.wait()
     }
     
-    public func with<NewInvocationReportingType: SmokeAWSInvocationReporting>(
+    public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
             reporting: NewInvocationReportingType) -> AWSElasticComputeCloudClient<NewInvocationReportingType> {
         return AWSElasticComputeCloudClient<NewInvocationReportingType>(
             credentialsProvider: self.credentialsProvider,

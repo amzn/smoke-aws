@@ -95,7 +95,7 @@ public struct AWSStepFunctionsClientGenerator {
         httpClient.wait()
     }
     
-    public func with<NewInvocationReportingType: SmokeAWSInvocationReporting>(
+    public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
             reporting: NewInvocationReportingType) -> AWSStepFunctionsClient<NewInvocationReportingType> {
         return AWSStepFunctionsClient<NewInvocationReportingType>(
             credentialsProvider: self.credentialsProvider,

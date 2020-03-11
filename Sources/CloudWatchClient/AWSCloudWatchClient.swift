@@ -57,7 +57,7 @@ private extension Swift.Error {
 /**
  AWS Client for the CloudWatch service.
  */
-public struct AWSCloudWatchClient<InvocationReportingType: SmokeAWSInvocationReporting>: CloudWatchClientProtocol {
+public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: CloudWatchClientProtocol {
     let httpClient: HTTPClient
     let awsRegion: AWSRegion
     let service: String

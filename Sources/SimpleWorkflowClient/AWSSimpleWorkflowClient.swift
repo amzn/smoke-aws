@@ -57,7 +57,7 @@ private extension Swift.Error {
 /**
  AWS Client for the SimpleWorkflow service.
  */
-public struct AWSSimpleWorkflowClient<InvocationReportingType: SmokeAWSInvocationReporting>: SimpleWorkflowClientProtocol {
+public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SimpleWorkflowClientProtocol {
     let httpClient: HTTPClient
     let awsRegion: AWSRegion
     let service: String

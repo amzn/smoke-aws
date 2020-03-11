@@ -57,7 +57,7 @@ private extension Swift.Error {
 /**
  AWS Client for the SimpleNotification service.
  */
-public struct AWSSimpleNotificationClient<InvocationReportingType: SmokeAWSInvocationReporting>: SimpleNotificationClientProtocol {
+public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SimpleNotificationClientProtocol {
     let httpClient: HTTPClient
     let awsRegion: AWSRegion
     let service: String

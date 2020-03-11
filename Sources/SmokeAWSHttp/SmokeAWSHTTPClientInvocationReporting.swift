@@ -21,7 +21,7 @@ import SmokeAWSCore
 import Logging
 import Metrics
 
-public struct SmokeAWSHTTPClientInvocationReporting<InvocationReportingType: SmokeAWSInvocationReporting>: HTTPClientInvocationReporting {
+public struct SmokeAWSHTTPClientInvocationReporting<InvocationReportingType: HTTPClientCoreInvocationReporting>: HTTPClientInvocationReporting {
     public typealias TraceContextType = InvocationReportingType.TraceContextType
     
     private let smokeAWSInvocationReporting: InvocationReportingType

@@ -106,7 +106,7 @@ public struct AWSS3ClientGenerator {
         dataHttpClient.wait()
     }
     
-    public func with<NewInvocationReportingType: SmokeAWSInvocationReporting>(
+    public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
             reporting: NewInvocationReportingType) -> AWSS3Client<NewInvocationReportingType> {
         return AWSS3Client<NewInvocationReportingType>(
             credentialsProvider: self.credentialsProvider,

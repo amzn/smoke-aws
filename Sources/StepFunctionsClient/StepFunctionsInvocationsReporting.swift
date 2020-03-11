@@ -20,14 +20,14 @@
 //
 
 import Foundation
-import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import StepFunctionsModel
 
 /**
  Operation reporting for the StepFunctionsModel.
  */
-public struct StepFunctionsInvocationsReporting<InvocationReportingType: SmokeAWSInvocationReporting> {
+public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     let createActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

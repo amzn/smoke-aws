@@ -20,14 +20,14 @@
 //
 
 import Foundation
-import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import S3Model
 
 /**
  Operation reporting for the S3Model.
  */
-public struct S3InvocationsReporting<InvocationReportingType: SmokeAWSInvocationReporting> {
+public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     let abortMultipartUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let completeMultipartUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let copyObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

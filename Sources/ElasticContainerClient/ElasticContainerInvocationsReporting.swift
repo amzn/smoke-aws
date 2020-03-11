@@ -20,14 +20,14 @@
 //
 
 import Foundation
-import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import ElasticContainerModel
 
 /**
  Operation reporting for the ElasticContainerModel.
  */
-public struct ElasticContainerInvocationsReporting<InvocationReportingType: SmokeAWSInvocationReporting> {
+public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     let createCapacityProvider: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createService: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

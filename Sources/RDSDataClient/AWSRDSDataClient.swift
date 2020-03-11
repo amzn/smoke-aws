@@ -52,7 +52,7 @@ private extension Swift.Error {
 /**
  AWS Client for the RDSData service.
  */
-public struct AWSRDSDataClient<InvocationReportingType: SmokeAWSInvocationReporting>: RDSDataClientProtocol {
+public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: RDSDataClientProtocol {
     let httpClient: HTTPClient
     let awsRegion: AWSRegion
     let service: String

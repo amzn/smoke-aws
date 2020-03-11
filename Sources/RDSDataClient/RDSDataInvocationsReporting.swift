@@ -20,14 +20,14 @@
 //
 
 import Foundation
-import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import RDSDataModel
 
 /**
  Operation reporting for the RDSDataModel.
  */
-public struct RDSDataInvocationsReporting<InvocationReportingType: SmokeAWSInvocationReporting> {
+public struct RDSDataInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     let batchExecuteStatement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let beginTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let commitTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

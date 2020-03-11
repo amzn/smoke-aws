@@ -52,7 +52,7 @@ private extension Swift.Error {
 /**
  AWS Client for the S3 service.
  */
-public struct AWSS3Client<InvocationReportingType: SmokeAWSInvocationReporting>: S3ClientProtocol {
+public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationReporting>: S3ClientProtocol {
     let httpClient: HTTPClient
     let dataHttpClient: HTTPClient
     let awsRegion: AWSRegion

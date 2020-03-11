@@ -57,7 +57,7 @@ private extension Swift.Error {
 /**
  AWS Client for the DynamoDB service.
  */
-public struct AWSDynamoDBClient<InvocationReportingType: SmokeAWSInvocationReporting>: DynamoDBClientProtocol {
+public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: DynamoDBClientProtocol {
     let httpClient: HTTPClient
     let awsRegion: AWSRegion
     let service: String

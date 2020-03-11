@@ -107,7 +107,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-log", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/apple/swift-metrics.git", "1.0.0"..<"3.0.0"),
         .package(url: "https://github.com/LiveUI/XMLCoding.git", .upToNextMajor(from: "0.4.1")),
-        .package(url: "https://github.com/amzn/smoke-http.git", from: "2.0.0-alpha"),
+        .package(url: "https://github.com/amzn/smoke-http.git", from: "2.0.0-alpha.5"),
         .package(url: "https://github.com/IBM-Swift/BlueCryptor.git", .upToNextMajor(from: "1.0.0")),
     ],
     targets: [

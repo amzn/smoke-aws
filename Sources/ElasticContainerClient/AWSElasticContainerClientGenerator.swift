@@ -95,7 +95,7 @@ public struct AWSElasticContainerClientGenerator {
         httpClient.wait()
     }
     
-    public func with<NewInvocationReportingType: SmokeAWSInvocationReporting>(
+    public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
             reporting: NewInvocationReportingType) -> AWSElasticContainerClient<NewInvocationReportingType> {
         return AWSElasticContainerClient<NewInvocationReportingType>(
             credentialsProvider: self.credentialsProvider,

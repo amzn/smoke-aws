@@ -20,14 +20,14 @@
 //
 
 import Foundation
-import SmokeAWSCore
+import SmokeHTTPClient
 import SmokeAWSHttp
 import SimpleWorkflowModel
 
 /**
  Operation reporting for the SimpleWorkflowModel.
  */
-public struct SimpleWorkflowInvocationsReporting<InvocationReportingType: SmokeAWSInvocationReporting> {
+public struct SimpleWorkflowInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     let countClosedWorkflowExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let countOpenWorkflowExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let countPendingActivityTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

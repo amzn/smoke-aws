@@ -95,7 +95,7 @@ public struct AWSRDSDataClientGenerator {
         httpClient.wait()
     }
     
-    public func with<NewInvocationReportingType: SmokeAWSInvocationReporting>(
+    public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
             reporting: NewInvocationReportingType) -> AWSRDSDataClient<NewInvocationReportingType> {
         return AWSRDSDataClient<NewInvocationReportingType>(
             credentialsProvider: self.credentialsProvider,

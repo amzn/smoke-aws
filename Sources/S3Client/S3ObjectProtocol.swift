@@ -28,7 +28,7 @@ public protocol S3ObjectProtocol {
      Gets an object from the S3 bucket, returning the decoded response in the
      completion handler.
      */
-    func getAsync<OutputType: Codable, InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getAsync<OutputType: Codable, InvocationReportingType: HTTPClientCoreInvocationReporting>(
         objectPath: String,
         reporting: InvocationReportingType,
         completion: @escaping (Result<OutputType, HTTPClientError>) -> ()) throws
@@ -36,7 +36,7 @@ public protocol S3ObjectProtocol {
     /**
      Gets an object from the S3 bucket, returning the decoded response.
      */
-    func getSync<OutputType: Codable, InvocationReportingType: SmokeAWSInvocationReporting>(
+    func getSync<OutputType: Codable, InvocationReportingType: HTTPClientCoreInvocationReporting>(
         objectPath: String,
         reporting: InvocationReportingType) throws -> OutputType
 }

@@ -97,7 +97,7 @@ public struct AWSRDSClientGenerator {
         httpClient.wait()
     }
     
-    public func with<NewInvocationReportingType: SmokeAWSInvocationReporting>(
+    public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
             reporting: NewInvocationReportingType) -> AWSRDSClient<NewInvocationReportingType> {
         return AWSRDSClient<NewInvocationReportingType>(
             credentialsProvider: self.credentialsProvider,
