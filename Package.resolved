@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "async-http-client",
+        "repositoryURL": "https://github.com/swift-server/async-http-client.git",
+        "state": {
+          "branch": null,
+          "revision": "e2636a4c24e646d3e480fc666da0c090818beb09",
+          "version": "1.1.0"
+        }
+      },
+      {
         "package": "Cryptor",
         "repositoryURL": "https://github.com/IBM-Swift/BlueCryptor.git",
         "state": {
@@ -14,9 +23,9 @@
         "package": "SmokeHTTP",
         "repositoryURL": "https://github.com/amzn/smoke-http.git",
         "state": {
-          "branch": null,
-          "revision": "1e42bb839956c0132d82b3cda20981eb81fbb532",
-          "version": "2.0.0-alpha.5"
+          "branch": "async-http-client",
+          "revision": "ae6944abc219a199a9739a43b8c03862755574c7",
+          "version": null
         }
       },
       {
@@ -44,6 +53,15 @@
           "branch": null,
           "revision": "16ab4d657e1ad4e77bd5f8b94af8538561643053",
           "version": "2.14.0"
+        }
+      },
+      {
+        "package": "swift-nio-extras",
+        "repositoryURL": "https://github.com/apple/swift-nio-extras.git",
+        "state": {
+          "branch": null,
+          "revision": "b4dbfacff47fb8d0f9e0a422d8d37935a9f10570",
+          "version": "1.4.0"
         }
       },
       {

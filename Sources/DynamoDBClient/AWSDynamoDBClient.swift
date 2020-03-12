@@ -26,6 +26,7 @@ import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
+import AsyncHTTPClient
 
 public enum DynamoDBClientError: Swift.Error {
     case invalidEndpoint(String)
@@ -58,7 +59,7 @@ private extension Swift.Error {
  AWS Client for the DynamoDB service.
  */
 public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: DynamoDBClientProtocol {
-    let httpClient: HTTPClient
+    let httpClient: HTTPOperationsClient
     let awsRegion: AWSRegion
     let service: String
     let target: String?
@@ -80,17 +81,17 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                 target: String? = "DynamoDB_20120810",
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<DynamoDBModelOperations>
                     = SmokeAWSClientReportingConfiguration<DynamoDBModelOperations>() ) {
         let clientDelegate = JSONAWSHttpClientDelegate<DynamoDBError>()
 
-        self.httpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                     eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                               endpointPort: endpointPort,
+                                               contentType: contentType,
+                                               clientDelegate: clientDelegate,
+                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                               eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = target
@@ -104,7 +105,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     
     internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
-                httpClient: HTTPClient,
+                httpClient: HTTPOperationsClient,
                 service: String,
                 target: String?,
                 retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
@@ -126,16 +127,8 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times.
      */
-    public func close() {
-        httpClient.close()
-    }
-
-    /**
-     Waits for the client to be closed. If close() is not called,
-     this will block forever.
-     */
-    public func wait() {
-        httpClient.wait()
+    public func close() throws {
+        try httpClient.close()
     }
 
     /**
@@ -151,7 +144,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func batchGetItemAsync(
             input: DynamoDBModel.BatchGetItemInput, 
             completion: @escaping (Result<DynamoDBModel.BatchGetItemOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -162,7 +155,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = BatchGetItemOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.BatchGetItemOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.BatchGetItemOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -196,7 +189,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func batchGetItemSync(
             input: DynamoDBModel.BatchGetItemInput) throws -> DynamoDBModel.BatchGetItemOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -229,7 +222,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func batchWriteItemAsync(
             input: DynamoDBModel.BatchWriteItemInput, 
             completion: @escaping (Result<DynamoDBModel.BatchWriteItemOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -240,7 +233,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = BatchWriteItemOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.BatchWriteItemOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.BatchWriteItemOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -274,7 +267,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func batchWriteItemSync(
             input: DynamoDBModel.BatchWriteItemInput) throws -> DynamoDBModel.BatchWriteItemOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -307,7 +300,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func createBackupAsync(
             input: DynamoDBModel.CreateBackupInput, 
             completion: @escaping (Result<DynamoDBModel.CreateBackupOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -318,7 +311,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateBackupOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.CreateBackupOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.CreateBackupOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -352,7 +345,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func createBackupSync(
             input: DynamoDBModel.CreateBackupInput) throws -> DynamoDBModel.CreateBackupOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -385,7 +378,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func createGlobalTableAsync(
             input: DynamoDBModel.CreateGlobalTableInput, 
             completion: @escaping (Result<DynamoDBModel.CreateGlobalTableOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -396,7 +389,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateGlobalTableOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.CreateGlobalTableOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.CreateGlobalTableOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -430,7 +423,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func createGlobalTableSync(
             input: DynamoDBModel.CreateGlobalTableInput) throws -> DynamoDBModel.CreateGlobalTableOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -463,7 +456,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func createTableAsync(
             input: DynamoDBModel.CreateTableInput, 
             completion: @escaping (Result<DynamoDBModel.CreateTableOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -474,7 +467,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateTableOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.CreateTableOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.CreateTableOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -508,7 +501,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func createTableSync(
             input: DynamoDBModel.CreateTableInput) throws -> DynamoDBModel.CreateTableOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -541,7 +534,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func deleteBackupAsync(
             input: DynamoDBModel.DeleteBackupInput, 
             completion: @escaping (Result<DynamoDBModel.DeleteBackupOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -552,7 +545,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBackupOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.DeleteBackupOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.DeleteBackupOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -586,7 +579,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func deleteBackupSync(
             input: DynamoDBModel.DeleteBackupInput) throws -> DynamoDBModel.DeleteBackupOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -619,7 +612,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func deleteItemAsync(
             input: DynamoDBModel.DeleteItemInput, 
             completion: @escaping (Result<DynamoDBModel.DeleteItemOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -630,7 +623,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteItemOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.DeleteItemOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.DeleteItemOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -664,7 +657,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func deleteItemSync(
             input: DynamoDBModel.DeleteItemInput) throws -> DynamoDBModel.DeleteItemOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -697,7 +690,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func deleteTableAsync(
             input: DynamoDBModel.DeleteTableInput, 
             completion: @escaping (Result<DynamoDBModel.DeleteTableOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -708,7 +701,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteTableOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.DeleteTableOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.DeleteTableOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -742,7 +735,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func deleteTableSync(
             input: DynamoDBModel.DeleteTableInput) throws -> DynamoDBModel.DeleteTableOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -775,7 +768,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func describeBackupAsync(
             input: DynamoDBModel.DescribeBackupInput, 
             completion: @escaping (Result<DynamoDBModel.DescribeBackupOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -786,7 +779,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeBackupOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.DescribeBackupOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.DescribeBackupOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -820,7 +813,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeBackupSync(
             input: DynamoDBModel.DescribeBackupInput) throws -> DynamoDBModel.DescribeBackupOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -853,7 +846,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func describeContinuousBackupsAsync(
             input: DynamoDBModel.DescribeContinuousBackupsInput, 
             completion: @escaping (Result<DynamoDBModel.DescribeContinuousBackupsOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -864,7 +857,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.DescribeContinuousBackupsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.DescribeContinuousBackupsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -898,7 +891,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeContinuousBackupsSync(
             input: DynamoDBModel.DescribeContinuousBackupsInput) throws -> DynamoDBModel.DescribeContinuousBackupsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -931,7 +924,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func describeContributorInsightsAsync(
             input: DynamoDBModel.DescribeContributorInsightsInput, 
             completion: @escaping (Result<DynamoDBModel.DescribeContributorInsightsOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -942,7 +935,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeContributorInsightsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.DescribeContributorInsightsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.DescribeContributorInsightsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -976,7 +969,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeContributorInsightsSync(
             input: DynamoDBModel.DescribeContributorInsightsInput) throws -> DynamoDBModel.DescribeContributorInsightsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1008,7 +1001,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func describeEndpointsAsync(
             input: DynamoDBModel.DescribeEndpointsRequest, 
             completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1019,7 +1012,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeEndpointsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.DescribeEndpointsResponse, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.DescribeEndpointsResponse, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1052,7 +1045,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeEndpointsSync(
             input: DynamoDBModel.DescribeEndpointsRequest) throws -> DynamoDBModel.DescribeEndpointsResponse {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1085,7 +1078,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func describeGlobalTableAsync(
             input: DynamoDBModel.DescribeGlobalTableInput, 
             completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1096,7 +1089,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeGlobalTableOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.DescribeGlobalTableOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.DescribeGlobalTableOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1130,7 +1123,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeGlobalTableSync(
             input: DynamoDBModel.DescribeGlobalTableInput) throws -> DynamoDBModel.DescribeGlobalTableOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1163,7 +1156,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func describeGlobalTableSettingsAsync(
             input: DynamoDBModel.DescribeGlobalTableSettingsInput, 
             completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1174,7 +1167,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1208,7 +1201,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeGlobalTableSettingsSync(
             input: DynamoDBModel.DescribeGlobalTableSettingsInput) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1241,7 +1234,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func describeLimitsAsync(
             input: DynamoDBModel.DescribeLimitsInput, 
             completion: @escaping (Result<DynamoDBModel.DescribeLimitsOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1252,7 +1245,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeLimitsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.DescribeLimitsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.DescribeLimitsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1286,7 +1279,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeLimitsSync(
             input: DynamoDBModel.DescribeLimitsInput) throws -> DynamoDBModel.DescribeLimitsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1319,7 +1312,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func describeTableAsync(
             input: DynamoDBModel.DescribeTableInput, 
             completion: @escaping (Result<DynamoDBModel.DescribeTableOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1330,7 +1323,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeTableOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.DescribeTableOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.DescribeTableOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1364,7 +1357,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeTableSync(
             input: DynamoDBModel.DescribeTableInput) throws -> DynamoDBModel.DescribeTableOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1397,7 +1390,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func describeTableReplicaAutoScalingAsync(
             input: DynamoDBModel.DescribeTableReplicaAutoScalingInput, 
             completion: @escaping (Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1408,7 +1401,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.DescribeTableReplicaAutoScalingOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1442,7 +1435,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeTableReplicaAutoScalingSync(
             input: DynamoDBModel.DescribeTableReplicaAutoScalingInput) throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1475,7 +1468,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func describeTimeToLiveAsync(
             input: DynamoDBModel.DescribeTimeToLiveInput, 
             completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1486,7 +1479,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeTimeToLiveOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.DescribeTimeToLiveOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.DescribeTimeToLiveOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1520,7 +1513,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeTimeToLiveSync(
             input: DynamoDBModel.DescribeTimeToLiveInput) throws -> DynamoDBModel.DescribeTimeToLiveOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1553,7 +1546,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func getItemAsync(
             input: DynamoDBModel.GetItemInput, 
             completion: @escaping (Result<DynamoDBModel.GetItemOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1564,7 +1557,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetItemOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.GetItemOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.GetItemOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1598,7 +1591,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func getItemSync(
             input: DynamoDBModel.GetItemInput) throws -> DynamoDBModel.GetItemOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1631,7 +1624,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func listBackupsAsync(
             input: DynamoDBModel.ListBackupsInput, 
             completion: @escaping (Result<DynamoDBModel.ListBackupsOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1642,7 +1635,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListBackupsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.ListBackupsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.ListBackupsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1676,7 +1669,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func listBackupsSync(
             input: DynamoDBModel.ListBackupsInput) throws -> DynamoDBModel.ListBackupsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1709,7 +1702,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func listContributorInsightsAsync(
             input: DynamoDBModel.ListContributorInsightsInput, 
             completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1720,7 +1713,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListContributorInsightsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.ListContributorInsightsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.ListContributorInsightsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1754,7 +1747,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func listContributorInsightsSync(
             input: DynamoDBModel.ListContributorInsightsInput) throws -> DynamoDBModel.ListContributorInsightsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1787,7 +1780,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func listGlobalTablesAsync(
             input: DynamoDBModel.ListGlobalTablesInput, 
             completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1798,7 +1791,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListGlobalTablesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.ListGlobalTablesOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.ListGlobalTablesOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1832,7 +1825,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func listGlobalTablesSync(
             input: DynamoDBModel.ListGlobalTablesInput) throws -> DynamoDBModel.ListGlobalTablesOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1865,7 +1858,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func listTablesAsync(
             input: DynamoDBModel.ListTablesInput, 
             completion: @escaping (Result<DynamoDBModel.ListTablesOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1876,7 +1869,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTablesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.ListTablesOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.ListTablesOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1910,7 +1903,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func listTablesSync(
             input: DynamoDBModel.ListTablesInput) throws -> DynamoDBModel.ListTablesOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1943,7 +1936,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func listTagsOfResourceAsync(
             input: DynamoDBModel.ListTagsOfResourceInput, 
             completion: @escaping (Result<DynamoDBModel.ListTagsOfResourceOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1954,7 +1947,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTagsOfResourceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.ListTagsOfResourceOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.ListTagsOfResourceOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1988,7 +1981,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func listTagsOfResourceSync(
             input: DynamoDBModel.ListTagsOfResourceInput) throws -> DynamoDBModel.ListTagsOfResourceOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2021,7 +2014,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func putItemAsync(
             input: DynamoDBModel.PutItemInput, 
             completion: @escaping (Result<DynamoDBModel.PutItemOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2032,7 +2025,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutItemOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.PutItemOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.PutItemOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2066,7 +2059,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func putItemSync(
             input: DynamoDBModel.PutItemInput) throws -> DynamoDBModel.PutItemOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2099,7 +2092,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func queryAsync(
             input: DynamoDBModel.QueryInput, 
             completion: @escaping (Result<DynamoDBModel.QueryOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2110,7 +2103,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = QueryOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.QueryOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.QueryOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2144,7 +2137,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func querySync(
             input: DynamoDBModel.QueryInput) throws -> DynamoDBModel.QueryOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2177,7 +2170,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func restoreTableFromBackupAsync(
             input: DynamoDBModel.RestoreTableFromBackupInput, 
             completion: @escaping (Result<DynamoDBModel.RestoreTableFromBackupOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2188,7 +2181,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RestoreTableFromBackupOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.RestoreTableFromBackupOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.RestoreTableFromBackupOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2222,7 +2215,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func restoreTableFromBackupSync(
             input: DynamoDBModel.RestoreTableFromBackupInput) throws -> DynamoDBModel.RestoreTableFromBackupOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2255,7 +2248,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func restoreTableToPointInTimeAsync(
             input: DynamoDBModel.RestoreTableToPointInTimeInput, 
             completion: @escaping (Result<DynamoDBModel.RestoreTableToPointInTimeOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2266,7 +2259,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RestoreTableToPointInTimeOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.RestoreTableToPointInTimeOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.RestoreTableToPointInTimeOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2300,7 +2293,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func restoreTableToPointInTimeSync(
             input: DynamoDBModel.RestoreTableToPointInTimeInput) throws -> DynamoDBModel.RestoreTableToPointInTimeOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2333,7 +2326,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func scanAsync(
             input: DynamoDBModel.ScanInput, 
             completion: @escaping (Result<DynamoDBModel.ScanOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2344,7 +2337,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ScanOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.ScanOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.ScanOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2378,7 +2371,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func scanSync(
             input: DynamoDBModel.ScanInput) throws -> DynamoDBModel.ScanOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2410,7 +2403,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func tagResourceAsync(
             input: DynamoDBModel.TagResourceInput, 
             completion: @escaping (DynamoDBError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2421,7 +2414,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? DynamoDBError {
                     completion(typedError)
@@ -2452,7 +2445,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func tagResourceSync(
             input: DynamoDBModel.TagResourceInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2485,7 +2478,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func transactGetItemsAsync(
             input: DynamoDBModel.TransactGetItemsInput, 
             completion: @escaping (Result<DynamoDBModel.TransactGetItemsOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2496,7 +2489,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = TransactGetItemsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.TransactGetItemsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.TransactGetItemsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2530,7 +2523,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func transactGetItemsSync(
             input: DynamoDBModel.TransactGetItemsInput) throws -> DynamoDBModel.TransactGetItemsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2563,7 +2556,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func transactWriteItemsAsync(
             input: DynamoDBModel.TransactWriteItemsInput, 
             completion: @escaping (Result<DynamoDBModel.TransactWriteItemsOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2574,7 +2567,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = TransactWriteItemsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.TransactWriteItemsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.TransactWriteItemsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2608,7 +2601,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func transactWriteItemsSync(
             input: DynamoDBModel.TransactWriteItemsInput) throws -> DynamoDBModel.TransactWriteItemsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2640,7 +2633,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func untagResourceAsync(
             input: DynamoDBModel.UntagResourceInput, 
             completion: @escaping (DynamoDBError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2651,7 +2644,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? DynamoDBError {
                     completion(typedError)
@@ -2682,7 +2675,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func untagResourceSync(
             input: DynamoDBModel.UntagResourceInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2715,7 +2708,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func updateContinuousBackupsAsync(
             input: DynamoDBModel.UpdateContinuousBackupsInput, 
             completion: @escaping (Result<DynamoDBModel.UpdateContinuousBackupsOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2726,7 +2719,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.UpdateContinuousBackupsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.UpdateContinuousBackupsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2760,7 +2753,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateContinuousBackupsSync(
             input: DynamoDBModel.UpdateContinuousBackupsInput) throws -> DynamoDBModel.UpdateContinuousBackupsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2793,7 +2786,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func updateContributorInsightsAsync(
             input: DynamoDBModel.UpdateContributorInsightsInput, 
             completion: @escaping (Result<DynamoDBModel.UpdateContributorInsightsOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2804,7 +2797,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateContributorInsightsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.UpdateContributorInsightsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.UpdateContributorInsightsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2838,7 +2831,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateContributorInsightsSync(
             input: DynamoDBModel.UpdateContributorInsightsInput) throws -> DynamoDBModel.UpdateContributorInsightsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2871,7 +2864,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func updateGlobalTableAsync(
             input: DynamoDBModel.UpdateGlobalTableInput, 
             completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2882,7 +2875,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateGlobalTableOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.UpdateGlobalTableOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.UpdateGlobalTableOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2916,7 +2909,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateGlobalTableSync(
             input: DynamoDBModel.UpdateGlobalTableInput) throws -> DynamoDBModel.UpdateGlobalTableOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2949,7 +2942,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func updateGlobalTableSettingsAsync(
             input: DynamoDBModel.UpdateGlobalTableSettingsInput, 
             completion: @escaping (Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2960,7 +2953,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.UpdateGlobalTableSettingsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2994,7 +2987,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateGlobalTableSettingsSync(
             input: DynamoDBModel.UpdateGlobalTableSettingsInput) throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3027,7 +3020,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func updateItemAsync(
             input: DynamoDBModel.UpdateItemInput, 
             completion: @escaping (Result<DynamoDBModel.UpdateItemOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3038,7 +3031,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateItemOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.UpdateItemOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.UpdateItemOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3072,7 +3065,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateItemSync(
             input: DynamoDBModel.UpdateItemInput) throws -> DynamoDBModel.UpdateItemOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3105,7 +3098,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func updateTableAsync(
             input: DynamoDBModel.UpdateTableInput, 
             completion: @escaping (Result<DynamoDBModel.UpdateTableOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3116,7 +3109,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateTableOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.UpdateTableOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.UpdateTableOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3150,7 +3143,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateTableSync(
             input: DynamoDBModel.UpdateTableInput) throws -> DynamoDBModel.UpdateTableOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3183,7 +3176,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func updateTableReplicaAutoScalingAsync(
             input: DynamoDBModel.UpdateTableReplicaAutoScalingInput, 
             completion: @escaping (Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3194,7 +3187,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.UpdateTableReplicaAutoScalingOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3228,7 +3221,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateTableReplicaAutoScalingSync(
             input: DynamoDBModel.UpdateTableReplicaAutoScalingInput) throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3261,7 +3254,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     public func updateTimeToLiveAsync(
             input: DynamoDBModel.UpdateTimeToLiveInput, 
             completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, DynamoDBError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3272,7 +3265,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateTimeToLiveOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<DynamoDBModel.UpdateTimeToLiveOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<DynamoDBModel.UpdateTimeToLiveOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3306,7 +3299,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateTimeToLiveSync(
             input: DynamoDBModel.UpdateTimeToLiveInput) throws -> DynamoDBModel.UpdateTimeToLiveOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

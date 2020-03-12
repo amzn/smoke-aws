@@ -26,6 +26,7 @@ import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
+import AsyncHTTPClient
 
 public enum SimpleQueueClientError: Swift.Error {
     case invalidEndpoint(String)
@@ -58,8 +59,8 @@ private extension Swift.Error {
  AWS Client for the SimpleQueue service.
  */
 public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SimpleQueueClientProtocol {
-    let httpClient: HTTPClient
-    let listHttpClient: HTTPClient
+    let httpClient: HTTPOperationsClient
+    let listHttpClient: HTTPOperationsClient
     let awsRegion: AWSRegion
     let service: String
     let apiVersion: String
@@ -82,7 +83,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
                 apiVersion: String = "2012-11-05",
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleQueueModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleQueueModelOperations>() ) {
         let clientDelegate = XMLAWSHttpClientDelegate<SimpleQueueError>()
@@ -91,18 +92,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             outputMapDecodingStrategy: .collapseMapUsingTags(keyTag: "Key", valueTag: "Value"), 
             inputQueryMapDecodingStrategy: .separateQueryEntriesWith(keyTag: "Key", valueTag: "Value"))
 
-        self.httpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                     eventLoopProvider: eventLoopProvider)
-        self.listHttpClient = HTTPClient(endpointHostName: endpointHostName,
-                                          endpointPort: endpointPort,
-                                          contentType: contentType,
-                                          clientDelegate: clientDelegateForListHttpClient,
-                                          connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                          eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                               endpointPort: endpointPort,
+                                               contentType: contentType,
+                                               clientDelegate: clientDelegate,
+                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                               eventLoopProvider: eventLoopProvider)
+        self.listHttpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                                    endpointPort: endpointPort,
+                                                    contentType: contentType,
+                                                    clientDelegate: clientDelegateForListHttpClient,
+                                                    connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                                    eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -117,7 +118,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     
     internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
-                httpClient: HTTPClient, listHttpClient: HTTPClient,
+                httpClient: HTTPOperationsClient, listHttpClient: HTTPOperationsClient,
                 service: String,
                 apiVersion: String,
                 retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
@@ -141,18 +142,9 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times.
      */
-    public func close() {
-        httpClient.close()
-        listHttpClient.close()
-    }
-
-    /**
-     Waits for the client to be closed. If close() is not called,
-     this will block forever.
-     */
-    public func wait() {
-        httpClient.wait()
-        listHttpClient.wait()
+    public func close() throws {
+        try httpClient.close()
+        try listHttpClient.close()
     }
 
     /**
@@ -167,7 +159,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func addPermissionAsync(
             input: SimpleQueueModel.AddPermissionRequest, 
             completion: @escaping (SimpleQueueError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -182,7 +174,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.addPermission.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
@@ -213,7 +205,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func addPermissionSync(
             input: SimpleQueueModel.AddPermissionRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -249,7 +241,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func changeMessageVisibilityAsync(
             input: SimpleQueueModel.ChangeMessageVisibilityRequest, 
             completion: @escaping (SimpleQueueError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -264,7 +256,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.changeMessageVisibility.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
@@ -295,7 +287,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func changeMessageVisibilitySync(
             input: SimpleQueueModel.ChangeMessageVisibilityRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -332,7 +324,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func changeMessageVisibilityBatchAsync(
             input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest, 
             completion: @escaping (Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, SimpleQueueError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -347,7 +339,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.changeMessageVisibilityBatch.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -381,7 +373,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func changeMessageVisibilityBatchSync(
             input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest) throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -418,7 +410,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func createQueueAsync(
             input: SimpleQueueModel.CreateQueueRequest, 
             completion: @escaping (Result<SimpleQueueModel.CreateQueueResultForCreateQueue, SimpleQueueError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -433,7 +425,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.createQueue.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.CreateQueueResultForCreateQueue, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleQueueModel.CreateQueueResultForCreateQueue, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -467,7 +459,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func createQueueSync(
             input: SimpleQueueModel.CreateQueueRequest) throws -> SimpleQueueModel.CreateQueueResultForCreateQueue {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -503,7 +495,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func deleteMessageAsync(
             input: SimpleQueueModel.DeleteMessageRequest, 
             completion: @escaping (SimpleQueueError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -518,7 +510,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.deleteMessage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
@@ -549,7 +541,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func deleteMessageSync(
             input: SimpleQueueModel.DeleteMessageRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -586,7 +578,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func deleteMessageBatchAsync(
             input: SimpleQueueModel.DeleteMessageBatchRequest, 
             completion: @escaping (Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, SimpleQueueError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -601,7 +593,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.deleteMessageBatch.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -635,7 +627,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func deleteMessageBatchSync(
             input: SimpleQueueModel.DeleteMessageBatchRequest) throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -670,7 +662,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func deleteQueueAsync(
             input: SimpleQueueModel.DeleteQueueRequest, 
             completion: @escaping (SimpleQueueError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -685,7 +677,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.deleteQueue.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
@@ -715,7 +707,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func deleteQueueSync(
             input: SimpleQueueModel.DeleteQueueRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -752,7 +744,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func getQueueAttributesAsync(
             input: SimpleQueueModel.GetQueueAttributesRequest, 
             completion: @escaping (Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, SimpleQueueError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -767,7 +759,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.getQueueAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -801,7 +793,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func getQueueAttributesSync(
             input: SimpleQueueModel.GetQueueAttributesRequest) throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -838,7 +830,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func getQueueUrlAsync(
             input: SimpleQueueModel.GetQueueUrlRequest, 
             completion: @escaping (Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, SimpleQueueError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -853,7 +845,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.getQueueUrl.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -887,7 +879,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func getQueueUrlSync(
             input: SimpleQueueModel.GetQueueUrlRequest) throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -924,7 +916,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func listDeadLetterSourceQueuesAsync(
             input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest, 
             completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, SimpleQueueError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -939,7 +931,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.listDeadLetterSourceQueues.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -973,7 +965,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func listDeadLetterSourceQueuesSync(
             input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest) throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1009,7 +1001,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func listQueueTagsAsync(
             input: SimpleQueueModel.ListQueueTagsRequest, 
             completion: @escaping (Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, SimpleQueueError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1024,7 +1016,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.listQueueTags.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1057,7 +1049,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func listQueueTagsSync(
             input: SimpleQueueModel.ListQueueTagsRequest) throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1093,7 +1085,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func listQueuesAsync(
             input: SimpleQueueModel.ListQueuesRequest, 
             completion: @escaping (Result<SimpleQueueModel.ListQueuesResultForListQueues, SimpleQueueError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1108,7 +1100,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.listQueues.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.ListQueuesResultForListQueues, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleQueueModel.ListQueuesResultForListQueues, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1141,7 +1133,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func listQueuesSync(
             input: SimpleQueueModel.ListQueuesRequest) throws -> SimpleQueueModel.ListQueuesResultForListQueues {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1177,7 +1169,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func purgeQueueAsync(
             input: SimpleQueueModel.PurgeQueueRequest, 
             completion: @escaping (SimpleQueueError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1192,7 +1184,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.purgeQueue.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
@@ -1223,7 +1215,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func purgeQueueSync(
             input: SimpleQueueModel.PurgeQueueRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1260,7 +1252,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func receiveMessageAsync(
             input: SimpleQueueModel.ReceiveMessageRequest, 
             completion: @escaping (Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, SimpleQueueError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1275,7 +1267,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.receiveMessage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1309,7 +1301,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func receiveMessageSync(
             input: SimpleQueueModel.ReceiveMessageRequest) throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1344,7 +1336,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func removePermissionAsync(
             input: SimpleQueueModel.RemovePermissionRequest, 
             completion: @escaping (SimpleQueueError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1359,7 +1351,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.removePermission.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
@@ -1389,7 +1381,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func removePermissionSync(
             input: SimpleQueueModel.RemovePermissionRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1426,7 +1418,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func sendMessageAsync(
             input: SimpleQueueModel.SendMessageRequest, 
             completion: @escaping (Result<SimpleQueueModel.SendMessageResultForSendMessage, SimpleQueueError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1441,7 +1433,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.sendMessage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.SendMessageResultForSendMessage, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleQueueModel.SendMessageResultForSendMessage, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1475,7 +1467,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func sendMessageSync(
             input: SimpleQueueModel.SendMessageRequest) throws -> SimpleQueueModel.SendMessageResultForSendMessage {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1512,7 +1504,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func sendMessageBatchAsync(
             input: SimpleQueueModel.SendMessageBatchRequest, 
             completion: @escaping (Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, SimpleQueueError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1527,7 +1519,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.sendMessageBatch.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1561,7 +1553,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func sendMessageBatchSync(
             input: SimpleQueueModel.SendMessageBatchRequest) throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1597,7 +1589,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func setQueueAttributesAsync(
             input: SimpleQueueModel.SetQueueAttributesRequest, 
             completion: @escaping (SimpleQueueError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1612,7 +1604,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.setQueueAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
@@ -1643,7 +1635,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func setQueueAttributesSync(
             input: SimpleQueueModel.SetQueueAttributesRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1678,7 +1670,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func tagQueueAsync(
             input: SimpleQueueModel.TagQueueRequest, 
             completion: @escaping (SimpleQueueError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1693,7 +1685,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.tagQueue.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
@@ -1723,7 +1715,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func tagQueueSync(
             input: SimpleQueueModel.TagQueueRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1758,7 +1750,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     public func untagQueueAsync(
             input: SimpleQueueModel.UntagQueueRequest, 
             completion: @escaping (SimpleQueueError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1773,7 +1765,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.untagQueue.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleQueueError {
                     completion(typedError)
@@ -1803,7 +1795,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func untagQueueSync(
             input: SimpleQueueModel.UntagQueueRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

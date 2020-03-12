@@ -26,6 +26,7 @@ import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
+import AsyncHTTPClient
 
 public enum SecurityTokenClientError: Swift.Error {
     case invalidEndpoint(String)
@@ -53,7 +54,7 @@ private extension Swift.Error {
  AWS Client for the SecurityToken service.
  */
 public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SecurityTokenClientProtocol {
-    let httpClient: HTTPClient
+    let httpClient: HTTPOperationsClient
     let awsRegion: AWSRegion
     let service: String
     let apiVersion: String
@@ -76,17 +77,17 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
                 apiVersion: String = "2011-06-15",
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SecurityTokenModelOperations>
                     = SmokeAWSClientReportingConfiguration<SecurityTokenModelOperations>() ) {
         let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>()
 
-        self.httpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                     eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                               endpointPort: endpointPort,
+                                               contentType: contentType,
+                                               clientDelegate: clientDelegate,
+                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                               eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion ?? .us_east_1
         self.service = service
         self.target = nil
@@ -101,7 +102,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
     
     internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion? = nil,
                 reporting: InvocationReportingType,
-                httpClient: HTTPClient,
+                httpClient: HTTPOperationsClient,
                 service: String,
                 apiVersion: String,
                 retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
@@ -124,16 +125,8 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times.
      */
-    public func close() {
-        httpClient.close()
-    }
-
-    /**
-     Waits for the client to be closed. If close() is not called,
-     this will block forever.
-     */
-    public func wait() {
-        httpClient.wait()
+    public func close() throws {
+        try httpClient.close()
     }
 
     /**
@@ -149,7 +142,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
     public func assumeRoleAsync(
             input: SecurityTokenModel.AssumeRoleRequest, 
             completion: @escaping (Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, SecurityTokenError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -164,7 +157,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.assumeRole.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, HTTPClientError>) {
+        func innerCompletion(result: Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -198,7 +191,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func assumeRoleSync(
             input: SecurityTokenModel.AssumeRoleRequest) throws -> SecurityTokenModel.AssumeRoleResponseForAssumeRole {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -235,7 +228,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
     public func assumeRoleWithSAMLAsync(
             input: SecurityTokenModel.AssumeRoleWithSAMLRequest, 
             completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, SecurityTokenError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -250,7 +243,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.assumeRoleWithSAML.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, HTTPClientError>) {
+        func innerCompletion(result: Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -284,7 +277,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func assumeRoleWithSAMLSync(
             input: SecurityTokenModel.AssumeRoleWithSAMLRequest) throws -> SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -321,7 +314,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
     public func assumeRoleWithWebIdentityAsync(
             input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest, 
             completion: @escaping (Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, SecurityTokenError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -336,7 +329,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.assumeRoleWithWebIdentity.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, HTTPClientError>) {
+        func innerCompletion(result: Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -370,7 +363,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func assumeRoleWithWebIdentitySync(
             input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest) throws -> SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -407,7 +400,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
     public func decodeAuthorizationMessageAsync(
             input: SecurityTokenModel.DecodeAuthorizationMessageRequest, 
             completion: @escaping (Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, SecurityTokenError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -422,7 +415,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.decodeAuthorizationMessage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, HTTPClientError>) {
+        func innerCompletion(result: Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -456,7 +449,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func decodeAuthorizationMessageSync(
             input: SecurityTokenModel.DecodeAuthorizationMessageRequest) throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -492,7 +485,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
     public func getAccessKeyInfoAsync(
             input: SecurityTokenModel.GetAccessKeyInfoRequest, 
             completion: @escaping (Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, SecurityTokenError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -507,7 +500,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.getAccessKeyInfo.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, HTTPClientError>) {
+        func innerCompletion(result: Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -540,7 +533,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func getAccessKeyInfoSync(
             input: SecurityTokenModel.GetAccessKeyInfoRequest) throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -576,7 +569,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
     public func getCallerIdentityAsync(
             input: SecurityTokenModel.GetCallerIdentityRequest, 
             completion: @escaping (Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, SecurityTokenError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -591,7 +584,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.getCallerIdentity.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, HTTPClientError>) {
+        func innerCompletion(result: Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -624,7 +617,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func getCallerIdentitySync(
             input: SecurityTokenModel.GetCallerIdentityRequest) throws -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -661,7 +654,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
     public func getFederationTokenAsync(
             input: SecurityTokenModel.GetFederationTokenRequest, 
             completion: @escaping (Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, SecurityTokenError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -676,7 +669,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.getFederationToken.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, HTTPClientError>) {
+        func innerCompletion(result: Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -710,7 +703,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func getFederationTokenSync(
             input: SecurityTokenModel.GetFederationTokenRequest) throws -> SecurityTokenModel.GetFederationTokenResponseForGetFederationToken {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -747,7 +740,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
     public func getSessionTokenAsync(
             input: SecurityTokenModel.GetSessionTokenRequest, 
             completion: @escaping (Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, SecurityTokenError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -762,7 +755,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.getSessionToken.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, HTTPClientError>) {
+        func innerCompletion(result: Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -796,7 +789,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func getSessionTokenSync(
             input: SecurityTokenModel.GetSessionTokenRequest) throws -> SecurityTokenModel.GetSessionTokenResponseForGetSessionToken {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

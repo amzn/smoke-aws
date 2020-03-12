@@ -9,6 +9,7 @@ import SimpleNotificationModel
 import SmokeAWSHttp
 import NIOHTTP1
 import SmokeHTTPClient
+import AsyncHTTPClient
 import Logging
 
 class SimpleNotificationClientTests: XCTestCase {
@@ -25,14 +26,14 @@ class SimpleNotificationClientTests: XCTestCase {
             </ErrorResponse>
             """
         
-        let responseHead = HTTPResponseHead(version: .init(major: 1, minor: 1),
-                                            status: .badRequest)
+        let response = HTTPClient.Response(host: "sns.us-west-2.amazonaws.com", status: .badRequest,
+                                           headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = XMLAWSHttpClientDelegate<SimpleNotificationError>()
         let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId",
                                                                         traceContext: MockInvocationTraceContext())
-        let error = try clientDelegate.getResponseError(responseHead: responseHead,
+        let error = try clientDelegate.getResponseError(response: response,
                                                         responseComponents: components,
                                                         invocationReporting: invocationReporting)
         
@@ -57,14 +58,14 @@ class SimpleNotificationClientTests: XCTestCase {
             </ErrorResponse>
             """
         
-        let responseHead = HTTPResponseHead(version: .init(major: 1, minor: 1),
-                                            status: .badRequest)
+        let response = HTTPClient.Response(host: "sns.us-west-2.amazonaws.com", status: .badRequest,
+                                           headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = DataAWSHttpClientDelegate<SimpleNotificationError>()
         let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId",
                                                                         traceContext: MockInvocationTraceContext())
-        let error = try clientDelegate.getResponseError(responseHead: responseHead,
+        let error = try clientDelegate.getResponseError(response: response,
                                                         responseComponents: components,
                                                         invocationReporting: invocationReporting)
         
@@ -87,14 +88,14 @@ class SimpleNotificationClientTests: XCTestCase {
             </ErrorResponse>
             """
         
-        let responseHead = HTTPResponseHead(version: .init(major: 1, minor: 1),
-                                            status: .badRequest)
+        let response = HTTPClient.Response(host: "sns.us-west-2.amazonaws.com", status: .badRequest,
+                                           headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = DataAWSHttpClientDelegate<SimpleNotificationError>()
         let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId",
                                                                         traceContext: MockInvocationTraceContext())
-        let error = try clientDelegate.getResponseError(responseHead: responseHead,
+        let error = try clientDelegate.getResponseError(response: response,
                                                         responseComponents: components,
                                                         invocationReporting: invocationReporting)
         

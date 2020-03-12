@@ -17,6 +17,7 @@
 import Foundation
 import Logging
 import SmokeHTTPClient
+import AsyncHTTPClient
 import NIOHTTP1
 
 private let xAmzRequestId = "x-amz-request-id"
@@ -33,41 +34,41 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
         
     }
     
-    public func handleOutwardsRequestStart(method: HTTPMethod, uri: String, version: HTTPVersion, logger: Logger, internalRequestId: String,
-                                    headers: inout [(String, String)], bodyData: Data) -> String {
+    public func handleOutwardsRequestStart(method: HTTPMethod, uri: String, logger: Logger, internalRequestId: String,
+                                           headers: inout HTTPHeaders, bodyData: Data) -> String {
         logger.debug("Starting outgoing \(method) request to endpoint '\(uri)' with body: \(bodyData.debugString)")
         
         return ""
     }
     
     public func handleOutwardsRequestSuccess(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
-                                      responseHead: HTTPResponseHead?, bodyData: Data?) {
-        let logLine = getLogLine(successfullyCompletedRequest: true, responseHead: responseHead, bodyData: bodyData)
+                                             response: HTTPClient.Response, bodyData: Data?) {
+        let logLine = getLogLine(successfullyCompletedRequest: true, response: response, bodyData: bodyData)
         
         logger.debug("\(logLine)")
     }
     
     public func handleOutwardsRequestFailure(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
-                                      responseHead: HTTPResponseHead?, bodyData: Data?, error: Error) {
-        let logLine = getLogLine(successfullyCompletedRequest: true, responseHead: responseHead, bodyData: bodyData)
+                                             response: HTTPClient.Response?, bodyData: Data?, error: Error) {
+        let logLine = getLogLine(successfullyCompletedRequest: true, response: response, bodyData: bodyData)
         
         logger.error("\(logLine)")
     }
     
-    private func getLogLine(successfullyCompletedRequest: Bool, responseHead: HTTPResponseHead?, bodyData: Data?) -> String {
+    private func getLogLine(successfullyCompletedRequest: Bool, response: HTTPClient.Response?, bodyData: Data?) -> String {
         var logElements: [String] = []
         let completionString = successfullyCompletedRequest ? "Successfully" : "Unsuccessfully"
         logElements.append("\(completionString) completed outgoing request.")
         
-        if let code = responseHead?.status.code {
+        if let code = response?.status.code {
             logElements.append("Returned status code: \(code)")
         }
         
-        if let requestIds = responseHead?.headers[xAmzRequestId], !requestIds.isEmpty {
+        if let requestIds = response?.headers[xAmzRequestId], !requestIds.isEmpty {
             logElements.append("Returned \(xAmzRequestId) header '\(requestIds.joined(separator: ","))'")
         }
         
-        if let id2s = responseHead?.headers[xAmzId2], !id2s.isEmpty {
+        if let id2s = response?.headers[xAmzId2], !id2s.isEmpty {
             logElements.append("Returned \(xAmzId2) header '\(id2s.joined(separator: ","))'")
         }
         

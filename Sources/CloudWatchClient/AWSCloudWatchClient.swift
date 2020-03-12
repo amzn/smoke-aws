@@ -26,6 +26,7 @@ import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
+import AsyncHTTPClient
 
 public enum CloudWatchClientError: Swift.Error {
     case invalidEndpoint(String)
@@ -58,7 +59,7 @@ private extension Swift.Error {
  AWS Client for the CloudWatch service.
  */
 public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: CloudWatchClientProtocol {
-    let httpClient: HTTPClient
+    let httpClient: HTTPOperationsClient
     let awsRegion: AWSRegion
     let service: String
     let apiVersion: String
@@ -81,17 +82,17 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
                 apiVersion: String = "2010-08-01",
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>
                     = SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>() ) {
         let clientDelegate = XMLAWSHttpClientDelegate<CloudWatchError>()
 
-        self.httpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                     eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                               endpointPort: endpointPort,
+                                               contentType: contentType,
+                                               clientDelegate: clientDelegate,
+                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                               eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -106,7 +107,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     
     internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
-                httpClient: HTTPClient,
+                httpClient: HTTPOperationsClient,
                 service: String,
                 apiVersion: String,
                 retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
@@ -129,16 +130,8 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times.
      */
-    public func close() {
-        httpClient.close()
-    }
-
-    /**
-     Waits for the client to be closed. If close() is not called,
-     this will block forever.
-     */
-    public func wait() {
-        httpClient.wait()
+    public func close() throws {
+        try httpClient.close()
     }
 
     /**
@@ -153,7 +146,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func deleteAlarmsAsync(
             input: CloudWatchModel.DeleteAlarmsInput, 
             completion: @escaping (CloudWatchError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -168,7 +161,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.deleteAlarms.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? CloudWatchError {
                     completion(typedError)
@@ -199,7 +192,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func deleteAlarmsSync(
             input: CloudWatchModel.DeleteAlarmsInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -236,7 +229,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func deleteAnomalyDetectorAsync(
             input: CloudWatchModel.DeleteAnomalyDetectorInput, 
             completion: @escaping (Result<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -251,7 +244,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.deleteAnomalyDetector.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -285,7 +278,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func deleteAnomalyDetectorSync(
             input: CloudWatchModel.DeleteAnomalyDetectorInput) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -322,7 +315,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func deleteDashboardsAsync(
             input: CloudWatchModel.DeleteDashboardsInput, 
             completion: @escaping (Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -337,7 +330,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.deleteDashboards.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -371,7 +364,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func deleteDashboardsSync(
             input: CloudWatchModel.DeleteDashboardsInput) throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -408,7 +401,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func deleteInsightRulesAsync(
             input: CloudWatchModel.DeleteInsightRulesInput, 
             completion: @escaping (Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -423,7 +416,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.deleteInsightRules.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -457,7 +450,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func deleteInsightRulesSync(
             input: CloudWatchModel.DeleteInsightRulesInput) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -494,7 +487,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func describeAlarmHistoryAsync(
             input: CloudWatchModel.DescribeAlarmHistoryInput, 
             completion: @escaping (Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -509,7 +502,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.describeAlarmHistory.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -543,7 +536,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func describeAlarmHistorySync(
             input: CloudWatchModel.DescribeAlarmHistoryInput) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -580,7 +573,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func describeAlarmsAsync(
             input: CloudWatchModel.DescribeAlarmsInput, 
             completion: @escaping (Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -595,7 +588,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.describeAlarms.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -629,7 +622,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func describeAlarmsSync(
             input: CloudWatchModel.DescribeAlarmsInput) throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -665,7 +658,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func describeAlarmsForMetricAsync(
             input: CloudWatchModel.DescribeAlarmsForMetricInput, 
             completion: @escaping (Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -680,7 +673,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.describeAlarmsForMetric.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -713,7 +706,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func describeAlarmsForMetricSync(
             input: CloudWatchModel.DescribeAlarmsForMetricInput) throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -750,7 +743,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func describeAnomalyDetectorsAsync(
             input: CloudWatchModel.DescribeAnomalyDetectorsInput, 
             completion: @escaping (Result<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -765,7 +758,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.describeAnomalyDetectors.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -799,7 +792,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func describeAnomalyDetectorsSync(
             input: CloudWatchModel.DescribeAnomalyDetectorsInput) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -836,7 +829,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func describeInsightRulesAsync(
             input: CloudWatchModel.DescribeInsightRulesInput, 
             completion: @escaping (Result<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -851,7 +844,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.describeInsightRules.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -885,7 +878,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func describeInsightRulesSync(
             input: CloudWatchModel.DescribeInsightRulesInput) throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -920,7 +913,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func disableAlarmActionsAsync(
             input: CloudWatchModel.DisableAlarmActionsInput, 
             completion: @escaping (CloudWatchError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -935,7 +928,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.disableAlarmActions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? CloudWatchError {
                     completion(typedError)
@@ -965,7 +958,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func disableAlarmActionsSync(
             input: CloudWatchModel.DisableAlarmActionsInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1002,7 +995,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func disableInsightRulesAsync(
             input: CloudWatchModel.DisableInsightRulesInput, 
             completion: @escaping (Result<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1017,7 +1010,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.disableInsightRules.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1051,7 +1044,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func disableInsightRulesSync(
             input: CloudWatchModel.DisableInsightRulesInput) throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1086,7 +1079,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func enableAlarmActionsAsync(
             input: CloudWatchModel.EnableAlarmActionsInput, 
             completion: @escaping (CloudWatchError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1101,7 +1094,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.enableAlarmActions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? CloudWatchError {
                     completion(typedError)
@@ -1131,7 +1124,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func enableAlarmActionsSync(
             input: CloudWatchModel.EnableAlarmActionsInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1168,7 +1161,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func enableInsightRulesAsync(
             input: CloudWatchModel.EnableInsightRulesInput, 
             completion: @escaping (Result<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1183,7 +1176,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.enableInsightRules.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1217,7 +1210,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func enableInsightRulesSync(
             input: CloudWatchModel.EnableInsightRulesInput) throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1254,7 +1247,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func getDashboardAsync(
             input: CloudWatchModel.GetDashboardInput, 
             completion: @escaping (Result<CloudWatchModel.GetDashboardOutputForGetDashboard, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1269,7 +1262,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.getDashboard.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.GetDashboardOutputForGetDashboard, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.GetDashboardOutputForGetDashboard, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1303,7 +1296,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func getDashboardSync(
             input: CloudWatchModel.GetDashboardInput) throws -> CloudWatchModel.GetDashboardOutputForGetDashboard {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1340,7 +1333,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func getInsightRuleReportAsync(
             input: CloudWatchModel.GetInsightRuleReportInput, 
             completion: @escaping (Result<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1355,7 +1348,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.getInsightRuleReport.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1389,7 +1382,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func getInsightRuleReportSync(
             input: CloudWatchModel.GetInsightRuleReportInput) throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1426,7 +1419,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func getMetricDataAsync(
             input: CloudWatchModel.GetMetricDataInput, 
             completion: @escaping (Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1441,7 +1434,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.getMetricData.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.GetMetricDataOutputForGetMetricData, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1475,7 +1468,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func getMetricDataSync(
             input: CloudWatchModel.GetMetricDataInput) throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1512,7 +1505,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func getMetricStatisticsAsync(
             input: CloudWatchModel.GetMetricStatisticsInput, 
             completion: @escaping (Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1527,7 +1520,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.getMetricStatistics.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1561,7 +1554,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func getMetricStatisticsSync(
             input: CloudWatchModel.GetMetricStatisticsInput) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1597,7 +1590,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func getMetricWidgetImageAsync(
             input: CloudWatchModel.GetMetricWidgetImageInput, 
             completion: @escaping (Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1612,7 +1605,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.getMetricWidgetImage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1645,7 +1638,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func getMetricWidgetImageSync(
             input: CloudWatchModel.GetMetricWidgetImageInput) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1682,7 +1675,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func listDashboardsAsync(
             input: CloudWatchModel.ListDashboardsInput, 
             completion: @escaping (Result<CloudWatchModel.ListDashboardsOutputForListDashboards, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1697,7 +1690,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.listDashboards.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.ListDashboardsOutputForListDashboards, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.ListDashboardsOutputForListDashboards, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1731,7 +1724,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func listDashboardsSync(
             input: CloudWatchModel.ListDashboardsInput) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1768,7 +1761,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func listMetricsAsync(
             input: CloudWatchModel.ListMetricsInput, 
             completion: @escaping (Result<CloudWatchModel.ListMetricsOutputForListMetrics, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1783,7 +1776,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.listMetrics.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.ListMetricsOutputForListMetrics, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.ListMetricsOutputForListMetrics, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1817,7 +1810,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func listMetricsSync(
             input: CloudWatchModel.ListMetricsInput) throws -> CloudWatchModel.ListMetricsOutputForListMetrics {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1854,7 +1847,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func listTagsForResourceAsync(
             input: CloudWatchModel.ListTagsForResourceInput, 
             completion: @escaping (Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1869,7 +1862,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.listTagsForResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1903,7 +1896,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func listTagsForResourceSync(
             input: CloudWatchModel.ListTagsForResourceInput) throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1940,7 +1933,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func putAnomalyDetectorAsync(
             input: CloudWatchModel.PutAnomalyDetectorInput, 
             completion: @escaping (Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1955,7 +1948,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.putAnomalyDetector.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1989,7 +1982,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func putAnomalyDetectorSync(
             input: CloudWatchModel.PutAnomalyDetectorInput) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2026,7 +2019,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func putDashboardAsync(
             input: CloudWatchModel.PutDashboardInput, 
             completion: @escaping (Result<CloudWatchModel.PutDashboardOutputForPutDashboard, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2041,7 +2034,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.putDashboard.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.PutDashboardOutputForPutDashboard, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.PutDashboardOutputForPutDashboard, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2075,7 +2068,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func putDashboardSync(
             input: CloudWatchModel.PutDashboardInput) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2112,7 +2105,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func putInsightRuleAsync(
             input: CloudWatchModel.PutInsightRuleInput, 
             completion: @escaping (Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2127,7 +2120,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.putInsightRule.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2161,7 +2154,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func putInsightRuleSync(
             input: CloudWatchModel.PutInsightRuleInput) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2197,7 +2190,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func putMetricAlarmAsync(
             input: CloudWatchModel.PutMetricAlarmInput, 
             completion: @escaping (CloudWatchError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2212,7 +2205,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.putMetricAlarm.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? CloudWatchError {
                     completion(typedError)
@@ -2243,7 +2236,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func putMetricAlarmSync(
             input: CloudWatchModel.PutMetricAlarmInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2279,7 +2272,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func putMetricDataAsync(
             input: CloudWatchModel.PutMetricDataInput, 
             completion: @escaping (CloudWatchError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2294,7 +2287,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.putMetricData.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? CloudWatchError {
                     completion(typedError)
@@ -2325,7 +2318,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func putMetricDataSync(
             input: CloudWatchModel.PutMetricDataInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2361,7 +2354,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func setAlarmStateAsync(
             input: CloudWatchModel.SetAlarmStateInput, 
             completion: @escaping (CloudWatchError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2376,7 +2369,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.setAlarmState.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? CloudWatchError {
                     completion(typedError)
@@ -2407,7 +2400,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func setAlarmStateSync(
             input: CloudWatchModel.SetAlarmStateInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2444,7 +2437,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func tagResourceAsync(
             input: CloudWatchModel.TagResourceInput, 
             completion: @escaping (Result<CloudWatchModel.TagResourceOutputForTagResource, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2459,7 +2452,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.tagResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.TagResourceOutputForTagResource, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.TagResourceOutputForTagResource, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2493,7 +2486,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func tagResourceSync(
             input: CloudWatchModel.TagResourceInput) throws -> CloudWatchModel.TagResourceOutputForTagResource {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2530,7 +2523,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     public func untagResourceAsync(
             input: CloudWatchModel.UntagResourceInput, 
             completion: @escaping (Result<CloudWatchModel.UntagResourceOutputForUntagResource, CloudWatchError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2545,7 +2538,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             action: CloudWatchModelOperations.untagResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<CloudWatchModel.UntagResourceOutputForUntagResource, HTTPClientError>) {
+        func innerCompletion(result: Result<CloudWatchModel.UntagResourceOutputForUntagResource, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2579,7 +2572,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func untagResourceSync(
             input: CloudWatchModel.UntagResourceInput) throws -> CloudWatchModel.UntagResourceOutputForUntagResource {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

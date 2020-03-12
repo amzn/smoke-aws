@@ -26,6 +26,7 @@ import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
+import AsyncHTTPClient
 
 public enum SimpleWorkflowClientError: Swift.Error {
     case invalidEndpoint(String)
@@ -58,7 +59,7 @@ private extension Swift.Error {
  AWS Client for the SimpleWorkflow service.
  */
 public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SimpleWorkflowClientProtocol {
-    let httpClient: HTTPClient
+    let httpClient: HTTPOperationsClient
     let awsRegion: AWSRegion
     let service: String
     let target: String?
@@ -80,17 +81,17 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                 target: String? = "SimpleWorkflowService",
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleWorkflowModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleWorkflowModelOperations>() ) {
         let clientDelegate = JSONAWSHttpClientDelegate<SimpleWorkflowError>()
 
-        self.httpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                     eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                               endpointPort: endpointPort,
+                                               contentType: contentType,
+                                               clientDelegate: clientDelegate,
+                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                               eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = target
@@ -104,7 +105,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     
     internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
-                httpClient: HTTPClient,
+                httpClient: HTTPOperationsClient,
                 service: String,
                 target: String?,
                 retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
@@ -126,16 +127,8 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times.
      */
-    public func close() {
-        httpClient.close()
-    }
-
-    /**
-     Waits for the client to be closed. If close() is not called,
-     this will block forever.
-     */
-    public func wait() {
-        httpClient.wait()
+    public func close() throws {
+        try httpClient.close()
     }
 
     /**
@@ -151,7 +144,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func countClosedWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput, 
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -162,7 +155,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CountClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionCount, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -196,7 +189,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func countClosedWorkflowExecutionsSync(
             input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -229,7 +222,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func countOpenWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput, 
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionCount, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -240,7 +233,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CountOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionCount, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionCount, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -274,7 +267,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func countOpenWorkflowExecutionsSync(
             input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionCount {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -307,7 +300,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func countPendingActivityTasksAsync(
             input: SimpleWorkflowModel.CountPendingActivityTasksInput, 
             completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -318,7 +311,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CountPendingActivityTasksOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.PendingTaskCount, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -352,7 +345,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func countPendingActivityTasksSync(
             input: SimpleWorkflowModel.CountPendingActivityTasksInput) throws -> SimpleWorkflowModel.PendingTaskCount {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -385,7 +378,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func countPendingDecisionTasksAsync(
             input: SimpleWorkflowModel.CountPendingDecisionTasksInput, 
             completion: @escaping (Result<SimpleWorkflowModel.PendingTaskCount, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -396,7 +389,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CountPendingDecisionTasksOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.PendingTaskCount, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.PendingTaskCount, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -430,7 +423,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func countPendingDecisionTasksSync(
             input: SimpleWorkflowModel.CountPendingDecisionTasksInput) throws -> SimpleWorkflowModel.PendingTaskCount {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -462,7 +455,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func deprecateActivityTypeAsync(
             input: SimpleWorkflowModel.DeprecateActivityTypeInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -473,7 +466,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeprecateActivityTypeOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -504,7 +497,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func deprecateActivityTypeSync(
             input: SimpleWorkflowModel.DeprecateActivityTypeInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -536,7 +529,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func deprecateDomainAsync(
             input: SimpleWorkflowModel.DeprecateDomainInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -547,7 +540,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeprecateDomainOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -578,7 +571,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func deprecateDomainSync(
             input: SimpleWorkflowModel.DeprecateDomainInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -610,7 +603,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func deprecateWorkflowTypeAsync(
             input: SimpleWorkflowModel.DeprecateWorkflowTypeInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -621,7 +614,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeprecateWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -652,7 +645,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func deprecateWorkflowTypeSync(
             input: SimpleWorkflowModel.DeprecateWorkflowTypeInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -685,7 +678,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func describeActivityTypeAsync(
             input: SimpleWorkflowModel.DescribeActivityTypeInput, 
             completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeDetail, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -696,7 +689,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeActivityTypeOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.ActivityTypeDetail, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.ActivityTypeDetail, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -730,7 +723,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeActivityTypeSync(
             input: SimpleWorkflowModel.DescribeActivityTypeInput) throws -> SimpleWorkflowModel.ActivityTypeDetail {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -763,7 +756,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func describeDomainAsync(
             input: SimpleWorkflowModel.DescribeDomainInput, 
             completion: @escaping (Result<SimpleWorkflowModel.DomainDetail, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -774,7 +767,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeDomainOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.DomainDetail, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.DomainDetail, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -808,7 +801,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeDomainSync(
             input: SimpleWorkflowModel.DescribeDomainInput) throws -> SimpleWorkflowModel.DomainDetail {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -841,7 +834,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func describeWorkflowExecutionAsync(
             input: SimpleWorkflowModel.DescribeWorkflowExecutionInput, 
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionDetail, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -852,7 +845,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionDetail, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionDetail, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -886,7 +879,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeWorkflowExecutionSync(
             input: SimpleWorkflowModel.DescribeWorkflowExecutionInput) throws -> SimpleWorkflowModel.WorkflowExecutionDetail {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -919,7 +912,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func describeWorkflowTypeAsync(
             input: SimpleWorkflowModel.DescribeWorkflowTypeInput, 
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeDetail, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -930,7 +923,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowTypeDetail, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowTypeDetail, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -964,7 +957,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeWorkflowTypeSync(
             input: SimpleWorkflowModel.DescribeWorkflowTypeInput) throws -> SimpleWorkflowModel.WorkflowTypeDetail {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -997,7 +990,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func getWorkflowExecutionHistoryAsync(
             input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput, 
             completion: @escaping (Result<SimpleWorkflowModel.History, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1008,7 +1001,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetWorkflowExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.History, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.History, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1042,7 +1035,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func getWorkflowExecutionHistorySync(
             input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput) throws -> SimpleWorkflowModel.History {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1075,7 +1068,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func listActivityTypesAsync(
             input: SimpleWorkflowModel.ListActivityTypesInput, 
             completion: @escaping (Result<SimpleWorkflowModel.ActivityTypeInfos, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1086,7 +1079,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListActivityTypesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.ActivityTypeInfos, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.ActivityTypeInfos, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1120,7 +1113,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listActivityTypesSync(
             input: SimpleWorkflowModel.ListActivityTypesInput) throws -> SimpleWorkflowModel.ActivityTypeInfos {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1153,7 +1146,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func listClosedWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput, 
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1164,7 +1157,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListClosedWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionInfos, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1198,7 +1191,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listClosedWorkflowExecutionsSync(
             input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1231,7 +1224,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func listDomainsAsync(
             input: SimpleWorkflowModel.ListDomainsInput, 
             completion: @escaping (Result<SimpleWorkflowModel.DomainInfos, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1242,7 +1235,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListDomainsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.DomainInfos, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.DomainInfos, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1276,7 +1269,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listDomainsSync(
             input: SimpleWorkflowModel.ListDomainsInput) throws -> SimpleWorkflowModel.DomainInfos {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1309,7 +1302,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func listOpenWorkflowExecutionsAsync(
             input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput, 
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowExecutionInfos, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1320,7 +1313,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListOpenWorkflowExecutionsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionInfos, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowExecutionInfos, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1354,7 +1347,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listOpenWorkflowExecutionsSync(
             input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1387,7 +1380,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func listTagsForResourceAsync(
             input: SimpleWorkflowModel.ListTagsForResourceInput, 
             completion: @escaping (Result<SimpleWorkflowModel.ListTagsForResourceOutput, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1398,7 +1391,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.ListTagsForResourceOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.ListTagsForResourceOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1432,7 +1425,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listTagsForResourceSync(
             input: SimpleWorkflowModel.ListTagsForResourceInput) throws -> SimpleWorkflowModel.ListTagsForResourceOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1465,7 +1458,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func listWorkflowTypesAsync(
             input: SimpleWorkflowModel.ListWorkflowTypesInput, 
             completion: @escaping (Result<SimpleWorkflowModel.WorkflowTypeInfos, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1476,7 +1469,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListWorkflowTypesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowTypeInfos, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.WorkflowTypeInfos, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1510,7 +1503,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listWorkflowTypesSync(
             input: SimpleWorkflowModel.ListWorkflowTypesInput) throws -> SimpleWorkflowModel.WorkflowTypeInfos {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1543,7 +1536,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func pollForActivityTaskAsync(
             input: SimpleWorkflowModel.PollForActivityTaskInput, 
             completion: @escaping (Result<SimpleWorkflowModel.ActivityTask, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1554,7 +1547,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PollForActivityTaskOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.ActivityTask, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.ActivityTask, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1588,7 +1581,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func pollForActivityTaskSync(
             input: SimpleWorkflowModel.PollForActivityTaskInput) throws -> SimpleWorkflowModel.ActivityTask {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1621,7 +1614,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func pollForDecisionTaskAsync(
             input: SimpleWorkflowModel.PollForDecisionTaskInput, 
             completion: @escaping (Result<SimpleWorkflowModel.DecisionTask, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1632,7 +1625,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PollForDecisionTaskOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.DecisionTask, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.DecisionTask, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1666,7 +1659,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func pollForDecisionTaskSync(
             input: SimpleWorkflowModel.PollForDecisionTaskInput) throws -> SimpleWorkflowModel.DecisionTask {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1699,7 +1692,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func recordActivityTaskHeartbeatAsync(
             input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput, 
             completion: @escaping (Result<SimpleWorkflowModel.ActivityTaskStatus, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1710,7 +1703,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RecordActivityTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.ActivityTaskStatus, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.ActivityTaskStatus, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1744,7 +1737,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func recordActivityTaskHeartbeatSync(
             input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput) throws -> SimpleWorkflowModel.ActivityTaskStatus {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1776,7 +1769,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func registerActivityTypeAsync(
             input: SimpleWorkflowModel.RegisterActivityTypeInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1787,7 +1780,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RegisterActivityTypeOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -1818,7 +1811,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func registerActivityTypeSync(
             input: SimpleWorkflowModel.RegisterActivityTypeInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1850,7 +1843,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func registerDomainAsync(
             input: SimpleWorkflowModel.RegisterDomainInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1861,7 +1854,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RegisterDomainOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -1892,7 +1885,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func registerDomainSync(
             input: SimpleWorkflowModel.RegisterDomainInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1924,7 +1917,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func registerWorkflowTypeAsync(
             input: SimpleWorkflowModel.RegisterWorkflowTypeInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1935,7 +1928,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RegisterWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -1966,7 +1959,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func registerWorkflowTypeSync(
             input: SimpleWorkflowModel.RegisterWorkflowTypeInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1998,7 +1991,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func requestCancelWorkflowExecutionAsync(
             input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2009,7 +2002,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RequestCancelWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -2040,7 +2033,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func requestCancelWorkflowExecutionSync(
             input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2072,7 +2065,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func respondActivityTaskCanceledAsync(
             input: SimpleWorkflowModel.RespondActivityTaskCanceledInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2083,7 +2076,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RespondActivityTaskCanceledOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -2114,7 +2107,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func respondActivityTaskCanceledSync(
             input: SimpleWorkflowModel.RespondActivityTaskCanceledInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2146,7 +2139,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func respondActivityTaskCompletedAsync(
             input: SimpleWorkflowModel.RespondActivityTaskCompletedInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2157,7 +2150,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RespondActivityTaskCompletedOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -2188,7 +2181,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func respondActivityTaskCompletedSync(
             input: SimpleWorkflowModel.RespondActivityTaskCompletedInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2220,7 +2213,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func respondActivityTaskFailedAsync(
             input: SimpleWorkflowModel.RespondActivityTaskFailedInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2231,7 +2224,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RespondActivityTaskFailedOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -2262,7 +2255,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func respondActivityTaskFailedSync(
             input: SimpleWorkflowModel.RespondActivityTaskFailedInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2294,7 +2287,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func respondDecisionTaskCompletedAsync(
             input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2305,7 +2298,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RespondDecisionTaskCompletedOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -2336,7 +2329,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func respondDecisionTaskCompletedSync(
             input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2368,7 +2361,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func signalWorkflowExecutionAsync(
             input: SimpleWorkflowModel.SignalWorkflowExecutionInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2379,7 +2372,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = SignalWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -2410,7 +2403,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func signalWorkflowExecutionSync(
             input: SimpleWorkflowModel.SignalWorkflowExecutionInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2443,7 +2436,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func startWorkflowExecutionAsync(
             input: SimpleWorkflowModel.StartWorkflowExecutionInput, 
             completion: @escaping (Result<SimpleWorkflowModel.Run, SimpleWorkflowError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2454,7 +2447,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = StartWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<SimpleWorkflowModel.Run, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleWorkflowModel.Run, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2488,7 +2481,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func startWorkflowExecutionSync(
             input: SimpleWorkflowModel.StartWorkflowExecutionInput) throws -> SimpleWorkflowModel.Run {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2520,7 +2513,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func tagResourceAsync(
             input: SimpleWorkflowModel.TagResourceInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2531,7 +2524,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -2562,7 +2555,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func tagResourceSync(
             input: SimpleWorkflowModel.TagResourceInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2594,7 +2587,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func terminateWorkflowExecutionAsync(
             input: SimpleWorkflowModel.TerminateWorkflowExecutionInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2605,7 +2598,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = TerminateWorkflowExecutionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -2636,7 +2629,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func terminateWorkflowExecutionSync(
             input: SimpleWorkflowModel.TerminateWorkflowExecutionInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2668,7 +2661,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func undeprecateActivityTypeAsync(
             input: SimpleWorkflowModel.UndeprecateActivityTypeInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2679,7 +2672,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UndeprecateActivityTypeOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -2710,7 +2703,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func undeprecateActivityTypeSync(
             input: SimpleWorkflowModel.UndeprecateActivityTypeInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2742,7 +2735,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func undeprecateDomainAsync(
             input: SimpleWorkflowModel.UndeprecateDomainInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2753,7 +2746,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UndeprecateDomainOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -2784,7 +2777,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func undeprecateDomainSync(
             input: SimpleWorkflowModel.UndeprecateDomainInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2816,7 +2809,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func undeprecateWorkflowTypeAsync(
             input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2827,7 +2820,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UndeprecateWorkflowTypeOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -2858,7 +2851,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func undeprecateWorkflowTypeSync(
             input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2890,7 +2883,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     public func untagResourceAsync(
             input: SimpleWorkflowModel.UntagResourceInput, 
             completion: @escaping (SimpleWorkflowError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2901,7 +2894,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleWorkflowError {
                     completion(typedError)
@@ -2932,7 +2925,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func untagResourceSync(
             input: SimpleWorkflowModel.UntagResourceInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

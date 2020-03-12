@@ -38,8 +38,8 @@ public enum S3ObjectOperations: String, Hashable, CustomStringConvertible {
  Retrieves objects from an S3 bucket.
  */
 public struct S3Object: S3ObjectProtocol {
-    let httpClient: HTTPClient
-    let handlerDelegate: AWSClientChannelInboundHandlerDelegate
+    let httpClient: HTTPOperationsClient
+    let handlerDelegate: AWSClientInvocationDelegate
     
     let getOperationReporting: StandardSmokeAWSOperationReporting<S3ObjectOperations>
     
@@ -58,11 +58,11 @@ public struct S3Object: S3ObjectProtocol {
                 clientDelegate: HTTPClientDelegate,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<S3ObjectOperations>
                     = SmokeAWSClientReportingConfiguration<S3ObjectOperations>()) {
-        self.httpClient = HTTPClient(endpointHostName: "\(bucketName).s3.amazonaws.com",
-                                     endpointPort: 443,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegate)
-        self.handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        self.httpClient = HTTPOperationsClient(endpointHostName: "\(bucketName).s3.amazonaws.com",
+                                        endpointPort: 443,
+                                        contentType: contentType,
+                                        clientDelegate: clientDelegate)
+        self.handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: .us_east_1,
                     service: "s3",
@@ -77,16 +77,8 @@ public struct S3Object: S3ObjectProtocol {
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times.
      */
-    public func close() {
-        httpClient.close()
-    }
-
-    /**
-     Waits for the client to be closed. If close() is not called,
-     this will block forever.
-     */
-    public func wait() {
-        httpClient.wait()
+    public func close() throws {
+        try httpClient.close()
     }
     
     private struct BodyHTTPRequestOutput<OutputType: Decodable>: HTTPResponseOutputProtocol {
