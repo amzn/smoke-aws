@@ -339,6 +339,7 @@ public extension DescribeStateMachineForExecutionOutput {
     static let __default: StepFunctionsModel.DescribeStateMachineForExecutionOutput = {
         let defaultInstance = StepFunctionsModel.DescribeStateMachineForExecutionOutput(
             definition: "0",
+            loggingConfiguration: nil,
             name: "0",
             roleArn: "0",
             stateMachineArn: "0",

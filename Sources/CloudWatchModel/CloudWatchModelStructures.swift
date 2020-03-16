@@ -23,17 +23,20 @@ import Foundation
 
 public struct AlarmHistoryItem: Codable, Equatable {
     public var alarmName: AlarmName?
+    public var alarmType: AlarmType?
     public var historyData: HistoryData?
     public var historyItemType: HistoryItemType?
     public var historySummary: HistorySummary?
     public var timestamp: Timestamp?
 
     public init(alarmName: AlarmName? = nil,
+                alarmType: AlarmType? = nil,
                 historyData: HistoryData? = nil,
                 historyItemType: HistoryItemType? = nil,
                 historySummary: HistorySummary? = nil,
                 timestamp: Timestamp? = nil) {
         self.alarmName = alarmName
+        self.alarmType = alarmType
         self.historyData = historyData
         self.historyItemType = historyItemType
         self.historySummary = historySummary
@@ -42,6 +45,7 @@ public struct AlarmHistoryItem: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case alarmName = "AlarmName"
+        case alarmType = "AlarmType"
         case historyData = "HistoryData"
         case historyItemType = "HistoryItemType"
         case historySummary = "HistorySummary"
@@ -110,6 +114,78 @@ public struct AnomalyDetectorConfiguration: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct CompositeAlarm: Codable, Equatable {
+    public var actionsEnabled: ActionsEnabled?
+    public var alarmActions: ResourceList?
+    public var alarmArn: AlarmArn?
+    public var alarmConfigurationUpdatedTimestamp: Timestamp?
+    public var alarmDescription: AlarmDescription?
+    public var alarmName: AlarmName?
+    public var alarmRule: AlarmRule?
+    public var insufficientDataActions: ResourceList?
+    public var oKActions: ResourceList?
+    public var stateReason: StateReason?
+    public var stateReasonData: StateReasonData?
+    public var stateUpdatedTimestamp: Timestamp?
+    public var stateValue: StateValue?
+
+    public init(actionsEnabled: ActionsEnabled? = nil,
+                alarmActions: ResourceList? = nil,
+                alarmArn: AlarmArn? = nil,
+                alarmConfigurationUpdatedTimestamp: Timestamp? = nil,
+                alarmDescription: AlarmDescription? = nil,
+                alarmName: AlarmName? = nil,
+                alarmRule: AlarmRule? = nil,
+                insufficientDataActions: ResourceList? = nil,
+                oKActions: ResourceList? = nil,
+                stateReason: StateReason? = nil,
+                stateReasonData: StateReasonData? = nil,
+                stateUpdatedTimestamp: Timestamp? = nil,
+                stateValue: StateValue? = nil) {
+        self.actionsEnabled = actionsEnabled
+        self.alarmActions = alarmActions
+        self.alarmArn = alarmArn
+        self.alarmConfigurationUpdatedTimestamp = alarmConfigurationUpdatedTimestamp
+        self.alarmDescription = alarmDescription
+        self.alarmName = alarmName
+        self.alarmRule = alarmRule
+        self.insufficientDataActions = insufficientDataActions
+        self.oKActions = oKActions
+        self.stateReason = stateReason
+        self.stateReasonData = stateReasonData
+        self.stateUpdatedTimestamp = stateUpdatedTimestamp
+        self.stateValue = stateValue
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case actionsEnabled = "ActionsEnabled"
+        case alarmActions = "AlarmActions"
+        case alarmArn = "AlarmArn"
+        case alarmConfigurationUpdatedTimestamp = "AlarmConfigurationUpdatedTimestamp"
+        case alarmDescription = "AlarmDescription"
+        case alarmName = "AlarmName"
+        case alarmRule = "AlarmRule"
+        case insufficientDataActions = "InsufficientDataActions"
+        case oKActions = "OKActions"
+        case stateReason = "StateReason"
+        case stateReasonData = "StateReasonData"
+        case stateUpdatedTimestamp = "StateUpdatedTimestamp"
+        case stateValue = "StateValue"
+    }
+
+    public func validate() throws {
+        try alarmActions?.validateAsResourceList()
+        try alarmArn?.validateAsAlarmArn()
+        try alarmDescription?.validateAsAlarmDescription()
+        try alarmName?.validateAsAlarmName()
+        try alarmRule?.validateAsAlarmRule()
+        try insufficientDataActions?.validateAsResourceList()
+        try oKActions?.validateAsResourceList()
+        try stateReason?.validateAsStateReason()
+        try stateReasonData?.validateAsStateReasonData()
     }
 }
 
@@ -404,32 +480,40 @@ public struct DeleteInsightRulesOutputForDeleteInsightRules: Codable, Equatable 
 
 public struct DescribeAlarmHistoryInput: Codable, Equatable {
     public var alarmName: AlarmName?
+    public var alarmTypes: AlarmTypes?
     public var endDate: Timestamp?
     public var historyItemType: HistoryItemType?
     public var maxRecords: MaxRecords?
     public var nextToken: NextToken?
+    public var scanBy: ScanBy?
     public var startDate: Timestamp?
 
     public init(alarmName: AlarmName? = nil,
+                alarmTypes: AlarmTypes? = nil,
                 endDate: Timestamp? = nil,
                 historyItemType: HistoryItemType? = nil,
                 maxRecords: MaxRecords? = nil,
                 nextToken: NextToken? = nil,
+                scanBy: ScanBy? = nil,
                 startDate: Timestamp? = nil) {
         self.alarmName = alarmName
+        self.alarmTypes = alarmTypes
         self.endDate = endDate
         self.historyItemType = historyItemType
         self.maxRecords = maxRecords
         self.nextToken = nextToken
+        self.scanBy = scanBy
         self.startDate = startDate
     }
 
     enum CodingKeys: String, CodingKey {
         case alarmName = "AlarmName"
+        case alarmTypes = "AlarmTypes"
         case endDate = "EndDate"
         case historyItemType = "HistoryItemType"
         case maxRecords = "MaxRecords"
         case nextToken = "NextToken"
+        case scanBy = "ScanBy"
         case startDate = "StartDate"
     }
 
@@ -553,21 +637,30 @@ public struct DescribeAlarmsInput: Codable, Equatable {
     public var actionPrefix: ActionPrefix?
     public var alarmNamePrefix: AlarmNamePrefix?
     public var alarmNames: AlarmNames?
+    public var alarmTypes: AlarmTypes?
+    public var childrenOfAlarmName: AlarmName?
     public var maxRecords: MaxRecords?
     public var nextToken: NextToken?
+    public var parentsOfAlarmName: AlarmName?
     public var stateValue: StateValue?
 
     public init(actionPrefix: ActionPrefix? = nil,
                 alarmNamePrefix: AlarmNamePrefix? = nil,
                 alarmNames: AlarmNames? = nil,
+                alarmTypes: AlarmTypes? = nil,
+                childrenOfAlarmName: AlarmName? = nil,
                 maxRecords: MaxRecords? = nil,
                 nextToken: NextToken? = nil,
+                parentsOfAlarmName: AlarmName? = nil,
                 stateValue: StateValue? = nil) {
         self.actionPrefix = actionPrefix
         self.alarmNamePrefix = alarmNamePrefix
         self.alarmNames = alarmNames
+        self.alarmTypes = alarmTypes
+        self.childrenOfAlarmName = childrenOfAlarmName
         self.maxRecords = maxRecords
         self.nextToken = nextToken
+        self.parentsOfAlarmName = parentsOfAlarmName
         self.stateValue = stateValue
     }
 
@@ -575,8 +668,11 @@ public struct DescribeAlarmsInput: Codable, Equatable {
         case actionPrefix = "ActionPrefix"
         case alarmNamePrefix = "AlarmNamePrefix"
         case alarmNames = "AlarmNames"
+        case alarmTypes = "AlarmTypes"
+        case childrenOfAlarmName = "ChildrenOfAlarmName"
         case maxRecords = "MaxRecords"
         case nextToken = "NextToken"
+        case parentsOfAlarmName = "ParentsOfAlarmName"
         case stateValue = "StateValue"
     }
 
@@ -584,21 +680,27 @@ public struct DescribeAlarmsInput: Codable, Equatable {
         try actionPrefix?.validateAsActionPrefix()
         try alarmNamePrefix?.validateAsAlarmNamePrefix()
         try alarmNames?.validateAsAlarmNames()
+        try childrenOfAlarmName?.validateAsAlarmName()
         try maxRecords?.validateAsMaxRecords()
+        try parentsOfAlarmName?.validateAsAlarmName()
     }
 }
 
 public struct DescribeAlarmsOutput: Codable, Equatable {
+    public var compositeAlarms: CompositeAlarms?
     public var metricAlarms: MetricAlarms?
     public var nextToken: NextToken?
 
-    public init(metricAlarms: MetricAlarms? = nil,
+    public init(compositeAlarms: CompositeAlarms? = nil,
+                metricAlarms: MetricAlarms? = nil,
                 nextToken: NextToken? = nil) {
+        self.compositeAlarms = compositeAlarms
         self.metricAlarms = metricAlarms
         self.nextToken = nextToken
     }
 
     enum CodingKeys: String, CodingKey {
+        case compositeAlarms = "CompositeAlarms"
         case metricAlarms = "MetricAlarms"
         case nextToken = "NextToken"
     }
@@ -2092,6 +2194,55 @@ public struct PutAnomalyDetectorOutputForPutAnomalyDetector: Codable, Equatable 
 
     public func validate() throws {
         try putAnomalyDetectorResult.validate()
+    }
+}
+
+public struct PutCompositeAlarmInput: Codable, Equatable {
+    public var actionsEnabled: ActionsEnabled?
+    public var alarmActions: ResourceList?
+    public var alarmDescription: AlarmDescription?
+    public var alarmName: AlarmName
+    public var alarmRule: AlarmRule
+    public var insufficientDataActions: ResourceList?
+    public var oKActions: ResourceList?
+    public var tags: TagList?
+
+    public init(actionsEnabled: ActionsEnabled? = nil,
+                alarmActions: ResourceList? = nil,
+                alarmDescription: AlarmDescription? = nil,
+                alarmName: AlarmName,
+                alarmRule: AlarmRule,
+                insufficientDataActions: ResourceList? = nil,
+                oKActions: ResourceList? = nil,
+                tags: TagList? = nil) {
+        self.actionsEnabled = actionsEnabled
+        self.alarmActions = alarmActions
+        self.alarmDescription = alarmDescription
+        self.alarmName = alarmName
+        self.alarmRule = alarmRule
+        self.insufficientDataActions = insufficientDataActions
+        self.oKActions = oKActions
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case actionsEnabled = "ActionsEnabled"
+        case alarmActions = "AlarmActions"
+        case alarmDescription = "AlarmDescription"
+        case alarmName = "AlarmName"
+        case alarmRule = "AlarmRule"
+        case insufficientDataActions = "InsufficientDataActions"
+        case oKActions = "OKActions"
+        case tags = "Tags"
+    }
+
+    public func validate() throws {
+        try alarmActions?.validateAsResourceList()
+        try alarmDescription?.validateAsAlarmDescription()
+        try alarmName.validateAsAlarmName()
+        try alarmRule.validateAsAlarmRule()
+        try insufficientDataActions?.validateAsResourceList()
+        try oKActions?.validateAsResourceList()
     }
 }
 

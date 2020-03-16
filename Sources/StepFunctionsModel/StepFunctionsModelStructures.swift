@@ -503,17 +503,20 @@ public struct DescribeStateMachineForExecutionInput: Codable, Equatable {
 
 public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
     public var definition: Definition
+    public var loggingConfiguration: LoggingConfiguration?
     public var name: Name
     public var roleArn: Arn
     public var stateMachineArn: Arn
     public var updateDate: Timestamp
 
     public init(definition: Definition,
+                loggingConfiguration: LoggingConfiguration? = nil,
                 name: Name,
                 roleArn: Arn,
                 stateMachineArn: Arn,
                 updateDate: Timestamp) {
         self.definition = definition
+        self.loggingConfiguration = loggingConfiguration
         self.name = name
         self.roleArn = roleArn
         self.stateMachineArn = stateMachineArn
@@ -522,6 +525,7 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case definition
+        case loggingConfiguration
         case name
         case roleArn
         case stateMachineArn
@@ -530,6 +534,7 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
 
     public func validate() throws {
         try definition.validateAsDefinition()
+        try loggingConfiguration?.validate()
         try name.validateAsName()
         try roleArn.validateAsArn()
         try stateMachineArn.validateAsArn()

@@ -62,6 +62,30 @@ public typealias AlarmNamePrefix = String
 public typealias AlarmNames = [AlarmName]
 
 /**
+ Type definition for the AlarmRule field.
+ */
+public typealias AlarmRule = String
+
+/**
+ Enumeration restricting the values of the AlarmType field.
+ */
+public enum AlarmType: String, Codable, CustomStringConvertible {
+    case compositealarm = "CompositeAlarm"
+    case metricalarm = "MetricAlarm"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AlarmType = .compositealarm
+}
+
+/**
+ Type definition for the AlarmTypes field.
+ */
+public typealias AlarmTypes = [AlarmType]
+
+/**
  Type definition for the AmazonResourceName field.
  */
 public typealias AmazonResourceName = String
@@ -124,6 +148,11 @@ public enum ComparisonOperator: String, Codable, CustomStringConvertible {
     
     public static let __default: ComparisonOperator = .greaterthanorequaltothreshold
 }
+
+/**
+ Type definition for the CompositeAlarms field.
+ */
+public typealias CompositeAlarms = [CompositeAlarm]
 
 /**
  Type definition for the Counts field.
@@ -798,6 +827,21 @@ extension Array where Element == CloudWatchModel.AlarmName {
 
         if self.count > 100 {
             throw CloudWatchError.validationError(reason: "The provided value to AlarmNames violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the AlarmRule field.
+*/
+extension CloudWatchModel.AlarmRule {
+    public func validateAsAlarmRule() throws {
+        if self.count < 1 {
+            throw CloudWatchError.validationError(reason: "The provided value to AlarmRule violated the minimum length constraint.")
+        }
+
+        if self.count > 10240 {
+            throw CloudWatchError.validationError(reason: "The provided value to AlarmRule violated the maximum length constraint.")
         }
     }
 }

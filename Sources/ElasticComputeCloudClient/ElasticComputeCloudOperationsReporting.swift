@@ -336,6 +336,7 @@ public struct ElasticComputeCloudOperationsReporting {
     let importKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let importSnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let importVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyAvailabilityZoneGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyClientVpnEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyDefaultCreditSpecification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -1046,6 +1047,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .importSnapshot, configuration: reportingConfiguration)
         self.importVolume = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .importVolume, configuration: reportingConfiguration)
+        self.modifyAvailabilityZoneGroup = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyAvailabilityZoneGroup, configuration: reportingConfiguration)
         self.modifyCapacityReservation = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyCapacityReservation, configuration: reportingConfiguration)
         self.modifyClientVpnEndpoint = StandardSmokeAWSOperationReporting(

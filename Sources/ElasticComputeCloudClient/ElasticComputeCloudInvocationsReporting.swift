@@ -337,6 +337,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let importKeyPair: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let importSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let importVolume: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let modifyAvailabilityZoneGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let modifyCapacityReservation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let modifyClientVpnEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let modifyDefaultCreditSpecification: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -1047,6 +1048,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.importSnapshot)
         self.importVolume = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.importVolume)
+        self.modifyAvailabilityZoneGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifyAvailabilityZoneGroup)
         self.modifyCapacityReservation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyCapacityReservation)
         self.modifyClientVpnEndpoint = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

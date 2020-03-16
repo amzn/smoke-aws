@@ -47,6 +47,7 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
     case listMetrics = "ListMetrics"
     case listTagsForResource = "ListTagsForResource"
     case putAnomalyDetector = "PutAnomalyDetector"
+    case putCompositeAlarm = "PutCompositeAlarm"
     case putDashboard = "PutDashboard"
     case putInsightRule = "PutInsightRule"
     case putMetricAlarm = "PutMetricAlarm"
@@ -104,6 +105,8 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
         case .listTagsForResource:
             return "/"
         case .putAnomalyDetector:
+            return "/"
+        case .putCompositeAlarm:
             return "/"
         case .putDashboard:
             return "/"
